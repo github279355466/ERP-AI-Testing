@@ -284,7 +284,7 @@ test('负向：条件型规则证据回退到状态行时报 EVIDENCE_NOT_COVERI
   ).toBe(true);
 });
 
-function relationFixture(body: string): {
+function relationFixture(body: string, selfNo = 'src_doc'): {
   relations: Dependency[];
   questions: OpenQuestion[];
 } {
@@ -314,7 +314,7 @@ function relationFixture(body: string): {
   const entity = (id: string, label: string, entityNo: string): Entity =>
     ({ id, object_type: 'Entity', name: label, label, entity_no: entityNo, module: '采购', status: 'ACTIVE', document_ids: [], field_count: 1 }) as Entity;
   const entities = [
-    { ...entity('ENT-SRC', '源单据', 'src_doc'), document_ids: ['DOC-SRC'] } as Entity,
+    { ...entity('ENT-SRC', '源单据', selfNo), document_ids: ['DOC-SRC'] } as Entity,
     entity('ENT-OUT', '采购退货出库单', 'pur_rtn_stkou_doc'),
     entity('ENT-PO', '采购订单', 'po'),
   ];
@@ -362,4 +362,76 @@ test('S-04 正向：显式来源声明仍建立 DERIVED_FROM', () => {
 依据来源开启不同清单——采购订单、采购退货出库单。
 `);
   expect(relations.some((item) => item.name.includes('采购订单') && item.relation_type === 'DERIVED_FROM')).toBe(true);
+});
+
+test('S-05 关系映射解析为字段级数组', () => {
+  const { relations } = relationFixture(
+    `# 源单据
+
+## 三、取单
+
+| 控制项 | 说明 |
+| --- | --- |
+| 操作中处理 | 依据来源类型开启不同清单——采购订单 |
+| 操作后处理 | 单头带入（仅在目标字段为空时写入）： · 供应商编号 (pur_rtn_doc.supp_no) = 来源单据.供应商编号(po.supp_no / pur_arr_doc.supp_no) · 货币编号 (pur_rtn_doc.ccy_no) = 来源单据.货币编号(po.ccy_no / pur_arr_doc.ccy_no) · 含税标识 (pur_rtn_doc.intax_flag) = 来源单据.含税标识(po.intax_flag / pur_arr_doc.intax_flag) |
+`,
+    'pur_rtn_doc'
+  );
+  const relation = relations.find((item) => item.relation_type === 'DERIVED_FROM');
+  expect(relation).toBeTruthy();
+  expect(Array.isArray(relation!.mapping)).toBe(true);
+  const mapping = relation!.mapping as Array<{ target: string; source: string }>;
+  expect(mapping.length).toBeGreaterThanOrEqual(3);
+  expect(mapping[0].target).toBe('pur_rtn_doc.supp_no');
+  expect(mapping[0].source).toContain('po.supp_no');
+});
+
+test('S-05 负向：占位串映射被 RELATION_MAPPING_PLACEHOLDER 检出', () => {
+  const { bundle } = scan();
+  const relation: Dependency = {
+    id: 'DEP-PLACEHOLDER',
+    object_type: 'Dependency',
+    name: '测试单据 ← 采购订单',
+    module: '基础资料',
+    status: 'ACTIVE',
+    source_refs: [
+      {
+        document_id: bundle.documents[0].id,
+        file_path: bundle.documents[0].relative_path,
+        line_start: 1,
+        excerpt: '依据来源开启不同清单——采购订单',
+      },
+    ],
+    created_by_parser_version: 'test',
+    updated_at: '2026-11-07T00:00:00.000Z',
+    source_id: bundle.entities[0]?.id ?? 'ENT-X',
+    target_id: null,
+    target_ref: 'po',
+    relation_type: 'DERIVED_FROM',
+    mapping: '取单带入来源单据字段（详见原文取单章节）',
+    source_type: 'PRD_EXPLICIT',
+    confidence: 'CONFIRMED',
+    document_id: bundle.documents[0].id,
+  };
+  bundle.dependencies.push(relation);
+  const validation = validateKnowledgeBundle(bundle);
+  expect(
+    validation.errors.some(
+      (issue) => issue.code === 'RELATION_MAPPING_PLACEHOLDER' && issue.object_id === 'DEP-PLACEHOLDER'
+    )
+  ).toBe(true);
+});
+
+test('S-05 方向修正：原文「生成下游单据」时关系方向反转并登记 OQ', () => {
+  const { relations, questions } = relationFixture(`# 源单据
+
+## 三、取单
+
+审核时按退货出库规则生成并审核采购退货出库单。
+`);
+  const relation = relations.find((item) => item.name.includes('采购退货出库单'));
+  expect(relation).toBeTruthy();
+  expect(relation!.name).toBe('采购退货出库单 ← 源单据');
+  expect(relation!.source_id).toBe('ENT-OUT');
+  expect(questions.some((item) => item.category === 'RELATION_DIRECTION_FIXED')).toBe(true);
 });

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { dependencyId, questionId } from './ids';
 import { PARSER_VERSION } from './types';
-import type { Dependency, DocumentRecord, Entity, OpenQuestion, SourceRef } from './types';
+import type { Dependency, DocumentRecord, Entity, OpenQuestion, RelationMapping, SourceRef } from './types';
 
 const RELATION_DOC_NAMES = [
   '采购退货出库单',
@@ -27,6 +27,8 @@ interface RelationHit {
   explicit: boolean;
   negated: boolean;
   formatOnly: boolean;
+  /** IN：当前单据来源于目标单据；OUT：当前单据生成/下推目标单据 */
+  direction: 'IN' | 'OUT';
 }
 
 function resolveEntity(entities: Entity[], name: string): Entity | null {
@@ -104,6 +106,7 @@ function collectHits(document: DocumentRecord, lines: string[], selfName: string
         );
         const chosen =
           candidates.find((item) => item.explicit && !item.negated && !item.formatOnly) ?? candidates[0];
+        const generatesTarget = new RegExp(`(生成|产生|下推)[^。；;]{0,12}${name}`).test(chosen.segment);
         hits.push({
           targetName: name,
           line: index + 1,
@@ -111,6 +114,7 @@ function collectHits(document: DocumentRecord, lines: string[], selfName: string
           explicit: chosen.explicit,
           negated: chosen.negated,
           formatOnly: chosen.formatOnly || formatMention,
+          direction: generatesTarget ? 'OUT' : 'IN',
         });
       }
     }
@@ -128,6 +132,36 @@ function toRef(document: DocumentRecord, line: number, text: string): SourceRef 
     excerpt: text.slice(0, 240),
     table: '业务流程/取单',
   };
+}
+
+const FIELD_MAPPING = /([a-z][a-z0-9_]*\.[a-z0-9_]+)\)?\s*[=＝]\s*([^；;。|<·]{2,400})/gi;
+const FIELD_REFERENCE = /\b([a-z][a-z0-9_]*\.[a-z0-9_]+)\b/g;
+
+/** 从「操作后处理」段解析 `本单字段 = 来源单据.字段` 形式的可执行映射 */
+export function parseRelationMappings(
+  lines: string[],
+  startLine: number,
+  selfPrefix: string | null = null
+): RelationMapping[] {
+  const mappings: RelationMapping[] = [];
+  const seen = new Set<string>();
+  for (let index = Math.max(0, startLine - 6); index < Math.min(lines.length, startLine + 60); index += 1) {
+    const text = lines[index] ?? '';
+    for (const match of text.matchAll(FIELD_MAPPING)) {
+      const target = match[1];
+      if (selfPrefix && !target.startsWith(`${selfPrefix}.`) && !target.startsWith(`${selfPrefix}_`)) continue;
+      const right = match[2] ?? '';
+      const sources = [...right.matchAll(FIELD_REFERENCE)].map((item) => item[1]);
+      const unique = [...new Set(sources.filter((item) => item !== target))];
+      if (unique.length === 0) continue;
+      if (seen.has(target)) continue;
+      seen.add(target);
+      const condMatch = /(为空[^，。；;]{0,12}|留空|仅在[^，。；;]{0,20})/.exec(right);
+      mappings.push({ target, source: unique.join('|'), cond: condMatch ? condMatch[1] : null });
+      if (mappings.length >= 60) return mappings;
+    }
+  }
+  return mappings;
 }
 
 export function buildEntityRelations(
@@ -175,21 +209,55 @@ export function buildEntityRelations(
       const key = `${selfEntity?.entity_no ?? document.id}->${target.entity_no ?? target.label}`;
       if (seen.has(key)) continue;
       seen.add(key);
+      const mappings = hit.explicit
+        ? parseRelationMappings(lines, hit.line - 1, selfEntity?.entity_no ?? null)
+        : [];
+      if (hit.explicit && mappings.length === 0) {
+        questions.push({
+          id: questionId(`mapping-unresolved:${document.id}:${targetName}`),
+          object_type: 'OpenQuestion',
+          question: `${selfName} ← ${targetName} 的取单字段映射未能结构化，需按原文补齐`,
+          category: 'MAPPING_UNRESOLVED',
+          severity: 'MEDIUM',
+          document_ids: [document.id],
+          evidence: [`${document.relative_path}:${hit.line}`],
+          impact: '关系存在但无法生成字段级映射，Phase 2 无法校验带出字段',
+          suggested_owner: 'PRD 作者 / 业务',
+          status: 'OPEN',
+          created_at: now,
+        });
+      }
+      const outgoing = hit.direction === 'OUT';
+      if (outgoing) {
+        questions.push({
+          id: questionId(`direction-fixed:${document.id}:${targetName}`),
+          object_type: 'OpenQuestion',
+          question: `${selfName} 原文为「生成${targetName}」，关系方向已按下游修正为 ${targetName} ← ${selfName}`,
+          category: 'RELATION_DIRECTION_FIXED',
+          severity: 'LOW',
+          document_ids: [document.id],
+          evidence: [`${document.relative_path}:${hit.line}`],
+          impact: '关系方向由文档标题误判改为原文语义方向',
+          suggested_owner: 'PRD 作者',
+          status: 'OPEN',
+          created_at: now,
+        });
+      }
       relations.push({
         id: dependencyId(document.id, `rel:${key}`),
         object_type: 'Dependency',
-        name: `${selfName} ← ${targetName}`,
+        name: outgoing ? `${targetName} ← ${selfName}` : `${selfName} ← ${targetName}`,
         module: document.module,
         status: 'ACTIVE',
         schema_version: document.schema_version,
         source_refs: [toRef(document, hit.line, hit.text)],
         created_by_parser_version: PARSER_VERSION,
         updated_at: now,
-        source_id: selfEntity?.id ?? document.id,
-        target_id: target.id,
-        target_ref: target.entity_no ?? target.label,
+        source_id: outgoing ? target.id : selfEntity?.id ?? document.id,
+        target_id: outgoing ? selfEntity?.id ?? null : target.id,
+        target_ref: outgoing ? selfEntity?.entity_no ?? selfName : target.entity_no ?? target.label,
         relation_type: hit.explicit ? 'DERIVED_FROM' : 'CANDIDATE_LINK',
-        mapping: hit.explicit ? '取单带入来源单据字段（详见原文取单章节）' : null,
+        mapping: mappings.length > 0 ? mappings : null,
         source_type: hit.explicit ? 'PRD_EXPLICIT' : 'PRD_DERIVED',
         confidence: hit.explicit ? 'CONFIRMED' : 'DERIVED',
         document_id: document.id,

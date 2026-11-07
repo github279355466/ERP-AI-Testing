@@ -1,14 +1,14 @@
 # 待确认问题清单
 
-生成时间：2026-11-07T15:17:08.119Z
-问题总数：536
+生成时间：2026-11-07T15:26:43.549Z
+问题总数：544
 
 ## 分布
 
 | 维度 | 值 | 数量 |
 | --- | --- | --- |
-| 严重度 | MEDIUM | 233 |
-| 严重度 | LOW | 270 |
+| 严重度 | MEDIUM | 240 |
+| 严重度 | LOW | 271 |
 | 严重度 | HIGH | 33 |
 | 类别 | RULE_CONTRADICTS_SOURCE | 184 |
 | 类别 | AMBIGUOUS_RULE | 3 |
@@ -17,6 +17,8 @@
 | 类别 | RULE_CONFLICT | 121 |
 | 类别 | BROKEN_FLOW | 19 |
 | 类别 | NEGATED_RELATION | 5 |
+| 类别 | MAPPING_UNRESOLVED | 7 |
+| 类别 | RELATION_DIRECTION_FIXED | 1 |
 | 类别 | SOURCE_CONFLICT | 13 |
 | 类别 | DUPLICATE_SOURCE | 11 |
 | 类别 | EXCLUDED_SOURCE | 77 |

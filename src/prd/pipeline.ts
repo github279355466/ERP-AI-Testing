@@ -372,7 +372,7 @@ export function buildKnowledge(
       dependency.relation_type = 'USES_MASTER_DATA';
       dependency.source_type = 'PLATFORM_SERVICE';
       dependency.confidence = 'CONFIRMED';
-      dependency.mapping = `${dependency.target_ref}（平台服务/表结构引用）`;
+      dependency.mapping = null;
     }
   }
   const allQuestions = [
