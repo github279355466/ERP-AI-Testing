@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Page.schema.json",
+  "title": "Page",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "document_id",
+    "page_type"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Page"
+    },
+    "page_type": {
+      "enum": [
+        "LIST",
+        "FORM",
+        "TAB",
+        "MODAL",
+        "UNKNOWN"
+      ]
+    },
+    "entity_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parent_page_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "menu_path": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

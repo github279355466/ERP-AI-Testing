@@ -1,0 +1,134 @@
+=== A. 02 §5 source_type 六分类实际使用 ===
+  rules source_type: {'PRD_DERIVED': 4004, 'PRD_EXPLICIT': 26634, 'PENDING': 3}
+  fields source_type: {'PRD_EXPLICIT': 8447, 'PENDING': 7}
+  dependencies source_type: {'PRD_DERIVED': 722}
+    PLATFORM_SERVICE in rules: 0 in fields: 0
+    UI_OBSERVED in rules: 0 in fields: 0
+    USER_CONFIRMED in rules: 0 in fields: 0
+    PENDING in rules: 3 in fields: 7
+  rules whose description mentions 调用接口/bm.* (platform-service statements): 4731
+     their source_type: {'PRD_EXPLICIT': 3856, 'PRD_DERIVED': 875}
+  OQ mentioning 平台服务/PLATFORM_SERVICE: 0
+
+=== B. 02 §11 证据追溯 7 要素 / 04 §5 证据引用 ===
+  rule source_refs key union: {'document_id': 30641, 'file_path': 30641, 'section': 30641, 'line_start': 30641, 'excerpt': 30641}
+  total rules: 30641
+  with line_end: 0 | with page: 0 | with page_no: 0 | with paragraph_index: 0 | with doc_version: 0 | with sha256/hash: 0
+  with excerpt: 30641 | with section: 30641 | with line_start: 30641 | with document_id: 30641
+  source_refs file_path that is ABSOLUTE path: 0 (rest are relative)
+  'EVIDENCE_MISSING' occurrences by file: {'rules.json': 0, 'fields.json': 0, 'controls.json': 0, 'actions.json': 0, 'workflows.json': 0, 'dependencies.json': 0, 'scenarios.json': 0, 'open-questions.json': 0, 'documents.json': 0}
+  'UNSUPPORTED_FORMAT' occurrences in knowledge: 0
+  'UNKNOWN' version markers in documents.doc_version: 0 | null doc_version: 39
+  documents with sha256: 333
+
+=== C. 02 §13 解析质量 6 分级 ===
+  types.ts Confidence: CONFIRMED|DERIVED|AMBIGUOUS|CONFLICTED|MISSING (5, lacks UNSUPPORTED_FORMAT)
+  rule.schema.json confidence enum: ['CONFIRMED', 'DERIVED', 'AMBIGUOUS', 'CONFLICTED', 'MISSING']
+  actual rule confidence: {'DERIVED': 4004, 'CONFIRMED': 26634, 'AMBIGUOUS': 3}
+  actual field confidence: {'CONFIRMED': 8447, 'AMBIGUOUS': 7}
+  EVIDENCE_MISSING / UNSUPPORTED_FORMAT markers: see section B
+
+=== D. 02 §6/§7 字段与规则必备要素 ===
+  fields: data_type null: 8454 | length null: 8454 | precision null: 8454 | related_master_data null: 7107 | total: 8454
+  rules: applies_to empty: 13232 | conditions empty: 30641 | open_question_ids empty: 30641 | derivation null: 26637 | total: 30641
+  rules with trigger null: 0
+  rules with expected_result null: 0
+
+=== E. 02 §9 流程 9 要素 / 04 §6 关系对象契约 ===
+  workflows total: 143 | union of top-level keys: ['created_by_parser_version', 'document_id', 'entity_id', 'id', 'module', 'name', 'object_type', 'source_refs', 'status', 'steps', 'updated_at']
+  workflow steps keys: ['description', 'exception', 'seq', 'step']
+  workflows with structured 起点/终点/单据节点/节点间关系/映射/数量口径/关系证据/来源类型: 0
+  workflows whose step TEXT mentions 数量/已到货/未到货/占用/释放/回写 (free text only): 79
+  distinct workflow step-signatures: 30 | duplicated signatures: 20 | duplicated signatures spanning >1 module: 3
+     max group size: 27
+  dependencies: total 722 | source_id non-null: 722 | target_id non-null: 0 | mapping non-null: 0 | source_refs non-empty: 722 | relation_type: {'REFERENCES': 722} | source_type: {'PRD_DERIVED': 722} | confidence: {'DERIVED': 722}
+  9 recommended relation types present: ['REFERENCES']
+
+=== F. 02 §12 OPEN_QUESTIONS 六字段 + 重复登记分析 ===
+  OQ total: 330
+    question missing/empty: 0
+    document_ids missing/empty: 0
+    evidence missing/empty: 0
+    impact missing/empty: 0
+    suggested_owner missing/empty: 0
+    status missing/empty: 0
+  OQ with empty evidence array: 0
+  OQ status values: {'OPEN': 330}
+  OQ categories: {'AMBIGUOUS_RULE': 3, 'MISSING_DEFINITION': 12, 'VERSION_CONFLICT': 20, 'RULE_CONFLICT': 276, 'BROKEN_FLOW': 19}
+  DISTINCT exact question strings: 304 of 330
+  exact-duplicate groups (question appears >1): 4 | entries in those groups: 30
+  top repeated exact questions:
+     x 10 | 文档引用了未建模的上下游对象：src_data_check, lnkg_calc
+     x 8 | 文档引用了未建模的上下游对象：pur_stkin_doc_001, pur_stkin_doc_d, p_ops_unit_no, p_supp_no, p_doc_date_from
+     x 6 | 字段码 rmk 在同一文档出现 2 次，需确认是否属于不同页签或子对象
+     x 6 | 字段码 pcs 在同一文档出现 2 次，需确认是否属于不同页签或子对象
+     x 1 | 规则描述含待确认表述：运营单元编号 只读
+     x 1 | 规则描述含待确认表述：删除 前置校验
+  DISTINCT normalized (category + question with digit-counts masked): 304 of 330
+  BROKEN_FLOW total: 19 | distinct target-sets: 3 | biggest group: 10
+     x 10 | src_data_check, lnkg_calc
+     x 8 | pur_stkin_doc_001, pur_stkin_doc_d, p_ops_unit_no, p_supp_no, p_doc_date_from
+     x 1 | eff_end_date, alr_rtn_prc_qty, alr_rtn_invnt_qty
+  RULE_CONFLICT total: 276 | distinct (entity,field,scope,ruleType): 276 | biggest group: 1
+  VERSION_CONFLICT total: 20 | distinct jobs: 20
+  ESTIMATE independent questions after dedup: 304 (normalized) / exact 304 | reduction vs 330: 26
+
+=== G. OPEN_QUESTIONS.md 展示截断核实 ===
+  MD lines: 201
+  explicit truncation notices: [(150, '> 仅显示前 100 条，共 276 条；完整清单见 artifacts/knowledge/open-questions.json。')]
+  MD table data rows (lines starting with '| OQ-'): 154
+  JSON OQ total: 330 | JSON 330 完整: True
+  rendered OQ rows per section: {'## 版本冲突': 20, '## 规则冲突与重复定义': 100, '## 缺失与歧义': 15, '## 流程断链': 19}
+  sections exceeding 100 rendered rows: {}
+  NOTE: JSON is authoritative and complete; truncation is disclosed. Risk: human reviewer reading only MD
+        sees <=100/276 RULE_CONFLICT rows and <=100 per section; no pointer to which specific IDs are omitted.
+
+=== H. VERSION_CONFLICTS _diff 污染 + 旧索引过期核实 ===
+  VERSION_CONFLICTS.md 明细行(以 '- ' 开头): 262
+  来自 _diff 的明细行: 69
+  其中带 (v数字): 36 | 带 (vUNKNOWN): 33
+  采购退货出库单 冲突描述: ['采购退货出库单 存在多个文档版本：1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21, 1.22, 1.23, 1.24，候选最新版本为 v1.24，需确认生效版本']
+  _diff PRD docs: 71 | of these is_latest: 0
+  is_latest docs total: 47 | is_latest in top-level (no '/' in relative_path): 0
+  47 is_latest all in top-level dirs: True
+  _diff docs with fields: 0
+  old index generatedAt: 2026-11-06T07:25:10.746Z
+  PRD-MAPPING.md:17 采购退货出库单 v1.22; Phase1 VERSION_CONFLICTS 候选 v1.24
+  mtimes: 采购退货出库单PRD.v1.24.md=2026-11-06T18:48:51, 询价单PRD.v1.8.md=2026-11-07T11:02:22, 会计期间信息PRD.v1.7.md=2026-11-07T11:23:35; PRD-MAPPING.md=2026-11-06T15:25:39, athena-prd-map.json=2026-11-06T15:25:10
+  -> 旧索引早于顶层正式 PRD 的 mtime，版本口径不一致根因为旧索引未重生成，非 Phase 1 最新版判定算错
+
+=== I. 覆盖率分母口径复核 ===
+  summary.coverage: {'rules': 4657, 'covered_by_existing_cases': 854, 'rate': 0.1834}
+  latest rule count (is_latest docs): 4657
+  854/4657 = 18.34 %
+  COVERAGE_MATRIX.md:19 说明: '规则覆盖率按「对象字段 + 规则类型」与测试用例库做语义匹配，不是规则 ID 直接对应；匹配结果用于发现缺口，不作为用例正确性证据'
+  KNOWN_LIMITATIONS.md:31 说明: '覆盖率是字段级匹配…不判断用例断言口径是否与规则语义一致。覆盖率只用于发现缺口'
+  -> 分母 4657=最新版规则数；非业务覆盖率；两处表述准确
+
+=== J. E 项线索：4 核心单据确切路径与原文内容核实 ===
+   请购单 | EXISTS True | lines 1604
+     exact path: C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace\测试用例\采购域/请购单/DOC411595859844759552_请购单_V1.12.md
+     doc: DOC-905E3E6DC6A2 | is_latest True | doc_version 1.12 | rules 144
+     业务流程图 heading at 37 | next content: *-*
+   采购订单 | EXISTS True | lines 3327
+     exact path: C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace\测试用例\采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md
+     doc: DOC-F7B596BCCD1E | is_latest True | doc_version 1.13 | rules 252
+     取单 heading at line 3270 | | 操作后处理 | #采购订单.取单逻辑<br/><br/>一、画面<br/>   <br/> 则依据选择开启不同画面--暂时只有请购单<br/><br/>         请购单号 <…>                  品号 <…><br/>         请购日期 ★ ～             需求日期 ★ ～    <br/
+     业务流程图 heading at 38 | next content: *-*
+   采购到货单 | EXISTS True | lines 2597
+     exact path: C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace\测试用例\采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md
+     doc: DOC-F0B7B5AA0894 | is_latest True | doc_version 1.23 | rules 256
+     取单 heading at line 2586 | | 操作后处理 | 一、画面<br/>   <br/> 则依据选择开启不同画面--暂时只有采购订单<br/><br/>         采购订单号 <…> <br/>         采购日期 ★ ～                   【查询】<br/>       预交货日期 ★ ～                  <br/>   
+     业务流程图 heading at 48 | next content: *-*
+   采购入库单 | EXISTS True | lines 1969
+     exact path: C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace\测试用例\采购域/采购入库单/DOC482078_采购入库单_V1.19.md
+     doc: DOC-80279037298A | is_latest True | doc_version 1.19 | rules 181
+     取单 heading at line 1958 | | 操作后处理 | 一、画面<br/>   <br/> 则依据选择开启不同画面--暂时只有采购订单<br/><br/>      采购到货单号 <…> <br/>         到货日期 ★ ～               【查询】<br/>              品号 <…>               【重置】<br/>  --
+     业务流程图 heading at 44 | next content: *-*
+
+=== K. 02 §15 / 04 契约：Schema 与运行时校验 ===
+  dev-kit schemas: ['rule.schema.json', 'scenario.schema.json']
+  repo-level 'schemas/' exists: False
+  'schema' keyword in src/: 3 | 'Ajv' in src/: 0 | 'draft-07'/'2020-12' in src/: 0
+  rule.schema.json required: ['id', 'object_type', 'name', 'description', 'rule_type', 'source_type', 'confidence', 'source_refs']
+  validate.ts is self-implemented (per reports/KNOWN_LIMITATIONS.md:38)

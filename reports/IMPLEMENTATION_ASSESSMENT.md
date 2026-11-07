@@ -10,11 +10,11 @@
 | --- | --- |
 | 仓库 | `D:\AIProject\ERP-AI-Testing`，模块化单体，TypeScript 严格模式 |
 | Node / npm | v24.19.0 / 11.9.0（Windows） |
-| Git | 仓库已初始化，`master` 分支尚无提交 |
+| Git | 已提交首个基线 `7c13b44`；Phase 1 整改改动待提交 |
 | 既有框架 | `src/browser`、`locator`、`controls`、`discovery`、`assertion`、`evidence`、`reporting`、`runner`、`knowledge` 九个模块已存在 |
-| 测试 | Playwright Test 1.62.1，`tests/unit` 中 11 个用例文件 |
+| 测试 | Playwright Test 1.62.1，`tests/unit` 中 15 个用例文件（76 项） |
 | 依赖 | 仅 `@playwright/test`、`typescript`、`@types/node`，无额外解析库 |
-| PRD 源 | 用户提供的外部只读目录，非仓库内 `prd/`；含主目录 272 份 + 用例库内原文档 27 份 |
+| PRD 源 | 用户提供的外部只读目录，非仓库内 `prd/`；共 540 个文件，其中建模 333 份（PRD 299 / 用例库 34） |
 | 测试用例库 | 与 PRD 同级的外部目录，34 个作业包（5 个域目录，171 个 JSON） |
 
 ## 二、与开发包建议目录的差异

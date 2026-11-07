@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-11-07T11:18:46.578Z",
+  "commands": [
+    "prd:validate",
+    "prd:report"
+  ],
+  "files_checked": 27,
+  "changed": [],
+  "added": [],
+  "removed": [],
+  "readonly": true
+}

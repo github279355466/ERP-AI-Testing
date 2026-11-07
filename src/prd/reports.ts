@@ -82,6 +82,9 @@ export function renderAnalysisReport(bundle: KnowledgeBundle, validation: Valida
   const fieldWithoutEntity = bundle.fields.filter((field) => !field.entity_id).length;
   const scenariosWithoutAssertion = bundle.scenarios.filter((scenario) => scenario.assertions.length === 0).length;
   const pendingRules = bundle.rules.filter((rule) => rule.confidence !== 'CONFIRMED').length;
+  const feasibilityStats = groupCount(bundle.scenarios, (scenario) => scenario.automation_feasibility);
+  const missingSources = bundle.documents.filter((document) => document.last_scan_status === 'SOURCE_MISSING');
+  const evidenceWithoutVersion = bundle.evidence.filter((item) => item.doc_version == null).length;
 
   return [
     '# PRD 分析报告',
@@ -105,6 +108,7 @@ export function renderAnalysisReport(bundle: KnowledgeBundle, validation: Valida
         ['场景草案', String(bundle.scenarios.length)],
         ['测试用例库记录', String(bundle.existingCases.length)],
         ['待确认问题', String(bundle.openQuestions.length)],
+        ['证据条目', String(bundle.evidence.length)],
         ['解析问题', String(bundle.issues.length)],
       ]
     ),
@@ -129,12 +133,21 @@ export function renderAnalysisReport(bundle: KnowledgeBundle, validation: Valida
         ['最新版文档', String(bundle.documents.filter((document) => document.source_role === 'PRD' && document.is_latest).length), '参与场景与覆盖率统计'],
         ['字段未归属实体', String(fieldWithoutEntity), 'entity_id 为空'],
         ['无断言场景', String(scenariosWithoutAssertion), '应标记 NEEDS_CONFIRMATION'],
+        ['源文件缺失文档', String(missingSources.length), '保留历史知识，状态 SOURCE_MISSING'],
+        ['证据缺版本', String(evidenceWithoutVersion), 'doc_version 为空'],
         ['Schema 校验错误', String(validation.errors.length), '见 PARSE_ERRORS.md 与校验输出'],
         ['Schema 校验告警', String(validation.warnings.length), '不阻断但需关注'],
       ]
     ),
     '',
-    '## 五、结论与限制',
+    '## 五、场景可行性分布',
+    '',
+    table(
+      ['automation_feasibility', '数量', '占比'],
+      [...feasibilityStats.entries()].map(([key, value]) => [key, String(value), pct(value, bundle.scenarios.length)])
+    ),
+    '',
+    '## 六、结论与限制',
     '',
     '- 本报告只基于本地 PRD 与测试用例库静态解析，未连接 ERP、未启动浏览器、未执行任何业务操作。',
     '- 规则来自 PRD 表格与字段属性，`PRD_DERIVED` 与 `PENDING` 不得当作已确认业务规则。',
@@ -216,14 +229,15 @@ export function renderCoverageMatrix(bundle: KnowledgeBundle, coverage: Coverage
       const folders = new Set(
         bundle.documents
           .filter((document) => document.source_role === 'PRD')
-          .map((document) => document.relative_path.split('/')[0])
+          .map((document) => document.job_directory)
+          .filter(Boolean)
       );
       const modules = [...new Set(bundle.existingCases.map((item) => item.module))].sort();
       const missing = modules.filter((module) => !folders.has(module));
       const rows = missing.map((module) => [
         module,
         String(bundle.existingCases.filter((item) => item.module === module).length),
-        'PRD 目录无同名作业',
+        'PRD 作业目录无同名作业',
       ]);
       return rows.length === 0
         ? ['所有用例作业在 PRD 目录中均有同名目录。', '']
@@ -246,7 +260,7 @@ function renderQuestionSection(title: string, questions: OpenQuestion[]): string
     '',
     table(
       ['ID', '问题', '严重度', '影响', '建议确认对象', '证据'],
-      ordered.slice(0, 100).map((question) => [
+      ordered.map((question) => [
         question.id,
         question.question,
         question.severity,
@@ -255,7 +269,7 @@ function renderQuestionSection(title: string, questions: OpenQuestion[]): string
         question.evidence.slice(0, 2).join('；'),
       ])
     ),
-    questions.length > 100 ? `\n> 仅显示前 100 条，共 ${questions.length} 条；完整清单见 artifacts/knowledge/open-questions.json。` : '',
+    '',
     '',
   ];
 }
@@ -297,6 +311,12 @@ export function renderOpenQuestions(bundle: KnowledgeBundle): string {
     ...renderQuestionSection(
       '解析与格式问题',
       bundle.openQuestions.filter((question) => ['PARSE_ERROR', 'UNSUPPORTED_FORMAT'].includes(question.category))
+    ),
+    ...renderQuestionSection(
+      '来源与登记问题',
+      bundle.openQuestions.filter((question) =>
+        ['SOURCE_CONFLICT', 'SOURCE_MISSING', 'DUPLICATE_SOURCE', 'EXCLUDED_SOURCE'].includes(question.category)
+      )
     ),
   ].join('\n');
 }
@@ -383,6 +403,41 @@ export function renderScanReport(
       ? '无'
       : skippedFiles.map((file) => `- ${file}（辅助资料，当前阶段只登记不建模）`).join('\n'),
     '',
+    '## 源文件缺失（历史知识保留）',
+    '',
+    bundle.documents.filter((document) => document.last_scan_status === 'SOURCE_MISSING').length === 0
+      ? '无'
+      : bundle.documents
+          .filter((document) => document.last_scan_status === 'SOURCE_MISSING')
+          .map((document) => `- ${document.relative_path}（状态 ${document.status}，规则仍可回溯）`)
+          .join('\n'),
+    '',
+  ].join('\n');
+}
+
+export function renderScenarioDraft(bundle: KnowledgeBundle): string {
+  const rows = bundle.scenarios.map((scenario) => [
+    scenario.id,
+    scenario.business_object ?? '',
+    scenario.scenario_type,
+    scenario.automation_feasibility,
+    scenario.test_objective,
+    scenario.expected_result,
+    scenario.case_ids.join('；'),
+    scenario.rule_ids.join('；'),
+  ]);
+  const feasibility = groupCount(bundle.scenarios, (scenario) => scenario.automation_feasibility);
+  return [
+    '# 测试场景草案',
+    '',
+    `生成时间：${bundle.scan.scanned_at}`,
+    `场景总数：${bundle.scenarios.length}`,
+    `可行性分布：${[...feasibility.entries()].map(([key, value]) => `${key}=${value}`).join('，')}`,
+    '',
+    '说明：全部场景为 DRAFT，未经评审不得执行；UI_READY 在 Phase 1 不被允许，等待 Phase 2 页面探索后再升级。',
+    '',
+    table(['scenario_id', '业务对象', '类型', '可行性', '测试目标', '预期结果', '关联用例', '关联规则'], rows),
+    '',
   ].join('\n');
 }
 
@@ -401,5 +456,6 @@ export function renderAllReports(
     'VERSION_CONFLICTS.md': renderVersionConflicts(bundle),
     'PARSE_ERRORS.md': renderParseErrors(bundle, unsupportedFiles),
     'scan-report.md': renderScanReport(bundle, unsupportedFiles, skippedFiles),
+    'SCENARIO_DRAFT.md': renderScenarioDraft(bundle),
   };
 }

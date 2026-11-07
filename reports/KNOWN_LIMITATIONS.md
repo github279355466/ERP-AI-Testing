@@ -34,9 +34,17 @@
 
 ## 四、工程与产物
 
-1. **`rules.json` 约 35.5 MB**：包含 30641 条规则全文与证据，加载成本较高；暂未提供精简输出或分片。
-2. **Schema 校验为自实现**：`src/prd/validate.ts` 做字段级与引用级检查，未引入 JSON Schema 校验器；开发包 `schemas/*.json` 尚未作为运行时约束接入。
+1. **`rules.json` 约 42 MB、`evidence.json` 约 44 MB**：包含 27908 条规则全文、条件与服务引用，以及 31865 条证据；加载成本较高，暂未提供精简输出或分片（P2）。
+2. **Schema 校验已接入 ajv**：`schemas/` 下 13 类正式 JSON Schema 由 `npm run prd:schemas` 生成，`prd:validate` 以 ajv（Draft 2020-12）执行；Schema 只约束结构，不替代业务语义评审。
 3. **增量缓存以 `document_id + sha256` 为键**：文件重命名会产生新 ID 并重建缓存，旧缓存不会自动清理。
 4. **扫描状态累积**：`.scan-state.json` 保留历史键；当前 540 个键与 540 个文件一致，但目录结构调整后旧键需手动清理。
 5. **Git 仅首个提交**：Phase 1 代码与产物从首个提交开始可回溯，此前的探索过程不在版本历史中。
-6. **报表只展示前 100 条**：`OPEN_QUESTIONS.md` 每个分区最多 100 行，完整数据以 `open-questions.json` 为准。
+6. **报表不再截断**：`OPEN_QUESTIONS.md` 与 `SCENARIO_DRAFT.md` 输出全量条目；文件体积相应增大。
+
+## 五、整改后新增残余
+
+1. **33 条证据缺版本**：来源文档无版本元数据，`doc_version=null`，校验记 `EVIDENCE_VERSION_UNKNOWN`。
+2. **481 条依赖未解析**：字段码、后端表名、API 入参名等非实体引用，保留 `target_id=null` 并按文档登记 `MISSING_DEFINITION` OQ，不伪造实体关系。
+3. **387 条明确规则引用平台服务**：均为开窗/默认值/只读/必填的字段行为，暂按 `PRD_EXPLICIT` 归类并写入 `service_refs`；口径登记 `OQ-SVC-EXPLICIT-CALIBER`，待 PRD 负责人裁决。
+4. **平台 JSON 证据片段为原文窗口**：`prd_spec` JSON 为单行，`excerpt` 取该行中包含字段码的原文窗口（逐字子串），可定位但不便于人工阅读；业务描述仍保留在 `description`。
+5. **根级与 `_diff` 文档不建模**：6 份根级 md、71 份 `_diff` 文档登记为 `EXCLUDED_SOURCE`，不产生字段与规则。

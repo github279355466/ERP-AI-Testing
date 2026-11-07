@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Document.schema.json",
+  "title": "Document",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "sha256",
+    "relative_path",
+    "last_scan_status",
+    "is_latest"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Document"
+    },
+    "file_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relative_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "modified_at": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "doc_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "doc_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "doc_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "prd_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "business_object": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "biz_model_no": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "application": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "entity_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "section_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "table_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_scan_status": {
+      "enum": [
+        "NEW",
+        "MODIFIED",
+        "UNCHANGED",
+        "SOURCE_MISSING"
+      ]
+    },
+    "scanned_at": {
+      "type": "string"
+    },
+    "parser": {
+      "type": "string"
+    },
+    "source_role": {
+      "enum": [
+        "PRD",
+        "TEST_CASE_LIBRARY"
+      ]
+    },
+    "job_directory": {
+      "type": "string"
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "superseded_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "related_document_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_latest": {
+      "type": "boolean"
+    }
+  }
+}

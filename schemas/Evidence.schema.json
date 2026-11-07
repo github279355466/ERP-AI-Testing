@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Evidence.schema.json",
+  "title": "Evidence",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "evidence_id",
+    "document_id",
+    "sha256",
+    "file_path",
+    "line_start"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Evidence"
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "doc_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "file_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "section": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "line_start": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "line_end": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "page": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "paragraph_index": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "excerpt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "verbatim": {
+      "type": "boolean"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "referenced_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@
     "timezone": "Asia/Shanghai"
   },
   "prd": {
-    "inputDir": "C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd",
+    "inputDir": "${PRD_WORKSPACE}/prd",
     "includeExtensions": [".md", ".markdown", ".txt", ".json"],
     "reservedExtensions": [".docx", ".xlsx", ".xls", ".pdf", ".png", ".jpg", ".jpeg"],
     "excludeDirectories": [".git", "node_modules", "__pycache__", ".cache"],
@@ -23,7 +23,7 @@
   "scenarioSources": [
     {
       "name": "测试用例",
-      "inputDir": "C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例",
+      "inputDir": "${PRD_WORKSPACE}/测试用例",
       "kind": "TEST_CASE_LIBRARY"
     }
   ],

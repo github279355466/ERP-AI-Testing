@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Rule.schema.json",
+  "title": "Rule",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "description",
+    "rule_type",
+    "source_type",
+    "confidence",
+    "document_id"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Rule"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rule_type": {
+      "enum": [
+        "REQUIRED",
+        "READONLY",
+        "HIDDEN",
+        "DISABLED",
+        "DEFAULT_VALUE",
+        "LOOKUP",
+        "VALIDATION",
+        "UNIQUENESS",
+        "PRECISION",
+        "CALCULATION",
+        "STATE_TRANSITION",
+        "PERMISSION",
+        "LINKAGE",
+        "WORKFLOW",
+        "API_CONTRACT"
+      ]
+    },
+    "source_type": {
+      "enum": [
+        "PRD_EXPLICIT",
+        "PRD_DERIVED",
+        "PLATFORM_SERVICE",
+        "UI_OBSERVED",
+        "USER_CONFIRMED",
+        "PENDING"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "CONFIRMED",
+        "DERIVED",
+        "AMBIGUOUS",
+        "CONFLICTED",
+        "MISSING"
+      ]
+    },
+    "applies_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "field_no": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "field_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trigger": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_result": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "derivation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "service_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "open_question_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

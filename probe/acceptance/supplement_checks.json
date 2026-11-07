@@ -1,0 +1,299 @@
+{
+ "common_fields_04_section2": {
+  "documents": {
+   "items": 333,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "entities": {
+   "items": 82,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "pages": {
+   "items": 830,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "fields": {
+   "items": 8454,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "controls": {
+   "items": 8454,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "rules": {
+   "items": 30641,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "actions": {
+   "items": 1896,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "workflows": {
+   "items": 143,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "dependencies": {
+   "items": 722,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "scenarios": {
+   "items": 4067,
+   "missing_count": {},
+   "missing_fields": [],
+   "uses_case_id_instead_of_id": 0
+  },
+  "existing-cases": {
+   "items": 1477,
+   "missing_count": {
+    "id": 1477,
+    "object_type": 1477,
+    "name": 1477,
+    "status": 1477,
+    "source_refs": 1477,
+    "created_by_parser_version": 1477,
+    "updated_at": 1477
+   },
+   "missing_fields": [
+    "created_by_parser_version",
+    "id",
+    "name",
+    "object_type",
+    "source_refs",
+    "status",
+    "updated_at"
+   ],
+   "uses_case_id_instead_of_id": 1477
+  },
+  "open-questions": {
+   "items": 330,
+   "missing_count": {
+    "name": 330,
+    "module": 330,
+    "source_refs": 330,
+    "created_by_parser_version": 330,
+    "updated_at": 330
+   },
+   "missing_fields": [
+    "created_by_parser_version",
+    "module",
+    "name",
+    "source_refs",
+    "updated_at"
+   ],
+   "uses_case_id_instead_of_id": 0
+  }
+ },
+ "register_required_info_02_section3": {
+  "register_keys": [
+   "application",
+   "biz_model_no",
+   "doc_date",
+   "doc_version",
+   "document_id",
+   "file_name",
+   "modified_at",
+   "module",
+   "parser",
+   "relative_path",
+   "section_count",
+   "sha256",
+   "size_bytes",
+   "source_role",
+   "status",
+   "table_count",
+   "title"
+  ],
+  "documents_json_keys": [
+   "application",
+   "biz_model_no",
+   "business_object",
+   "created_by_parser_version",
+   "doc_date",
+   "doc_status",
+   "doc_version",
+   "entity_names",
+   "file_name",
+   "file_path",
+   "id",
+   "is_latest",
+   "job_directory",
+   "last_scan_status",
+   "modified_at",
+   "module",
+   "name",
+   "object_type",
+   "parser",
+   "prd_type",
+   "relative_path",
+   "section_count",
+   "sha256",
+   "size_bytes",
+   "source_refs",
+   "source_role",
+   "status",
+   "table_count",
+   "title",
+   "updated_at"
+  ],
+  "groups": {
+   "原始路径/文件名/哈希": {
+    "keys": [
+     "relative_path",
+     "file_name",
+     "sha256"
+    ],
+    "in_register": [
+     "relative_path",
+     "file_name",
+     "sha256"
+    ],
+    "in_documents_json": [
+     "relative_path",
+     "file_name",
+     "sha256"
+    ]
+   },
+   "标题/业务模块/业务对象": {
+    "keys": [
+     "title",
+     "module",
+     "business_object"
+    ],
+    "in_register": [
+     "title",
+     "module"
+    ],
+    "in_documents_json": [
+     "title",
+     "module",
+     "business_object"
+    ]
+   },
+   "版本/发布日期/文档状态": {
+    "keys": [
+     "doc_version",
+     "doc_date",
+     "doc_status"
+    ],
+    "in_register": [
+     "doc_version",
+     "doc_date"
+    ],
+    "in_documents_json": [
+     "doc_version",
+     "doc_date",
+     "doc_status"
+    ]
+   },
+   "解析器版本": {
+    "keys": [
+     "parser",
+     "created_by_parser_version"
+    ],
+    "in_register": [
+     "parser"
+    ],
+    "in_documents_json": [
+     "parser",
+     "created_by_parser_version"
+    ]
+   },
+   "扫描时间": {
+    "keys": [
+     "scanned_at"
+    ],
+    "in_register": [],
+    "in_documents_json": []
+   },
+   "文档间替代/引用/关联关系": {
+    "keys": [
+     "supersedes",
+     "replaces",
+     "relations",
+     "references",
+     "replaced_by"
+    ],
+    "in_register": [],
+    "in_documents_json": []
+   }
+  }
+ },
+ "version_unknown_marking": {
+  "doc_version_null": 39,
+  "doc_version_UNKNOWN_string": 0,
+  "doc_version_distinct_values": 48,
+  "doc_status_values": {
+   "None": 333
+  }
+ },
+ "schema_version_04_section7": {
+  "objects_with_schema_version": 0,
+  "objects_total": 57429,
+  "summary_has_schema_version": true,
+  "summary_value": "1.0.0",
+  "reports_mentioning_version": {
+   "COVERAGE_MATRIX.md": false,
+   "IMPLEMENTATION_ASSESSMENT.md": false,
+   "KNOWN_LIMITATIONS.md": false,
+   "NEXT_PHASE_RECOMMENDATION.md": false,
+   "OPEN_QUESTIONS.md": false,
+   "PARSE_ERRORS.md": false,
+   "PHASE1_COMPLETION_REPORT.md": false,
+   "PRD_ANALYSIS_REPORT.md": false,
+   "PRD_INDEX.md": true,
+   "VERSION_CONFLICTS.md": false
+  }
+ },
+ "unified_objects_02_section4": {
+  "planned_12": [
+   "Document",
+   "Entity",
+   "Page",
+   "Field",
+   "Control",
+   "Rule",
+   "Action",
+   "Workflow",
+   "Dependency",
+   "Scenario",
+   "Evidence",
+   "OpenQuestion"
+  ],
+  "present": {
+   "Document": 333,
+   "Entity": 82,
+   "Page": 830,
+   "Field": 8454,
+   "Control": 8454,
+   "Rule": 30641,
+   "Action": 1896,
+   "Workflow": 143,
+   "Dependency": 722,
+   "Scenario": 4067,
+   "OpenQuestion": 330
+  },
+  "missing": [
+   "Evidence"
+  ],
+  "present_count": 11,
+  "note_existing_cases_has_no_object_type": false
+ }
+}

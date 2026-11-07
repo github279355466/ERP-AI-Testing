@@ -1,0 +1,85 @@
+=== 15+ DEPENDENCY TRACE VERIFICATION (target_ref near reported line) ===
+  candidate deps 150
+   DEP-41AC0CD0AEBE | bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.18.md | line 1539 | token_found True at 1539 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-386EA18AC367 | bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.4.md | line 1416 | token_found True at 1416 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-EA0A4B69DED2 | bm.item_lot_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md | line 1485 | token_found True at 1485 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-097C00A532D7 | bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.17.md | line 1492 | token_found True at 1492 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-CA6B937E5223 | bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md | line 1485 | token_found True at 1485 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-DBA38A750698 | proj_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_diff/v1.20-开发改动清单.md | line 191 | token_found True at 191 | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加）
+   DEP-C3C4F6BC5F9B | bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.21.md | line 1588 | token_found True at 1588 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-D56DFDD32246 | bm.item_lot_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货单/_history/采购退货单PRD.v1.8.md | line 2393 | token_found True at 2393 | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-E279F20F6E27 | bm.requ_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购域/询价单/DOC416866823047172097_询价单_V1.5.md | line 1252 | token_found True at 1252 | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-7FE756142C8E | bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.16.md | line 1489 | token_found True at 1489 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-AD6CB714F28D | bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.10.md | line 1471 | token_found True at 1471 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-617F5AEB61ED | bm.supp_item_price.getprice | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货单/_history/采购退货单PRD.v1.9.md | line 2394 | token_found True at 2394 | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-D405E8FC44F8 | bm.pur_req_detail.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 询价单/_history/询价单PRD.v1.7.md | line 1432 | token_found True at 1432 | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-9EDBDFDA43F5 | bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.20.md | line 1587 | token_found True at 1587 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-B2CD7036F37B | item_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_diff/v1.20-开发改动清单.md | line 173 | token_found True at 173 | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加）
+   DEP-98C7E3E87080 | bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货单/_history/采购退货单PRD.v1.9.md | line 2394 | token_found True at 2394 | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-2C60409F9C8F | bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.12.md | line 1508 | token_found True at 1508 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-01ED1C3E1788 | bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md | line 1485 | token_found True at 1485 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-E02E9A2DCE16 | bm.item_lot_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货单/_history/采购退货单PRD.v1.9.md | line 2394 | token_found True at 2394 | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+   DEP-093E89952170 | bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | file 采购退货出库单/_history/采购退货出库单PRD.v1.9.md | line 1589 | token_found True at 1589 | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单
+  VERIFIED target token present in source: 20 / 20
+
+=== OPEN_QUESTIONS: categories and section-7 gap coverage ===
+  categories {'AMBIGUOUS_RULE': 3, 'MISSING_DEFINITION': 12, 'VERSION_CONFLICT': 20, 'RULE_CONFLICT': 276, 'BROKEN_FLOW': 19}
+  status {'OPEN': 330}
+  OQ containing 数量口径 : 0
+  OQ containing 数量约束 : 0
+  OQ containing 状态条件 : 0
+  OQ containing 回写 : 0
+  OQ containing 取单 : 0
+  OQ containing 入库取到货 : 0
+  OQ containing 退货关联已入库 : 0
+  OQ containing 候选关联 : 0
+  OQ containing PRD 缺失 : 0
+  OQ containing 缺 PRD : 0
+  OQ containing 未建模 : 19
+  OQ containing 上游 : 0
+  OQ containing 下游 : 19
+  OQ with category MISSING_EVIDENCE / PARSE_ERROR / UNSUPPORTED_FORMAT / SCENARIO_GAP: {}
+  OQ about 采购入库单 / 请购单 / 采购订单 / 采购到货单 PRD missing or relation gap: 0
+
+=== RULES capturing 取单 可用条件/前置校验 in 采购退货单 (section-7 quantity/status/precondition) ===
+  count rules with trigger containing 取单 251
+    RULE-1C4EE9694918 | PRD_EXPLICIT | PERMISSION | 【取单】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF
+      conditions [] | file 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-39B120278B3E | PRD_EXPLICIT | WORKFLOW | 【取单】IF 单据已有明细行 THEN E+MSG："单据已有明细，请先清空明细后再取单！" 并中止 ENDIF
+      conditions [] | file 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-AAAB46534F54 | PRD_EXPLICIT | API_CONTRACT | 【取单】先取当前运营单元可接受委托的运营单元：调用 查询运营单元协作关系(bm.ops_unit_coop_rela.get)，入参 受托方运营单元编号 = 当前运营单元 AND 运营单元协作编号 = 070需求委托采购 AND 状态 = Y.生效，回参 委托方运营单元编号
+      conditions [] | file 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-1EA05E871B26 | PRD_EXPLICIT | API_CONTRACT | 【取单】再查请购明细：调用 查询请购明细(bm.pur_req_detail.get)，入参 请购明细.运营单元编号 IN (委托方运营单元编号 + 当前运营单元)，状态 = Y.生效，结束码 = 0.未结束，并按表头筛选条件过滤；按请购日期降序、单号升序、序号升序排序
+      conditions [] | file 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-C0688A68B63C | PRD_EXPLICIT | LINKAGE | 【取单】重置处理：清空全部查询条件
+      conditions [] | file 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-6C70045B87AC | PRD_EXPLICIT | PERMISSION | 【取单】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF
+      conditions [] | file 询价单/询价单PRD.v1.8.md : 1401
+    RULE-3FFDD654E4D4 | PRD_EXPLICIT | WORKFLOW | 【取单】IF 单据已有明细行 THEN E+MSG："单据已有明细，请先清空明细后再取单！" 并中止 ENDIF
+      conditions [] | file 询价单/询价单PRD.v1.8.md : 1401
+    RULE-53E7619F53AF | PRD_EXPLICIT | API_CONTRACT | 【取单】先取当前运营单元可接受委托的运营单元：调用 查询运营单元协作关系(bm.ops_unit_coop_rela.get)，入参 受托方运营单元编号 = 当前运营单元 AND 运营单元协作编号 = 070需求委托采购 AND 状态 = Y.生效，回参 委托方运营单元编号
+      conditions [] | file 询价单/询价单PRD.v1.8.md : 1401
+    RULE-12672AA69EB7 | PRD_EXPLICIT | API_CONTRACT | 【取单】再查请购明细：调用 查询请购明细(bm.pur_req_detail.get)，入参 请购明细.运营单元编号 IN (委托方运营单元编号 + 当前运营单元)，状态 = Y.生效，结束码 = 0.未结束，并按表头筛选条件过滤；按请购日期降序、单号升序、序号升序排序
+      conditions [] | file 询价单/询价单PRD.v1.8.md : 1401
+    RULE-4448C26B3E1B | PRD_EXPLICIT | LINKAGE | 【取单】重置处理：清空全部查询条件
+      conditions [] | file 询价单/询价单PRD.v1.8.md : 1401
+    RULE-8FADF3967129 | PRD_EXPLICIT | DEFAULT_VALUE | 【特征码(item_feat_no)】默认值：取单带入 采购退货单明细.特征码(pur_rtn_doc_d.item_feat_no)。<br/>时机点：取单赋值时
+      conditions [] | file 采购退货出库单/_history/采购退货出库单PRD.v1.10.md : 659
+    RULE-E690641A3263 | PRD_EXPLICIT | DEFAULT_VALUE | 【商品类型(goods_type)】默认值：取单带入 采购退货单明细.商品类型(pur_rtn_doc_d.goods_type)；回参为空时默认 1.商品。<br/>时机点：取单赋值时
+      conditions [] | file 采购退货出库单/_history/采购退货出库单PRD.v1.10.md : 683
+
+=== FRAMEWORK PRD INDEX (knowledge/athena-prd-map.json) vs Phase 1 purchase chain ===
+  entries count 19 generatedAt 2026-11-06T07:25:10.746Z
+  entry names ['采购退货出库单', '供应商品号价格', '会计期间表', '会计期间信息', '结算业务单别', '结算业务单别参数', '客户供应商关系', '其他应付单', '其他应收单', '应付参数', '应付单', '应付启用期间', '应付业务单别', '应付业务单别参数', '应收参数', '应收单', '应收启用期间', '应收业务单别', '应收业务单别参数']
+  purchase-chain names present: ['采购退货出库单', '供应商品号价格', '客户供应商关系']
+
+=== COVERAGE_MATRIX section 6 logic check ===
+  first-segment folders of PRD docs (sample) ['会计期间信息', '会计期间表', '供应商品号价格', '供应商域', '其他应付单', '其他应收单', '参数与单别域', '四单PRD-平台对接会议议程.md', '四单PRD-平台确认事项清单.md', '四单PRD-第2轮修订审查报告.md', '四单PRD-第3轮修订审查报告.md', '四单PRD-第4轮修订审查报告.md', '四单PRD-第5轮修订审查报告.md', '基础资料域', '客户供应商关系', '应付业务单别', '应付业务单别参数', '应付单', '应付参数', '应付启用期间', '应收业务单别', '应收业务单别参数', '应收单', '应收参数', '应收启用期间', '批号编号规则', '结算业务单别', '结算业务单别参数', '设置核算参数', '询价单', '采购取价策略', '采购域', '采购退货出库单', '采购退货单']
+  existing-case modules ['业务汇率', '交易对象群组', '供应商业务信息', '供应商品号价格', '到货单验收', '单别参数(采购)', '品号存货信息', '品号属性', '品号批号信息', '品号群组', '品号财务信息', '品号通用信息', '品号采购信息', '品号销售信息', '存货业务单别', '存货单别参数', '存货成本分类', '客户业务信息', '客户品号', '客户财务信息', '客户通用信息', '维护交易对象属性', '维护存货会计分类', '询价单', '请购单', '货币信息', '运营单元采购参数', '通用单位换算', '采购业务单别', '采购入库单', '采购到货单', '采购取价策略', '采购订单', '采购退货单']
+  modules NOT equal to any first-segment folder: ['业务汇率', '交易对象群组', '供应商业务信息', '到货单验收', '单别参数(采购)', '品号存货信息', '品号属性', '品号批号信息', '品号群组', '品号财务信息', '品号通用信息', '品号采购信息', '品号销售信息', '存货业务单别', '存货单别参数', '存货成本分类', '客户业务信息', '客户品号', '客户财务信息', '客户通用信息', '维护交易对象属性', '维护存货会计分类', '请购单', '货币信息', '运营单元采购参数', '通用单位换算', '采购业务单别', '采购入库单', '采购到货单', '采购订单']
+  NOTE: report compares module(job name) vs path first segment(domain folder) -> structural mismatch
+
+=== VERSION_CONFLICTS registration for purchase core jobs ===
+  VERSION_CONFLICT count 20
+  jobs with version conflict ['会计期间信息', '会计期间表', '供应商品号价格', '其他应付单', '其他应收单', '客户供应商关系', '应付业务单别参数', '应付单', '应付参数', '应付启用期间', '应收业务单别参数', '应收单', '应收参数', '应收启用期间', '结算业务单别参数', '设置核算参数', '询价单', '采购取价策略', '采购退货出库单', '采购退货单']
+  core 4 jobs (请购单/采购订单/采购到货单/采购入库单) have version conflict: False

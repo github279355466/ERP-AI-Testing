@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/common.schema.json",
+  "title": "Athena PRD common definitions",
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "required": [
+        "document_id",
+        "file_path"
+      ],
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doc_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "section": {
+          "type": "string"
+        },
+        "line_start": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "line_end": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "paragraph_index": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "excerpt": {
+          "type": "string"
+        },
+        "table": {
+          "type": "string"
+        }
+      }
+    },
+    "base": {
+      "type": "object",
+      "required": [
+        "id",
+        "object_type",
+        "name",
+        "module",
+        "status",
+        "source_refs",
+        "created_by_parser_version",
+        "updated_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "object_type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "DRAFT",
+            "MISSING_SOURCE"
+          ]
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "created_by_parser_version": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/sourceRef"
+          }
+        }
+      }
+    }
+  }
+}

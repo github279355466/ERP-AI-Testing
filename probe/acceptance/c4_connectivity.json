@@ -1,0 +1,62 @@
+{
+  "rows": [
+    {
+      "label": "default-config",
+      "ok": true,
+      "knowledge_dir": "D:\\AIProject\\ERP-AI-Testing\\knowledge",
+      "pages": 8,
+      "rules": 20,
+      "components": 13,
+      "prd_entries": 19,
+      "has_phase1_fields": false,
+      "has_phase1_entities": false,
+      "has_phase1_scenarios": false,
+      "bundle_keys": [
+        "pages",
+        "components",
+        "rules",
+        "prdIndex"
+      ]
+    },
+    {
+      "label": "point-to-phase1-artifacts",
+      "ok": false,
+      "error": "ENOENT: no such file or directory, open 'D:\\AIProject\\ERP-AI-Testing\\artifacts\\knowledge\\athena-page-map.json'",
+      "knowledge_dir": "D:\\AIProject\\ERP-AI-Testing\\artifacts\\knowledge"
+    }
+  ],
+  "legacy_knowledge_files": [
+    "athena-business-rules.json",
+    "athena-component-map.json",
+    "athena-page-map.json",
+    "athena-prd-map.json",
+    "purchase-metadata.candidate.json",
+    "purchase-prerequisite-plan.json"
+  ],
+  "phase1_knowledge_files": [
+    "actions.json",
+    "controls.json",
+    "dependencies.json",
+    "documents.json",
+    "entities.json",
+    "existing-cases.json",
+    "fields.json",
+    "open-questions.json",
+    "pages.json",
+    "rules.json",
+    "scenarios.json",
+    "summary.json",
+    "workflows.json"
+  ],
+  "filename_overlap": [],
+  "phase1_reader_locations": [],
+  "static_grep": [
+    "src/prd/reports.ts:258:    questions.length > 100 ? `\\n> 仅显示前 100 条，共 ${questions.length} 条；完整清单见 artifacts/knowledge/open-questions.json。` : '',"
+  ],
+  "knowledge_base_load_reads": [
+    "athena-page-map.json",
+    "athena-component-map.json",
+    "athena-business-rules.json",
+    "athena-prd-map.json(optional)"
+  ]
+}

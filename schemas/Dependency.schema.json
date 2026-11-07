@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Dependency.schema.json",
+  "title": "Dependency",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "source_id",
+    "target_ref",
+    "relation_type",
+    "document_id"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Dependency"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relation_type": {
+      "enum": [
+        "USES_MASTER_DATA",
+        "DERIVED_FROM",
+        "GENERATES",
+        "REFERENCES",
+        "CONSUMES",
+        "RETURNS_TO",
+        "STATUS_TRANSITION",
+        "FIELD_DEPENDENCY",
+        "CANDIDATE_LINK"
+      ]
+    },
+    "mapping": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_type": {
+      "enum": [
+        "PRD_EXPLICIT",
+        "PRD_DERIVED",
+        "PLATFORM_SERVICE",
+        "UI_OBSERVED",
+        "USER_CONFIRMED",
+        "PENDING"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "CONFIRMED",
+        "DERIVED",
+        "AMBIGUOUS",
+        "CONFLICTED",
+        "MISSING"
+      ]
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

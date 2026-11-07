@@ -1,0 +1,948 @@
+
+====================================================================================================
+DOC 供应商资料(代理:供应商业务信息)
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\供应商域/供应商业务信息/DOC410884105204498432_供应商业务信息_V1.16.md
+  total_lines 1112
+  keyword hits 13
+  --- headings & 取单/来源/关联 sections ---
+  --- first 25 keyword lines (truncated 200 chars) ---
+      59| | 默认字段 | 供应商编号｜备注｜运营单元编号｜状态｜供应商简称 |
+      87| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 供应商基本信息查询(bm.supp_base_info.get) 接口<br/>- 入参条件：供应商基本信息.状态(supp_base_info.manage_status) <> V.失效<br/>- 显示字段：供应商基本信息.供应商编号(supp_base_info.su
+     257| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效<br/>              运营单元职能.职能编号(ops_unit_func.func_no)  =purc_
+     281| | 开窗说明 | <br/>- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) = 【供应商业务信息.运营单元编号(supp_biz_info.ops_unit_no）】，员工.状态(empl.manage_status) 
+     329| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择收款条件<br/>- 数据来源：调用 查询收付款条件(bm.colln_pmt_terms.get)<br/>- 入参条件：收付款条件.状态(colln_pmt_terms.manage_status)= Y、收付款条件.收付款(colln_pmt_terms.colln_pmt)= (0.	<br/>收付款皆
+     353| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择采购取价策略<br/>- 数据来源：调用 采购取价策略查询(bm.pur_price_strtg.get) 接口<br/>- 入参条件：采购取价策略.取价方式(pur_price_strtg.price_mode) = 1.按顺序取价 AND 采购取价策略.状态(pur_price_strtg.manage_s
+     401| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.状态(ccy.manage_status) = Y.生效<br/>- 显示字段：货币.货币编号(ccy.ccy_no)、货币.货币名称(ops_unit.ccy_name)<br/>- 默认排序：货币.货币编号
+     523| | 下拉项 | 1.单据日期;2.审核日期; |
+    1015| | 可用条件 | 新增/编辑状态 |
+    1037| | 可用条件 | 【供应商业务信息.状态(supp_biz_info.manage_status)】=N.未生效<br/>【供应商业务信息.状态(supp_biz_info.manage_status)】=V.失效 |
+    1041| | 操作后处理 | 【供应商业务信息.状态(supp_biz_info.manage_status)】=N.未生效<br/>● 调用接口：bm.supp_biz_info.valid<br/>● 入参说明：默认取页面业务主键字段值作为入参。<br/>【供应商业务信息.状态(supp_biz_info.manage_status)】=V.失效<br/>● 调用接口：bm.supp_biz_info.
+    1048| | 可用条件 | 【供应商业务信息.状态(supp_biz_info.manage_status)】=Y.生效 |
+    1059| | 可用条件 | 【供应商业务信息.状态(supp_biz_info.manage_status)】=Y.生效 |
+
+====================================================================================================
+DOC 品号资料(代理:品号通用信息)
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md
+  total_lines 1022
+  keyword hits 15
+  --- headings & 取单/来源/关联 sections ---
+     157| ##### 状态 (manage_status)
+  --- first 25 keyword lines (truncated 200 chars) ---
+      52| | 默认字段 | 品号｜品名｜规格｜备注｜状态 |
+      80| | 开窗说明 | 一、参数说明：<br/>品号为空白时，调用功能开窗，传入[查询]=1.新增  否则，传入[查询]=2.查询<br/>功    能 : 品号功能开窗<br/>传 入 值 : [品号群组编号:String]<br/>           [查询:String] "1":新增 "2":查询 "3":资料流览查询<br/>传 回 值 : 品号:String<br/>           
+     157| ##### 状态 (manage_status)
+     215| | 只读条件 | 更改状态下，只读 |
+     322| | 开窗说明 |  - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择库存单位<br/>- 数据来源：调用查询计量单位bm.meas_unit.get<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/>- 显示字段：计量单位.单位编号(meas_unit.unit_no)、计量单位.单位名称(meas_unit.uni
+     370| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择第二单位<br/>- 数据来源：调用查询计量单位bm.meas_unit.get<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/>- 显示字段：计量单位.单位编号(meas_unit.unit_no)、计量单位.单位名称(meas_unit.unit
+     457| | 只读条件 | 1.整单为修改状态下：<br/>调用 查询品号存货信息(bm.item_invnt_info.get) 接口 <br/>   传入：品号存货信息.品号（item_invnt_info.item_no）=【品号通用信息.品号(item_gen_info.item_no)】 AND  状态(item_invnt_info.manage_status)=‘Y’.已生效<br/>  回参
+     514| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择编码规则<br/>- 数据来源：调用查询编码规则bm.code_rule.get<br/>- 入参条件：编码规则.状态(code_rule.manage_status) = Y.生效<br/>- 显示字段：编码规则.编码规则编号(code_rule.code_rule_no)、编码规则.编码规则说明(code_
+     830| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择计量单位<br/>- 数据来源：调用 查询计量单位(bm.meas_unit.get) 接口<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/>             计量单位.单位编号(meas_unit.unit_no) <> 【品号通用信息.库
+     914| | 可用条件 | 新增/编辑状态 |
+     918| | 操作后处理 | 【新增时】<br/>● 调用接口：bm.item_gen_info.create<br/>● 入参说明：默认取页面所有字段值作为入参。<br/>● 调用接口：bm.item_gen_info.valid<br/>● 入参说明：品号通用信息.品号 (item_gen_info. item_no)= 【品号通用信息.品号 (item_gen_info. item_no)】、品号通用
+     936| | 可用条件 | 【品号通用信息.状态(item_gen_info.manage_status)】=N.未生效<br/>【品号通用信息.状态(item_gen_info.manage_status)】= V.失效 |
+     940| | 操作后处理 | 【品号通用信息.状态(item_gen_info.manage_status)】= N.未生效<br/>● 调用接口：bm.item_gen_info.valid<br/>● 入参说明：默认取页面业务主键字段值作为入参。<br/>【品号通用信息.状态(item_gen_info.manage_status)】= V.失效<br/>● 调用接口：bm.item_gen_info.
+     947| | 可用条件 | 【品号通用信息.状态(item_gen_info.manage_status)】=Y.生效 |
+     969| | 可用条件 | 【品号通用信息.状态(item_gen_info.manage_status)】=Y |
+
+====================================================================================================
+DOC 请购单
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/请购单/DOC411595859844759552_请购单_V1.12.md
+  total_lines 1604
+  keyword hits 106
+  --- headings & 取单/来源/关联 sections ---
+       1| # 请购单
+      47| ### 请购单列表页
+      58| #### 未审核
+      66| #### 已审核
+      74| ### 请购单详情页
+     128| ##### 请购日期 (requ_date)
+     514| ##### 审核人编号 (aprvr_no)
+     538| ##### 审核人名称 (aprvr_name)
+     562| ##### 审核时间 (aprv_time)
+     586| #### 3. 请购单明细
+     732| ##### 请购数量 (requ_qty)
+     948| ##### 分配状态 (distr_stat)
+    1044| ##### 请购来源单据类型 (requ_src_doc_type)
+    1140| ##### 请购参考来源类型 (requ_ref_src_type)
+    1525| #### 审核
+  --- first 25 keyword lines (truncated 200 chars) ---
+       1| # 请购单
+       7| **业务对象**：请购单（requ_doc）
+      18| | V1.3 | 2026-09-04 |  | 武媛媛 | 增加审核日期选择，其他格式优化 |
+      47| ### 请购单列表页
+      54| | 默认字段 | 单号｜单据日期｜请购日期｜申请人编号｜申请部门编号｜运营单元编号｜运营单元名称｜审核人编号｜审核人名称｜状态｜项目编号｜审核时间 |
+      58| #### 未审核
+      62| | 默认字段 | 单号｜单据日期｜请购日期｜申请人编号｜申请部门编号｜运营单元编号｜运营单元名称｜审核人编号｜审核人名称｜状态｜项目编号｜审核时间 |
+      64| | 筛选描述 | 状态=N.未审核 或 W.审核中 |
+      66| #### 已审核
+      70| | 默认字段 | 单号｜单据日期｜请购日期｜申请人编号｜申请部门编号｜运营单元编号｜运营单元名称｜审核人编号｜审核人名称｜审核时间｜项目编号｜状态 |
+      72| | 筛选描述 | 状态=Y.已审核 |
+      74| ### 请购单详情页
+      76| 主要分3块区域：组1.基本信息、管理信息  ； 组2. 请购单明细  ；组3：小计
+      88| | 必填条件 | IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] = 6.手动输入，【请购单.单号(requ_doc.doc_no)】不可空白 |
+      90| | 只读条件 | IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] ≠ 6.手动输入，【请购单.单号(requ_doc.doc_no)】只读 |
+     102| | 校验项 | 1. IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] = 6.手动输入，CHECK 【请购单.单号(requ_doc.doc_no)】是否重复<br/>E+MSG："单号不可重复" |
+     126| | 校验项 | 1. CHECK DATE：校验日期格式。E+MSG："输入的日期格式不合法"<br/>2.检查：单据日期不可小于存货开放日期<br/>调用接口：查询核算运营单元(bm.ops_unit.get_calc_ops_unit)<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no) = 【请购单.运营单元编号(requ_doc.ops_unit_no)】<b
+     128| ##### 请购日期 (requ_date)
+     132| | 标题名 | 请购日期 |
+     134| | 字段含义 | 请购日期  |
+     145| | 默认值 | 默认【请购单.单据日期(requ_doc.doc_date)】。时机点：默认执行时 |
+     168| | 其他条件格式 | 若【请购单.业务类型编号(requ_doc.biz_type_no)】的编码方式为自动编码时，输入业务类型编号后跳至单据日期字段 |
+     171| | 开窗说明 | <br/>单选 - - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择采购单别参数<br/>- 数据来源：查询采购单别(biz_type_pur_param_001)<br/>- 入参条件：业务类型采购参数.运营单元编号(biz_type_pur_param.ops_unit_no) = 【请购单.运营单元编号(requ_doc.ops_unit_no)】，业
+     174| | 校验项 | 1.调用查询模型：业务类型采购参数(biz_type_pur_param)<br/>入参：业务类型采购参数.业务类型编号(biz_type_pur_param.biz_type_no) = 【请购单.业务类型编号(requ_doc.biz_type_no)】，业务类型采购参数.运营单元编号(biz_type_pur_param.ops_unit_no) =  【请购单.运营单元编号
+     192| | 其他条件格式 | 1.IF【请购单.申请人编号(requ_doc.applt_no)】清空，清空【请购单.申请部门编号(requ_doc.apply_dept_no)】<br/>2.显示相关名称 |
+
+====================================================================================================
+DOC 采购订单
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md
+  total_lines 3327
+  keyword hits 166
+  --- headings & 取单/来源/关联 sections ---
+       1| # 采购订单
+      48| ### 采购订单列表页
+      59| #### 未审核
+      67| #### 已审核
+      75| ### 采购订单详情页
+      82| ##### 采购订单单号 (po_doc_no)
+     660| ##### 审核人编号 (aprvr_no)
+     684| ##### 审核人名称 (aprvr_name)
+     708| ##### 审核时间 (aprv_time)
+     976| #### 5. 采购订单明细
+     978| ##### 采购订单序号 (po_seq)
+    1410| ##### 采购订单来源单据类型 (po_src_doc_type)
+    2324| ##### 采购订单次序号 (po_sub_seq)
+    2684| ##### 采购订单来源单据类型 (po_src_doc_type)
+    2876| ##### 采购订单参考来源类型 (po_ref_src_type)
+    3237| #### 审核
+    3270| #### 取单
+  --- first 25 keyword lines (truncated 200 chars) ---
+       1| # 采购订单
+       7| **业务对象**：采购订单（po）
+      48| ### 采购订单列表页
+      55| | 默认字段 | 采购订单单号｜供应商编号｜采购日期｜单据日期｜采购员编号｜采购部门编号｜采购类型｜付款条件编号｜收货运营单元编号｜无税金额（原币）｜税额（原币）｜无税金额（本币）｜税额（本币）｜结算供应商编号｜运营单元编号｜价税合计（原币）｜价税合计（本币）｜含税标识｜项目编号｜结算运营单元编号 |
+      59| #### 未审核
+      63| | 默认字段 | 采购订单单号｜供应商编号｜采购日期｜单据日期｜采购员编号｜采购部门编号｜采购类型｜付款条件编号｜收货运营单元编号｜货币编号｜无税金额（原币）｜税额（原币）｜无税金额（本币）｜税额（本币）｜结算供应商编号｜运营单元编号｜价税合计（原币）｜价税合计（本币）｜含税标识｜项目编号 |
+      65| | 筛选描述 | 状态=N.未审核 或 W.审核中 |
+      67| #### 已审核
+      71| | 默认字段 | 采购订单单号｜供应商编号｜含税标识｜采购日期｜单据日期｜采购员编号｜采购部门编号｜付款条件编号｜收货运营单元编号｜无税金额（原币）｜税额（原币）｜无税金额（本币）｜税额（本币）｜项目编号｜结算运营单元编号｜运营单元编号｜价税合计（原币）｜价税合计（本币）｜货币编号 |
+      73| | 筛选描述 | 查询 采购订单.状态(po.manage_status)=Y.已审核 的单据 |
+      75| ### 采购订单详情页
+      77| 主要分4块区域：组1.基本信息、管理信息  ； 组2. 业务信息、物流信息  ；组3：采购订单明细、采购收货明细（注：采购收货明细页签隐藏，不显示）；
+      82| ##### 采购订单单号 (po_doc_no)
+      88| | 字段含义 | 采购订单单号 |
+     104| | 校验项 | 查询业务类型通用信息，传入 【采购订单.业务类型编号(po.biz_type_no)】=当前单别 <br/>GET：编码方式<br/>1. IF 编码方式='6.手动输入' THEN 校验是否重复<br/>2. IF 编码方式='6.手动输入' THEN CHECK 单号不可与已存在采购单重复，E+MSG："单号不可重复!"<br/>时机点：编辑时 |
+     125| | 开窗说明 | [F2]查询供应商业务信息  bm.supp_biz_info.get<br/>传参：运营单元编号=【采购订单.运营单元编号(po.ops_unit_no)】 and 状态='Y.生效'<br/>显示：供应商编号，供应商名称，快捷码，结算供应商编号，结算供应商名称<br/>带回：【采购订单.供应商编号(po.supp_no)】=供应商业务信息.供应商编号，供应商名称=供应商业务信
+     171| | 默认值 | 默认【采购订单.单据日期(po.doc_date)】。<br/>时机点：编辑执行时 |
+     200| | 校验项 | 1. CHECK DATE，E+MSG："请输入正确的日期格式"<br/>2. 调用接口：查询核算运营单元(bm.ops_unit.get_calc_ops_unit)<br/>入参：运营单元编号 = 【采购订单.运营单元编号(po.ops_unit_no)】<br/>回参：核算运营单元编号，记为【核算运营单元编号】【采购订单.单据日期(po.doc_date)】必须大于等于存货开
+     243| | 默认值 | 前一笔【采购订单.业务类型编号(po.biz_type_no)】。<br/>时机点：连续新增时 |
+     245| | 开窗说明 | [F2]查询采购单别 biz_type_pur_param_001 //查询方案 <br/>传参：运营单元编号=采购订单.运营单元编号(po.ops_unit_no) and 业务性质='PO05.采购订单'<br/>显示：业务类型编号，业务类型名称，编码方式<br/>带回：采购订单.业务类型编号(po.biz_type_no)=业务类型采购参数.业务类型编号 |
+     246| | 输入说明 | 仅能输入业务性质为 'PO05.采购订单' 的单别 |
+     354| | 必填条件 | 调用接口：查询运营单元采购参数(bm.pur_reg_param.get)<br/>入参：运营单元采购参数.运营单元编号(pur_reg_param.ops_unit_no)=【采购订单.运营单元编号(po.ops_unit_no)】<br/>回参：运营单元采购参数.是否启用项目管理(pur_reg_param.is_ena_proj_mgmt)<br/>IF 运营单元采购参数.
+     356| | 只读条件 | 1.若单身有明细，不为空，则单头项目编号（proj_no）只读；<br/><br/>2.若运营单元启用项目管理，则项目编号（proj_no）只读<br/>调用接口：查询运营单元采购参数(bm.pur_reg_param.get)<br/>入参：运营单元采购参数.运营单元编号(pur_reg_param.ops_unit_no)=【采购订单.运营单元编号(po.ops_unit_n
+     363| | 默认值 | 调用接口：查询运营单元采购参数(bm.pur_reg_param.get)<br/>入参：运营单元采购参数.运营单元编号(pur_reg_param.ops_unit_no)=【采购订单.运营单元编号(po.ops_unit_no)】<br/>回参：运营单元采购参数.是否启用项目管理(pur_reg_param.is_ena_proj_mgmt)<br/>IF 运营单元采购参数.是
+     365| | 开窗说明 | 当 运营单元采购参数.是否启用项目管理(pur_reg_param.is_ena_proj_mgmt)=勾选 时<br/>- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：项目<br/>- 数据来源：调用接口：查询项目(bm.proj.get)<br/>- 入参条件：项目.状态(proj.manage_status)=Y.生效<br/>- 显示字段：项目编号，项目
+
+====================================================================================================
+DOC 采购到货单
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md
+  total_lines 2597
+  keyword hits 149
+  --- headings & 取单/来源/关联 sections ---
+       1| # 采购到货单
+      58| ### 采购到货单列表页
+      69| #### 未审核
+      77| #### 已审核
+      93| ### 采购到货单详情页
+     290| ##### 采购到货单号 (pur_arr_doc_no)
+     338| ##### 入库状态 (stkin_stat)
+     896| #### 5. 到货单明细
+    1954| ##### 检验状态 (insp_stat)
+    2242| ##### 采购到货来源单据类型 (pur_arr_src_doc_type)
+    2529| #### 审核
+    2586| #### 取单
+  --- first 25 keyword lines (truncated 200 chars) ---
+       1| # 采购到货单
+       7| **业务对象**：采购到货单（pur_arr_doc）
+      58| ### 采购到货单列表页
+      65| | 默认字段 | 采购到货单号｜单据日期｜供应商编号｜供应商名称｜采购员编号｜货币编号｜运营单元编号｜状态｜价税合计（原币）｜运营单元名称 |
+      66| | 排序描述 | 日期降序，采购到货单号升序 |
+      69| #### 未审核
+      73| | 默认字段 | 采购到货单号｜单据日期｜供应商编号｜供应商名称｜采购员编号｜货币编号｜运营单元编号｜状态｜价税合计（原币）｜运营单元名称 |
+      74| | 排序描述 | 日期降序，采购到货单号升序 |
+      75| | 筛选描述 | 状态=N.未审核 或 W.审核中 |
+      77| #### 已审核
+      81| | 默认字段 | 采购到货单号｜单据日期｜供应商编号｜供应商名称｜采购员编号｜货币编号｜运营单元编号｜状态｜价税合计（原币）｜运营单元名称 |
+      82| | 排序描述 | 日期降序，采购到货单号升序 |
+      83| | 筛选描述 | 状态=Y.已审核 |
+      89| | 默认字段 | 采购到货单号｜单据日期｜供应商编号｜供应商名称｜采购员编号｜货币编号｜运营单元编号｜状态｜价税合计（原币）｜运营单元名称 |
+      90| | 排序描述 | 日期降序，采购到货单号升序 |
+      91| | 筛选描述 | 入库状态=1.未入库 或 2.部分入库 |
+      93| ### 采购到货单详情页
+     115| | 默认值 | 调用接口：查询员工(bm.empl.get)<br/>入参：员工.关联用户编号(empl.relat_user_no) = 当前系统用户<br/>回参：员工.归属运营单元编号(empl.blng_ops_unit_no) 记作 Query A<br/>调用接口：查询运营单元(bm.ops_unit.get)<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_
+     117| | 开窗说明 | - 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效<br/>              运营单元职能.职能编号(ops_unit_func.func_no)  = purc_org<br/>- 显示字
+     120| | 校验项 | 1.更改时判断，若单身有信息 则报错<br/>E+MSG："单身已有信息不可更改"<br/>2.更改时判断，若【采购到货单.业务类型编号(pur_arr_doc.biz_type_no)】不为空，则报错<br/>E+MSG："单别已有信息不可更改" |
+     136| | 禁用条件 |  【采购到货单明细(pur_arr_doc_d)】不为空时，禁用 |
+     141| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 查询供应商业务信息(bm.supp_biz_info.get) 接口<br/>- 入参条件：供应商业务信息.运营单元编号=【采购到货单.运营单元编号】、供应商业务信息.状态(supp_biz_info.manage_status) = Y.已生效<br/>- 显示字段：供应商
+     144| | 校验项 | 1. 更改供应商时判断，若单身有信息，则报错<br/>E+MSG："单身已有信息不可更改供应商"<br/>2. 调用接口：查询供应商业务信息(bm.supp_biz_info.get)<br/>入参：供应商业务信息.供应商编号(supp_biz_info.supp_no) = 【采购到货单.供应商编号(pur_arr_doc.supp_no)】<br/>供应商业务信息.状态(sup
+     168| | 校验项 | 1. 调用接口：查询运营单元核算参数(bm.ops_unit_calc_param.get)<br/>入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no) = 【采购到货单.结算运营单元编号(pur_arr_doc.stlmt_ops_unit_no)】<br/>回参：运营单元核算参数.开放日期范围起-存货(ops_unit_cal
+     180| | 只读条件 | 1.审核日依据系统日时只读<br/>   调用接口：查询运营单元采购参数<br/>   传参条件：运营单元采购参数.运营单元编号=【采购到货单.运营单元编号】<br/>   返回：[运营单元采购参数.审核日依据]<br/>   IF [运营单元采购参数.审核日依据]=1.系统日  THEN  <br/>       只读<br/>   ENDIF |
+
+====================================================================================================
+DOC 采购入库单
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购入库单/DOC482078_采购入库单_V1.19.md
+  total_lines 1969
+  keyword hits 121
+  --- headings & 取单/来源/关联 sections ---
+       1| # 采购入库单
+      54| ### 采购入库单列表页
+      65| #### 已审核
+      73| #### 未审核
+      89| #### 审核中
+      97| ### 采购入库单详情页
+     100| #### 1. 采购入库单
+     174| ##### 采购入库单号 (pur_stkin_doc_no)
+     486| ##### 状态 (manage_status)
+     536| #### 3. 采购入库单明细
+    1234| ##### 采购入库来源单据类型 (pur_stkin_src_doc_type)
+    1690| ##### 结算状态 (stlmt_stat)
+    1835| #### 审核
+    1958| #### 取单
+  --- first 25 keyword lines (truncated 200 chars) ---
+       1| # 采购入库单
+       7| **业务对象**：采购入库单（pur_stkin_doc）
+      54| ### 采购入库单列表页
+      61| | 默认字段 | 采购入库单号｜单据日期｜供应商编号｜供应商名称｜采购员编号｜仓管部门编号｜运营单元编号｜运营单元名称｜状态｜业务数量合计 |
+      62| | 排序描述 | 日期降序，采购入库单号升序 |
+      65| #### 已审核
+      69| | 默认字段 | 采购入库单号｜单据日期｜供应商编号｜供应商名称｜采购员编号｜仓管部门编号｜运营单元编号｜运营单元名称｜状态｜业务数量合计 |
+      70| | 排序描述 | 日期降序，采购入库单号升序 |
+      71| | 筛选描述 | 状态 = Y.已审核 |
+      73| #### 未审核
+      77| | 默认字段 | 采购入库单号｜单据日期｜供应商编号｜供应商名称｜采购员编号｜仓管部门编号｜运营单元编号｜运营单元名称｜状态｜业务数量合计 |
+      78| | 排序描述 | 日期降序，采购入库单号升序 |
+      79| | 筛选描述 | 状态 = N.未审核 |
+      85| | 默认字段 | 采购入库单号｜单据日期｜供应商编号｜供应商名称｜仓管部门编号｜采购员编号｜运营单元编号｜运营单元名称｜状态｜业务数量合计 |
+      86| | 排序描述 | 日期降序，采购入库单号升序 |
+      87| | 筛选描述 | 状态 = V.作废 |
+      89| #### 审核中
+      93| | 默认字段 | 采购入库单号｜单据日期｜供应商编号｜供应商名称｜仓管部门编号｜业务数量合计｜运营单元编号｜运营单元名称｜状态｜采购员编号 |
+      94| | 排序描述 | 日期降序，采购入库单号升序 |
+      95| | 筛选描述 | 状态 = W.审核中 |
+      97| ### 采购入库单详情页
+     100| #### 1. 采购入库单
+     121| | 开窗说明 | - 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效<br/>              运营单元职能.职能编号(ops_unit_func.func_no)  = invt_org<br/>- 显示字
+     124| | 校验项 | 1.更改时判断，若单身有信息 则报错<br/>E+MSG："单身已有信息不可更改"<br/>2.更改时判断，若【采购入库单.业务类型编号(pur_stkin_doc.biz_type_no)】不为空，则报错<br/>E+MSG："单别已有信息不可更改" |
+     169| | 开窗说明 | - 开窗条件：<br/>- 开窗标题：选择存货单别参数<br/>- 数据来源：查询方案：查询存货单别(biz_type_invnt_param_001)<br/>- 入参条件：业务类型存货参数.运营单元编号(biz_type_invnt_param.ops_unit_no) = 【采购入库单.运营单元编号(pur_stkin_doc.ops_unit_no)】，业务类型通用信息.
+
+====================================================================================================
+DOC 采购退货单
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货单/采购退货单PRD.v1.11.md
+  total_lines 2569
+  keyword hits 282
+  --- headings & 取单/来源/关联 sections ---
+       1| # 采购退货单-新版
+     191| ### 采购退货单-新版列表页
+     202| ### 采购退货单-新版详情页
+     303| ##### 采购退货单号 (pur_rtn_doc_no)
+     835| ##### 出库状态 (stkou_stat)
+    1173| #### 2. 采购退货单明细
+    2015| ##### 采购退货来源单据类型 (pur_rtn_src_doc_type)
+    2255| ##### 扣已入库量 (ded_alr_stkin_qty)
+    2374| #### 审核
+    2407| #### 取单
+    2451| ## 五、附录：取单与数量链路核验
+    2455| ### A.1 取单链路与折让裁决（A3）
+  --- first 25 keyword lines (truncated 200 chars) ---
+       1| # 采购退货单-新版
+       7| **业务对象**：采购退货单（pur_rtn_doc）
+      20| | V1.3 | 2026-09-16 |  | 刘臣斌 | 增加取单（上引采购订单 / 采购到货单）操作与上引画面 |
+      21| | V1.4 | 2026-09-18 |  | 刘臣斌 | 删除【指定结束】【取消结束】按钮，出库结束码改由采购退货出库单回写 |
+      25| | V1.8 | 2026-11-05 |  | 刘臣斌 | 整链路核验整改：①明细字段编码三层改两层，修正单头/明细错配与外部字段中文编码；②8 个单头取数键补 R6 三段式锁定；③补 4 个虚拟字段清单与取值规则，条件改引用字段；④按 R8 重写条件列；⑤按 R9/R10 补时机点、DEFAULT、组件与布尔写法；⑥校准折扣三公式；⑦取单段落删开发注释、定稿带入映射、恢复超退校验；⑧补齐业务说
+      26| | V1.9 | 2026-11-05 |  | 刘臣斌 | 取单（上引）业务逻辑复核整改：①补齐两个来源的开窗回参字段清单，单身映射所需 12 项字段全部落实；②采购订单改为以采购收货明细 po_sd 为主行，唯一键含次序号，分批收货不再重复行；③来源可退数量改为“来源已入库业务数量 − 已审核/审核中退货单占用业务数量”的实时汇总口径，明确排除本单；④重定义来源次序号与参考来源次序号语义，删除
+      27| | V1.10 | 2026-11-06 |  | 刘臣斌 | 取单与字段口径收敛（按 2026-11-06 裁决）：①采购类型下拉收敛为 1.一般采购 / 2.工单委外 / 3.工艺委外，去掉 4.供应商供料 与 5.VMI采购，新产品不做 VMI 直接到货、涉及 VMI 的逻辑一律不再考虑；②结算供应商编号落地：由供应商编号按结算运营单元取 供应商业务信息.结算供应商编号 带出，供应商开窗回填
+      28| | V1.11 | 2026-11-06 |  | 刘臣斌 | 上云前收敛：①详情页 5 页签并为「单头+明细」两页签，业务/财务/其他信息改加粗分组，修复 21 个单头字段错挂子对象致解析中止；②第二单位隐藏改「是+引用单头 CUS_meas_sys」，3.2 清单 7→8 并补规则 6（D=双存货计量）；③项目编号只读三段合并单行 OR；④名词表补 4 列；⑤备注压缩，明细见 A.6。仅改本地
+      36| | 采购退货单 | 本单据。采购/业务岗发起，决定退什么、退多少、按什么价退（单价、折扣率、折扣后单价、税率、无税金额、税额、价税合计）。模型 pur_rtn_doc / pur_rtn_doc_d | 单头保存定稿口径，明细逐行承载品号、数量与来源 | 全流程主单 |
+      37| | 采购退货单明细 | 本单据的单身，一行一个品号，仓库、储位、批号与数量在单身录入。模型 pur_rtn_doc_d | 与单头一对多，来源键为 来源单据类型 + 来源单号 + 来源序号 + 来源次序号 | 出库单取单的底表 |
+      38| | 业务性质 | 单别带回的作业性质，本作业取值 PO09.采购退货（有上游来源，走取单）与 PO11.直接退货（无来源）。可选值由业务类型采购参数按业务性质过滤 | 由单别带回，页面不开放人工选择 | 决定是否必须走取单 |
+      39| | 取单（上引） | 从已审核的采购订单或采购到货单中勾选明细、带入本单单身的过程。PO09 走取单，PO11 可直接录入 | 只放开 PO09.采购退货；来源须已审核；可用条件见 4.1 取单 | 手工作业入口为 PO11.直接退货 |
+      40| | 可退数量 | 来源单据已入库业务数量，扣减该来源行已被「审核中」与「已审核」采购退货单明细占用的业务数量后的余额，是本单业务数量的上限。按 来源单据类型 + 来源单号 + 来源序号 + 来源次序号 实时汇总，汇总时排除本单自身 | 取单时读取、实时汇总不落库；超退在保存与审核阻断 | 只约束业务数量，不约束计价 / 库存单位数量 |
+      42| | 出库结束码 | 本单在采购退货出库单上的出库完成情况：0.未结束 / 1.指定结束 / 2.已结束，由采购退货出库单回写 | 默认 0.未结束，只读；本单不设【指定结束】【取消结束】按钮 | 下游回写，非本单维护 |
+      46| | 参考来源 | 记录来源链上游单据（采购订单 / 采购到货单）的类型、单号、序号、次序号，供下游出库与回冲使用 | 只读，由取单映射；类型取 1.采购订单 / 2.到货单 / 99.其他 | 供出库单与过账回冲使用 |
+      50| 1. **定位。** 采购退货单是退货业务的定价与指令单据：采购/业务岗在本单确定退哪些品号、退多少、按什么价退；实物出库由采购退货出库单执行。
+      51| 2. **两种作业入口。** PO09.采购退货 须先从已审核的采购订单或采购到货单取单，明细的来源单号与来源序号是后续出库、回冲的连接键；PO11.直接退货 无来源，品号与单价由人工录入或按供应商取价带出。
+      54| 5. **批号与储位由参数驱动。** 品号是否批号管理、仓库是否储位管理决定批号与储位是否必填；参数按行缓存为虚拟字段，条件只引用字段，不在条件里调用接口。
+      55| 6. **本期整改目标。** 消除条件列中的内嵌接口调用与自然语言写法，统一字段编码层级，补齐取单带入映射与超退校验，使文档可直接用于设计器配置与上云。
+      59| > 【图示】完整业务流程见附件「采购退货单-业务流程图.png」；本版未随文档上传图片，图形流程按下列步骤表执行。
+      65| | 3 | 取单（上引） | 用户 | 单头运营单元、退货运营单元、供应商已录入，单身为空 | PO09：按来源类型查已审核的采购订单 / 采购到货单，勾选明细写入单身并带出来源与参考来源；PO11：跳过本步 | 单身明细 | 4 | 单身为空以外时阻断；来源单据未审核时阻断；可退数量小于等于 0 的来源行不进入取单结果集 |
+      67| | 5 | 保存 | 用户 | 新增或编辑状态 | 新增调 bm.pur_rtn_doc.create，编辑调 bm.pur_rtn_doc.update；单别启用保存自动审核时按审核日依据取审核日期并自动审核 | 单号回写、单据落库 | 6 | 单头关键字段与库中值不一致、明细必填缺失、金额小于 0 时阻断 |
+      68| | 6 | 提交 | 用户 | 状态 = N.未审核 | 调 bm.pur_rtn_doc.initi_aprv 进入审核流程 | 状态 = W.审核中 | 7 | 无明细不可提交 |
+      69| | 7 | 审核 | 用户 | 状态 = N.未审核 或 W.审核中 | 按运营单元采购参数的审核日依据取审核日期，调 bm.pur_rtn_doc.approve | 状态 = Y.已审核 | 8 | 审核日依据参数缺失时按系统日兜底 |
+      70| | 8 | 驳回 | 用户 | 状态 = W.审核中 | 调 bm.pur_rtn_doc.cxl_aprv 退回未审核 | 状态 = N.未审核，可再编辑 | 4 | - |
+
+====================================================================================================
+DOC 采购退货出库单
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货出库单/采购退货出库单PRD.v1.24.md
+  total_lines 2335
+  keyword hits 365
+  --- headings & 取单/来源/关联 sections ---
+     604| ##### 状态 (manage_status)
+     628| ##### 过账状态 (post_stat)
+     679| ##### 采购退货出库来源单据类型 (pur_rtn_stkou_src_doc_type)
+    1495| ##### 结算状态 (stlmt_stat)
+    1568| #### 审核
+    1607| #### 取单
+    1818| ### A.6 采购退货单审核是否生成出库单
+    1907| ### A.11 取单赋值核验表（模型字段编码级）
+    1930| ### A.12 取单来源口径裁决（2026-10-30）
+    2037| ### A.17 V1.16 取单段落 HTML 实体修正（2026-10-31）
+    2165| ### A.21 V1.22 取单增加单头限用仓库过滤（2026-11-06）
+    2200| ### A.22 取单链路与折让裁决（A3）
+  --- first 25 keyword lines (truncated 200 chars) ---
+      18| | V1.1 | 2026-09-15 | 增加取单 | 刘臣斌 |  |
+      19| | V1.2 | 2026-09-16 | 增加保存处理判断是否调用自动审核 | 刘臣斌 |  |
+      21| | V1.5 | 2026-10-30 |  | 刘臣斌 | 按平台整链路核验修订：①补【过账】【取消过账】两个操作；②单价组不设字段，删除取单写入单价与金额；③无税金额/税额/货款金额改为系统赋值、只读、非必填；④取单数据来源改为查询方案 pur_rtn_doc_001，来源业务性质补 PO11；⑤补可退数量上限校验与两条被注释的前置检查；⑥补过账状态、结算状态字段与链路附录 |
+      22| | V1.6 | 2026-10-30 |  | 刘臣斌 | 按用户裁决修订取单口径与字段规范：①取单主来源保持采购退货单（查询方案 pur_rtn_doc_001），新增“采购订单号”筛选条件，采购订单改由参考来源字段承载；②按模型字段编码重写取单赋值表，补齐来源运营单元编号、参考来源（类型/单号/序号/次序号/运营单元）、商品类型、特征码、件数；③批号说明由虚拟字段 CUS_lot_desc 
+      23| | V1.7 | 2026-10-30 |  | 刘臣斌 | 按业务裁决修订过账入口：①删除【过账】【取消过账】两个独立操作节，过账并入【审核】操作后处理、取消过账并入【撤审】操作后处理，页面不设过账按钮；②审核后按 审核后自动过账标识(aprv_auto_post_flag，默认 'Y') 判断是否自动过账，保存自动审核分支同步补过账；③撤审可用条件由「已审核且未过账」改为「已审核」，撤审时自动
+      26| | V1.10 | 2026-10-31 |  | 刘臣斌 | 修复上云字段归属与模型缺失：①结算状态(stlmt_stat) 为明细对象字段，从小节 1（单头）移到 小节 2（采购退货出库单明细），原位置导致主对象取不到元数据 id 而中止；②删除模型不存在的 批号说明(lot_desc)（主对象与明细对象均无该字段，批号用 lot_no 承载）。 |
+      27| | V1.11 | 2026-10-31 |  | 刘臣斌 | 字段标题名统一为模型官方中文名（`atrDescriptionZhCn`），消除「标题名与模型字段名不一致→按名称匹配落空→列表页列字段码为空→生成表单整页失败」的隐患：运营单元→运营单元编号、单别→业务类型编号、单号→采购退货出库单号、供应商→供应商编号、限用仓库→限用仓库编号、仓管人员→仓管人员编号、仓管部门→仓管部门编号、来源单
+      28| | V1.13 | 2026-10-31 |  | 刘臣斌 | 删除【提交】【驳回】两个操作。经 API 知识库精准查询确认，本模型仅有 create / update / alr_aprv.update / get / delete / approve / disapprove / post / cxl_post / void 十个服务，不存在 initi_aprv 与 cxl_aprv，v1.
+      29| | V1.14 | 2026-10-31 |  | 刘臣斌 | 按 2026-10-31 口径收敛字段：①补建 状态(manage_status) 字段小节（原 PRD 详情页与列表页都没有审核状态，只有过账状态），列表页默认字段补 状态｜过账状态；②保留 过账状态，理由：审核与过账是两个服务、自动过账参数可为 0，二者不等价；③来源单据类型改固定 1.采购退货且只读，来源单号/来源序号/来源运营
+      31| | V1.18 | 2026-11-01 |  | 刘臣斌 | 依模型核验新写。历次修订：v1.0 初始化；v1.1 增取单；v1.2 保存判断自动审核；v1.3 增虚拟字段委托运营单元；v1.5 单价组不设字段、金额税额改只读、取单改查询方案；v1.7 过账并入审核撤审；v1.8 过账改按 auto_post；v1.13 删提交与驳回；v1.14 收敛字段口径；v1.15 修上云丢单；v1.16
+      32| | V1.19 | 2026-11-04 |  | 刘臣斌 | 按通用规则 R5 / R6 收敛项目编号与单头变更控制：①项目编号必填 / 只读条件由「内嵌调接口」改为引用单头虚拟字段，新增 是否启用项目管理(CUS_is_proj_mgmt_enabled) 承载 运营单元存货参数.是否启用项目管理(is_proj_mgmt_enabled)，3.2 清单由 4 个扩为 5 个；②删除项目编号字
+      33| | V1.20 | 2026-11-04 |  | liucb | R10 填值方式整改（1 处）：隐藏只读「特征码」由「开窗选择器」改「单行输入框」1 个；明细见附录 A。同版二次修订（2026-11-04）：⑦按通用规则 R8 整改 24 条条件写法（18 条条件列清空、2 条内嵌调接口改引用 CUS_lot_mgmt、1 条补 ENDIF、1 条自然语言改 IF），3.2 清单由 5 个扩为
+      35| | V1.23 | 2026-11-06 |  | liucb | 在本机 V1.22（已含 A4 单头限用仓库过滤）基础上完成本轮整改：①取单查询条件保留 A4 的限用仓库过滤；②储位开窗与校验补 储位.状态码=Y.生效；③批号开窗与校验补 品号批号信息.状态=Y.生效；④重建 批号说明(CUS_lot_desc) 虚拟字段（3.2 清单 6→7，回归填、取单赋值、A.11、A.19 同步）；⑤
+      36| | V1.24 | 2026-11-06 |  | 刘臣斌 | 上云前收敛：①第二单位数量 / 第二单位编号隐藏改「是+引用单头虚拟字段 计量体系(CUS_meas_sys)」，3.2 清单 7→8 并补规则 6（公共参数.计量体系，D=双存货计量 / S=单一计量）；②明细项目编号只读条件两段合并为单行 OR；③名词解释表补为 4 列；④本版备注压缩，明细见附录 A.28。本版仅改本地文档，未上
+      44| | 采购退货单 | 采购/业务岗发起，决定退什么、退多少、什么价（单价、折扣率、税率、无税金额、税额、价税合计）。模型 pur_rtn_doc / pur_rtn_doc_d | 本单取单的唯一来源，须已审核 | 定价与指令单 |
+      46| | 过账 | 把已审核出库单实际发生的数据写入库存与成本的动作。计价数量、无税金额、税额、货款金额、成本要素均在过账时由系统折算写入。本作业不设独立【过账】按钮，过账由【审核】的操作后处理按 业务类型存货参数.自动过账(auto_post) 自动触发，参数未维护时默认过账 | 由【审核】操作后处理按 auto_post 触发，参数未维护时默认过账 | 不设独立【过账】按钮 |
+      47| | 倒减法 | 本批累计出库数量达到退货单数量时，直接取退货单剩余全额作为本批金额，用于归零比例折算产生的尾差 | 末批取剩余全额，用于归零比例折算的尾差 | 金额折算规则 |
+      48| | 可退数量 | 退货单业务数量 − 已退货业务数量（alr_rtn_biz_qty），是本单据数量录入的上限 | 取单时读取；保存与审核阻断超量 | 只约束业务数量 |
+      49| | 参考来源 | 记录本单据所依据的业务来源链上游单据（采购订单 / 采购到货单）。模型 pur_rtn_stkou_ref_src_type、ref_src_doc_no、ref_src_seq、ref_src_sub_seq、ref_src_ops_unit_no。仅用于过账回冲采购收货明细的已入库量，不作为金额与结算依据 | 只读，由取单按退货单明细来源映射 | 不作为金额与结算依据 |
+      54| 采购退货单审核后，实物退货需由仓储人员办理出库。本单据即采购退货单的执行单据，只承载“实际出库”这一动作，不承担定价职能。
+      58| 1. **不能脱离采购退货单独立新增。** 平台强制校验来源单据存在且有效（VD_pur_rtn_stkou_doc_00011），保存与审核都会被拒绝。单据操作路径固定为“先建单 → 再取单带出退货单明细”。
+      59| 2. **本单据不定价。** 出库单模型不存在单价（price）、折扣率（disc_rate）、折扣后单价（discd_price）、税率（tax_rate），也不存在币别（ccy_no）、汇率（er）、含税标识（intax_flag）。价格与税额在采购退货单确定，本单据只承接折算结果。
+      60| 3. **金额在过账时生成，过账前为空。** 无税金额、税额、货款金额由 bm.pur_rtn_stkou_doc.post 按“实际出库数量 ÷ 退货单业务数量”比例折算写入，最后一批走倒减法归零尾差。因此页面上一律只读，不允许手工录入。
+      61| 4. **金额不是冗余展示，是下游取数源。** 应付单审核计算“入库历史成本金额”、过账计算“成本金额”都直接取出库单的无税金额、税额、货款金额。金额不准则应付与成本都不准。
+      62| 5. **结算与成本按实际出库数量执行。** 应付单明细的来源类型字典只有 101.采购入库单 / 102.采购退货出库单，没有“采购退货单”；成本异动的交易明细来源单据类型为 7.采购退货出库单。退货单上的数量是计划量与上限，不是结算量。
+
+====================================================================================================
+DOC 询价单
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\询价单/询价单PRD.v1.8.md
+  total_lines 1476
+  keyword hits 108
+  --- headings & 取单/来源/关联 sections ---
+     535| ##### 状态 (manage_status)
+     945| ##### 议价状态 (nego_stat)
+    1017| ##### 询价来源单据类型 (inq_src_doc_type)
+    1371| #### 审核
+    1401| #### 取单
+  --- first 25 keyword lines (truncated 200 chars) ---
+      21| | V1.4 | 2026-10-13 |  | 刘臣斌 | 询价单关联请购单通过单头协作关系 |
+      23| | V1.6 | 2026-10-26 |  | 刘臣斌 | 修正杜撰服务：查询请购明细接口名有误 → 改为查询请购单(bm.requ_doc.get) |
+      24| | V1.7 | 2026-11-06 |  | 刘臣斌 | 按核验报告第 1–4 批全量整改：运营单元取值链修正；单头 5 字段按 R6 三段式锁定并补保存前兜底；金额改数量×单价主从；新增 2 个 CUS 字段清单；展示设置 10 处改列表、详情；来源单号服务以云端为准改回查询请购明细；R8/R9/R10 条件与时机点整改（其中货币编号、含税标识经业务确认纳入单头锁定）；补名词解释、背景、流程
+      25| | V1.8 | 2026-11-07 |  | 刘臣斌 | 依 v1.7 核验结果定稿。历次修订：v1.0 初始化；v1.1–v1.3 完善开窗与默认值；v1.4 关联请购单；v1.6 修正请购明细接口名；v1.7 按核验报告第 1–4 批全量整改（运营单元取值、单别/货币/含税锁定、金额主从、条件与时机点、流程图与原型）；v1.8 删除明细页签「单别」（模型 inq_doc_d 无此字段）。明
+      33| | 询价单 | 采购下单前向供应商询价并记录报价的业务单据 | 单头 `inq_doc` + 询价单明细 `inq_doc_d` + 询价分量计价明细 `inq_wtbsd_prc_d` | 本作业不含采购订单转单 |
+      37| | 核定 | 采购员对询价结果（核价单价、核价金额）的确认标记 | 未核定的行不允许维护核价；默认可按议价状态带出 | 议价状态 = 2.需议价 时默认未勾选 |
+      38| | 议价状态 | 该行是否需要与供应商议价 | 由业务类型采购参数带出，可手工调整 | 1.不需议价 / 2.需议价 |
+      39| | 询价类型 | 询价单的来源方式 | 1.请购单：由请购明细取单生成；99.其他：手工录入 | 隐藏字段，新建默认 99.其他 |
+      40| | 来源单号 / 来源序号 | 取单时记录的来源请购单号与行号 | 仅询价类型 = 1.请购单 时有值 | 用于来源追溯 |
+      47| 采购业务在正式下单前，需要向一家或多家供应商询价，记录供应商报价，并对报价做核定与议价，作为采购订单价格与供应商价格档案的依据。询价单即承载这一环节：单头记录运营单元、单别、供应商、币种、含税与采购员，单身记录品号、单位、数量、单价与税率，分量计价行记录同一品号按数量分段的阶梯报价。
+      49| 询价单支持两种来源：手工录入（询价类型 = 99.其他）与由请购明细取单生成（询价类型 = 1.请购单）。取单时按单头运营单元（含委托采购的委托运营单元）与请购明细的品号、日期范围筛选，勾选后带入明细并回写来源单号与来源序号，保证询价结果可追溯到原始请购需求。
+      57| | 1 | 进入作业 | 打开询价单列表页，按运营单元、单别、供应商、单据日期区间、询价日期区间、状态筛选 | 无 |
+      58| | 2 | 新增 | 打开空白详情页；按当前用户归属运营单元带出运营单元（该单元职能含 `purc_org` 时）；单据日期、询价日期默认系统日期；询价类型默认 99.其他；采购类型默认 1.一般采购；含税默认未勾选；状态默认 N.未审核 | 当前用户无所属采购组织运营单元 → 运营单元留空，须手工选择 |
+      60| | 4 | 取单（可选） | 询价类型 = 1.请购单 时，按请购单号、请购日期、需求日期、品号筛选请购明细，勾选后带入明细并回写来源单号、来源序号 | 未勾选任何行直接确定 → 不写入；单据已有明细行 → 提示先清空再取单 |
+      63| | 7 | 核定 | 议价状态 = 2.需议价 的行默认未核定，由采购员核定并录入核价单价、核价金额 | 未核定 → 核价单价、核价金额只读 |
+      65| | 9 | 审核（可自动） | 单别启用「新增是否自动审核」时，保存成功后在同一操作内自动审核；否则手工审核，审核日期按运营单元采购参数的审核日依据取值 | 参数取不到 → 审核日期取单据日期 |
+      66| | 10 | 撤审 / 作废 / 删除 | 撤审回到未审核；作废与删除仅未审核可执行 | 已审核不可作废、删除 |
+      85| | 议价状态异动 | = 2.需议价 | 核定 默认未勾选；否则默认勾选 |
+      96| | 1 | 列表页 | 顶部 | 筛选区 | 下拉 / 日期 / 输入 | 按运营单元、单别、供应商、单据日期区间、询价日期区间、状态筛选 | 无 |
+     109| | 14 | 详情页 | 明细 | 核定 | 开关 | 议价状态 = 2.需议价 时默认未勾选，否则默认勾选 | 未核定则核价单价、核价金额只读 |
+     111| | 16 | 详情页 | 操作区 | 保存 / 审核 / 取单等 | 按钮 | 保存校验通过后写入；取单从请购明细带入 | 见第四章各操作说明 |
+     120| | CUS_blng_prod（归类品） | 明细 inq_doc_d | 开关 | 隐藏 | 否 | 是 | 品名、规格只读条件的驱动值，承载 品号通用信息.归类品。不建 → 两条条件引用空字段，品名与规格恒可填或恒置灰。取值规则见本节规则 2 |
+     139| 1. 该字段只被单号的 4 个属性引用，不参与取单、过账与保存入参；字段说明写「参数缓存值，不参与保存提交」。
+     149| AND 品号通用信息.状态(item_gen_info.manage_status) = Y.生效
+     167| | 默认字段 | 运营单元｜单别｜单号｜单据日期｜询价日期｜供应商｜供应商名称｜采购员｜采购部门｜币种｜含税｜状态｜备注 |
+
+====================================================================================================
+MODELED OBJECTS FOR THE 7 CORE NODES
+  请购单 | docs 1 | deps 0 | workflows 0 | dep relation_types {} | dep source_types {}
+  采购订单 | docs 1 | deps 3 | workflows 0 | dep relation_types {'REFERENCES': 3} | dep source_types {'PRD_DERIVED': 3}
+     DEP DEP-A38765D0947B -> bm.requ_doc.get | section 采购订单 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-AF2D607455B1 -> bm.item_gen_info.qty_cnv | section 采购订单 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-03D0D204E22B -> bm.tax.calc | section 采购订单 / 四、操作说明 / 整体操作 / 取单
+  采购到货单 | docs 1 | deps 4 | workflows 0 | dep relation_types {'REFERENCES': 4} | dep source_types {'PRD_DERIVED': 4}
+     DEP DEP-7AC53CE44C0A -> bm.biz_type_pur_param.get | section 采购到货单 / 三、功能说明 / 采购到货单详情页 / 5. 到货单明细 / 采购到货来源单据类型 (pur_arr_src_doc_type)
+     DEP DEP-C2254745472E -> bm.po.get | section 采购到货单 / 四、操作说明 / 明细操作 / 取单
+     DEP DEP-3200FA348055 -> bm.item_pur_info.get | section 采购到货单 / 四、操作说明 / 明细操作 / 取单
+     DEP DEP-48D1155CEE64 -> bm.item_gen_info.qty_cnv | section 采购到货单 / 四、操作说明 / 明细操作 / 取单
+  采购入库单 | docs 1 | deps 0 | workflows 0 | dep relation_types {} | dep source_types {}
+  采购退货单 | docs 6 | deps 37 | workflows 4 | dep relation_types {'REFERENCES': 37} | dep source_types {'PRD_DERIVED': 37}
+     DEP DEP-1F53B5DFDFD7 -> bm.biz_type_pur_param.get | section 采购退货单-新版 / 三、功能说明 / 采购退货单-新版详情页 / 5. 采购退货单明细 / 采购退货来源单据类型 (pur_rtn_src_doc_type)
+     DEP DEP-4309A9A05C53 -> bm.po.get | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-95B61571AD58 -> bm.pur_arr_doc.get | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-CF9FB00CA45F -> bm.item_invnt_info.get | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-E95174187E8A -> bm.item_gen_info.qty_cnv | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-F4F997A3EFC6 -> bm.supp_item_price.getprice | section 采购退货单-新版 / 四、操作说明 / 整体操作 / 取单
+  供应商业务信息 | docs 1 | deps 0 | workflows 0 | dep relation_types {} | dep source_types {}
+  品号通用信息 | docs 1 | deps 0 | workflows 0 | dep relation_types {} | dep source_types {}
+  采购退货出库单 | docs 43 | deps 99 | workflows 13 | dep relation_types {'REFERENCES': 99} | dep source_types {'PRD_DERIVED': 99}
+     DEP DEP-FC65B7168FFA -> seq | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加）
+     DEP DEP-B2CD7036F37B -> item_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加）
+     DEP DEP-17004E1C4FBB -> item_name | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加）
+     DEP DEP-70B3234CA43A -> item_spec | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加）
+     DEP DEP-5A3F0164E01C -> item_feat_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加）
+     DEP DEP-6634218B588A -> goods_type | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加）
+  询价单 | docs 5 | deps 7 | workflows 2 | dep relation_types {'REFERENCES': 7} | dep source_types {'PRD_DERIVED': 7}
+     DEP DEP-D405E8FC44F8 -> bm.pur_req_detail.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-C4A3AF98DA38 -> bm.item_pur_info.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-21D024AB1978 -> bm.ops_unit_coop_rela.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-79A036662B00 -> bm.pur_req_detail.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-CC653EECB6C8 -> bm.item_pur_info.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单
+     DEP DEP-9C1B5F2E6413 -> bm.ops_unit_coop_rela.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单
+
+=== DEPENDENCIES whose target_ref looks like a purchase DOCUMENT/entity (not API/field token) ===
+   DEP-A77759F16A54 | 四单 PRD 第 2 轮修订审查报告 → pur_stkin_doc_001 | target pur_stkin_doc_001 | 四单PRD-第2轮修订审查报告.md
+   DEP-06F14AC8619A | 四单 PRD 第 2 轮修订审查报告 → pur_stkin_doc | target pur_stkin_doc | 四单PRD-第2轮修订审查报告.md
+   DEP-78D1AF1124EE | 四单 PRD 第 2 轮修订审查报告 → pur_stkin_doc_d | target pur_stkin_doc_d | 四单PRD-第2轮修订审查报告.md
+   DEP-AB264205BD93 | 四单 PRD 第 2 轮修订审查报告 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 四单PRD-第2轮修订审查报告.md
+   DEP-309D7B8E6B35 | 四单 PRD 第 2 轮修订审查报告 → pur_stkin_doc_no | target pur_stkin_doc_no | 四单PRD-第2轮修订审查报告.md
+   DEP-89443FE71CFA | 应付单 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 应付单/_history/应付单PRD.v1.0.md
+   DEP-52117ADD326F | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.0.md
+   DEP-09108B65E815 | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.1.md
+   DEP-79469EA4793F | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.1.md
+   DEP-A13D61CF8C29 | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.2.md
+   DEP-F1BDF8763C02 | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.2.md
+   DEP-B01AF23710BC | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.3.md
+   DEP-FEBEECD84DD1 | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.3.md
+   DEP-5034D1C10CFA | 应付单 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 应付单/_history/应付单PRD.v1.4.md
+   DEP-215EA019AA45 | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.4.md
+   DEP-BEDB40C577D3 | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.4.md
+   DEP-6D9B69F6DB0F | 应付单 → pur_stkin_doc_001 | target pur_stkin_doc_001 | 应付单/_history/应付单PRD.v1.4.md
+   DEP-816460EA9E55 | 应付单 → pur_stkin_doc | target pur_stkin_doc | 应付单/_history/应付单PRD.v1.4.md
+   DEP-96460AB72E23 | 应付单 → pur_stkin_doc_d | target pur_stkin_doc_d | 应付单/_history/应付单PRD.v1.4.md
+   DEP-73FEC2F14115 | 应付单 → pur_stkin_doc_no | target pur_stkin_doc_no | 应付单/_history/应付单PRD.v1.4.md
+   DEP-6FE1CC9367E9 | 应付单 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 应付单/_history/应付单PRD.v1.5.md
+   DEP-F4926AEFE38A | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.5.md
+   DEP-4EC5E2A06D3E | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.5.md
+   DEP-122A5144F77D | 应付单 → pur_stkin_doc_001 | target pur_stkin_doc_001 | 应付单/_history/应付单PRD.v1.5.md
+   DEP-61596C6D09F8 | 应付单 → pur_stkin_doc | target pur_stkin_doc | 应付单/_history/应付单PRD.v1.5.md
+   DEP-12993D5693E9 | 应付单 → pur_stkin_doc_d | target pur_stkin_doc_d | 应付单/_history/应付单PRD.v1.5.md
+   DEP-BCED2FF2609A | 应付单 → pur_stkin_doc_no | target pur_stkin_doc_no | 应付单/_history/应付单PRD.v1.5.md
+   DEP-BE0A8E744C9B | 应付单 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 应付单/_history/应付单PRD.v1.6.md
+   DEP-C793217752F9 | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.6.md
+   DEP-69FD22C8C644 | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.6.md
+   DEP-B839D3736BCA | 应付单 → pur_stkin_doc_001 | target pur_stkin_doc_001 | 应付单/_history/应付单PRD.v1.6.md
+   DEP-12AA8F2E73AA | 应付单 → pur_stkin_doc | target pur_stkin_doc | 应付单/_history/应付单PRD.v1.6.md
+   DEP-DC614905685C | 应付单 → pur_stkin_doc_d | target pur_stkin_doc_d | 应付单/_history/应付单PRD.v1.6.md
+   DEP-93308086A64E | 应付单 → pur_stkin_doc_no | target pur_stkin_doc_no | 应付单/_history/应付单PRD.v1.6.md
+   DEP-DA32723B0C6E | 应付单 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 应付单/_history/应付单PRD.v1.7.md
+   DEP-01F679DC645A | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.7.md
+   DEP-712B8841B8E5 | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.7.md
+   DEP-E1DC2876A995 | 应付单 → pur_stkin_doc_001 | target pur_stkin_doc_001 | 应付单/_history/应付单PRD.v1.7.md
+   DEP-8F1F605AEA93 | 应付单 → pur_stkin_doc | target pur_stkin_doc | 应付单/_history/应付单PRD.v1.7.md
+   DEP-B27A09CB27CD | 应付单 → pur_stkin_doc_d | target pur_stkin_doc_d | 应付单/_history/应付单PRD.v1.7.md
+   DEP-6434F784AD8E | 应付单 → pur_stkin_doc_no | target pur_stkin_doc_no | 应付单/_history/应付单PRD.v1.7.md
+   DEP-D2F18DF2F0A9 | 应付单 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 应付单/_history/应付单PRD.v1.8.md
+   DEP-A49769BD32B9 | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.8.md
+   DEP-4ED1DB7F7720 | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.8.md
+   DEP-072D2084CC5A | 应付单 → pur_stkin_doc_001 | target pur_stkin_doc_001 | 应付单/_history/应付单PRD.v1.8.md
+   DEP-FAF658FE452C | 应付单 → pur_stkin_doc | target pur_stkin_doc | 应付单/_history/应付单PRD.v1.8.md
+   DEP-B9682085120A | 应付单 → pur_stkin_doc_d | target pur_stkin_doc_d | 应付单/_history/应付单PRD.v1.8.md
+   DEP-FC01917E1121 | 应付单 → pur_stkin_doc_no | target pur_stkin_doc_no | 应付单/_history/应付单PRD.v1.8.md
+   DEP-60CB723FB3BF | 应付单 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 应付单/_history/应付单PRD.v1.9.md
+   DEP-F2855475FC1D | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/_history/应付单PRD.v1.9.md
+   DEP-132DA6399A9B | 应付单 → bm.po.get | target bm.po.get | 应付单/_history/应付单PRD.v1.9.md
+   DEP-077977C2EFAA | 应付单 → pur_stkin_doc_001 | target pur_stkin_doc_001 | 应付单/_history/应付单PRD.v1.9.md
+   DEP-2BB220B5D7F1 | 应付单 → pur_stkin_doc | target pur_stkin_doc | 应付单/_history/应付单PRD.v1.9.md
+   DEP-C72FDF80C1AC | 应付单 → pur_stkin_doc_d | target pur_stkin_doc_d | 应付单/_history/应付单PRD.v1.9.md
+   DEP-8A4BAC756AA7 | 应付单 → pur_stkin_doc_no | target pur_stkin_doc_no | 应付单/_history/应付单PRD.v1.9.md
+   DEP-EDC97DC6EEAD | 应付单 → bm.pur_stkin_doc.get | target bm.pur_stkin_doc.get | 应付单/应付单PRD.v1.10.md
+   DEP-E986D407E651 | 应付单 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 应付单/应付单PRD.v1.10.md
+   DEP-4D84C46F5B6B | 应付单 → bm.po.get | target bm.po.get | 应付单/应付单PRD.v1.10.md
+   DEP-42855E33350F | 应付单 → pur_stkin_doc_001 | target pur_stkin_doc_001 | 应付单/应付单PRD.v1.10.md
+   DEP-DB3B1D9E09DF | 应付单 → pur_stkin_doc | target pur_stkin_doc | 应付单/应付单PRD.v1.10.md
+   DEP-73D8D59B4666 | 应付单 → pur_stkin_doc_d | target pur_stkin_doc_d | 应付单/应付单PRD.v1.10.md
+   DEP-CA76B0650BCC | 应付单 → pur_stkin_doc_no | target pur_stkin_doc_no | 应付单/应付单PRD.v1.10.md
+   DEP-FEA5CB4A7F4C | 采购退货出库单 v1.20 · 开发改动清单 → pur_rtn_doc_no | target pur_rtn_doc_no | 采购退货出库单/_diff/v1.20-开发改动清单.md
+   DEP-88A66323438D | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.10.md
+   DEP-AD6CB714F28D | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.10.md
+   DEP-31AD8DD41CE4 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.11.md
+   DEP-698164ED8688 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.11.md
+   DEP-2C60409F9C8F | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.12.md
+   DEP-363C87C122DA | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.12.md
+   DEP-01ED1C3E1788 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+   DEP-CA6B937E5223 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+   DEP-DA00E127505D | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.14.md
+   DEP-8A8333333E1A | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.14.md
+   DEP-68BD0E83193E | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.15.md
+   DEP-D7F9F04E42AA | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.15.md
+   DEP-077C27F09B2C | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.16.md
+   DEP-9AEAF1330C02 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.16.md
+   DEP-097C00A532D7 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.17.md
+   DEP-2F2116B237EB | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.17.md
+   DEP-41AC0CD0AEBE | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.18.md
+   DEP-A1B8BD8FB219 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.18.md
+   DEP-F97E562C2319 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.19.md
+   DEP-DD0E93D09AAA | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.19.md
+   DEP-1F6D5261C9F9 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.20.md
+   DEP-9EDBDFDA43F5 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.20.md
+   DEP-F1AF1F059C82 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.21.md
+   DEP-C3C4F6BC5F9B | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.21.md
+   DEP-B2CCFC134997 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.22.md
+   DEP-2A9E2DBED6BC | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.22.md
+   DEP-4CA23D620FD2 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.23.md
+   DEP-5C092D0A484E | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.23.md
+   DEP-754724AD1DEF | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.4.md
+   DEP-39D412BE6761 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.5.md
+   DEP-16704B692B6C | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.6.md
+   DEP-67EB17876733 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.6.md
+   DEP-FBAD2BCA84FE | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.7.md
+   DEP-59B5F9D9F64D | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.7.md
+   DEP-22400EC1AB5D | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.8.md
+   DEP-9AB1D9AF8105 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.8.md
+   DEP-556286380CDF | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/_history/采购退货出库单PRD.v1.9.md
+   DEP-093E89952170 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/_history/采购退货出库单PRD.v1.9.md
+   DEP-D3A8085FA9C3 | 采购退货出库单-新版 → bm.po.get | target bm.po.get | 采购退货出库单/采购退货出库单PRD.v1.24.md
+   DEP-D6AA0D167E54 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | target bm.pur_rtn_doc.get | 采购退货出库单/采购退货出库单PRD.v1.24.md
+   DEP-4309A9A05C53 | 采购退货单-新版 → bm.po.get | target bm.po.get | 采购退货单/_history/采购退货单PRD.v1.10.md
+   DEP-95B61571AD58 | 采购退货单-新版 → bm.pur_arr_doc.get | target bm.pur_arr_doc.get | 采购退货单/_history/采购退货单PRD.v1.10.md
+   DEP-2ADF4DDFADEA | 采购退货单-新版 → bm.po.get | target bm.po.get | 采购退货单/_history/采购退货单PRD.v1.8.md
+   DEP-44B9C4FC5D96 | 采购退货单-新版 → bm.pur_arr_doc.get | target bm.pur_arr_doc.get | 采购退货单/_history/采购退货单PRD.v1.8.md
+   DEP-BA60E52DD857 | 采购退货单-新版 → bm.po.get | target bm.po.get | 采购退货单/_history/采购退货单PRD.v1.9.md
+   DEP-38C7BD98DE72 | 采购退货单-新版 → bm.pur_arr_doc.get | target bm.pur_arr_doc.get | 采购退货单/_history/采购退货单PRD.v1.9.md
+   DEP-02460FE5431D | 采购退货单-新版 → bm.po.get | target bm.po.get | 采购退货单/采购退货单PRD.v1.11.md
+   DEP-867A8245F072 | 采购退货单-新版 → bm.pur_arr_doc.get | target bm.pur_arr_doc.get | 采购退货单/采购退货单PRD.v1.11.md
+   DEP-E279F20F6E27 | 询价单-新版 → bm.requ_doc.get | target bm.requ_doc.get | 采购域/询价单/DOC416866823047172097_询价单_V1.5.md
+   DEP-C2254745472E | 采购到货单 → bm.po.get | target bm.po.get | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md
+   DEP-A38765D0947B | 采购订单 → bm.requ_doc.get | target bm.requ_doc.get | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md
+  count 114
+
+=== workflow steps mentioning 取单/上游/来源/关联 ===
+   WF-0C5D1EE99ECC | 其他应付单 业务流程 | steps 10 | file 其他应付单/_history/其他应付单PRD.v1.1.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-33B6E475FDEE | 其他应付单 业务流程 | steps 9 | file 其他应付单/_history/其他应付单PRD.v1.2.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-00238F7E59E6 | 其他应付单 业务流程 | steps 9 | file 其他应付单/_history/其他应付单PRD.v1.3.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-36D2E826E740 | 其他应付单 业务流程 | steps 9 | file 其他应付单/_history/其他应付单PRD.v1.4.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-D07CAF3B0448 | 其他应付单 业务流程 | steps 9 | file 其他应付单/_history/其他应付单PRD.v1.5.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-CE66CCB37256 | 其他应付单 业务流程 | steps 9 | file 其他应付单/_history/其他应付单PRD.v1.6.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-08202E484394 | 其他应付单 业务流程 | steps 9 | file 其他应付单/_history/其他应付单PRD.v1.7.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-AFF89F948B47 | 其他应付单 业务流程 | steps 9 | file 其他应付单/_history/其他应付单PRD.v1.8.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-8321A7125236 | 其他应付单 业务流程 | steps 9 | file 其他应付单/_history/其他应付单PRD.v1.9.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-B9303A7B67F5 | 其他应付单 业务流程 | steps 9 | file 其他应付单/其他应付单PRD.v1.10.md
+       1 进入作业 | 打开其他应付单列表页，按运营单元、其他应付单别、结算对象、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应付单别开窗（AP 域，业务性质 AP03）带回业务性质与自动编码方式（决定单号是否可录入）；业务方向按业务性质固定 -1.负向、核销方式固定 2.明细，均只读；结算对象类型 → 结算对象编号 →
+       4 录入单身 | 选其他应付类型，按类型带出其他收付项目（类型=2.付）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-453F6AFE8FEE | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.3.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-09D5D1748B54 | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.4.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象名称、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-D3C4A5B23001 | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.5.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象名称、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-54EBD4A7BB47 | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.6.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象名称、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-F932824FFD6C | 其他应收单 业务流程 | steps 12 | file 其他应收单/_history/其他应收单PRD.v1.2.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-6A7272352408 | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/其他应收单PRD.v1.3.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-439A731A40B3 | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/其他应收单PRD.v1.4.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象名称、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-D2D17192BA99 | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/其他应收单PRD.v1.5.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象名称、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-1390E253F29A | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/其他应收单PRD.v1.6.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象名称、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-8AC11C356F40 | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/其他应收单PRD.v1.7.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象名称、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-D229D1DC9334 | 其他应收单 业务流程 | steps 11 | file 其他应收单/_history/其他应收单PRD.v1.8.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元、其他应收单别、结算对象名称、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 其他应收单别开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币、汇率、付款条件逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-2F1F1462A762 | 其他应收单 业务流程 | steps 10 | file 其他应收单/_history/其他应收单PRD.v1.9.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元编号、业务类型编号、结算对象名称、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币编号、汇率、付款条件编号逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-75A57FFECA5C | 其他应收单 业务流程 | steps 10 | file 其他应收单/_history/其他应收单PRD.v2.0.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元编号、业务类型编号、结算对象名称、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币编号、汇率、付款条件编号逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-D90516DB1113 | 其他应收单 业务流程 | steps 10 | file 其他应收单/_history/其他应收单PRD.v2.1.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元编号、业务类型编号、结算对象名称、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币编号、汇率、付款条件编号逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-3D84421ADD16 | 其他应收单 业务流程 | steps 10 | file 其他应收单/_history/其他应收单PRD.v2.2.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元编号、业务类型编号、结算对象名称、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币编号、汇率、付款条件编号逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-4355092915F2 | 其他应收单 业务流程 | steps 10 | file 其他应收单/_history/其他应收单PRD.v2.3.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元编号、业务类型编号、结算对象名称、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币编号、汇率、付款条件编号逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-65628029A5FC | 其他应收单 业务流程 | steps 10 | file 其他应收单/_history/其他应收单PRD.v2.4.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元编号、业务类型编号、结算对象名称、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币编号、汇率、付款条件编号逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-1E8DB00A7F31 | 其他应收单 业务流程 | steps 10 | file 其他应收单/其他应收单PRD.v2.5.md
+       1 进入作业 | 打开其他应收单列表页，按运营单元编号、业务类型编号、结算对象名称、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR02）带回业务性质、业务方向、核销方式；结算对象类型 → 结算对象编号 → 结算对象名称；货币编号、汇率、付款条件编号逐项维护
+       4 录入单身 | 选其他应收类型，按类型带出其他收付项目（1.收）；录入金额（原币），本币按汇率换算；维护结算方式、结算号、结算日期、到期日、项目
+   WF-4B9E6E8A2E96 | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.1.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质、应付业务性质、应付业务类型、应付明细业务类型、核销方式；结算供应商、采购供应商、货币、付款条件、税务发票种类、税种逐项维护；税区按运
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-397187EFE92C | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.2.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-8E33259C393C | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.3.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-3636B1DC4CE4 | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.4.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-88E255C56A23 | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.5.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-0E6628CB302B | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.6.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-72385681A3E6 | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.7.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-B82C44A2ADAA | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.8.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-444CB11DD5B7 | 应付单 业务流程 | steps 11 | file 应付单/_history/应付单PRD.v1.9.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-951401266F3F | 应付单 业务流程 | steps 11 | file 应付单/应付单PRD.v1.10.md
+       1 进入作业 | 打开应付单列表页，按运营单元、业务单别、结算供应商、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AP 域，业务性质 AP01/AP07）带回业务性质与核销方式；应付业务性质按取单来源赋值、应付业务类型与应付明细业务类型按模型固定口径取值，均画面只读；结算供应商、采购供应商、货币、付
+       4 取单 | 按 运营单元 + 结算供应商 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-1D00EB2C6CAD | 应收单 业务流程 | steps 12 | file 应收单/_history/_dup_20261106/应收单PRD.v1.1.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-C6BA84BF12D0 | 应收单 业务流程 | steps 11 | file 应收单/_history/_dup_20261106/应收单PRD.v1.3.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-E078AE44B0AF | 应收单 业务流程 | steps 11 | file 应收单/_history/_dup_20261106/应收单PRD.v1.4.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-42953C1AC106 | 应收单 业务流程 | steps 11 | file 应收单/_history/_dup_20261106/应收单PRD.v1.5.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-8D6D0EFFCA2B | 应收单 业务流程 | steps 11 | file 应收单/_history/_dup_20261106/应收单PRD.v1.6.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-0B386CB15144 | 应收单 业务流程 | steps 12 | file 应收单/_history/应收单PRD.v1.1.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-02755D77B424 | 应收单 业务流程 | steps 12 | file 应收单/_history/应收单PRD.v1.2.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-3AA2A985643C | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v1.3.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-24296AFC94BF | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v1.4.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-EC416AE2862B | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v1.5.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-C35083DC0F3A | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v1.6.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-FC5E4C042BDA | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v1.7.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 acct_org 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-A5C96B7DC3AF | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v1.8.md
+       1 进入作业 | 打开应收单列表页，按运营单元、业务单别、结算客户、单据日期区间、状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户、销货客户、货币、付款条件、税务发票种类、税种、税区逐项维护
+       4 取单 | 按 运营单元 + 结算客户 + 货币 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-D47AB1B3879F | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v1.9.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务类型编号、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-344B373491DC | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v2.0.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务类型编号、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-923DE94BB5D1 | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v2.1.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务类型编号、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-CEB9A20DD739 | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v2.2.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务类型编号、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-27F58F9DF17A | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v2.3.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务类型编号、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-9829B5A1E629 | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v2.4.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务类型编号、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务类型编号开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-9A4DA556810F | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v2.5.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务单别、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项维护
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-83372E4F6AA6 | 应收单 业务流程 | steps 11 | file 应收单/_history/应收单PRD.v2.6.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务单别、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项维护
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-631D1B2C2B97 | 应收单 业务流程 | steps 11 | file 应收单/应收单PRD.v2.7.md
+       1 进入作业 | 打开应收单列表页，按运营单元编号、业务单别、结算客户编号、单据日期区间、状态、过账状态筛选
+       2 新增 | 打开空白详情页；运营单元按当前用户归属运营单元带出（该单元职能含 `acct_org` 时）；单据日期、记账日期默认系统日期
+       3 录入单头 | 业务单别开窗（AR 域，业务性质 AR01/AR08）带回业务性质、应收业务性质、应收业务类型、应收明细业务类型、核销方式；结算客户编号、销售客户编号、货币编号、付款条件编号、税务发票种类编号逐项维护
+       4 取单 | 按 运营单元编号 + 结算客户编号 + 货币编号 + 来源类型 调出来源单据未立账明细，勾选后带回并即时做来源数据校验
+   WF-2F493284BCD0 | 询价单-新版 业务流程 | steps 11 | file 询价单/_history/询价单PRD.v1.7.md
+       1 进入作业 | 打开询价单列表页，按运营单元、单别、供应商、单据日期区间、询价日期区间、状态筛选
+       2 新增 | 打开空白详情页；按当前用户归属运营单元带出运营单元（该单元职能含 `purc_org` 时）；单据日期、询价日期默认系统日期；询价类型默认 99.其他；采购类型默认 1.一般采购；含税默认未勾选；状态
+       3 录入单头 | 单别开窗（业务性质 PO02.询价）带回业务性质与自动编码方式；供应商开窗带回供应商名称、币种、含税、采购员、采购部门
+       4 取单（可选） | 询价类型 = 1.请购单 时，按请购单号、请购日期、需求日期、品号筛选请购明细，勾选后带入明细并回写来源单号、来源序号
+   WF-F2A421F33205 | 询价单-新版 业务流程 | steps 11 | file 询价单/询价单PRD.v1.8.md
+       1 进入作业 | 打开询价单列表页，按运营单元、单别、供应商、单据日期区间、询价日期区间、状态筛选
+       2 新增 | 打开空白详情页；按当前用户归属运营单元带出运营单元（该单元职能含 `purc_org` 时）；单据日期、询价日期默认系统日期；询价类型默认 99.其他；采购类型默认 1.一般采购；含税默认未勾选；状态
+       3 录入单头 | 单别开窗（业务性质 PO02.询价）带回业务性质与自动编码方式；供应商开窗带回供应商名称、币种、含税、采购员、采购部门
+       4 取单（可选） | 询价类型 = 1.请购单 时，按请购单号、请购日期、需求日期、品号筛选请购明细，勾选后带入明细并回写来源单号、来源序号
+   WF-1B0C6911CD70 | 采购退货出库单-新版 业务流程 | steps 10 | file 采购退货出库单/_history/采购退货出库单PRD.v1.12.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-2E9B86F97686 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-DA3B26FCCE66 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.14.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-018D273C270C | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.15.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-363CBF0EF55F | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.16.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-123E2DC15C4F | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.17.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-696445F2E015 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.18.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-E3507989D05C | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.19.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-F353C5D45697 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.20.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-A72C155E7224 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.21.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-C0BB900553D6 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.22.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-EB5BAB7A85D4 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.23.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-78C5B51C13FD | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/采购退货出库单PRD.v1.24.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-4E65C1C820DC | 采购退货单-新版 业务流程 | steps 10 | file 采购退货单/_history/采购退货单PRD.v1.10.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-AB94F3F56E2A | 采购退货单-新版 业务流程 | steps 10 | file 采购退货单/_history/采购退货单PRD.v1.8.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-1FCB963F4042 | 采购退货单-新版 业务流程 | steps 10 | file 采购退货单/_history/采购退货单PRD.v1.9.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+   WF-2D42A9A71FD8 | 采购退货单-新版 业务流程 | steps 10 | file 采购退货单/采购退货单PRD.v1.11.md
+       1 1 | 
+       2 2 | 
+       3 3 | 
+       4 4 | 
+
+=== RULES with 取单/来源单据/回写 keywords in purchase module (evidence for chain relations) ===
+  count 910
+    RULE-A06FB471409A | PRD_EXPLICIT | WORKFLOW | 【删除】不做下游引用校验：价格档为取数来源，不被单据外键引用 | 供应商品号价格/_history/供应商品号价格PRD.v1.5.md : 754
+    RULE-F856FB0C41E9 | PRD_EXPLICIT | WORKFLOW | 【删除】不做下游引用校验：价格档为取数来源，不被单据外键引用 | 供应商品号价格/_history/供应商品号价格PRD.v1.6.md : 757
+    RULE-C2A6146604FA | PRD_EXPLICIT | WORKFLOW | 【删除】不做下游引用校验：价格档为取数来源，不被单据外键引用 | 供应商品号价格/供应商品号价格PRD.v1.7.md : 758
+    RULE-2AC542EB0DDB | PRD_EXPLICIT | REQUIRED | 【询价类型(inq_type)】固定隐藏。新建默认 99.其他（手工录入）；执行取单时改为 1.请购单，并决定品号是否只读、来源单号是否必填。 | 询价单/_history/询价单PRD.v1.7.md : 486
+    RULE-777F8D511989 | PRD_EXPLICIT | READONLY | 【状态(manage_status)】系统状态字段，始终只读、固定隐藏。新建默认 N.未审核，之后由提交、审核、撤审、作废服务回写；页面只用于按钮可用条件与列表筛选引用，不参与人工维护。 | 询价单/_history/询价单PRD.v1.7.md : 534
+    RULE-622360ACDCDA | PRD_EXPLICIT | DEFAULT_VALUE | 【询价来源单据类型(inq_src_doc_type)】默认值：DEFAULT 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 99.其他<br/>时机点：默认执行时 | 询价单/_history/询价单PRD.v1.7.md : 1040
+    RULE-3685B9D35ECC | PRD_EXPLICIT | WORKFLOW | 【询价来源单据类型(inq_src_doc_type)】标识本行来源。手工录入行为 99.其他；取单带入的行改为 1.请购单，并回写来源单号、来源序号。 | 询价单/_history/询价单PRD.v1.7.md : 1040
+    RULE-572FA40C2BA6 | PRD_EXPLICIT | REQUIRED | 【来源单号(src_doc_no)】必填：IF 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 1.请购单 THEN 必填，不可空白 ENDIF | 询价单/_history/询价单PRD.v1.7.md : 1064
+    RULE-5142C90EACDF | PRD_EXPLICIT | READONLY | 【来源单号(src_doc_no)】只读：IF 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 99.其他 THEN 只读，空白 ENDIF | 询价单/_history/询价单PRD.v1.7.md : 1064
+    RULE-9862FE8747AA | PRD_EXPLICIT | LOOKUP | 【来源单号(src_doc_no)】开窗：当【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 1.请购单 时可用<br/>- 选择模式：单选<br/>- 开窗标题：请购明细<br/>- 数据来源： | 询价单/_history/询价单PRD.v1.7.md : 1064
+    RULE-96809C22DE44 | PRD_EXPLICIT | REQUIRED | 【来源序号(src_seq)】必填：IF 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 1.请购单 THEN 必填，不可空白 ENDIF | 询价单/_history/询价单PRD.v1.7.md : 1088
+    RULE-F43CE3A01BEA | PRD_EXPLICIT | READONLY | 【来源序号(src_seq)】来源请购明细的行号，始终只读，由取单或来源单号开窗回填；来源单据类型 = 99.其他 时为空。 | 询价单/_history/询价单PRD.v1.7.md : 1088
+    RULE-1C4EE9694918 | PRD_EXPLICIT | PERMISSION | 【取单】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-39B120278B3E | PRD_EXPLICIT | WORKFLOW | 【取单】IF 单据已有明细行 THEN E+MSG："单据已有明细，请先清空明细后再取单！" 并中止 ENDIF | 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-AAAB46534F54 | PRD_EXPLICIT | API_CONTRACT | 【取单】先取当前运营单元可接受委托的运营单元：调用 查询运营单元协作关系(bm.ops_unit_coop_rela.get)，入参 受托方运营单元编号 = 当前运营单元 AND 运营单元协作编号 = 070需求委托采购 AND 状态 =  | 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-1EA05E871B26 | PRD_EXPLICIT | API_CONTRACT | 【取单】再查请购明细：调用 查询请购明细(bm.pur_req_detail.get)，入参 请购明细.运营单元编号 IN (委托方运营单元编号 + 当前运营单元)，状态 = Y.生效，结束码 = 0.未结束，并按表头筛选条件过滤；按请购日 | 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-C0688A68B63C | PRD_EXPLICIT | LINKAGE | 【取单】重置处理：清空全部查询条件 | 询价单/_history/询价单PRD.v1.7.md : 1424
+    RULE-7C8D362DC44E | PRD_EXPLICIT | WORKFLOW | 【明细操作】在询价单明细末尾插入空白行：序号按流水号生成；生效日期默认系统日期（连续新增时取上一笔）；议价状态取业务类型采购参数；核定按议价状态带出；含税取单头；数量、单价、金额默认 0 | 询价单/_history/询价单PRD.v1.7.md : 1444
+    RULE-507C13A94296 | PRD_EXPLICIT | WORKFLOW | 【新增明细行】在询价单明细末尾插入空白行：序号按流水号生成；生效日期默认系统日期（连续新增时取上一笔）；议价状态取业务类型采购参数；核定按议价状态带出；含税取单头；数量、单价、金额默认 0 | 询价单/_history/询价单PRD.v1.7.md : 1446
+    RULE-EC08858BAD33 | PRD_EXPLICIT | REQUIRED | 【询价类型(inq_type)】固定隐藏。新建默认 99.其他（手工录入）；执行取单时改为 1.请购单，并决定品号是否只读、来源单号是否必填。 | 询价单/询价单PRD.v1.8.md : 487
+    RULE-7506E935D89C | PRD_EXPLICIT | READONLY | 【状态(manage_status)】系统状态字段，始终只读、固定隐藏。新建默认 N.未审核，之后由提交、审核、撤审、作废服务回写；页面只用于按钮可用条件与列表筛选引用，不参与人工维护。 | 询价单/询价单PRD.v1.8.md : 535
+    RULE-9EF211C9A622 | PRD_EXPLICIT | DEFAULT_VALUE | 【询价来源单据类型(inq_src_doc_type)】默认值：DEFAULT 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 99.其他<br/>时机点：默认执行时 | 询价单/询价单PRD.v1.8.md : 1017
+    RULE-BCB80D188CD3 | PRD_EXPLICIT | WORKFLOW | 【询价来源单据类型(inq_src_doc_type)】标识本行来源。手工录入行为 99.其他；取单带入的行改为 1.请购单，并回写来源单号、来源序号。 | 询价单/询价单PRD.v1.8.md : 1017
+    RULE-C4D40A2CA140 | PRD_EXPLICIT | REQUIRED | 【来源单号(src_doc_no)】必填：IF 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 1.请购单 THEN 必填，不可空白 ENDIF | 询价单/询价单PRD.v1.8.md : 1041
+    RULE-E8FF8C24B238 | PRD_EXPLICIT | READONLY | 【来源单号(src_doc_no)】只读：IF 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 99.其他 THEN 只读，空白 ENDIF | 询价单/询价单PRD.v1.8.md : 1041
+
+=== OPEN QUESTIONS: any about missing PRD / unconfirmed purchase relations / quantity/status/writeback? ===
+   OQ-427163C27EAC | VERSION_CONFLICT | HIGH | 采购取价策略 存在多个文档版本：1.6, 1.7, 1.9，候选最新版本为 v1.9，需确认生效版本
+   OQ-1D091864888C | VERSION_CONFLICT | HIGH | 采购退货出库单 存在多个文档版本：1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21, 1.22, 1.23, 1.24，候选最新版本为 v1.24，
+   OQ-CB6546B4374A | VERSION_CONFLICT | HIGH | 采购退货单 存在多个文档版本：1.8, 1.9, 1.10, 1.11，候选最新版本为 v1.11，需确认生效版本
+  count of OQ mentioning purchase-ish 3

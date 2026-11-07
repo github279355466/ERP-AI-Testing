@@ -1,0 +1,14 @@
+{
+  "validateKnowledgeBundle_signature_params": [
+    "bundle: KnowledgeBundle"
+  ],
+  "config_policy_is_parameter": false,
+  "withEvidence_errors": [],
+  "explicit_noEvidence_errors": [
+    "RULE_EVIDENCE_MISSING"
+  ],
+  "derived_noEvidence_errors": [
+    "RULE_EVIDENCE_MISSING"
+  ],
+  "conclusion": "证据校验对全部 source_type 无条件生效；config.policy.requireEvidenceForExplicitRules 不参与判定（配置未被读取）"
+}

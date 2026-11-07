@@ -86,11 +86,11 @@ function extractSample() {
   return extractPrdDocument(file!, config, new Date().toISOString());
 }
 
-test('操作说明推导出的规则标记为 PRD_DERIVED 并记录推导依据', () => {
+test('操作说明中的平台服务调用标记为 PLATFORM_SERVICE 并记录推导依据', () => {
   const extracted = extractSample();
   const processing = extracted.rules.find((rule) => rule.description.includes('调用 API'));
   expect(processing).toBeTruthy();
-  expect(processing?.source_type).toBe('PRD_DERIVED');
+  expect(processing?.source_type).toBe('PLATFORM_SERVICE');
   expect(processing?.confidence).toBe('DERIVED');
   expect(processing?.derivation).toBeTruthy();
 

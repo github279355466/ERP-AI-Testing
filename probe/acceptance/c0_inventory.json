@@ -1,0 +1,521 @@
+{
+ "actions.json": {
+  "size_bytes": 3826254,
+  "top": "array",
+  "count": 1896,
+  "keys": [
+   "action_name",
+   "apis",
+   "availability",
+   "created_by_parser_version",
+   "display_location",
+   "document_id",
+   "id",
+   "module",
+   "name",
+   "object_type",
+   "post_processing",
+   "pre_check",
+   "processing",
+   "scope",
+   "source_refs",
+   "status",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "ACT-9B948348EDAE",
+   "object_type": "Action",
+   "name": "整体操作",
+   "module": "财务",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-3D8F75A36ACE",
+     "file_path": "会计期间信息/_history/会计期间信息PRD.v1.1.md",
+     "section": "整体操作",
+     "line_start": 408,
+     "line_end": 459,
+     "excerpt": "整体操作"
+    }
+   ]
+  }
+ },
+ "controls.json": {
+  "size_bytes": 7298285,
+  "top": "array",
+  "count": 8454,
+  "keys": [
+   "control_type",
+   "created_by_parser_version",
+   "document_id",
+   "evidence_text",
+   "field_id",
+   "id",
+   "module",
+   "name",
+   "object_type",
+   "source_refs",
+   "status",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "CTL-025D10746906",
+   "object_type": "Control",
+   "name": "会计期间表编号 控件",
+   "module": "财务",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-3D8F75A36ACE",
+     "file_path": "会计期间信息/_history/会计期间信息PRD.v1.1.md",
+     "section": "会计期间表编号 (acctg_perid_table_no)",
+     "line_start": 92,
+     "excerpt": "会计期间表编号 (acctg_perid_table_no)"
+    }
+   ]
+  }
+ },
+ "dependencies.json": {
+  "size_bytes": 788386,
+  "top": "array",
+  "count": 722,
+  "keys": [
+   "confidence",
+   "created_by_parser_version",
+   "document_id",
+   "id",
+   "mapping",
+   "module",
+   "name",
+   "object_type",
+   "relation_type",
+   "source_id",
+   "source_refs",
+   "source_type",
+   "status",
+   "target_id",
+   "target_ref",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "DEP-A77759F16A54",
+   "object_type": "Dependency",
+   "name": "四单 PRD 第 2 轮修订审查报告 → pur_stkin_doc_001",
+   "module": "其他",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-698AD11A648F",
+     "file_path": "四单PRD-第2轮修订审查报告.md",
+     "section": "四单 PRD 第 2 轮修订审查报告 / 一、三项决策的落地结论 / 决策 2｜应付单 101.采购入库单取单：以查询方案实现",
+     "line_start": 33,
+     "excerpt": "方案编码 / 名称 `pur_stkin_doc_001` / 查询应付来源-采购入库单"
+    }
+   ]
+  }
+ },
+ "documents.json": {
+  "size_bytes": 494302,
+  "top": "array",
+  "count": 333,
+  "keys": [
+   "application",
+   "biz_model_no",
+   "business_object",
+   "created_by_parser_version",
+   "doc_date",
+   "doc_status",
+   "doc_version",
+   "entity_names",
+   "file_name",
+   "file_path",
+   "id",
+   "is_latest",
+   "job_directory",
+   "last_scan_status",
+   "modified_at",
+   "module",
+   "name",
+   "object_type",
+   "parser",
+   "prd_type",
+   "relative_path",
+   "section_count",
+   "sha256",
+   "size_bytes",
+   "source_refs",
+   "source_role",
+   "status",
+   "table_count",
+   "title",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "DOC-E89885BE8FBD",
+   "object_type": "Document",
+   "name": "PRD 版本比对：会计期间信息PRD.v1.4.md → 会计期间信息PRD.v1.6.md",
+   "module": "财务",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-E89885BE8FBD",
+     "file_path": "会计期间信息/_diff/会计期间信息-v1.4-to-v1.6.md",
+     "line_start": 1,
+     "excerpt": "PRD 版本比对：会计期间信息PRD.v1.4.md → 会计期间信息PRD.v1.6.md"
+    }
+   ]
+  }
+ },
+ "entities.json": {
+  "size_bytes": 70037,
+  "top": "array",
+  "count": 82,
+  "keys": [
+   "created_by_parser_version",
+   "document_ids",
+   "entity_no",
+   "field_count",
+   "id",
+   "label",
+   "module",
+   "name",
+   "object_type",
+   "page_count",
+   "parent_entity_no",
+   "rule_count",
+   "source_refs",
+   "status",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "ENT-4B038FCBFDCD",
+   "object_type": "Entity",
+   "name": "编号规则",
+   "module": "基础资料",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-7EED42969905",
+     "file_path": "批号编号规则/_upload/批号编号规则-v1.5.payload.json",
+     "section": "业务对象",
+     "line_start": 1,
+     "excerpt": "编号规则"
+    }
+   ]
+  }
+ },
+ "existing-cases.json": {
+  "size_bytes": 855327,
+  "top": "array",
+  "count": 1477,
+  "keys": [
+   "assertion_types",
+   "case_id",
+   "category",
+   "document_id",
+   "field",
+   "field_no",
+   "field_nos",
+   "module",
+   "needs_confirm",
+   "object",
+   "object_path",
+   "package",
+   "priority",
+   "rule_ids",
+   "title"
+  ],
+  "sample": {
+   "case_id": "TC-SUPP-0001",
+   "package": "供应商域/供应商业务信息",
+   "module": "供应商业务信息",
+   "title": "只读字段批量校验（3 项）",
+   "category": "readonly",
+   "priority": "P2"
+  }
+ },
+ "fields.json": {
+  "size_bytes": 14388237,
+  "top": "array",
+  "count": 8454,
+  "keys": [
+   "confidence",
+   "control_type",
+   "created_by_parser_version",
+   "data_type",
+   "default_timing",
+   "default_value",
+   "disabled",
+   "disabled_condition",
+   "document_id",
+   "entity_id",
+   "entity_label",
+   "entity_no",
+   "field_no",
+   "hidden",
+   "id",
+   "label",
+   "length",
+   "lookup_desc",
+   "module",
+   "name",
+   "object_type",
+   "options",
+   "page_id",
+   "precision",
+   "readonly",
+   "readonly_condition",
+   "related_master_data",
+   "required",
+   "required_condition",
+   "source_refs",
+   "source_type",
+   "status",
+   "updated_at",
+   "validation_text"
+  ],
+  "sample": {
+   "id": "FLD-025D10746906",
+   "object_type": "Field",
+   "name": "会计期间表编号",
+   "module": "财务",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-3D8F75A36ACE",
+     "file_path": "会计期间信息/_history/会计期间信息PRD.v1.1.md",
+     "section": "会计期间表编号 (acctg_perid_table_no)",
+     "line_start": 92,
+     "excerpt": "会计期间表编号 (acctg_perid_table_no)"
+    }
+   ]
+  }
+ },
+ "open-questions.json": {
+  "size_bytes": 249016,
+  "top": "array",
+  "count": 330,
+  "keys": [
+   "category",
+   "created_at",
+   "document_ids",
+   "evidence",
+   "id",
+   "impact",
+   "object_type",
+   "question",
+   "severity",
+   "status",
+   "suggested_owner"
+  ],
+  "sample": {
+   "id": "OQ-D3A84AD8E610",
+   "object_type": "OpenQuestion",
+   "question": "规则描述含待确认表述：运营单元编号 只读",
+   "category": "AMBIGUOUS_RULE",
+   "severity": "MEDIUM",
+   "document_ids": [
+    "DOC-6A9098B2B209"
+   ]
+  }
+ },
+ "pages.json": {
+  "size_bytes": 572076,
+  "top": "array",
+  "count": 830,
+  "keys": [
+   "created_by_parser_version",
+   "document_id",
+   "entity_id",
+   "id",
+   "menu_path",
+   "module",
+   "name",
+   "object_type",
+   "page_type",
+   "parent_page_id",
+   "source_refs",
+   "status",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "PAGE-F13770F245D5",
+   "object_type": "Page",
+   "name": "会计期间信息列表页",
+   "module": "财务",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-3D8F75A36ACE",
+     "file_path": "会计期间信息/_history/会计期间信息PRD.v1.1.md",
+     "section": "会计期间信息列表页",
+     "line_start": 79,
+     "excerpt": "会计期间信息列表页"
+    }
+   ]
+  }
+ },
+ "rules.json": {
+  "size_bytes": 37258167,
+  "top": "array",
+  "count": 30641,
+  "keys": [
+   "applies_to",
+   "conditions",
+   "confidence",
+   "created_by_parser_version",
+   "derivation",
+   "description",
+   "document_id",
+   "expected_result",
+   "field_name",
+   "field_no",
+   "id",
+   "module",
+   "name",
+   "object_type",
+   "open_question_ids",
+   "rule_type",
+   "source_refs",
+   "source_type",
+   "status",
+   "trigger",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "RULE-2F92F63C7543",
+   "object_type": "Rule",
+   "name": "会计期间表编号 必填",
+   "module": "财务",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-3D8F75A36ACE",
+     "file_path": "会计期间信息/_history/会计期间信息PRD.v1.1.md",
+     "section": "会计期间表编号 (acctg_perid_table_no)",
+     "line_start": 92,
+     "excerpt": "【会计期间表编号(acctg_perid_table_no)】必填"
+    }
+   ]
+  }
+ },
+ "scenarios.json": {
+  "size_bytes": 5927051,
+  "top": "array",
+  "count": 4067,
+  "keys": [
+   "assertions",
+   "automation_feasibility",
+   "business_object",
+   "created_by_parser_version",
+   "data_requirements",
+   "document_ids",
+   "id",
+   "module",
+   "name",
+   "object_type",
+   "origin",
+   "preconditions",
+   "review_required",
+   "rule_ids",
+   "scenario_type",
+   "source_refs",
+   "status",
+   "steps",
+   "title",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "SCN-9D65B3E6BC39",
+   "object_type": "Scenario",
+   "name": "会计期间表编号 必填",
+   "title": "会计期间信息 / 会计期间表编号 / 必填校验",
+   "module": "财务",
+   "status": "DRAFT"
+  }
+ },
+ "summary.json": {
+  "size_bytes": 812,
+  "top": "object",
+  "count": null,
+  "keys": [
+   "counts",
+   "coverage",
+   "generated_at",
+   "mode",
+   "parser_version",
+   "schema_version",
+   "source_root",
+   "validation"
+  ],
+  "sample": {
+   "schema_version": "1.0.0",
+   "parser_version": "1.0.0",
+   "generated_at": "2026-11-07T08:50:37.496Z",
+   "mode": "INCREMENTAL",
+   "source_root": "C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd",
+   "counts": {
+    "documents": 333,
+    "prd_documents": 299,
+    "test_case_documents": 34,
+    "entities": 82,
+    "pages": 830,
+    "fields": 8454,
+    "controls": 8454,
+    "rules": 30641,
+    "actions": 1896,
+    "workflows": 143,
+    "dependencies": 722,
+    "scenarios": 4067,
+    "existing_cases": 1477,
+    "open_questions": 330,
+    "parse_issues": 0
+   },
+   "validation": {
+    "valid": true,
+    "errors": 0,
+    "warnings": 0
+   },
+   "coverage": {
+    "rules": 4657,
+    "covered_by_existing_cases": 854,
+    "rate": 0.1834
+   }
+  }
+ },
+ "workflows.json": {
+  "size_bytes": 473410,
+  "top": "array",
+  "count": 143,
+  "keys": [
+   "created_by_parser_version",
+   "document_id",
+   "entity_id",
+   "id",
+   "module",
+   "name",
+   "object_type",
+   "source_refs",
+   "status",
+   "steps",
+   "updated_at"
+  ],
+  "sample": {
+   "id": "WF-4817C6D4A4F1",
+   "object_type": "Workflow",
+   "name": "会计期间信息 业务流程",
+   "module": "财务",
+   "status": "ACTIVE",
+   "source_refs": [
+    {
+     "document_id": "DOC-3D8F75A36ACE",
+     "file_path": "会计期间信息/_history/会计期间信息PRD.v1.1.md",
+     "section": "业务流程图",
+     "line_start": 41,
+     "line_end": 52,
+     "excerpt": "业务流程图"
+    }
+   ]
+  }
+ }
+}

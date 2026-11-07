@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Entity.schema.json",
+  "title": "Entity",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "label",
+    "document_ids"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Entity"
+    },
+    "entity_no": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "label": {
+      "type": "string"
+    },
+    "parent_entity_no": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "document_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "field_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "page_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rule_count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

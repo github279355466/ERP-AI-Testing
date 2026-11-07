@@ -1,0 +1,198 @@
+{
+ "schema_files": {
+  "rule": {
+   "path": "docs/plan/Athena-ERP-Test-Development-Kit/schemas/rule.schema.json",
+   "exists": true
+  },
+  "scenario": {
+   "path": "docs/plan/Athena-ERP-Test-Development-Kit/schemas/scenario.schema.json",
+   "exists": true
+  },
+  "test-cases-v2": {
+   "path": "artifacts/session-outputs/test-cases.v2.schema.json",
+   "exists": true
+  }
+ },
+ "jsonschema_rule": {
+  "schema": "docs/plan/Athena-ERP-Test-Development-Kit/schemas/rule.schema.json",
+  "target": "rules.json",
+  "items": 30641,
+  "total_errors": 0,
+  "errors_by_code": {},
+  "samples": {}
+ },
+ "jsonschema_scenario": {
+  "schema": "docs/plan/Athena-ERP-Test-Development-Kit/schemas/scenario.schema.json",
+  "target": "scenarios.json",
+  "items": 4067,
+  "total_errors": 0,
+  "errors_by_code": {},
+  "samples": {}
+ },
+ "structural": {
+  "documents": {
+   "items": 333,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "entities": {
+   "items": 82,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "pages": {
+   "items": 830,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "fields": {
+   "items": 8454,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "controls": {
+   "items": 8454,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "rules": {
+   "items": 30641,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "actions": {
+   "items": 1896,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "workflows": {
+   "items": 143,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "dependencies": {
+   "items": 722,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "scenarios": {
+   "items": 4067,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "existing-cases": {
+   "items": 1477,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  },
+  "open-questions": {
+   "items": 330,
+   "total_errors": 0,
+   "errors_by_code": {},
+   "samples": {}
+  }
+ },
+ "summary_counts": [
+  {
+   "key": "documents",
+   "target": 333,
+   "actual": 333,
+   "match": true
+  },
+  {
+   "key": "prd_documents",
+   "target": 299,
+   "actual": 299,
+   "match": true
+  },
+  {
+   "key": "test_case_documents",
+   "target": 34,
+   "actual": 34,
+   "match": true
+  },
+  {
+   "key": "entities",
+   "target": 82,
+   "actual": 82,
+   "match": true
+  },
+  {
+   "key": "pages",
+   "target": 830,
+   "actual": 830,
+   "match": true
+  },
+  {
+   "key": "fields",
+   "target": 8454,
+   "actual": 8454,
+   "match": true
+  },
+  {
+   "key": "controls",
+   "target": 8454,
+   "actual": 8454,
+   "match": true
+  },
+  {
+   "key": "rules",
+   "target": 30641,
+   "actual": 30641,
+   "match": true
+  },
+  {
+   "key": "actions",
+   "target": 1896,
+   "actual": 1896,
+   "match": true
+  },
+  {
+   "key": "workflows",
+   "target": 143,
+   "actual": 143,
+   "match": true
+  },
+  {
+   "key": "dependencies",
+   "target": 722,
+   "actual": 722,
+   "match": true
+  },
+  {
+   "key": "scenarios",
+   "target": 4067,
+   "actual": 4067,
+   "match": true
+  },
+  {
+   "key": "existing_cases",
+   "target": 1477,
+   "actual": 1477,
+   "match": true
+  },
+  {
+   "key": "open_questions",
+   "target": 330,
+   "actual": 330,
+   "match": true
+  },
+  {
+   "key": "parse_issues",
+   "target": 0,
+   "actual": "N/A",
+   "match": null
+  }
+ ]
+}

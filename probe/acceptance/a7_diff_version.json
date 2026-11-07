@@ -1,0 +1,225 @@
+{
+ "采购退货出库单": {
+  "group_size": 43,
+  "top": 1,
+  "_diff": 16,
+  "_history": 20,
+  "all_versions": [
+   "1.4",
+   "1.5",
+   "1.6",
+   "1.7",
+   "1.8",
+   "1.9",
+   "1.10",
+   "1.11",
+   "1.12",
+   "1.13",
+   "1.14",
+   "1.15",
+   "1.16",
+   "1.17",
+   "1.18",
+   "1.19",
+   "1.20",
+   "1.21",
+   "1.22",
+   "1.23",
+   "1.24"
+  ],
+  "top_versions": [
+   "1.24"
+  ],
+  "_diff_versions": [
+   "1.19",
+   "1.20",
+   "1.21",
+   "1.22",
+   "1.24"
+  ],
+  "max_version": "1.24",
+  "max_version_providers": [
+   "采购退货出库单/_diff/云端漂移-DOC437334734244286464-采购退货出库单PRD.v1.24.md",
+   "采购退货出库单/_diff/采购退货出库单PRD.v1.24-条件写法体检.md",
+   "采购退货出库单/采购退货出库单PRD.v1.24.md"
+  ],
+  "max_version_only_from_aux": false,
+  "diff_docs_with_fields": 0,
+  "diff_docs_with_rules": 0,
+  "is_latest_docs": [
+   {
+    "path": "采购退货出库单/采购退货出库单PRD.v1.24.md",
+    "version": "1.24"
+   }
+  ],
+  "is_latest_in_aux": []
+ },
+ "询价单": {
+  "group_size": 5,
+  "top": 2,
+  "_diff": 2,
+  "_history": 1,
+  "all_versions": [
+   "1.5",
+   "1.7",
+   "1.8"
+  ],
+  "top_versions": [
+   "1.5",
+   "1.8"
+  ],
+  "_diff_versions": [
+   "1.7",
+   "1.8"
+  ],
+  "max_version": "1.8",
+  "max_version_providers": [
+   "询价单/_diff/询价单PRD.v1.8-条件写法体检.md",
+   "询价单/询价单PRD.v1.8.md"
+  ],
+  "max_version_only_from_aux": false,
+  "diff_docs_with_fields": 0,
+  "diff_docs_with_rules": 0,
+  "is_latest_docs": [
+   {
+    "path": "询价单/询价单PRD.v1.8.md",
+    "version": "1.8"
+   }
+  ],
+  "is_latest_in_aux": []
+ },
+ "会计期间信息": {
+  "group_size": 12,
+  "top": 1,
+  "_diff": 5,
+  "_history": 6,
+  "all_versions": [
+   "1.1",
+   "1.2",
+   "1.3",
+   "1.4",
+   "1.5",
+   "1.6",
+   "1.7"
+  ],
+  "top_versions": [
+   "1.7"
+  ],
+  "_diff_versions": [
+   "1.4",
+   "1.6",
+   "1.7"
+  ],
+  "max_version": "1.7",
+  "max_version_providers": [
+   "会计期间信息/_diff/会计期间信息PRD.v1.7-条件写法体检.md",
+   "会计期间信息/会计期间信息PRD.v1.7.md"
+  ],
+  "max_version_only_from_aux": false,
+  "diff_docs_with_fields": 0,
+  "diff_docs_with_rules": 0,
+  "is_latest_docs": [
+   {
+    "path": "会计期间信息/会计期间信息PRD.v1.7.md",
+    "version": "1.7"
+   }
+  ],
+  "is_latest_in_aux": []
+ },
+ "会计期间表": {
+  "group_size": 14,
+  "top": 1,
+  "_diff": 5,
+  "_history": 8,
+  "all_versions": [
+   "1.1",
+   "1.2",
+   "1.3",
+   "1.4",
+   "1.5",
+   "1.6",
+   "1.7",
+   "1.8",
+   "1.9"
+  ],
+  "top_versions": [
+   "1.9"
+  ],
+  "_diff_versions": [
+   "1.6",
+   "1.8",
+   "1.9"
+  ],
+  "max_version": "1.9",
+  "max_version_providers": [
+   "会计期间表/_diff/会计期间表PRD.v1.9-条件写法体检.md",
+   "会计期间表/会计期间表PRD.v1.9.md"
+  ],
+  "max_version_only_from_aux": false,
+  "diff_docs_with_fields": 0,
+  "diff_docs_with_rules": 0,
+  "is_latest_docs": [
+   {
+    "path": "会计期间表/会计期间表PRD.v1.9.md",
+    "version": "1.9"
+   }
+  ],
+  "is_latest_in_aux": []
+ },
+ "采购取价策略": {
+  "group_size": 14,
+  "top": 2,
+  "_diff": 9,
+  "_history": 1,
+  "all_versions": [
+   "1.6",
+   "1.7",
+   "1.9"
+  ],
+  "top_versions": [
+   "1.7",
+   "1.9"
+  ],
+  "_diff_versions": [
+   "1.6",
+   "1.7"
+  ],
+  "max_version": "1.9",
+  "max_version_providers": [
+   "采购域/采购取价策略/DOC409187731236814849_采购取价策略_V1.9.md"
+  ],
+  "max_version_only_from_aux": false,
+  "diff_docs_with_fields": 0,
+  "diff_docs_with_rules": 0,
+  "is_latest_docs": [
+   {
+    "path": "采购域/采购取价策略/DOC409187731236814849_采购取价策略_V1.9.md",
+    "version": "1.9"
+   }
+  ],
+  "is_latest_in_aux": []
+ },
+ "all_diff_summary": {
+  "diff_docs": 71,
+  "diff_with_doc_version": 38,
+  "diff_with_fields": 0,
+  "diff_with_rules": 0,
+  "diff_is_latest": 0
+ },
+ "version_conflicts_detail": {
+  "detail_lines": 262,
+  "diff_lines": 69,
+  "diff_lines_with_version": 36,
+  "diff_lines_vUNKNOWN": 33,
+  "samples": [
+   "- 会计期间信息/_diff/会计期间信息-v1.4-to-v1.6.md (vUNKNOWN)",
+   "- 会计期间信息/_diff/会计期间信息-v1.6-to-v1.7.md (vUNKNOWN)",
+   "- 会计期间信息/_diff/会计期间信息PRD.v1.4-条件写法体检.md (v1.4)",
+   "- 会计期间信息/_diff/会计期间信息PRD.v1.6-条件写法体检.md (v1.6)",
+   "- 会计期间信息/_diff/会计期间信息PRD.v1.7-条件写法体检.md (v1.7)",
+   "- 会计期间表/_diff/会计期间表-v1.6-to-v1.8.md (vUNKNOWN)",
+   "- 会计期间表/_diff/会计期间表-v1.8-to-v1.9.md (vUNKNOWN)",
+   "- 会计期间表/_diff/会计期间表PRD.v1.6-条件写法体检.md (v1.6)"
+  ]
+ }
+}

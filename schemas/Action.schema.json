@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Action.schema.json",
+  "title": "Action",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "action_name",
+    "document_id"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Action"
+    },
+    "action_name": {
+      "type": "string"
+    },
+    "scope": {
+      "enum": [
+        "HEADER",
+        "DETAIL",
+        "LIST",
+        "UNKNOWN"
+      ]
+    },
+    "availability": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "display_location": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pre_check": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "processing": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "post_processing": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "apis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "phase_lines": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

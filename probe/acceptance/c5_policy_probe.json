@@ -1,0 +1,57 @@
+{
+  "baseline_config": {
+    "allowExternalModelCalls": false,
+    "allowErpConnectionInPhase1": false,
+    "scenarioDefaultStatus": "DRAFT",
+    "requireEvidenceForExplicitRules": true,
+    "maxRulesPerDocument": 400
+  },
+  "mutated_config": {
+    "allowExternalModelCalls": false,
+    "allowErpConnectionInPhase1": false,
+    "scenarioDefaultStatus": "EXECUTABLE",
+    "requireEvidenceForExplicitRules": false,
+    "maxRulesPerDocument": 10
+  },
+  "baseline": {
+    "rules_total": 706,
+    "max_rules_per_doc": 322,
+    "per_doc": {
+      "DOC-F779225C9F07": 69,
+      "DOC-1A2D2EE2D40B": 322,
+      "DOC-E852744AD3C0": 315
+    },
+    "scenario_status": [
+      "DRAFT"
+    ],
+    "scenarios_total": 629,
+    "validation": {
+      "valid": true,
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "mutated": {
+    "rules_total": 30,
+    "max_rules_per_doc": 10,
+    "per_doc": {
+      "DOC-F779225C9F07": 10,
+      "DOC-1A2D2EE2D40B": 10,
+      "DOC-E852744AD3C0": 10
+    },
+    "scenario_status": [
+      "DRAFT"
+    ],
+    "scenarios_total": 29,
+    "validation": {
+      "valid": true,
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "conclusions": {
+    "maxRulesPerDocument_effective": true,
+    "scenarioDefaultStatus_effective": false,
+    "requireEvidenceForExplicitRules_effective": "see validation diff"
+  }
+}

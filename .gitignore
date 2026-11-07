@@ -5,6 +5,11 @@ logs/
 test-results/
 playwright-report/
 .env
+config/prd-modeling.config.local.json
+scan.out.json
+probe/acceptance/isolated/
+probe/readonly-before*.json
+probe/phase1-final-scan.json
 *.log
 state/
 auth*.json

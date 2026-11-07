@@ -1,0 +1,260 @@
+{
+  "config_used": {
+    "prd": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\in\\prd",
+    "cases": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\in\\cases",
+    "sourceIndexDir": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\out\\source-index",
+    "knowledgeDir": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\out\\knowledge",
+    "reportDir": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\out\\reports"
+  },
+  "cache_hit_no_rewrite": true,
+  "deleted_doc_paths": [
+    "C.md"
+  ],
+  "cache_after_delete_count": 6,
+  "cache_after_delete_names": [
+    "DOC-33AF7D7D723F.json",
+    "DOC-3B8653A090EA.json",
+    "DOC-675E12F15861.json",
+    "DOC-C5A4E3287A75.json",
+    "DOC-CF87F30AAAAE.json",
+    "DOC-D8E180A1CA7A.json"
+  ],
+  "rows": [
+    {
+      "label": "1-FULL",
+      "mode": "FULL",
+      "summary": {
+        "scanned_at": "2026-11-07T09:09:42.622Z",
+        "source_root": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\in\\prd",
+        "total_files": 7,
+        "supported_files": 5,
+        "unsupported_files": 2,
+        "new_documents": 5,
+        "modified_documents": 0,
+        "unchanged_documents": 0,
+        "missing_documents": 0,
+        "parse_errors": 0,
+        "mode": "FULL"
+      },
+      "register_count": 5,
+      "register_status": {
+        "NEW": 5
+      },
+      "register_paths": [
+        ".hidden/hidden.md",
+        "A.md",
+        "B.md",
+        "C.md",
+        "~$temp.md"
+      ],
+      "documents_count": 5,
+      "documents_last_scan_status": {
+        "NEW": 5
+      },
+      "documents_is_latest": 0,
+      "cache_count": 5,
+      "cache_extracted_at": [
+        "2026-11-07T09:09:42.618Z"
+      ],
+      "state_count": 5,
+      "state_keys": [
+        "PRD:.hidden/hidden.md",
+        "PRD:A.md",
+        "PRD:B.md",
+        "PRD:C.md",
+        "PRD:~$temp.md"
+      ]
+    },
+    {
+      "label": "2-INCREMENTAL-NOCHANGE",
+      "mode": "INCREMENTAL",
+      "summary": {
+        "scanned_at": "2026-11-07T09:09:42.677Z",
+        "source_root": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\in\\prd",
+        "total_files": 7,
+        "supported_files": 5,
+        "unsupported_files": 2,
+        "new_documents": 0,
+        "modified_documents": 0,
+        "unchanged_documents": 5,
+        "missing_documents": 0,
+        "parse_errors": 0,
+        "mode": "INCREMENTAL"
+      },
+      "register_count": 5,
+      "register_status": {
+        "UNCHANGED": 5
+      },
+      "register_paths": [
+        ".hidden/hidden.md",
+        "A.md",
+        "B.md",
+        "C.md",
+        "~$temp.md"
+      ],
+      "documents_count": 5,
+      "documents_last_scan_status": {
+        "UNCHANGED": 5
+      },
+      "documents_is_latest": 0,
+      "cache_count": 5,
+      "cache_extracted_at": [
+        "2026-11-07T09:09:42.618Z"
+      ],
+      "state_count": 5,
+      "state_keys": [
+        "PRD:.hidden/hidden.md",
+        "PRD:A.md",
+        "PRD:B.md",
+        "PRD:C.md",
+        "PRD:~$temp.md"
+      ]
+    },
+    {
+      "label": "3-INCREMENTAL-MODIFIED-B",
+      "mode": "INCREMENTAL",
+      "summary": {
+        "scanned_at": "2026-11-07T09:09:42.704Z",
+        "source_root": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\in\\prd",
+        "total_files": 7,
+        "supported_files": 5,
+        "unsupported_files": 2,
+        "new_documents": 0,
+        "modified_documents": 1,
+        "unchanged_documents": 4,
+        "missing_documents": 0,
+        "parse_errors": 0,
+        "mode": "INCREMENTAL"
+      },
+      "register_count": 5,
+      "register_status": {
+        "UNCHANGED": 4,
+        "MODIFIED": 1
+      },
+      "register_paths": [
+        ".hidden/hidden.md",
+        "A.md",
+        "B.md",
+        "C.md",
+        "~$temp.md"
+      ],
+      "documents_count": 5,
+      "documents_last_scan_status": {
+        "UNCHANGED": 4,
+        "MODIFIED": 1
+      },
+      "documents_is_latest": 0,
+      "cache_count": 5,
+      "cache_extracted_at": [
+        "2026-11-07T09:09:42.618Z",
+        "2026-11-07T09:09:42.703Z"
+      ],
+      "state_count": 5,
+      "state_keys": [
+        "PRD:.hidden/hidden.md",
+        "PRD:A.md",
+        "PRD:B.md",
+        "PRD:C.md",
+        "PRD:~$temp.md"
+      ]
+    },
+    {
+      "label": "4-INCREMENTAL-NEW-D",
+      "mode": "INCREMENTAL",
+      "summary": {
+        "scanned_at": "2026-11-07T09:09:42.734Z",
+        "source_root": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\in\\prd",
+        "total_files": 8,
+        "supported_files": 6,
+        "unsupported_files": 2,
+        "new_documents": 1,
+        "modified_documents": 0,
+        "unchanged_documents": 5,
+        "missing_documents": 0,
+        "parse_errors": 0,
+        "mode": "INCREMENTAL"
+      },
+      "register_count": 6,
+      "register_status": {
+        "UNCHANGED": 5,
+        "NEW": 1
+      },
+      "register_paths": [
+        ".hidden/hidden.md",
+        "A.md",
+        "B.md",
+        "C.md",
+        "D.md",
+        "~$temp.md"
+      ],
+      "documents_count": 6,
+      "documents_last_scan_status": {
+        "UNCHANGED": 5,
+        "NEW": 1
+      },
+      "documents_is_latest": 0,
+      "cache_count": 6,
+      "cache_extracted_at": [
+        "2026-11-07T09:09:42.618Z",
+        "2026-11-07T09:09:42.732Z",
+        "2026-11-07T09:09:42.703Z"
+      ],
+      "state_count": 6,
+      "state_keys": [
+        "PRD:.hidden/hidden.md",
+        "PRD:A.md",
+        "PRD:B.md",
+        "PRD:C.md",
+        "PRD:D.md",
+        "PRD:~$temp.md"
+      ]
+    },
+    {
+      "label": "5-INCREMENTAL-DELETED-C",
+      "mode": "INCREMENTAL",
+      "summary": {
+        "scanned_at": "2026-11-07T09:09:43.202Z",
+        "source_root": "D:\\AIProject\\ERP-AI-Testing\\probe\\acceptance\\isolated\\in\\prd",
+        "total_files": 7,
+        "supported_files": 5,
+        "unsupported_files": 2,
+        "new_documents": 0,
+        "modified_documents": 0,
+        "unchanged_documents": 5,
+        "missing_documents": 1,
+        "parse_errors": 0,
+        "mode": "INCREMENTAL"
+      },
+      "register_count": 5,
+      "register_status": {
+        "UNCHANGED": 5
+      },
+      "register_paths": [
+        ".hidden/hidden.md",
+        "A.md",
+        "B.md",
+        "D.md",
+        "~$temp.md"
+      ],
+      "documents_count": 5,
+      "documents_last_scan_status": {
+        "UNCHANGED": 5
+      },
+      "documents_is_latest": 0,
+      "cache_count": 6,
+      "cache_extracted_at": [
+        "2026-11-07T09:09:42.618Z",
+        "2026-11-07T09:09:42.732Z",
+        "2026-11-07T09:09:42.703Z"
+      ],
+      "state_count": 5,
+      "state_keys": [
+        "PRD:.hidden/hidden.md",
+        "PRD:A.md",
+        "PRD:B.md",
+        "PRD:D.md",
+        "PRD:~$temp.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/ExistingCase.schema.json",
+  "title": "ExistingCase",
+  "type": "object",
+  "required": [
+    "object_type",
+    "id",
+    "case_id",
+    "rule_ids",
+    "source_rule_ids"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "ExistingCase"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "package": {
+      "type": "string"
+    },
+    "module": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "object": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "field": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "field_no": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "field_nos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "object_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "needs_confirm": {
+      "type": "boolean"
+    },
+    "assertion_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "document_id": {
+      "type": "string"
+    }
+  }
+}

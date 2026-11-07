@@ -48,6 +48,8 @@ Knowledge Base（page-map / component-map / business-rules）
 | `runner` | 只读执行器与授权写入执行器，按步骤记录结果 | 不做批量写操作；写入需显式配置档 |
 | `runner/actions` | 基础资料列表通用动作：筛选、列表页操作列编辑/查看、二次确认删除 | 不写业务断言，不持有用例状态 |
 | `knowledge` | 加载与校验知识库，标记 UNKNOWN | 不覆盖 confirmed |
+| `prd` | Phase 1 PRD 扫描、解析、建模、关系推导、场景草案与报告 | 不连 ERP、不读 DOM、不写业务数据 |
+| `knowledge/prd-knowledge` | Phase 1 知识库只读查询适配层 | 不改写产物，不与 legacy 知识库互相覆盖 |
 
 ## 4. 关键设计
 
@@ -93,6 +95,19 @@ CDP 连接拿到的 `Browser` 不调用 `close()`，避免关闭用户窗口；�
 
 PRD 索引 `knowledge/athena-prd-map.json` 由 `prd:index` 从外部 PRD 目录生成：按语义化版本取每个作业最新版，抽取 `PRD类型`、`业务对象`、章节、子章节和 `##### 名称 (字段名)` 字段，并关联 `pageId` 与 `testPlanIds`。`prd:section` 按标题片段读取业务逻辑原文，索引不复制规则正文。PRD 是预期来源，不能替代页面运行证据；规则仍以 `confirmed` 需要 `verifiedAt` 为准。
 
+### 4.7 Phase 1 PRD 知识建模子系统
+
+Phase 1 是独立子项目，产物与 legacy 知识库隔离，目录为 `src/prd/`、`artifacts/knowledge/`、`artifacts/source-index/`、`reports/`、`schemas/`。
+
+- **流水线**：`scanner`（递归扫描 + SHA-256 + 稳定 ID + 增量状态）→ `extract` / `cases`（MD、平台 `prd_spec` JSON、TXT 与用例库解析）→ `link`（版本归并、引用解析、覆盖率）→ `relations`（单据取单/回写关系）→ `evidence`（原文行切片证据）→ `scenarios`（场景草案）→ `validate` → `reports`。
+- **13 类对象**：Document / Entity / Page / Field / Control / Rule / Action / Workflow / Dependency / Scenario / OpenQuestion / ExistingCase / Evidence，落 `artifacts/knowledge/*.json`。
+- **证据契约**：`SourceRef` 必须内嵌 `document_id`、`file_path`、`doc_version`、`sha256`、`section`、`line_start` 与逐字 `excerpt`。`prd:validate` 通过 `document_id → DocumentRecord.file_path` 解析绝对路径（兼容 PRD 根与用例库两个来源），回读原文逐行比对；不一致即 ERROR。
+- **来源分层**：`PRD_EXPLICIT` / `PRD_DERIVED` / `PLATFORM_SERVICE` / `UI_OBSERVED` / `USER_CONFIRMED` / `PENDING`。引用平台服务的字段行为单独登记口径待确认，不默认等同 PRD 明确规则。
+- **场景准入**：引用 `PRD_DERIVED` 或非 CONFIRMED 规则的场景必须 `NEEDS_CONFIRMATION`；Phase 1 不产出 `UI_READY`；全部场景 `DRAFT` + `review_required=true`，无执行入口。
+- **只读命令**：`prd:validate` / `prd:report` 仅加载既有产物，不重扫、不写知识库；`prd:report --out <dir>` 可重定向。
+- **运行时消费**：`PrdKnowledgeBase.load({ knowledgeDir, sourceIndexDir })` 提供文档、最新版、实体、字段、规则、依赖、证据与覆盖率查询；Phase 2 必须经由此适配层读取，不得直接解析 JSON。
+- **Schema**：`npm run prd:schemas` 生成 13 类 + `common.schema.json`，`prd:validate` 用 ajv（Draft 2020-12）执行。
+
 ## 5. 数据流
 
 ```
@@ -101,6 +116,9 @@ explore：
 
 verify：
   加载知识 → 连接 → 选页 → 执行只读用例 → 逐步证据 → 断言结果 → results.json → MD/HTML 报告
+
+prd（Phase 1，纯静态）：
+  扫描 → 解析 → 建模 → 关系/证据 → 场景草案 → 校验 → 报告
 ```
 
 ## 6. 失败处理
@@ -116,16 +134,18 @@ verify：
 src/
   browser/  controls/  locator/  discovery/
   assertion/  evidence/  reporting/  runner/
-  knowledge/  config/  cli/
+  knowledge/  config/  cli/  prd/
 tests/
   unit/     纯逻辑单测
   smoke/    真实浏览器冒烟（手动触发）
 knowledge/  页面与控件知识
-artifacts/  运行产物（git 忽略）
+artifacts/  运行产物（git 忽略；含 Phase 1 knowledge/ 与 source-index/）
+reports/    Phase 1 渲染报告
+schemas/    Phase 1 正式 JSON Schema
 ```
 
 ## 8. 非目标
 
 - 不做测试计划解析与批量调度（下一阶段）。
-- 不做写入型用例与数据清理。
+- 写入默认关闭；仅在独立配置档与明确授权下启用单笔增删改与清理（见 4.4 / 4.5）。
 - 不做跨租户、跨环境参数化。

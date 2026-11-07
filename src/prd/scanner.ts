@@ -16,6 +16,7 @@ export interface ScannedFile {
   modified_at: string;
   sha256: string;
   supported: boolean;
+  unsupported_reason: 'RESERVED_FORMAT' | 'NOT_INCLUDED' | null;
   role: 'PRD' | 'TEST_CASE_LIBRARY';
   document_id: string;
   status: ScanStatus;
@@ -55,6 +56,8 @@ function walk(
   }
   for (const entry of entries) {
     const absolute = path.join(current, entry.name);
+    if (entry.name.startsWith('.') || entry.name.startsWith('~$')) continue;
+    if (/^(thumbs\.db|desktop\.ini)$/i.test(entry.name)) continue;
     if (entry.isDirectory()) {
       if (config.prd.excludeDirectories.includes(entry.name)) continue;
       walk(root, absolute, config, output);
@@ -115,6 +118,8 @@ function toScannedFile(
   const key = `${role}:${relative}`;
   const previous = state.files[key];
   const status: ScanStatus = !previous ? 'NEW' : previous.sha256 === hash ? 'UNCHANGED' : 'MODIFIED';
+  const supported = config.prd.includeExtensions.includes(extension);
+  const reserved = config.prd.reservedExtensions.includes(extension);
   return {
     absolute_path: absolute,
     relative_path: relative,
@@ -126,7 +131,8 @@ function toScannedFile(
     size_bytes: stat.size,
     modified_at: stat.mtime.toISOString(),
     sha256: hash,
-    supported: config.prd.includeExtensions.includes(extension),
+    supported,
+    unsupported_reason: supported ? null : reserved ? 'RESERVED_FORMAT' : 'NOT_INCLUDED',
     role,
     document_id: documentId(`${role}:${relative}`),
     status,
@@ -165,7 +171,7 @@ export function scanSources(
 
   const files: ScannedFile[] = [];
   const unsupported: ScannedFile[] = [];
-  const nextFiles: Record<string, ScanStateEntry> = {};
+  const nextFiles: Record<string, ScanStateEntry> = { ...previous.files };
   const now = new Date().toISOString();
 
   for (const item of collected) {

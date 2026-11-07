@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Field.schema.json",
+  "title": "Field",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "label",
+    "document_id",
+    "control_type"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Field"
+    },
+    "field_no": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "label": {
+      "type": "string"
+    },
+    "entity_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "entity_no": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "entity_label": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "control_type": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "required_condition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "readonly": {
+      "type": "boolean"
+    },
+    "readonly_condition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "disabled": {
+      "type": "boolean"
+    },
+    "disabled_condition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "default_value": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "default_timing": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lookup_desc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "attribute_lines": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "data_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "length": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "precision": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "related_master_data": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "CONFIRMED",
+        "DERIVED",
+        "AMBIGUOUS",
+        "CONFLICTED",
+        "MISSING"
+      ]
+    },
+    "source_type": {
+      "enum": [
+        "PRD_EXPLICIT",
+        "PRD_DERIVED",
+        "PLATFORM_SERVICE",
+        "UI_OBSERVED",
+        "USER_CONFIRMED",
+        "PENDING"
+      ]
+    }
+  }
+}

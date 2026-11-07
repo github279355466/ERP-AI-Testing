@@ -1,6 +1,11 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import { loadPrdConfig } from '../prd/config';
 import { buildKnowledge, PipelineResult } from '../prd/pipeline';
+import { renderAllReports } from '../prd/reports';
+import { loadKnowledgeBundle, recomputeCoverage, skippedFromRegister, unsupportedFromRegister } from '../prd/store';
+import { KnowledgeBundle } from '../prd/types';
+import { validateKnowledgeBundle, ValidationResult } from '../prd/validate';
 
 interface Args {
   [key: string]: string | boolean | undefined;
@@ -29,26 +34,38 @@ function printHelp(): void {
     'Athena PRD 建模（Phase 1）',
     '',
     '用法：',
-    '  npm run prd:scan            全量扫描、建模并生成报告',
-    '  npm run prd:scan:incremental 增量扫描（未变化文档复用缓存）',
-    '  npm run prd:validate        校验知识模型（Schema/证据/引用）',
-    '  npm run prd:report          重新生成报告',
-    '  npm run prd:build           扫描 + 校验 + 报告',
-    '  npm run prd:help            显示帮助',
+    '  npm run prd:scan             全量扫描、建模并生成报告（写知识库）',
+    '  npm run prd:scan:incremental  增量扫描（未变化文档复用缓存）',
+    '  npm run prd:validate         只读校验现有知识库（不重建、不写文件）',
+    '  npm run prd:report           只读渲染现有知识库报告（不重扫）',
+    '  npm run prd:build            全量扫描 + 校验 + 报告',
+    '  npm run prd:help             显示帮助',
     '',
     '可选参数：',
     '  --prd <dir>       覆盖 PRD 目录（默认取配置）',
     '  --scenario <dir>  覆盖测试用例库目录',
     '  --config <file>   指定配置文件',
     '  --json            以 JSON 输出摘要',
+    '  --out <dir>       report 命令将报告写到指定目录（默认写回 reports/）',
   ];
   process.stdout.write(`${lines.join('\n')}\n`);
 }
 
-function printSummary(result: PipelineResult, asJson: boolean): void {
-  const { bundle, validation, coverage, outputs } = result;
-  const consideredRules = bundle.rules.filter((rule) => coverage.considered_rule_ids.has(rule.id));
-  const covered = consideredRules.filter((rule) => coverage.covered_rule_ids.has(rule.id)).length;
+interface SummaryOutputs {
+  knowledge_dir: string;
+  report_dir: string;
+  source_index_dir: string;
+  files: string[];
+}
+
+function printBundleSummary(
+  bundle: KnowledgeBundle,
+  validation: ValidationResult,
+  coveredRules: number,
+  consideredRules: number,
+  outputs: SummaryOutputs,
+  asJson: boolean
+): void {
   const summary = {
     mode: bundle.scan.mode,
     documents: bundle.documents.length,
@@ -65,12 +82,13 @@ function printSummary(result: PipelineResult, asJson: boolean): void {
     scenarios: bundle.scenarios.length,
     existing_cases: bundle.existingCases.length,
     open_questions: bundle.openQuestions.length,
+    evidence: bundle.evidence.length,
     parse_issues: bundle.issues.length,
     validation: { valid: validation.valid, errors: validation.errors.length, warnings: validation.warnings.length },
     coverage: {
-      rules: consideredRules.length,
-      covered,
-      rate: consideredRules.length === 0 ? 0 : Number((covered / consideredRules.length).toFixed(4)),
+      rules: consideredRules,
+      covered: coveredRules,
+      rate: consideredRules === 0 ? 0 : Number((coveredRules / consideredRules).toFixed(4)),
     },
     outputs,
   };
@@ -88,13 +106,31 @@ function printSummary(result: PipelineResult, asJson: boolean): void {
     `场景草案      ${summary.scenarios}`,
     `已有用例      ${summary.existing_cases}`,
     `待确认问题    ${summary.open_questions}`,
+    `证据          ${summary.evidence}`,
     `解析问题      ${summary.parse_issues}`,
     `校验          ${validation.valid ? 'PASS' : 'FAIL'}（错误 ${validation.errors.length} / 告警 ${validation.warnings.length}）`,
-    `规则覆盖率    ${(consideredRules.length === 0 ? '0.0' : ((covered / consideredRules.length) * 100).toFixed(1))}%（${covered}/${consideredRules.length}，最新版文档）`,
+    `规则覆盖率    ${(consideredRules === 0 ? '0.0' : ((coveredRules / consideredRules) * 100).toFixed(1))}%（${coveredRules}/${consideredRules}，最新版文档）`,
     `知识库        ${outputs.knowledge_dir}`,
     `报告          ${outputs.report_dir}`,
   ];
   process.stdout.write(`${rows.join('\n')}\n`);
+}
+
+function printPipelineSummary(result: PipelineResult, asJson: boolean): void {
+  const { bundle, validation, coverage, outputs } = result;
+  const consideredRules = bundle.rules.filter((rule) => coverage.considered_rule_ids.has(rule.id));
+  const covered = consideredRules.filter((rule) => coverage.covered_rule_ids.has(rule.id)).length;
+  printBundleSummary(bundle, validation, covered, consideredRules.length, outputs, asJson);
+}
+
+function printIssues(validation: ValidationResult): void {
+  process.stdout.write('\n校验结果\n');
+  for (const issue of validation.errors.slice(0, 50)) {
+    process.stdout.write(`  ERROR ${issue.code} ${issue.object_type}:${issue.object_id} ${issue.message}\n`);
+  }
+  for (const issue of validation.warnings.slice(0, 30)) {
+    process.stdout.write(`  WARN  ${issue.code} ${issue.object_type}:${issue.object_id} ${issue.message}\n`);
+  }
 }
 
 function main(): number {
@@ -111,39 +147,93 @@ function main(): number {
     scenarioDirOverride: typeof args.scenario === 'string' ? args.scenario : undefined,
   });
   const asJson = args.json === true;
+  const validationOptions = {
+    sourceRoot: config.prd.inputDir,
+    requireEvidenceForExplicitRules: config.policy.requireEvidenceForExplicitRules,
+    validateSchemas: true,
+  };
 
   switch (command) {
     case 'scan':
     case 'build': {
       const result = buildKnowledge(config, 'FULL', { useCache: false });
-      printSummary(result, asJson);
+      printPipelineSummary(result, asJson);
       return result.validation.valid ? 0 : 2;
     }
     case 'scan:incremental': {
       const result = buildKnowledge(config, 'INCREMENTAL', { useCache: true });
-      printSummary(result, asJson);
+      printPipelineSummary(result, asJson);
       return result.validation.valid ? 0 : 2;
     }
     case 'validate': {
-      const result = buildKnowledge(config, 'FULL', { useCache: false });
+      const { bundle } = loadKnowledgeBundle(config.output.knowledgeDir, config.output.sourceIndexDir);
+      const validation = validateKnowledgeBundle(bundle, validationOptions);
       if (asJson) {
-        printSummary(result, true);
+        process.stdout.write(
+          `${JSON.stringify(
+            {
+              mode: 'READ_ONLY',
+              knowledge_dir: config.output.knowledgeDir,
+              valid: validation.valid,
+              checked: validation.checked,
+              errors: validation.errors.length,
+              warnings: validation.warnings.length,
+              codes: {
+                errors: [...new Set(validation.errors.map((issue) => issue.code))].sort(),
+                warnings: [...new Set(validation.warnings.map((issue) => issue.code))].sort(),
+              },
+            },
+            null,
+            2
+          )}\n`
+        );
       } else {
-        printSummary(result, false);
-        process.stdout.write('\n校验结果\n');
-        for (const issue of result.validation.errors.slice(0, 50)) {
-          process.stdout.write(`  ERROR ${issue.code} ${issue.object_type}:${issue.object_id} ${issue.message}\n`);
-        }
-        for (const issue of result.validation.warnings.slice(0, 30)) {
-          process.stdout.write(`  WARN  ${issue.code} ${issue.object_type}:${issue.object_id} ${issue.message}\n`);
-        }
+        process.stdout.write(
+          `只读校验：${config.output.knowledgeDir}\n校验结果：${validation.valid ? 'PASS' : 'FAIL'}（错误 ${validation.errors.length} / 告警 ${validation.warnings.length}）\n`
+        );
+        printIssues(validation);
       }
-      return result.validation.valid ? 0 : 2;
+      return validation.valid ? 0 : 2;
     }
     case 'report': {
-      const result = buildKnowledge(config, 'FULL', { useCache: false });
-      printSummary(result, asJson);
-      return 0;
+      const { bundle, register } = loadKnowledgeBundle(config.output.knowledgeDir, config.output.sourceIndexDir);
+      const coverage = recomputeCoverage(bundle);
+      const validation = validateKnowledgeBundle(bundle, validationOptions);
+      const reports = renderAllReports(
+        bundle,
+        validation,
+        coverage,
+        unsupportedFromRegister(register),
+        skippedFromRegister(register)
+      );
+      const outDir = typeof args.out === 'string' ? path.resolve(args.out) : null;
+      const written: string[] = [];
+      for (const [name, content] of Object.entries(reports)) {
+        const target = outDir
+          ? path.join(outDir, name)
+          : name === 'scan-report.md'
+            ? path.join(config.output.sourceIndexDir, name)
+            : path.join(config.output.reportDir, name);
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        fs.writeFileSync(target, content, 'utf8');
+        written.push(target);
+      }
+      const considered = bundle.rules.filter((rule) => coverage.considered_rule_ids.has(rule.id));
+      const covered = considered.filter((rule) => coverage.covered_rule_ids.has(rule.id)).length;
+      printBundleSummary(
+        bundle,
+        validation,
+        covered,
+        considered.length,
+        {
+          knowledge_dir: config.output.knowledgeDir,
+          report_dir: outDir ?? config.output.reportDir,
+          source_index_dir: config.output.sourceIndexDir,
+          files: written,
+        },
+        asJson
+      );
+      return validation.valid ? 0 : 2;
     }
     default:
       process.stderr.write(`未知命令：${command}\n`);

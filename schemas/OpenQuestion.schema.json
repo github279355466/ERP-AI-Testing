@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/OpenQuestion.schema.json",
+  "title": "OpenQuestion",
+  "type": "object",
+  "required": [
+    "object_type",
+    "id",
+    "question",
+    "category",
+    "severity",
+    "status"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "OpenQuestion"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "enum": [
+        "VERSION_CONFLICT",
+        "RULE_CONFLICT",
+        "MISSING_EVIDENCE",
+        "MISSING_DEFINITION",
+        "AMBIGUOUS_RULE",
+        "INCOMPLETE_STATE_MACHINE",
+        "BROKEN_FLOW",
+        "UNSUPPORTED_FORMAT",
+        "PARSE_ERROR",
+        "SCENARIO_GAP",
+        "SOURCE_CONFLICT",
+        "SOURCE_MISSING",
+        "DUPLICATE_SOURCE",
+        "EXCLUDED_SOURCE"
+      ]
+    },
+    "severity": {
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ]
+    },
+    "document_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "impact": {
+      "type": "string"
+    },
+    "suggested_owner": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    }
+  }
+}

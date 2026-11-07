@@ -1,0 +1,45 @@
+{
+ "dist": {
+  "repo_dist_js": 41,
+  "isolated_dist_js": 41,
+  "byte_identical": 41,
+  "different": 0,
+  "only_in_repo": 0,
+  "only_in_isolated": 0,
+  "diff_samples": [],
+  "only_in_repo_samples": [],
+  "maps": {
+   "repo": 41,
+   "isolated": 41,
+   "byte_identical": 0
+  }
+ },
+ "source_index_breakdown": {
+  ".parse-cache/": 299,
+  ".scan-state.json": 1,
+  "top-level (DOCUMENT_REGISTER.json / scan-report.md)": 2
+ },
+ "knowledge_files": 13,
+ "reports_files": 10,
+ "now_total_bytes": {
+  "artifacts/knowledge": 72201360,
+  "artifacts/source-index": 55014967,
+  "reports": 153968
+ },
+ "now_total_sum": 127370295,
+ "manifest_declared_total_bytes": 127370295,
+ "qa_self_report_crosscheck": {
+  "restore_325_files": true,
+  "verify_all_byte_identical": true,
+  "git_tracked_modifications_0": true,
+  "diff_after_prd_unchanged_325": true
+ },
+ "diff_after_prd": {
+  "diff_at": "2026-11-07T09:20:04.240Z",
+  "unchanged": 325,
+  "changed": [],
+  "added": [],
+  "missing": []
+ },
+ "generated_at": "2026-11-07T09:44:06.496015+00:00"
+}

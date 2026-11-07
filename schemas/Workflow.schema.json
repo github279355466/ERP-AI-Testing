@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Workflow.schema.json",
+  "title": "Workflow",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "document_id",
+    "steps"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Workflow"
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "seq",
+          "step"
+        ],
+        "properties": {
+          "seq": {
+            "type": "string"
+          },
+          "step": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "exception": {
+            "type": "string"
+          },
+          "node_name": {
+            "type": "string"
+          },
+          "actor": {
+            "type": "string"
+          },
+          "precondition": {
+            "type": "string"
+          },
+          "output": {
+            "type": "string"
+          },
+          "next_step": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

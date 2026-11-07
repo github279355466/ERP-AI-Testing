@@ -45,9 +45,22 @@ const FIELD_HEADING = /^#{3,5}\s+(.+?)\s*[（(]([A-Za-z0-9_.]+)[)）]\s*$/;
 const API_PATTERN = /\b([a-z][a-z0-9_]*\.[a-z][a-z0-9_]*\.[a-z][a-z0-9_]*)\b/g;
 const PENDING_PATTERN = /待确认|待补充|TBD|暂定|待定|不确定/i;
 
+const DOCUMENT_LINES = new WeakMap<DocumentRecord, string[]>();
+
+function rawLineOf(document: DocumentRecord, line: number | null): string | null {
+  if (!line) return null;
+  const lines = DOCUMENT_LINES.get(document);
+  const raw = lines?.[line - 1];
+  return raw === undefined ? null : raw.trim();
+}
+
 function truncate(text: string, limit = 240): string {
   const compact = text.replace(/\s+/g, ' ').trim();
   return compact.length <= limit ? compact : `${compact.slice(0, limit)}…`;
+}
+
+function stripTrailingEllipsis(text: string): string {
+  return text.replace(/…+$/, '').trim();
 }
 
 function metadataValue(text: string, keys: string[]): string | null {
@@ -66,13 +79,28 @@ function toSourceRef(
   lineEnd: number | null,
   excerpt: string | null
 ): SourceRef {
+  const verbatim = rawLineOf(document, lineStart);
+  const composed = excerpt ? truncate(excerpt, 160) : undefined;
+  let evidenceExcerpt = composed;
+  if (verbatim && verbatim.length > 0 && composed && !verbatim.includes(stripTrailingEllipsis(composed))) {
+    const key = /\(([A-Za-z0-9_.]{2,40})\)/.exec(composed)?.[1];
+    const index = key ? verbatim.indexOf(`"${key}"`) : -1;
+    evidenceExcerpt = index >= 0
+      ? verbatim.slice(Math.max(0, index - 80), Math.min(verbatim.length, index + 180))
+      : verbatim.slice(0, 200);
+  }
   return {
     document_id: document.id,
     file_path: document.relative_path,
+    doc_version: document.doc_version,
+    sha256: document.sha256,
     section: section ?? undefined,
     line_start: lineStart ?? undefined,
     line_end: lineEnd ?? undefined,
-    excerpt: excerpt ? truncate(excerpt, 160) : undefined,
+    page: null,
+    paragraph_index: null,
+    excerpt: verbatim && verbatim.length > 0 ? evidenceExcerpt ?? verbatim.slice(0, 200) : composed,
+    table: section ?? undefined,
   };
 }
 
@@ -247,14 +275,21 @@ function buildDocument(
   const entityNames = (payload?.attrs ?? [])
     .map((attr) => attr.entityLabel)
     .filter((label): label is string => Boolean(label));
-  return {
+  const document: DocumentRecord = {
     id: file.document_id,
     object_type: 'Document',
     name: meta.title,
     module,
     status: 'ACTIVE',
     source_refs: [
-      { document_id: file.document_id, file_path: file.relative_path, line_start: 1, excerpt: meta.title },
+      {
+        document_id: file.document_id,
+        file_path: file.relative_path,
+        doc_version: meta.version,
+        sha256: file.sha256,
+        line_start: 1,
+        excerpt: meta.title,
+      },
     ],
     created_by_parser_version: PARSER_VERSION,
     updated_at: now,
@@ -276,11 +311,25 @@ function buildDocument(
     section_count: markdown?.sections.length ?? 0,
     table_count: markdown?.tables.length ?? 0,
     last_scan_status: file.status,
+    scanned_at: now,
     parser: markdown ? 'markdown' : 'json',
     source_role: file.role,
     job_directory: file.job_directory,
-    is_latest: true,
+    supersedes: [],
+    superseded_by: null,
+    related_document_ids: [],
+    is_latest: false,
   };
+  if (markdown) {
+    DOCUMENT_LINES.set(document, markdown.lines);
+  } else {
+    try {
+      DOCUMENT_LINES.set(document, fs.readFileSync(file.absolute_path, 'utf8').split(/\r?\n/));
+    } catch {
+      DOCUMENT_LINES.set(document, []);
+    }
+  }
+  return document;
 }
 
 function buildEntities(document: DocumentRecord, seeds: EntitySeed[], now: string): Entity[] {
@@ -392,11 +441,16 @@ interface FieldSeed {
   lookupDesc: string | null;
   options: string[];
   validationText: string | null;
+  attributes: Record<string, string>;
+  attributeLines: Record<string, number>;
   line: number;
   section: string;
 }
 
-type FieldAttributes = Omit<FieldSeed, 'fieldNo' | 'label' | 'line' | 'section' | 'tabLabel' | 'entityNo'>;
+type FieldAttributes = Omit<
+  FieldSeed,
+  'fieldNo' | 'label' | 'line' | 'section' | 'tabLabel' | 'entityNo' | 'attributeLines'
+>;
 
 function parseFieldTable(map: Map<string, string>): FieldAttributes | null {
   if (!map.has('字段项') && !map.has('标题名')) return null;
@@ -421,6 +475,7 @@ function parseFieldTable(map: Map<string, string>): FieldAttributes | null {
       .map((item) => item.trim())
       .filter((item) => item.length > 0 && item !== '-'),
     validationText: map.get('校验项')?.trim() || map.get('输入说明')?.trim() || null,
+    attributes: Object.fromEntries([...map.entries()].filter(([, value]) => value.trim().length > 0)),
   };
 }
 
@@ -442,9 +497,15 @@ function extractFieldSeeds(markdown: MarkdownDocument): FieldSeed[] {
     if (!table) continue;
     const parsed = parseFieldTable(tableToKeyValue(table));
     if (!parsed) continue;
+    const attributeLines: Record<string, number> = {};
+    for (const row of table.rows) {
+      const key = (row.cells[0] ?? '').trim();
+      if (key && !attributeLines[key]) attributeLines[key] = row.line;
+    }
     seen.add(fieldNo);
     seeds.push({
       ...parsed,
+      attributeLines,
       fieldNo,
       label: match[1].trim(),
       entityNo: null,
@@ -477,6 +538,13 @@ function seedsFromPayload(payload: PrdJsonPayload): FieldSeed[] {
       lookupDesc: attr.lookupDesc,
       options: attr.options,
       validationText: attr.validation ?? attr.inputDesc,
+      attributes: {
+        ...(attr.title ? { 标题名: attr.title } : {}),
+        ...(attr.requiredCondition ? { 必填条件: attr.requiredCondition } : {}),
+        ...(attr.readonlyCondition ? { 只读条件: attr.readonlyCondition } : {}),
+        ...(attr.validation ? { 校验项: attr.validation } : {}),
+      },
+      attributeLines: { 字段项: 1 },
       line: 1,
       section: attr.entityLabel ?? '字段配置',
     };
@@ -535,6 +603,8 @@ function buildFields(
       lookup_desc: seed.lookupDesc,
       options: seed.options,
       validation_text: seed.validationText,
+      attributes: seed.attributes,
+      attribute_lines: seed.attributeLines,
       data_type: null,
       length: null,
       precision: null,
@@ -573,9 +643,14 @@ function makeRule(
   expected: string,
   section: string | null,
   line: number | null,
-  derivation: string | null
+  derivation: string | null,
+  sourceType?: SourceType,
+  conditions: string[] = []
 ): Rule {
   const pending = PENDING_PATTERN.test(description);
+  const resolved: SourceType = pending
+    ? 'PENDING'
+    : sourceType ?? (derivation ? 'PRD_DERIVED' : 'PRD_EXPLICIT');
   return {
     id: ruleId(document.id, key),
     object_type: 'Rule',
@@ -587,18 +662,73 @@ function makeRule(
     updated_at: document.updated_at,
     description: truncate(description, 300),
     rule_type: ruleType,
-    source_type: pending ? 'PENDING' : derivation ? 'PRD_DERIVED' : 'PRD_EXPLICIT',
-    confidence: pending ? 'AMBIGUOUS' : derivation ? 'DERIVED' : 'CONFIRMED',
+    source_type: resolved,
+    confidence: pending ? 'AMBIGUOUS' : resolved === 'PRD_EXPLICIT' ? 'CONFIRMED' : 'DERIVED',
     applies_to: entity ? [entity.id] : [],
     field_no: field?.field_no ?? null,
     field_name: field?.label ?? null,
     trigger,
-    conditions: [],
+    conditions,
     expected_result: truncate(expected, 200),
     derivation,
+    service_refs: [...new Set([...description.matchAll(API_PATTERN)].map((match) => match[0]))],
     document_id: document.id,
     open_question_ids: [],
   };
+}
+
+const PLACEHOLDER_TEXT = /^(无|无。|无（[^）]*）|无\([^)]*\)|-|—|\/|不适用|n\/a|none|null)$/i;
+const EXAMPLE_TEXT = /^(例|示例|例如|如)[:：]/;
+const API_FRAGMENT = /^(入参|回参|出参|入参说明|回参说明|返回参数|返回)[:：]/;
+const RULE_LIKE = /必须|须|不得|不可|不能|禁止|校验|限制|格式|唯一|重复|大于|小于|不超过|不少于|大于等于|小于等于|>=|<=|等于|默认|带出|回写|提示|报错|拦截|只读|隐藏|禁用|计算|换算/;
+
+function isPlaceholderValue(text: string): boolean {
+  const value = text.trim();
+  return value.length === 0 || PLACEHOLDER_TEXT.test(value);
+}
+
+function toConditions(...values: Array<string | null | undefined>): string[] {
+  const conditions: string[] = [];
+  for (const value of values) {
+    if (!value) continue;
+    for (const part of value.split(/[\n；;]/)) {
+      const item = part.trim().replace(/^[-*•]\s*/, '');
+      if (!item || isPlaceholderValue(item) || conditions.includes(item)) continue;
+      conditions.push(item);
+    }
+  }
+  return conditions.slice(0, 5);
+}
+
+function extractConditionClauses(text: string | null): string[] {
+  if (!text) return [];
+  return text
+    .split(/[。\n；;]/)
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0 && /(当|若|如果|一旦|只有|满足)[^，,]{1,60}(时|后|情况下)?/.test(item))
+    .slice(0, 3);
+}
+
+function splitValidationItems(text: string): string[] {
+  const segments = text
+    .split(/\r?\n|<br\s*\/?>/i)
+    .map((segment) => segment.replace(/^\s*[-*•]\s*/, '').trim())
+    .filter((segment) => segment.length > 0);
+  const items: string[] = [];
+  for (const segment of segments) {
+    if (items.length > 0 && (API_FRAGMENT.test(segment) || /^(其中|接口|说明)[:：]/.test(segment))) {
+      items[items.length - 1] = `${items[items.length - 1]}；${segment}`;
+      continue;
+    }
+    items.push(segment.replace(/^\s*\d+[.、)]\s*/, '').trim());
+  }
+  return items.filter(
+    (item) =>
+      !isPlaceholderValue(item) &&
+      !EXAMPLE_TEXT.test(item) &&
+      !API_FRAGMENT.test(item) &&
+      (RULE_LIKE.test(item) || /^调用接口/.test(item))
+  );
 }
 
 function buildFieldRules(
@@ -615,21 +745,25 @@ function buildFieldRules(
     const line = ref?.line_start ?? null;
     const section = ref?.section ?? null;
     const base = `${field.entity_no ?? ''}.${field.field_no ?? field.label}`;
+    const attrLine = (key: string): number | null => field.attribute_lines[key] ?? line;
+    const attrValue = (key: string): string => (field.attributes[key] ?? '').trim();
     if (field.required) {
       rules.push(
         makeRule(
           document,
           `${base}|REQUIRED`,
           `${field.label} 必填`,
-          `【${field.label}(${field.field_no ?? ''})】必填${field.required_condition ? `：${field.required_condition}` : ''}`,
+          `【${field.label}(${field.field_no ?? ''})】${attrValue('是否必填') || '必填'}${field.required_condition ? `；必填条件：${field.required_condition}` : ''}`,
           'REQUIRED',
           field,
           entity,
           'SAVE',
           '为空时保存应被拦截',
           section,
-          line,
-          field.required_condition ? null : '由「是否必填=是」直接映射'
+          attrLine('是否必填'),
+          '由字段属性行「是否必填」直接映射',
+          'PRD_EXPLICIT',
+          toConditions(field.required_condition)
         )
       );
     }
@@ -639,15 +773,17 @@ function buildFieldRules(
           document,
           `${base}|READONLY`,
           `${field.label} 只读`,
-          `【${field.label}(${field.field_no ?? ''})】只读${field.readonly_condition ? `：${field.readonly_condition}` : ''}`,
+          `【${field.label}(${field.field_no ?? ''})】${attrValue('是否只读') || '只读'}${field.readonly_condition ? `；只读条件：${field.readonly_condition}` : ''}`,
           'READONLY',
           field,
           entity,
           'FORM_OPEN',
           '字段不可编辑',
           section,
-          line,
-          null
+          attrLine('是否只读'),
+          '由字段属性行「是否只读」直接映射',
+          'PRD_EXPLICIT',
+          toConditions(field.readonly_condition)
         )
       );
     }
@@ -657,15 +793,17 @@ function buildFieldRules(
           document,
           `${base}|HIDDEN`,
           `${field.label} 隐藏`,
-          `【${field.label}(${field.field_no ?? ''})】隐藏`,
+          `【${field.label}(${field.field_no ?? ''})】${attrValue('是否隐藏') || '隐藏'}`,
           'HIDDEN',
           field,
           entity,
           'FORM_OPEN',
           '字段不展示',
           section,
-          line,
-          null
+          attrLine('是否隐藏'),
+          '由字段属性行「是否隐藏」直接映射',
+          'PRD_EXPLICIT',
+          toConditions(field.attributes['是否隐藏'])
         )
       );
     }
@@ -682,12 +820,14 @@ function buildFieldRules(
           'FORM_OPEN',
           '条件成立时字段不可用',
           section,
-          line,
-          null
+          attrLine('是否禁用'),
+          '由字段属性行「是否禁用」与禁用条件组合映射',
+          'PRD_EXPLICIT',
+          toConditions(field.disabled_condition)
         )
       );
     }
-    if (field.default_value) {
+    if (field.default_value && !isPlaceholderValue(field.default_value)) {
       rules.push(
         makeRule(
           document,
@@ -700,12 +840,14 @@ function buildFieldRules(
           field.default_timing ?? 'FORM_OPEN',
           `默认值：${truncate(field.default_value, 80)}`,
           section,
-          line,
-          null
+          attrLine('默认值'),
+          '由字段属性行「默认值」直接映射',
+          'PRD_EXPLICIT',
+          toConditions(field.default_timing)
         )
       );
     }
-    if (field.lookup_desc) {
+    if (field.lookup_desc && !isPlaceholderValue(field.lookup_desc)) {
       rules.push(
         makeRule(
           document,
@@ -718,28 +860,33 @@ function buildFieldRules(
           'EDIT',
           `开窗：${(/开窗标题[：:]\s*([^\n<]+)/.exec(field.lookup_desc)?.[1] ?? '按开窗说明').trim()}`,
           section,
-          line,
-          null
+          attrLine('开窗说明') ?? attrLine('开窗类型'),
+          '由字段属性行「开窗类型/开窗说明」直接映射',
+          'PRD_EXPLICIT',
+          extractConditionClauses(field.attributes['开窗说明'] ?? null)
         )
       );
     }
     if (field.validation_text) {
-      const items = splitItems(field.validation_text).filter((item) => !isFlagRestatement(item));
+      const items = splitValidationItems(field.validation_text).filter((item) => !isFlagRestatement(item));
       for (const [index, item] of items.slice(0, 4).entries()) {
+        const isService = /调用接口|bm\.|接口/.test(item);
         rules.push(
           makeRule(
             document,
             `${base}|VALIDATION|${index}`,
             `${field.label} 校验`,
             `【${field.label}(${field.field_no ?? ''})】${item}`,
-            classifyRule(item),
+            isService ? 'API_CONTRACT' : classifyRule(item),
             field,
             entity,
             'SAVE',
-            '按校验规则拦截或提示',
+            isService ? '按平台服务返回结果决定是否放行' : '按校验规则拦截或提示',
             section,
-            line,
-            null
+            attrLine('校验项'),
+            isService ? '由字段属性行「校验项」中的平台服务调用映射' : '由字段属性行「校验项」直接映射',
+            isService ? 'PLATFORM_SERVICE' : 'PRD_EXPLICIT',
+            extractConditionClauses(item)
           )
         );
         if (rules.length >= limit) break;
@@ -767,6 +914,11 @@ function buildActions(document: DocumentRecord, markdown: MarkdownDocument, now:
     const preCheck = map.get('操作前校验') ?? null;
     const processing = map.get('操作中处理') ?? null;
     const post = map.get('操作后处理') ?? null;
+    const phaseLines: Record<string, number> = {};
+    for (const row of table.rows) {
+      const key = (row.cells[0] ?? '').trim();
+      if (key && !phaseLines[key]) phaseLines[key] = row.line;
+    }
     actions.push({
       id: actionId(document.id, name),
       object_type: 'Action',
@@ -784,6 +936,7 @@ function buildActions(document: DocumentRecord, markdown: MarkdownDocument, now:
       processing,
       post_processing: post,
       apis: [...new Set([...extractApis(preCheck), ...extractApis(processing), ...extractApis(post)])],
+      phase_lines: phaseLines,
       document_id: document.id,
     });
   }
@@ -814,6 +967,7 @@ function actionsFromPayload(document: DocumentRecord, payload: PrdJsonPayload, n
         ...extractApis(operation.postAction),
       ]),
     ],
+    phase_lines: { 可用条件: 1, 操作前校验: 1, 操作中处理: 1, 操作后处理: 1 },
     document_id: document.id,
   }));
 }
@@ -832,19 +986,26 @@ function buildActionRules(document: DocumentRecord, actions: Action[], limit: nu
     ];
     for (const [phase, text] of phases) {
       const items = splitItems(text).filter((item) => {
-        if (phase === 'AVAILABILITY') return item.length >= 3;
+        if (phase === 'AVAILABILITY') return !isPlaceholderValue(item) && item.length >= 3;
         if (phase === 'PRECHECK') return true;
         return ruleish.test(item);
       });
       for (const [index, item] of items.slice(0, 3).entries()) {
         const label =
           phase === 'PRECHECK' ? '前置校验' : phase === 'POST' ? '后置处理' : phase === 'AVAILABILITY' ? '可用条件' : '处理';
+        const isService = /调用接口|bm\.[a-z0-9_]+\.[a-z0-9_]+/i.test(item);
+        const isDisplayOnly = phase === 'AVAILABILITY' && /^(隐藏|不显示|不可见)/.test(item);
         const ruleType: RuleType =
-          phase === 'AVAILABILITY'
+          isService
+            ? 'API_CONTRACT'
+            : isDisplayOnly
+              ? 'HIDDEN'
+              : phase === 'AVAILABILITY'
             ? 'PERMISSION'
             : /取单|回写|来源单据/.test(item)
               ? 'WORKFLOW'
               : classifyRule(item);
+        const phaseKey = phase === 'AVAILABILITY' ? '可用条件' : phase === 'PRECHECK' ? '操作前校验' : phase === 'PROCESSING' ? '操作中处理' : '操作后处理';
         rules.push(
           makeRule(
             document,
@@ -855,10 +1016,22 @@ function buildActionRules(document: DocumentRecord, actions: Action[], limit: nu
             null,
             null,
             action.action_name,
-            phase === 'PRECHECK' ? '校验不通过则操作被拦截' : '按操作说明执行',
+            isService
+              ? '按平台服务调用结果决定是否继续'
+              : isDisplayOnly
+                ? '按钮或区域不显示'
+                : phase === 'PRECHECK'
+                  ? '校验不通过则操作被拦截'
+                  : '按操作说明执行',
             action.name,
-            action.source_refs[0]?.line_start ?? null,
-            phase === 'PROCESSING' ? '由操作说明中的处理步骤映射' : null
+            action.phase_lines[phaseKey] ?? action.source_refs[0]?.line_start ?? null,
+            isService
+              ? '由操作说明中的平台服务调用映射'
+              : phase === 'PROCESSING'
+                ? '由操作说明中的处理步骤映射'
+                : '由操作说明中的控制项映射',
+            isService ? 'PLATFORM_SERVICE' : 'PRD_DERIVED',
+            extractConditionClauses(item)
           )
         );
         if (rules.length >= limit) return rules;
@@ -879,17 +1052,31 @@ function buildWorkflow(
   );
   if (!table) return null;
   const indexOf = (pattern: RegExp): number => table.header.findIndex((header) => pattern.test(header));
-  const seqIndex = indexOf(/^序|序号|步骤/);
-  const stepIndex = indexOf(/环节|步骤|节点/);
-  const descIndex = indexOf(/说明|描述|内容/);
+  const seqIndex = indexOf(/^(序|序号|步骤|步骤序号|编号)$/);
+  const stepIndex = table.header.findIndex(
+    (header, index) => index !== seqIndex && /^(环节|环节名称|操作步骤|步骤名称|节点名称|动作|操作)$/.test(header)
+  );
+  const descIndex = indexOf(/^(说明|描述|处理|内容|处理说明)$/);
   const exceptionIndex = indexOf(/异常|分支|备注/);
-  if (stepIndex < 0 && descIndex < 0) return null;
+  const nodeIndex = table.header.findIndex(
+    (header, index) => index !== stepIndex && /^(单据节点|节点|业务对象|单据)$/.test(header)
+  );
+  const actorIndex = indexOf(/触发方|角色|执行方|操作方/);
+  const preIndex = table.header.findIndex((header) => /前置|输入/.test(header));
+  const outputIndex = indexOf(/^输出|产出|结果/);
+  const nextIndex = indexOf(/下一步|后续|下一环节/);
+  if (stepIndex < 0) return null;
   const steps: WorkflowStep[] = table.rows
     .map((row, rowIndex) => ({
       seq: seqIndex >= 0 ? row.cells[seqIndex] ?? String(rowIndex + 1) : String(rowIndex + 1),
-      step: stepIndex >= 0 ? row.cells[stepIndex] ?? '' : '',
+      step: row.cells[stepIndex] ?? '',
       description: descIndex >= 0 ? row.cells[descIndex] ?? '' : '',
       exception: exceptionIndex >= 0 ? row.cells[exceptionIndex] ?? '' : '',
+      node_name: nodeIndex >= 0 ? row.cells[nodeIndex] ?? '' : undefined,
+      actor: actorIndex >= 0 ? row.cells[actorIndex] ?? '' : undefined,
+      precondition: preIndex >= 0 ? row.cells[preIndex] ?? '' : undefined,
+      output: outputIndex >= 0 ? row.cells[outputIndex] ?? '' : undefined,
+      next_step: nextIndex >= 0 ? row.cells[nextIndex] ?? '' : undefined,
     }))
     .filter((step) => step.step || step.description);
   if (steps.length === 0) return null;
@@ -924,6 +1111,15 @@ function buildDependencies(
       for (const target of targets) {
         if (seen.has(target)) continue;
         seen.add(target);
+        const mappingMatch = /([\u4e00-\u9fa5A-Za-z0-9_]{2,20})\s*(?:←|<-|取自|=|对应为)\s*([\u4e00-\u9fa5A-Za-z0-9_.]{2,30})/.exec(text);
+        const looksLikeEntity = /^[\u4e00-\u9fa5]/.test(target);
+        const relationType = !looksLikeEntity
+          ? 'REFERENCES'
+          : /回写|写回|更新下游/.test(text)
+            ? 'GENERATES'
+            : /取单|来源单据|依据.*选择|带入/.test(text)
+              ? 'DERIVED_FROM'
+              : 'REFERENCES';
         dependencies.push({
           id: dependencyId(document.id, `dep:${target}`),
           object_type: 'Dependency',
@@ -936,8 +1132,8 @@ function buildDependencies(
           source_id: document.id,
           target_id: null,
           target_ref: target,
-          relation_type: 'REFERENCES',
-          mapping: null,
+          relation_type: relationType,
+          mapping: mappingMatch ? `${mappingMatch[1].trim()} ← ${mappingMatch[2].trim()}` : null,
           source_type: 'PRD_DERIVED',
           confidence: 'DERIVED',
           document_id: document.id,
@@ -991,7 +1187,9 @@ function buildStateRules(
           `状态变为 ${to || '按状态机表格'}`,
           table.sectionPath.join(' / '),
           row.line,
-          from || to ? null : '状态机表格缺少状态列'
+          from || to ? null : '状态机表格缺少状态列',
+          'PRD_EXPLICIT',
+          from ? [`起始状态：${from}`] : []
         )
       );
       if (rules.length >= 60) return rules;

@@ -142,31 +142,55 @@ const TYPE_PRIORITY = [
   'HIDDEN',
 ];
 
-function toScenario(key: string, rules: Rule[], entityById: Map<string, Entity>): Scenario {
+function toScenario(
+  key: string,
+  rules: Rule[],
+  entityById: Map<string, Entity>,
+  caseIdsByRule: Map<string, string[]>
+): Scenario {
   const primary = rules[0];
   const template = TEMPLATES[primary.rule_type] ?? DEFAULT_TEMPLATE;
   const label = primary.field_name ?? primary.name;
   const fieldNo = primary.field_no ?? '';
   const entity = primary.applies_to.map((id) => entityById.get(id)).find((item): item is Entity => Boolean(item));
+  const platformOnly = rules.every((rule) => rule.source_type === 'PLATFORM_SERVICE');
+  const unconfirmed = rules.some((rule) => rule.source_type !== 'PRD_EXPLICIT' || rule.confidence !== 'CONFIRMED');
+  const feasibility: AutomationFeasibility = platformOnly
+    ? 'NOT_UI_OBSERVABLE'
+    : unconfirmed
+      ? 'NEEDS_CONFIRMATION'
+      : 'NEEDS_UI_EXPLORATION';
+  const assertion = template.assertion(primary, label);
+  const caseIds = [...new Set(rules.flatMap((rule) => caseIdsByRule.get(rule.id) ?? []))];
+  const conditions = [...new Set(rules.flatMap((rule) => rule.conditions))].slice(0, 3);
+  const preconditions = [
+    `准备业务对象「${entity?.label ?? primary.module}」的可编辑数据（新增态或未审核态）`,
+    ...conditions.map((condition) => `满足前置条件：${condition}`),
+    `使用具备该作业操作权限的账号进入页面`,
+  ];
   return {
     id: scenarioId(key),
     object_type: 'Scenario',
     name: primary.name,
     title: `${entity?.label ?? primary.module} / ${label} / ${template.scenarioType}`,
+    test_objective: `验证${entity?.label ?? primary.module}「${label}」的${template.scenarioType}规则：${primary.description}`,
     module: primary.module,
     status: 'DRAFT',
     source_refs: primary.source_refs,
     created_by_parser_version: PARSER_VERSION,
     updated_at: primary.updated_at,
     scenario_type: template.scenarioType,
-    automation_feasibility: template.feasibility,
+    automation_feasibility: feasibility,
     business_object: entity?.label ?? null,
-    preconditions: [`前置数据：${entity?.label ?? primary.module} 可进入新增/编辑页面`],
-    data_requirements: [`字段 ${label}(${fieldNo}) 需可操作`],
+    preconditions,
+    data_requirements: [`字段 ${label}(${fieldNo}) 需存在于表单并可操作`, ...conditions.map((condition) => `条件数据：${condition}`)],
     steps: template.steps(label, fieldNo),
-    assertions: [template.assertion(primary, label)],
+    assertions: [assertion],
+    expected_result: primary.expected_result ?? assertion.expected,
+    evidence_requirements: ['运行时截图', 'DOM 快照', '关键请求与响应日志'],
     rule_ids: rules.map((rule) => rule.id),
     document_ids: [...new Set(rules.map((rule) => rule.document_id))],
+    case_ids: caseIds,
     review_required: true,
     origin: 'GENERATED',
   };
@@ -175,7 +199,8 @@ function toScenario(key: string, rules: Rule[], entityById: Map<string, Entity>)
 export function generateScenarios(
   bundle: KnowledgeBundle,
   latestDocumentIds: Set<string>,
-  maxScenarios = 12000
+  maxScenarios = 12000,
+  caseIdsByRule: Map<string, string[]> = new Map()
 ): Scenario[] {
   const entityById = new Map<string, Entity>(bundle.entities.map((entity) => [entity.id, entity]));
   const grouped = new Map<string, Rule[]>();
@@ -207,7 +232,7 @@ export function generateScenarios(
     for (const type of orderedTypes) {
       const entry = (byType.get(type) ?? [])[round];
       if (!entry) continue;
-      scenarios.push(toScenario(entry[0], entry[1], entityById));
+      scenarios.push(toScenario(entry[0], entry[1], entityById, caseIdsByRule));
       added = true;
       if (scenarios.length >= maxScenarios) break;
     }

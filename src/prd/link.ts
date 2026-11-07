@@ -41,6 +41,13 @@ export function mergeEntities(entities: Entity[]): Entity[] {
   return [...merged.values()].sort((left, right) => left.name.localeCompare(right.name, 'zh-CN'));
 }
 
+export function versionFromFileName(fileName: string): string | null {
+  const prdNamed = /PRD[.\-_]v(\d+(?:\.\d+)*)/i.exec(fileName);
+  if (prdNamed) return prdNamed[1];
+  const docNamed = /_V(\d+(?:\.\d+)*)\.(?:md|markdown|txt)$/i.exec(fileName);
+  return docNamed ? docNamed[1] : null;
+}
+
 export function detectVersionConflicts(documents: DocumentRecord[], now: string): OpenQuestion[] {
   const groups = new Map<string, DocumentRecord[]>();
   for (const document of documents) {
@@ -53,7 +60,8 @@ export function detectVersionConflicts(documents: DocumentRecord[], now: string)
   }
   const questions: OpenQuestion[] = [];
   for (const [key, list] of groups) {
-    const versions = [...new Set(list.map((item) => item.doc_version).filter((item): item is string => Boolean(item)))];
+    const formal = list.filter((item) => !/\/_(diff|upload|review)\//.test(item.relative_path));
+    const versions = [...new Set(formal.map((item) => item.doc_version).filter((item): item is string => Boolean(item)))];
     if (versions.length < 2) continue;
     const sorted = [...versions].sort(compareVersions);
     const latest = sorted[sorted.length - 1];
@@ -63,8 +71,8 @@ export function detectVersionConflicts(documents: DocumentRecord[], now: string)
       question: `${key} 存在多个文档版本：${sorted.join(', ')}，候选最新版本为 v${latest}，需确认生效版本`,
       category: 'VERSION_CONFLICT',
       severity: 'HIGH',
-      document_ids: list.map((item) => item.id),
-      evidence: list.map((item) => `${item.relative_path} (v${item.doc_version ?? 'UNKNOWN'})`),
+      document_ids: formal.map((item) => item.id),
+      evidence: formal.map((item) => `${item.relative_path} (v${item.doc_version ?? 'UNKNOWN'})`),
       impact: '规则可能随版本变化，按旧版建模会产生过期断言',
       suggested_owner: 'PRD 负责人',
       status: 'OPEN',
@@ -211,6 +219,9 @@ export function markLatestDocuments(documents: DocumentRecord[], fieldDocumentId
     }
     const pool = withFields;
     const sorted = [...pool].sort((left, right) => {
+      const leftPresent = left.last_scan_status === 'SOURCE_MISSING' ? 0 : 1;
+      const rightPresent = right.last_scan_status === 'SOURCE_MISSING' ? 0 : 1;
+      if (leftPresent !== rightPresent) return leftPresent - rightPresent;
       const versionCompare = compareVersions(left.doc_version ?? '0', right.doc_version ?? '0');
       if (versionCompare !== 0) return versionCompare;
       const dateCompare = (left.doc_date ?? '').localeCompare(right.doc_date ?? '');
@@ -221,7 +232,22 @@ export function markLatestDocuments(documents: DocumentRecord[], fieldDocumentId
     });
     const winner = sorted[sorted.length - 1];
     if (!winner) continue;
+    if (winner.last_scan_status === 'SOURCE_MISSING') {
+      for (const document of list) {
+        document.is_latest = false;
+        document.superseded_by = null;
+        document.supersedes = [];
+      }
+      continue;
+    }
     latest.add(winner.id);
+    winner.supersedes = list.filter((item) => item.id !== winner.id).map((item) => item.id);
+    winner.superseded_by = null;
+    for (const document of list) {
+      if (document.id === winner.id) continue;
+      document.superseded_by = winner.id;
+      document.supersedes = [];
+    }
     for (const document of list) document.is_latest = document.id === winner.id;
   }
   return latest;

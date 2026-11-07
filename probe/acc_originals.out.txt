@@ -1,0 +1,905 @@
+
+====================================================================================================
+FILE for RULE-CB7323C0CD49 | 扣已入库量 校验 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货单/采购退货单PRD.v1.11.md
+TOTAL_LINES 2569
+------------------------------------------------------------------------------------------
+--- lines 2245..2270 ---
+ 2245| | 禁用条件 |  |
+ 2246| | 是否启用其他条件 | ✅ 否 |
+ 2247| | 其他条件格式 |  |
+ 2248| | 默认值 | 1. DEFAULT 【采购退货单明细.出库结束码(pur_rtn_doc_d.stkou_end_code)】 = '0.未结束'<br/>时机点：默认执行时<br/>2. 由采购退货出库单回写。<br/>时机点：编辑执行时 |
+ 2249| | 开窗类型 | 无 |
+ 2250| | 开窗说明 |  |
+ 2251| | 输入说明 |  |
+ 2252| | 下拉项 | 0.未结束，1.指定结束，2.已结束 |
+ 2253| | 校验项 |  |
+ 2254| 
+ 2255| ##### 扣已入库量 (ded_alr_stkin_qty)
+ 2256| 
+ 2257| | 字段项 | 详细内容 |
+ 2258| | --- | --- |
+ 2259| | 标题名 | 扣已入库量 |
+ 2260| | 填值方式 | ✅ 开关 |
+ 2261| | 字段含义 | 扣已入库量 |
+ 2262| | 是否必填 | ✅ 否 |
+ 2263| | 必填条件 |  |
+ 2264| | 是否只读 | ✅ 否 |
+ 2265| | 只读条件 |  |
+ 2266| | 是否隐藏 | ✅ 是 |
+ 2267| | 隐藏条件 |  |
+ 2268| | 是否禁用 | ✅ 否 |
+ 2269| | 禁用条件 |  |
+ 2270| | 是否启用其他条件 | ✅ 否 |
+VERBATIM_CHECK RULE-CB7323C0CD49 body: needle_len=40 hits=[2275] total=1
+  reported_line=2255 near_hits=[]
+VERBATIM_CHECK RULE-CB7323C0CD49 full-desc: needle_len=40 hits=[] total=0
+  reported_line=2255 near_hits=[]
+
+====================================================================================================
+FILE for RULE-BD4E7E4BDC75 | 结算运营单元编号 开窗 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货单/采购退货单PRD.v1.11.md
+TOTAL_LINES 2569
+------------------------------------------------------------------------------------------
+--- lines 850..880 ---
+  850| | 是否启用其他条件 | ✅ 否 |
+  851| | 其他条件格式 |  |
+  852| | 默认值 | '1.未出库'。<br/>时机点：默认执行时 |
+  853| | 开窗类型 | 无 |
+  854| | 开窗说明 |  |
+  855| | 输入说明 |  |
+  856| | 下拉项 | 0.不需出库;1.未出库;2.部分出库;3.出库结束 |
+  857| | 校验项 |  |
+  858| 
+  859| ##### 结算运营单元编号 (stlmt_ops_unit_no)
+  860| 
+  861| | 字段项 | 详细内容 |
+  862| | --- | --- |
+  863| | 标题名 | 结算运营单元 |
+  864| | 填值方式 | ✅ 开窗选择器 |
+  865| | 字段含义 | 结算运营单元编号 |
+  866| | 是否必填 | ✅ 是 |
+  867| | 必填条件 |  |
+  868| | 是否只读 | ✅ 是 |
+  869| | 只读条件 | IF 【采购退货单】有明细行 THEN 只读 ENDIF |
+  870| | 是否隐藏 | ✅ 否 |
+  871| | 隐藏条件 |  |
+  872| | 是否禁用 | ✅ 否 |
+  873| | 禁用条件 |  |
+  874| | 是否启用其他条件 | ✅ 否 |
+  875| | 其他条件格式 |  |
+  876| | 默认值 | 调用接口：查询默认运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_def)<br/>入参：运营单元协作关系.委托方运营单元编号(ops_unit_coop_rela.trstor_ops_unit_no) = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 AND 运营单元协作关系.状态(ops_unit_coop_rela.manage_status) = 'Y.生效' AND 运营单元协作关系.运营单元协作编号(ops_unit_coop_rela.ops_unit_coop_no) = '030采购组织委托结算'<br/>回参：运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)<br/>DEFAULT 【采购退货单.结算运营单元编号(pur_rtn_doc.stlmt_ops_unit_no)】 = 运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)<br/>时机点：编辑执行时 |
+  877| | 开窗类型 | 单选 |
+  878| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询受托方运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig) 接口<br/>- 入参条件：运营单元协作关系.委托方运营单元编号(ops_unit_coop_rela.trstor_ops_unit_no) = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 AND 运营单元协作关系.运营单元协作编号(ops_unit_coop_rela.ops_unit_coop_no) = '030采购组织委托结算' AND 运营单元协作关系.状态(ops_unit_coop_rela.manage_status) = 'Y.生效'<br/>- 显示字段：运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)、运营单元协作关系.受托方运营单元名称(ops_unit_coop_rela.trstee_ops_unit_name)<br/>- 默认排序：运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no) 升序<br/>- 回填映射：[运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)] →【采购退货单.结算运营单元编号(pur_rtn_doc.stlmt_ops_unit_no)】 |
+  879| | 输入说明 |  |
+  880| | 下拉项 |  |
+VERBATIM_CHECK RULE-BD4E7E4BDC75 body: needle_len=40 hits=[] total=0
+  reported_line=859 near_hits=[]
+VERBATIM_CHECK RULE-BD4E7E4BDC75 full-desc: needle_len=40 hits=[] total=0
+  reported_line=859 near_hits=[]
+
+====================================================================================================
+FILE for RULE-FD086AEB558E | 结算运营单元编号 只读 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货单/采购退货单PRD.v1.11.md
+TOTAL_LINES 2569
+------------------------------------------------------------------------------------------
+--- lines 850..880 ---
+  850| | 是否启用其他条件 | ✅ 否 |
+  851| | 其他条件格式 |  |
+  852| | 默认值 | '1.未出库'。<br/>时机点：默认执行时 |
+  853| | 开窗类型 | 无 |
+  854| | 开窗说明 |  |
+  855| | 输入说明 |  |
+  856| | 下拉项 | 0.不需出库;1.未出库;2.部分出库;3.出库结束 |
+  857| | 校验项 |  |
+  858| 
+  859| ##### 结算运营单元编号 (stlmt_ops_unit_no)
+  860| 
+  861| | 字段项 | 详细内容 |
+  862| | --- | --- |
+  863| | 标题名 | 结算运营单元 |
+  864| | 填值方式 | ✅ 开窗选择器 |
+  865| | 字段含义 | 结算运营单元编号 |
+  866| | 是否必填 | ✅ 是 |
+  867| | 必填条件 |  |
+  868| | 是否只读 | ✅ 是 |
+  869| | 只读条件 | IF 【采购退货单】有明细行 THEN 只读 ENDIF |
+  870| | 是否隐藏 | ✅ 否 |
+  871| | 隐藏条件 |  |
+  872| | 是否禁用 | ✅ 否 |
+  873| | 禁用条件 |  |
+  874| | 是否启用其他条件 | ✅ 否 |
+  875| | 其他条件格式 |  |
+  876| | 默认值 | 调用接口：查询默认运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_def)<br/>入参：运营单元协作关系.委托方运营单元编号(ops_unit_coop_rela.trstor_ops_unit_no) = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 AND 运营单元协作关系.状态(ops_unit_coop_rela.manage_status) = 'Y.生效' AND 运营单元协作关系.运营单元协作编号(ops_unit_coop_rela.ops_unit_coop_no) = '030采购组织委托结算'<br/>回参：运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)<br/>DEFAULT 【采购退货单.结算运营单元编号(pur_rtn_doc.stlmt_ops_unit_no)】 = 运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)<br/>时机点：编辑执行时 |
+  877| | 开窗类型 | 单选 |
+  878| | 开窗说明 | - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询受托方运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig) 接口<br/>- 入参条件：运营单元协作关系.委托方运营单元编号(ops_unit_coop_rela.trstor_ops_unit_no) = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 AND 运营单元协作关系.运营单元协作编号(ops_unit_coop_rela.ops_unit_coop_no) = '030采购组织委托结算' AND 运营单元协作关系.状态(ops_unit_coop_rela.manage_status) = 'Y.生效'<br/>- 显示字段：运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)、运营单元协作关系.受托方运营单元名称(ops_unit_coop_rela.trstee_ops_unit_name)<br/>- 默认排序：运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no) 升序<br/>- 回填映射：[运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)] →【采购退货单.结算运营单元编号(pur_rtn_doc.stlmt_ops_unit_no)】 |
+  879| | 输入说明 |  |
+  880| | 下拉项 |  |
+VERBATIM_CHECK RULE-FD086AEB558E body: needle_len=31 hits=[] total=0
+  reported_line=859 near_hits=[]
+VERBATIM_CHECK RULE-FD086AEB558E full-desc: needle_len=40 hits=[] total=0
+  reported_line=859 near_hits=[]
+
+====================================================================================================
+FILE for RULE-0D46D8D5D4B4 | 运营单元编号 必填 | PRD_DERIVED
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货单/采购退货单PRD.v1.11.md
+TOTAL_LINES 2569
+------------------------------------------------------------------------------------------
+--- lines 200..225 ---
+  200| | 筛选描述 | 采购退货单号（模糊匹配）｜供应商编号（开窗）｜单据日期（区间）｜出库状态（下拉） |
+  201| 
+  202| ### 采购退货单-新版详情页
+  203| 
+  204| 
+  205| #### 1. 基本信息
+  206| 
+  207| ##### 运营单元编号 (ops_unit_no)
+  208| 
+  209| | 字段项 | 详细内容 |
+  210| | --- | --- |
+  211| | 标题名 | 运营单元 |
+  212| | 填值方式 | ✅ 开窗选择器 |
+  213| | 字段含义 | 运营单元编号 |
+  214| | 是否必填 | ✅ 是 |
+  215| | 必填条件 |  |
+  216| | 是否只读 | ✅ 是 |
+  217| | 只读条件 | IF 【采购退货单】有明细行 THEN 只读 ENDIF |
+  218| | 是否隐藏 | ✅ 否 |
+  219| | 隐藏条件 |  |
+  220| | 是否禁用 | ✅ 否 |
+  221| | 禁用条件 |  |
+  222| | 是否启用其他条件 | ✅ 否 |
+  223| | 其他条件格式 |  |
+  224| | 默认值 | 调用接口：查询员工(bm.empl.get)<br/>入参：[员工.用户编号(empl.user_no)] = 当前系统用户<br/>回参：[员工.归属运营单元编号(empl.blng_ops_unit_no)]<br/>调用接口：查询运营单元(bm.ops_unit.get)<br/>入参：[运营单元.运营单元编号(ops_unit.ops_unit_no)] = [员工.归属运营单元编号(empl.blng_ops_unit_no)]<br/>回参：[运营单元.职能编号(ops_unit.func_no)]<br/>IF [运营单元.职能编号(ops_unit.func_no)] IN ('purc_org') THEN<br/>DEFAULT 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 = [员工.归属运营单元编号(empl.blng_ops_unit_no)]<br/>ENDIF<br/>时机点：默认执行时 |
+  225| | 开窗类型 | 单选 |
+VERBATIM_CHECK RULE-0D46D8D5D4B4 body: needle_len=2 hits=[27, 45, 54, 66, 67, 86, 87, 88, 89, 90, 91, 93] total=205
+  reported_line=207 near_hits=[214, 215]
+VERBATIM_CHECK RULE-0D46D8D5D4B4 full-desc: needle_len=23 hits=[] total=0
+  reported_line=207 near_hits=[]
+
+====================================================================================================
+FILE for RULE-B015B0F41E60 | 明细操作 可用条件 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\询价单/询价单PRD.v1.8.md
+TOTAL_LINES 1476
+------------------------------------------------------------------------------------------
+--- lines 1412..1432 ---
+ 1412| 
+ 1413| | 控制项 | 说明 |
+ 1414| | --- | --- |
+ 1415| | 可用条件 | IF 【询价单.状态(inq_doc.manage_status)】 = Y.已审核 THEN Enable ELSE Disable ENDIF |
+ 1416| | 展示设置 | 列表、详情 |
+ 1417| | 操作前校验 | 无 |
+ 1418| | 操作中处理 | - |
+ 1419| | 操作后处理 | 以当前单为源新建一张未审核单据：复制单头的运营单元、单别、供应商、币种、含税、采购员、采购部门、询价日期、备注，以及全部询价单明细与询价分量计价明细；单号清空并按单别自动编码方式重新取号；单据日期 = 系统日期；状态 = N.未审核；审核人、审核日期不复制；明细序号、次序号重排；来源单号、来源序号保留以便追溯 |
+ 1420| 
+ 1421| ### 明细操作
+ 1422| 
+ 1423| #### 新增明细行
+ 1424| 
+ 1425| | 控制项 | 说明 |
+ 1426| | --- | --- |
+ 1427| | 可用条件 | IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF |
+ 1428| | 展示设置 | 询价单明细 |
+ 1429| | 操作前校验 | 无 |
+ 1430| | 操作中处理 | - |
+ 1431| | 操作后处理 | 在询价单明细末尾插入空白行：序号按流水号生成；生效日期默认系统日期（连续新增时取上一笔）；议价状态取业务类型采购参数；核定按议价状态带出；含税取单头；数量、单价、金额默认 0 |
+ 1432| 
+VERBATIM_CHECK RULE-B015B0F41E60 body: needle_len=40 hits=[1325, 1335, 1345, 1355, 1395, 1405, 1427, 1437, 1447, 1457] total=10
+  reported_line=1421 near_hits=[1427]
+VERBATIM_CHECK RULE-B015B0F41E60 full-desc: needle_len=40 hits=[] total=0
+  reported_line=1421 near_hits=[]
+
+====================================================================================================
+FILE for RULE-FDB3C16FE60D | 单据日期 校验 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\询价单/询价单PRD.v1.8.md
+TOTAL_LINES 1476
+------------------------------------------------------------------------------------------
+--- lines 238..268 ---
+  238| | 是否启用其他条件 | ✅ 是 |
+  239| | 其他条件格式 | IF 【询价单.自动编码方式(inq_doc.CUS_auto_code_mode)】 <> 7.手工输入 THEN 跳离(TabStop=False) ENDIF |
+  240| | 默认值 | 调用接口：自动生单号服务(bm.biz_type_gen_info.auto_gnrt_doc_no.process)<br/>使用模型：业务类型信息(biz_type_gen_info)<br/>入参：业务类型信息.业务类型编号(biz_type_gen_info.biz_type_no) = 【询价单.业务类型编号(inq_doc.biz_type_no)】<br/>      业务类型信息.单据日期(biz_type_gen_info.doc_date) = 【询价单.单据日期(inq_doc.doc_date)】<br/>回参：业务类型信息.单号(biz_type_gen_info.doc_no)<br/>DEFAULT 【询价单.单号(inq_doc.doc_no)】 = 业务类型信息.单号(biz_type_gen_info.doc_no)<br/>时机点：编辑执行时 |
+  241| | 开窗类型 | 无 |
+  242| | 开窗说明 |  |
+  243| | 输入说明 | 自动编码方式由单头虚拟字段 自动编码方式(CUS_auto_code_mode) 承载，取值来自 业务类型通用信息.自动编码方式；IF 【询价单.自动编码方式(inq_doc.CUS_auto_code_mode)】 = 7.手工输入 THEN 单号须自行输入 ENDIF。单别或单据日期异动时按单别规则重新取号。 |
+  244| | 下拉项 |  |
+  245| | 校验项 | IF 【询价单.自动编码方式(inq_doc.CUS_auto_code_mode)】 = 7.手工输入 THEN 校验是否重复，若重复则 E+MSG："单号不可重复！" ENDIF |
+  246| 
+  247| ##### 单据日期 (doc_date)
+  248| 
+  249| | 字段项 | 详细内容 |
+  250| | --- | --- |
+  251| | 标题名 | 单据日期 |
+  252| | 填值方式 | ✅ 日期选择器 |
+  253| | 字段含义 | 单据日期 |
+  254| | 是否必填 | ✅ 是 |
+  255| | 必填条件 |  |
+  256| | 是否只读 | ✅ 否 |
+  257| | 只读条件 |  |
+  258| | 是否隐藏 | ✅ 否 |
+  259| | 隐藏条件 |  |
+  260| | 是否禁用 | ✅ 否 |
+  261| | 禁用条件 |  |
+  262| | 是否启用其他条件 | ✅ 否 |
+  263| | 其他条件格式 |  |
+  264| | 默认值 | DEFAULT 【询价单.单据日期(inq_doc.doc_date)】 = 系统日期<br/>时机点：默认执行时 |
+  265| | 开窗类型 | 无 |
+  266| | 开窗说明 |  |
+  267| | 输入说明 | 决定单号取号期间、供应商取价口径与审核日期取值，异动后同步重算询价日期与最近核价、调整幅度。 |
+  268| | 下拉项 |  |
+VERBATIM_CHECK RULE-FDB3C16FE60D body: needle_len=40 hits=[269] total=1
+  reported_line=247 near_hits=[]
+VERBATIM_CHECK RULE-FDB3C16FE60D full-desc: needle_len=40 hits=[] total=0
+  reported_line=247 near_hits=[]
+
+====================================================================================================
+FILE for RULE-ADB1BDA8BC97 | 货币编号 必填 | PRD_DERIVED
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\询价单/询价单PRD.v1.8.md
+TOTAL_LINES 1476
+------------------------------------------------------------------------------------------
+--- lines 334..356 ---
+  334| | 是否启用其他条件 | ✅ 否 |
+  335| | 其他条件格式 |  |
+  336| | 默认值 |  |
+  337| | 开窗类型 | 无 |
+  338| | 开窗说明 |  |
+  339| | 输入说明 | 始终只读，由供应商开窗回填，不手工维护；改供应商时随之刷新。 |
+  340| | 下拉项 |  |
+  341| | 校验项 |  |
+  342| 
+  343| ##### 货币编号 (ccy_no)
+  344| 
+  345| | 字段项 | 详细内容 |
+  346| | --- | --- |
+  347| | 标题名 | 币种 |
+  348| | 填值方式 | ✅ 开窗选择器 |
+  349| | 字段含义 | 货币编号 |
+  350| | 是否必填 | ✅ 是 |
+  351| | 必填条件 |  |
+  352| | 是否只读 | ✅ 是 |
+  353| | 只读条件 | IF 【询价单】有明细行 THEN 只读 ENDIF |
+  354| | 是否隐藏 | ✅ 否 |
+  355| | 隐藏条件 |  |
+  356| | 是否禁用 | ✅ 否 |
+VERBATIM_CHECK RULE-ADB1BDA8BC97 body: needle_len=2 hits=[64, 105, 117, 182, 183, 206, 207, 230, 231, 254, 255, 278] total=100
+  reported_line=343 near_hits=[350, 351]
+VERBATIM_CHECK RULE-ADB1BDA8BC97 full-desc: needle_len=16 hits=[] total=0
+  reported_line=343 near_hits=[]
+
+====================================================================================================
+FILE for RULE-513D09A47C42 | 新增 可用条件 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md
+TOTAL_LINES 1188
+------------------------------------------------------------------------------------------
+--- lines 1056..1078 ---
+ 1056| | 输入说明 |  |
+ 1057| | 下拉项 |  |
+ 1058| | 校验项 |  |
+ 1059| 
+ 1060| 
+ 1061| ## 四、操作说明
+ 1062| 
+ 1063| ### 整体操作
+ 1064| 
+ 1065| #### 新增
+ 1066| 
+ 1067| | 控制项 | 说明 |
+ 1068| | --- | --- |
+ 1069| | 可用条件 | 无（直接进入新增页） |
+ 1070| | 展示设置 | 列表 | 详情 |
+ 1071| | 操作前校验 | - |
+ 1072| | 操作中处理 | - |
+ 1073| | 操作后处理 | 打开空白的新增详情页 |
+ 1074| 
+ 1075| 
+ 1076| #### 查询
+ 1077| 
+ 1078| | 控制项 | 说明 |
+VERBATIM_CHECK RULE-513D09A47C42 body: needle_len=10 hits=[1069] total=1
+  reported_line=1065 near_hits=[1069]
+VERBATIM_CHECK RULE-513D09A47C42 full-desc: needle_len=14 hits=[] total=0
+  reported_line=1065 near_hits=[]
+
+====================================================================================================
+FILE for RULE-9E60EC5D54FB | 价税合计（本币） 只读 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md
+TOTAL_LINES 3327
+------------------------------------------------------------------------------------------
+--- lines 1616..1640 ---
+ 1616| | 禁用条件 |  |
+ 1617| | 是否启用其他条件 | ✅ 是 |
+ 1618| | 其他条件格式 | 1.金额字段<br/>2.需做小数取位：调用金额取位服务(bm.ccy.fetch_amt)，传入 货币编号=【采购订单.货币编号(po.ccy_no)】，金额=【采购订单明细.价税合计（原币）(po_d.tawt_tc)】 |
+ 1619| | 默认值 | DEFAULT 【采购订单明细.价税合计（原币）(po_d.tawt_tc)】=【采购订单明细.无税金额（原币）(po_d.untax_amt_tc)】 + 【采购订单明细.税额（原币）(po_d.tax_tc)】<br/>时机点：编辑执行时 |
+ 1620| | 开窗类型 | 无 |
+ 1621| | 开窗说明 |  |
+ 1622| | 输入说明 |  |
+ 1623| | 下拉项 |  |
+ 1624| | 校验项 |  |
+ 1625| 
+ 1626| ##### 价税合计（本币） (tawt_fc)
+ 1627| 
+ 1628| | 字段项 | 详细内容 |
+ 1629| | --- | --- |
+ 1630| | 标题名 | 价税合计（本币） |
+ 1631| | 填值方式 | ✅ 数字输入框 |
+ 1632| | 字段含义 | 价税合计（本币） |
+ 1633| | 是否必填 | ✅ 否 |
+ 1634| | 必填条件 |  |
+ 1635| | 是否只读 | ✅ 是 |
+ 1636| | 只读条件 |   |
+ 1637| | 是否隐藏 | ✅ 否 |
+ 1638| | 隐藏条件 |  |
+ 1639| | 是否禁用 | ✅ 否 |
+ 1640| | 禁用条件 |  |
+VERBATIM_CHECK RULE-9E60EC5D54FB body: needle_len=2 hits=[91, 92, 115, 116, 139, 140, 163, 164, 187, 188, 211, 212] total=257
+  reported_line=1626 near_hits=[1635, 1636]
+VERBATIM_CHECK RULE-9E60EC5D54FB full-desc: needle_len=21 hits=[] total=0
+  reported_line=1626 near_hits=[]
+
+====================================================================================================
+FILE for RULE-624B93CFA158 | 第二单位数量 默认值 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购入库单/DOC482078_采购入库单_V1.19.md
+TOTAL_LINES 1969
+------------------------------------------------------------------------------------------
+--- lines 1008..1035 ---
+ 1008| | 禁用条件 |  |
+ 1009| | 是否启用其他条件 | ✅ 是 |
+ 1010| | 其他条件格式 | 需内含外显，显示单位名称+(单位编号)：<br/>调用接口：查询计量单位(bm.meas_unit.get)<br/>传入参数：计量单位.单位编号=当前第二单位编号<br/>回参：计量单位.单位名称 |
+ 1011| | 默认值 |  |
+ 1012| | 开窗类型 | 无 |
+ 1013| | 开窗说明 |  |
+ 1014| | 输入说明 |  |
+ 1015| | 下拉项 |  |
+ 1016| | 校验项 |  |
+ 1017| 
+ 1018| ##### 第二单位数量 (sec_unit_qty)
+ 1019| 
+ 1020| | 字段项 | 详细内容 |
+ 1021| | --- | --- |
+ 1022| | 标题名 | 第二单位数量 |
+ 1023| | 填值方式 | ✅ 数字输入框 |
+ 1024| | 字段含义 |  |
+ 1025| | 是否必填 | ✅ 否 |
+ 1026| | 必填条件 |  |
+ 1027| | 是否只读 | ✅ 是 |
+ 1028| | 只读条件 |   |
+ 1029| | 是否隐藏 | ✅ 是 |
+ 1030| | 隐藏条件 | -调用接口:查询公共参数(param)<br/>-传入参数：无<br/>-返回：[公共参数.计量体系]<br/>当[公共参数.计量体系]不为D.存货双单位时，隐藏 |
+ 1031| | 是否禁用 | ✅ 否 |
+ 1032| | 禁用条件 |  |
+ 1033| | 是否启用其他条件 | ✅ 否 |
+ 1034| | 其他条件格式 |  |
+ 1035| | 默认值 | //调用接口：查询品号通用信息//MARK<br/>//入参：[品号通用信息.品号]=【采购入库单明细.品号】//MARK<br/>//回参：[品号通用信息.计量体系]//MARK<br/>//当[品号通用信息.计量体系]=D.存货双单位 时，默认赋值：//MARK<br/>-调用接口：[品号单位换算]<br/>-入参条件：[品号单位换算.品号]=【采购入库单明细.品号】、[品号单位换算.换算前单位编号]=【采购入库单明细.业务单位】、[品号单位换算.换算前单位数量]=【采购入库单明细.业务数量】、[品号单位换算.换算后单位编号]=【采购入库单明细.第二单位编号】<br/>-回填映射：[品号单位换算.换算后单位数量] →【采购入库单明细.第二单位数量】<br/>时机点：默认编辑时 |
+VERBATIM_CHECK RULE-624B93CFA158 body: needle_len=40 hits=[] total=0
+  reported_line=1018 near_hits=[]
+VERBATIM_CHECK RULE-624B93CFA158 full-desc: needle_len=40 hits=[] total=0
+  reported_line=1018 near_hits=[]
+
+====================================================================================================
+FILE for RULE-FDDC09830838 | 批号 必填 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购入库单/DOC482078_采购入库单_V1.19.md
+TOTAL_LINES 1969
+------------------------------------------------------------------------------------------
+--- lines 865..890 ---
+  865| | 是否启用其他条件 | ✅ 否 |
+  866| | 其他条件格式 |  |
+  867| | 默认值 | 调用接口：品号通用信息查询(bm.item_gen_info.get)<br/>入参：品号通用信息.品号(item_gen_info.item_no) = 【采购入库单明细.品号】<br/>回参：品号通用信息.批号管理(item_gen_info.lot_mgmt)—>【采购入库单明细.批号管理】<br/>时机点：数据源改变时 |
+  868| | 开窗类型 | 无 |
+  869| | 开窗说明 |  |
+  870| | 输入说明 |  |
+  871| | 下拉项 |  |
+  872| | 校验项 |  |
+  873| 
+  874| ##### 批号 (lot_no)
+  875| 
+  876| | 字段项 | 详细内容 |
+  877| | --- | --- |
+  878| | 标题名 | 批号 |
+  879| | 填值方式 | ✅ 开窗选择器 |
+  880| | 字段含义 | 批号 |
+  881| | 是否必填 | ✅ 是 |
+  882| | 必填条件 | 【采购入库单明细.批号管理】 = 勾选  时必填 |
+  883| | 是否只读 | ✅ 是 |
+  884| | 只读条件 |  【采购入库单明细.批号管理】 != 勾选  时只读 |
+  885| | 是否隐藏 | ✅ 否 |
+  886| | 隐藏条件 |  |
+  887| | 是否禁用 | ✅ 否 |
+  888| | 禁用条件 |  |
+  889| | 是否启用其他条件 | ✅ 否 |
+  890| | 其他条件格式 |  |
+VERBATIM_CHECK RULE-FDDC09830838 body: needle_len=26 hits=[] total=0
+  reported_line=874 near_hits=[]
+VERBATIM_CHECK RULE-FDDC09830838 full-desc: needle_len=38 hits=[] total=0
+  reported_line=874 near_hits=[]
+
+====================================================================================================
+FILE for RULE-1B6407D2A92E | 明细操作 可用条件 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购入库单/DOC482078_采购入库单_V1.19.md
+TOTAL_LINES 1969
+------------------------------------------------------------------------------------------
+--- lines 1925..1945 ---
+ 1925| | 控制项 | 说明 |
+ 1926| | --- | --- |
+ 1927| | 可用条件 | 【采购入库单.过账状态(pur_stkin_doc.post_stat)】 = Y.已过账 |
+ 1928| | 展示设置 | - |
+ 1929| | 操作前校验 | - |
+ 1930| | 操作中处理 | - |
+ 1931| | 操作后处理 | ● 调用接口：bm.pur_stkin_doc.cxl_post<br/>● 入参说明：默认取页面业务主键字段值作为入参。 |
+ 1932| 
+ 1933| 
+ 1934| ### 明细操作
+ 1935| 
+ 1936| #### 新增
+ 1937| 
+ 1938| | 控制项 | 说明 |
+ 1939| | --- | --- |
+ 1940| | 可用条件 | 隐藏，不显示 |
+ 1941| | 展示设置 | 采购入库单明细 |
+ 1942| | 操作前校验 | - |
+ 1943| | 操作中处理 | - |
+ 1944| | 操作后处理 | - |
+ 1945| 
+VERBATIM_CHECK RULE-1B6407D2A92E body: needle_len=6 hits=[1940] total=1
+  reported_line=1934 near_hits=[1940]
+VERBATIM_CHECK RULE-1B6407D2A92E full-desc: needle_len=12 hits=[] total=0
+  reported_line=1934 near_hits=[]
+
+====================================================================================================
+FILE for RULE-4916EB642CCE | 计价单位编号 只读 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md
+TOTAL_LINES 2597
+------------------------------------------------------------------------------------------
+--- lines 1105..1130 ---
+ 1105| | 是否启用其他条件 | ✅ 否 |
+ 1106| | 其他条件格式 |  |
+ 1107| | 默认值 |  |
+ 1108| | 开窗类型 | 无 |
+ 1109| | 开窗说明 |  |
+ 1110| | 输入说明 |  |
+ 1111| | 下拉项 |  |
+ 1112| | 校验项 |  |
+ 1113| 
+ 1114| ##### 计价单位编号 (prc_unit_no)
+ 1115| 
+ 1116| | 字段项 | 详细内容 |
+ 1117| | --- | --- |
+ 1118| | 标题名 | 计价单位 |
+ 1119| | 填值方式 | ✅ 开窗选择器 |
+ 1120| | 字段含义 | 计价单位编号 |
+ 1121| | 是否必填 | ✅ 是 |
+ 1122| | 必填条件 |  |
+ 1123| | 是否只读 | ✅ 是 |
+ 1124| | 只读条件 | 1.当【采购到货单明细.采购到货来源单据类型(pur_arr_doc_d.pur_arr_src_doc_type)】!=99.其他 时，只读；<br/>2.【采购到货单明细.品号采购单位与计价单位须相同（pur_arr_doc_d.CUS_UDF011）】=true 时，只读 |
+ 1125| | 是否隐藏 | ✅ 否 |
+ 1126| | 隐藏条件 |  |
+ 1127| | 是否禁用 | ✅ 否 |
+ 1128| | 禁用条件 |  |
+ 1129| | 是否启用其他条件 | ✅ 否 |
+ 1130| | 其他条件格式 |  |
+VERBATIM_CHECK RULE-4916EB642CCE body: needle_len=40 hits=[] total=0
+  reported_line=1114 near_hits=[]
+VERBATIM_CHECK RULE-4916EB642CCE full-desc: needle_len=40 hits=[] total=0
+  reported_line=1114 near_hits=[]
+
+====================================================================================================
+FILE for RULE-42B6E8938F33 | 金额 校验 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md
+TOTAL_LINES 2597
+------------------------------------------------------------------------------------------
+--- lines 1657..1680 ---
+ 1657| | 是否启用其他条件 | ✅ 否 |
+ 1658| | 其他条件格式 |  |
+ 1659| | 默认值 | 调用接口：查询供应商业务信息(bm.supp_biz_info.get)<br/>入参：[供应商业务信息.运营单元编号(supp_biz_info.ops_unit_no)] = 【采购到货单.运营单元编号(pur_arr_doc.ops_unit_no)】，[供应商业务信息.供应商编号(supp_biz_info.supp_no)] = 【采购到货单.供应商编号(pur_arr_doc.supp_no)】<br/>回参：[供应商业务信息.税率(supp_biz_info.tax_rate)]<br/>【采购到货单明细.税率(pur_arr_doc_d.tax_rate)】 = [供应商业务信息.税率(supp_biz_info.tax_rate)]。时机点：默认执行时 |
+ 1660| | 开窗类型 | 无 |
+ 1661| | 开窗说明 |  |
+ 1662| | 输入说明 |  |
+ 1663| | 下拉项 |  |
+ 1664| | 校验项 | 1.输入值小于0时，报错“税率不可小于0！” |
+ 1665| 
+ 1666| ##### 金额 (amt)
+ 1667| 
+ 1668| | 字段项 | 详细内容 |
+ 1669| | --- | --- |
+ 1670| | 标题名 | 金额 |
+ 1671| | 填值方式 | ✅ 数字输入框 |
+ 1672| | 字段含义 | 金额 |
+ 1673| | 是否必填 | ✅ 否 |
+ 1674| | 必填条件 |  |
+ 1675| | 是否只读 | ✅ 是 |
+ 1676| | 只读条件 |  当[采购到货明细.质检模式] !=1.免检 或   【采购到货单明细.商品类型】!=1.商品时，只读 |
+ 1677| | 是否隐藏 | ✅ 否 |
+ 1678| | 隐藏条件 |  |
+ 1679| | 是否禁用 | ✅ 否 |
+ 1680| | 禁用条件 |  |
+VERBATIM_CHECK RULE-42B6E8938F33 body: needle_len=20 hits=[1688] total=1
+  reported_line=1666 near_hits=[]
+VERBATIM_CHECK RULE-42B6E8938F33 full-desc: needle_len=29 hits=[] total=0
+  reported_line=1666 near_hits=[]
+
+====================================================================================================
+FILE for RULE-2B0C20DD6E5A | 编码格式 校验 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md
+TOTAL_LINES 391
+------------------------------------------------------------------------------------------
+--- lines 288..308 ---
+  288| | 其他条件格式 |  |
+  289| | 默认值 |  |
+  290| | 开窗类型 | 无 |
+  291| | 开窗说明 |  |
+  292| | 输入说明 |  |
+  293| | 下拉项 | PO01.请购 PO02.询价 PO03.核价 PO05.采购订单 PO06.到货 PO07.直接到货 PO08.拒收退货 PO09.采购退货申请 PO11.直接退货 PO12.采购折扣与折让 PO17.期初开账到货单 PO18.期初开账退货单 |
+  294| | 校验项 |  |
+  295| 
+  296| ##### 编码格式 (CUS_UDF001)
+  297| 
+  298| | 字段项 | 详细内容 |
+  299| | --- | --- |
+  300| | 标题名 | 编码格式 |
+  301| | 填值方式 | ✅ 单行输入框 |
+  302| | 字段含义 |  |
+  303| | 是否必填 | ✅ 否 |
+  304| | 必填条件 |  |
+  305| | 是否只读 | ✅ 是 |
+  306| | 只读条件 |   |
+  307| | 是否隐藏 | ✅ 否 |
+  308| | 隐藏条件 |  |
+VERBATIM_CHECK RULE-2B0C20DD6E5A body: needle_len=31 hits=[124, 196, 316] total=3
+  reported_line=296 near_hits=[]
+VERBATIM_CHECK RULE-2B0C20DD6E5A full-desc: needle_len=40 hits=[] total=0
+  reported_line=296 near_hits=[]
+
+====================================================================================================
+FILE for RULE-830FBF25AFA6 | 失效 后置处理 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\基础资料域/客户品号/DOC960059_客户品号_V1.3.md
+TOTAL_LINES 464
+------------------------------------------------------------------------------------------
+--- lines 410..430 ---
+  410| | --- | --- |
+  411| | 可用条件 | 【客户品号.状态(cust_item_no.manage_status)】=V.失效 |
+  412| | 展示设置 | 列表 | 详情 |
+  413| | 操作前校验 | - |
+  414| | 操作中处理 | - |
+  415| | 操作后处理 | 调用接口：生效客户品号(bm.cust_item_no.valid)，其中API为当前所选业务服务的 valid 接口。入参说明：默认取页面业务主键字段值作为入参。 |
+  416| 
+  417| 
+  418| #### 失效
+  419| 
+  420| | 控制项 | 说明 |
+  421| | --- | --- |
+  422| | 可用条件 | 【客户品号.状态(cust_item_no.manage_status)】=Y.生效 |
+  423| | 展示设置 | 列表 | 详情 |
+  424| | 操作前校验 | - |
+  425| | 操作中处理 | - |
+  426| | 操作后处理 | 调用接口：失效客户品号(bm.cust_item_no.invalid)，其中API为当前所选业务服务的 invalid 接口。入参说明：默认取页面业务主键字段值作为入参。 |
+  427| 
+  428| 
+  429| #### 删除
+  430| 
+VERBATIM_CHECK RULE-830FBF25AFA6 body: needle_len=40 hits=[426] total=1
+  reported_line=418 near_hits=[426]
+VERBATIM_CHECK RULE-830FBF25AFA6 full-desc: needle_len=40 hits=[] total=0
+  reported_line=418 near_hits=[]
+
+====================================================================================================
+FILE for RULE-AB5CE2F245E6 | 保存 可用条件 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例\基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md
+TOTAL_LINES 913
+------------------------------------------------------------------------------------------
+--- lines 826..846 ---
+  826| | --- | --- |
+  827| | 可用条件 | - |
+  828| | 展示设置 | 列表 | 详情 |
+  829| | 操作前校验 | - |
+  830| | 操作中处理 | - |
+  831| | 操作后处理 | - |
+  832| 
+  833| 
+  834| #### 保存
+  835| 
+  836| | 控制项 | 说明 |
+  837| | --- | --- |
+  838| | 可用条件 | 新增/编辑状态 |
+  839| | 展示设置 | 详情 |
+  840| | 操作前校验 | 1、 IF 供应商策略 (item_pur_info.supp_strtg) =M.依主要供应商供应   AND 【品号供应商(item_supp)】不为空  且【品号供应商.主要(item_supp.main)】=Y 的笔数<>1  THEN<br/>	        Msg Code:ERROR "品号供应商信息中有且只能有一笔主供应商！"<br/>2、调用bm.item_pur_info.valid前校验：<br/>校验品号采购信息中采购单位、采购计价单位与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算关系<br/>调用接口：查询品号采购信息(bm.item_pur_info.get)<br/>入参：品号采购信息.品号(item_pur_info.item_no)=【品号通用信息.品号(item_gen_info.item_no)】<br/>回参：品号采购信息.品号(item_pur_info.item_no)、品号采购信息.采购单位编号(item_pur_info.pur_unit_no)、品号采购信息.采购计价单位编号(item_pur_info.pur_prc_unit_no)<br/>回参记为queryD<br/> IF  【品号采购信息.采购单位编号(item_pur_info.pur_unit_no)】<> 品号通用信息.库存单位编号(item_gen_info.invnt_unit_no) THEN <br/>①校验采购单位编号，调用：检查单位间是否存在换算关系(bm.item_gen_info.unit_cnv.check)<br/>入参（第一组）：单位换算.品号(unit_cnv.item_no)=【品号通用信息.品号(item_gen_info.item_no)】<br/>单位换算.换算前单位编号(unit_cnv.cnv_pre_unit_no)=【品号通用信息.库存单位编号(item_gen_info.unit_no)】<br/>单位换算.换算后单位编号(unit_cnv.cnv_post_unit_no)=queryD.品号采购信息.采购单位编号(item_pur_info.pur_unit_no)<br/><br/>入参（第二组）：单位换算.换算前单位编号(unit_cnv.cnv_pre_unit_no)=【品号通用信息.库存单位编号(item_gen_info.unit_no)】<br/>单位换算.换算后单位编号(unit_cnv.cnv_post_unit_no)=queryD.品号采购信息.采购单位编号(item_pur_info.pur_unit_no)<br/><br/>回参：单位换算.是否存在换算关系(unit_cnv.is_exist_cnv_rela)<br/>若两组回参.单位换算.是否存在换算关系(unit_cnv.is_exist_cnv_rela)任一为TRUE，则校验通过<br/>若两组回参.单位换算.是否存在换算关系(unit_cnv.is_exist_cnv_rela)都为FALSE，则报错：品号的库存单位与采购单位没有换算关系！<br/> IF  【品号采购信息.采购计价单位编号(item_pur_info.pur_prc_unit_no)】<> 品号通用信息.库存单位编号(item_gen_info.invnt_unit_no) THEN <br/>②校验采购计价单位编号，调用：检查单位间是否存在换算关系(bm.item_gen_info.unit_cnv.check)<br/>入参（第一组）：单位换算.品号(unit_cnv.item_no)=【品号通用信息.品号(item_gen_info.item_no)】<br/>单位换算.换算前单位编号(unit_cnv.cnv_pre_unit_no)=【品号通用信息.库存单位编号(item_gen_info.unit_no)】<br/>单位换算.换算后单位编号(unit_cnv.cnv_post_unit_no)=queryD.品号采购信息.采购计价单位编号(item_pur_info.pur_prc_unit_no)<br/><br/>入参（第二组）：单位换算.换算前单位编号(unit_cnv.cnv_pre_unit_no)=【品号通用信息.库存单位编号(item_gen_info.unit_no)】<br/>单位换算.换算后单位编号(unit_cnv.cnv_post_unit_no)=queryD.品号采购信息.采购计价单位编号(item_pur_info.pur_prc_unit_no)<br/><br/>回参：单位换算.是否存在换算关系(unit_cnv.is_exist_cnv_rela)<br/>若两组回参.单位换算.是否存在换算关系(unit_cnv.is_exist_cnv_rela)任一为TRUE，则校验通过<br/>若两组回参.单位换算.是否存在换算关系(unit_cnv.is_exist_cnv_rela)都为FALSE，则报错：品号的库存单位与采购计价单位没有换算关系！     |
+  841| | 操作中处理 | - |
+  842| | 操作后处理 | <br/>【新增时】<br/>● 调用接口：bm.item_pur_info.create<br/>● 入参说明：默认取页面所有字段值作为入参。<br/>● 调用接口：bm.item_pur_info.valid<br/>● 入参说明：品号采购信息.品号 (item_pur_info. item_no)= 【品号采购信息.品号 (item_pur_info. item_no)】、品号采购信息.运营单元编号(item_pur_info.ops_unit_no) = 【品号采购信息.运营单元编号 (item_pur_info.ops_unit_no)】、品号采购信息.状态(item_pur_info. manage_status)= Y.生效<br/>【编辑时】<br/>● 调用接口：bm.item_pur_info.update<br/>● 入参说明：默认取页面所有字段值作为入参。<br/>● 调用接口：bm.item_pur_info.valid<br/>● 入参说明：品号采购信息.品号 (item_pur_info. item_no)= 【品号采购信息.品号 (item_pur_info. item_no)】、品号采购信息.运营单元编号(item_pur_info.ops_unit_no) = 【品号采购信息.运营单元编号 (item_pur_info.ops_unit_no)】、品号采购信息.状态(item_pur_info. manage_status)= Y.生效 |
+  843| 
+  844| 
+  845| #### 删除
+  846| 
+VERBATIM_CHECK RULE-AB5CE2F245E6 body: needle_len=7 hits=[838] total=1
+  reported_line=834 near_hits=[838]
+VERBATIM_CHECK RULE-AB5CE2F245E6 full-desc: needle_len=11 hits=[] total=0
+  reported_line=834 near_hits=[]
+
+====================================================================================================
+FILE for RULE-407BEB64E9AC | 保存 前置校验 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货出库单/采购退货出库单PRD.v1.24.md
+TOTAL_LINES 2335
+------------------------------------------------------------------------------------------
+--- lines 1538..1560 ---
+ 1538| | --- | --- |
+ 1539| | 可用条件 | 【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=N.未审核 |
+ 1540| | 展示设置 | 列表+详情 |
+ 1541| | 操作前校验 | - |
+ 1542| | 操作中处理 | - |
+ 1543| | 操作后处理 | - |
+ 1544| 
+ 1545| 
+ 1546| #### 保存
+ 1547| 
+ 1548| | 控制项 | 说明 |
+ 1549| | --- | --- |
+ 1550| | 可用条件 | 新增/编辑状态 |
+ 1551| | 展示设置 | 详情 |
+ 1552| | 操作前校验 | 1. 单头必填校验：运营单元编号、业务类型编号、采购退货出库单号、供应商编号、单据日期不得为空。<br/>2. 单身必填校验：品号、商品类型、仓库编号、业务单位编号、库存单位编号、来源单据类型、来源单号、来源序号、来源运营单元编号不得为空。<br/>3. 来源一致性校验：来源单据类型必须为 1.采购退货，且来源单号+来源序号在采购退货单明细中存在。<br/>4. 业务数量校验：大于 0 且不超过来源可退货量。<br/>5. 单头关键字段变更兜底校验：编辑状态下，若单据已有明细行，则 运营单元编号 / 业务类型编号 / 供应商编号 / 限用仓库编号 四项中任一与库中值不一致时，E+MSG："单据已有明细，不可更改〈字段〉！" 并中止保存。<br/>6. 项目编号必填兜底：当【采购退货出库单.是否启用项目管理(pur_rtn_stkou_doc.CUS_is_proj_mgmt_enabled)】='Y' 时，单身逐行项目编号不得为空。 |
+ 1553| | 操作中处理 | - |
+ 1554| | 操作后处理 | 【新增时】<br/>● 调用接口：bm.pur_rtn_stkou_doc.create<br/>● 入参说明：默认取页面所有字段值作为入参。<br/>    1. 判断当前单别是否启用保存自动审核：<br/>       - 调用：查询业务类型存货参数(bm.biz_type_invnt_param.get)<br/>         入参：业务类型存货参数.业务类型编号(biz_type_no)=业务类型编号(pur_rtn_stkou_doc.biz_type_no)<br/>         回参：业务类型存货参数.新增是否自动审核(creat_is_auto_aprv)<br/>       IF 业务类型存货参数.新增是否自动审核(creat_is_auto_aprv)='Y' THEN<br/>          2. 审核日期取值：<br/>             //* 与「审核功能」审核日期取值规则保持一致<br/>             - 调用：查询运营单元采购参数(bm.pur_reg_param.get)<br/>               入参：运营单元采购参数.运营单元编号(ops_unit_no)=运营单元(pur_rtn_stkou_doc.ops_unit_no)<br/>               回参：运营单元采购参数.审核日依据(aprv_date_basis)<br/>               IF 运营单元采购参数.审核日依据(aprv_date_basis)=1.系统日 THEN<br/>                 审核日期=当前系统日期<br/>               ELSE<br/>                 审核日期=单据日期(pur_rtn_stkou_doc.doc_date)<br/>               ENDIF<br/>          3. 调用 审核采购退货出库单(bm.pur_rtn_stkou_doc.approve)<br/>             入参：默认取页面业务主键字段值、审核日期<br/>          4. 判断是否自动过账（规则同「审核」操作后处理的步骤2、步骤3）<br/>             - 调用：查询业务类型存货参数(bm.biz_type_invnt_param.get)<br/>               入参：运营单元编号=运营单元(pur_rtn_stkou_doc.ops_unit_no)、业务类型编号=业务类型编号(pur_rtn_stkou_doc.biz_type_no)<br/>               回参：自动过账(auto_post)<br/>             IF 无该单别参数记录 THEN<br/>                调用 过账采购退货出库单(bm.pur_rtn_stkou_doc.post)，入参：默认取页面业务主键字段值   // 默认过账<br/>             ELSE IF 自动过账(auto_post)=1.是 THEN<br/>                调用 过账采购退货出库单(bm.pur_rtn_stkou_doc.post)，入参：默认取页面业务主键字段值<br/>             ENDIF<br/>       ENDIF<br/><br/>【编辑时】<br/>● 调用接口：bm.pur_rtn_stkou_doc.update<br/>● 入参说明：默认取页面所有字段值作为入参。 |
+ 1555| 
+ 1556| 
+ 1557| #### 删除
+ 1558| 
+ 1559| | 控制项 | 说明 |
+ 1560| | --- | --- |
+VERBATIM_CHECK RULE-407BEB64E9AC body: needle_len=40 hits=[1552] total=1
+  reported_line=1546 near_hits=[1552]
+VERBATIM_CHECK RULE-407BEB64E9AC full-desc: needle_len=40 hits=[] total=0
+  reported_line=1546 near_hits=[]
+
+====================================================================================================
+FILE for RULE-557FFF142C6A | 第二单位编号 只读 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货出库单/采购退货出库单PRD.v1.24.md
+TOTAL_LINES 2335
+------------------------------------------------------------------------------------------
+--- lines 1128..1148 ---
+ 1128| | 其他条件格式 |  |
+ 1129| | 默认值 | IF 【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】更改 THEN<br/>调用接口：品号单位换算(bm.item_gen_info.qty_cnv.process)<br/>入参：品号单位换算.换算前单位编号=【采购退货出库单明细.业务单位编号(pur_rtn_stkou_doc_d.biz_unit_no)】<br/>品号单位换算.品号=【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】<br/>品号单位换算.换算前单位数量=【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】<br/>品号单位换算.换算后单位编号=【采购退货出库单明细.第二单位编号(pur_rtn_stkou_doc_d.sec_unit_no)】<br/>回参：品号单位换算.换算后单位数量<br/>DEFAULT 第二单位数量=品号单位换算.换算后单位数量<br/>时机点：编辑执行时 |
+ 1130| | 开窗类型 | 无 |
+ 1131| | 开窗说明 |  |
+ 1132| | 输入说明 | 第二单位编号与第二单位数量仅在 公共参数.计量体系 = D 时展示，其余计量体系下整体隐藏。计量体系由单头虚拟字段 CUS_meas_sys 承载（D=双存货计量、S=单一计量），取值规则见 3.2 规则 6；隐藏条件只引用该字段，不在条件里调用接口。 |
+ 1133| | 下拉项 |  |
+ 1134| | 校验项 | 1. 检查 第二单位数量不可小于零<br/>   E+MSG："第二单位数量必须大于等于零！"<br/>2. 第二数量由业务数量按品号单位换算(bm.item_gen_info.qty_cnv.process)推算并只读，不允许反向回算业务数量；如需调整数量，只修改业务数量。 |
+ 1135| 
+ 1136| ##### 第二单位编号 (sec_unit_no)
+ 1137| 
+ 1138| | 字段项 | 详细内容 |
+ 1139| | --- | --- |
+ 1140| | 标题名 | 第二单位编号 |
+ 1141| | 填值方式 | ✅ 单行输入框 |
+ 1142| | 字段含义 | 第二单位编号 |
+ 1143| | 是否必填 | ✅ 否 |
+ 1144| | 必填条件 |  |
+ 1145| | 是否只读 | ✅ 是 |
+ 1146| | 只读条件 |   |
+ 1147| | 是否隐藏 | ✅ 是 |
+ 1148| | 隐藏条件 | IF 【采购退货出库单.计量体系(pur_rtn_stkou_doc.CUS_meas_sys)】 &lt;&gt; 'D' THEN 隐藏 ENDIF |
+VERBATIM_CHECK RULE-557FFF142C6A body: needle_len=2 hits=[21, 22, 25, 29, 31, 32, 33, 35, 36, 49, 50, 60] total=221
+  reported_line=1136 near_hits=[1134, 1145, 1146]
+VERBATIM_CHECK RULE-557FFF142C6A full-desc: needle_len=23 hits=[] total=0
+  reported_line=1136 near_hits=[]
+
+====================================================================================================
+FILE for RULE-5102DB21ED32 | 删除 后置处理 | PRD_EXPLICIT
+PATH C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+TOTAL_LINES 1823
+------------------------------------------------------------------------------------------
+--- lines 1420..1440 ---
+ 1420| | --- | --- |
+ 1421| | 可用条件 | 新增/编辑状态 |
+ 1422| | 展示设置 | 详情 |
+ 1423| | 操作前校验 | - |
+ 1424| | 操作中处理 | - |
+ 1425| | 操作后处理 | 【新增时】<br/>● 调用接口：bm.pur_rtn_stkou_doc.create<br/>● 入参说明：默认取页面所有字段值作为入参。<br/>    1. 判断当前单别是否启用保存自动审核：<br/>       - 调用：查询业务类型存货参数(bm.biz_type_invnt_param.get)<br/>         入参：业务类型存货参数.业务类型编号(biz_type_no)=业务类型编号(pur_rtn_stkou_doc.biz_type_no)<br/>         回参：业务类型存货参数.新增是否自动审核(creat_is_auto_aprv)<br/>       IF 业务类型存货参数.新增是否自动审核(creat_is_auto_aprv)='Y' THEN<br/>          2. 审核日期取值：<br/>             //* 与「审核功能」审核日期取值规则保持一致<br/>             - 调用：查询运营单元采购参数(bm.pur_reg_param.get)<br/>               入参：运营单元采购参数.运营单元编号(ops_unit_no)=运营单元(pur_rtn_stkou_doc.ops_unit_no)<br/>               回参：运营单元采购参数.审核日依据(aprv_date_basis)<br/>               IF 运营单元采购参数.审核日依据(aprv_date_basis)=1.系统日 THEN<br/>                 审核日期=当前系统日期<br/>               ELSE<br/>                 审核日期=单据日期(pur_rtn_stkou_doc.doc_date)<br/>               ENDIF<br/>          3. 调用 审核采购退货出库单(bm.pur_rtn_stkou_doc.approve)<br/>             入参：默认取页面业务主键字段值、审核日期<br/>          4. 判断是否自动过账（规则同「审核」操作后处理的步骤2、步骤3）<br/>             - 调用：查询业务类型存货参数(bm.biz_type_invnt_param.get)<br/>               入参：运营单元编号=运营单元(pur_rtn_stkou_doc.ops_unit_no)、业务类型编号=业务类型编号(pur_rtn_stkou_doc.biz_type_no)<br/>               回参：自动过账(auto_post)<br/>             IF 无该单别参数记录 THEN<br/>                调用 过账采购退货出库单(bm.pur_rtn_stkou_doc.post)，入参：默认取页面业务主键字段值   // 默认过账<br/>             ELSE IF 自动过账(auto_post)=1.是 THEN<br/>                调用 过账采购退货出库单(bm.pur_rtn_stkou_doc.post)，入参：默认取页面业务主键字段值<br/>             ENDIF<br/>       ENDIF<br/><br/>【编辑时】<br/>● 调用接口：bm.pur_rtn_stkou_doc.update<br/>● 入参说明：默认取页面所有字段值作为入参。 |
+ 1426| 
+ 1427| 
+ 1428| #### 删除
+ 1429| 
+ 1430| | 控制项 | 说明 |
+ 1431| | --- | --- |
+ 1432| | 可用条件 | 【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=N.未审核 AND 【采购退货出库单.过账状态(pur_rtn_stkou_doc.post_stat)】=N.未过账 |
+ 1433| | 展示设置 | 列表+详情 |
+ 1434| | 操作前校验 | - |
+ 1435| | 操作中处理 | - |
+ 1436| | 操作后处理 | ● 调用接口：bm.pur_rtn_stkou_doc.delete<br/>● 入参说明：默认取页面业务主键字段值作为入参。 |
+ 1437| 
+ 1438| 
+ 1439| #### 审核
+ 1440| 
+VERBATIM_CHECK RULE-5102DB21ED32 body: needle_len=24 hits=[1436, 1447, 1475] total=3
+  reported_line=1428 near_hits=[1436]
+VERBATIM_CHECK RULE-5102DB21ED32 full-desc: needle_len=28 hits=[] total=0
+  reported_line=1428 near_hits=[]
+
+====================================================================================================
+ROOT_LEVEL_MD 四单PRD-平台对接会议议程.md lines=96
+    1| # 四单 PRD 平台对接会议议程
+    2| 
+    3| **议题**：往来四单（应收单 / 其他应收单 / 应付单 / 其他应付单）记账与关账控制口径确认
+    4| **建议时长**：60 分钟　**主持**：业务负责人　**平台方**：BMC-ARSC-AT / BMC-APSC-AT / BMC-BASC-AT
+    5| **输入材料**：`四单PRD-平台确认事项清单.md`（P01~P12）、四单 PRD（应收 v2.2 / 其他应收 v2.2 / 应付 v1.7 / 其他应付 v1.7）
+    6| 
+    7| ---
+    8| 
+    9| ## 一、会议目标（三句话）
+   10| 
+   11| 1. 定下「**撤审后记账日期到底是空还是最小日期**」，决定 PRD 的显示与校验写法；
+   12| 2. 定下「**关账后能不能撤审、能不能审核过账**」的唯一口径，消除四单行为不一致；
+   13| 3. 定下「**撤审两段调用失败停在中间态**」的恢复路径，避免上线后卡单。
+   14| 
+   15| ---
+   16| 
+   17| ## 二、议程与时间分配
+   18| 
+   19| | 时段 | 议题 | 编号 | 目标产出 |
+   20| | --- | --- | --- | --- |
+   21| | 00-05 | 背景与结论回顾 | — | 对齐「本方案审核即过账、不设过账按钮」的前提 |
+   22| | 05-15 | 撤审后记账日期能否为空 | P01 | 空值 or 最小日期，二选一 |
+   23| | 15-27 | 关账后能否撤审 | P02 | 四单统一口径 |
+   24| | 27-39 | 关账后能否审核过账 | P03 | 是否启用服务层校验 |
+   25| | 39-47 | 期间传参一致性校验是否统一 | P04 | 是否复用 `VD_pay_doc_00034` |
+   26| | 47-57 | 撤审两段失败如何恢复 | P05 | 合并服务 or 恢复路径 |
+   27| | 57-60 | 结论汇总与责任分工 | — | 每条议题的负责人与期限 |
+   28| 
+   29| ---
+   30| 
+   31| ## 三、逐议题（现场照读即可）
+   32| 
+   33| ### P01　撤审后记账日期能否为空（10 分钟）
+   34| 
+   35| - **现状**：`bk_date` 为 **date** 类型，撤审服务把值写成最小日期 `1900-01-01`；同批清空的 `acctg_year`、`acctg_perid_no` 是字符串可存空串，`acctg_perid_seq` 用 `-1` 标记。
+   36| - **请平台确认**：
+   37|   1. 物理字段类型是否确为 date，**空值是否真的无法落库**；
+   38|   2. 平台是否允许撤审写入 null，或提供「置空」标准做法；
+   39|   3. 若不改服务，是否由平台统一提供日期型字段的「空值→显示空」能力（见 P12）。
+   40| - **需当场给结论**：允许置空 / 只能最小日期（选后者则维持现 PRD：显示为空 + 保存与审核拦截）。
+
+====================================================================================================
+ROOT_LEVEL_MD 四单PRD-平台确认事项清单.md lines=159
+    1| # 四单 PRD 平台确认事项清单
+    2| 
+    3| | 项目 | 内容 |
+    4| | --- | --- |
+    5| | 用途 | 与平台侧沟通比对的口径清单，逐条确认后回改 PRD |
+    6| | 涉及作业 | 应收单（v2.2）、其他应收单（v2.2）、应付单（v1.7）、其他应付单（v1.7） |
+    7| | 核对依据 | `_spec_workspace/arap/md`（283 份服务规格，云端原文转写） |
+    8| | 整理时间 | 2026-11-01 |
+    9| | 当前状态 | PRD 已按「现状 + 兜底校验」落笔；本清单确认后如与平台结论不同，按第四节回改 |
+   10| 
+   11| ---
+   12| 
+   13| ## 一、总览
+   14| 
+   15| | 编号 | 事项 | 涉及单 | 优先级 | PRD 当前处理 |
+   16| | --- | --- | --- | --- | --- |
+   17| | P01 | 撤审能否把记账日期置为**空**，而非最小日期 `1900-01-01` | 四单 | 高 | 接受现状，画面显示为空 + 保存/审核拦截 `1900-01-01` |
+   18| | P02 | **关账后能否撤审**：应收/应付强制拦，其他应收/其他应付不拦 | 四单 | 高 | 如实记录，未统一 |
+   19| | P03 | **关账后能否审核过账**：只有应付单服务层拦 | 四单 | 高 | 如实记录，靠画面校验 |
+   20| | P04 | **期间传参一致性校验**只有应付单有（`VD_pay_doc_00034`） | 四单 | 中高 | 应付单禁止手改期间字段 |
+   21| | P05 | 撤审两段调用（取消过账 → 撤回审核）非原子，中间失败如何处置 | 四单 | 高 | 失败即整笔中止，停在「已审核未过账」 |
+   22| | P06 | 采购入库单取数服务版本不一致（1.1/2.0 与 1.2/5.0） | 应付单 | 中 | 按 1.2 / specVersion 5.0 写 |
+   23| | P07 | 采购入库单模型缺 货币 / 税率 / 税种 / 税区 字段，折算责任归属 | 应付单 | 中 | 由应付单侧按税率与汇率折算 |
+   24| | P08 | `cxl_aprv`（取消审核）不复位期间，是否可废弃该入口 | 四单 | 中 | 四单均不使用 `cxl_aprv` |
+   25| | P09 | 账款余额查询（`bm.recev_obj.get`）二期是否提供现成查询页 | 四单 | 中 | 统一移二期 |
+   26| | P10 | `aprv_auto_post_flag` 固定 T 不开放，参数界面能否置灰/隐藏 | 四单 | 低 | 固定 T，不开放配置 |
+   27| | P11 | 其他应收 / 其他应付无 rvs 系列服务，业务确认不存在冲销 | 其他应收、其他应付 | 低 | 已删除冲销表述，纠错走【作废】 |
+   28| | P12 | 最小日期 `1900-01-01` 是否为平台通用的日期型「空值」约定 | 四单 | 中 | 按该约定做显示转换 |
+   29| 
+   30| **建议分两批沟通**：第一批 P01~P05（影响记账与关账控制，必须在开发前定）；第二批 P06~P12（影响实现细节与二期范围）。
+   31| 
+   32| ---
+   33| 
+   34| ## 二、逐条说明
+   35| 
+   36| ### P01 撤审能否把记账日期置为空值
+   37| 
+   38| - **现象**：撤回审核服务 `*.disapprove` 把记账日期置为最小日期、会计年度置空串、会计期间序号置 `-1`、会计期间期号置空串。
+   39| - **规格依据**：应收单 `bm.recev_doc.ar_recog.disapprove` v1.3「3-1 更新应收单」段原文为 `M.记账日期 = 【最小日期】（数据库默认值）`；应付单在「第 5 段」；其他应收 / 其他应付在数据处理段。四处同构。
+   40| - **技术判断**：`bk_date` 在服务规格中的辞汇形态为 **date**（非 string），因此**无法存 null**，最小日期就是它的空值载体；同一批被清空的 `acctg_year`、`acctg_perid_no` 是 string，可以存空串，`acctg_perid_seq` 是 numeric，用 `-1` 作标记。
+
+====================================================================================================
+ROOT_LEVEL_MD 四单PRD-第2轮修订审查报告.md lines=124
+    1| # 四单 PRD 第 2 轮修订审查报告
+    2| 
+    3| | 作业 | 本轮版本 | 字段块 | 隐藏块 | 列表页列数 |
+    4| | --- | --- | --- | --- | --- |
+    5| | 应收单 | v1.9 | 109 | 23 | 13 |
+    6| | 其他应收单 | v1.9 | 58 | 8 | 11 |
+    7| | 应付单 | v1.4 | 107 | 15 | 13 |
+    8| | 其他应付单 | v1.4 | 60 | 8 | 13 |
+    9| 
+   10| 本轮仅落本地，**未上传云端**。
+   11| 
+   12| ---
+   13| 
+   14| ## 一、三项决策的落地结论
+   15| 
+   16| ### 决策 1｜账款余额查询：四单统一移二期（方案 3）
+   17| 
+   18| | 单 | 处理 | 落地位置 |
+   19| | --- | --- | --- |
+   20| | 应收单 | 删列表页工具栏按钮；审核/撤审后处理改为「余额写入应收对象档、二期提供查询入口」 | 3.1 #1、四、操作说明、5.7 二期排除 |
+   21| | 其他应收单 | 删工具栏按钮 + 删「四、操作说明」整节 + 删 2.1 名词解释 + 删 2.3 流程图第 9 环（后续顺延 9/10）+ 删 5.5 服务行 + 移出 5.6 一期范围 | 同上 |
+   22| | 应付单 | 原已是二期口径（v1.2 定），本轮保持，5.7 二期排除保留 `bm.pay_obj.get` 行 | 5.7 |
+   23| | 其他应付单 | 原已是二期口径（v1.0 定），本轮保持 | 5.7 |
+   24| 
+   25| 四单口径一致：**一期不做余额查询页，过账仍写对象档，二期只补查询入口**——不产生「一期过账数据二期不可查」的返工。
+   26| 
+   27| ### 决策 2｜应付单 101.采购入库单取单：以查询方案实现
+   28| 
+   29| 新增 `#### 5.2.1 查询方案 pur_stkin_doc_001`，位于 5.2 取单映射之后、5.3 `lnkg_calc` 之前。要点：
+   30| 
+   31| | 项 | 内容 |
+   32| | --- | --- |
+   33| | 方案编码 / 名称 | `pur_stkin_doc_001` / 查询应付来源-采购入库单 |
+   34| | 主模型 | 采购入库单 `pur_stkin_doc`（treeVersion 8.0 / specVersion 8.1） |
+   35| | 明细模型 | 采购入库单明细 `pur_stkin_doc_d` |
+   36| | 数据来源服务 | 查询采购入库单 `bm.pur_stkin_doc.get`（apiVersion 1.2 / specVersion 5.0，采购履约子域） |
+   37| | 入参变量 | `p_ops_unit_no`（必填，缺省阻断）、`p_supp_no`（必填）、`p_doc_date_from`/`p_doc_date_to`、`p_doc_no`、`p_self_doc_no` |
+   38| | 查询条件 | ①同运营单元 ②同供应商 ③`manage_status='Y'` 仅已审核 ④单据日期区间 ⑤来源单号精确 ⑥净可结算计价数量 > 0 |
+   39| | 净可结算 | `prc_qty − setld_prc_qty − IFNULL(Σ pay_doc_d.prc_qty, 0)`，Σ 口径与 `bm.pay_doc.src_data_check` Q1B 段一致 |
+   40| | 返回字段 | 单头 10 项 + 明细 14 项（22 行），逐项标注上引用途 |
+
+====================================================================================================
+PLATFORM_JSON C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd\采购取价策略/_upload/采购取价策略-v1.6.prd_spec.json
+top keys ['prd_spec']
+{
+ "prd_spec": [
+  {
+   "prd_file_no": "",
+   "prd_file_name": "采购取价策略-v1.6",
+   "prod_name": "采购取价策略-v1.6",
+   "prd_file_type": "1",
+   "prd_file_stat": "1",
+   "type": "0",
+   "application": "smbcloud",
+   "biz_model_no": "pur_price_strtg",
+   "biz_model_name": "采购取价策略",
+   "biz_model_type": "1",
+   "biz_model_source_id": 863,
+   "biz_model_version": "3.0"
+  }
+ ]
+}
+
+====================================================================================================
+ALL_SAMPLE_VERBATIM_CHECK (does generated description body appear verbatim in source file?)
+RULE-624B93CFA158 | PRD_EXPLICIT  | body_verbatim=False | full_desc_verbatim=False | 第二单位数量 默认值
+RULE-4916EB642CCE | PRD_EXPLICIT  | body_verbatim=False | full_desc_verbatim=False | 计价单位编号 只读
+RULE-CB7323C0CD49 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 扣已入库量 校验
+RULE-513D09A47C42 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 新增 可用条件
+RULE-9E60EC5D54FB | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 价税合计（本币） 只读
+RULE-79243882029C | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 阶梯起始数量 只读
+RULE-B015B0F41E60 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 明细操作 可用条件
+RULE-74F5417812D6 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 取价方式 只读
+RULE-1B6407D2A92E | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 明细操作 可用条件
+RULE-BD4E7E4BDC75 | PRD_EXPLICIT  | body_verbatim=False | full_desc_verbatim=False | 结算运营单元编号 开窗
+RULE-407BEB64E9AC | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 保存 前置校验
+RULE-557FFF142C6A | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 第二单位编号 只读
+RULE-42B6E8938F33 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 金额 校验
+RULE-FDB3C16FE60D | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 单据日期 校验
+RULE-FDDC09830838 | PRD_EXPLICIT  | body_verbatim=False | full_desc_verbatim=False | 批号 必填
+RULE-FD086AEB558E | PRD_EXPLICIT  | body_verbatim=False | full_desc_verbatim=False | 结算运营单元编号 只读
+RULE-C839DA63B915 | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 生效日期 必填
+RULE-900D7BFE5437 | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 生效 处理
+RULE-ADB1BDA8BC97 | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 货币编号 必填
+RULE-0D46D8D5D4B4 | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 运营单元编号 必填
+RULE-71AB74DDA09F | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 状态 必填
+RULE-8A3F018A7B26 | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 业务类型编号 必填
+RULE-2595E7D389E1 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 货币编号 校验
+RULE-5102DB21ED32 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 删除 后置处理
+RULE-149DB935AE4C | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 第二单位数量 校验
+RULE-59345FC00901 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 单据日期 校验
+RULE-830FBF25AFA6 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 失效 后置处理
+RULE-001777CC59D4 | PRD_EXPLICIT  | body_verbatim=False | full_desc_verbatim=False | 现结业务单别 禁用
+RULE-7DACC8E2D78A | PRD_EXPLICIT  | body_verbatim=False | full_desc_verbatim=False | 来源运营单元编号 默认值
+RULE-343C2BC98902 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 统一税种税率标识 隐藏
+RULE-2B0C20DD6E5A | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 编码格式 校验
+RULE-3E5A235941DE | PRD_EXPLICIT  | body_verbatim=False | full_desc_verbatim=False | 业务类型名称 默认值
+RULE-170FDBF38A1D | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 记账日期 校验
+RULE-AB5CE2F245E6 | PRD_EXPLICIT  | body_verbatim=True | full_desc_verbatim=False | 保存 可用条件
+RULE-3B00DD861B25 | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 分期来源类型 必填
+RULE-A28E636F4C1F | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 货币编号 必填
+RULE-16D667CC8AD1 | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 结算对象编号 必填
+RULE-E13B9AB62953 | PRD_DERIVED   | body_verbatim=True | full_desc_verbatim=False | 明细操作 处理
+RULE-D229ACE96015 | PENDING       | body_verbatim=False | full_desc_verbatim=False | 运营单元编号 只读
+RULE-46E7DAB1B231 | PENDING       | body_verbatim=True | full_desc_verbatim=False | 删除 前置校验
+SUMMARY {"body_found": 31, "body_not_found": 9, "full_desc_found": 0, "full_desc_not_found": 40}

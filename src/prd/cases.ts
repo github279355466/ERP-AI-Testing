@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { PARSER_VERSION, DocumentRecord, ExistingCaseRecord, ParseIssue } from './types';
 import { ScannedFile } from './scanner';
+import { stableId } from './ids';
 
 export const CATEGORY_RULE_TYPES: Record<string, string[]> = {
   readonly: ['READONLY'],
@@ -109,13 +110,16 @@ export function extractCaseLibrary(file: ScannedFile, now: string): CaseLibraryE
       ...readStepTargets(raw.automation),
     ];
     cases.push({
+      id: stableId('CASE', `${file.relative_path}|${caseId}`),
+      object_type: 'ExistingCase',
       case_id: caseId,
       package: packageName || name,
       module: name,
       title: readString(raw.title) ?? caseId,
       category: readString(raw.category) ?? 'unknown',
       priority: readString(raw.priority) ?? 'P2',
-      rule_ids: ruleIds,
+      rule_ids: [],
+      source_rule_ids: ruleIds,
       object: objectLabel,
       field: fieldLabel,
       field_no: readString(raw.fieldRef?.fieldNo),
@@ -154,9 +158,13 @@ export function extractCaseLibrary(file: ScannedFile, now: string): CaseLibraryE
     section_count: 0,
     table_count: 0,
     last_scan_status: file.status,
+    scanned_at: now,
     parser: 'test-case-json',
     source_role: 'TEST_CASE_LIBRARY',
     job_directory: file.job_directory,
+    supersedes: [],
+    superseded_by: null,
+    related_document_ids: [],
     is_latest: true,
   };
   return { document, cases, issues };

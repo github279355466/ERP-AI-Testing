@@ -1,0 +1,401 @@
+{
+ "id_counts": {
+  "documents": 333,
+  "entities": 82,
+  "pages": 830,
+  "fields": 8454,
+  "controls": 8454,
+  "rules": 30641,
+  "actions": 1896,
+  "workflows": 143,
+  "dependencies": 722,
+  "scenarios": 4067,
+  "existing-cases": 1477,
+  "open-questions": 330
+ },
+ "id_duplicates": {
+  "documents": [],
+  "entities": [],
+  "pages": [],
+  "fields": [],
+  "controls": [],
+  "rules": [],
+  "actions": [],
+  "workflows": [],
+  "dependencies": [],
+  "scenarios": [],
+  "existing-cases": [],
+  "open-questions": []
+ },
+ "id_duplicate_counts": {
+  "documents": 0,
+  "entities": 0,
+  "pages": 0,
+  "fields": 0,
+  "controls": 0,
+  "rules": 0,
+  "actions": 0,
+  "workflows": 0,
+  "dependencies": 0,
+  "scenarios": 0,
+  "existing-cases": 0,
+  "open-questions": 0
+ },
+ "format_bad": {
+  "documents": [],
+  "documents_count": 0,
+  "entities": [],
+  "entities_count": 0,
+  "pages": [],
+  "pages_count": 0,
+  "fields": [],
+  "fields_count": 0,
+  "controls": [],
+  "controls_count": 0,
+  "rules": [],
+  "rules_count": 0,
+  "actions": [],
+  "actions_count": 0,
+  "workflows": [],
+  "workflows_count": 0,
+  "dependencies": [],
+  "dependencies_count": 0,
+  "scenarios": [],
+  "scenarios_count": 0,
+  "existing-cases": [],
+  "existing-cases_count": 0,
+  "open-questions": [],
+  "open-questions_count": 0
+ },
+ "cross_type_conflicts": {},
+ "cross_type_conflict_count": 0,
+ "refs": {
+  "actions.document_id->documents": {
+   "kind": "STRICT",
+   "total": 1896,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "actions.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 1896,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "controls.document_id->documents": {
+   "kind": "STRICT",
+   "total": 8454,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "controls.field_id->fields": {
+   "kind": "STRICT",
+   "total": 8454,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "controls.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 8454,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "dependencies.document_id->documents": {
+   "kind": "STRICT",
+   "total": 722,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "dependencies.source_id->MIXED": {
+   "kind": "MIXED",
+   "total": 722,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "dependencies.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 722,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "documents.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 333,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "entities.document_ids->documents": {
+   "kind": "STRICT",
+   "total": 487,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "entities.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 82,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "existing-cases.document_id->documents": {
+   "kind": "STRICT",
+   "total": 1477,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "existing-cases.rule_ids->rules": {
+   "kind": "STRICT",
+   "total": 1872,
+   "missing": 1872,
+   "missing_rate": 1.0,
+   "samples": [
+    {
+     "src": "TC-SUPP-0001",
+     "value": "F-016"
+    },
+    {
+     "src": "TC-SUPP-0001",
+     "value": "F-018"
+    },
+    {
+     "src": "TC-SUPP-0001",
+     "value": "F-021"
+    },
+    {
+     "src": "TC-SUPP-0002",
+     "value": "F-015"
+    },
+    {
+     "src": "TC-SUPP-0002",
+     "value": "F-039"
+    }
+   ]
+  },
+  "fields.document_id->documents": {
+   "kind": "STRICT",
+   "total": 8454,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "fields.entity_id->entities": {
+   "kind": "STRICT",
+   "total": 6024,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "fields.page_id->pages": {
+   "kind": "STRICT",
+   "total": 7852,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "fields.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 8454,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "open-questions.document_ids->documents": {
+   "kind": "STRICT",
+   "total": 601,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "pages.document_id->documents": {
+   "kind": "STRICT",
+   "total": 830,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "pages.entity_id->entities": {
+   "kind": "STRICT",
+   "total": 536,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "pages.parent_page_id->pages": {
+   "kind": "STRICT",
+   "total": 438,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "pages.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 830,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "rules.applies_to->entities": {
+   "kind": "STRICT",
+   "total": 17409,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "rules.document_id->documents": {
+   "kind": "STRICT",
+   "total": 30641,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "rules.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 30641,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "scenarios.document_ids->documents": {
+   "kind": "STRICT",
+   "total": 4067,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "scenarios.rule_ids->rules": {
+   "kind": "STRICT",
+   "total": 4657,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "scenarios.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 4067,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "workflows.document_id->documents": {
+   "kind": "STRICT",
+   "total": 143,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "workflows.entity_id->entities": {
+   "kind": "STRICT",
+   "total": 143,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  },
+  "workflows.source_refs.document_id->documents": {
+   "kind": "STRICT",
+   "total": 143,
+   "missing": 0,
+   "missing_rate": 0.0,
+   "samples": []
+  }
+ },
+ "existing_cases_rule_id_pattern": {
+  "other": 1872
+ },
+ "orphans": {
+  "documents": {
+   "total": 333,
+   "isolated_both": 0,
+   "no_in": 0,
+   "no_out": 0,
+   "samples": []
+  },
+  "entities": {
+   "total": 82,
+   "isolated_both": 0,
+   "no_in": 35,
+   "no_out": 0,
+   "samples": []
+  },
+  "pages": {
+   "total": 830,
+   "isolated_both": 0,
+   "no_in": 198,
+   "no_out": 0,
+   "samples": []
+  },
+  "fields": {
+   "total": 8454,
+   "isolated_both": 0,
+   "no_in": 0,
+   "no_out": 0,
+   "samples": []
+  },
+  "controls": {
+   "total": 8454,
+   "isolated_both": 0,
+   "no_in": 8454,
+   "no_out": 0,
+   "samples": []
+  },
+  "rules": {
+   "total": 30641,
+   "isolated_both": 0,
+   "no_in": 25984,
+   "no_out": 0,
+   "samples": []
+  },
+  "actions": {
+   "total": 1896,
+   "isolated_both": 0,
+   "no_in": 1896,
+   "no_out": 0,
+   "samples": []
+  },
+  "workflows": {
+   "total": 143,
+   "isolated_both": 0,
+   "no_in": 143,
+   "no_out": 0,
+   "samples": []
+  },
+  "dependencies": {
+   "total": 722,
+   "isolated_both": 0,
+   "no_in": 722,
+   "no_out": 0,
+   "samples": []
+  },
+  "scenarios": {
+   "total": 4067,
+   "isolated_both": 0,
+   "no_in": 4067,
+   "no_out": 0,
+   "samples": []
+  },
+  "existing-cases": {
+   "total": 1477,
+   "isolated_both": 0,
+   "no_in": 1477,
+   "no_out": 0,
+   "samples": []
+  },
+  "open-questions": {
+   "total": 330,
+   "isolated_both": 0,
+   "no_in": 330,
+   "no_out": 0,
+   "samples": []
+  }
+ }
+}

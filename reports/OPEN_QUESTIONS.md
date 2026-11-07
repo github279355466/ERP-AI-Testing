@@ -1,161 +1,298 @@
 # 待确认问题清单
 
-生成时间：2026-11-07T08:50:37.521Z
-问题总数：330
+生成时间：2026-11-07T10:59:25.718Z
+问题总数：441
 
 ## 分布
 
 | 维度 | 值 | 数量 |
 | --- | --- | --- |
-| 严重度 | MEDIUM | 28 |
-| 严重度 | LOW | 282 |
-| 严重度 | HIGH | 20 |
+| 严重度 | MEDIUM | 56 |
+| 严重度 | LOW | 352 |
+| 严重度 | HIGH | 33 |
 | 类别 | AMBIGUOUS_RULE | 3 |
-| 类别 | MISSING_DEFINITION | 12 |
+| 类别 | MISSING_DEFINITION | 86 |
 | 类别 | VERSION_CONFLICT | 20 |
-| 类别 | RULE_CONFLICT | 276 |
+| 类别 | RULE_CONFLICT | 212 |
 | 类别 | BROKEN_FLOW | 19 |
+| 类别 | SOURCE_CONFLICT | 13 |
+| 类别 | DUPLICATE_SOURCE | 11 |
+| 类别 | EXCLUDED_SOURCE | 77 |
 
 ## 版本冲突
 
 | ID | 问题 | 严重度 | 影响 | 建议确认对象 | 证据 |
 | --- | --- | --- | --- | --- | --- |
-| OQ-55AA293D7A48 | 会计期间信息 存在多个文档版本：1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7，候选最新版本为 v1.7，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 会计期间信息/_diff/会计期间信息-v1.4-to-v1.6.md (vUNKNOWN)；会计期间信息/_diff/会计期间信息-v1.6-to-v1.7.md (vUNKNOWN) |
-| OQ-3222283628BB | 会计期间表 存在多个文档版本：1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9，候选最新版本为 v1.9，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 会计期间表/_diff/会计期间表-v1.6-to-v1.8.md (vUNKNOWN)；会计期间表/_diff/会计期间表-v1.8-to-v1.9.md (vUNKNOWN) |
-| OQ-10A0B2E17A54 | 供应商品号价格 存在多个文档版本：1.5, 1.6, 1.7，候选最新版本为 v1.7，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 供应商品号价格/_diff/供应商品号价格-v1.6-to-v1.7.md (vUNKNOWN)；供应商品号价格/_diff/供应商品号价格PRD.v1.6-条件写法体检.md (v1.6) |
-| OQ-C8DFB25DB6C7 | 其他应付单 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10，候选最新版本为 v1.10，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 其他应付单/_diff/其他应付单-v1.9-to-v1.10.md (vUNKNOWN)；其他应付单/_diff/其他应付单PRD.v1.9-条件写法体检.md (v1.9) |
-| OQ-82458D6034AB | 其他应收单 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5，候选最新版本为 v2.5，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 其他应收单/_diff/其他应收单-v2.4-to-v2.5.md (vUNKNOWN)；其他应收单/_diff/其他应收单PRD.v2.4-条件写法体检.md (v2.4) |
-| OQ-0C4E866DBBC6 | 客户供应商关系 存在多个文档版本：1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7，候选最新版本为 v1.7，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 客户供应商关系/_diff/客户供应商关系-v1.6-to-v1.7.md (vUNKNOWN)；客户供应商关系/_history/客户供应商关系PRD.v1.1.md (v1.1) |
-| OQ-807857177868 | 应付业务单别参数 存在多个文档版本：1.2, 1.3, 1.4, 1.5，候选最新版本为 v1.5，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应付业务单别参数/_diff/应付业务单别参数-v1.4-to-v1.5.md (vUNKNOWN)；应付业务单别参数/_diff/应付业务单别参数PRD.v1.4-条件写法体检.md (v1.4) |
-| OQ-9FB20F008C0D | 应付单 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10，候选最新版本为 v1.10，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应付单/_diff/应付单-v1.9-to-v1.10.md (vUNKNOWN)；应付单/_diff/应付单PRD.v1.9-条件写法体检.md (v1.9) |
-| OQ-9730F3F29FBF | 应付参数 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10，候选最新版本为 v1.10，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应付参数/_diff/应付参数-v1.9-to-v1.10.md (vUNKNOWN)；应付参数/_diff/应付参数PRD.v1.9-条件写法体检.md (v1.9) |
-| OQ-A5DBFE1E57FC | 应付启用期间 存在多个文档版本：1.1, 1.2, 1.3, 1.4，候选最新版本为 v1.4，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应付启用期间/_diff/应付启用期间-v1.2-to-v1.3.md (vUNKNOWN)；应付启用期间/_diff/应付启用期间-v1.3-to-v1.4.md (vUNKNOWN) |
-| OQ-C46CE55853F4 | 应收业务单别参数 存在多个文档版本：1.2, 1.3, 1.4, 1.5，候选最新版本为 v1.5，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应收业务单别参数/_diff/应收业务单别参数-v1.4-to-v1.5.md (vUNKNOWN)；应收业务单别参数/_diff/应收业务单别参数PRD.v1.4-条件写法体检.md (v1.4) |
-| OQ-9D8191ABF15C | 应收单 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7，候选最新版本为 v2.7，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应收单/_diff/应收单-v2.6-to-v2.7.md (vUNKNOWN)；应收单/_diff/应收单PRD.v2.6-条件写法体检.md (v2.6) |
-| OQ-CFC102953E9F | 应收参数 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10，候选最新版本为 v1.10，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应收参数/_diff/应收参数-v1.9-to-v1.10.md (vUNKNOWN)；应收参数/_diff/应收参数PRD.v1.9-条件写法体检.md (v1.9) |
-| OQ-C100951CAA42 | 应收启用期间 存在多个文档版本：1.1, 1.2, 1.3, 1.4，候选最新版本为 v1.4，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应收启用期间/_diff/应收启用期间-v1.2-to-v1.3.md (vUNKNOWN)；应收启用期间/_diff/应收启用期间-v1.3-to-v1.4.md (vUNKNOWN) |
-| OQ-921402024DA6 | 结算业务单别参数 存在多个文档版本：1.2, 1.3，候选最新版本为 v1.3，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 结算业务单别参数/_diff/结算业务单别参数PRD.v1.3-条件写法体检.md (v1.3)；结算业务单别参数/_history/结算业务单别参数PRD.v1.2.md (v1.2) |
-| OQ-738C46220468 | 设置核算参数 存在多个文档版本：2.4, 2.5, 2.6，候选最新版本为 v2.6，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 设置核算参数/_diff/云端漂移-DOC437087455402921984-设置核算参数PRD.v2.6.md (v2.6)；设置核算参数/_diff/设置核算参数-v2.5-to-v2.6.md (vUNKNOWN) |
-| OQ-B6A97DF7250C | 询价单 存在多个文档版本：1.5, 1.7, 1.8，候选最新版本为 v1.8，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 询价单/_diff/询价单PRD.v1.7-条件写法体检.md (v1.7)；询价单/_diff/询价单PRD.v1.8-条件写法体检.md (v1.8) |
-| OQ-427163C27EAC | 采购取价策略 存在多个文档版本：1.6, 1.7, 1.9，候选最新版本为 v1.9，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 采购取价策略/_diff/上云失败记录-覆盖DOC437131710750134273-2026-11-06.md (vUNKNOWN)；采购取价策略/_diff/上云核验-采购取价策略-v1.6-DOC437131710750134273.md (vUNKNOWN) |
-| OQ-1D091864888C | 采购退货出库单 存在多个文档版本：1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21, 1.22, 1.23, 1.24，候选最新版本为 v1.24，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 采购退货出库单/_diff/v1.19-条件写法体检（整改前-24条）.md (vUNKNOWN)；采购退货出库单/_diff/v1.20-云端整改清单.md (vUNKNOWN) |
-| OQ-CB6546B4374A | 采购退货单 存在多个文档版本：1.8, 1.9, 1.10, 1.11，候选最新版本为 v1.11，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 采购退货单/_diff/云端漂移-DOC437334690459947009-采购退货单PRD.v1.11.md (v1.11)；采购退货单/_diff/采购退货单PRD.v1.11-条件写法体检.md (v1.11) |
+| OQ-55AA293D7A48 | 会计期间信息 存在多个文档版本：1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7，候选最新版本为 v1.7，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 会计期间信息/_history/会计期间信息PRD.v1.1.md (v1.1)；会计期间信息/_history/会计期间信息PRD.v1.2.md (v1.2) |
+| OQ-3222283628BB | 会计期间表 存在多个文档版本：1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9，候选最新版本为 v1.9，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 会计期间表/_history/会计期间表PRD.v1.1.md (v1.1)；会计期间表/_history/会计期间表PRD.v1.2.md (v1.2) |
+| OQ-10A0B2E17A54 | 供应商品号价格 存在多个文档版本：1.5, 1.6, 1.7，候选最新版本为 v1.7，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 供应商品号价格/_history/供应商品号价格PRD.v1.5.md (v1.5)；供应商品号价格/_history/供应商品号价格PRD.v1.6.md (v1.6) |
+| OQ-C8DFB25DB6C7 | 其他应付单 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10，候选最新版本为 v1.10，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 其他应付单/_history/其他应付单PRD.v1.0.md (v1.0)；其他应付单/_history/其他应付单PRD.v1.1.md (v1.1) |
+| OQ-82458D6034AB | 其他应收单 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5，候选最新版本为 v2.5，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.1.md (v1.1)；其他应收单/_history/_dup_20261106/其他应收单PRD.v1.3.md (v1.3) |
+| OQ-0C4E866DBBC6 | 客户供应商关系 存在多个文档版本：1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7，候选最新版本为 v1.7，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 客户供应商关系/_history/客户供应商关系PRD.v1.1.md (v1.1)；客户供应商关系/_history/客户供应商关系PRD.v1.2.md (v1.2) |
+| OQ-807857177868 | 应付业务单别参数 存在多个文档版本：1.2, 1.3, 1.4, 1.5，候选最新版本为 v1.5，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应付业务单别参数/_history/应付业务单别参数PRD.v1.2.md (v1.2)；应付业务单别参数/_history/应付业务单别参数PRD.v1.3.md (v1.3) |
+| OQ-9FB20F008C0D | 应付单 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10，候选最新版本为 v1.10，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应付单/_history/应付单PRD.v1.0.md (v1.0)；应付单/_history/应付单PRD.v1.1.md (v1.1) |
+| OQ-9730F3F29FBF | 应付参数 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10，候选最新版本为 v1.10，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应付参数/_history/_dup_20261106/应付参数PRD.v1.3.md (v1.3)；应付参数/_history/应付参数PRD.v1.0.md (v1.0) |
+| OQ-A5DBFE1E57FC | 应付启用期间 存在多个文档版本：1.1, 1.2, 1.3, 1.4，候选最新版本为 v1.4，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应付启用期间/_history/应付启用期间PRD.v1.1.md (v1.1)；应付启用期间/_history/应付启用期间PRD.v1.2-cloud.md (v1.2) |
+| OQ-C46CE55853F4 | 应收业务单别参数 存在多个文档版本：1.2, 1.3, 1.4, 1.5，候选最新版本为 v1.5，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应收业务单别参数/_history/应收业务单别参数PRD.v1.2.md (v1.2)；应收业务单别参数/_history/应收业务单别参数PRD.v1.3.md (v1.3) |
+| OQ-9D8191ABF15C | 应收单 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7，候选最新版本为 v2.7，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.1.md (v1.1)；应收单/_history/_dup_20261106/应收单PRD.v1.3.md (v1.3) |
+| OQ-CFC102953E9F | 应收参数 存在多个文档版本：1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10，候选最新版本为 v1.10，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应收参数/_history/应收参数PRD.v1.0.md (v1.0)；应收参数/_history/应收参数PRD.v1.1.md (v1.1) |
+| OQ-C100951CAA42 | 应收启用期间 存在多个文档版本：1.1, 1.2, 1.3, 1.4，候选最新版本为 v1.4，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 应收启用期间/_history/应收启用期间PRD.v1.1.md (v1.1)；应收启用期间/_history/应收启用期间PRD.v1.2-cloud.md (v1.2) |
+| OQ-921402024DA6 | 结算业务单别参数 存在多个文档版本：1.2, 1.3，候选最新版本为 v1.3，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 结算业务单别参数/_history/结算业务单别参数PRD.v1.2.md (v1.2)；结算业务单别参数/结算业务单别参数PRD.v1.3.md (v1.3) |
+| OQ-738C46220468 | 设置核算参数 存在多个文档版本：2.4, 2.5, 2.6，候选最新版本为 v2.6，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 设置核算参数/_history/设置核算参数PRD.v2.4.md (v2.4)；设置核算参数/_history/设置核算参数PRD.v2.5.md (v2.5) |
+| OQ-B6A97DF7250C | 询价单 存在多个文档版本：1.5, 1.7, 1.8，候选最新版本为 v1.8，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 询价单/_history/询价单PRD.v1.7.md (v1.7)；询价单/询价单PRD.v1.8.md (v1.8) |
+| OQ-427163C27EAC | 采购取价策略 存在多个文档版本：1.6, 1.7, 1.9，候选最新版本为 v1.9，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 采购取价策略/_history/采购取价策略PRD.v1.6.md (v1.6)；采购取价策略/采购取价策略PRD.v1.7.md (v1.7) |
+| OQ-1D091864888C | 采购退货出库单 存在多个文档版本：1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21, 1.23, 1.24，候选最新版本为 v1.24，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.10.md (v1.10)；采购退货出库单/_history/采购退货出库单PRD.v1.11.md (v1.11) |
+| OQ-CB6546B4374A | 采购退货单 存在多个文档版本：1.8, 1.9, 1.10, 1.11，候选最新版本为 v1.11，需确认生效版本 | HIGH | 规则可能随版本变化，按旧版建模会产生过期断言 | PRD 负责人 | 采购退货单/_history/采购退货单PRD.v1.10.md (v1.10)；采购退货单/_history/采购退货单PRD.v1.8.md (v1.8) |
 
 
 ## 规则冲突与重复定义
 
 | ID | 问题 | 严重度 | 影响 | 建议确认对象 | 证据 |
 | --- | --- | --- | --- | --- | --- |
-| OQ-2FDB279C6DFE | biz_type_gen_info 的字段 biz_reg 在 3 份文档中存在 4 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:116；应付业务单别/应付业务单别PRD.v1.1.md:116 |
-| OQ-2083B1BC2DEA | biz_type_gen_info 的字段 biz_reg 在 4 份文档中存在 4 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:116；应收业务单别/应收业务单别PRD.v1.1.md:116 |
-| OQ-04C5E6425CF5 | biz_type_gen_info 的字段 biz_prop 在 3 份文档中存在 3 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:140；应收业务单别/应收业务单别PRD.v1.1.md:140 |
-| OQ-B5E06F6C4C00 | biz_type_gen_info 的字段 biz_type_no 在 2 份文档中存在 2 种不同的 REQUIRED 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:164；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:56 |
-| OQ-301D08407605 | biz_type_gen_info 的字段 biz_type_no 在 2 份文档中存在 4 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:164；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:56 |
-| OQ-8A3A994A9C89 | biz_type_gen_info 的字段 biz_type_name 在 2 份文档中存在 2 种不同的 REQUIRED 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:188；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:80 |
-| OQ-EB152DA8764D | biz_type_gen_info 的字段 biz_type_name 在 2 份文档中存在 4 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:188；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:80 |
-| OQ-50862A306D5F | biz_type_gen_info 的字段 biz_type_fname 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:212；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:152 |
-| OQ-780E4875515D | biz_type_gen_info 的字段 year_digit_type 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:260；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:176 |
-| OQ-10C862127C6D | biz_type_gen_info 的字段 year_digit_type 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:260；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:176 |
-| OQ-3FAB2100BE0A | biz_type_gen_info 的字段 year_digit_type 在 2 份文档中存在 2 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:260；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:176 |
-| OQ-62347E3B870F | biz_type_gen_info 的字段 serl_digit 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:284；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:104 |
-| OQ-56C1F14CD3F4 | biz_type_gen_info 的字段 serl_digit 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:284；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:104 |
-| OQ-31197F04B6E3 | biz_type_gen_info 的字段 serl_digit 在 2 份文档中存在 7 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:284；应付业务单别/应付业务单别PRD.v1.1.md:284 |
-| OQ-B9BB936EAB35 | ops_unit_calc_param 的字段 ops_unit_name 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:131；设置核算参数/设置核算参数PRD.v2.6.md:155 |
-| OQ-B35336EE196D | ops_unit_calc_param 的字段 ops_unit_name 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:131；应付启用期间/应付启用期间PRD.v1.4.md:167 |
-| OQ-9B8B4FF4DEAC | ops_unit_calc_param 的字段 ops_unit_name 在 2 份文档中存在 2 种不同的 API_CONTRACT 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:131；应付启用期间/应付启用期间PRD.v1.4.md:167 |
-| OQ-9EDB142005DF | ops_unit_calc_param 的字段 ena_year_pay 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:191；设置核算参数/设置核算参数PRD.v2.6.md:550 |
-| OQ-9933663E4B8B | ops_unit_calc_param 的字段 ena_perid_no_pay 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:215；设置核算参数/设置核算参数PRD.v2.6.md:574 |
-| OQ-37434853567E | ops_unit_calc_param 的字段 ena_perid_seq_pay 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:239；设置核算参数/设置核算参数PRD.v2.6.md:598 |
-| OQ-87DE3CE07D9C | ops_unit_calc_param 的字段 ena_perid_seq_pay 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:239；设置核算参数/设置核算参数PRD.v2.6.md:598 |
-| OQ-73EF139FD6F3 | ops_unit_calc_param 的字段 ena_year_recev 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:191；设置核算参数/设置核算参数PRD.v2.6.md:744 |
-| OQ-D60CA4AB927D | ops_unit_calc_param 的字段 ena_perid_no_recev 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:215；设置核算参数/设置核算参数PRD.v2.6.md:768 |
-| OQ-A751F6B8CFA6 | ops_unit_calc_param 的字段 ena_perid_seq_recev 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:239；设置核算参数/设置核算参数PRD.v2.6.md:792 |
-| OQ-00F0BB705CEA | ops_unit_calc_param 的字段 ena_perid_seq_recev 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:239；设置核算参数/设置核算参数PRD.v2.6.md:792 |
-| OQ-79841A446E72 | acctg_perid_info 的字段 begin_date 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间信息/会计期间信息PRD.v1.7.md:203；会计期间信息/会计期间信息PRD.v1.7.md:203 |
-| OQ-115B653D8F67 | acctg_perid_info 的字段 end_date 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间信息/会计期间信息PRD.v1.7.md:324；会计期间信息/会计期间信息PRD.v1.7.md:324 |
-| OQ-83355B40DEB7 | supp_item_price 的字段 ops_unit_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:146；供应商品号价格/供应商品号价格PRD.v1.7.md:146 |
-| OQ-B417FB8946F5 | supp_item_price 的字段 ops_unit_name 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:170；供应商品号价格/供应商品号价格PRD.v1.7.md:170 |
-| OQ-B2864705ED44 | supp_item_price 的字段 intax_flag 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:386；供应商品号价格/供应商品号价格PRD.v1.7.md:386 |
-| OQ-587BD4336BE0 | supp_item_price 的字段 price 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:409；供应商品号价格/供应商品号价格PRD.v1.7.md:409 |
-| OQ-A4917E434C93 | supp_item_price 的字段 price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:409；供应商品号价格/供应商品号价格PRD.v1.7.md:409 |
-| OQ-EC9062985B01 | supp_item_price 的字段 wtbsd_prc 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:433；供应商品号价格/供应商品号价格PRD.v1.7.md:433 |
-| OQ-17E737EF060B | supp_item_price 的字段 eff_date 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:457；供应商品号价格/供应商品号价格PRD.v1.7.md:457 |
-| OQ-ABADE24530C5 | supp_item_price 的字段 tax_no 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:529；供应商品号价格/供应商品号价格PRD.v1.7.md:529 |
-| OQ-B95427FBF88F | supp_item_price 的字段 step_begin_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:627；供应商品号价格/供应商品号价格PRD.v1.7.md:627 |
-| OQ-E09D127887E6 | other_recev_doc 的字段 biz_prop 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:247；其他应收单/其他应收单PRD.v2.5.md:247 |
-| OQ-A9833BAFE6F4 | other_recev_doc 的字段 doc_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:295；其他应收单/其他应收单PRD.v2.5.md:295 |
-| OQ-53B151167E3A | other_recev_doc 的字段 verf_mode 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:343；其他应收单/其他应收单PRD.v2.5.md:343 |
-| OQ-FB140143B51C | other_recev_doc 的字段 bk_date 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:727；其他应收单/其他应收单PRD.v2.5.md:727 |
-| OQ-B25B5D173470 | other_recev_doc 的字段 bk_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:727；其他应收单/其他应收单PRD.v2.5.md:727 |
-| OQ-764B7C4624D7 | other_recev_doc 的字段 addl_stlmt_exp_amt_tc 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:1041；其他应收单/其他应收单PRD.v2.5.md:1041 |
-| OQ-92A4A51F88F3 | other_recev_doc 的字段 addl_stlmt_exp_amt_fc 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:1065；其他应收单/其他应收单PRD.v2.5.md:1065 |
-| OQ-F582C46504CF | cust_supp_rela 的字段 ops_unit_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:110；客户供应商关系/客户供应商关系PRD.v1.7.md:110 |
-| OQ-CC86C0EB9806 | cust_supp_rela 的字段 ops_unit_name 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:134；客户供应商关系/客户供应商关系PRD.v1.7.md:134 |
-| OQ-3356A7AE9720 | cust_supp_rela 的字段 cust_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:158；客户供应商关系/客户供应商关系PRD.v1.7.md:158 |
-| OQ-B18EAAB91622 | cust_supp_rela 的字段 supp_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:206；客户供应商关系/客户供应商关系PRD.v1.7.md:206 |
-| OQ-5170E7DEE784 | biz_type_ap_param 的字段 verf_mode 在同一文档内有 2 种 DISABLED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别参数/应付业务单别参数PRD.v1.5.md:258；应付业务单别参数/应付业务单别参数PRD.v1.5.md:258 |
-| OQ-678A995B5381 | biz_type_ap_param 的字段 cash_stlmt_flag 在同一文档内有 2 种 DISABLED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别参数/应付业务单别参数PRD.v1.5.md:306；应付业务单别参数/应付业务单别参数PRD.v1.5.md:306 |
-| OQ-10A4291333A3 | pay_doc 的字段 biz_type_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:227；应付单/应付单PRD.v1.10.md:227 |
-| OQ-8C0EBEA2A013 | pay_doc 的字段 doc_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:251；应付单/应付单PRD.v1.10.md:251 |
-| OQ-6CE3E6FFFA2E | pay_doc 的字段 resp_pers_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:563；应付单/应付单PRD.v1.10.md:563 |
-| OQ-FCB2460B24F0 | pay_doc 的字段 resp_dept_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:611；应付单/应付单PRD.v1.10.md:611 |
-| OQ-12FD8189C5E8 | pay_doc 的字段 ccy_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:659；应付单/应付单PRD.v1.10.md:659 |
-| OQ-B0EC4317A840 | pay_doc 的字段 pmt_terms_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:731；应付单/应付单PRD.v1.10.md:731 |
-| OQ-FE8B01AA094C | pay_doc 的字段 tax_inv_categ_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:827；应付单/应付单PRD.v1.10.md:827 |
-| OQ-68F10E44D95E | pay_doc 的字段 bk_date 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:1091；应付单/应付单PRD.v1.10.md:1091 |
-| OQ-2AB24465CAB7 | pay_doc 的字段 bk_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:1091；应付单/应付单PRD.v1.10.md:1091 |
-| OQ-C57D31606565 | pay_doc 的字段 proj_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:1359；应付单/应付单PRD.v1.10.md:1359 |
-| OQ-80B3F2A0CEB9 | pay_doc 的字段 pur_ops_unit_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:1407；应付单/应付单PRD.v1.10.md:1407 |
-| OQ-55EAD49E0038 | ops_unit_calc_param 的字段 ops_unit_no 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:107；应付参数/应付参数PRD.v1.10.md:107 |
-| OQ-88E55544F8D9 | ops_unit_calc_param 的字段 price_invnt_adj_biz_type 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:227；应付参数/应付参数PRD.v1.10.md:227 |
-| OQ-80CC9006F0F1 | ops_unit_calc_param 的字段 exp_alloc_invnt_adj_biz_type 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:275；应付参数/应付参数PRD.v1.10.md:275 |
-| OQ-E3BECFE7D9A4 | ops_unit_calc_param 的字段 ena_year_pay 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:191；应付启用期间/应付启用期间PRD.v1.4.md:191 |
-| OQ-2A487C06EAFB | ops_unit_calc_param 的字段 ena_perid_no_pay 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:215；应付启用期间/应付启用期间PRD.v1.4.md:215 |
-| OQ-8BA96CA49D0B | biz_type_ar_param 的字段 verf_mode 在同一文档内有 2 种 DISABLED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收业务单别参数/应收业务单别参数PRD.v1.5.md:258；应收业务单别参数/应收业务单别参数PRD.v1.5.md:258 |
-| OQ-8F7BAE662DA1 | biz_type_ar_param 的字段 cash_stlmt_flag 在同一文档内有 2 种 DISABLED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收业务单别参数/应收业务单别参数PRD.v1.5.md:306；应收业务单别参数/应收业务单别参数PRD.v1.5.md:306 |
-| OQ-018BBB5B20E9 | recev_doc 的字段 doc_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:283；应收单/应收单PRD.v2.7.md:283 |
-| OQ-FF96DBE48063 | recev_doc 的字段 verf_mode 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:331；应收单/应收单PRD.v2.7.md:331 |
-| OQ-1ED895C1A47B | recev_doc 的字段 stlmt_cust_name 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:379；应收单/应收单PRD.v2.7.md:379 |
-| OQ-2DEDF6953DA0 | recev_doc 的字段 sales_cust_name 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:427；应收单/应收单PRD.v2.7.md:427 |
-| OQ-951E19061204 | recev_doc 的字段 recev_biz_prop 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:475；应收单/应收单PRD.v2.7.md:475 |
-| OQ-3B269CA7A4C0 | recev_doc 的字段 recev_biz_type 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:499；应收单/应收单PRD.v2.7.md:499 |
-| OQ-D38322620DFD | recev_doc 的字段 recev_dtl_biz_type 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:523；应收单/应收单PRD.v2.7.md:523 |
-| OQ-42603B896A81 | recev_doc 的字段 tax_rate 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:906；应收单/应收单PRD.v2.7.md:906 |
-| OQ-F42E6712A8AF | recev_doc 的字段 bk_date 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1096；应收单/应收单PRD.v2.7.md:1096 |
-| OQ-234204CA7C64 | recev_doc 的字段 bk_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1096；应收单/应收单PRD.v2.7.md:1096 |
-| OQ-7446AE130A3C | recev_doc 的字段 tax_inv_dirct 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1263；应收单/应收单PRD.v2.7.md:1263 |
-| OQ-B3750E556EE2 | recev_doc 的字段 tax_calc_mode 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1504；应收单/应收单PRD.v2.7.md:1504 |
-| OQ-6559BB94FC63 | recev_doc 的字段 uni_tax_rate_flag 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1717；应收单/应收单PRD.v2.7.md:1717 |
-| OQ-00522F3E7759 | ops_unit_calc_param 的字段 ena_year_recev 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:191；应收启用期间/应收启用期间PRD.v1.4.md:191 |
-| OQ-017700956671 | ops_unit_calc_param 的字段 ena_perid_no_recev 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:215；应收启用期间/应收启用期间PRD.v1.4.md:215 |
-| OQ-0F404E149FBF | code_rule 的字段 code_rule_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:92；批号编号规则/批号编号规则PRD.v1.5.md:92 |
-| OQ-9DE1979C478D | code_rule 的字段 date_code_basis 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:284；批号编号规则/批号编号规则PRD.v1.5.md:284 |
-| OQ-EBB4A9AC0737 | code_rule 的字段 year_digit_type 在同一文档内有 4 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:308；批号编号规则/批号编号规则PRD.v1.5.md:308 |
-| OQ-22FB5EEC6D5A | code_rule 的字段 serl_digit 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:332；批号编号规则/批号编号规则PRD.v1.5.md:332 |
-| OQ-88189E7B8C13 | code_rule 的字段 code_type 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:356；批号编号规则/批号编号规则PRD.v1.5.md:356 |
-| OQ-97AE29095D4B | ops_unit_calc_param 的字段 fc 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:179；设置核算参数/设置核算参数PRD.v2.6.md:179 |
-| OQ-270761290A99 | ops_unit_calc_param 的字段 acctg_perid_table_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:203；设置核算参数/设置核算参数PRD.v2.6.md:203 |
-| OQ-3C6DA3CE088E | ops_unit_calc_param 的字段 ccy_er_table_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:227；设置核算参数/设置核算参数PRD.v2.6.md:227 |
-| OQ-BF44B08C507C | ops_unit_calc_param 的字段 ena_year_invnt 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:356；设置核算参数/设置核算参数PRD.v2.6.md:356 |
-| OQ-6BCDC33065AC | ops_unit_calc_param 的字段 ena_perid_no_invnt 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:380；设置核算参数/设置核算参数PRD.v2.6.md:380 |
-| OQ-E3641CC756D4 | ops_unit_calc_param 的字段 ena_use_perid_seq_no_invnt 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:404；设置核算参数/设置核算参数PRD.v2.6.md:404 |
-| OQ-F91A74A2296B | ops_unit_calc_param 的字段 curr_perid_seq_invnt 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:476；设置核算参数/设置核算参数PRD.v2.6.md:476 |
-| OQ-A5761CA228BD | ops_unit_calc_param 的字段 date_range_end_invnt 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:524；设置核算参数/设置核算参数PRD.v2.6.md:524 |
-| OQ-10719E50355D | ops_unit_calc_param 的字段 curr_year_pay 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:622；设置核算参数/设置核算参数PRD.v2.6.md:622 |
-| OQ-06321F0B01EE | ops_unit_calc_param 的字段 curr_perid_no_pay 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:646；设置核算参数/设置核算参数PRD.v2.6.md:646 |
-| OQ-313FA46678E9 | ops_unit_calc_param 的字段 curr_perid_seq_pay 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:670；设置核算参数/设置核算参数PRD.v2.6.md:670 |
-| OQ-8473F0BDDC43 | ops_unit_calc_param 的字段 date_range_end_pay 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:718；设置核算参数/设置核算参数PRD.v2.6.md:718 |
-| OQ-D4B915504ADB | ops_unit_calc_param 的字段 curr_year_recev 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:816；设置核算参数/设置核算参数PRD.v2.6.md:816 |
+| OQ-2FDB279C6DFE | biz_type_gen_info 的字段 biz_reg 在 3 份文档中存在 4 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:125；应付业务单别/应付业务单别PRD.v1.1.md:138 |
+| OQ-2083B1BC2DEA | biz_type_gen_info 的字段 biz_reg 在 4 份文档中存在 4 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:133；应收业务单别/应收业务单别PRD.v1.1.md:133 |
+| OQ-04C5E6425CF5 | biz_type_gen_info 的字段 biz_prop 在 3 份文档中存在 3 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:162；应收业务单别/应收业务单别PRD.v1.1.md:162 |
+| OQ-B5E06F6C4C00 | biz_type_gen_info 的字段 biz_type_no 在 2 份文档中存在 2 种不同的 REQUIRED 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:171；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:63 |
+| OQ-301D08407605 | biz_type_gen_info 的字段 biz_type_no 在 2 份文档中存在 3 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:186；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:78 |
+| OQ-8A3A994A9C89 | biz_type_gen_info 的字段 biz_type_name 在 2 份文档中存在 2 种不同的 REQUIRED 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:195；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:87 |
+| OQ-50862A306D5F | biz_type_gen_info 的字段 biz_type_fname 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:229；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:169 |
+| OQ-780E4875515D | biz_type_gen_info 的字段 year_digit_type 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:269；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:185 |
+| OQ-10C862127C6D | biz_type_gen_info 的字段 year_digit_type 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:277；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:193 |
+| OQ-3FAB2100BE0A | biz_type_gen_info 的字段 year_digit_type 在 2 份文档中存在 2 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:282；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:198 |
+| OQ-62347E3B870F | biz_type_gen_info 的字段 serl_digit 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:293；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:113 |
+| OQ-56C1F14CD3F4 | biz_type_gen_info 的字段 serl_digit 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:301；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:121 |
+| OQ-31197F04B6E3 | biz_type_gen_info 的字段 serl_digit 在 2 份文档中存在 7 种不同的 VALIDATION 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别/应付业务单别PRD.v1.1.md:306；应付业务单别/应付业务单别PRD.v1.1.md:306 |
+| OQ-5E7FFA5C379B | ops_unit_calc_param 的字段 ops_unit_no 在 2 份文档中存在 2 种不同的 API_CONTRACT 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:129；设置核算参数/设置核算参数PRD.v2.6.md:153 |
+| OQ-B9BB936EAB35 | ops_unit_calc_param 的字段 ops_unit_name 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:140；设置核算参数/设置核算参数PRD.v2.6.md:177 |
+| OQ-B35336EE196D | ops_unit_calc_param 的字段 ops_unit_name 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:148；应付启用期间/应付启用期间PRD.v1.4.md:184 |
+| OQ-9EDB142005DF | ops_unit_calc_param 的字段 ena_year_pay 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:200；设置核算参数/设置核算参数PRD.v2.6.md:572 |
+| OQ-9933663E4B8B | ops_unit_calc_param 的字段 ena_perid_no_pay 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:224；设置核算参数/设置核算参数PRD.v2.6.md:596 |
+| OQ-37434853567E | ops_unit_calc_param 的字段 ena_perid_seq_pay 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:248；设置核算参数/设置核算参数PRD.v2.6.md:620 |
+| OQ-87DE3CE07D9C | ops_unit_calc_param 的字段 ena_perid_seq_pay 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:256；设置核算参数/设置核算参数PRD.v2.6.md:615 |
+| OQ-73EF139FD6F3 | ops_unit_calc_param 的字段 ena_year_recev 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:200；设置核算参数/设置核算参数PRD.v2.6.md:766 |
+| OQ-D60CA4AB927D | ops_unit_calc_param 的字段 ena_perid_no_recev 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:224；设置核算参数/设置核算参数PRD.v2.6.md:790 |
+| OQ-A751F6B8CFA6 | ops_unit_calc_param 的字段 ena_perid_seq_recev 在 2 份文档中存在 2 种不同的 READONLY 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:248；设置核算参数/设置核算参数PRD.v2.6.md:814 |
+| OQ-00F0BB705CEA | ops_unit_calc_param 的字段 ena_perid_seq_recev 在 2 份文档中存在 2 种不同的 DEFAULT_VALUE 描述，需确认以哪份为准 | MEDIUM | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:256；设置核算参数/设置核算参数PRD.v2.6.md:809 |
+| OQ-45F243924762 | acctg_perid_info 的字段 insta_count 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间信息/会计期间信息PRD.v1.7.md:164；会计期间信息/会计期间信息PRD.v1.7.md:177 |
+| OQ-79841A446E72 | acctg_perid_info 的字段 begin_date 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间信息/会计期间信息PRD.v1.7.md:220；会计期间信息/会计期间信息PRD.v1.7.md:225 |
+| OQ-115B653D8F67 | acctg_perid_info 的字段 end_date 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间信息/会计期间信息PRD.v1.7.md:333；会计期间信息/会计期间信息PRD.v1.7.md:346 |
+| OQ-48DD3BF21726 | acctg_perid_info 的字段 qtr 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间信息/会计期间信息PRD.v1.7.md:359；会计期间信息/会计期间信息PRD.v1.7.md:370 |
+| OQ-4E35BE718C5A | acctg_perid_info 的字段 acctg_adj_perid_flag 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间信息/会计期间信息PRD.v1.7.md:383；会计期间信息/会计期间信息PRD.v1.7.md:394 |
+| OQ-C7075B9117E8 | acctg_perid_table 的字段 qtr 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间表/会计期间表PRD.v1.9.md:282；会计期间表/会计期间表PRD.v1.9.md:293 |
+| OQ-2C284ECE6A42 | acctg_perid_table 的字段 acctg_adj_perid_flag 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 会计期间表/会计期间表PRD.v1.9.md:306；会计期间表/会计期间表PRD.v1.9.md:317 |
+| OQ-5996EEB407A8 | supp_item_price 的字段 ops_unit_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:153；供应商品号价格/供应商品号价格PRD.v1.7.md:168 |
+| OQ-83355B40DEB7 | supp_item_price 的字段 ops_unit_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:168；供应商品号价格/供应商品号价格PRD.v1.7.md:168 |
+| OQ-B417FB8946F5 | supp_item_price 的字段 ops_unit_name 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:187；供应商品号价格/供应商品号价格PRD.v1.7.md:192 |
+| OQ-2AAFC5B9DA11 | supp_item_price 的字段 pur_price_type 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:201；供应商品号价格/供应商品号价格PRD.v1.7.md:216 |
+| OQ-F90B126B75BD | supp_item_price 的字段 supp_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:225；供应商品号价格/供应商品号价格PRD.v1.7.md:240 |
+| OQ-0C6B16E1075E | supp_item_price 的字段 ccy_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:273；供应商品号价格/供应商品号价格PRD.v1.7.md:288 |
+| OQ-C963139B9AC8 | supp_item_price 的字段 item_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:297；供应商品号价格/供应商品号价格PRD.v1.7.md:312 |
+| OQ-B50FD0A00E38 | supp_item_price 的字段 prc_unit_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:369；供应商品号价格/供应商品号价格PRD.v1.7.md:384 |
+| OQ-B2864705ED44 | supp_item_price 的字段 intax_flag 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:403；供应商品号价格/供应商品号价格PRD.v1.7.md:408 |
+| OQ-587BD4336BE0 | supp_item_price 的字段 price 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:416；供应商品号价格/供应商品号价格PRD.v1.7.md:431 |
+| OQ-EC9062985B01 | supp_item_price 的字段 wtbsd_prc 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:455；供应商品号价格/供应商品号价格PRD.v1.7.md:455 |
+| OQ-DC3B0B04AB85 | supp_item_price 的字段 eff_date 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:464；供应商品号价格/供应商品号价格PRD.v1.7.md:479 |
+| OQ-17E737EF060B | supp_item_price 的字段 eff_date 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:479；供应商品号价格/供应商品号价格PRD.v1.7.md:479 |
+| OQ-ABADE24530C5 | supp_item_price 的字段 tax_no 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:546；供应商品号价格/供应商品号价格PRD.v1.7.md:551 |
+| OQ-B95427FBF88F | supp_item_price 的字段 step_begin_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:649；供应商品号价格/供应商品号价格PRD.v1.7.md:649 |
+| OQ-53BACA843BF9 | supp_item_price 的字段 step_end_qty 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:658；供应商品号价格/供应商品号价格PRD.v1.7.md:673 |
+| OQ-F587DEB6001B | supp_item_price 的字段 pur_price 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 供应商品号价格/供应商品号价格PRD.v1.7.md:682；供应商品号价格/供应商品号价格PRD.v1.7.md:697 |
+| OQ-A9833BAFE6F4 | other_recev_doc 的字段 doc_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:302；其他应收单/其他应收单PRD.v2.5.md:317 |
+| OQ-53B151167E3A | other_recev_doc 的字段 verf_mode 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:350；其他应收单/其他应收单PRD.v2.5.md:365 |
+| OQ-FB140143B51C | other_recev_doc 的字段 bk_date 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:734；其他应收单/其他应收单PRD.v2.5.md:749 |
+| OQ-B25B5D173470 | other_recev_doc 的字段 bk_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:749；其他应收单/其他应收单PRD.v2.5.md:749 |
+| OQ-BF23303AB37A | other_recev_doc 的字段 acctg_perid_seq 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:810；其他应收单/其他应收单PRD.v2.5.md:821 |
+| OQ-764B7C4624D7 | other_recev_doc 的字段 addl_stlmt_exp_amt_tc 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:1052；其他应收单/其他应收单PRD.v2.5.md:1063 |
+| OQ-92A4A51F88F3 | other_recev_doc 的字段 addl_stlmt_exp_amt_fc 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 其他应收单/其他应收单PRD.v2.5.md:1076；其他应收单/其他应收单PRD.v2.5.md:1087 |
+| OQ-BDA6D18A5B7C | cust_supp_rela 的字段 ops_unit_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:117；客户供应商关系/客户供应商关系PRD.v1.7.md:132 |
+| OQ-F582C46504CF | cust_supp_rela 的字段 ops_unit_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:132；客户供应商关系/客户供应商关系PRD.v1.7.md:132 |
+| OQ-CC86C0EB9806 | cust_supp_rela 的字段 ops_unit_name 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:151；客户供应商关系/客户供应商关系PRD.v1.7.md:156 |
+| OQ-98547DB05C1B | cust_supp_rela 的字段 cust_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:165；客户供应商关系/客户供应商关系PRD.v1.7.md:180 |
+| OQ-3356A7AE9720 | cust_supp_rela 的字段 cust_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:180；客户供应商关系/客户供应商关系PRD.v1.7.md:180 |
+| OQ-395D3A976E19 | cust_supp_rela 的字段 supp_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:213；客户供应商关系/客户供应商关系PRD.v1.7.md:228 |
+| OQ-B18EAAB91622 | cust_supp_rela 的字段 supp_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 客户供应商关系/客户供应商关系PRD.v1.7.md:228；客户供应商关系/客户供应商关系PRD.v1.7.md:228 |
+| OQ-5170E7DEE784 | biz_type_ap_param 的字段 verf_mode 在同一文档内有 2 种 DISABLED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别参数/应付业务单别参数PRD.v1.5.md:271；应付业务单别参数/应付业务单别参数PRD.v1.5.md:280 |
+| OQ-678A995B5381 | biz_type_ap_param 的字段 cash_stlmt_flag 在同一文档内有 2 种 DISABLED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付业务单别参数/应付业务单别参数PRD.v1.5.md:319；应付业务单别参数/应付业务单别参数PRD.v1.5.md:328 |
+| OQ-10A4291333A3 | pay_doc 的字段 biz_type_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:236；应付单/应付单PRD.v1.10.md:249 |
+| OQ-8C0EBEA2A013 | pay_doc 的字段 doc_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:258；应付单/应付单PRD.v1.10.md:273 |
+| OQ-6CE3E6FFFA2E | pay_doc 的字段 resp_pers_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:572；应付单/应付单PRD.v1.10.md:585 |
+| OQ-FCB2460B24F0 | pay_doc 的字段 resp_dept_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:620；应付单/应付单PRD.v1.10.md:633 |
+| OQ-12FD8189C5E8 | pay_doc 的字段 ccy_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:668；应付单/应付单PRD.v1.10.md:681 |
+| OQ-B0EC4317A840 | pay_doc 的字段 pmt_terms_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:740；应付单/应付单PRD.v1.10.md:753 |
+| OQ-FE8B01AA094C | pay_doc 的字段 tax_inv_categ_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:836；应付单/应付单PRD.v1.10.md:849 |
+| OQ-68F10E44D95E | pay_doc 的字段 bk_date 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:1098；应付单/应付单PRD.v1.10.md:1113 |
+| OQ-2AB24465CAB7 | pay_doc 的字段 bk_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:1113；应付单/应付单PRD.v1.10.md:1113 |
+| OQ-C57D31606565 | pay_doc 的字段 proj_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:1368；应付单/应付单PRD.v1.10.md:1381 |
+| OQ-80B3F2A0CEB9 | pay_doc 的字段 pur_ops_unit_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:1416；应付单/应付单PRD.v1.10.md:1429 |
+| OQ-88E55544F8D9 | ops_unit_calc_param 的字段 price_invnt_adj_biz_type 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:249；应付参数/应付参数PRD.v1.10.md:249 |
+| OQ-80CC9006F0F1 | ops_unit_calc_param 的字段 exp_alloc_invnt_adj_biz_type 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付参数/应付参数PRD.v1.10.md:297；应付参数/应付参数PRD.v1.10.md:297 |
+| OQ-E3BECFE7D9A4 | ops_unit_calc_param 的字段 ena_year_pay 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:213；应付启用期间/应付启用期间PRD.v1.4.md:213 |
+| OQ-2A487C06EAFB | ops_unit_calc_param 的字段 ena_perid_no_pay 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应付启用期间/应付启用期间PRD.v1.4.md:222；应付启用期间/应付启用期间PRD.v1.4.md:237 |
+| OQ-8BA96CA49D0B | biz_type_ar_param 的字段 verf_mode 在同一文档内有 2 种 DISABLED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收业务单别参数/应收业务单别参数PRD.v1.5.md:271；应收业务单别参数/应收业务单别参数PRD.v1.5.md:280 |
+| OQ-8F7BAE662DA1 | biz_type_ar_param 的字段 cash_stlmt_flag 在同一文档内有 2 种 DISABLED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收业务单别参数/应收业务单别参数PRD.v1.5.md:319；应收业务单别参数/应收业务单别参数PRD.v1.5.md:328 |
+| OQ-018BBB5B20E9 | recev_doc 的字段 doc_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:290；应收单/应收单PRD.v2.7.md:305 |
+| OQ-42603B896A81 | recev_doc 的字段 tax_rate 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:916；应收单/应收单PRD.v2.7.md:927 |
+| OQ-F42E6712A8AF | recev_doc 的字段 bk_date 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1103；应收单/应收单PRD.v2.7.md:1118 |
+| OQ-234204CA7C64 | recev_doc 的字段 bk_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1118；应收单/应收单PRD.v2.7.md:1118 |
+| OQ-6559BB94FC63 | recev_doc 的字段 uni_tax_rate_flag 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1728；应收单/应收单PRD.v2.7.md:1739 |
+| OQ-00522F3E7759 | ops_unit_calc_param 的字段 ena_year_recev 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:213；应收启用期间/应收启用期间PRD.v1.4.md:213 |
+| OQ-017700956671 | ops_unit_calc_param 的字段 ena_perid_no_recev 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 应收启用期间/应收启用期间PRD.v1.4.md:222；应收启用期间/应收启用期间PRD.v1.4.md:237 |
+| OQ-9DE1979C478D | code_rule 的字段 date_code_basis 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:306；批号编号规则/批号编号规则PRD.v1.5.md:306 |
+| OQ-EBB4A9AC0737 | code_rule 的字段 year_digit_type 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:330；批号编号规则/批号编号规则PRD.v1.5.md:330 |
+| OQ-22FB5EEC6D5A | code_rule 的字段 serl_digit 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:354；批号编号规则/批号编号规则PRD.v1.5.md:354 |
+| OQ-88189E7B8C13 | code_rule 的字段 code_type 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 批号编号规则/批号编号规则PRD.v1.5.md:367；批号编号规则/批号编号规则PRD.v1.5.md:378 |
+| OQ-270761290A99 | ops_unit_calc_param 的字段 acctg_perid_table_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:225；设置核算参数/设置核算参数PRD.v2.6.md:225 |
+| OQ-BF44B08C507C | ops_unit_calc_param 的字段 ena_year_invnt 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:365；设置核算参数/设置核算参数PRD.v2.6.md:378 |
+| OQ-6BCDC33065AC | ops_unit_calc_param 的字段 ena_perid_no_invnt 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:389；设置核算参数/设置核算参数PRD.v2.6.md:402 |
+| OQ-A5761CA228BD | ops_unit_calc_param 的字段 date_range_end_invnt 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:541；设置核算参数/设置核算参数PRD.v2.6.md:546 |
+| OQ-10719E50355D | ops_unit_calc_param 的字段 curr_year_pay 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:631；设置核算参数/设置核算参数PRD.v2.6.md:644 |
+| OQ-06321F0B01EE | ops_unit_calc_param 的字段 curr_perid_no_pay 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:655；设置核算参数/设置核算参数PRD.v2.6.md:668 |
+| OQ-8473F0BDDC43 | ops_unit_calc_param 的字段 date_range_end_pay 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:735；设置核算参数/设置核算参数PRD.v2.6.md:740 |
+| OQ-D4B915504ADB | ops_unit_calc_param 的字段 curr_year_recev 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:825；设置核算参数/设置核算参数PRD.v2.6.md:838 |
+| OQ-08A1A151A0B8 | ops_unit_calc_param 的字段 curr_perid_no_recev 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:849；设置核算参数/设置核算参数PRD.v2.6.md:862 |
+| OQ-23ED3CD44AA6 | ops_unit_calc_param 的字段 date_range_end_recev 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:929；设置核算参数/设置核算参数PRD.v2.6.md:934 |
+| OQ-5A2CFB2CE2C8 | ops_unit_calc_param 的字段 CUS_has_co_acctg_perid 在同一文档内有 3 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:1032；设置核算参数/设置核算参数PRD.v2.6.md:1045 |
+| OQ-3526F7C21AB0 | inq_doc 的字段 doc_date 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:269；询价单/询价单PRD.v1.8.md:269 |
+| OQ-BA025B5812E0 | inq_doc 的字段 inq_date 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:280；询价单/询价单PRD.v1.8.md:293 |
+| OQ-A5650089FAFA | inq_doc 的字段 supp_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:328；询价单/询价单PRD.v1.8.md:341 |
+| OQ-B9A55A0E74D2 | inq_doc 的字段 pur_price_type 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:474；询价单/询价单PRD.v1.8.md:485 |
+| OQ-AB6E7AFE88AD | inq_doc 的字段 biz_prop 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:522；询价单/询价单PRD.v1.8.md:533 |
+| OQ-03F797D3A1B8 | inq_doc 的字段 manage_status 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:544；询价单/询价单PRD.v1.8.md:557 |
+| OQ-59FD8ED0BC90 | pur_rtn_stkou_doc 的字段 doc_date 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:314；采购退货出库单/采购退货出库单PRD.v1.24.md:314 |
+| OQ-705224CC90E1 | pur_rtn_stkou_doc 的字段 pur_rtn_stkou_doc_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:386；采购退货出库单/采购退货出库单PRD.v1.24.md:386 |
+| OQ-E4E80292D97A | pur_rtn_stkou_doc 的字段 post_stat 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:637；采购退货出库单/采购退货出库单PRD.v1.24.md:650 |
+| OQ-935FC6425791 | pur_rtn_stkou_doc 的字段 pur_rtn_stkou_src_doc_type 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:686；采购退货出库单/采购退货出库单PRD.v1.24.md:701 |
+| OQ-BD595384BB51 | pur_rtn_stkou_doc 的字段 src_ops_unit_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:710；采购退货出库单/采购退货出库单PRD.v1.24.md:725 |
+| OQ-7867CEA145AC | pur_rtn_stkou_doc 的字段 src_doc_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:734；采购退货出库单/采购退货出库单PRD.v1.24.md:749 |
+| OQ-1118BA30A152 | pur_rtn_stkou_doc 的字段 src_seq 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:758；采购退货出库单/采购退货出库单PRD.v1.24.md:773 |
+| OQ-7DEFDCC58499 | pur_rtn_stkou_doc 的字段 biz_qty 在同一文档内有 4 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:990；采购退货出库单/采购退货出库单PRD.v1.24.md:990 |
+| OQ-C2C545B590A0 | pur_rtn_stkou_doc 的字段 prc_unit_no 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:1051；采购退货出库单/采购退货出库单PRD.v1.24.md:1062 |
+| OQ-B1ACF82AB05E | pur_rtn_stkou_doc 的字段 invnt_unit_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:1095；采购退货出库单/采购退货出库单PRD.v1.24.md:1110 |
+| OQ-3E31F7B7771F | pur_rtn_stkou_doc 的字段 sec_unit_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:1134；采购退货出库单/采购退货出库单PRD.v1.24.md:1134 |
+| OQ-D4315F8BD2BE | pur_rtn_stkou_doc 的字段 proj_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:1167；采购退货出库单/采购退货出库单PRD.v1.24.md:1182 |
+| OQ-30C4CC164E94 | pur_rtn_doc 的字段 doc_date 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:253；采购退货单/采购退货单PRD.v1.11.md:253 |
+| OQ-72BE4FD91121 | pur_rtn_doc 的字段 pur_rtn_doc_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:325；采购退货单/采购退货单PRD.v1.11.md:325 |
+| OQ-E64753FB4BB8 | pur_rtn_doc 的字段 stlmt_supp_no 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:894；采购退货单/采购退货单PRD.v1.11.md:905 |
+| OQ-8081D576EF2A | pur_rtn_doc 的字段 dir_pmt 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:990；采购退货单/采购退货单PRD.v1.11.md:1001 |
+| OQ-29013C7C0B61 | pur_rtn_doc 的字段 curr_can_stlmt 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1014；采购退货单/采购退货单PRD.v1.11.md:1025 |
+| OQ-683220A6B50B | pur_rtn_doc 的字段 tax_inv_no 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1086；采购退货单/采购退货单PRD.v1.11.md:1097 |
+| OQ-854E94681CD7 | pur_rtn_doc 的字段 pcs 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1171；采购退货单/采购退货单PRD.v1.11.md:1171 |
+| OQ-6D6AA3509602 | pur_rtn_doc 的字段 CUS_prc_unit_and_pur_unit_rqd_same 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1256；采购退货单/采购退货单PRD.v1.11.md:1269 |
+| OQ-27FE550C7499 | pur_rtn_doc 的字段 item_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1280；采购退货单/采购退货单PRD.v1.11.md:1293 |
+| OQ-EE6F65592070 | pur_rtn_doc 的字段 item_spec 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1304；采购退货单/采购退货单PRD.v1.11.md:1317 |
+| OQ-51D5DA996FD4 | pur_rtn_doc 的字段 biz_qty 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1341；采购退货单/采购退货单PRD.v1.11.md:1341 |
+| OQ-66A57AC16404 | pur_rtn_doc 的字段 prc_unit_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1413；采购退货单/采购退货单PRD.v1.11.md:1413 |
+| OQ-3E938C371E24 | pur_rtn_doc 的字段 invnt_unit_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1446；采购退货单/采购退货单PRD.v1.11.md:1461 |
+| OQ-469CA78540F8 | pur_rtn_doc 的字段 sec_unit_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1485；采购退货单/采购退货单PRD.v1.11.md:1485 |
+| OQ-3A21AD34A20C | pur_rtn_doc 的字段 price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1533；采购退货单/采购退货单PRD.v1.11.md:1533 |
+| OQ-82B4D79D973F | pur_rtn_doc 的字段 amt 在同一文档内有 2 种 CALCULATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1557；采购退货单/采购退货单PRD.v1.11.md:1557 |
+| OQ-DF6A3CB5523A | pur_rtn_doc 的字段 disc_rate 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1581；采购退货单/采购退货单PRD.v1.11.md:1581 |
+| OQ-2E384700DEBE | pur_rtn_doc 的字段 discd_price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1605；采购退货单/采购退货单PRD.v1.11.md:1605 |
+| OQ-E439BC8EB68F | pur_rtn_doc 的字段 disc_amt 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1629；采购退货单/采购退货单PRD.v1.11.md:1629 |
+| OQ-00CB59A19C48 | pur_rtn_doc 的字段 tax_rate 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1797；采购退货单/采购退货单PRD.v1.11.md:1797 |
+| OQ-070FB89A9DBD | pur_rtn_doc 的字段 pur_type 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:1954；采购退货单/采购退货单PRD.v1.11.md:1965 |
+| OQ-CA8D458A4F1B | pur_rtn_doc 的字段 pur_rtn_src_doc_type 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:2032；采购退货单/采购退货单PRD.v1.11.md:2037 |
+| OQ-2CDF8D50C08F | pur_rtn_doc 的字段 src_ops_unit_no 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:2048；采购退货单/采购退货单PRD.v1.11.md:2061 |
+| OQ-08F5B8F73227 | pur_rtn_doc 的字段 ref_src_sub_seq 在同一文档内有 2 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:2216；采购退货单/采购退货单PRD.v1.11.md:2229 |
+| OQ-9EDB1A835A10 | pur_rtn_doc 的字段 ded_alr_stkin_qty 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:2266；采购退货单/采购退货单PRD.v1.11.md:2277 |
+| OQ-1C24300807D2 | biz_type_pur_param 的字段 biz_type_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 参数与单别域/单别参数(采购)/DOC418589375561695232_单别参数(采购)_V1.1.md:123；参数与单别域/单别参数(采购)/DOC418589375561695232_单别参数(采购)_V1.1.md:123 |
+| OQ-C1C092B863A4 | biz_type_gen_info 的字段 year_digit_type 在同一文档内有 3 种 LINKAGE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:198；参数与单别域/采购业务单别/DOC408422519445487617_采购业务单别_V1.5.md:198 |
+| OQ-EE7AC2A747F6 | trans_obj_group 的字段 code_sectn_no 在同一文档内有 3 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/交易对象群组/DOC409068728707284993_交易对象群组_V1.8.md:323；基础资料域/交易对象群组/DOC409068728707284993_交易对象群组_V1.8.md:323 |
+| OQ-04E0FDC59DE3 | trans_obj_group 的字段 attr_def_value 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/交易对象群组/DOC409068728707284993_交易对象群组_V1.8.md:395；基础资料域/交易对象群组/DOC409068728707284993_交易对象群组_V1.8.md:395 |
+| OQ-09993186792E | item_attr 的字段 attr_value 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号属性/DOC408324910143864832_品号属性_V1.3.md:222；基础资料域/品号属性/DOC408324910143864832_品号属性_V1.3.md:222 |
+| OQ-DC91B2127518 | item_group 的字段 attr_def_value 在同一文档内有 4 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:296；基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:296 |
+| OQ-499ED28700A7 | item_group 的字段 item_no_sep 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:344；基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:344 |
+| OQ-C1EFEA97C37D | item_group 的字段 sectn_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:368；基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:368 |
+| OQ-87F04FEC1E7E | item_group 的字段 sectn_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:368；基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:368 |
+| OQ-6B44F61A0532 | item_group 的字段 simi_check 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:392；基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:392 |
+| OQ-2167F9A9F2BA | item_group 的字段 def_item_name 在同一文档内有 3 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:411；基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:416 |
+| OQ-BCB993834A8C | item_group 的字段 def_spec 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:459；基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md:464 |
+| OQ-8D596BDE9CA0 | item_gen_info 的字段 invnt_unit_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md:325；基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md:325 |
+| OQ-BEC05908A6E9 | item_gen_info 的字段 invnt_unit_no 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md:325；基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md:325 |
+| OQ-05540CF8CAC7 | item_gen_info 的字段 tax_rate 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md:421；基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md:421 |
+| OQ-4BEE473860A3 | item_gen_info 的字段 invnt_unit_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md:857；基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md:857 |
+| OQ-0CCE88EE0E9C | item_pur_info 的字段 price_upper_limit_rate 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:347；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:347 |
+| OQ-7E79426986C8 | item_pur_info 的字段 pur_fix_lead_days 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:371；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:371 |
+| OQ-2690D85624E7 | item_pur_info 的字段 pur_var_lead_days 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:395；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:395 |
+| OQ-2AD0430A7FC5 | item_pur_info 的字段 pur_batch 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:419；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:419 |
+| OQ-42EFE54A3874 | item_pur_info 的字段 lwst_addl_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:443；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:443 |
+| OQ-CE3C698D8726 | item_pur_info 的字段 rplsh_multi_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:467；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:467 |
+| OQ-E7A1EC1187C9 | item_pur_info 的字段 std_pur_price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:515；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:515 |
+| OQ-87A544147816 | item_pur_info 的字段 last_pur_price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:539；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:539 |
+| OQ-020B7897BFAC | item_pur_info 的字段 pur_propo 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:685；基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md:685 |
+| OQ-BBAE7456E3DF | cust_base_info 的字段 cust_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/客户通用信息/DOC206391_客户通用信息_V1.2.md:84；基础资料域/客户通用信息/DOC206391_客户通用信息_V1.2.md:99 |
+| OQ-57E3A9E2B3AF | cust_base_info 的字段 manage_status 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/客户通用信息/DOC206391_客户通用信息_V1.2.md:243；基础资料域/客户通用信息/DOC206391_客户通用信息_V1.2.md:243 |
+| OQ-D48D4D5DE293 | trans_obj_attr 的字段 attr_value 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/维护交易对象属性/DOC409079888051535872_维护交易对象属性_V1.2.md:269；基础资料域/维护交易对象属性/DOC409079888051535872_维护交易对象属性_V1.2.md:269 |
+| OQ-7278F6A95809 | ccy 的字段 ccy_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 基础资料域/货币信息/DOC410496522788110337_货币信息_V1.3.md:76；基础资料域/货币信息/DOC410496522788110337_货币信息_V1.3.md:76 |
+| OQ-D0A9F5A17F61 | qi_biz_doc 的字段 sfi_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:624；采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:624 |
+| OQ-976F5C27409D | qi_biz_doc 的字段 quald_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:648；采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:648 |
+| OQ-AD5C7D8B1745 | qi_biz_doc 的字段 CUS_UDF008 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:672；采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:672 |
+| OQ-0EA6FDD56690 | qi_biz_doc 的字段 CUS_UDF016 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:720；采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:720 |
+| OQ-C808D1DA7EB7 | qi_biz_doc 的字段 insp_dmge_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:744；采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:744 |
+| OQ-9686CC1AD08E | qi_biz_doc 的字段 CUS_UDF007 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:768；采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md:768 |
+| OQ-93D0A70A075C | requ_doc 的字段 doc_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/请购单/DOC411595859844759552_请购单_V1.12.md:102；采购域/请购单/DOC411595859844759552_请购单_V1.12.md:102 |
+| OQ-0CBB20642681 | requ_doc 的字段 doc_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/请购单/DOC411595859844759552_请购单_V1.12.md:126；采购域/请购单/DOC411595859844759552_请购单_V1.12.md:126 |
+| OQ-1E2DE5D93D94 | requ_doc 的字段 doc_date 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/请购单/DOC411595859844759552_请购单_V1.12.md:126；采购域/请购单/DOC411595859844759552_请购单_V1.12.md:126 |
+| OQ-AA3E24069CFE | requ_doc 的字段 applt_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/请购单/DOC411595859844759552_请购单_V1.12.md:198；采购域/请购单/DOC411595859844759552_请购单_V1.12.md:198 |
+| OQ-39A824720A68 | requ_doc 的字段 requ_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/请购单/DOC411595859844759552_请购单_V1.12.md:754；采购域/请购单/DOC411595859844759552_请购单_V1.12.md:754 |
+| OQ-FAC0D7318391 | requ_doc 的字段 sec_unit_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/请购单/DOC411595859844759552_请购单_V1.12.md:802；采购域/请购单/DOC411595859844759552_请购单_V1.12.md:802 |
+| OQ-8D3712338122 | pur_stkin_doc 的字段 ops_unit_no 在同一文档内有 4 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购入库单/DOC482078_采购入库单_V1.19.md:124；采购域/采购入库单/DOC482078_采购入库单_V1.19.md:124 |
+| OQ-6AE5415E55B5 | pur_stkin_doc 的字段 supp_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购入库单/DOC482078_采购入库单_V1.19.md:220；采购域/采购入库单/DOC482078_采购入库单_V1.19.md:220 |
+| OQ-0D92E71F35FA | pur_stkin_doc 的字段 biz_qty 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购入库单/DOC482078_采购入库单_V1.19.md:752；采购域/采购入库单/DOC482078_采购入库单_V1.19.md:752 |
+| OQ-EACFF9CE0010 | pur_stkin_doc 的字段 stlmt_stat 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购入库单/DOC482078_采购入库单_V1.19.md:1712；采购域/采购入库单/DOC482078_采购入库单_V1.19.md:1712 |
+| OQ-EF6478F7FD40 | pur_stkin_doc 的字段 cost_elem_no 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购入库单/DOC482078_采购入库单_V1.19.md:1784；采购域/采购入库单/DOC482078_采购入库单_V1.19.md:1784 |
+| OQ-3347A7E13449 | pur_arr_doc 的字段 ops_unit_no 在同一文档内有 4 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:120；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:120 |
+| OQ-C1CBBEAF9C0D | pur_arr_doc 的字段 supp_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:144；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:144 |
+| OQ-355EEADFFF09 | pur_arr_doc 的字段 pur_arr_doc_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:312；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:312 |
+| OQ-F49306782A90 | pur_arr_doc 的字段 rcpt_ops_unit_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:604；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:604 |
+| OQ-201EA8D62E67 | pur_arr_doc 的字段 ccy_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:652；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:652 |
+| OQ-42957B4D3C8E | pur_arr_doc 的字段 er 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:676；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:676 |
+| OQ-B53854C276E9 | pur_arr_doc 的字段 intax_flag 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:700；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:700 |
+| OQ-E2E5C52627BC | pur_arr_doc 的字段 prc_qty 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:1160；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:1160 |
+| OQ-B2AEC3D1D0C5 | pur_arr_doc 的字段 lot_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:1457；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:1472 |
+| OQ-31185A77911B | pur_arr_doc 的字段 lot_no 在同一文档内有 4 种 READONLY 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:1459；采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:1472 |
+| OQ-CA02EA26DF46 | pur_price_strtg 的字段 price_type 在同一文档内有 3 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购取价策略/DOC409187731236814849_采购取价策略_V1.9.md:152；采购域/采购取价策略/DOC409187731236814849_采购取价策略_V1.9.md:152 |
+| OQ-64980EC68697 | po 的字段 po_doc_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:104；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:104 |
+| OQ-C6D6783439C1 | po 的字段 doc_date 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:200；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:200 |
+| OQ-6D65CEE27026 | po 的字段 ccy_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:804；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:804 |
+| OQ-CA907298A567 | po 的字段 er 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:876；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:876 |
+| OQ-936108583D2C | po 的字段 biz_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:1192；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:1192 |
+| OQ-3F1E5744B44B | po 的字段 price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:1216；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:1216 |
+| OQ-34F2B7073001 | po 的字段 antic_arr_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:1384；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:1384 |
+| OQ-974FAF872907 | po 的字段 tax_rate 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:1672；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:1672 |
+| OQ-933A6A1D830E | po 的字段 CUS_uiXDX13 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价 | LOW | 同一字段同一类型规则存在冲突定义，断言口径不确定 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:2075；采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:2080 |
 
-> 仅显示前 100 条，共 276 条；完整清单见 artifacts/knowledge/open-questions.json。
 
 ## 缺失与歧义
 
 | ID | 问题 | 严重度 | 影响 | 建议确认对象 | 证据 |
 | --- | --- | --- | --- | --- | --- |
-| OQ-D3A84AD8E610 | 规则描述含待确认表述：运营单元编号 只读 | MEDIUM | 无法直接生成可执行断言 | PRD 作者 / 业务 | 客户供应商关系/_history/客户供应商关系PRD.v1.1.md:107 |
-| OQ-FA1624E33081 | 规则描述含待确认表述：删除 前置校验 | MEDIUM | 无法直接生成可执行断言 | PRD 作者 / 业务 | 客户供应商关系/_history/客户供应商关系PRD.v1.1.md:343 |
-| OQ-E3360DF2000B | 规则描述含待确认表述：失效 前置校验 | MEDIUM | 无法直接生成可执行断言 | PRD 作者 / 业务 | 客户供应商关系/_history/客户供应商关系PRD.v1.1.md:363 |
+| OQ-D3A84AD8E610 | 规则描述含待确认表述：运营单元编号 只读 | MEDIUM | 无法直接生成可执行断言 | PRD 作者 / 业务 | 客户供应商关系/_history/客户供应商关系PRD.v1.1.md:116 |
+| OQ-FA1624E33081 | 规则描述含待确认表述：删除 前置校验 | MEDIUM | 无法直接生成可执行断言 | PRD 作者 / 业务 | 客户供应商关系/_history/客户供应商关系PRD.v1.1.md:349 |
+| OQ-E3360DF2000B | 规则描述含待确认表述：失效 前置校验 | MEDIUM | 无法直接生成可执行断言 | PRD 作者 / 业务 | 客户供应商关系/_history/客户供应商关系PRD.v1.1.md:369 |
+| OQ-3DC3A0304E0C | 应付单 的数量口径仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:2829 |
+| OQ-AB22157A9C69 | 应付单 的状态条件仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:2829 |
+| OQ-9C3A0E710FBB | 应付单 的回写与字段映射仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:2829 |
+| OQ-2F094ED3C5C5 | 应收单 的数量口径仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:2865 |
+| OQ-716668FAB510 | 应收单 的状态条件仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:2865 |
+| OQ-1E11819B4B91 | 应收单 的回写与字段映射仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:2865 |
+| OQ-02F430C737CF | 询价单-新版 的数量口径仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:1401 |
+| OQ-9232684FAF9B | 询价单-新版 的状态条件仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:1401 |
+| OQ-77D84E3732F2 | 采购退货出库单-新版 的数量口径仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:1607 |
+| OQ-9CDC721154E8 | 采购退货出库单-新版 的状态条件仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:1607 |
+| OQ-83F73793A326 | 采购退货出库单-新版 的回写与字段映射仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购退货出库单/采购退货出库单PRD.v1.24.md:1607 |
+| OQ-B0E7273F7FEC | 采购退货单-新版 的数量口径仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:2407 |
+| OQ-E8BE6C49501A | 采购退货单-新版 的状态条件仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:2407 |
+| OQ-65D571524818 | 采购退货单-新版 的回写与字段映射仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:2407 |
+| OQ-09A04CDEA9EE | 采购入库单 的数量口径仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购入库单/DOC482078_采购入库单_V1.19.md:1958 |
+| OQ-963D1C6F80FA | 采购入库单 的状态条件仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购入库单/DOC482078_采购入库单_V1.19.md:1958 |
+| OQ-9D6DEED8B60C | 采购入库单 的回写与字段映射仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购入库单/DOC482078_采购入库单_V1.19.md:1958 |
+| OQ-80B06AE3C0AC | 采购到货单 的数量口径仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:2586 |
+| OQ-59A07C9D13BD | 采购到货单 的状态条件仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:2586 |
+| OQ-1D0BCD63C29E | 采购到货单 的回写与字段映射仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md:2586 |
+| OQ-125E1C352F94 | 采购订单 的数量口径仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:3270 |
+| OQ-AB8DEA2B9892 | 采购订单 的状态条件仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:3270 |
+| OQ-D08925F5361A | 采购订单 的回写与字段映射仅以自然语言出现在取单/来源章节，尚未结构化，需业务确认判定规则 | MEDIUM | 取单与回写场景无法生成可观察断言，只能保持候选状态 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:3270 |
 | OQ-113856842FF4 | 字段码 rmk 在同一文档出现 2 次，需确认是否属于不同页签或子对象 | LOW | 字段定位可能歧义 | PRD 作者 | 采购退货出库单/_upload/采购退货出库单-新版-v1.14.payload.json |
 | OQ-667DF471738A | 字段码 pcs 在同一文档出现 2 次，需确认是否属于不同页签或子对象 | LOW | 字段定位可能歧义 | PRD 作者 | 采购退货出库单/_upload/采购退货出库单-新版-v1.14.payload.json |
 | OQ-E600BC2D1860 | 字段码 rmk 在同一文档出现 2 次，需确认是否属于不同页签或子对象 | LOW | 字段定位可能歧义 | PRD 作者 | 采购退货出库单/_upload/采购退货出库单-新版-v1.14.prd_spec.json |
@@ -168,6 +305,57 @@
 | OQ-EC5465CB569A | 字段码 pcs 在同一文档出现 2 次，需确认是否属于不同页签或子对象 | LOW | 字段定位可能歧义 | PRD 作者 | 采购退货出库单/_upload/采购退货出库单-新版-v1.18.payload.json |
 | OQ-DDD27E4A5461 | 字段码 rmk 在同一文档出现 2 次，需确认是否属于不同页签或子对象 | LOW | 字段定位可能歧义 | PRD 作者 | 采购退货出库单/_upload/采购退货出库单-新版-v1.18.prd_spec.json |
 | OQ-1D57D4A3A83D | 字段码 pcs 在同一文档出现 2 次，需确认是否属于不同页签或子对象 | LOW | 字段定位可能歧义 | PRD 作者 | 采购退货出库单/_upload/采购退货出库单-新版-v1.18.prd_spec.json |
+| OQ-SVC-EXPLICIT-CALIBER | 2390 条 PRD_EXPLICIT 规则的描述中引用了平台服务（开窗/默认值/只读/必填），需确认按「字段行为」还是「平台服务契约」归类 | LOW | 影响 source_type 统计口径与场景可执行性判定，当前按「字段行为」保留 PRD_EXPLICIT | PRD 负责人 | 会计期间信息/_history/会计期间信息PRD.v1.1.md:111；会计期间信息/_history/会计期间信息PRD.v1.2.md:110 |
+| OQ-DEP-UNRESOLVED-DOC-698AD11A648F | 13 条依赖的目标未解析为实体或字段，需确认其含义：p_ops_unit_no、p_supp_no、p_doc_date_from、p_doc_date_to、p_doc_no、p_self_doc_no、doc_date、pur_stkin_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 四单PRD-第2轮修订审查报告.md:37；四单PRD-第2轮修订审查报告.md:37 |
+| OQ-DEP-UNRESOLVED-DOC-C19EE0301DF0 | 10 条依赖的目标未解析为实体或字段，需确认其含义：pay_src_type、untax_amt_fc、tax_fc、tawt_fc、pay_biz_prop、ops_unit_no、src_ops_unit_no、src_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应付单/_history/应付单PRD.v1.3.md:2829；应付单/_history/应付单PRD.v1.3.md:2829 |
+| OQ-DEP-UNRESOLVED-DOC-FA3D41A4010D | 21 条依赖的目标未解析为实体或字段，需确认其含义：pay_src_type、untax_amt_fc、tax_fc、tawt_fc、pay_biz_prop、ops_unit_no、src_ops_unit_no、src_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应付单/_history/应付单PRD.v1.4.md:2830；应付单/_history/应付单PRD.v1.4.md:2830 |
+| OQ-DEP-UNRESOLVED-DOC-66C9085BE956 | 21 条依赖的目标未解析为实体或字段，需确认其含义：pay_src_type、untax_amt_fc、tax_fc、tawt_fc、pay_biz_prop、ops_unit_no、src_ops_unit_no、src_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应付单/_history/应付单PRD.v1.5.md:2831；应付单/_history/应付单PRD.v1.5.md:2831 |
+| OQ-DEP-UNRESOLVED-DOC-49E9D8E8A247 | 21 条依赖的目标未解析为实体或字段，需确认其含义：pay_src_type、untax_amt_fc、tax_fc、tawt_fc、pay_biz_prop、ops_unit_no、src_ops_unit_no、src_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应付单/_history/应付单PRD.v1.6.md:2832；应付单/_history/应付单PRD.v1.6.md:2832 |
+| OQ-DEP-UNRESOLVED-DOC-C977DD155F39 | 21 条依赖的目标未解析为实体或字段，需确认其含义：pay_src_type、untax_amt_fc、tax_fc、tawt_fc、pay_biz_prop、ops_unit_no、src_ops_unit_no、src_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应付单/_history/应付单PRD.v1.7.md:2833；应付单/_history/应付单PRD.v1.7.md:2833 |
+| OQ-DEP-UNRESOLVED-DOC-71D134E1BD9B | 21 条依赖的目标未解析为实体或字段，需确认其含义：pay_src_type、untax_amt_fc、tax_fc、tawt_fc、pay_biz_prop、ops_unit_no、src_ops_unit_no、src_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应付单/_history/应付单PRD.v1.8.md:2834；应付单/_history/应付单PRD.v1.8.md:2834 |
+| OQ-DEP-UNRESOLVED-DOC-37B648989A58 | 21 条依赖的目标未解析为实体或字段，需确认其含义：pay_src_type、untax_amt_fc、tax_fc、tawt_fc、pay_biz_prop、ops_unit_no、src_ops_unit_no、src_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应付单/_history/应付单PRD.v1.9.md:2835；应付单/_history/应付单PRD.v1.9.md:2835 |
+| OQ-DEP-UNRESOLVED-DOC-0A92C9195A20 | 21 条依赖的目标未解析为实体或字段，需确认其含义：pay_src_type、untax_amt_fc、tax_fc、tawt_fc、pay_biz_prop、ops_unit_no、src_ops_unit_no、src_doc_no | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应付单/应付单PRD.v1.10.md:2836；应付单/应付单PRD.v1.10.md:2836 |
+| OQ-DEP-UNRESOLVED-DOC-AF0030DAFD4D | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.1.md:2709；应收单/_history/_dup_20261106/应收单PRD.v1.1.md:2709 |
+| OQ-DEP-UNRESOLVED-DOC-CD94B30ABC7D | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.3.md:2689；应收单/_history/_dup_20261106/应收单PRD.v1.3.md:2689 |
+| OQ-DEP-UNRESOLVED-DOC-7534DBDB596D | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.4.md:2690；应收单/_history/_dup_20261106/应收单PRD.v1.4.md:2690 |
+| OQ-DEP-UNRESOLVED-DOC-E8B8F1DE952F | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.5.md:2566；应收单/_history/_dup_20261106/应收单PRD.v1.5.md:2566 |
+| OQ-DEP-UNRESOLVED-DOC-B3FF69ECD69B | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.6.md:2567；应收单/_history/_dup_20261106/应收单PRD.v1.6.md:2567 |
+| OQ-DEP-UNRESOLVED-DOC-14AC735C5E46 | 2 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_doc.get、bm.sales_rtn_doc.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.0.md:2295；应收单/_history/应收单PRD.v1.0.md:2295 |
+| OQ-DEP-UNRESOLVED-DOC-F0BDBF2CCA40 | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.1.md:2709；应收单/_history/应收单PRD.v1.1.md:2709 |
+| OQ-DEP-UNRESOLVED-DOC-9D1BA4E83FF3 | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.2.md:2709；应收单/_history/应收单PRD.v1.2.md:2709 |
+| OQ-DEP-UNRESOLVED-DOC-810CD70B90CC | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.3.md:2689；应收单/_history/应收单PRD.v1.3.md:2689 |
+| OQ-DEP-UNRESOLVED-DOC-1F06E2A5044E | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.4.md:2690；应收单/_history/应收单PRD.v1.4.md:2690 |
+| OQ-DEP-UNRESOLVED-DOC-531A1A67E5C3 | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.5.md:2566；应收单/_history/应收单PRD.v1.5.md:2566 |
+| OQ-DEP-UNRESOLVED-DOC-F7B82DB9EBBE | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.6.md:2567；应收单/_history/应收单PRD.v1.6.md:2567 |
+| OQ-DEP-UNRESOLVED-DOC-1FCFA59D76F4 | 4 条依赖的目标未解析为实体或字段，需确认其含义：bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.7.md:2860；应收单/_history/应收单PRD.v1.7.md:2860 |
+| OQ-DEP-UNRESOLVED-DOC-7E688ECD3FED | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.8.md:1797；应收单/_history/应收单PRD.v1.8.md:2863 |
+| OQ-DEP-UNRESOLVED-DOC-AAADB981B0EC | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v1.9.md:1798；应收单/_history/应收单PRD.v1.9.md:2864 |
+| OQ-DEP-UNRESOLVED-DOC-1D61AD68BFE8 | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v2.0.md:1799；应收单/_history/应收单PRD.v2.0.md:2865 |
+| OQ-DEP-UNRESOLVED-DOC-15BA4023B3CC | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v2.1.md:1800；应收单/_history/应收单PRD.v2.1.md:2866 |
+| OQ-DEP-UNRESOLVED-DOC-9B1FBE041ED1 | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v2.2.md:1801；应收单/_history/应收单PRD.v2.2.md:2867 |
+| OQ-DEP-UNRESOLVED-DOC-249E763A2BED | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v2.3.md:1802；应收单/_history/应收单PRD.v2.3.md:2868 |
+| OQ-DEP-UNRESOLVED-DOC-4D1DCB4E0E46 | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v2.4.md:1803；应收单/_history/应收单PRD.v2.4.md:2869 |
+| OQ-DEP-UNRESOLVED-DOC-D0E7715D54AA | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v2.5.md:1804；应收单/_history/应收单PRD.v2.5.md:2870 |
+| OQ-DEP-UNRESOLVED-DOC-147837443D2B | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/_history/应收单PRD.v2.6.md:1805；应收单/_history/应收单PRD.v2.6.md:2871 |
+| OQ-DEP-UNRESOLVED-DOC-663CD187229C | 20 条依赖的目标未解析为实体或字段，需确认其含义：recev_src_doc_type、bm.sales_stkou_doc.get、bm.sales_rtn_stkin_doc.get、bm.sales_rtn_doc.get、bm.so.get、src_data_check、untax_amt_fc、tax_fc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 应收单/应收单PRD.v2.7.md:1806；应收单/应收单PRD.v2.7.md:2872 |
+| OQ-DEP-UNRESOLVED-DOC-473AC5E35451 | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.co_acctg_perid_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 设置核算参数/_history/设置核算参数PRD.v2.5.md:1268 |
+| OQ-DEP-UNRESOLVED-DOC-387A5958DB31 | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.co_acctg_perid_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 设置核算参数/设置核算参数PRD.v2.6.md:1269 |
+| OQ-DEP-UNRESOLVED-DOC-C07A56679DBD | 2 条依赖的目标未解析为实体或字段，需确认其含义：bm.pur_req_detail.get、bm.ops_unit_coop_rela.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 询价单/_history/询价单PRD.v1.7.md:1432；询价单/_history/询价单PRD.v1.7.md:1432 |
+| OQ-DEP-UNRESOLVED-DOC-4E5ABC2906BF | 2 条依赖的目标未解析为实体或字段，需确认其含义：bm.pur_req_detail.get、bm.ops_unit_coop_rela.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 询价单/询价单PRD.v1.8.md:1409；询价单/询价单PRD.v1.8.md:1409 |
+| OQ-DEP-UNRESOLVED-DOC-42952F014770 | 29 条依赖的目标未解析为实体或字段，需确认其含义：seq、item_no、item_name、item_spec、item_feat_no、goods_type、lot_no、eff_date | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_diff/v1.20-开发改动清单.md:172；采购退货出库单/_diff/v1.20-开发改动清单.md:173 |
+| OQ-DEP-UNRESOLVED-DOC-89C21263B8B6 | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_lot_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.10.md:1471 |
+| OQ-DEP-UNRESOLVED-DOC-AD362096CDDD | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_lot_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.11.md:1472 |
+| OQ-DEP-UNRESOLVED-DOC-29B79CB5A21E | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_lot_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.12.md:1508 |
+| OQ-DEP-UNRESOLVED-DOC-8B67BEC5C537 | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_lot_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.13.md:1485 |
+| OQ-DEP-UNRESOLVED-DOC-9133630AAF31 | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_lot_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.6.md:1578 |
+| OQ-DEP-UNRESOLVED-DOC-C630AC4D2E6B | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_lot_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.7.md:1559 |
+| OQ-DEP-UNRESOLVED-DOC-3C9E18E76169 | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_lot_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.8.md:1564 |
+| OQ-DEP-UNRESOLVED-DOC-8ACD03FAFD0B | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_lot_info.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.9.md:1589 |
+| OQ-DEP-UNRESOLVED-DOC-07FEC87E2AA3 | 5 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_invnt_info.get、bm.item_lot_info.get、bm.tax.calc、bm.meas_unit.get、smbcloud.item_gen_info.item_unit | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货单/_history/采购退货单PRD.v1.10.md:2394；采购退货单/_history/采购退货单PRD.v1.10.md:2395 |
+| OQ-DEP-UNRESOLVED-DOC-7249ADA28DDE | 3 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_invnt_info.get、bm.item_lot_info.get、bm.tax.calc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货单/_history/采购退货单PRD.v1.8.md:2392；采购退货单/_history/采购退货单PRD.v1.8.md:2393 |
+| OQ-DEP-UNRESOLVED-DOC-E1B0C37A43D2 | 3 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_invnt_info.get、bm.item_lot_info.get、bm.tax.calc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货单/_history/采购退货单PRD.v1.9.md:2393；采购退货单/_history/采购退货单PRD.v1.9.md:2394 |
+| OQ-DEP-UNRESOLVED-DOC-F454A8C1E526 | 6 条依赖的目标未解析为实体或字段，需确认其含义：bm.item_invnt_info.get、bm.item_lot_info.get、bm.tax.calc、bm.meas_unit.get、smbcloud.item_gen_info.item_unit、bm.param.get | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购退货单/采购退货单PRD.v1.11.md:2414；采购退货单/采购退货单PRD.v1.11.md:2415 |
+| OQ-DEP-UNRESOLVED-DOC-F7B596BCCD1E | 1 条依赖的目标未解析为实体或字段，需确认其含义：bm.tax.calc | LOW | 上下游 DAG 存在悬空边，流程类场景可能缺前置条件 | PRD 负责人 | 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md:3278 |
 
 
 ## 流程断链
@@ -198,3 +386,110 @@
 ## 解析与格式问题
 
 无
+
+## 来源与登记问题
+
+| ID | 问题 | 严重度 | 影响 | 建议确认对象 | 证据 |
+| --- | --- | --- | --- | --- | --- |
+| OQ-SRC-CONFLICT-DOC-E6154F5000A9 | 其他应收单 文件名版本 v1.4 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.4.md:1 |
+| OQ-SRC-CONFLICT-DOC-6EE468EE1E30 | 其他应收单 文件名版本 v1.5 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.5.md:1 |
+| OQ-SRC-CONFLICT-DOC-D2CE605B843D | 其他应收单 文件名版本 v1.6 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.6.md:1 |
+| OQ-SRC-CONFLICT-DOC-EA0FD3C795D9 | 其他应收单 文件名版本 v1.4 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 其他应收单/_history/其他应收单PRD.v1.4.md:1 |
+| OQ-SRC-CONFLICT-DOC-7BE6125A0961 | 其他应收单 文件名版本 v1.5 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 其他应收单/_history/其他应收单PRD.v1.5.md:1 |
+| OQ-SRC-CONFLICT-DOC-38C3EE51D78E | 其他应收单 文件名版本 v1.6 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 其他应收单/_history/其他应收单PRD.v1.6.md:1 |
+| OQ-SRC-CONFLICT-DOC-7534DBDB596D | 应收单 文件名版本 v1.4 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.4.md:1 |
+| OQ-SRC-CONFLICT-DOC-E8B8F1DE952F | 应收单 文件名版本 v1.5 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.5.md:1 |
+| OQ-SRC-CONFLICT-DOC-B3FF69ECD69B | 应收单 文件名版本 v1.6 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.6.md:1 |
+| OQ-SRC-CONFLICT-DOC-1F06E2A5044E | 应收单 文件名版本 v1.4 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 应收单/_history/应收单PRD.v1.4.md:1 |
+| OQ-SRC-CONFLICT-DOC-531A1A67E5C3 | 应收单 文件名版本 v1.5 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 应收单/_history/应收单PRD.v1.5.md:1 |
+| OQ-SRC-CONFLICT-DOC-F7B82DB9EBBE | 应收单 文件名版本 v1.6 与正文元数据版本 v1.3 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 应收单/_history/应收单PRD.v1.6.md:1 |
+| OQ-SRC-CONFLICT-DOC-AE9BE63F25B1 | 采购退货出库单-新版 文件名版本 v1.22 与正文元数据版本 v1.21 不一致，需确认以哪个为准 | HIGH | 版本判定与最新版选择可能错误，进而影响规则生效范围 | PRD 负责人 | 采购退货出库单/_history/采购退货出库单PRD.v1.22.md:1 |
+| OQ-EXCLUDED-DOC-F8AA21DE4A02 | 四单PRD-平台对接会议议程.md 未参与建模：根级文档未归入任何作业目录 | MEDIUM | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 四单PRD-平台对接会议议程.md |
+| OQ-EXCLUDED-DOC-E1F5211932AE | 四单PRD-平台确认事项清单.md 未参与建模：根级文档未归入任何作业目录 | MEDIUM | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 四单PRD-平台确认事项清单.md |
+| OQ-EXCLUDED-DOC-698AD11A648F | 四单PRD-第2轮修订审查报告.md 未参与建模：根级文档未归入任何作业目录 | MEDIUM | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 四单PRD-第2轮修订审查报告.md |
+| OQ-EXCLUDED-DOC-D6EBBEFE454C | 四单PRD-第3轮修订审查报告.md 未参与建模：根级文档未归入任何作业目录 | MEDIUM | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 四单PRD-第3轮修订审查报告.md |
+| OQ-EXCLUDED-DOC-56C6FBAF6569 | 四单PRD-第4轮修订审查报告.md 未参与建模：根级文档未归入任何作业目录 | MEDIUM | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 四单PRD-第4轮修订审查报告.md |
+| OQ-EXCLUDED-DOC-D7BD1C51DB5F | 四单PRD-第5轮修订审查报告.md 未参与建模：根级文档未归入任何作业目录 | MEDIUM | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 四单PRD-第5轮修订审查报告.md |
+| OQ-DUP-8dbd06e28f51 | 3 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.1.md；其他应收单/_history/其他应收单PRD.v1.0.md |
+| OQ-DUP-d5d53754561c | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.3.md；其他应收单/_history/其他应收单PRD.v1.3.md |
+| OQ-DUP-0b09eaa1898d | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.4.md；其他应收单/_history/其他应收单PRD.v1.4.md |
+| OQ-DUP-2e7af8fa2a60 | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.5.md；其他应收单/_history/其他应收单PRD.v1.5.md |
+| OQ-DUP-14ce2d1134ca | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 其他应收单/_history/_dup_20261106/其他应收单PRD.v1.6.md；其他应收单/_history/其他应收单PRD.v1.6.md |
+| OQ-DUP-b41d6adc522d | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 应付参数/_history/_dup_20261106/应付参数PRD.v1.3.md；应付参数/_history/应付参数PRD.v1.3.md |
+| OQ-DUP-c075a0b0accf | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.1.md；应收单/_history/应收单PRD.v1.1.md |
+| OQ-DUP-1655bf6ba16d | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.3.md；应收单/_history/应收单PRD.v1.3.md |
+| OQ-DUP-3b8f42bdf278 | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.4.md；应收单/_history/应收单PRD.v1.4.md |
+| OQ-DUP-027b54110cb9 | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.5.md；应收单/_history/应收单PRD.v1.5.md |
+| OQ-DUP-991b04f5a564 | 2 份 PRD 内容完全相同（SHA-256 相同），需确认保留哪一份作为权威来源 | LOW | 重复内容会放大规则数量，并在冲突检测中产生噪声 | PRD 负责人 | 应收单/_history/_dup_20261106/应收单PRD.v1.6.md；应收单/_history/应收单PRD.v1.6.md |
+| OQ-EXCLUDED-DOC-E89885BE8FBD | 会计期间信息/_diff/会计期间信息-v1.4-to-v1.6.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间信息/_diff/会计期间信息-v1.4-to-v1.6.md |
+| OQ-EXCLUDED-DOC-E6E65BBBFD30 | 会计期间信息/_diff/会计期间信息-v1.6-to-v1.7.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间信息/_diff/会计期间信息-v1.6-to-v1.7.md |
+| OQ-EXCLUDED-DOC-548266B2FD9E | 会计期间信息/_diff/会计期间信息PRD.v1.4-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间信息/_diff/会计期间信息PRD.v1.4-条件写法体检.md |
+| OQ-EXCLUDED-DOC-B04937412C05 | 会计期间信息/_diff/会计期间信息PRD.v1.6-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间信息/_diff/会计期间信息PRD.v1.6-条件写法体检.md |
+| OQ-EXCLUDED-DOC-82872DFF9D3E | 会计期间信息/_diff/会计期间信息PRD.v1.7-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间信息/_diff/会计期间信息PRD.v1.7-条件写法体检.md |
+| OQ-EXCLUDED-DOC-E7D00F5DCF54 | 会计期间表/_diff/会计期间表-v1.6-to-v1.8.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间表/_diff/会计期间表-v1.6-to-v1.8.md |
+| OQ-EXCLUDED-DOC-BD137033E8C8 | 会计期间表/_diff/会计期间表-v1.8-to-v1.9.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间表/_diff/会计期间表-v1.8-to-v1.9.md |
+| OQ-EXCLUDED-DOC-E6DA41A3D7A9 | 会计期间表/_diff/会计期间表PRD.v1.6-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间表/_diff/会计期间表PRD.v1.6-条件写法体检.md |
+| OQ-EXCLUDED-DOC-F05AADF7EA45 | 会计期间表/_diff/会计期间表PRD.v1.8-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间表/_diff/会计期间表PRD.v1.8-条件写法体检.md |
+| OQ-EXCLUDED-DOC-FDCCF2CD514A | 会计期间表/_diff/会计期间表PRD.v1.9-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 会计期间表/_diff/会计期间表PRD.v1.9-条件写法体检.md |
+| OQ-EXCLUDED-DOC-B65F98FAE72B | 供应商品号价格/_diff/供应商品号价格-v1.6-to-v1.7.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 供应商品号价格/_diff/供应商品号价格-v1.6-to-v1.7.md |
+| OQ-EXCLUDED-DOC-D76A4E5696AB | 供应商品号价格/_diff/供应商品号价格PRD.v1.6-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 供应商品号价格/_diff/供应商品号价格PRD.v1.6-条件写法体检.md |
+| OQ-EXCLUDED-DOC-BAC7EF731A77 | 其他应付单/_diff/其他应付单-v1.9-to-v1.10.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 其他应付单/_diff/其他应付单-v1.9-to-v1.10.md |
+| OQ-EXCLUDED-DOC-E92BEE0B76CA | 其他应付单/_diff/其他应付单PRD.v1.9-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 其他应付单/_diff/其他应付单PRD.v1.9-条件写法体检.md |
+| OQ-EXCLUDED-DOC-97487CF1351E | 其他应收单/_diff/其他应收单-v2.4-to-v2.5.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 其他应收单/_diff/其他应收单-v2.4-to-v2.5.md |
+| OQ-EXCLUDED-DOC-65B702D7954B | 其他应收单/_diff/其他应收单PRD.v2.4-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 其他应收单/_diff/其他应收单PRD.v2.4-条件写法体检.md |
+| OQ-EXCLUDED-DOC-2EC1DDCD0BF8 | 客户供应商关系/_diff/客户供应商关系-v1.6-to-v1.7.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 客户供应商关系/_diff/客户供应商关系-v1.6-to-v1.7.md |
+| OQ-EXCLUDED-DOC-945F0A309EA4 | 应付业务单别参数/_diff/应付业务单别参数-v1.4-to-v1.5.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付业务单别参数/_diff/应付业务单别参数-v1.4-to-v1.5.md |
+| OQ-EXCLUDED-DOC-87918CAD2037 | 应付业务单别参数/_diff/应付业务单别参数PRD.v1.4-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付业务单别参数/_diff/应付业务单别参数PRD.v1.4-条件写法体检.md |
+| OQ-EXCLUDED-DOC-4F0214712B86 | 应付单/_diff/应付单-v1.9-to-v1.10.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付单/_diff/应付单-v1.9-to-v1.10.md |
+| OQ-EXCLUDED-DOC-7EF5A66BFA10 | 应付单/_diff/应付单PRD.v1.9-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付单/_diff/应付单PRD.v1.9-条件写法体检.md |
+| OQ-EXCLUDED-DOC-309300CCAA68 | 应付参数/_diff/应付参数-v1.9-to-v1.10.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付参数/_diff/应付参数-v1.9-to-v1.10.md |
+| OQ-EXCLUDED-DOC-3DCDEADB125F | 应付参数/_diff/应付参数PRD.v1.9-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付参数/_diff/应付参数PRD.v1.9-条件写法体检.md |
+| OQ-EXCLUDED-DOC-7C83DB23F2D7 | 应付启用期间/_diff/应付启用期间-v1.2-to-v1.3.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付启用期间/_diff/应付启用期间-v1.2-to-v1.3.md |
+| OQ-EXCLUDED-DOC-CC6E990891CA | 应付启用期间/_diff/应付启用期间-v1.3-to-v1.4.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付启用期间/_diff/应付启用期间-v1.3-to-v1.4.md |
+| OQ-EXCLUDED-DOC-1027A483CDF7 | 应付启用期间/_diff/应付启用期间PRD.v1.4-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应付启用期间/_diff/应付启用期间PRD.v1.4-条件写法体检.md |
+| OQ-EXCLUDED-DOC-5049C9D317DF | 应收业务单别参数/_diff/应收业务单别参数-v1.4-to-v1.5.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收业务单别参数/_diff/应收业务单别参数-v1.4-to-v1.5.md |
+| OQ-EXCLUDED-DOC-F50D171FFC9B | 应收业务单别参数/_diff/应收业务单别参数PRD.v1.4-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收业务单别参数/_diff/应收业务单别参数PRD.v1.4-条件写法体检.md |
+| OQ-EXCLUDED-DOC-045928F89568 | 应收单/_diff/应收单-v2.6-to-v2.7.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收单/_diff/应收单-v2.6-to-v2.7.md |
+| OQ-EXCLUDED-DOC-F22129923AFE | 应收单/_diff/应收单PRD.v2.6-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收单/_diff/应收单PRD.v2.6-条件写法体检.md |
+| OQ-EXCLUDED-DOC-51DE8501A199 | 应收参数/_diff/应收参数-v1.9-to-v1.10.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收参数/_diff/应收参数-v1.9-to-v1.10.md |
+| OQ-EXCLUDED-DOC-5CC3B2634B88 | 应收参数/_diff/应收参数PRD.v1.9-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收参数/_diff/应收参数PRD.v1.9-条件写法体检.md |
+| OQ-EXCLUDED-DOC-626886472B8D | 应收启用期间/_diff/应收启用期间-v1.2-to-v1.3.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收启用期间/_diff/应收启用期间-v1.2-to-v1.3.md |
+| OQ-EXCLUDED-DOC-E5CB3EB6C0EC | 应收启用期间/_diff/应收启用期间-v1.3-to-v1.4.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收启用期间/_diff/应收启用期间-v1.3-to-v1.4.md |
+| OQ-EXCLUDED-DOC-A6C0AE940B35 | 应收启用期间/_diff/应收启用期间PRD.v1.4-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 应收启用期间/_diff/应收启用期间PRD.v1.4-条件写法体检.md |
+| OQ-EXCLUDED-DOC-DAAF1253AD92 | 批号编号规则/_diff/云端漂移-DOC437334277190721536-批号编号规则PRD.v1.5.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 批号编号规则/_diff/云端漂移-DOC437334277190721536-批号编号规则PRD.v1.5.md |
+| OQ-EXCLUDED-DOC-DDCF151A8851 | 批号编号规则/_diff/批号编号规则PRD.v1.5-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 批号编号规则/_diff/批号编号规则PRD.v1.5-条件写法体检.md |
+| OQ-EXCLUDED-DOC-AFA6605FA191 | 结算业务单别参数/_diff/结算业务单别参数PRD.v1.3-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 结算业务单别参数/_diff/结算业务单别参数PRD.v1.3-条件写法体检.md |
+| OQ-EXCLUDED-DOC-862C58A7B533 | 设置核算参数/_diff/云端漂移-DOC437087455402921984-设置核算参数PRD.v2.6.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 设置核算参数/_diff/云端漂移-DOC437087455402921984-设置核算参数PRD.v2.6.md |
+| OQ-EXCLUDED-DOC-050C2E3BD207 | 设置核算参数/_diff/设置核算参数-v2.5-to-v2.6.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 设置核算参数/_diff/设置核算参数-v2.5-to-v2.6.md |
+| OQ-EXCLUDED-DOC-8CB1FE3014E8 | 设置核算参数/_diff/设置核算参数PRD.v2.5-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 设置核算参数/_diff/设置核算参数PRD.v2.5-条件写法体检.md |
+| OQ-EXCLUDED-DOC-58E50047DE11 | 设置核算参数/_diff/设置核算参数PRD.v2.6-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 设置核算参数/_diff/设置核算参数PRD.v2.6-条件写法体检.md |
+| OQ-EXCLUDED-DOC-5B1648EB1ACD | 询价单/_diff/询价单PRD.v1.7-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 询价单/_diff/询价单PRD.v1.7-条件写法体检.md |
+| OQ-EXCLUDED-DOC-6DC84D4C67F8 | 询价单/_diff/询价单PRD.v1.8-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 询价单/_diff/询价单PRD.v1.8-条件写法体检.md |
+| OQ-EXCLUDED-DOC-6E1E4DC7E081 | 采购取价策略/_diff/上云失败记录-覆盖DOC437131710750134273-2026-11-06.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/上云失败记录-覆盖DOC437131710750134273-2026-11-06.md |
+| OQ-EXCLUDED-DOC-951F5848BED5 | 采购取价策略/_diff/上云核验-采购取价策略-v1.6-DOC437131710750134273.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/上云核验-采购取价策略-v1.6-DOC437131710750134273.md |
+| OQ-EXCLUDED-DOC-CA1ED6F50D20 | 采购取价策略/_diff/上云核验-采购取价策略-v1.7-DOC437144082923266049.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/上云核验-采购取价策略-v1.7-DOC437144082923266049.md |
+| OQ-EXCLUDED-DOC-58ADE875B847 | 采购取价策略/_diff/云端比对-DOC409187731236814849-vs-本地V1.5.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/云端比对-DOC409187731236814849-vs-本地V1.5.md |
+| OQ-EXCLUDED-DOC-90F2416712B9 | 采购取价策略/_diff/平台覆盖通道实测与处置-2026-11-06.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/平台覆盖通道实测与处置-2026-11-06.md |
+| OQ-EXCLUDED-DOC-9D71FCF9005B | 采购取价策略/_diff/服务复核-采购取价策略-2026-11-06.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/服务复核-采购取价策略-2026-11-06.md |
+| OQ-EXCLUDED-DOC-BF8AC7C76B4F | 采购取价策略/_diff/采购取价策略PRD.v1.6-填值方式体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/采购取价策略PRD.v1.6-填值方式体检.md |
+| OQ-EXCLUDED-DOC-7EA0C64E8FA5 | 采购取价策略/_diff/采购取价策略PRD.v1.6-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/采购取价策略PRD.v1.6-条件写法体检.md |
+| OQ-EXCLUDED-DOC-DED4989678AC | 采购取价策略/_diff/采购取价策略PRD.v1.7-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购取价策略/_diff/采购取价策略PRD.v1.7-条件写法体检.md |
+| OQ-EXCLUDED-DOC-60290E697AB2 | 采购退货出库单/_diff/v1.19-条件写法体检（整改前-24条）.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/v1.19-条件写法体检（整改前-24条）.md |
+| OQ-EXCLUDED-DOC-15B4BA41C8A3 | 采购退货出库单/_diff/v1.20-云端整改清单.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/v1.20-云端整改清单.md |
+| OQ-EXCLUDED-DOC-42952F014770 | 采购退货出库单/_diff/v1.20-开发改动清单.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/v1.20-开发改动清单.md |
+| OQ-EXCLUDED-DOC-F0278E73F875 | 采购退货出库单/_diff/云端比对-DOC435315639856275457-vs-DOC416879283501150209.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/云端比对-DOC435315639856275457-vs-DOC416879283501150209.md |
+| OQ-EXCLUDED-DOC-9ED90EDFCD2D | 采购退货出库单/_diff/云端漂移-DOC435315639856275457-v1.18归因.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/云端漂移-DOC435315639856275457-v1.18归因.md |
+| OQ-EXCLUDED-DOC-03D8AAFFDBC9 | 采购退货出库单/_diff/云端漂移-DOC435315639856275457-采购退货出库单PRD.v1.19.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/云端漂移-DOC435315639856275457-采购退货出库单PRD.v1.19.md |
+| OQ-EXCLUDED-DOC-B436BB35C28A | 采购退货出库单/_diff/云端漂移-DOC435315639856275457-采购退货出库单PRD.v1.20.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/云端漂移-DOC435315639856275457-采购退货出库单PRD.v1.20.md |
+| OQ-EXCLUDED-DOC-4DBE507FFE5D | 采购退货出库单/_diff/云端漂移-DOC437334734244286464-采购退货出库单PRD.v1.24.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/云端漂移-DOC437334734244286464-采购退货出库单PRD.v1.24.md |
+| OQ-EXCLUDED-DOC-699DCCE326E5 | 采购退货出库单/_diff/采购退货出库单-v1.18-to-v1.19.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/采购退货出库单-v1.18-to-v1.19.md |
+| OQ-EXCLUDED-DOC-CD21AE851D4B | 采购退货出库单/_diff/采购退货出库单-v1.20-to-v1.21.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/采购退货出库单-v1.20-to-v1.21.md |
+| OQ-EXCLUDED-DOC-B6BCEDFD8732 | 采购退货出库单/_diff/采购退货出库单-v1.21-to-v1.22.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/采购退货出库单-v1.21-to-v1.22.md |
+| OQ-EXCLUDED-DOC-074385E404F7 | 采购退货出库单/_diff/采购退货出库单PRD.v1.19-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/采购退货出库单PRD.v1.19-条件写法体检.md |
+| OQ-EXCLUDED-DOC-55126CEDF8A6 | 采购退货出库单/_diff/采购退货出库单PRD.v1.20-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/采购退货出库单PRD.v1.20-条件写法体检.md |
+| OQ-EXCLUDED-DOC-8300CF420BD5 | 采购退货出库单/_diff/采购退货出库单PRD.v1.21-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/采购退货出库单PRD.v1.21-条件写法体检.md |
+| OQ-EXCLUDED-DOC-F79173974FF3 | 采购退货出库单/_diff/采购退货出库单PRD.v1.22-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/采购退货出库单PRD.v1.22-条件写法体检.md |
+| OQ-EXCLUDED-DOC-FF24EDD8E680 | 采购退货出库单/_diff/采购退货出库单PRD.v1.24-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货出库单/_diff/采购退货出库单PRD.v1.24-条件写法体检.md |
+| OQ-EXCLUDED-DOC-E2A37E048574 | 采购退货单/_diff/云端漂移-DOC437334690459947009-采购退货单PRD.v1.11.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货单/_diff/云端漂移-DOC437334690459947009-采购退货单PRD.v1.11.md |
+| OQ-EXCLUDED-DOC-EFB489C67F23 | 采购退货单/_diff/采购退货单PRD.v1.11-条件写法体检.md 未参与建模：历史/差异文档，仅登记不建模 | LOW | 该文档内容不会进入规则与场景，需确认是否为有效需求来源 | PRD 负责人 | 采购退货单/_diff/采购退货单PRD.v1.11-条件写法体检.md |
+

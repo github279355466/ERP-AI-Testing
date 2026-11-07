@@ -1,0 +1,251 @@
+{
+  "generated_at": "2026-11-07T11:18:35.857Z",
+  "knowledge_generated_at": "2026-11-07T10:59:25.671Z",
+  "metrics": {
+    "source_missing_now": 0,
+    "rule_source_type": {
+      "PRD_EXPLICIT": 20226,
+      "PRD_DERIVED": 5619,
+      "PLATFORM_SERVICE": 2060,
+      "PENDING": 3
+    },
+    "conditions_filled": 7991
+  },
+  "totals": {
+    "checks": 14,
+    "passed": 14,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "id": "P0-1",
+      "name": "删除源文件后保留历史知识并标记 SOURCE_MISSING",
+      "ok": true,
+      "detail": {
+        "implementation": "src/prd/pipeline.ts",
+        "test": "tests/unit/prd-phase1-fix.spec.ts",
+        "current_missing": 0,
+        "note": "当前源目录完整，缺失态由单测在隔离目录验证"
+      }
+    },
+    {
+      "id": "P0-2",
+      "name": "Phase 1 知识模型可被运行时 API 读取",
+      "ok": true,
+      "detail": {
+        "documents": 299,
+        "latest_documents": 47,
+        "entities": 82,
+        "fields": 8454,
+        "rules": 27908,
+        "evidence": 31865
+      }
+    },
+    {
+      "id": "P0-3",
+      "name": "Evidence 作为第 13 类知识对象落盘",
+      "ok": true,
+      "detail": {
+        "evidence_objects": 31865,
+        "object_type_all_evidence": 31865
+      }
+    },
+    {
+      "id": "P0-4",
+      "name": "证据片段逐字、含版本/哈希/行号",
+      "ok": true,
+      "detail": {
+        "evidence": 31865,
+        "with_version": 31832,
+        "with_sha256": 31865,
+        "with_line_start": 31865,
+        "with_excerpt": 31865,
+        "version_coverage": "31832/31865",
+        "verbatim_sample": "400/400",
+        "excerpt_on_line_start": "400/400"
+      }
+    },
+    {
+      "id": "P0-5",
+      "name": "规则来源六分类可表达，推导规则带 derivation",
+      "ok": true,
+      "detail": {
+        "distribution": {
+          "PRD_EXPLICIT": 20226,
+          "PRD_DERIVED": 5619,
+          "PLATFORM_SERVICE": 2060,
+          "PENDING": 3
+        },
+        "derived_total": 5619,
+        "derived_with_derivation": 5619,
+        "explicit_referencing_platform_service": 2390
+      }
+    },
+    {
+      "id": "P0-6",
+      "name": "采购链路建立实体级关系且依赖目标可解析",
+      "ok": true,
+      "detail": {
+        "dependencies": 855,
+        "target_resolved": 374,
+        "target_unresolved": 481,
+        "relation_types": {
+          "USES_MASTER_DATA": 347,
+          "REFERENCES": 489,
+          "DERIVED_FROM": 19
+        },
+        "entity_level_edges": 133,
+        "purchase_chain_edges": 16,
+        "purchase_chain_sample": [
+          {
+            "from": "采购退货出库单",
+            "to": "采购退货单",
+            "relation": "DERIVED_FROM",
+            "mapping": "取单带入来源单据字段（详见原文取单章节）"
+          },
+          {
+            "from": "采购退货出库单",
+            "to": "采购订单",
+            "relation": "DERIVED_FROM",
+            "mapping": "取单带入来源单据字段（详见原文取单章节）"
+          },
+          {
+            "from": "采购退货出库单",
+            "to": "采购到货单",
+            "relation": "DERIVED_FROM",
+            "mapping": "取单带入来源单据字段（详见原文取单章节）"
+          },
+          {
+            "from": "采购退货单",
+            "to": "采购入库单",
+            "relation": "DERIVED_FROM",
+            "mapping": "取单带入来源单据字段（详见原文取单章节）"
+          },
+          {
+            "from": "采购退货单",
+            "to": "采购到货单",
+            "relation": "DERIVED_FROM",
+            "mapping": "取单带入来源单据字段（详见原文取单章节）"
+          },
+          {
+            "from": "采购退货单",
+            "to": "采购订单",
+            "relation": "DERIVED_FROM",
+            "mapping": "取单带入来源单据字段（详见原文取单章节）"
+          }
+        ],
+        "mapping_filled": 711
+      }
+    },
+    {
+      "id": "P0-7",
+      "name": "规则条件与依赖映射结构化",
+      "ok": true,
+      "detail": {
+        "rules_with_conditions": 7991,
+        "dependencies_with_mapping": 711
+      }
+    },
+    {
+      "id": "P0-8",
+      "name": "引用推导规则的场景全部标 NEEDS_CONFIRMATION 且无 UI_READY",
+      "ok": true,
+      "detail": {
+        "scenarios": 3796,
+        "referenced_derived": 693,
+        "leaked": 0,
+        "feasibility": {
+          "NEEDS_UI_EXPLORATION": 2786,
+          "NEEDS_CONFIRMATION": 693,
+          "NOT_UI_OBSERVABLE": 317
+        },
+        "non_draft": 0
+      }
+    },
+    {
+      "id": "P0-9",
+      "name": "排除/冲突/重复来源均登记待确认",
+      "ok": true,
+      "detail": {
+        "open_questions": 441,
+        "categories": {
+          "AMBIGUOUS_RULE": 3,
+          "MISSING_DEFINITION": 86,
+          "VERSION_CONFLICT": 20,
+          "RULE_CONFLICT": 212,
+          "BROKEN_FLOW": 19,
+          "SOURCE_CONFLICT": 13,
+          "DUPLICATE_SOURCE": 11,
+          "EXCLUDED_SOURCE": 77
+        },
+        "parse_issues": 0
+      }
+    },
+    {
+      "id": "P0-10",
+      "name": "13 类对象均有正式 Schema 且运行时用 ajv 校验",
+      "ok": true,
+      "detail": {
+        "schema_files": 14,
+        "files": [
+          "Action.schema.json",
+          "Control.schema.json",
+          "Dependency.schema.json",
+          "Document.schema.json",
+          "Entity.schema.json",
+          "Evidence.schema.json",
+          "ExistingCase.schema.json",
+          "Field.schema.json",
+          "OpenQuestion.schema.json",
+          "Page.schema.json",
+          "Rule.schema.json",
+          "Scenario.schema.json",
+          "Workflow.schema.json",
+          "common.schema.json"
+        ],
+        "validator_wired": true,
+        "ajv_in_schema": true
+      }
+    },
+    {
+      "id": "P0-11",
+      "name": "validate/report 命令走只读加载，不重建知识库",
+      "ok": true,
+      "detail": {
+        "source": "src/cli/prd.ts"
+      }
+    },
+    {
+      "id": "P0-12",
+      "name": "解析器适配层存在且 TXT 有解析路径",
+      "ok": true,
+      "detail": {
+        "parser_adapter": true,
+        "note": "当前输入集 0 份 TXT，能力存在但无真实样本验证"
+      }
+    },
+    {
+      "id": "P0-15",
+      "name": "证据七要素（文件/版本/哈希/章节/行号/原文）齐全",
+      "ok": true,
+      "detail": {
+        "with_version": 31832,
+        "with_sha256": 31865,
+        "with_line_start": 31865,
+        "with_excerpt": 31865,
+        "total": 31865
+      }
+    },
+    {
+      "id": "P0-17",
+      "name": "流程步骤按原表列头解析，非纯数字占位",
+      "ok": true,
+      "detail": {
+        "workflows": 143,
+        "steps": 1315,
+        "structured": 1315,
+        "numeric_only": 0
+      }
+    }
+  ]
+}

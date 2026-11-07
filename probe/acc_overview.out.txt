@@ -1,0 +1,349 @@
+=== COUNTS ===
+documents 333 rules 30641 entities 82 deps 722 workflows 143 open_questions 330
+register documents 333
+is_latest docs 47
+
+=== RULE source_type DISTRIBUTION (ALL) ===
+   PRD_EXPLICIT 26634 86.92%
+   PRD_DERIVED 4004 13.07%
+   PENDING 3 0.01%
+=== RULE source_type DISTRIBUTION (LATEST docs only) ===
+  latest rule total 4657
+   PRD_EXPLICIT 4166 89.46%
+   PRD_DERIVED 491 10.54%
+
+=== RULE confidence / rule_type (ALL) ===
+  confidence CONFIRMED 26634
+  confidence DERIVED 4004
+  confidence AMBIGUOUS 3
+  rule_type READONLY 6212
+  rule_type DEFAULT_VALUE 5327
+  rule_type VALIDATION 5049
+  rule_type REQUIRED 3867
+  rule_type PERMISSION 1776
+  rule_type HIDDEN 1713
+  rule_type API_CONTRACT 1557
+  rule_type LOOKUP 1488
+  rule_type WORKFLOW 1035
+  rule_type STATE_TRANSITION 925
+  rule_type CALCULATION 592
+  rule_type LINKAGE 565
+  rule_type UNIQUENESS 395
+  rule_type DISABLED 88
+  rule_type PRECISION 52
+
+=== RULE EVIDENCE 4-ELEMENT CHECK ===
+  source_ref key union: {'document_id': 30641, 'file_path': 30641, 'section': 30641, 'line_start': 30641, 'excerpt': 30641}
+  total rules 30641
+  missing version_in_ref 30641 100.00%
+  excerpt present 30641 excerpt == description (synthesized, not verbatim PRD quote) 27055 88.30% of present
+
+=== DERIVED / EXPLICIT CONSISTENCY ===
+  PRD_DERIVED 4004 with derivation text 4004
+  PRD_EXPLICIT 26634 WITH derivation text (should be 0 if clean) 0
+  PRD_DERIVED with confidence != DERIVED 0
+  PRD_EXPLICIT with confidence != CONFIRMED 0
+  derivation value samples: ['由「是否必填=是」直接映射', '由操作说明中的处理步骤映射']
+
+=== DOCUMENTS parse-quality signals ===
+  by parser {'markdown': 273, 'json': 26, 'test-case-json': 34}
+  by source_role {'PRD': 299, 'TEST_CASE_LIBRARY': 34}
+  by last_scan_status {'UNCHANGED': 333}
+  section_count == 0 60
+  table_count == 0 60
+  section_count==0 AND table_count==0 60
+  size_bytes < 200 0
+  doc_version null/empty 39
+  entity_names empty 307
+  PRD docs with 0 rules 77
+
+  --- PRD docs: section_count==0 OR table_count==0 (first 40) ---
+    DOC-BA84656308E7 | 客户供应商关系/_upload/客户供应商关系-v1.6.payload.json | parser json | size 27841 | sec 0 | tbl 0 | rules 49 | latest False
+    DOC-0D45F8F8EF21 | 客户供应商关系/_upload/客户供应商关系-v1.6.prd_spec.json | parser json | size 26634 | sec 0 | tbl 0 | rules 49 | latest False
+    DOC-B5D9E28513F9 | 应付业务单别参数/_upload/应付业务单别参数-v1.3.payload.json | parser json | size 35836 | sec 0 | tbl 0 | rules 49 | latest False
+    DOC-6F406B3E1C24 | 应付业务单别参数/_upload/应付业务单别参数-v1.3.prd_spec.json | parser json | size 34209 | sec 0 | tbl 0 | rules 49 | latest False
+    DOC-C03AC5B5D59F | 应付参数/_upload/应付参数-v1.3.payload.json | parser json | size 31300 | sec 0 | tbl 0 | rules 40 | latest False
+    DOC-1EC2E74EEA19 | 应付参数/_upload/应付参数-v1.3.prd_spec.json | parser json | size 30045 | sec 0 | tbl 0 | rules 40 | latest False
+    DOC-A828E9FF408C | 应收业务单别参数/_upload/应收业务单别参数-v1.3.payload.json | parser json | size 35836 | sec 0 | tbl 0 | rules 49 | latest False
+    DOC-CAED67AF22CF | 应收业务单别参数/_upload/应收业务单别参数-v1.3.prd_spec.json | parser json | size 34209 | sec 0 | tbl 0 | rules 49 | latest False
+    DOC-6031EBA551DC | 应收参数/_upload/应收参数-v1.3.payload.json | parser json | size 21427 | sec 0 | tbl 0 | rules 28 | latest False
+    DOC-8591F17E8985 | 应收参数/_upload/应收参数-v1.3.prd_spec.json | parser json | size 20508 | sec 0 | tbl 0 | rules 28 | latest False
+    DOC-DD39C592D67F | 应收参数/_upload/应收参数-v1.8.payload.json | parser json | size 21491 | sec 0 | tbl 0 | rules 27 | latest False
+    DOC-D8EF0621136C | 应收参数/_upload/应收参数-v1.8.prd_spec.json | parser json | size 20572 | sec 0 | tbl 0 | rules 27 | latest False
+    DOC-7EED42969905 | 批号编号规则/_upload/批号编号规则-v1.5.payload.json | parser json | size 40093 | sec 0 | tbl 0 | rules 71 | latest False
+    DOC-9DB0BD3B9799 | 批号编号规则/_upload/批号编号规则-v1.5.prd_spec.json | parser json | size 38262 | sec 0 | tbl 0 | rules 71 | latest False
+    DOC-DBD87F7B2E04 | 设置核算参数/_upload/核算参数-v2.4.prd_spec.json | parser json | size 57559 | sec 0 | tbl 0 | rules 105 | latest False
+    DOC-4B80E06B9F4F | 设置核算参数/_upload/设置核算参数-v2.4.payload.json | parser json | size 65529 | sec 0 | tbl 0 | rules 110 | latest False
+    DOC-8B6F926FEBEA | 设置核算参数/_upload/设置核算参数-v2.4.prd_spec.json | parser json | size 61970 | sec 0 | tbl 0 | rules 110 | latest False
+    DOC-B9060ACF6727 | 设置核算参数/_upload/设置核算参数-v2.5.prd_spec.json | parser json | size 65682 | sec 0 | tbl 0 | rules 110 | latest False
+    DOC-C6DE7858C35D | 采购取价策略/_upload/采购取价策略-v1.6.payload.json | parser json | size 35430 | sec 0 | tbl 0 | rules 85 | latest False
+    DOC-2E6B8D81DF80 | 采购取价策略/_upload/采购取价策略-v1.6.prd_spec.json | parser json | size 33815 | sec 0 | tbl 0 | rules 85 | latest False
+    DOC-B3D055B3EDD2 | 采购退货出库单/_upload/采购退货出库单-新版-v1.14.payload.json | parser json | size 140025 | sec 0 | tbl 0 | rules 220 | latest False
+    DOC-35B43649D4FD | 采购退货出库单/_upload/采购退货出库单-新版-v1.14.prd_spec.json | parser json | size 134714 | sec 0 | tbl 0 | rules 220 | latest False
+    DOC-0488B454A39B | 采购退货出库单/_upload/采购退货出库单-新版-v1.15.payload.json | parser json | size 138584 | sec 0 | tbl 0 | rules 220 | latest False
+    DOC-E9B3E518B1C4 | 采购退货出库单/_upload/采购退货出库单-新版-v1.15.prd_spec.json | parser json | size 133273 | sec 0 | tbl 0 | rules 220 | latest False
+    DOC-A9BAB5253F3C | 采购退货出库单/_upload/采购退货出库单-新版-v1.18.payload.json | parser json | size 139416 | sec 0 | tbl 0 | rules 220 | latest False
+    DOC-247BFF59F9D2 | 采购退货出库单/_upload/采购退货出库单-新版-v1.18.prd_spec.json | parser json | size 134105 | sec 0 | tbl 0 | rules 220 | latest False
+  total suspicious PRD docs 26
+
+=== .parse-cache vs register ===
+  cache files 299 register docs 333
+  cache ids not in register 0
+  register ids not in cache 34
+
+=== PURCHASE CHAIN: documents by job_directory ===
+   供应商资料 | PRD docs 0 | latest 0 | rules 0 | paths 
+   供应商业务信息 | PRD docs 1 | latest 1 | rules 74 | paths 供应商域/供应商业务信息/DOC410884105204498432_供应商业务信息_V1.16.md
+   供应商品号价格 | PRD docs 6 | latest 1 | rules 526 | paths 供应商品号价格/_diff/供应商品号价格-v1.6-to-v1.7.md; 供应商品号价格/_diff/供应商品号价格PRD.v1.6-条件写法体检.md; 供应商品号价格/_history/供应商品号价格PRD.v1.5.md
+   客户供应商关系 | PRD docs 11 | latest 1 | rules 493 | paths 客户供应商关系/_diff/客户供应商关系-v1.6-to-v1.7.md; 客户供应商关系/_history/客户供应商关系PRD.v1.1.md; 客户供应商关系/_history/客户供应商关系PRD.v1.2.md
+   品号资料 | PRD docs 0 | latest 0 | rules 0 | paths 
+   品号通用信息 | PRD docs 1 | latest 1 | rules 102 | paths 基础资料域/品号通用信息/DOC408784437012168705_品号通用信息_V1.10.md
+   品号采购信息 | PRD docs 1 | latest 1 | rules 84 | paths 基础资料域/品号采购信息/DOC408689616771710976_品号采购信息_V1.8.md
+   品号属性 | PRD docs 1 | latest 1 | rules 39 | paths 基础资料域/品号属性/DOC408324910143864832_品号属性_V1.3.md
+   品号群组 | PRD docs 1 | latest 1 | rules 61 | paths 基础资料域/品号群组/DOC407716095249711104_品号群组_V1.5.md
+   请购单 | PRD docs 1 | latest 1 | rules 144 | paths 采购域/请购单/DOC411595859844759552_请购单_V1.12.md
+   采购订单 | PRD docs 1 | latest 1 | rules 252 | paths 采购域/采购订单/DOC415646892677804032_采购订单_V1.13.md
+   采购到货单 | PRD docs 1 | latest 1 | rules 256 | paths 采购域/采购到货单/DOC411256039758987264_采购到货单_V1.23.md
+   采购入库单 | PRD docs 1 | latest 1 | rules 181 | paths 采购域/采购入库单/DOC482078_采购入库单_V1.19.md
+   采购退货单 | PRD docs 6 | latest 1 | rules 1272 | paths 采购退货单/_diff/云端漂移-DOC437334690459947009-采购退货单PRD.v1.11.md; 采购退货单/_diff/采购退货单PRD.v1.11-条件写法体检.md; 采购退货单/_history/采购退货单PRD.v1.10.md
+   采购退货出库单 | PRD docs 43 | latest 1 | rules 5903 | paths 采购退货出库单/_diff/v1.19-条件写法体检（整改前-24条）.md; 采购退货出库单/_diff/v1.20-云端整改清单.md; 采购退货出库单/_diff/v1.20-开发改动清单.md
+   询价单 | PRD docs 5 | latest 1 | rules 564 | paths 询价单/_diff/询价单PRD.v1.7-条件写法体检.md; 询价单/_diff/询价单PRD.v1.8-条件写法体检.md; 询价单/_history/询价单PRD.v1.7.md
+   采购取价策略 | PRD docs 14 | latest 1 | rules 385 | paths 采购取价策略/_diff/上云失败记录-覆盖DOC437131710750134273-2026-11-06.md; 采购取价策略/_diff/上云核验-采购取价策略-v1.6-DOC437131710750134273.md; 采购取价策略/_diff/上云核验-采购取价策略-v1.7-DOC437144082923266049.md
+   到货单验收 | PRD docs 1 | latest 1 | rules 96 | paths 采购域/到货单验收/DOC420406209235615745_到货单验收_V1.4.md
+   运营单元采购参数 | PRD docs 1 | latest 1 | rules 23 | paths 采购域/运营单元采购参数/DOC409156815454044160_运营单元采购参数_V1.3.md
+
+=== ENTITIES (purchase-ish) ===
+   ENT-C202909E60EA | 采购到货单 | entity_no pur_arr_doc | module 采购 | field_count 90 | rule_count 214 | docs 1
+   ENT-6199AECF23AB | 采购订单 | entity_no po | module 采购 | field_count 102 | rule_count 213 | docs 1
+   ENT-49C102354A7D | 采购取价策略 | entity_no None | module 采购 | field_count 0 | rule_count 0 | docs 11
+   ENT-9D44AA22F861 | 采购取价策略 | entity_no pur_price_strtg | module 采购 | field_count 43 | rule_count 221 | docs 5
+   ENT-F20474CCE975 | 采购取价顺序 | entity_no pur_price_order | module 采购 | field_count 8 | rule_count 36 | docs 2
+   ENT-75988A3CE2F2 | 采购入库单 | entity_no pur_stkin_doc | module 采购 | field_count 69 | rule_count 145 | docs 1
+   ENT-BCA2425A6C35 | 采购退货出库单 | entity_no None | module 采购 | field_count 0 | rule_count 0 | docs 22
+   ENT-0C9A8B40510C | 采购退货出库单 | entity_no pur_rtn_stkou_doc | module 采购 | field_count 1292 | rule_count 4501 | docs 27
+   ENT-42B30C09150D | 采购退货出库单明细 | entity_no pur_rtn_stkou_doc_d | module 采购 | field_count 216 | rule_count 684 | docs 6
+   ENT-087149F4A8BD | 采购退货单 | entity_no None | module 采购 | field_count 0 | rule_count 0 | docs 2
+   ENT-BB01504A5654 | 采购退货单 | entity_no pur_rtn_doc | module 采购 | field_count 312 | rule_count 1060 | docs 4
+   ENT-71E5A01D241E | 供应商品号价格 | entity_no None | module 采购 | field_count 0 | rule_count 0 | docs 2
+   ENT-B59B1333FB19 | 供应商品号价格 | entity_no supp_item_price | module 采购 | field_count 92 | rule_count 359 | docs 4
+   ENT-1928DB4E1E39 | 供应商业务信息 | entity_no supp_biz_info | module 基础资料 | field_count 37 | rule_count 55 | docs 1
+   ENT-73B2E2C38281 | 客户供应商关系 | entity_no None | module 基础资料 | field_count 0 | rule_count 0 | docs 3
+   ENT-C221B203555C | 客户供应商关系档 | entity_no cust_supp_rela | module 基础资料 | field_count 84 | rule_count 336 | docs 10
+   ENT-A7D98906DEB7 | 客户品号 | entity_no cust_item_no | module 基础资料 | field_count 12 | rule_count 15 | docs 1
+   ENT-41C643005CF3 | 品号财务信息 | entity_no item_fin_info | module 基础资料 | field_count 12 | rule_count 18 | docs 1
+   ENT-1005B6BA82CE | 品号采购信息 | entity_no item_pur_info | module 基础资料 | field_count 29 | rule_count 59 | docs 1
+   ENT-6DC0AF48626C | 品号群组 | entity_no item_group | module 基础资料 | field_count 17 | rule_count 47 | docs 1
+   ENT-FA31120CE330 | 品号属性 | entity_no item_attr | module 基础资料 | field_count 8 | rule_count 22 | docs 1
+   ENT-6319B73DEC5A | 品号通用信息 | entity_no item_gen_info | module 基础资料 | field_count 32 | rule_count 75 | docs 1
+   ENT-9A5B04719709 | 品号销售信息 | entity_no item_sales_info | module 基础资料 | field_count 19 | rule_count 30 | docs 1
+   ENT-1B0B57AC8820 | 请购单 | entity_no requ_doc | module 采购 | field_count 55 | rule_count 110 | docs 1
+   ENT-5E1CFC5A4CBE | 询价单 | entity_no None | module 采购 | field_count 0 | rule_count 0 | docs 2
+   ENT-A31EB9307818 | 询价单 | entity_no inq_doc | module 采购 | field_count 73 | rule_count 275 | docs 3
+   ENT-1A4C77E1B3A8 | 询价单（`inq_doc`） | entity_no None | module 采购 | field_count 0 | rule_count 0 | docs 2
+   ENT-79AE52FA9848 | 业务类型采购参数 | entity_no biz_type_pur_param | module 基础资料 | field_count 18 | rule_count 40 | docs 1
+   ENT-FE394FD1E989 | 运营单元采购参数 | entity_no pur_reg_param | module 采购 | field_count 6 | rule_count 15 | docs 1
+
+=== DEPENDENCIES ===
+  relation_type {'REFERENCES': 722}
+  source_type {'PRD_DERIVED': 722}
+  confidence {'DERIVED': 722}
+  target_id non-null 0
+  mapping non-null 0
+  total 722
+  --- purchase-related deps (first 60) ---
+    DEP-D405E8FC44F8 | 询价单-新版 → bm.pur_req_detail.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_req_detail.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单 | file 询价单/_history/询价单PRD.v1.7.md
+    DEP-C4A3AF98DA38 | 询价单-新版 → bm.item_pur_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_pur_info.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单 | file 询价单/_history/询价单PRD.v1.7.md
+    DEP-21D024AB1978 | 询价单-新版 → bm.ops_unit_coop_rela.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.ops_unit_coop_rela.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单 | file 询价单/_history/询价单PRD.v1.7.md
+    DEP-79A036662B00 | 询价单-新版 → bm.pur_req_detail.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_req_detail.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单 | file 询价单/询价单PRD.v1.8.md
+    DEP-CC653EECB6C8 | 询价单-新版 → bm.item_pur_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_pur_info.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单 | file 询价单/询价单PRD.v1.8.md
+    DEP-9C1B5F2E6413 | 询价单-新版 → bm.ops_unit_coop_rela.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.ops_unit_coop_rela.get | section 询价单-新版 / 四、操作说明 / 整体操作 / 取单 | file 询价单/询价单PRD.v1.8.md
+    DEP-FC65B7168FFA | 采购退货出库单 v1.20 · 开发改动清单 → seq | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref seq | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-B2CD7036F37B | 采购退货出库单 v1.20 · 开发改动清单 → item_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref item_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-17004E1C4FBB | 采购退货出库单 v1.20 · 开发改动清单 → item_name | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref item_name | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-70B3234CA43A | 采购退货出库单 v1.20 · 开发改动清单 → item_spec | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref item_spec | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-5A3F0164E01C | 采购退货出库单 v1.20 · 开发改动清单 → item_feat_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref item_feat_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-6634218B588A | 采购退货出库单 v1.20 · 开发改动清单 → goods_type | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref goods_type | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-35C15FFFA06F | 采购退货出库单 v1.20 · 开发改动清单 → lot_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref lot_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-2C0753FA8605 | 采购退货出库单 v1.20 · 开发改动清单 → eff_date | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref eff_date | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-53C243011712 | 采购退货出库单 v1.20 · 开发改动清单 → eff_end_date | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref eff_end_date | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-7D5DAA2E5893 | 采购退货出库单 v1.20 · 开发改动清单 → whse_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref whse_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-2AF53CB15203 | 采购退货出库单 v1.20 · 开发改动清单 → stsp_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref stsp_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-168A9A157ADE | 采购退货出库单 v1.20 · 开发改动清单 → biz_unit_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref biz_unit_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-57BF26A36B53 | 采购退货出库单 v1.20 · 开发改动清单 → biz_qty | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref biz_qty | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-46204831ADF9 | 采购退货出库单 v1.20 · 开发改动清单 → alr_rtn_biz_qty | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref alr_rtn_biz_qty | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-A1F9522B9F70 | 采购退货出库单 v1.20 · 开发改动清单 → prc_unit_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref prc_unit_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-8D3556A78906 | 采购退货出库单 v1.20 · 开发改动清单 → bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_gen_info.qty_cnv | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-58A510FA7BF2 | 采购退货出库单 v1.20 · 开发改动清单 → prc_qty | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref prc_qty | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-73C4E2AAF56F | 采购退货出库单 v1.20 · 开发改动清单 → alr_rtn_prc_qty | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref alr_rtn_prc_qty | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-7FF5127ED8C7 | 采购退货出库单 v1.20 · 开发改动清单 → invnt_unit_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref invnt_unit_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-9759AB5CFB24 | 采购退货出库单 v1.20 · 开发改动清单 → invnt_unit_qty | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref invnt_unit_qty | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-0FAD8B2A6C11 | 采购退货出库单 v1.20 · 开发改动清单 → alr_rtn_invnt_qty | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref alr_rtn_invnt_qty | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-C3C52F28D03C | 采购退货出库单 v1.20 · 开发改动清单 → sec_unit_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref sec_unit_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-A913C4576556 | 采购退货出库单 v1.20 · 开发改动清单 → sec_unit_qty | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref sec_unit_qty | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-DBA38A750698 | 采购退货出库单 v1.20 · 开发改动清单 → proj_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref proj_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-AD8B3390D0AE | 采购退货出库单 v1.20 · 开发改动清单 → rmk | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref rmk | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-60EDEAA9BB79 | 采购退货出库单 v1.20 · 开发改动清单 → pur_type | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref pur_type | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-B4697C0CE362 | 采购退货出库单 v1.20 · 开发改动清单 → pcs | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref pcs | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-AECE53EE27ED | 采购退货出库单 v1.20 · 开发改动清单 → pur_rtn_stkou_src_doc_type | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref pur_rtn_stkou_src_doc_type | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-1360294EC406 | 采购退货出库单 v1.20 · 开发改动清单 → src_doc_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref src_doc_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-FEA5CB4A7F4C | 采购退货出库单 v1.20 · 开发改动清单 → pur_rtn_doc_no | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref pur_rtn_doc_no | section 采购退货出库单 v1.20 · 开发改动清单 / 4. D3 · 取单赋值映射 / 4.2 明细（按查询结果依序写入，序号往下累加） | file 采购退货出库单/_diff/v1.20-开发改动清单.md
+    DEP-88A66323438D | 采购退货出库单-新版 → bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.po.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.10.md
+    DEP-AD6CB714F28D | 采购退货出库单-新版 → bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_rtn_doc.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.10.md
+    DEP-DCD0307EF555 | 采购退货出库单-新版 → bm.item_lot_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_lot_info.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.10.md
+    DEP-7EA946693D2C | 采购退货出库单-新版 → bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_gen_info.qty_cnv | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.10.md
+    DEP-31AD8DD41CE4 | 采购退货出库单-新版 → bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.po.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.11.md
+    DEP-698164ED8688 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_rtn_doc.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.11.md
+    DEP-F6F6906C5CEB | 采购退货出库单-新版 → bm.item_lot_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_lot_info.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.11.md
+    DEP-CCEEFA9BBE08 | 采购退货出库单-新版 → bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_gen_info.qty_cnv | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.11.md
+    DEP-2C60409F9C8F | 采购退货出库单-新版 → bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.po.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.12.md
+    DEP-363C87C122DA | 采购退货出库单-新版 → bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_rtn_doc.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.12.md
+    DEP-E6B83C129937 | 采购退货出库单-新版 → bm.item_lot_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_lot_info.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.12.md
+    DEP-B4E1CBA17175 | 采购退货出库单-新版 → bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_gen_info.qty_cnv | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.12.md
+    DEP-01ED1C3E1788 | 采购退货出库单-新版 → bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.po.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+    DEP-CA6B937E5223 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_rtn_doc.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+    DEP-EA0A4B69DED2 | 采购退货出库单-新版 → bm.item_lot_info.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_lot_info.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+    DEP-279EBBC74C6A | 采购退货出库单-新版 → bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_gen_info.qty_cnv | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+    DEP-DA00E127505D | 采购退货出库单-新版 → bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.po.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.14.md
+    DEP-8A8333333E1A | 采购退货出库单-新版 → bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_rtn_doc.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.14.md
+    DEP-CD4AC28EA8DF | 采购退货出库单-新版 → bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_gen_info.qty_cnv | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.14.md
+    DEP-68BD0E83193E | 采购退货出库单-新版 → bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.po.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.15.md
+    DEP-D7F9F04E42AA | 采购退货出库单-新版 → bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_rtn_doc.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.15.md
+    DEP-6BC778D82470 | 采购退货出库单-新版 → bm.item_gen_info.qty_cnv | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.item_gen_info.qty_cnv | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.15.md
+    DEP-077C27F09B2C | 采购退货出库单-新版 → bm.po.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.po.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.16.md
+    DEP-9AEAF1330C02 | 采购退货出库单-新版 → bm.pur_rtn_doc.get | rel REFERENCES | src PRD_DERIVED | conf DERIVED | target_ref bm.pur_rtn_doc.get | section 采购退货出库单-新版 / 四、操作说明 / 整体操作 / 取单 | file 采购退货出库单/_history/采购退货出库单PRD.v1.16.md
+  purchase-related deps count 150
+
+=== WORKFLOWS (purchase-ish) ===
+   WF-D724C3DEBF7A | 供应商品号价格 业务流程 | steps 12 | file 供应商品号价格/_history/供应商品号价格PRD.v1.5.md
+   WF-2D5EE1569E01 | 供应商品号价格 业务流程 | steps 12 | file 供应商品号价格/_history/供应商品号价格PRD.v1.6.md
+   WF-0E8CFF6BB04B | 供应商品号价格 业务流程 | steps 12 | file 供应商品号价格/供应商品号价格PRD.v1.7.md
+   WF-2F493284BCD0 | 询价单-新版 业务流程 | steps 11 | file 询价单/_history/询价单PRD.v1.7.md
+   WF-F2A421F33205 | 询价单-新版 业务流程 | steps 11 | file 询价单/询价单PRD.v1.8.md
+   WF-594452B7F899 | 采购取价策略 业务流程 | steps 12 | file 采购取价策略/_history/采购取价策略PRD.v1.6.md
+   WF-C59848F432B8 | 采购取价策略 业务流程 | steps 12 | file 采购取价策略/采购取价策略PRD.v1.7.md
+   WF-1B0C6911CD70 | 采购退货出库单-新版 业务流程 | steps 10 | file 采购退货出库单/_history/采购退货出库单PRD.v1.12.md
+   WF-2E9B86F97686 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.13.md
+   WF-DA3B26FCCE66 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.14.md
+   WF-018D273C270C | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.15.md
+   WF-363CBF0EF55F | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.16.md
+   WF-123E2DC15C4F | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.17.md
+   WF-696445F2E015 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.18.md
+   WF-E3507989D05C | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.19.md
+   WF-F353C5D45697 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.20.md
+   WF-A72C155E7224 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.21.md
+   WF-C0BB900553D6 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.22.md
+   WF-EB5BAB7A85D4 | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/_history/采购退货出库单PRD.v1.23.md
+   WF-78C5B51C13FD | 采购退货出库单-新版 业务流程 | steps 8 | file 采购退货出库单/采购退货出库单PRD.v1.24.md
+   WF-4E65C1C820DC | 采购退货单-新版 业务流程 | steps 10 | file 采购退货单/_history/采购退货单PRD.v1.10.md
+   WF-AB94F3F56E2A | 采购退货单-新版 业务流程 | steps 10 | file 采购退货单/_history/采购退货单PRD.v1.8.md
+   WF-1FCB963F4042 | 采购退货单-新版 业务流程 | steps 10 | file 采购退货单/_history/采购退货单PRD.v1.9.md
+   WF-2D42A9A71FD8 | 采购退货单-新版 业务流程 | steps 10 | file 采购退货单/采购退货单PRD.v1.11.md
+  total workflows 143
+
+=== OPEN QUESTIONS ===
+  category {'AMBIGUOUS_RULE': 3, 'MISSING_DEFINITION': 12, 'VERSION_CONFLICT': 20, 'RULE_CONFLICT': 276, 'BROKEN_FLOW': 19}
+  severity {'MEDIUM': 28, 'LOW': 282, 'HIGH': 20}
+  status {'OPEN': 330}
+  --- questions mentioning purchase chain docs ---
+    OQ-CB6546B4374A | VERSION_CONFLICT | HIGH | 采购退货单 存在多个文档版本：1.8, 1.9, 1.10, 1.11，候选最新版本为 v1.11，需确认生效版本
+    OQ-ABF726A0E66F | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 ops_unit_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-30C4CC164E94 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 doc_date 在同一文档内有 2 种 API_CONTRACT 表述，需确认是否等价
+    OQ-66D6D6CD7885 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 doc_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-98E6C0746709 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 biz_type_no 在同一文档内有 4 种 VALIDATION 表述，需确认是否等价
+    OQ-BAD91C3B2507 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 pur_rtn_doc_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-166791C27759 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 supp_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-1FEA27EBED8E | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 purhr_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-E551DBF81C65 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 pur_dept_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-586EBF992F3A | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 rtn_ops_unit_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-9BFE5143B1AC | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 supp_addr 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-3755932EF119 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 trasp_mode_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-07CE9AD70FC6 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 ccy_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-B0B6D0CB33FF | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 er 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价
+    OQ-721A84350258 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 er 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-EFFD9121376C | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 pmt_terms_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-8DBD7EE4F463 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 proj_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-5F72DC82265B | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 stlmt_ops_unit_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-E64753FB4BB8 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 stlmt_supp_no 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-A190209AD40E | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 stlmt_supp_name 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-E67298CF7DEB | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 stlmt_supp_cntac 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-0DB3FE19BD1B | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 stlmt_supp_addr 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-8081D576EF2A | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 dir_pmt 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-29013C7C0B61 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 curr_can_stlmt 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-683220A6B50B | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 tax_inv_no 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-854E94681CD7 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 pcs 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-06B3E52C9877 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 item_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-6D6AA3509602 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 CUS_prc_unit_and_pur_unit_rqd_same 在同一文档内有 2 种 READONLY 表述，需确认是否等价
+    OQ-27FE550C7499 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 item_name 在同一文档内有 2 种 READONLY 表述，需确认是否等价
+    OQ-EE6F65592070 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 item_spec 在同一文档内有 2 种 READONLY 表述，需确认是否等价
+    OQ-51D5DA996FD4 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 biz_qty 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-66A57AC16404 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 prc_unit_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-3E938C371E24 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 invnt_unit_no 在同一文档内有 2 种 REQUIRED 表述，需确认是否等价
+    OQ-469CA78540F8 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 sec_unit_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-3A21AD34A20C | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-82B4D79D973F | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 amt 在同一文档内有 2 种 CALCULATION 表述，需确认是否等价
+    OQ-DF6A3CB5523A | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 disc_rate 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-2E384700DEBE | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 discd_price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-E439BC8EB68F | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 disc_amt 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-9D748C506808 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 whse_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-1ED794EE7D81 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 stsp_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-33EC4B748FF0 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 lot_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-00CB59A19C48 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 tax_rate 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-070FB89A9DBD | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 pur_type 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-CA8D458A4F1B | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 pur_rtn_src_doc_type 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价
+    OQ-2CDF8D50C08F | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 src_ops_unit_no 在同一文档内有 2 种 READONLY 表述，需确认是否等价
+    OQ-08F5B8F73227 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 ref_src_sub_seq 在同一文档内有 2 种 READONLY 表述，需确认是否等价
+    OQ-9EDB1A835A10 | RULE_CONFLICT | LOW | pur_rtn_doc 的字段 ded_alr_stkin_qty 在同一文档内有 2 种 HIDDEN 表述，需确认是否等价
+    OQ-93D0A70A075C | RULE_CONFLICT | LOW | requ_doc 的字段 doc_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价
+    OQ-0CBB20642681 | RULE_CONFLICT | LOW | requ_doc 的字段 doc_date 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-1DCE1F4F201C | RULE_CONFLICT | LOW | requ_doc 的字段 biz_type_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-AA3E24069CFE | RULE_CONFLICT | LOW | requ_doc 的字段 applt_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-39A824720A68 | RULE_CONFLICT | LOW | requ_doc 的字段 requ_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-FAC0D7318391 | RULE_CONFLICT | LOW | requ_doc 的字段 sec_unit_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-8D3712338122 | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 ops_unit_no 在同一文档内有 4 种 VALIDATION 表述，需确认是否等价
+    OQ-98D1BF2A48DF | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 pur_stkin_doc_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-6AE5415E55B5 | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 supp_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-050BFC40A97C | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 doc_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-8D53B40627B3 | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 trans_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-0D92E71F35FA | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 biz_qty 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-47645576AC1A | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 stlmt_stat 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-EACFF9CE0010 | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 stlmt_stat 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价
+    OQ-1C98B81D99B7 | RULE_CONFLICT | LOW | pur_stkin_doc 的字段 cost_elem_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-3347A7E13449 | RULE_CONFLICT | LOW | pur_arr_doc 的字段 ops_unit_no 在同一文档内有 4 种 VALIDATION 表述，需确认是否等价
+    OQ-C1CBBEAF9C0D | RULE_CONFLICT | LOW | pur_arr_doc 的字段 supp_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-96A5A067A4F6 | RULE_CONFLICT | LOW | pur_arr_doc 的字段 doc_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-A354124007FE | RULE_CONFLICT | LOW | pur_arr_doc 的字段 arr_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-1673B3E6595F | RULE_CONFLICT | LOW | pur_arr_doc 的字段 pur_arr_doc_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-F49306782A90 | RULE_CONFLICT | LOW | pur_arr_doc 的字段 rcpt_ops_unit_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-201EA8D62E67 | RULE_CONFLICT | LOW | pur_arr_doc 的字段 ccy_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-42957B4D3C8E | RULE_CONFLICT | LOW | pur_arr_doc 的字段 er 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-B53854C276E9 | RULE_CONFLICT | LOW | pur_arr_doc 的字段 intax_flag 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-BDCB724C1009 | RULE_CONFLICT | LOW | pur_arr_doc 的字段 cnee_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-0FC9EF061ED7 | RULE_CONFLICT | LOW | pur_arr_doc 的字段 pmt_terms_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-E2E5C52627BC | RULE_CONFLICT | LOW | pur_arr_doc 的字段 prc_qty 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-56CD8A61D536 | RULE_CONFLICT | LOW | pur_arr_doc 的字段 lot_no 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-7510E2B24621 | RULE_CONFLICT | LOW | po 的字段 po_doc_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-64980EC68697 | RULE_CONFLICT | LOW | po 的字段 po_doc_no 在同一文档内有 2 种 UNIQUENESS 表述，需确认是否等价
+    OQ-DF890CDB624D | RULE_CONFLICT | LOW | po 的字段 doc_date 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-6D65CEE27026 | RULE_CONFLICT | LOW | po 的字段 ccy_no 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-CA907298A567 | RULE_CONFLICT | LOW | po 的字段 er 在同一文档内有 3 种 VALIDATION 表述，需确认是否等价
+    OQ-936108583D2C | RULE_CONFLICT | LOW | po 的字段 biz_qty 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-3F1E5744B44B | RULE_CONFLICT | LOW | po 的字段 price 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-34F2B7073001 | RULE_CONFLICT | LOW | po 的字段 antic_arr_date 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-974FAF872907 | RULE_CONFLICT | LOW | po 的字段 tax_rate 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+    OQ-933A6A1D830E | RULE_CONFLICT | LOW | po 的字段 CUS_uiXDX13 在同一文档内有 2 种 DEFAULT_VALUE 表述，需确认是否等价
+    OQ-B4D58B6F1D20 | RULE_CONFLICT | LOW | po 的字段 CUS_uiXDX13 在同一文档内有 2 种 VALIDATION 表述，需确认是否等价
+
+=== COVERAGE cross-check ===
+  summary.counts {'documents': 333, 'prd_documents': 299, 'test_case_documents': 34, 'entities': 82, 'pages': 830, 'fields': 8454, 'controls': 8454, 'rules': 30641, 'actions': 1896, 'workflows': 143, 'dependencies': 722, 'scenarios': 4067, 'existing_cases': 1477, 'open_questions': 330, 'parse_issues': 0}
+  summary.coverage {'rules': 4657, 'covered_by_existing_cases': 854, 'rate': 0.1834}
+  summary.validation {'valid': True, 'errors': 0, 'warnings': 0}
+
+=== BUCKET SIZES (for sampling) ===
+   purchase_latest_EXPLICIT 1771
+   purchase_latest_DERIVED 124
+   purchase_nonlatest_EXPLICIT 7095
+   other_latest_EXPLICIT 2395
+   other_DERIVED 3350
+   PENDING 3
+   EXPLICIT_with_derivation 0
+  sample written 40

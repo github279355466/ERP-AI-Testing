@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/Scenario.schema.json",
+  "title": "Scenario",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/base"
+    }
+  ],
+  "required": [
+    "object_type",
+    "title",
+    "status",
+    "automation_feasibility",
+    "rule_ids"
+  ],
+  "properties": {
+    "object_type": {
+      "const": "Scenario"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "test_objective": {
+      "type": "string"
+    },
+    "scenario_type": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "REVIEW_REQUIRED",
+        "APPROVED",
+        "REJECTED",
+        "EXECUTABLE"
+      ]
+    },
+    "automation_feasibility": {
+      "enum": [
+        "UI_READY",
+        "NEEDS_UI_EXPLORATION",
+        "NEEDS_CONFIRMATION",
+        "NOT_UI_OBSERVABLE"
+      ]
+    },
+    "business_object": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "target",
+          "expected"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "expected": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "expected_result": {
+      "type": "string"
+    },
+    "evidence_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "document_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "case_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_required": {
+      "type": "boolean"
+    },
+    "origin": {
+      "enum": [
+        "GENERATED",
+        "EXISTING_CASE"
+      ]
+    }
+  }
+}

@@ -44,6 +44,11 @@ export interface PrdModelingConfig {
 }
 
 export const DEFAULT_CONFIG_PATH = path.join('config', 'prd-modeling.config.json');
+export const LOCAL_CONFIG_PATH = path.join('config', 'prd-modeling.config.local.json');
+
+function expandEnv(value: string): string {
+  return value.replace(/\$\{([A-Z0-9_]+)\}/g, (_match, name: string) => process.env[name] ?? '');
+}
 
 const DEFAULT_MODULE_RULES: ModuleRule[] = [
   { pattern: '^采购域$', module: '采购' },
@@ -119,21 +124,30 @@ export function loadPrdConfig(options: LoadConfigOptions): PrdModelingConfig {
     const parsed = JSON.parse(raw) as Partial<PrdModelingConfig>;
     config = mergeConfig(config, parsed);
   }
+  const localPath = path.resolve(options.repoRoot, LOCAL_CONFIG_PATH);
+  if (fs.existsSync(localPath)) {
+    const raw = fs.readFileSync(localPath, 'utf8');
+    const parsed = JSON.parse(raw) as Partial<PrdModelingConfig>;
+    config = mergeConfig(config, parsed);
+  }
   const envPrdDir = process.env.PRD_INPUT_DIR;
-  const prdDir = options.prdDirOverride ?? envPrdDir ?? config.prd.inputDir;
+  const prdDir = options.prdDirOverride ?? envPrdDir ?? expandEnv(config.prd.inputDir);
   config.prd.inputDir = path.isAbsolute(prdDir) ? prdDir : path.resolve(options.repoRoot, prdDir);
   if (options.scenarioDirOverride) {
     config.scenarioSources = [
       {
         name: '测试用例',
-        inputDir: path.resolve(options.repoRoot, options.scenarioDirOverride),
+        inputDir: path.resolve(options.repoRoot, expandEnv(options.scenarioDirOverride)),
         kind: 'TEST_CASE_LIBRARY',
       },
     ];
   } else {
     config.scenarioSources = config.scenarioSources.map((source) => ({
       ...source,
-      inputDir: path.isAbsolute(source.inputDir) ? source.inputDir : path.resolve(options.repoRoot, source.inputDir),
+      inputDir: (() => {
+        const expanded = expandEnv(source.inputDir);
+        return path.isAbsolute(expanded) ? expanded : path.resolve(options.repoRoot, expanded);
+      })(),
     }));
   }
   config.output.artifactDir = path.resolve(options.repoRoot, config.output.artifactDir);

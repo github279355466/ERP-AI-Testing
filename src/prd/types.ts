@@ -23,14 +23,19 @@ export type ObjectType =
   | 'Dependency'
   | 'Scenario'
   | 'OpenQuestion'
-  | 'ExistingCase';
+  | 'ExistingCase'
+  | 'Evidence';
 
 export interface SourceRef {
   document_id: string;
   file_path: string;
+  doc_version?: string | null;
+  sha256?: string;
   section?: string;
   line_start?: number;
   line_end?: number;
+  page?: number | null;
+  paragraph_index?: number | null;
   excerpt?: string;
   table?: string;
 }
@@ -41,6 +46,7 @@ export interface BaseKnowledgeObject {
   name: string;
   module: string;
   status: 'ACTIVE' | 'DRAFT' | 'MISSING_SOURCE';
+  schema_version?: string;
   source_refs: SourceRef[];
   created_by_parser_version: string;
   updated_at: string;
@@ -68,9 +74,13 @@ export interface DocumentRecord extends BaseKnowledgeObject {
   section_count: number;
   table_count: number;
   last_scan_status: ScanStatus;
+  scanned_at: string;
   parser: string;
   source_role: 'PRD' | 'TEST_CASE_LIBRARY';
   job_directory: string;
+  supersedes: string[];
+  superseded_by: string | null;
+  related_document_ids: string[];
   is_latest: boolean;
 }
 
@@ -141,6 +151,8 @@ export interface Field extends BaseKnowledgeObject {
   lookup_desc: string | null;
   options: string[];
   validation_text: string | null;
+  attributes: Record<string, string>;
+  attribute_lines: Record<string, number>;
   data_type: string | null;
   length: number | null;
   precision: number | null;
@@ -181,6 +193,8 @@ export interface Rule extends BaseKnowledgeObject {
   conditions: string[];
   expected_result: string | null;
   derivation: string | null;
+  /** 规则文本中引用的平台服务，用于区分「字段行为引用服务」与「纯平台服务规则」 */
+  service_refs?: string[];
   document_id: string;
   open_question_ids: string[];
 }
@@ -195,6 +209,7 @@ export interface Action extends BaseKnowledgeObject {
   processing: string | null;
   post_processing: string | null;
   apis: string[];
+  phase_lines: Record<string, number>;
   document_id: string;
 }
 
@@ -203,6 +218,11 @@ export interface WorkflowStep {
   step: string;
   description: string;
   exception: string;
+  node_name?: string;
+  actor?: string;
+  precondition?: string;
+  output?: string;
+  next_step?: string;
 }
 
 export interface Workflow extends BaseKnowledgeObject {
@@ -252,6 +272,7 @@ export interface ScenarioAssertion {
 export interface Scenario extends Omit<BaseKnowledgeObject, 'status'> {
   object_type: 'Scenario';
   title: string;
+  test_objective: string;
   scenario_type: string;
   status: ScenarioStatus;
   automation_feasibility: AutomationFeasibility;
@@ -260,20 +281,29 @@ export interface Scenario extends Omit<BaseKnowledgeObject, 'status'> {
   data_requirements: string[];
   steps: string[];
   assertions: ScenarioAssertion[];
+  expected_result: string;
+  evidence_requirements: string[];
   rule_ids: string[];
   document_ids: string[];
+  case_ids: string[];
   review_required: boolean;
   origin: 'GENERATED' | 'EXISTING_CASE';
 }
 
 export interface ExistingCaseRecord {
+  id: string;
+  object_type: 'ExistingCase';
   case_id: string;
+  schema_version?: string;
   package: string;
   module: string;
   title: string;
   category: string;
   priority: 'P0' | 'P1' | 'P2' | string;
+  /** 已解析到本知识库的 Rule.id（RULE-*），由覆盖率匹配回填 */
   rule_ids: string[];
+  /** 用例库原始规则编号（如 R-xxx），与知识库命名空间无关，仅作溯源 */
+  source_rule_ids: string[];
   object: string | null;
   field: string | null;
   field_no?: string | null;
@@ -284,8 +314,27 @@ export interface ExistingCaseRecord {
   document_id: string;
 }
 
+export interface Evidence extends BaseKnowledgeObject {
+  object_type: 'Evidence';
+  evidence_id: string;
+  document_id: string;
+  doc_version: string | null;
+  sha256: string;
+  file_path: string;
+  section: string | null;
+  line_start: number | null;
+  line_end: number | null;
+  page: number | null;
+  paragraph_index: number | null;
+  excerpt: string | null;
+  verbatim: boolean;
+  kind: 'RULE' | 'ACTION' | 'WORKFLOW' | 'DEPENDENCY' | 'FIELD' | 'SECTION';
+  referenced_by: string[];
+}
+
 export interface OpenQuestion {
   id: string;
+  schema_version?: string;
   object_type: 'OpenQuestion';
   question: string;
   category:
@@ -298,7 +347,11 @@ export interface OpenQuestion {
     | 'BROKEN_FLOW'
     | 'UNSUPPORTED_FORMAT'
     | 'PARSE_ERROR'
-    | 'SCENARIO_GAP';
+    | 'SCENARIO_GAP'
+    | 'SOURCE_CONFLICT'
+    | 'SOURCE_MISSING'
+    | 'DUPLICATE_SOURCE'
+    | 'EXCLUDED_SOURCE';
   severity: 'HIGH' | 'MEDIUM' | 'LOW';
   document_ids: string[];
   evidence: string[];
@@ -344,6 +397,7 @@ export interface KnowledgeBundle {
   scenarios: Scenario[];
   existingCases: ExistingCaseRecord[];
   openQuestions: OpenQuestion[];
+  evidence: Evidence[];
   issues: ParseIssue[];
   scan: ScanSummary;
 }

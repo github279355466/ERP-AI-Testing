@@ -1,0 +1,234 @@
+{
+ "explicit_rules": {
+  "total": 26634,
+  "no_evidence": 0,
+  "no_line_start": 0
+ },
+ "rule_source_type_dist": {
+  "PRD_DERIVED": 4004,
+  "PRD_EXPLICIT": 26634,
+  "PENDING": 3
+ },
+ "rule_confidence_dist": {
+  "DERIVED": 4004,
+  "CONFIRMED": 26634,
+  "AMBIGUOUS": 3
+ },
+ "rule_type_dist": {
+  "REQUIRED": 3867,
+  "LOOKUP": 1488,
+  "VALIDATION": 5049,
+  "READONLY": 6212,
+  "DEFAULT_VALUE": 5327,
+  "HIDDEN": 1713,
+  "PERMISSION": 1776,
+  "API_CONTRACT": 1557,
+  "LINKAGE": 565,
+  "UNIQUENESS": 395,
+  "PRECISION": 52,
+  "WORKFLOW": 1035,
+  "CALCULATION": 592,
+  "STATE_TRANSITION": 925,
+  "DISABLED": 88
+ },
+ "EVIDENCE_MISSING_marker_count": {
+  "open-questions.json": 0,
+  "rules.json": 0
+ },
+ "open_questions": {
+  "category": {
+   "AMBIGUOUS_RULE": 3,
+   "MISSING_DEFINITION": 12,
+   "VERSION_CONFLICT": 20,
+   "RULE_CONFLICT": 276,
+   "BROKEN_FLOW": 19
+  },
+  "severity": {
+   "MEDIUM": 28,
+   "LOW": 282,
+   "HIGH": 20
+  },
+  "status": {
+   "OPEN": 330
+  },
+  "id_prefix": {
+   "OQ-": 330
+  }
+ },
+ "dependencies": {
+  "total": 722,
+  "target_id_null": 722,
+  "target_ref_resolved": 296,
+  "target_ref_unresolved": 426,
+  "samples": [
+   {
+    "id": "DEP-A77759F16A54",
+    "target_ref": "pur_stkin_doc_001",
+    "relation_type": "REFERENCES"
+   },
+   {
+    "id": "DEP-78D1AF1124EE",
+    "target_ref": "pur_stkin_doc_d",
+    "relation_type": "REFERENCES"
+   },
+   {
+    "id": "DEP-AB264205BD93",
+    "target_ref": "bm.pur_stkin_doc.get",
+    "relation_type": "REFERENCES"
+   },
+   {
+    "id": "DEP-0F28C50D39D6",
+    "target_ref": "p_ops_unit_no",
+    "relation_type": "REFERENCES"
+   },
+   {
+    "id": "DEP-C4A1DE320025",
+    "target_ref": "p_supp_no",
+    "relation_type": "REFERENCES"
+   },
+   {
+    "id": "DEP-62EEC2AA8CF3",
+    "target_ref": "p_doc_date_from",
+    "relation_type": "REFERENCES"
+   },
+   {
+    "id": "DEP-55BF53E0EFE6",
+    "target_ref": "p_doc_date_to",
+    "relation_type": "REFERENCES"
+   },
+   {
+    "id": "DEP-2D67F99C7307",
+    "target_ref": "p_doc_no",
+    "relation_type": "REFERENCES"
+   }
+  ]
+ },
+ "linkage": {
+  "rules_with_open_question_ids": 0,
+  "scenarios_review_required_true": 4067,
+  "scenario_status": {
+   "DRAFT": 4067
+  },
+  "scenario_feasibility": {
+   "UI_READY": 2600,
+   "NEEDS_CONFIRMATION": 1183,
+   "NOT_UI_OBSERVABLE": 284
+  },
+  "scenario_origin": {
+   "GENERATED": 4067
+  }
+ },
+ "evidence": {
+  "documents": {
+   "objects": 333,
+   "objects_without_refs": 0,
+   "refs": 333,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 333,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "entities": {
+   "objects": 82,
+   "objects_without_refs": 0,
+   "refs": 82,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "pages": {
+   "objects": 830,
+   "objects_without_refs": 0,
+   "refs": 830,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "fields": {
+   "objects": 8454,
+   "objects_without_refs": 0,
+   "refs": 8454,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "controls": {
+   "objects": 8454,
+   "objects_without_refs": 0,
+   "refs": 8454,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "rules": {
+   "objects": 30641,
+   "objects_without_refs": 0,
+   "refs": 30641,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "actions": {
+   "objects": 1896,
+   "objects_without_refs": 0,
+   "refs": 1896,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "workflows": {
+   "objects": 143,
+   "objects_without_refs": 0,
+   "refs": 143,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "dependencies": {
+   "objects": 722,
+   "objects_without_refs": 0,
+   "refs": 722,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  },
+  "scenarios": {
+   "objects": 4067,
+   "objects_without_refs": 0,
+   "refs": 4067,
+   "no_document_id": 0,
+   "no_file_path": 0,
+   "no_line_start": 0,
+   "no_section": 0,
+   "no_excerpt": 0,
+   "samples": {}
+  }
+ },
+ "evidence_source_refs_total": 55622
+}

@@ -1,0 +1,178 @@
+=== ROOT-LEVEL scattered MD (no job directory) ===
+  DOC-F8AA21DE4A02 | 四单PRD-平台对接会议议程.md | parser markdown | module 其他 | sec 11 | tbl 4 | fields 0 | rules 0 | entities 1 | entity_names [] | is_latest False | size 5648
+  DOC-E1F5211932AE | 四单PRD-平台确认事项清单.md | parser markdown | module 其他 | sec 17 | tbl 6 | fields 0 | rules 0 | entities 1 | entity_names [] | is_latest False | size 14462
+  DOC-698AD11A648F | 四单PRD-第2轮修订审查报告.md | parser markdown | module 其他 | sec 9 | tbl 9 | fields 0 | rules 0 | entities 1 | entity_names [] | is_latest False | size 8472
+  DOC-D6EBBEFE454C | 四单PRD-第3轮修订审查报告.md | parser markdown | module 其他 | sec 11 | tbl 8 | fields 0 | rules 0 | entities 1 | entity_names [] | is_latest False | size 7747
+  DOC-56C6FBAF6569 | 四单PRD-第4轮修订审查报告.md | parser markdown | module 其他 | sec 9 | tbl 7 | fields 0 | rules 0 | entities 1 | entity_names [] | is_latest False | size 5729
+  DOC-D7BD1C51DB5F | 四单PRD-第5轮修订审查报告.md | parser markdown | module 其他 | sec 7 | tbl 6 | fields 0 | rules 0 | entities 1 | entity_names [] | is_latest False | size 3669
+  count root-level md in register 6
+
+=== entity_names FALSE-NEGATIVE (markdown PRD docs with entities but entity_names empty) ===
+  count 273
+    会计期间信息/_diff/会计期间信息-v1.4-to-v1.6.md | parser markdown | entities 1
+    会计期间信息/_diff/会计期间信息-v1.6-to-v1.7.md | parser markdown | entities 1
+    会计期间信息/_diff/会计期间信息PRD.v1.4-条件写法体检.md | parser markdown | entities 1
+    会计期间信息/_diff/会计期间信息PRD.v1.6-条件写法体检.md | parser markdown | entities 1
+    会计期间信息/_diff/会计期间信息PRD.v1.7-条件写法体检.md | parser markdown | entities 1
+    会计期间信息/_history/会计期间信息PRD.v1.1.md | parser markdown | entities 1
+    会计期间信息/_history/会计期间信息PRD.v1.2.md | parser markdown | entities 1
+    会计期间信息/_history/会计期间信息PRD.v1.3.md | parser markdown | entities 1
+    会计期间信息/_history/会计期间信息PRD.v1.4.md | parser markdown | entities 1
+    会计期间信息/_history/会计期间信息PRD.v1.5.md | parser markdown | entities 1
+    会计期间信息/_history/会计期间信息PRD.v1.6.md | parser markdown | entities 1
+    会计期间信息/会计期间信息PRD.v1.7.md | parser markdown | entities 1
+  PRD_ANALYSIS_REPORT '文档未识别实体' metric = PRD docs with entity_names empty = 273
+
+=== PRD docs with 0 rules (content-loss candidates) ===
+  count 77
+    DOC-E89885BE8FBD | 会计期间信息/_diff/会计期间信息-v1.4-to-v1.6.md | parser markdown | size 1863 | sec 5 | tbl 2 | latest False
+    DOC-E6E65BBBFD30 | 会计期间信息/_diff/会计期间信息-v1.6-to-v1.7.md | parser markdown | size 788 | sec 4 | tbl 1 | latest False
+    DOC-548266B2FD9E | 会计期间信息/_diff/会计期间信息PRD.v1.4-条件写法体检.md | parser markdown | size 1243 | sec 3 | tbl 2 | latest False
+    DOC-B04937412C05 | 会计期间信息/_diff/会计期间信息PRD.v1.6-条件写法体检.md | parser markdown | size 500 | sec 3 | tbl 2 | latest False
+    DOC-82872DFF9D3E | 会计期间信息/_diff/会计期间信息PRD.v1.7-条件写法体检.md | parser markdown | size 500 | sec 3 | tbl 2 | latest False
+    DOC-E7D00F5DCF54 | 会计期间表/_diff/会计期间表-v1.6-to-v1.8.md | parser markdown | size 737 | sec 4 | tbl 1 | latest False
+    DOC-BD137033E8C8 | 会计期间表/_diff/会计期间表-v1.8-to-v1.9.md | parser markdown | size 2926 | sec 5 | tbl 2 | latest False
+    DOC-E6DA41A3D7A9 | 会计期间表/_diff/会计期间表PRD.v1.6-条件写法体检.md | parser markdown | size 466 | sec 3 | tbl 2 | latest False
+    DOC-F05AADF7EA45 | 会计期间表/_diff/会计期间表PRD.v1.8-条件写法体检.md | parser markdown | size 466 | sec 3 | tbl 2 | latest False
+    DOC-FDCCF2CD514A | 会计期间表/_diff/会计期间表PRD.v1.9-条件写法体检.md | parser markdown | size 466 | sec 3 | tbl 2 | latest False
+    DOC-B65F98FAE72B | 供应商品号价格/_diff/供应商品号价格-v1.6-to-v1.7.md | parser markdown | size 3743 | sec 4 | tbl 2 | latest False
+    DOC-D76A4E5696AB | 供应商品号价格/_diff/供应商品号价格PRD.v1.6-条件写法体检.md | parser markdown | size 4898 | sec 3 | tbl 2 | latest False
+    DOC-BAC7EF731A77 | 其他应付单/_diff/其他应付单-v1.9-to-v1.10.md | parser markdown | size 1202 | sec 4 | tbl 2 | latest False
+    DOC-E92BEE0B76CA | 其他应付单/_diff/其他应付单PRD.v1.9-条件写法体检.md | parser markdown | size 1833 | sec 3 | tbl 2 | latest False
+    DOC-97487CF1351E | 其他应收单/_diff/其他应收单-v2.4-to-v2.5.md | parser markdown | size 1168 | sec 4 | tbl 2 | latest False
+    DOC-65B702D7954B | 其他应收单/_diff/其他应收单PRD.v2.4-条件写法体检.md | parser markdown | size 1879 | sec 3 | tbl 2 | latest False
+    DOC-F8AA21DE4A02 | 四单PRD-平台对接会议议程.md | parser markdown | size 5648 | sec 11 | tbl 4 | latest False
+    DOC-E1F5211932AE | 四单PRD-平台确认事项清单.md | parser markdown | size 14462 | sec 17 | tbl 6 | latest False
+    DOC-698AD11A648F | 四单PRD-第2轮修订审查报告.md | parser markdown | size 8472 | sec 9 | tbl 9 | latest False
+    DOC-D6EBBEFE454C | 四单PRD-第3轮修订审查报告.md | parser markdown | size 7747 | sec 11 | tbl 8 | latest False
+    DOC-56C6FBAF6569 | 四单PRD-第4轮修订审查报告.md | parser markdown | size 5729 | sec 9 | tbl 7 | latest False
+    DOC-D7BD1C51DB5F | 四单PRD-第5轮修订审查报告.md | parser markdown | size 3669 | sec 7 | tbl 6 | latest False
+    DOC-2EC1DDCD0BF8 | 客户供应商关系/_diff/客户供应商关系-v1.6-to-v1.7.md | parser markdown | size 1827 | sec 4 | tbl 2 | latest False
+    DOC-945F0A309EA4 | 应付业务单别参数/_diff/应付业务单别参数-v1.4-to-v1.5.md | parser markdown | size 1144 | sec 4 | tbl 2 | latest False
+    DOC-87918CAD2037 | 应付业务单别参数/_diff/应付业务单别参数PRD.v1.4-条件写法体检.md | parser markdown | size 1529 | sec 3 | tbl 2 | latest False
+    DOC-4F0214712B86 | 应付单/_diff/应付单-v1.9-to-v1.10.md | parser markdown | size 2442 | sec 4 | tbl 2 | latest False
+    DOC-7EF5A66BFA10 | 应付单/_diff/应付单PRD.v1.9-条件写法体检.md | parser markdown | size 3124 | sec 3 | tbl 2 | latest False
+    DOC-309300CCAA68 | 应付参数/_diff/应付参数-v1.9-to-v1.10.md | parser markdown | size 1209 | sec 4 | tbl 2 | latest False
+    DOC-3DCDEADB125F | 应付参数/_diff/应付参数PRD.v1.9-条件写法体检.md | parser markdown | size 1517 | sec 3 | tbl 2 | latest False
+    DOC-7C83DB23F2D7 | 应付启用期间/_diff/应付启用期间-v1.2-to-v1.3.md | parser markdown | size 1308 | sec 4 | tbl 2 | latest False
+    DOC-CC6E990891CA | 应付启用期间/_diff/应付启用期间-v1.3-to-v1.4.md | parser markdown | size 3624 | sec 5 | tbl 3 | latest False
+    DOC-1027A483CDF7 | 应付启用期间/_diff/应付启用期间PRD.v1.4-条件写法体检.md | parser markdown | size 500 | sec 3 | tbl 2 | latest False
+    DOC-5049C9D317DF | 应收业务单别参数/_diff/应收业务单别参数-v1.4-to-v1.5.md | parser markdown | size 1144 | sec 4 | tbl 2 | latest False
+    DOC-F50D171FFC9B | 应收业务单别参数/_diff/应收业务单别参数PRD.v1.4-条件写法体检.md | parser markdown | size 1529 | sec 3 | tbl 2 | latest False
+    DOC-045928F89568 | 应收单/_diff/应收单-v2.6-to-v2.7.md | parser markdown | size 2776 | sec 4 | tbl 2 | latest False
+    DOC-F22129923AFE | 应收单/_diff/应收单PRD.v2.6-条件写法体检.md | parser markdown | size 2682 | sec 3 | tbl 2 | latest False
+    DOC-51DE8501A199 | 应收参数/_diff/应收参数-v1.9-to-v1.10.md | parser markdown | size 1012 | sec 4 | tbl 2 | latest False
+    DOC-5CC3B2634B88 | 应收参数/_diff/应收参数PRD.v1.9-条件写法体检.md | parser markdown | size 982 | sec 3 | tbl 2 | latest False
+    DOC-626886472B8D | 应收启用期间/_diff/应收启用期间-v1.2-to-v1.3.md | parser markdown | size 1312 | sec 4 | tbl 2 | latest False
+    DOC-E5CB3EB6C0EC | 应收启用期间/_diff/应收启用期间-v1.3-to-v1.4.md | parser markdown | size 3632 | sec 5 | tbl 3 | latest False
+    DOC-A6C0AE940B35 | 应收启用期间/_diff/应收启用期间PRD.v1.4-条件写法体检.md | parser markdown | size 500 | sec 3 | tbl 2 | latest False
+    DOC-DAAF1253AD92 | 批号编号规则/_diff/云端漂移-DOC437334277190721536-批号编号规则PRD.v1.5.md | parser markdown | size 3318 | sec 5 | tbl 4 | latest False
+    DOC-DDCF151A8851 | 批号编号规则/_diff/批号编号规则PRD.v1.5-条件写法体检.md | parser markdown | size 500 | sec 3 | tbl 2 | latest False
+    DOC-AFA6605FA191 | 结算业务单别参数/_diff/结算业务单别参数PRD.v1.3-条件写法体检.md | parser markdown | size 475 | sec 3 | tbl 2 | latest False
+    DOC-862C58A7B533 | 设置核算参数/_diff/云端漂移-DOC437087455402921984-设置核算参数PRD.v2.6.md | parser markdown | size 22536 | sec 8 | tbl 7 | latest False
+  by first segment {'会计期间信息': 5, '会计期间表': 5, '供应商品号价格': 2, '其他应付单': 2, '其他应收单': 2, '(root)': 6, '客户供应商关系': 1, '应付业务单别参数': 2, '应付单': 2, '应付参数': 2, '应付启用期间': 3, '应收业务单别参数': 2, '应收单': 2, '应收参数': 2, '应收启用期间': 3, '批号编号规则': 2, '结算业务单别参数': 1, '设置核算参数': 4, '询价单': 2, '采购取价策略': 9, '采购退货出库单': 16, '采购退货单': 2}
+
+=== docs with table_count>0 but 0 fields (tables not parsed into fields) ===
+  count 77
+    会计期间信息/_diff/会计期间信息-v1.4-to-v1.6.md | tbl 2 | rules 0
+    会计期间信息/_diff/会计期间信息-v1.6-to-v1.7.md | tbl 1 | rules 0
+    会计期间信息/_diff/会计期间信息PRD.v1.4-条件写法体检.md | tbl 2 | rules 0
+    会计期间信息/_diff/会计期间信息PRD.v1.6-条件写法体检.md | tbl 2 | rules 0
+    会计期间信息/_diff/会计期间信息PRD.v1.7-条件写法体检.md | tbl 2 | rules 0
+    会计期间表/_diff/会计期间表-v1.6-to-v1.8.md | tbl 1 | rules 0
+    会计期间表/_diff/会计期间表-v1.8-to-v1.9.md | tbl 2 | rules 0
+    会计期间表/_diff/会计期间表PRD.v1.6-条件写法体检.md | tbl 2 | rules 0
+    会计期间表/_diff/会计期间表PRD.v1.8-条件写法体检.md | tbl 2 | rules 0
+    会计期间表/_diff/会计期间表PRD.v1.9-条件写法体检.md | tbl 2 | rules 0
+    供应商品号价格/_diff/供应商品号价格-v1.6-to-v1.7.md | tbl 2 | rules 0
+    供应商品号价格/_diff/供应商品号价格PRD.v1.6-条件写法体检.md | tbl 2 | rules 0
+    其他应付单/_diff/其他应付单-v1.9-to-v1.10.md | tbl 2 | rules 0
+    其他应付单/_diff/其他应付单PRD.v1.9-条件写法体检.md | tbl 2 | rules 0
+    其他应收单/_diff/其他应收单-v2.4-to-v2.5.md | tbl 2 | rules 0
+
+=== PLATFORM JSON fidelity (source attrs/operations/changeLog vs output fields/rules) ===
+  json PRD docs 26
+   客户供应商关系/_upload/客户供应商关系-v1.6.payload.json
+     src attrs 7 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 7 | out rules 49 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   客户供应商关系/_upload/客户供应商关系-v1.6.prd_spec.json
+     src attrs 7 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 7 | out rules 49 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   应付业务单别参数/_upload/应付业务单别参数-v1.3.payload.json
+     src attrs 12 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 12 | out rules 49 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   应付业务单别参数/_upload/应付业务单别参数-v1.3.prd_spec.json
+     src attrs 12 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 12 | out rules 49 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   应付参数/_upload/应付参数-v1.3.payload.json
+     src attrs 9 | src operations 2 | src changelog 1 | noun_list True | background True
+     out fields 9 | out rules 40 | out actions(doc) 2 | out section_count 0 | out table_count 0
+   应付参数/_upload/应付参数-v1.3.prd_spec.json
+     src attrs 9 | src operations 2 | src changelog 1 | noun_list True | background True
+     out fields 9 | out rules 40 | out actions(doc) 2 | out section_count 0 | out table_count 0
+   应收业务单别参数/_upload/应收业务单别参数-v1.3.payload.json
+     src attrs 12 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 12 | out rules 49 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   应收业务单别参数/_upload/应收业务单别参数-v1.3.prd_spec.json
+     src attrs 12 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 12 | out rules 49 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   应收参数/_upload/应收参数-v1.3.payload.json
+     src attrs 5 | src operations 2 | src changelog 1 | noun_list True | background True
+     out fields 5 | out rules 28 | out actions(doc) 2 | out section_count 0 | out table_count 0
+   应收参数/_upload/应收参数-v1.3.prd_spec.json
+     src attrs 5 | src operations 2 | src changelog 1 | noun_list True | background True
+     out fields 5 | out rules 28 | out actions(doc) 2 | out section_count 0 | out table_count 0
+   应收参数/_upload/应收参数-v1.8.payload.json
+     src attrs 5 | src operations 2 | src changelog 1 | noun_list True | background True
+     out fields 5 | out rules 27 | out actions(doc) 2 | out section_count 0 | out table_count 0
+   应收参数/_upload/应收参数-v1.8.prd_spec.json
+     src attrs 5 | src operations 2 | src changelog 1 | noun_list True | background True
+     out fields 5 | out rules 27 | out actions(doc) 2 | out section_count 0 | out table_count 0
+   批号编号规则/_upload/批号编号规则-v1.5.payload.json
+     src attrs 13 | src operations 6 | src changelog 1 | noun_list True | background True
+     out fields 13 | out rules 71 | out actions(doc) 6 | out section_count 0 | out table_count 0
+   批号编号规则/_upload/批号编号规则-v1.5.prd_spec.json
+     src attrs 13 | src operations 6 | src changelog 1 | noun_list True | background True
+     out fields 13 | out rules 71 | out actions(doc) 6 | out section_count 0 | out table_count 0
+   设置核算参数/_upload/核算参数-v2.4.prd_spec.json
+     src attrs 35 | src operations 5 | src changelog 1 | noun_list True | background True
+     out fields 35 | out rules 105 | out actions(doc) 5 | out section_count 0 | out table_count 0
+   设置核算参数/_upload/设置核算参数-v2.4.payload.json
+     src attrs 35 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 35 | out rules 110 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   设置核算参数/_upload/设置核算参数-v2.4.prd_spec.json
+     src attrs 35 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 35 | out rules 110 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   设置核算参数/_upload/设置核算参数-v2.5.prd_spec.json
+     src attrs 35 | src operations 4 | src changelog 1 | noun_list True | background True
+     out fields 35 | out rules 110 | out actions(doc) 4 | out section_count 0 | out table_count 0
+   采购取价策略/_upload/采购取价策略-v1.6.payload.json
+     src attrs 9 | src operations 8 | src changelog 1 | noun_list True | background True
+     out fields 9 | out rules 85 | out actions(doc) 8 | out section_count 0 | out table_count 0
+   采购取价策略/_upload/采购取价策略-v1.6.prd_spec.json
+     src attrs 9 | src operations 8 | src changelog 1 | noun_list True | background True
+     out fields 9 | out rules 85 | out actions(doc) 8 | out section_count 0 | out table_count 0
+   采购退货出库单/_upload/采购退货出库单-新版-v1.14.payload.json
+     src attrs 53 | src operations 8 | src changelog 1 | noun_list True | background True
+     out fields 53 | out rules 220 | out actions(doc) 8 | out section_count 0 | out table_count 0
+   采购退货出库单/_upload/采购退货出库单-新版-v1.14.prd_spec.json
+     src attrs 53 | src operations 8 | src changelog 1 | noun_list True | background True
+     out fields 53 | out rules 220 | out actions(doc) 8 | out section_count 0 | out table_count 0
+   采购退货出库单/_upload/采购退货出库单-新版-v1.15.payload.json
+     src attrs 53 | src operations 8 | src changelog 1 | noun_list True | background True
+     out fields 53 | out rules 220 | out actions(doc) 8 | out section_count 0 | out table_count 0
+   采购退货出库单/_upload/采购退货出库单-新版-v1.15.prd_spec.json
+     src attrs 53 | src operations 8 | src changelog 1 | noun_list True | background True
+     out fields 53 | out rules 220 | out actions(doc) 8 | out section_count 0 | out table_count 0
+   采购退货出库单/_upload/采购退货出库单-新版-v1.18.payload.json
+     src attrs 53 | src operations 8 | src changelog 1 | noun_list True | background True
+     out fields 53 | out rules 220 | out actions(doc) 8 | out section_count 0 | out table_count 0
+   采购退货出库单/_upload/采购退货出库单-新版-v1.18.prd_spec.json
+     src attrs 53 | src operations 8 | src changelog 1 | noun_list True | background True
+     out fields 53 | out rules 220 | out actions(doc) 8 | out section_count 0 | out table_count 0
+
+=== STRUCTURE RETENTION CHECK (what types.ts / documents.json actually store) ===
+  DocumentRecord has section_count, table_count, entity_names only; no list/paragraph/heading fields.
+  MarkdownDocument (parsers.ts) keeps lines/headings/tables/sections but NOT list items or paragraph objects.
+  parsePrdJsonPayload keeps attrs/operations/changeLog/nounList/background; output objects keep no raw paragraph/list structure.
+  docs with section_count==0: 60 (of which json parser: 26 , test-case-json: 34 )
