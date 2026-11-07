@@ -43,6 +43,12 @@
             "null"
           ]
         },
+        "json_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "page": {
           "type": [
             "integer",

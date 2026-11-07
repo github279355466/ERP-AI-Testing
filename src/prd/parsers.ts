@@ -55,6 +55,10 @@ export interface PrdJsonAttrConfig {
   valueType: string[];
   title: string | null;
   raw: string;
+  /** 属性行在 JSON 文档中的定位路径 */
+  jsonPath: string;
+  /** 校验项在 JSON 文档中的定位路径，与 validation 行一一对应 */
+  validationPaths: string[];
 }
 
 export interface PrdJsonOperation {
@@ -66,6 +70,8 @@ export interface PrdJsonOperation {
   postAction: string | null;
   displaySettings: string[];
   raw: string;
+  /** 操作行在 JSON 文档中的定位路径 */
+  jsonPath: string;
 }
 
 export interface PrdJsonPayload {
@@ -256,11 +262,12 @@ export function parsePrdJsonPayload(text: string): PrdJsonPayload | null {
   if (!Array.isArray(specList) || specList.length === 0) return null;
   const spec = asRecord(specList[0]);
   if (!spec) return null;
+  const specPath = params ? 'data.params.prd_spec[0]' : 'prd_spec[0]';
 
   const attrs: PrdJsonAttrConfig[] = [];
   const attrRows = spec.prd_spec_attr_func_cfg;
   if (Array.isArray(attrRows)) {
-    for (const rawRow of attrRows) {
+    for (const [rowIndex, rawRow] of attrRows.entries()) {
       const row = asRecord(rawRow);
       if (!row) continue;
       const fieldNo = readString(row, 'field_no');
@@ -280,11 +287,17 @@ export function parsePrdJsonPayload(text: string): PrdJsonPayload | null {
         }
       }
       const validations: string[] = [];
+      const validationPaths: string[] = [];
       if (config && Array.isArray(config.vals)) {
-        for (const item of config.vals) {
+        for (const [valueIndex, item] of config.vals.entries()) {
           const record = asRecord(item);
           const logic = record ? readString(record, 'logic') : null;
-          if (logic) validations.push(logic);
+          if (logic) {
+            validations.push(logic);
+            validationPaths.push(
+              `${specPath}.prd_spec_attr_func_cfg[${rowIndex}].field_attr_func_cfg_cont.vals[${valueIndex}].logic`
+            );
+          }
         }
       }
       attrs.push({
@@ -312,6 +325,8 @@ export function parsePrdJsonPayload(text: string): PrdJsonPayload | null {
           : [],
         title: config ? readString(config, 'title') : null,
         raw: configText ?? '',
+        jsonPath: `${specPath}.prd_spec_attr_func_cfg[${rowIndex}].field_attr_func_cfg_cont`,
+        validationPaths,
       });
     }
   }

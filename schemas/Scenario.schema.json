@@ -118,6 +118,12 @@
         "type": "string"
       }
     },
+    "merged_scenario_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "review_required": {
       "type": "boolean"
     },

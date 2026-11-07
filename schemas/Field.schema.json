@@ -124,9 +124,37 @@
       }
     },
     "attribute_lines": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "integer"
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_kind": {
+      "enum": [
+        "markdown",
+        "json"
+      ]
+    },
+    "json_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "validation_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     },
     "data_type": {

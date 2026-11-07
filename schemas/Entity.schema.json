@@ -48,6 +48,19 @@
     "rule_count": {
       "type": "integer",
       "minimum": 0
+    },
+    "entity_kind": {
+      "enum": [
+        "BUSINESS",
+        "HEADER_ONLY",
+        "DETAIL"
+      ]
+    },
+    "superseded_entity_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
   }
 }

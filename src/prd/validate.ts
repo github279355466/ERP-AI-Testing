@@ -49,8 +49,54 @@ function stripTruncation(text: string): string {
   return text.replace(/…+$/, '').trim();
 }
 
+export function resolveJsonPath(root: unknown, jsonPath: string): { found: boolean; value: unknown } {
+  const normalized = jsonPath.replace(/^\$\.?/, '').replace(/\[(\d+)\]/g, '.$1');
+  const parts = normalized.split('.').filter((part) => part.length > 0);
+  let current: unknown = root;
+  for (const part of parts) {
+    if (typeof current === 'string') {
+      try {
+        current = JSON.parse(current) as unknown;
+      } catch {
+        return { found: false, value: null };
+      }
+    }
+    if (Array.isArray(current)) {
+      const index = Number(part);
+      if (!Number.isInteger(index) || index < 0 || index >= current.length) return { found: false, value: null };
+      current = current[index];
+      continue;
+    }
+    if (typeof current === 'object' && current !== null) {
+      const record = current as Record<string, unknown>;
+      if (!(part in record)) return { found: false, value: null };
+      current = record[part];
+      continue;
+    }
+    return { found: false, value: null };
+  }
+  return { found: true, value: current };
+}
+
+function isSemanticExcerpt(excerpt: string | null | undefined): boolean {
+  const text = (excerpt ?? '').replace(/\s+/g, ' ').trim();
+  if (text.length === 0) return false;
+  if (/^[{}[\],:;|/\-–—]+$/.test(text)) return false;
+  const cells = text
+    .replace(/^\||\|$/g, '')
+    .split('|')
+    .map((cell) => cell.trim())
+    .filter((cell) => cell.length > 0 && !/^:?-{2,}:?$/.test(cell));
+  if (cells.length === 0) return false;
+  if (cells.length === 1) {
+    return cells[0].length > 1 && !/^(校验项|字段项|开窗说明|标题名)$/.test(cells[0]);
+  }
+  return cells.some((cell) => cell.length > 1 && /[\u4e00-\u9fa5A-Za-z]/.test(cell));
+}
+
 class LineIndex {
   private readonly cache = new Map<string, string[] | null>();
+  private readonly jsonCache = new Map<string, unknown | null>();
 
   constructor(
     private readonly sourceRoot: string | null,
@@ -80,6 +126,30 @@ class LineIndex {
     this.cache.set(documentId, lines);
     return lines;
   }
+
+  json(documentId: string, relativePath: string): unknown | null {
+    if (this.jsonCache.has(documentId)) return this.jsonCache.get(documentId) ?? null;
+    let parsed: unknown | null = null;
+    const candidates: string[] = [];
+    const absolute = this.documentPaths.get(documentId);
+    if (absolute) candidates.push(absolute);
+    if (this.sourceRoot) {
+      const root = path.resolve(this.sourceRoot);
+      const file = path.resolve(root, relativePath);
+      if (file.startsWith(root)) candidates.push(file);
+    }
+    for (const file of candidates) {
+      if (!fs.existsSync(file)) continue;
+      try {
+        parsed = JSON.parse(fs.readFileSync(file, 'utf8')) as unknown;
+        break;
+      } catch {
+        parsed = null;
+      }
+    }
+    this.jsonCache.set(documentId, parsed);
+    return parsed;
+  }
 }
 
 export function validateRule(
@@ -99,8 +169,11 @@ export function validateRule(
   if (!isNonEmpty(rule.source_type)) push('RULE_SOURCE_TYPE_MISSING', 'ERROR', '规则缺少 source_type');
   if (!isNonEmpty(rule.confidence)) push('RULE_CONFIDENCE_MISSING', 'ERROR', '规则缺少 confidence');
   if (!hasEvidence(rule)) push('RULE_EVIDENCE_MISSING', 'ERROR', '规则缺少可定位的证据引用');
+  if (!rule.source_refs.some((ref) => isSemanticExcerpt(ref.excerpt))) {
+    push('RULE_EMPTY_EVIDENCE', 'ERROR', '规则证据无业务语义（空单元格或纯结构文本）');
+  }
   if (rule.source_type === 'PRD_EXPLICIT') {
-    if (rule.source_refs.every((ref) => !ref.line_start)) {
+    if (rule.source_refs.every((ref) => !ref.line_start && !ref.json_path)) {
       push(
         'RULE_LINE_MISSING',
         options.requireEvidenceForExplicitRules === false ? 'WARN' : 'ERROR',
@@ -121,6 +194,18 @@ export function validateRule(
   }
   if (lineIndex) {
     for (const ref of rule.source_refs) {
+      if (ref.json_path) {
+        const root = lineIndex.json(ref.document_id, ref.file_path);
+        if (root === null) {
+          push('EVIDENCE_JSON_PATH_UNRESOLVED', 'ERROR', `JSON 文档不可读，无法解析 ${ref.json_path}`);
+          continue;
+        }
+        const resolved = resolveJsonPath(root, ref.json_path);
+        if (!resolved.found) {
+          push('EVIDENCE_JSON_PATH_UNRESOLVED', 'ERROR', `json_path 无法解析：${ref.json_path}`);
+        }
+        continue;
+      }
       if (ref.line_start == null || !ref.excerpt) continue;
       const lines = lineIndex.lines(ref.document_id, ref.file_path);
       if (!lines) continue;
@@ -198,7 +283,9 @@ function validateEvidence(evidence: Evidence): ValidationIssue[] {
   if (!evidence.document_id) push('EVIDENCE_DOCUMENT_MISSING', 'ERROR', '证据缺少文档引用');
   if (!/^[a-f0-9]{64}$/i.test(evidence.sha256)) push('EVIDENCE_HASH_MISSING', 'ERROR', '证据缺少文档 SHA-256');
   if (evidence.doc_version == null) push('EVIDENCE_VERSION_UNKNOWN', 'WARN', '证据无法确定文档版本');
-  if (evidence.line_start == null) push('EVIDENCE_LINE_MISSING', 'ERROR', '证据缺少行号定位');
+  if (evidence.line_start == null && !evidence.json_path) {
+    push('EVIDENCE_LINE_MISSING', 'ERROR', '证据缺少行号或 JSON 路径定位');
+  }
   if (!evidence.excerpt) push('EVIDENCE_EXCERPT_MISSING', 'WARN', '证据缺少原文片段');
   else if (!evidence.verbatim) push('EVIDENCE_NOT_VERBATIM', 'WARN', '证据片段不是逐字原文');
   if (evidence.referenced_by.length === 0) push('EVIDENCE_ORPHAN', 'WARN', '证据未被任何知识对象引用');
@@ -265,6 +352,109 @@ export function validateKnowledgeBundle(bundle: KnowledgeBundle, options: Valida
     duplicate('Rule', rule.id);
     issues.push(...validateRule(rule, entityIds, options, lineIndex));
   }
+  const fieldByDocField = new Map(
+    bundle.fields
+      .filter((field) => field.field_no)
+      .map((field) => [`${field.document_id}|${field.field_no}`, field])
+  );
+  const stateAttr: Partial<Record<string, string>> = {
+    REQUIRED: '是否必填',
+    READONLY: '是否只读',
+    HIDDEN: '是否隐藏',
+    DISABLED: '是否禁用',
+  };
+  const conditionAttr: Partial<Record<string, string>> = {
+    REQUIRED: '必填条件',
+    READONLY: '只读条件',
+    HIDDEN: '隐藏条件',
+    DISABLED: '禁用条件',
+  };
+  const excerptCarriers = new Map<string, number>();
+  for (const rule of bundle.rules) {
+    const field = rule.field_no ? fieldByDocField.get(`${rule.document_id}|${rule.field_no}`) : undefined;
+    if (field) {
+      const attr = stateAttr[rule.rule_type];
+      if (attr) {
+        const stateText = (field.attributes[attr] ?? '').trim();
+        if (/否/.test(stateText) && !/是否/.test(stateText)) {
+          issues.push({
+            code: 'RULE_CONTRADICTS_SOURCE',
+            severity: 'ERROR',
+            object_type: 'Rule',
+            object_id: rule.id,
+            message: `${rule.rule_type} 规则与字段状态行「${attr} = ${stateText}」矛盾`,
+          });
+        }
+      }
+      const condKey = conditionAttr[rule.rule_type];
+      if (condKey && rule.conditions.length > 0) {
+        const condText = (field.attributes[condKey] ?? '').trim();
+        const condLine = field.attribute_lines?.[condKey] ?? null;
+        if (condText) {
+          const ref = rule.source_refs[0];
+          const covered = ref?.json_path
+            ? /\.cond$/.test(ref.json_path)
+            : ref?.line_start != null &&
+              (ref.line_start === condLine ||
+                (ref.line_end != null && condLine != null && ref.line_start <= condLine && condLine <= ref.line_end));
+          if (!covered) {
+            issues.push({
+              code: 'EVIDENCE_NOT_COVERING_CONDITION',
+              severity: 'ERROR',
+              object_type: 'Rule',
+              object_id: rule.id,
+              message: `规则含条件「${condText.slice(0, 60)}」，但证据未覆盖条件行`,
+            });
+          }
+        }
+      }
+    }
+    const ref = rule.source_refs[0];
+    if (ref) {
+      const key = `${ref.document_id}|${ref.line_start ?? ref.json_path ?? 'none'}|${(ref.excerpt ?? '').trim()}`;
+      excerptCarriers.set(key, (excerptCarriers.get(key) ?? 0) + 1);
+    }
+  }
+  for (const [key, count] of excerptCarriers) {
+    if (count <= 50) continue;
+    const [documentId, location] = key.split('|');
+    issues.push({
+      code: 'EVIDENCE_DUPLICATE_EXCERPTS',
+      severity: count > 200 ? 'ERROR' : 'WARN',
+      object_type: 'Rule',
+      object_id: `${documentId}:${location}`,
+      message: `同一摘录被 ${count} 条规则引用`,
+    });
+  }
+  const entityGroups = new Map<string, typeof bundle.entities>();
+  for (const entity of bundle.entities) {
+    const key = entity.label.replace(/[（(][^）)]*[）)]/g, '').replace(/[`\s]/g, '').trim();
+    const list = entityGroups.get(key) ?? [];
+    list.push(entity);
+    entityGroups.set(key, list);
+  }
+  for (const [label, group] of entityGroups) {
+    if (group.length < 2) continue;
+    const hasEmpty = group.some((entity) => entity.field_count === 0);
+    issues.push({
+      code: 'ENTITY_SPLIT_LABEL',
+      severity: hasEmpty ? 'ERROR' : 'WARN',
+      object_type: 'Entity',
+      object_id: group.map((entity) => entity.id).join(','),
+      message: `同名实体「${label}」存在 ${group.length} 个，需归并`,
+    });
+  }
+  for (const entity of bundle.entities) {
+    if (entity.field_count === 0 && entity.entity_kind !== 'HEADER_ONLY') {
+      issues.push({
+        code: 'ENTITY_HEADER_ONLY_UNMARKED',
+        severity: 'WARN',
+        object_type: 'Entity',
+        object_id: entity.id,
+        message: `零字段实体「${entity.label}」未标记 HEADER_ONLY`,
+      });
+    }
+  }
   for (const dependency of bundle.dependencies) {
     duplicate('Dependency', dependency.id);
     if (dependency.relation_type === 'CANDIDATE_LINK' && !dependency.target_id) {
@@ -294,10 +484,54 @@ export function validateKnowledgeBundle(bundle: KnowledgeBundle, options: Valida
         message: '取单关系缺少字段映射',
       });
     }
+    if (dependency.relation_type === 'DERIVED_FROM') {
+      const excerpt = dependency.source_refs[0]?.excerpt ?? '';
+      if (/不提供|不作为|不适用|不生成|不含|无需|不支持|非来源/.test(excerpt)) {
+        issues.push({
+          code: 'RELATION_CONTRADICTS_SOURCE',
+          severity: 'ERROR',
+          object_type: 'Dependency',
+          object_id: dependency.id,
+          message: `关系证据含否定表述：${excerpt.slice(0, 80)}`,
+        });
+      }
+      if (
+        typeof dependency.mapping === 'string' &&
+        /详见原文|取单带入来源单据字段|平台服务\/表结构引用/.test(dependency.mapping)
+      ) {
+        issues.push({
+          code: 'RELATION_MAPPING_PLACEHOLDER',
+          severity: 'ERROR',
+          object_type: 'Dependency',
+          object_id: dependency.id,
+          message: `关系映射为占位串：${dependency.mapping.slice(0, 60)}`,
+        });
+      }
+    }
   }
   for (const scenario of bundle.scenarios) {
     duplicate('Scenario', scenario.id);
     issues.push(...validateScenario(scenario, ruleById));
+    const ruleTexts = scenario.rule_ids
+      .map((ruleId) => ruleById.get(ruleId))
+      .filter((rule): rule is Rule => Boolean(rule))
+      .flatMap((rule) => [rule.description, rule.expected_result ?? ''])
+      .join(' ')
+      .replace(/\s+/g, '');
+    for (const assertion of scenario.assertions) {
+      const expected = (assertion.expected ?? '').replace(/\s+/g, '');
+      if (expected.length === 0) continue;
+      if (!ruleTexts.includes(expected)) {
+        issues.push({
+          code: 'SCENARIO_ASSERTION_NOT_FROM_RULE',
+          severity: 'ERROR',
+          object_type: 'Scenario',
+          object_id: scenario.id,
+          message: `断言「${assertion.expected}」无法在引用规则原文中找到依据`,
+        });
+        break;
+      }
+    }
   }
   for (const evidence of bundle.evidence ?? []) {
     duplicate('Evidence', evidence.id);

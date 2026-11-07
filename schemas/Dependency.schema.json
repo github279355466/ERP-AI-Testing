@@ -46,9 +46,37 @@
       ]
     },
     "mapping": {
-      "type": [
-        "string",
-        "null"
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "target",
+              "source"
+            ],
+            "properties": {
+              "target": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              },
+              "cond": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
       ]
     },
     "source_type": {

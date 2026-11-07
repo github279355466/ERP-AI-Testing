@@ -77,7 +77,8 @@ function toSourceRef(
   section: string | null,
   lineStart: number | null,
   lineEnd: number | null,
-  excerpt: string | null
+  excerpt: string | null,
+  jsonPath: string | null = null
 ): SourceRef {
   const verbatim = rawLineOf(document, lineStart);
   const composed = excerpt ? truncate(excerpt, 160) : undefined;
@@ -97,6 +98,7 @@ function toSourceRef(
     section: section ?? undefined,
     line_start: lineStart ?? undefined,
     line_end: lineEnd ?? undefined,
+    json_path: jsonPath ?? undefined,
     page: null,
     paragraph_index: null,
     excerpt: verbatim && verbatim.length > 0 ? evidenceExcerpt ?? verbatim.slice(0, 200) : composed,
@@ -442,14 +444,26 @@ interface FieldSeed {
   options: string[];
   validationText: string | null;
   attributes: Record<string, string>;
-  attributeLines: Record<string, number>;
+  attributeLines: Record<string, number | null> | null;
+  sourceKind: 'markdown' | 'json';
+  jsonPath: string | null;
+  validationPaths: string[];
   line: number;
   section: string;
 }
 
 type FieldAttributes = Omit<
   FieldSeed,
-  'fieldNo' | 'label' | 'line' | 'section' | 'tabLabel' | 'entityNo' | 'attributeLines'
+  | 'fieldNo'
+  | 'label'
+  | 'line'
+  | 'section'
+  | 'tabLabel'
+  | 'entityNo'
+  | 'attributeLines'
+  | 'sourceKind'
+  | 'jsonPath'
+  | 'validationPaths'
 >;
 
 function parseFieldTable(map: Map<string, string>): FieldAttributes | null {
@@ -474,7 +488,7 @@ function parseFieldTable(map: Map<string, string>): FieldAttributes | null {
       .split(/[、,，;；|]/)
       .map((item) => item.trim())
       .filter((item) => item.length > 0 && item !== '-'),
-    validationText: map.get('校验项')?.trim() || map.get('输入说明')?.trim() || null,
+    validationText: map.get('校验项')?.trim() || null,
     attributes: Object.fromEntries([...map.entries()].filter(([, value]) => value.trim().length > 0)),
   };
 }
@@ -506,6 +520,9 @@ function extractFieldSeeds(markdown: MarkdownDocument): FieldSeed[] {
     seeds.push({
       ...parsed,
       attributeLines,
+      sourceKind: 'markdown',
+      jsonPath: null,
+      validationPaths: [],
       fieldNo,
       label: match[1].trim(),
       entityNo: null,
@@ -540,12 +557,23 @@ function seedsFromPayload(payload: PrdJsonPayload): FieldSeed[] {
       validationText: attr.validation ?? attr.inputDesc,
       attributes: {
         ...(attr.title ? { 标题名: attr.title } : {}),
+        是否必填: attr.required ? '✅ 是' : '✅ 否',
+        是否只读: attr.readonly ? '✅ 是' : '✅ 否',
+        是否隐藏: attr.hidden ? '✅ 是' : '✅ 否',
+        是否禁用: attr.disabled ? '✅ 是' : '✅ 否',
         ...(attr.requiredCondition ? { 必填条件: attr.requiredCondition } : {}),
         ...(attr.readonlyCondition ? { 只读条件: attr.readonlyCondition } : {}),
+        ...(attr.hiddenCondition ? { 隐藏条件: attr.hiddenCondition } : {}),
+        ...(attr.disabledCondition ? { 禁用条件: attr.disabledCondition } : {}),
+        ...(attr.defaultValue ? { 默认值: attr.defaultValue } : {}),
+        ...(attr.lookupDesc ? { 开窗说明: attr.lookupDesc } : {}),
         ...(attr.validation ? { 校验项: attr.validation } : {}),
       },
-      attributeLines: { 字段项: 1 },
-      line: 1,
+      attributeLines: null,
+      sourceKind: 'json',
+      jsonPath: attr.jsonPath,
+      validationPaths: attr.validationPaths,
+      line: 0,
       section: attr.entityLabel ?? '字段配置',
     };
   });
@@ -585,11 +613,13 @@ function buildFields(
       updated_at: now,
       field_no: seed.fieldNo,
       label: seed.label,
+      json_path: seed.jsonPath,
       entity_id: entity?.id ?? null,
       entity_no: entity?.entity_no ?? seed.entityNo,
       entity_label: entity?.label ?? seed.tabLabel,
       page_id: tabPage?.id ?? detailPage?.id ?? null,
       document_id: document.id,
+      source_kind: seed.sourceKind,
       control_type: seed.controlType,
       required: seed.required,
       required_condition: seed.requiredCondition,
@@ -605,6 +635,7 @@ function buildFields(
       validation_text: seed.validationText,
       attributes: seed.attributes,
       attribute_lines: seed.attributeLines,
+      validation_paths: seed.validationPaths,
       data_type: null,
       length: null,
       precision: null,
@@ -645,7 +676,10 @@ function makeRule(
   line: number | null,
   derivation: string | null,
   sourceType?: SourceType,
-  conditions: string[] = []
+  conditions: string[] = [],
+  lineEnd: number | null = null,
+  jsonPath: string | null = null,
+  excerptOverride: string | null = null
 ): Rule {
   const pending = PENDING_PATTERN.test(description);
   const resolved: SourceType = pending
@@ -657,7 +691,7 @@ function makeRule(
     name,
     module: document.module,
     status: 'ACTIVE',
-    source_refs: [toSourceRef(document, section, line, null, description)],
+    source_refs: [toSourceRef(document, section, line, lineEnd, excerptOverride ?? description, jsonPath)],
     created_by_parser_version: PARSER_VERSION,
     updated_at: document.updated_at,
     description: truncate(description, 300),
@@ -731,7 +765,287 @@ function splitValidationItems(text: string): string[] {
   );
 }
 
+function isSemanticEvidence(value: string | null | undefined): boolean {
+  const text = (value ?? '').replace(/\s+/g, ' ').trim();
+  if (text.length === 0) return false;
+  if (/^[{}[\],:;|/\-–—]+$/.test(text)) return false;
+  const cells = text
+    .replace(/^\||\|$/g, '')
+    .split('|')
+    .map((cell) => cell.trim())
+    .filter((cell) => cell.length > 0 && !/^:?-{2,}:?$/.test(cell));
+  if (cells.length === 0) return false;
+  if (cells.length === 1) {
+    const cell = cells[0];
+    if (/^(校验项|字段项|开窗说明|标题名|是否必填|是否只读|是否隐藏|是否禁用)$/.test(cell)) return false;
+    return cell.length > 1 && /[\u4e00-\u9fa5A-Za-z0-9]/.test(cell);
+  }
+  return cells.some((cell) => cell.length > 1 && /[\u4e00-\u9fa5A-Za-z]/.test(cell));
+}
+
+function jsonEvidenceRow(label: string, value: string): string {
+  return `| ${label} | ${value.replace(/\|/g, '\\|')} |`;
+}
+
+interface FieldRuleSpec {
+  key: string;
+  name: string;
+  ruleType: RuleType;
+  stateKey: string;
+  stateLabel: string;
+  conditionKey?: string;
+  jsonSuffix: string;
+  trigger: string;
+  expected: string;
+  derivation: string;
+  sourceType?: SourceType;
+  description: (state: string, condition: string) => string;
+}
+
 function buildFieldRules(
+  document: DocumentRecord,
+  fields: Field[],
+  entities: Entity[],
+  limit: number
+): Rule[] {
+  const rules: Rule[] = [];
+  for (const field of fields) {
+    if (rules.length >= limit) break;
+    const entity = entities.find((item) => item.id === field.entity_id) ?? null;
+    const ref = field.source_refs[0];
+    const section = ref?.section ?? null;
+    const base = `${field.entity_no ?? ''}.${field.field_no ?? field.label}`;
+    const isJson = field.source_kind === 'json';
+    const attrValue = (key: string): string => (field.attributes[key] ?? '').trim();
+    const attrLine = (key: string): number | null => field.attribute_lines?.[key] ?? null;
+    const jsonPathOf = (suffix: string): string | null =>
+      field.json_path ? `${field.json_path}${suffix}` : null;
+
+    const add = (spec: FieldRuleSpec): void => {
+      const stateText = attrValue(spec.stateKey);
+      if (!stateText) return;
+      const conditionText = spec.conditionKey ? attrValue(spec.conditionKey) : '';
+      const conditions = toConditions(conditionText);
+
+      if (isJson) {
+        if (/^✅?\s*否$/.test(stateText)) return;
+        const evidence = conditionText
+          ? jsonEvidenceRow(spec.stateLabel, conditionText)
+          : jsonEvidenceRow(spec.stateLabel, stateText);
+        rules.push(
+          makeRule(
+            document,
+            `${base}|${spec.key}`,
+            spec.name,
+            spec.description(stateText, conditionText),
+            spec.ruleType,
+            field,
+            entity,
+            spec.trigger,
+            spec.expected,
+            section,
+            null,
+            spec.derivation,
+            spec.sourceType ?? 'PRD_EXPLICIT',
+            conditions,
+            null,
+            jsonPathOf(conditionText ? `${spec.jsonSuffix}.cond` : `${spec.jsonSuffix}.on`),
+            evidence
+          )
+        );
+        return;
+      }
+
+      const stateLine = attrLine(spec.stateKey);
+      if (!stateLine || !isSemanticEvidence(`${spec.stateLabel} | ${stateText}`)) return;
+      const conditionLine = spec.conditionKey ? attrLine(spec.conditionKey) : null;
+      const line = conditionText && conditionLine ? conditionLine : stateLine;
+      rules.push(
+        makeRule(
+          document,
+          `${base}|${spec.key}`,
+          spec.name,
+          spec.description(stateText, conditionText),
+          spec.ruleType,
+          field,
+          entity,
+          spec.trigger,
+          spec.expected,
+          section,
+          line,
+          spec.derivation,
+          spec.sourceType ?? 'PRD_EXPLICIT',
+          conditions
+        )
+      );
+    };
+
+    const label = field.label;
+    const fieldNo = field.field_no ?? '';
+    if (field.required) {
+      add({
+        key: 'REQUIRED',
+        name: `${label} 必填`,
+        ruleType: 'REQUIRED',
+        stateKey: '是否必填',
+        stateLabel: '是否必填',
+        conditionKey: '必填条件',
+        jsonSuffix: '.cnst.reqd',
+        trigger: 'SAVE',
+        expected: '为空时保存应被拦截',
+        derivation: '由字段属性行「是否必填」直接映射',
+        description: (state, condition) =>
+          `【${label}(${fieldNo})】${state}${condition ? `；必填条件：${condition}` : ''}`,
+      });
+    }
+    if (field.readonly) {
+      add({
+        key: 'READONLY',
+        name: `${label} 只读`,
+        ruleType: 'READONLY',
+        stateKey: '是否只读',
+        stateLabel: '是否只读',
+        conditionKey: '只读条件',
+        jsonSuffix: '.cnst.read',
+        trigger: 'FORM_OPEN',
+        expected: '字段不可编辑',
+        derivation: '由字段属性行「是否只读」直接映射',
+        description: (state, condition) =>
+          `【${label}(${fieldNo})】${state}${condition ? `；只读条件：${condition}` : ''}`,
+      });
+    }
+    if (field.hidden) {
+      add({
+        key: 'HIDDEN',
+        name: `${label} 隐藏`,
+        ruleType: 'HIDDEN',
+        stateKey: '是否隐藏',
+        stateLabel: '是否隐藏',
+        conditionKey: '隐藏条件',
+        jsonSuffix: '.cnst.hid',
+        trigger: 'FORM_OPEN',
+        expected: '字段不展示',
+        derivation: '由字段属性行「是否隐藏」直接映射',
+        description: (state, condition) =>
+          `【${label}(${fieldNo})】${state}${condition ? `；隐藏条件：${condition}` : ''}`,
+      });
+    }
+    if (field.disabled && field.disabled_condition) {
+      add({
+        key: 'DISABLED',
+        name: `${label} 禁用`,
+        ruleType: 'DISABLED',
+        stateKey: '是否禁用',
+        stateLabel: '是否禁用',
+        conditionKey: '禁用条件',
+        jsonSuffix: '.cnst.dis',
+        trigger: 'FORM_OPEN',
+        expected: '条件成立时字段不可用',
+        derivation: '由字段属性行「是否禁用」与禁用条件组合映射',
+        description: (_state, condition) => `【${label}(${fieldNo})】禁用条件：${condition}`,
+      });
+    }
+    if (field.default_value && !isPlaceholderValue(field.default_value)) {
+      if (isJson) {
+        rules.push(
+          makeRule(
+            document,
+            `${base}|DEFAULT`,
+            `${label} 默认值`,
+            `【${label}(${fieldNo})】默认值：${field.default_value}`,
+            'DEFAULT_VALUE',
+            field,
+            entity,
+            field.default_timing ?? 'FORM_OPEN',
+            `默认值：${truncate(field.default_value, 80)}`,
+            section,
+            null,
+            '由字段属性行「默认值」直接映射',
+            'PRD_EXPLICIT',
+            toConditions(field.default_timing),
+            null,
+            jsonPathOf('.def_v'),
+            jsonEvidenceRow('默认值', field.default_value)
+          )
+        );
+      } else {
+        rules.push(
+          makeRule(
+            document,
+            `${base}|DEFAULT`,
+            `${label} 默认值`,
+            `【${label}(${fieldNo})】默认值：${field.default_value}`,
+            'DEFAULT_VALUE',
+            field,
+            entity,
+            field.default_timing ?? 'FORM_OPEN',
+            `默认值：${truncate(field.default_value, 80)}`,
+            section,
+            attrLine('默认值'),
+            '由字段属性行「默认值」直接映射',
+            'PRD_EXPLICIT',
+            toConditions(field.default_timing)
+          )
+        );
+      }
+    }
+    if (field.lookup_desc && !isPlaceholderValue(field.lookup_desc)) {
+      const lookupExpected = `开窗：${(/开窗标题[：:]\s*([^\n<]+)/.exec(field.lookup_desc)?.[1] ?? '按开窗说明').trim()}`;
+      rules.push(
+        makeRule(
+          document,
+          `${base}|LOOKUP`,
+          `${label} 开窗`,
+          `【${label}(${fieldNo})】开窗：${field.lookup_desc}`,
+          'LOOKUP',
+          field,
+          entity,
+          'EDIT',
+          lookupExpected,
+          section,
+          isJson ? null : attrLine('开窗说明') ?? attrLine('开窗类型'),
+          '由字段属性行「开窗类型/开窗说明」直接映射',
+          'PRD_EXPLICIT',
+          extractConditionClauses(field.attributes['开窗说明'] ?? null),
+          null,
+          isJson ? jsonPathOf('.win_desc') : null,
+          isJson ? jsonEvidenceRow('开窗说明', field.lookup_desc) : null
+        )
+      );
+    }
+    if (field.validation_text && isSemanticEvidence(field.validation_text)) {
+      const items = splitValidationItems(field.validation_text).filter((item) => !isFlagRestatement(item));
+      for (const [index, item] of items.slice(0, 4).entries()) {
+        const isService = /调用接口|bm\.|接口/.test(item);
+        rules.push(
+          makeRule(
+            document,
+            `${base}|VALIDATION|${index}`,
+            `${label} 校验`,
+            `【${label}(${fieldNo})】${item}`,
+            isService ? 'API_CONTRACT' : classifyRule(item),
+            field,
+            entity,
+            'SAVE',
+            isService ? '按平台服务返回结果决定是否放行' : '按校验规则拦截或提示',
+            section,
+            isJson ? null : attrLine('校验项'),
+            isService ? '由字段属性行「校验项」中的平台服务调用映射' : '由字段属性行「校验项」直接映射',
+            isService ? 'PLATFORM_SERVICE' : 'PRD_EXPLICIT',
+            extractConditionClauses(item),
+            null,
+            isJson ? field.validation_paths?.[index] ?? jsonPathOf('.vals') : null,
+            isJson ? jsonEvidenceRow('校验项', item) : null
+          )
+        );
+        if (rules.length >= limit) break;
+      }
+    }
+  }
+  return rules;
+}
+
+function buildFieldRulesLegacy(
   document: DocumentRecord,
   fields: Field[],
   entities: Entity[],
@@ -745,7 +1059,7 @@ function buildFieldRules(
     const line = ref?.line_start ?? null;
     const section = ref?.section ?? null;
     const base = `${field.entity_no ?? ''}.${field.field_no ?? field.label}`;
-    const attrLine = (key: string): number | null => field.attribute_lines[key] ?? line;
+    const attrLine = (key: string): number | null => field.attribute_lines?.[key] ?? line;
     const attrValue = (key: string): string => (field.attributes[key] ?? '').trim();
     if (field.required) {
       rules.push(

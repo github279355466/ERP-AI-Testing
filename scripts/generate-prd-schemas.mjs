@@ -38,6 +38,7 @@ write('common', {
         section: { type: 'string' },
         line_start: nullable('integer'),
         line_end: nullable('integer'),
+        json_path: nullable('string'),
         page: nullable('integer'),
         paragraph_index: nullable('integer'),
         excerpt: { type: 'string' },
@@ -128,6 +129,8 @@ typeSchema('Entity', 'Entity', {
   field_count: { type: 'integer', minimum: 0 },
   page_count: { type: 'integer', minimum: 0 },
   rule_count: { type: 'integer', minimum: 0 },
+  entity_kind: { enum: ['BUSINESS', 'HEADER_ONLY', 'DETAIL'] },
+  superseded_entity_ids: stringArray,
 }, ['label', 'document_ids']);
 
 typeSchema('Page', 'Page', {
@@ -160,7 +163,15 @@ typeSchema('Field', 'Field', {
   options: stringArray,
   validation_text: nullable('string'),
   attributes: { type: 'object', additionalProperties: { type: 'string' } },
-  attribute_lines: { type: 'object', additionalProperties: { type: 'integer' } },
+  attribute_lines: {
+    anyOf: [
+      { type: 'object', additionalProperties: { type: ['integer', 'null'] } },
+      { type: 'null' },
+    ],
+  },
+  source_kind: { enum: ['markdown', 'json'] },
+  json_path: nullable('string'),
+  validation_paths: stringArray,
   data_type: nullable('string'),
   length: nullable('integer'),
   precision: nullable('integer'),
@@ -239,7 +250,24 @@ typeSchema('Dependency', 'Dependency', {
       'CONSUMES', 'RETURNS_TO', 'STATUS_TRANSITION', 'FIELD_DEPENDENCY', 'CANDIDATE_LINK',
     ],
   },
-  mapping: nullable('string'),
+  mapping: {
+    anyOf: [
+      {
+        type: 'array',
+        items: {
+          type: 'object',
+          required: ['target', 'source'],
+          properties: {
+            target: { type: 'string' },
+            source: { type: 'string' },
+            cond: nullable('string'),
+          },
+        },
+      },
+      { type: 'string' },
+      { type: 'null' },
+    ],
+  },
   source_type: { enum: SOURCE_TYPES },
   confidence: { enum: CONFIDENCE },
   document_id: { type: 'string', minLength: 1 },
@@ -268,6 +296,7 @@ typeSchema('Scenario', 'Scenario', {
   rule_ids: stringArray,
   document_ids: stringArray,
   case_ids: stringArray,
+  merged_scenario_ids: stringArray,
   review_required: { type: 'boolean' },
   origin: { enum: ['GENERATED', 'EXISTING_CASE'] },
 }, ['title', 'status', 'automation_feasibility', 'rule_ids']);
@@ -280,7 +309,10 @@ standaloneSchema('OpenQuestion', 'OpenQuestion', {
       'VERSION_CONFLICT', 'RULE_CONFLICT', 'MISSING_EVIDENCE', 'MISSING_DEFINITION',
       'AMBIGUOUS_RULE', 'INCOMPLETE_STATE_MACHINE', 'BROKEN_FLOW', 'UNSUPPORTED_FORMAT',
       'PARSE_ERROR', 'SCENARIO_GAP', 'SOURCE_CONFLICT', 'SOURCE_MISSING', 'DUPLICATE_SOURCE',
-      'EXCLUDED_SOURCE',
+      'EXCLUDED_SOURCE', 'EMPTY_EVIDENCE', 'RULE_CONTRADICTS_SOURCE',
+      'EVIDENCE_NOT_COVERING_CONDITION', 'RELATION_CONTRADICTS_SOURCE', 'RELATION_DIRECTION_FIXED',
+      'MAPPING_UNRESOLVED', 'NEGATED_RELATION', 'ENTITY_SPLIT', 'RELATION_SUBJECT_NOT_ENTITY',
+      'SCENARIO_COVERAGE_GAP', 'DUPLICATE_SCENARIO', 'NON_PRD_SOURCE_MODELED',
     ],
   },
   severity: { enum: ['HIGH', 'MEDIUM', 'LOW'] },

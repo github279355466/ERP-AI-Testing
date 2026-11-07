@@ -34,6 +34,8 @@ export interface SourceRef {
   section?: string;
   line_start?: number;
   line_end?: number;
+  /** JSON 文档内的定位路径（JSON Pointer 风格，支持在 JSON 字符串节点内继续解析） */
+  json_path?: string | null;
   page?: number | null;
   paragraph_index?: number | null;
   excerpt?: string;
@@ -93,6 +95,10 @@ export interface Entity extends BaseKnowledgeObject {
   field_count: number;
   page_count: number;
   rule_count: number;
+  /** BUSINESS：有字段的业务实体；HEADER_ONLY：仅有实体声明；DETAIL：明细/技术子实体 */
+  entity_kind?: 'BUSINESS' | 'HEADER_ONLY' | 'DETAIL';
+  /** 被归并到本实体的历史实体 ID，保留可追溯性 */
+  superseded_entity_ids?: string[];
 }
 
 export type PageType = 'LIST' | 'FORM' | 'TAB' | 'MODAL' | 'UNKNOWN';
@@ -133,6 +139,10 @@ export interface Field extends BaseKnowledgeObject {
   object_type: 'Field';
   field_no: string | null;
   label: string;
+  /** JSON 文档字段属性节点的定位路径 */
+  json_path?: string | null;
+  /** JSON 文档校验项节点的定位路径，与校验项顺序一致 */
+  validation_paths?: string[];
   entity_id: string | null;
   entity_no: string | null;
   entity_label: string | null;
@@ -152,7 +162,8 @@ export interface Field extends BaseKnowledgeObject {
   options: string[];
   validation_text: string | null;
   attributes: Record<string, string>;
-  attribute_lines: Record<string, number>;
+  attribute_lines: Record<string, number | null> | null;
+  source_kind?: 'markdown' | 'json';
   data_type: string | null;
   length: number | null;
   precision: number | null;
@@ -249,10 +260,16 @@ export interface Dependency extends BaseKnowledgeObject {
   target_id: string | null;
   target_ref: string;
   relation_type: RelationType;
-  mapping: string | null;
+  mapping: RelationMapping[] | string | null;
   source_type: SourceType;
   confidence: Confidence;
   document_id: string;
+}
+
+export interface RelationMapping {
+  target: string;
+  source: string;
+  cond: string | null;
 }
 
 export type ScenarioStatus = 'DRAFT' | 'REVIEW_REQUIRED' | 'APPROVED' | 'REJECTED' | 'EXECUTABLE';
@@ -324,6 +341,7 @@ export interface Evidence extends BaseKnowledgeObject {
   section: string | null;
   line_start: number | null;
   line_end: number | null;
+  json_path: string | null;
   page: number | null;
   paragraph_index: number | null;
   excerpt: string | null;

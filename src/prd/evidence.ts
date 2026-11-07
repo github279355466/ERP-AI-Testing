@@ -36,7 +36,7 @@ export function buildEvidence(bundle: Pick<
       if (!ref.document_id) continue;
       const document = documentById.get(ref.document_id);
       if (!document) continue;
-      const key = `${ref.document_id}|${ref.line_start ?? 0}|${(ref.excerpt ?? '').slice(0, 80)}`;
+      const key = `${ref.document_id}|${ref.line_start ?? ref.json_path ?? 0}|${(ref.excerpt ?? '').slice(0, 80)}`;
       const existing = byKey.get(key);
       if (existing) {
         if (!existing.referenced_by.includes(input.ownerId)) existing.referenced_by.push(input.ownerId);
@@ -60,6 +60,7 @@ export function buildEvidence(bundle: Pick<
         section: ref.section ?? null,
         line_start: ref.line_start ?? null,
         line_end: ref.line_end ?? ref.line_start ?? null,
+        json_path: ref.json_path ?? null,
         page: ref.page ?? null,
         paragraph_index: ref.paragraph_index ?? null,
         excerpt: ref.excerpt ?? null,
