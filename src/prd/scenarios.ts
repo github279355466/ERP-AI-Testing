@@ -125,9 +125,14 @@ const PLACEHOLDER_EXPECTATION = /^(按规则执行|上下游数据一致|按校�
 function expectedFromRule(rule: Rule): string {
   const quoted = /[「"“]([^」"”]{2,120})[」"”]/.exec(rule.description);
   if (quoted && !PLACEHOLDER_EXPECTATION.test(quoted[1].trim())) return quoted[1].trim();
+  const condition = /(必填条件|只读条件|隐藏条件|禁用条件)[：:]\s*([^；;]{2,120})/.exec(rule.description);
+  if (condition) return `${condition[1]}：${condition[2].trim()}`;
   const body = rule.description.replace(/^【[^】]*】/, '').trim();
-  if (body.length > 0) return body.slice(0, 120);
-  return rule.name.slice(0, 120);
+  const meaningful = body.replace(/[✅❌\s]|^是$|^否$/g, '').trim();
+  if (meaningful.length >= 4 && !/^[是否]$/.test(meaningful)) return meaningful.slice(0, 120);
+  const expected = (rule.expected_result ?? '').trim();
+  if (expected.length > 0) return expected.slice(0, 120);
+  return body.slice(0, 120) || rule.name.slice(0, 120);
 }
 
 function normalizeFingerprint(text: string): string {
