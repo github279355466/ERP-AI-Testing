@@ -1,17 +1,17 @@
 # 待确认问题清单
 
-生成时间：2026-11-07T15:36:02.109Z
-问题总数：611
+生成时间：2026-11-07T15:43:28.628Z
+问题总数：620
 
 ## 分布
 
 | 维度 | 值 | 数量 |
 | --- | --- | --- |
-| 严重度 | MEDIUM | 307 |
-| 严重度 | LOW | 271 |
+| 严重度 | MEDIUM | 312 |
+| 严重度 | LOW | 275 |
 | 严重度 | HIGH | 33 |
 | 类别 | MISSING_DEFINITION | 150 |
-| 类别 | RULE_CONTRADICTS_SOURCE | 184 |
+| 类别 | RULE_CONTRADICTS_SOURCE | 185 |
 | 类别 | AMBIGUOUS_RULE | 3 |
 | 类别 | VERSION_CONFLICT | 20 |
 | 类别 | RULE_CONFLICT | 121 |
@@ -22,6 +22,14 @@
 | 类别 | SOURCE_CONFLICT | 13 |
 | 类别 | DUPLICATE_SOURCE | 11 |
 | 类别 | EXCLUDED_SOURCE | 77 |
+| 类别 | EMPTY_EVIDENCE | 1 |
+| 类别 | EVIDENCE_NOT_COVERING_CONDITION | 1 |
+| 类别 | RELATION_CONTRADICTS_SOURCE | 1 |
+| 类别 | ENTITY_SPLIT | 1 |
+| 类别 | RELATION_SUBJECT_NOT_ENTITY | 1 |
+| 类别 | SCENARIO_COVERAGE_GAP | 1 |
+| 类别 | DUPLICATE_SCENARIO | 1 |
+| 类别 | NON_PRD_SOURCE_MODELED | 1 |
 
 ## 版本冲突
 

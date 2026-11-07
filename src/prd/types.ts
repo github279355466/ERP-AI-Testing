@@ -307,6 +307,8 @@ export interface Scenario extends Omit<BaseKnowledgeObject, 'status'> {
   case_ids: string[];
   review_required: boolean;
   origin: 'GENERATED' | 'EXISTING_CASE';
+  /** 去重合并前的场景 ID，保留可追溯性 */
+  merged_scenario_ids?: string[];
 }
 
 export interface ExistingCaseRecord {
