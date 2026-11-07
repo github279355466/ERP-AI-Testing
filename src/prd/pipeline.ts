@@ -14,6 +14,7 @@ import {
   versionFromFileName,
 } from './link';
 import { buildEntityRelations, buildMasterDataRelations, buildRelationQuestions } from './relations';
+import { buildRemediationQuestions } from './remediation';
 import { buildEvidence } from './evidence';
 import { renderAllReports } from './reports';
 import { generateScenarios } from './scenarios';
@@ -478,6 +479,9 @@ export function buildKnowledge(
     testCase.rule_ids = [...new Set(ruleIdsByCase.get(testCase.case_id) ?? [])];
   }
   bundle.scenarios = generateScenarios(bundle, latestDocumentIds, 12000, coverage.case_ids_by_rule);
+  bundle.openQuestions.push(
+    ...buildRemediationQuestions(documents, mergedEntities, fields, rules, dependencies, bundle.scenarios, now)
+  );
   bundle.evidence = buildEvidence(bundle, now);
 
   const validation = validateKnowledgeBundle(bundle, {
