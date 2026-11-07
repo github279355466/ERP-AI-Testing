@@ -221,6 +221,8 @@ export interface Action extends BaseKnowledgeObject {
   post_processing: string | null;
   apis: string[];
   phase_lines: Record<string, number>;
+  /** JSON 文档中操作配置节点的路径；非 JSON 文档为 null */
+  json_path?: string | null;
   document_id: string;
 }
 

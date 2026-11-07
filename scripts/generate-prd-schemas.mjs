@@ -214,6 +214,7 @@ typeSchema('Action', 'Action', {
   post_processing: nullable('string'),
   apis: stringArray,
   phase_lines: { type: 'object', additionalProperties: { type: 'integer' } },
+  json_path: nullable('string'),
   document_id: { type: 'string', minLength: 1 },
 }, ['action_name', 'document_id']);
 

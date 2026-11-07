@@ -273,7 +273,13 @@ export function parsePrdJsonPayload(text: string): PrdJsonPayload | null {
       const fieldNo = readString(row, 'field_no');
       const fieldName = readString(row, 'field_name');
       if (!fieldNo || !fieldName) continue;
-      const configText = readString(row, 'field_attr_cfg_cont');
+      const configKey =
+        typeof row.field_attr_cfg_cont === 'string' && row.field_attr_cfg_cont.trim().length > 0
+          ? 'field_attr_cfg_cont'
+          : typeof row.field_attr_func_cfg_cont === 'string' && row.field_attr_func_cfg_cont.trim().length > 0
+            ? 'field_attr_func_cfg_cont'
+            : null;
+      const configText = configKey ? readString(row, configKey) : null;
       const config = configText ? asRecord(parseJsonSafely(configText)) : null;
       const constraints = config ? asRecord(config.cnst) : null;
       const required = constraints ? readBoolFromFlag(constraints, 'reqd') : { on: false, cond: null };
@@ -295,7 +301,7 @@ export function parsePrdJsonPayload(text: string): PrdJsonPayload | null {
           if (logic) {
             validations.push(logic);
             validationPaths.push(
-              `${specPath}.prd_spec_attr_func_cfg[${rowIndex}].field_attr_func_cfg_cont.vals[${valueIndex}].logic`
+              `${specPath}.prd_spec_attr_func_cfg[${rowIndex}].${configKey ?? 'field_attr_cfg_cont'}.vals[${valueIndex}].logic`
             );
           }
         }
@@ -325,7 +331,7 @@ export function parsePrdJsonPayload(text: string): PrdJsonPayload | null {
           : [],
         title: config ? readString(config, 'title') : null,
         raw: configText ?? '',
-        jsonPath: `${specPath}.prd_spec_attr_func_cfg[${rowIndex}].field_attr_func_cfg_cont`,
+        jsonPath: `${specPath}.prd_spec_attr_func_cfg[${rowIndex}].${configKey ?? 'field_attr_cfg_cont'}`,
         validationPaths,
       });
     }
@@ -334,7 +340,7 @@ export function parsePrdJsonPayload(text: string): PrdJsonPayload | null {
   const operations: PrdJsonOperation[] = [];
   const oprRows = spec.prd_spec_opr_func_cfg;
   if (Array.isArray(oprRows)) {
-    for (const rawRow of oprRows) {
+    for (const [rowIndex, rawRow] of oprRows.entries()) {
       const row = asRecord(rawRow);
       if (!row) continue;
       const name = readString(row, 'opr_cntl_name');
@@ -356,6 +362,7 @@ export function parsePrdJsonPayload(text: string): PrdJsonPayload | null {
         postAction: config ? readString(config, 'post_action') : null,
         displaySettings: displays,
         raw: configText ?? '',
+        jsonPath: `${specPath}.prd_spec_opr_func_cfg[${rowIndex}].opr_cntl_cfg_cont`,
       });
     }
   }

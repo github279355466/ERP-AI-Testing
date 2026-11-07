@@ -991,27 +991,32 @@ function buildFieldRules(
     }
     if (field.lookup_desc && !isPlaceholderValue(field.lookup_desc)) {
       const lookupExpected = `开窗：${(/开窗标题[：:]\s*([^\n<]+)/.exec(field.lookup_desc)?.[1] ?? '按开窗说明').trim()}`;
-      rules.push(
-        makeRule(
-          document,
-          `${base}|LOOKUP`,
-          `${label} 开窗`,
-          `【${label}(${fieldNo})】开窗：${field.lookup_desc}`,
-          'LOOKUP',
-          field,
-          entity,
-          'EDIT',
-          lookupExpected,
-          section,
-          isJson ? null : attrLine('开窗说明') ?? attrLine('开窗类型'),
-          '由字段属性行「开窗类型/开窗说明」直接映射',
-          'PRD_EXPLICIT',
-          extractConditionClauses(field.attributes['开窗说明'] ?? null),
-          null,
-          isJson ? jsonPathOf('.win_desc') : null,
-          isJson ? jsonEvidenceRow('开窗说明', field.lookup_desc) : null
-        )
-      );
+      const lookupSourceKey = attrValue('开窗说明') ? '开窗说明' : '开窗类型';
+      const lookupSourceValue = attrValue(lookupSourceKey);
+      const markdownLookupEvidence = `| ${lookupSourceKey} | ${lookupSourceValue} |`;
+      if (isJson || isSemanticEvidence(markdownLookupEvidence)) {
+        rules.push(
+          makeRule(
+            document,
+            `${base}|LOOKUP`,
+            `${label} 开窗`,
+            `【${label}(${fieldNo})】开窗：${field.lookup_desc}`,
+            'LOOKUP',
+            field,
+            entity,
+            'EDIT',
+            lookupExpected,
+            section,
+            isJson ? null : attrLine(lookupSourceKey),
+            '由字段属性行「开窗类型/开窗说明」直接映射',
+            'PRD_EXPLICIT',
+            extractConditionClauses(field.attributes['开窗说明'] ?? null),
+            null,
+            isJson ? jsonPathOf('.win_desc') : null,
+            isJson ? jsonEvidenceRow('开窗说明', field.lookup_desc) : markdownLookupEvidence
+          )
+        );
+      }
     }
     if (field.validation_text && isSemanticEvidence(field.validation_text)) {
       const items = splitValidationItems(field.validation_text).filter((item) => !isFlagRestatement(item));
@@ -1264,7 +1269,7 @@ function actionsFromPayload(document: DocumentRecord, payload: PrdJsonPayload, n
     name: operation.name,
     module: document.module,
     status: 'ACTIVE' as const,
-    source_refs: [toSourceRef(document, operation.name, 1, null, operation.name)],
+    source_refs: [toSourceRef(document, operation.name, null, null, operation.name, operation.jsonPath)],
     created_by_parser_version: PARSER_VERSION,
     updated_at: now,
     action_name: operation.name,
@@ -1281,7 +1286,8 @@ function actionsFromPayload(document: DocumentRecord, payload: PrdJsonPayload, n
         ...extractApis(operation.postAction),
       ]),
     ],
-    phase_lines: { 可用条件: 1, 操作前校验: 1, 操作中处理: 1, 操作后处理: 1 },
+    phase_lines: {},
+    json_path: operation.jsonPath,
     document_id: document.id,
   }));
 }
@@ -1298,6 +1304,7 @@ function buildActionRules(document: DocumentRecord, actions: Action[], limit: nu
       ['PROCESSING', action.processing],
       ['POST', action.post_processing],
     ];
+    const jsonBase = action.json_path ?? null;
     for (const [phase, text] of phases) {
       const items = splitItems(text).filter((item) => {
         if (phase === 'AVAILABILITY') return !isPlaceholderValue(item) && item.length >= 3;
@@ -1320,6 +1327,14 @@ function buildActionRules(document: DocumentRecord, actions: Action[], limit: nu
               ? 'WORKFLOW'
               : classifyRule(item);
         const phaseKey = phase === 'AVAILABILITY' ? '可用条件' : phase === 'PRECHECK' ? '操作前校验' : phase === 'PROCESSING' ? '操作中处理' : '操作后处理';
+        const phaseSuffix =
+          phase === 'AVAILABILITY'
+            ? 'avail_cond'
+            : phase === 'PRECHECK'
+              ? 'pre_check'
+              : phase === 'PROCESSING'
+                ? 'processing'
+                : 'post_action';
         rules.push(
           makeRule(
             document,
@@ -1338,14 +1353,17 @@ function buildActionRules(document: DocumentRecord, actions: Action[], limit: nu
                   ? '校验不通过则操作被拦截'
                   : '按操作说明执行',
             action.name,
-            action.phase_lines[phaseKey] ?? action.source_refs[0]?.line_start ?? null,
+            jsonBase ? null : action.phase_lines[phaseKey] ?? action.source_refs[0]?.line_start ?? null,
             isService
               ? '由操作说明中的平台服务调用映射'
               : phase === 'PROCESSING'
                 ? '由操作说明中的处理步骤映射'
                 : '由操作说明中的控制项映射',
             isService ? 'PLATFORM_SERVICE' : 'PRD_DERIVED',
-            extractConditionClauses(item)
+            extractConditionClauses(item),
+            null,
+            jsonBase ? `${jsonBase}.${phaseSuffix}` : null,
+            jsonBase ? jsonEvidenceRow(label, item) : null
           )
         );
         if (rules.length >= limit) return rules;
