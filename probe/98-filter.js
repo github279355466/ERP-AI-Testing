@@ -1,0 +1,40 @@
+const { chromium } = require('@playwright/test');
+const TITLE = process.argv[2];
+const FIELD = process.argv[3];
+const VALUE = process.argv[4];
+(async () => {
+  const browser = await chromium.connectOverCDP('http://127.0.0.1:9333');
+  const context = browser.contexts()[0];
+  let page = null;
+  for (const p of context.pages()) {
+    if (!p.url().includes('lowcode-form-render')) continue;
+    if ((await p.title().catch(() => '')) === TITLE) page = p;
+  }
+  if (!page) throw new Error('page not found');
+  await page.bringToFront();
+  await page.waitForTimeout(1000);
+  const count = async () => page.evaluate(() => Array.from(document.querySelectorAll('.ag-center-cols-container .ag-row[row-index]')).filter((r) => r.offsetWidth > 0).length);
+  console.log('before:', await count());
+  await page.locator('button:visible', { hasText: '筛选' }).first().click();
+  await page.waitForTimeout(700);
+  const root = page.locator('[class*="MultiConditionFilter-module_popover-content"]').first();
+  await root.locator('[class*="ConditionRow-module_row-field"] .ath-select').first().click();
+  await page.waitForTimeout(500);
+  await page.locator('.ath-select-dropdown:not(.ath-select-dropdown-hidden) .ath-select-item-option:visible', { hasText: FIELD }).first().click();
+  await page.waitForTimeout(300);
+  const input = root.locator('input[placeholder="请输入值"]').first();
+  await input.click();
+  await input.fill(VALUE);
+  await root.locator('button', { hasText: '筛选' }).last().click();
+  await page.waitForTimeout(2200);
+  console.log('after filter:', await count());
+  await page.locator('button:visible', { hasText: '筛选' }).first().click();
+  await page.waitForTimeout(700);
+  const root2 = page.locator('[class*="MultiConditionFilter-module_popover-content"]').first();
+  await root2.locator('button', { hasText: '清空' }).last().click();
+  await page.waitForTimeout(300);
+  await root2.locator('button', { hasText: '筛选' }).last().click();
+  await page.waitForTimeout(2200);
+  console.log('after clear:', await count());
+  process.exit(0);
+})().catch((e) => { console.error(e); process.exit(1); });

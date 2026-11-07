@@ -1,0 +1,25 @@
+{
+  "name": "athena-erp-testing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Athena ERP web automation testing framework (TypeScript + Playwright)",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:unit": "playwright test tests/unit",
+    "test:smoke": "playwright test tests/smoke",
+    "athena": "node dist/cli/main.js",
+    "prd:help": "npm run build && node dist/cli/prd.js help",
+    "prd:scan": "npm run build && node dist/cli/prd.js scan",
+    "prd:scan:incremental": "npm run build && node dist/cli/prd.js scan:incremental",
+    "prd:validate": "npm run build && node dist/cli/prd.js validate",
+    "prd:report": "npm run build && node dist/cli/prd.js report",
+    "prd:build": "npm run build && node dist/cli/prd.js build",
+    "browser:start": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/start-chrome.ps1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@types/node": "22.10.2",
+    "typescript": "5.9.3"
+  }
+}

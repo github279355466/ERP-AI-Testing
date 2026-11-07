@@ -1,0 +1,887 @@
+--- list ---
+{
+  "urlPath": "/",
+  "tabs": [
+    "列表"
+  ],
+  "columns": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "$$_no",
+      "label": "序号"
+    },
+    {
+      "colId": "doc_no",
+      "label": "单号"
+    },
+    {
+      "colId": "supp_no",
+      "label": "供应商编号"
+    },
+    {
+      "colId": "supp_name",
+      "label": "供应商名称"
+    },
+    {
+      "colId": "doc_date",
+      "label": "单据日期"
+    },
+    {
+      "colId": "inq_date",
+      "label": "询价日期"
+    },
+    {
+      "colId": "intax_flag",
+      "label": "含税标识"
+    },
+    {
+      "colId": "biz_type_no",
+      "label": "业务类型编号"
+    },
+    {
+      "colId": "biz_type_name",
+      "label": "业务类型名称"
+    },
+    {
+      "colId": "manage_status",
+      "label": "状态"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "rows": [
+    {
+      "i": "0",
+      "cells": {
+        "doc_no": "012",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "doc_date": "2026-10-27",
+        "inq_date": "2026-10-27",
+        "intax_flag": "",
+        "biz_type_no": "PO0201",
+        "biz_type_name": "询价单"
+      }
+    },
+    {
+      "i": "1",
+      "cells": {
+        "doc_no": "101",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "doc_date": "2026-10-28",
+        "inq_date": "2026-10-28",
+        "intax_flag": "",
+        "biz_type_no": "PO0201",
+        "biz_type_name": "询价单"
+      }
+    },
+    {
+      "i": "2",
+      "cells": {
+        "doc_no": "111",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "doc_date": "2026-10-22",
+        "inq_date": "2026-10-22",
+        "intax_flag": "",
+        "biz_type_no": "PO0201",
+        "biz_type_name": "询价单"
+      }
+    },
+    {
+      "i": "3",
+      "cells": {
+        "doc_no": "1201",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "doc_date": "2026-10-30",
+        "inq_date": "2026-10-30",
+        "intax_flag": "",
+        "biz_type_no": "PO0201",
+        "biz_type_name": "询价单"
+      }
+    },
+    {
+      "i": "4",
+      "cells": {
+        "doc_no": "123",
+        "supp_no": "GYS001",
+        "supp_name": "供应商001",
+        "doc_date": "2026-10-29",
+        "inq_date": "2026-10-29",
+        "intax_flag": "",
+        "biz_type_no": "PO0201",
+        "biz_type_name": "询价单"
+      }
+    }
+  ],
+  "toolbar": [
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "筛选",
+      "disabled": false
+    },
+    {
+      "text": "导入",
+      "disabled": false
+    },
+    {
+      "text": "导出",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "驳回",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "驳回",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "提交",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    }
+  ],
+  "footer": "共 37 条"
+}
+--- new ---
+{
+  "urlPath": "/detail",
+  "tabs": [
+    "列表",
+    "详情"
+  ],
+  "fields": [
+    {
+      "path": "inq_doc.ops_unit_no",
+      "label": "运营单元",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "inq_doc.biz_type_no",
+      "label": "单别",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "inq_doc.doc_no",
+      "label": "单号",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "inq_doc.doc_date",
+      "label": "单据日期",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "2026-11-06",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "inq_doc.inq_date",
+      "label": "询价日期",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "2026-11-06",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "inq_doc.supp_no",
+      "label": "供应商",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "inq_doc.ccy_no",
+      "label": "币种",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "inq_doc.purhr_no",
+      "label": "采购员",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "inq_doc.pur_dept_no",
+      "label": "采购部门",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "inq_doc.intax_flag",
+      "label": "含税标识",
+      "required": false,
+      "input": null,
+      "select": null,
+      "window": null,
+      "switch": {
+        "checked": "false",
+        "disabled": false
+      }
+    },
+    {
+      "path": "inq_doc.inq_type",
+      "label": "询价类型",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "其他",
+        "disabled": false
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "inq_doc.rmk",
+      "label": "备注",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    }
+  ],
+  "gridHeaders": [],
+  "gridRows": 0,
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "取消",
+      "disabled": false
+    },
+    {
+      "text": "保存并新增",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "disabled": false
+    }
+  ]
+}

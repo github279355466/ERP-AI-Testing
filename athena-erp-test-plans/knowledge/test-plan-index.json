@@ -1,0 +1,513 @@
+[
+  {
+    "plan_id": "TP-001",
+    "module": "基础管理/系统参数",
+    "job": "公共参数",
+    "file": "plans/基础管理-系统参数/TP-001-公共参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-002",
+    "module": "基础管理/系统参数",
+    "job": "存货参数",
+    "file": "plans/基础管理-系统参数/TP-002-存货参数-测试计划.md",
+    "evidence_status": "已具备页面证据"
+  },
+  {
+    "plan_id": "TP-003",
+    "module": "基础管理/系统参数",
+    "job": "核算参数",
+    "file": "plans/基础管理-系统参数/TP-003-核算参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-004",
+    "module": "基础管理/系统参数",
+    "job": "采购参数",
+    "file": "plans/基础管理-系统参数/TP-004-采购参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-005",
+    "module": "基础管理/系统参数",
+    "job": "销售参数",
+    "file": "plans/基础管理-系统参数/TP-005-销售参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-006",
+    "module": "基础管理/公共信息",
+    "job": "仓库信息",
+    "file": "plans/基础管理-公共信息/TP-006-仓库信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-007",
+    "module": "基础管理/公共信息",
+    "job": "货币信息",
+    "file": "plans/基础管理-公共信息/TP-007-货币信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-008",
+    "module": "基础管理/公共信息",
+    "job": "货币汇率",
+    "file": "plans/基础管理-公共信息/TP-008-货币汇率-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-009",
+    "module": "基础管理/公共信息",
+    "job": "业务汇率",
+    "file": "plans/基础管理-公共信息/TP-009-业务汇率-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-010",
+    "module": "基础管理/公共信息",
+    "job": "金融机构",
+    "file": "plans/基础管理-公共信息/TP-010-金融机构-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-011",
+    "module": "基础管理/公共信息",
+    "job": "收付款条件",
+    "file": "plans/基础管理-公共信息/TP-011-收付款条件-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-012",
+    "module": "基础管理/公共信息",
+    "job": "结算方式",
+    "file": "plans/基础管理-公共信息/TP-012-结算方式-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-013",
+    "module": "基础管理/公共信息",
+    "job": "计量单位",
+    "file": "plans/基础管理-公共信息/TP-013-计量单位-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-014",
+    "module": "基础管理/公共信息",
+    "job": "通用单位换算",
+    "file": "plans/基础管理-公共信息/TP-014-通用单位换算-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-015",
+    "module": "基础管理/公共信息",
+    "job": "运输方式",
+    "file": "plans/基础管理-公共信息/TP-015-运输方式-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-016",
+    "module": "基础管理/公共信息",
+    "job": "项目信息",
+    "file": "plans/基础管理-公共信息/TP-016-项目信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-017",
+    "module": "基础管理/品号管理",
+    "job": "品号属性",
+    "file": "plans/基础管理-品号管理/TP-017-品号属性-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-018",
+    "module": "基础管理/品号管理",
+    "job": "品号群组",
+    "file": "plans/基础管理-品号管理/TP-018-品号群组-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-019",
+    "module": "基础管理/品号管理",
+    "job": "存货会计分类",
+    "file": "plans/基础管理-品号管理/TP-019-存货会计分类-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-020",
+    "module": "基础管理/品号管理",
+    "job": "成本要素",
+    "file": "plans/基础管理-品号管理/TP-020-成本要素-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-021",
+    "module": "基础管理/品号管理",
+    "job": "存货成本分类",
+    "file": "plans/基础管理-品号管理/TP-021-存货成本分类-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-022",
+    "module": "基础管理/品号管理",
+    "job": "品号通用信息",
+    "file": "plans/基础管理-品号管理/TP-022-品号通用信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-023",
+    "module": "基础管理/品号管理",
+    "job": "品号存货信息",
+    "file": "plans/基础管理-品号管理/TP-023-品号存货信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-024",
+    "module": "基础管理/品号管理",
+    "job": "品号采购信息",
+    "file": "plans/基础管理-品号管理/TP-024-品号采购信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-025",
+    "module": "基础管理/品号管理",
+    "job": "品号销售信息",
+    "file": "plans/基础管理-品号管理/TP-025-品号销售信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-026",
+    "module": "基础管理/品号管理",
+    "job": "品号财务信息",
+    "file": "plans/基础管理-品号管理/TP-026-品号财务信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-027",
+    "module": "基础管理/批号管理",
+    "job": "批号编号规则",
+    "file": "plans/基础管理-批号管理/TP-027-批号编号规则-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-028",
+    "module": "基础管理/批号管理",
+    "job": "品号批号信息",
+    "file": "plans/基础管理-批号管理/TP-028-品号批号信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-029",
+    "module": "基础管理/交易对象管理",
+    "job": "交易对象属性",
+    "file": "plans/基础管理-交易对象管理/TP-029-交易对象属性-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-030",
+    "module": "基础管理/交易对象管理",
+    "job": "交易对象群组",
+    "file": "plans/基础管理-交易对象管理/TP-030-交易对象群组-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-031",
+    "module": "基础管理/供应商信息",
+    "job": "供应商通用信息",
+    "file": "plans/基础管理-供应商信息/TP-031-供应商通用信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-032",
+    "module": "基础管理/供应商信息",
+    "job": "供应商业务信息",
+    "file": "plans/基础管理-供应商信息/TP-032-供应商业务信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-033",
+    "module": "基础管理/供应商信息",
+    "job": "供应商财务信息",
+    "file": "plans/基础管理-供应商信息/TP-033-供应商财务信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-034",
+    "module": "基础管理/客户信息",
+    "job": "客户通用信息",
+    "file": "plans/基础管理-客户信息/TP-034-客户通用信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-035",
+    "module": "基础管理/客户信息",
+    "job": "客户业务信息",
+    "file": "plans/基础管理-客户信息/TP-035-客户业务信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-036",
+    "module": "基础管理/客户信息",
+    "job": "客户财务信息",
+    "file": "plans/基础管理-客户信息/TP-036-客户财务信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-037",
+    "module": "基础管理/客户信息",
+    "job": "客户品号",
+    "file": "plans/基础管理-客户信息/TP-037-客户品号-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-038",
+    "module": "采购管理/基础设置",
+    "job": "采购取价策略",
+    "file": "plans/采购管理-基础设置/TP-038-采购取价策略-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-039",
+    "module": "采购管理/基础设置",
+    "job": "供应商品号价格",
+    "file": "plans/采购管理-基础设置/TP-039-供应商品号价格-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-040",
+    "module": "采购管理/基础设置",
+    "job": "采购业务单别",
+    "file": "plans/采购管理-基础设置/TP-040-采购业务单别-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-041",
+    "module": "采购管理/基础设置",
+    "job": "采购单别参数",
+    "file": "plans/采购管理-基础设置/TP-041-采购单别参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-042",
+    "module": "采购管理/基础设置",
+    "job": "存货业务单别",
+    "file": "plans/采购管理-基础设置/TP-042-存货业务单别-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-043",
+    "module": "采购管理/基础设置",
+    "job": "存货单别参数",
+    "file": "plans/采购管理-基础设置/TP-043-存货单别参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-044",
+    "module": "采购管理/请釆管理",
+    "job": "请购单",
+    "file": "plans/采购管理-请釆管理/TP-044-请购单-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-045",
+    "module": "采购管理/请釆管理",
+    "job": "请购分配",
+    "file": "plans/采购管理-请釆管理/TP-045-请购分配-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-046",
+    "module": "采购管理/请釆管理",
+    "job": "采购订单",
+    "file": "plans/采购管理-请釆管理/TP-046-采购订单-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-047",
+    "module": "采购管理/询价管理",
+    "job": "询价单",
+    "file": "plans/采购管理-询价管理/TP-047-询价单-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-048",
+    "module": "采购管理/询价管理",
+    "job": "议价审核单-新版",
+    "file": "plans/采购管理-询价管理/TP-048-议价审核单-新版-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-049",
+    "module": "采购管理/入库验收",
+    "job": "采购到货单",
+    "file": "plans/采购管理-入库验收/TP-049-采购到货单-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-050",
+    "module": "采购管理/入库验收",
+    "job": "采购入库单",
+    "file": "plans/采购管理-入库验收/TP-050-采购入库单-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-051",
+    "module": "采购管理/退货管理",
+    "job": "采购退货单",
+    "file": "plans/采购管理-退货管理/TP-051-采购退货单-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-052",
+    "module": "采购管理/退货管理",
+    "job": "采购退货出库单",
+    "file": "plans/采购管理-退货管理/TP-052-采购退货出库单-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-053",
+    "module": "销售管理/基础设置",
+    "job": "销售业务单别",
+    "file": "plans/销售管理-基础设置/TP-053-销售业务单别-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-054",
+    "module": "销售管理/基础设置",
+    "job": "销售单别参数",
+    "file": "plans/销售管理-基础设置/TP-054-销售单别参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-055",
+    "module": "销售管理/价格管理",
+    "job": "销售取价策略",
+    "file": "plans/销售管理-价格管理/TP-055-销售取价策略-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-056",
+    "module": "销售管理/订单管理",
+    "job": "销售订单",
+    "file": "plans/销售管理-订单管理/TP-056-销售订单-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-057",
+    "module": "BOM管理",
+    "job": "BOM业务单别",
+    "file": "plans/BOM管理/TP-057-BOM业务单别-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-058",
+    "module": "BOM管理",
+    "job": "BOM业务单别参数",
+    "file": "plans/BOM管理/TP-058-BOM业务单别参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-059",
+    "module": "BOM管理",
+    "job": "工作中心",
+    "file": "plans/BOM管理/TP-059-工作中心-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-060",
+    "module": "应付管理",
+    "job": "应付启用期间",
+    "file": "plans/应付管理/TP-060-应付启用期间-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-061",
+    "module": "应付管理",
+    "job": "应付业务单别",
+    "file": "plans/应付管理/TP-061-应付业务单别-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-062",
+    "module": "应付管理",
+    "job": "应付业务单别参数",
+    "file": "plans/应付管理/TP-062-应付业务单别参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-063",
+    "module": "应付管理",
+    "job": "应付参数",
+    "file": "plans/应付管理/TP-063-应付参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-064",
+    "module": "应收管理",
+    "job": "会计期间表",
+    "file": "plans/应收管理/TP-064-会计期间表-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-065",
+    "module": "应收管理",
+    "job": "会计期间信息",
+    "file": "plans/应收管理/TP-065-会计期间信息-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-066",
+    "module": "应收管理",
+    "job": "应收启用期间",
+    "file": "plans/应收管理/TP-066-应收启用期间-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-067",
+    "module": "应收管理",
+    "job": "结算业务单别参数",
+    "file": "plans/应收管理/TP-067-结算业务单别参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-068",
+    "module": "应收管理",
+    "job": "结算业务单别",
+    "file": "plans/应收管理/TP-068-结算业务单别-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-069",
+    "module": "应收管理",
+    "job": "应收业务单别",
+    "file": "plans/应收管理/TP-069-应收业务单别-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-070",
+    "module": "应收管理",
+    "job": "应收业务单别参数",
+    "file": "plans/应收管理/TP-070-应收业务单别参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-071",
+    "module": "应收管理",
+    "job": "应收参数",
+    "file": "plans/应收管理/TP-071-应收参数-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-072",
+    "module": "应收管理",
+    "job": "客户供应商关系",
+    "file": "plans/应收管理/TP-072-客户供应商关系-测试计划.md",
+    "evidence_status": "待页面探索"
+  },
+  {
+    "plan_id": "TP-073",
+    "module": "测试",
+    "job": "代码测试",
+    "file": "plans/测试/TP-073-代码测试-测试计划.md",
+    "evidence_status": "待页面探索"
+  }
+]

@@ -1,0 +1,69 @@
+{
+  "id": "TP-002",
+  "name": "存货参数：列表结构、详情字段、下拉与基础资料选择器（只读）",
+  "steps": [
+    { "action": "snapshot", "name": "TP-002-list" },
+    {
+      "action": "assertGrid",
+      "level": "ui",
+      "name": "列表结构",
+      "minRows": 1,
+      "requiredColIds": ["ops_unit_no", "ops_unit_name", "is_ena_proj_mgmt", "aprv_date_basis", "operate"]
+    },
+    { "action": "screenshot", "name": "TP-002-list" },
+    { "action": "click", "text": "查看" },
+    { "action": "waitFor", "selector": "[class*=\"FormItem-module_form-item__\"]" },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "运营单元编号：主键控件",
+      "fieldPath": "ops_unit_invnt_param.ops_unit_no",
+      "kind": "LOOKUP",
+      "expectRequired": true
+    },
+    {
+      "action": "assertFieldValue",
+      "level": "business",
+      "name": "运营单元取值",
+      "fieldPath": "ops_unit_invnt_param.ops_unit_no",
+      "expected": "玄鸟公司",
+      "mode": "contains"
+    },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "审核日依据：控件类型",
+      "fieldPath": "ops_unit_invnt_param.aprv_date_basis",
+      "kind": "DROPDOWN"
+    },
+    {
+      "action": "assertSwitch",
+      "level": "ui",
+      "name": "启用项目管理：状态可读",
+      "fieldPath": "ops_unit_invnt_param.is_ena_proj_mgmt"
+    },
+    { "action": "click", "text": "编辑" },
+    { "action": "waitFor", "selector": "[class*=\"FormItem-module_form-item__\"]" },
+    {
+      "action": "assertField",
+      "level": "business",
+      "name": "编辑态主键禁用",
+      "fieldPath": "ops_unit_invnt_param.ops_unit_no",
+      "kind": "LOOKUP",
+      "expectDisabled": true
+    },
+    {
+      "action": "dropdownOptions",
+      "level": "ui",
+      "name": "审核日依据：枚举值",
+      "fieldPath": "ops_unit_invnt_param.aprv_date_basis",
+      "expectOptions": ["系统日", "单据日"]
+    },
+    { "action": "snapshot", "name": "TP-002-detail-edit" },
+    { "action": "screenshot", "name": "TP-002-detail-edit" },
+    { "action": "closeTab" },
+    { "action": "waitFor", "selector": ".ag-center-cols-container .ag-row[row-index]" },
+    { "action": "assertGrid", "level": "ui", "name": "关闭详情后列表恢复", "minRows": 1 },
+    { "action": "screenshot", "name": "TP-002-list-restored" }
+  ]
+}

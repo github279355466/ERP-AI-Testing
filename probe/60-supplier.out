@@ -1,0 +1,3 @@
+Error: page not found: 供应商通用信息
+    at findListPage (D:\AIProject\ERP-AI-Testing\probe\60-page-structure.js:11:9)
+    at async D:\AIProject\ERP-AI-Testing\probe\60-page-structure.js:102:16

@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "scope": "local-skill-package",
+  "harnessRevision": "7d0d80f50338ec8db20232f8f7ea65f97789664b",
+  "checkedFingerprint": "7258e39d1045041a31e92aacc1aa07b2747cad30d99cc28070eb9844bc053491",
+  "runtimeSource": "manifest",
+  "entrypoints": [
+    "scripts/main.py"
+  ],
+  "dependencyCount": 0,
+  "durationMs": 141,
+  "findings": [],
+  "notChecked": [
+    "实际 ZIP 压缩大小和归档条目",
+    "WIS 生成的工具文档及服务端资源状态",
+    "多 Skill 合并冲突、租户权限和业务运行结果"
+  ]
+}

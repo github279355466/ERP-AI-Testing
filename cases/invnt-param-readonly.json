@@ -1,0 +1,14 @@
+{
+  "id": "TC-INV-READONLY",
+  "name": "存货参数：详情字段、下拉选项与基础资料选择器（只读）",
+  "steps": [
+    { "action": "click", "text": "查看" },
+    { "action": "waitFor", "selector": "[class*=\"FormItem-module_form-item__\"]" },
+    { "action": "assertField", "level": "ui", "name": "运营单元控件类型", "fieldPath": "ops_unit_invnt_param.ops_unit_no", "kind": "LOOKUP" },
+    { "action": "assertField", "level": "ui", "name": "审核日依据控件类型", "fieldPath": "ops_unit_invnt_param.aprv_date_basis", "kind": "DROPDOWN" },
+    { "action": "assertField", "level": "ui", "name": "启用项目管理控件类型", "fieldPath": "ops_unit_invnt_param.is_ena_proj_mgmt", "kind": "SWITCH" },
+    { "action": "assertFieldValue", "level": "business", "name": "运营单元取值", "fieldPath": "ops_unit_invnt_param.ops_unit_no", "expected": "玄鸟公司", "mode": "contains" },
+    { "action": "screenshot", "name": "TC-INV-READONLY-detail" },
+    { "action": "closeTab" }
+  ]
+}

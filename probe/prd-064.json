@@ -1,0 +1,83 @@
+{
+  "success": true,
+  "entry": {
+    "workItem": "会计期间表",
+    "pageId": "acctg-perid-table",
+    "testPlanIds": [
+      "TP-064"
+    ],
+    "fileName": "会计期间表PRD.v1.6.md",
+    "relativePath": "会计期间表/会计期间表PRD.v1.6.md",
+    "prdVersion": "1.6",
+    "modifiedAt": "2026-11-04T06:49:06.557Z",
+    "title": "会计期间表",
+    "prdType": "表单",
+    "entity": "acctg_perid_table",
+    "entityLabel": "会计期间表",
+    "application": "smbcloud",
+    "sections": [
+      "一、变更日志",
+      "二、业务说明",
+      "三、功能说明",
+      "四、操作说明",
+      "附录 A 变更历史明细",
+      "附录 B 待确认事项",
+      "附录 C 回退配置（字段事件不支持建行时启用）"
+    ],
+    "subsections": [
+      "2.1 名词解释",
+      "2.2 需求背景",
+      "2.3 业务流程图",
+      "3.1 交互原型",
+      "会计期间表列表页",
+      "会计期间表详情页",
+      "整体操作",
+      "明细生成规则（由分期数录入触发，无独立按钮）",
+      "明细操作"
+    ],
+    "fieldCount": 10,
+    "fields": [
+      {
+        "label": "会计期间表编号",
+        "name": "acctg_perid_table_no"
+      },
+      {
+        "label": "会计期间表名称",
+        "name": "acctg_perid_table_name"
+      },
+      {
+        "label": "分期数",
+        "name": "insta_count"
+      },
+      {
+        "label": "备注",
+        "name": "rmk"
+      },
+      {
+        "label": "序号",
+        "name": "seq"
+      },
+      {
+        "label": "会计期间期号",
+        "name": "acctg_perid_no"
+      },
+      {
+        "label": "季度",
+        "name": "qtr"
+      },
+      {
+        "label": "会计调整期标识",
+        "name": "acctg_adj_perid_flag"
+      },
+      {
+        "label": "会计调整期类型",
+        "name": "acctg_adj_perid_type"
+      },
+      {
+        "label": "备注",
+        "name": "rmk"
+      }
+    ],
+    "versionCount": 2
+  }
+}

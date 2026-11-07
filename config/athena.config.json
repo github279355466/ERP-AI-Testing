@@ -1,0 +1,33 @@
+{
+  "environment": {
+    "name": "athena-test",
+    "baseUrl": "https://athena-test.digiwincloud.com.cn/",
+    "tenantId": "digichannel",
+    "applicationCode": "smbcloud",
+    "lowcodeHost": "lowcode-form-render-test.apps.digiwincloud.com.cn"
+  },
+  "browser": {
+    "mode": "cdp",
+    "cdpEndpoint": "http://127.0.0.1:9333",
+    "proxy": "http://127.0.0.1:10808",
+    "headless": true,
+    "storageState": "",
+    "userDataDir": "probe/chrome-profile",
+    "viewport": { "width": 1600, "height": 950 },
+    "navigationTimeoutMs": 120000,
+    "readyTimeoutMs": 30000,
+    "actionTimeoutMs": 15000,
+    "retry": 3
+  },
+  "paths": {
+    "knowledge": "knowledge",
+    "artifacts": "artifacts",
+    "logs": "logs",
+    "prd": "C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd"
+  },
+  "safety": {
+    "readOnly": true,
+    "forbiddenActionTexts": ["保存", "保存并新增", "删除", "审核", "反审核", "批量审核", "结账", "过账", "作废", "提交"],
+    "allowFixedCoordinates": false
+  }
+}

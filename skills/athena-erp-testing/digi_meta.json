@@ -1,0 +1,5 @@
+{
+  "name": "athena-erp-testing",
+  "displayName": "雅典娜ERP自动化测试",
+  "description": "在 ERP-AI-Testing 项目中探索 Athena ERP 页面、执行只读 Playwright 用例、维护页面知识库并生成测试报告时使用。"
+}

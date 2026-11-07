@@ -1,0 +1,245 @@
+--- view ---
+{
+  "path": "/detail",
+  "fields": [
+    {
+      "path": "biz_type_gen_info.biz_reg",
+      "label": "业务域",
+      "required": true,
+      "value": "",
+      "disabled": false,
+      "readonly": true,
+      "select": "应收领域",
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_prop",
+      "label": "业务性质",
+      "required": true,
+      "value": "",
+      "disabled": false,
+      "readonly": true,
+      "select": "应收单",
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_no",
+      "label": "业务单别",
+      "required": true,
+      "value": "AR01",
+      "disabled": false,
+      "readonly": true,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_name",
+      "label": "业务单别名称",
+      "required": true,
+      "value": "应收单A",
+      "disabled": false,
+      "readonly": true,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_fname",
+      "label": "业务单别全称",
+      "required": false,
+      "value": "应收单A",
+      "disabled": false,
+      "readonly": true,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.auto_code_mode",
+      "label": "自动编码方式",
+      "required": true,
+      "value": "",
+      "disabled": false,
+      "readonly": true,
+      "select": "流水码",
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.year_digit_type",
+      "label": "年位数",
+      "required": true,
+      "value": "",
+      "disabled": false,
+      "readonly": true,
+      "select": "无",
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.serl_digit",
+      "label": "流水号位数",
+      "required": false,
+      "value": "8",
+      "disabled": false,
+      "readonly": true,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.CUS__biz_type_fmt",
+      "label": "编码格式",
+      "required": false,
+      "value": "",
+      "disabled": false,
+      "readonly": true,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.rmk",
+      "label": "备注",
+      "required": false,
+      "value": "",
+      "disabled": false,
+      "readonly": true,
+      "select": null,
+      "switch": null
+    }
+  ],
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    }
+  ]
+}
+edit count: 1
+--- edit ---
+{
+  "path": "/detail",
+  "fields": [
+    {
+      "path": "biz_type_gen_info.biz_reg",
+      "label": "业务域",
+      "required": true,
+      "value": "",
+      "disabled": true,
+      "readonly": true,
+      "select": "应收领域",
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_prop",
+      "label": "业务性质",
+      "required": true,
+      "value": "",
+      "disabled": true,
+      "readonly": true,
+      "select": "应收单",
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_no",
+      "label": "业务单别",
+      "required": true,
+      "value": "AR01",
+      "disabled": true,
+      "readonly": false,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_name",
+      "label": "业务单别名称",
+      "required": true,
+      "value": "应收单A",
+      "disabled": false,
+      "readonly": false,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_fname",
+      "label": "业务单别全称",
+      "required": false,
+      "value": "应收单A",
+      "disabled": false,
+      "readonly": false,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.auto_code_mode",
+      "label": "自动编码方式",
+      "required": true,
+      "value": "",
+      "disabled": false,
+      "readonly": true,
+      "select": "流水码",
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.year_digit_type",
+      "label": "年位数",
+      "required": true,
+      "value": "",
+      "disabled": true,
+      "readonly": true,
+      "select": "无",
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.serl_digit",
+      "label": "流水号位数",
+      "required": false,
+      "value": "8",
+      "disabled": false,
+      "readonly": false,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.CUS__biz_type_fmt",
+      "label": "编码格式",
+      "required": false,
+      "value": "",
+      "disabled": true,
+      "readonly": false,
+      "select": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.rmk",
+      "label": "备注",
+      "required": false,
+      "value": "",
+      "disabled": false,
+      "readonly": false,
+      "select": null,
+      "switch": null
+    }
+  ],
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "disabled": false
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "project": {
+    "name": "Athena ERP Test Platform",
+    "schemaVersion": "1.0.0",
+    "timezone": "Asia/Shanghai"
+  },
+  "prd": {
+    "inputDir": "prd",
+    "includeExtensions": [
+      ".md",
+      ".markdown",
+      ".txt",
+      ".json"
+    ],
+    "reservedExtensions": [
+      ".docx",
+      ".xlsx",
+      ".xls",
+      ".pdf",
+      ".png",
+      ".jpg",
+      ".jpeg"
+    ],
+    "excludeDirectories": [
+      ".git",
+      "node_modules",
+      "artifacts",
+      "reports",
+      ".cache"
+    ],
+    "incremental": true,
+    "preserveSourceFiles": true
+  },
+  "output": {
+    "artifactDir": "artifacts",
+    "reportDir": "reports",
+    "knowledgeDir": "artifacts/knowledge"
+  },
+  "policy": {
+    "allowExternalModelCalls": false,
+    "allowErpConnectionInPhase1": false,
+    "allowErpApiOrMcp": false,
+    "scenarioDefaultStatus": "DRAFT",
+    "requireEvidenceForExplicitRules": true
+  }
+}

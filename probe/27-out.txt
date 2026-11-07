@@ -1,0 +1,469 @@
+--- list-before ---
+{
+  "tabs": [
+    "列表"
+  ],
+  "hovered": "BODY",
+  "save": [],
+  "gridRows": 8,
+  "rows": [
+    {
+      "index": "0",
+      "cells": {
+        "acctg_perid_table_no": "01",
+        "acctg_perid_table_name": "会计期间表",
+        "insta_count": "12",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "1",
+      "cells": {
+        "acctg_perid_table_no": "12333",
+        "acctg_perid_table_name": "23",
+        "insta_count": "13",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "2",
+      "cells": {
+        "acctg_perid_table_no": "2027",
+        "acctg_perid_table_name": "2027年度",
+        "insta_count": "13",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "3",
+      "cells": {
+        "acctg_perid_table_no": "2028",
+        "acctg_perid_table_name": "2028年度",
+        "insta_count": "13",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "4",
+      "cells": {
+        "acctg_perid_table_no": "A01",
+        "acctg_perid_table_name": "01",
+        "insta_count": "12",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "5",
+      "cells": {
+        "acctg_perid_table_no": "ABC",
+        "acctg_perid_table_name": "ABC",
+        "insta_count": "13",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "6",
+      "cells": {
+        "acctg_perid_table_no": "CSAS",
+        "acctg_perid_table_name": "CDE",
+        "insta_count": "13",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "7",
+      "cells": {
+        "acctg_perid_table_no": "Digi_01",
+        "acctg_perid_table_name": "Digi_会计期间表",
+        "insta_count": "13",
+        "rmk": "-"
+      }
+    }
+  ],
+  "message": [],
+  "dialog": []
+}
+--- new-open ---
+{
+  "tabs": [
+    "列表",
+    "详情×"
+  ],
+  "hovered": "BODY",
+  "save": [
+    {
+      "disabled": true,
+      "cls": "Button-module_btn__daEdK Button-module_color-named__c-zYs Button-module_variant-solid__Rme36 Button-module_size-large__VBlv0 Button-module_disabled__UzdWL Button-module_custom-border-radius__a6bEx"
+    }
+  ],
+  "gridRows": 12,
+  "rows": [
+    {
+      "index": "0",
+      "cells": {
+        "seq": "1",
+        "acctg_perid_no": "1",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "1",
+      "cells": {
+        "seq": "2",
+        "acctg_perid_no": "2",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "2",
+      "cells": {
+        "seq": "3",
+        "acctg_perid_no": "3",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "3",
+      "cells": {
+        "seq": "4",
+        "acctg_perid_no": "4",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "4",
+      "cells": {
+        "seq": "5",
+        "acctg_perid_no": "5",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "5",
+      "cells": {
+        "seq": "6",
+        "acctg_perid_no": "6",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "6",
+      "cells": {
+        "seq": "7",
+        "acctg_perid_no": "7",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "7",
+      "cells": {
+        "seq": "8",
+        "acctg_perid_no": "8",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "8",
+      "cells": {
+        "seq": "9",
+        "acctg_perid_no": "9",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "9",
+      "cells": {
+        "seq": "10",
+        "acctg_perid_no": "10",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "10",
+      "cells": {
+        "seq": "11",
+        "acctg_perid_no": "11",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "11",
+      "cells": {
+        "seq": "12",
+        "acctg_perid_no": "12",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    }
+  ],
+  "message": [],
+  "dialog": []
+}
+--- new-filled ---
+{
+  "tabs": [
+    "列表",
+    "详情×"
+  ],
+  "hovered": "BUTTON",
+  "save": [
+    {
+      "disabled": false,
+      "cls": "Button-module_btn__daEdK Button-module_color-named__c-zYs Button-module_variant-solid__Rme36 Button-module_size-large__VBlv0 Button-module_custom-border-radius__a6bEx"
+    }
+  ],
+  "gridRows": 12,
+  "rows": [
+    {
+      "index": "0",
+      "cells": {
+        "seq": "1",
+        "acctg_perid_no": "1",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "1",
+      "cells": {
+        "seq": "2",
+        "acctg_perid_no": "2",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "2",
+      "cells": {
+        "seq": "3",
+        "acctg_perid_no": "3",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "3",
+      "cells": {
+        "seq": "4",
+        "acctg_perid_no": "4",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "4",
+      "cells": {
+        "seq": "5",
+        "acctg_perid_no": "5",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "5",
+      "cells": {
+        "seq": "6",
+        "acctg_perid_no": "6",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "6",
+      "cells": {
+        "seq": "7",
+        "acctg_perid_no": "7",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "7",
+      "cells": {
+        "seq": "8",
+        "acctg_perid_no": "8",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "8",
+      "cells": {
+        "seq": "9",
+        "acctg_perid_no": "9",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "9",
+      "cells": {
+        "seq": "10",
+        "acctg_perid_no": "10",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "10",
+      "cells": {
+        "seq": "11",
+        "acctg_perid_no": "11",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "11",
+      "cells": {
+        "seq": "12",
+        "acctg_perid_no": "12",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    }
+  ],
+  "message": [],
+  "dialog": []
+}
+--- after-save ---
+{
+  "tabs": [
+    "列表",
+    "详情×"
+  ],
+  "hovered": "BODY",
+  "save": [],
+  "gridRows": 12,
+  "rows": [
+    {
+      "index": "0",
+      "cells": {
+        "seq": "1",
+        "acctg_perid_no": "1",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "1",
+      "cells": {
+        "seq": "2",
+        "acctg_perid_no": "2",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "2",
+      "cells": {
+        "seq": "3",
+        "acctg_perid_no": "3",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "3",
+      "cells": {
+        "seq": "4",
+        "acctg_perid_no": "4",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "4",
+      "cells": {
+        "seq": "5",
+        "acctg_perid_no": "5",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "5",
+      "cells": {
+        "seq": "6",
+        "acctg_perid_no": "6",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "6",
+      "cells": {
+        "seq": "7",
+        "acctg_perid_no": "7",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "7",
+      "cells": {
+        "seq": "8",
+        "acctg_perid_no": "8",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "8",
+      "cells": {
+        "seq": "9",
+        "acctg_perid_no": "9",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "9",
+      "cells": {
+        "seq": "10",
+        "acctg_perid_no": "10",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "10",
+      "cells": {
+        "seq": "11",
+        "acctg_perid_no": "11",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    },
+    {
+      "index": "11",
+      "cells": {
+        "seq": "12",
+        "acctg_perid_no": "12",
+        "acctg_adj_perid_flag": "",
+        "rmk": "-"
+      }
+    }
+  ],
+  "message": [
+    "操作成功！",
+    "操作成功！",
+    "操作成功！",
+    "操作成功！",
+    "操作成功！"
+  ],
+  "dialog": []
+}
+created row: undefined
+footer: 

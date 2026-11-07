@@ -1,0 +1,743 @@
+--- list ---
+{
+  "urlPath": "/",
+  "tabs": [
+    "列表"
+  ],
+  "columns": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "$$_no",
+      "label": "序号"
+    },
+    {
+      "colId": "price_strtg_no",
+      "label": "取价策略编号"
+    },
+    {
+      "colId": "price_strtg_name",
+      "label": "取价策略名称"
+    },
+    {
+      "colId": "price_mode",
+      "label": "取价方式"
+    },
+    {
+      "colId": "manage_status",
+      "label": "状态"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "rows": [
+    {
+      "i": "0",
+      "cells": {
+        "price_strtg_no": "000WQJ5",
+        "price_strtg_name": "标准进价>供应商价格>最近进价",
+        "price_mode": "按顺序取价"
+      }
+    },
+    {
+      "i": "1",
+      "cells": {
+        "price_strtg_no": "0121",
+        "price_strtg_name": "0121",
+        "price_mode": "按顺序取价"
+      }
+    },
+    {
+      "i": "2",
+      "cells": {
+        "price_strtg_no": "098",
+        "price_strtg_name": "098",
+        "price_mode": "按顺序取价"
+      }
+    },
+    {
+      "i": "3",
+      "cells": {
+        "price_strtg_no": "1",
+        "price_strtg_name": "1234",
+        "price_mode": "返回最高价"
+      }
+    },
+    {
+      "i": "4",
+      "cells": {
+        "price_strtg_no": "1212",
+        "price_strtg_name": "1212",
+        "price_mode": "返回最高价"
+      }
+    }
+  ],
+  "toolbar": [
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "筛选",
+      "disabled": false
+    },
+    {
+      "text": "导入",
+      "disabled": false
+    },
+    {
+      "text": "导出",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    }
+  ],
+  "footer": "共 22 条"
+}
+--- new ---
+{
+  "urlPath": "/detail",
+  "tabs": [
+    "列表",
+    "详情"
+  ],
+  "fields": [
+    {
+      "path": "pur_price_strtg.price_strtg_no",
+      "label": "取价策略编号",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_price_strtg.price_strtg_name",
+      "label": "取价策略名称",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    }
+  ],
+  "gridHeaders": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "seq",
+      "label": "*序号"
+    },
+    {
+      "colId": "pri",
+      "label": "*优先级"
+    },
+    {
+      "colId": "price_type",
+      "label": "*价格类型"
+    },
+    {
+      "colId": "rmk",
+      "label": "备注"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "gridRows": 0,
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "取消",
+      "disabled": false
+    },
+    {
+      "text": "保存并新增",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "disabled": false
+    }
+  ]
+}

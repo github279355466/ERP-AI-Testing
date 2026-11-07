@@ -1,0 +1,359 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-06",
+  "coverage": {
+    "menuNodes": 100,
+    "verifiedPages": 3,
+    "note": "仅录入已实际打开并核对元数据的页面，其余保持未探索"
+  },
+  "portal": {
+    "url": "https://athena-test.digiwincloud.com.cn/",
+    "title": "鼎捷雅典娜",
+    "loginPath": "/login?returnUrl=%2F",
+    "layout": {
+      "header": "#main-header",
+      "sider": ".sider",
+      "menuList": "ul.menu-list",
+      "menuItem": ".menu-content[id]",
+      "tabBar": ".ath-tab-menus-ul"
+    },
+    "navigation": {
+      "mode": "window.open",
+      "clickApi": "/semc/layout/component/appWork/click",
+      "recentAccessApi": "/semc/recentAccess/save"
+    }
+  },
+  "menuDigest": [
+    { "id": "1018426297694905", "name": "基础管理", "children": 7 },
+    { "id": "1018426297694950", "name": "采购管理", "children": 5 },
+    { "id": "1018426297694971", "name": "销售管理", "children": 3 },
+    { "id": "1018426297694979", "name": "BOM管理", "children": 1 },
+    { "id": "1018426297694984", "name": "应付管理", "children": 1 },
+    { "id": "1018426297694990", "name": "应收管理", "children": 1 },
+    { "id": "1018426297695004", "name": "运营单元协作", "children": 0 },
+    { "id": "1018426297695005", "name": "测试", "children": 1 }
+  ],
+  "pages": [
+    {
+      "id": "portal-home",
+      "name": "首页",
+      "type": "portal",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "features": ["待办", "常用", "收藏", "最近访问", "作业工作台", "日程"]
+    },
+    {
+      "id": "invnt-param",
+      "name": "存货参数",
+      "type": "lowcode-list",
+      "status": "confirmed",
+      "source": "metadata+dom",
+      "verifiedAt": "2026-11-06",
+      "menuPath": ["基础管理", "系统参数", "存货参数"],
+      "workItemCode": "DTBBArnXZHrt",
+      "pageCode": "DTBBArnXZHrt-list",
+      "entity": "ops_unit_invnt_param",
+      "designReleaseId": 1208267,
+      "entryParams": ["dmcUrl", "deployEnv", "espUrl", "requestUrl", "token", "dwLang", "tenantId", "applicationCode", "workItemCode", "tabName", "routerKey"],
+      "toolbar": ["新增", "筛选", "导入", "导出"],
+      "columns": [
+        { "colId": "$$_checkbox", "label": "选择" },
+        { "colId": "$$_no", "label": "序号" },
+        { "colId": "ops_unit_no", "label": "运营单元编号" },
+        { "colId": "ops_unit_name", "label": "运营单元名称" },
+        { "colId": "is_ena_proj_mgmt", "label": "是否启用项目管理", "componentType": "switch" },
+        { "colId": "aprv_date_basis", "label": "审核日依据", "componentType": "select" },
+        { "colId": "operate", "label": "操作" }
+      ],
+      "fields": [
+        { "name": "ops_unit_no", "label": "运营单元编号", "type": "string", "isKey": "Y", "componentType": "openWindow" },
+        { "name": "ops_unit_name", "label": "运营单元名称", "type": "string", "isKey": "N", "componentType": "input" },
+        { "name": "aprv_date_basis", "label": "审核日依据", "type": "string", "isKey": "N", "componentType": "select", "options": ["1:系统日", "2:单据日"] },
+        { "name": "stsp_mgmt", "label": "储位管理", "type": "string", "isKey": "N", "componentType": "select", "options": ["0:不启用", "1:启用"] },
+        { "name": "is_ena_proj_mgmt", "label": "是否启用项目管理", "type": "boolean", "isKey": "N", "componentType": "switch" },
+        { "name": "is_stkou_doc_stsp_rqd", "label": "是否出库单据储位必填", "type": "boolean", "isKey": "N", "componentType": "switch" },
+        { "name": "stkou_doc_save_lot_rqd", "label": "出库单据保存时批号必填", "type": "boolean", "isKey": "N", "componentType": "switch" },
+        { "name": "batch_out_whse_desc", "label": "批次出库说明", "type": "string", "isKey": "N", "componentType": "input" },
+        { "name": "rmk", "label": "备注", "type": "string", "isKey": "N", "componentType": "input" },
+        { "name": "create_by", "label": "创建人", "type": "string", "isKey": "N", "componentType": "readonly" },
+        { "name": "creator_name", "label": "创建人名称", "type": "string", "isKey": "N", "componentType": "readonly" },
+        { "name": "create_date", "label": "创建时间", "type": "datetime", "isKey": "N", "componentType": "readonly" },
+        { "name": "creat_dept_no", "label": "创建部门编号", "type": "string", "isKey": "N", "componentType": "readonly" },
+        { "name": "creat_dept_name", "label": "创建部门名称", "type": "string", "isKey": "N", "componentType": "readonly" },
+        { "name": "modified_by", "label": "修改人", "type": "string", "isKey": "N", "componentType": "readonly" },
+        { "name": "modifier_name", "label": "修改人名称", "type": "string", "isKey": "N", "componentType": "readonly" },
+        { "name": "modified_date", "label": "修改时间", "type": "datetime", "isKey": "N", "componentType": "readonly" }
+      ],
+      "notes": [
+        "编辑已存在记录时 ops_unit_no 为禁用主键，不能修改",
+        "查看/编辑以页签形式打开，不是模态框",
+        "关闭未保存页签存在守卫，只读场景选择直接离开",
+        "查看态表单控件不可交互，下拉与基础资料选择器无法打开",
+        "当前账号与页面设计下，详情态仅渲染 3 个可见字段：ops_unit_no、is_ena_proj_mgmt、aprv_date_basis；其余元数据字段未出现在详情 DOM",
+        "编辑态可打开 aprv_date_basis 下拉，选项为系统日/单据日；ops_unit_no 主键控件禁用"
+      ]
+    },
+    {
+      "id": "acctg-perid-table",
+      "name": "会计期间表",
+      "type": "lowcode-list",
+      "status": "confirmed",
+      "source": "metadata+dom",
+      "verifiedAt": "2026-11-06",
+      "menuPath": ["应收管理", "基础设置", "会计期间表"],
+      "menuNodeId": "1018426297694992",
+      "workItemCode": "cEBGcJzbDWkQ",
+      "entity": "acctg_perid_table",
+      "toolbar": ["新增", "筛选", "导入", "导出"],
+      "columns": [
+        { "colId": "$$_checkbox", "label": "选择" },
+        { "colId": "$$_no", "label": "序号" },
+        { "colId": "acctg_perid_table_no", "label": "会计期间表编号" },
+        { "colId": "acctg_perid_table_name", "label": "会计期间表名称" },
+        { "colId": "insta_count", "label": "分期数" },
+        { "colId": "rmk", "label": "备注" },
+        { "colId": "operate", "label": "操作" }
+      ],
+      "detailColumns": [
+        { "colId": "seq", "label": "序号" },
+        { "colId": "acctg_perid_no", "label": "会计期间期号" },
+        { "colId": "acctg_adj_perid_flag", "label": "会计调整期标识" },
+        { "colId": "rmk", "label": "备注" }
+      ],
+      "fields": [
+        { "name": "acctg_perid_table_no", "label": "会计期间表编号", "type": "string", "isKey": "Y", "componentType": "readonly", "required": true },
+        { "name": "acctg_perid_table_name", "label": "会计期间表名称", "type": "string", "isKey": "N", "componentType": "readonly", "required": true },
+        { "name": "insta_count", "label": "分期数", "type": "number", "isKey": "N", "componentType": "readonly", "required": true },
+        { "name": "rmk", "label": "备注", "type": "string", "isKey": "N", "componentType": "readonly", "required": false }
+      ],
+    "notes": [
+      "列表按会计期间表编号升序展示，当前 8 条",
+      "查看态字段只读；编辑态可修改表头与备注并保存",
+      "样本 01：分期数 12，明细 12 行，期号 1..12",
+      "详情 DOM 仅渲染 4 个可见字段与 4 个明细列；PRD 中的季度、会计调整期类型等未显示",
+      "会计期间表编号、名称、分期数均为必填",
+      "分期数控件上限为 13；14 期不在当前交付范围，录入 14 会被清空并报校验错误",
+      "分期数 13 时第 13 行调整期标识勾选，其余行不勾选",
+      "新增/保存/编辑/删除与列表筛选链路已通过 TP-064-WRITE 验证；删除为列表页操作列动作并二次确认"
+      ]
+    },
+    {
+      "id": "acctg-perid-info",
+      "name": "会计期间信息",
+      "type": "lowcode-list",
+      "status": "confirmed",
+      "source": "metadata+dom",
+      "verifiedAt": "2026-11-06",
+      "menuPath": ["应收管理", "基础设置", "会计期间信息"],
+      "menuNodeId": "1018426297694993",
+      "workItemCode": "hoRpQwPEmnlK",
+      "entity": "acctg_perid_info",
+      "toolbar": ["新增", "筛选", "导入", "导出"],
+      "columns": [
+        { "colId": "$$_checkbox", "label": "选择" },
+        { "colId": "$$_no", "label": "序号" },
+        { "colId": "acctg_perid_table_no", "label": "会计期间表编号" },
+        { "colId": "insta_count", "label": "分期数" },
+        { "colId": "acctg_year", "label": "会计年度" },
+        { "colId": "begin_date", "label": "开始日期" },
+        { "colId": "rmk", "label": "备注" },
+        { "colId": "operate", "label": "操作" }
+      ],
+      "detailColumns": [
+        { "colId": "seq", "label": "序号" },
+        { "colId": "acctg_perid_no", "label": "会计期间期号" },
+        { "colId": "begin_date", "label": "开始日期" },
+        { "colId": "end_date", "label": "结束日期" },
+        { "colId": "acctg_adj_perid_flag", "label": "会计调整期标识" },
+        { "colId": "rmk", "label": "备注" }
+      ],
+      "fields": [
+        { "name": "acctg_perid_table_no", "label": "会计期间表", "type": "string", "isKey": "Y", "componentType": "openWindow", "required": true },
+        { "name": "insta_count", "label": "分期数", "type": "number", "isKey": "N", "componentType": "readonly", "required": false },
+        { "name": "acctg_year", "label": "会计年度", "type": "number", "isKey": "N", "componentType": "readonly", "required": true },
+        { "name": "begin_date", "label": "开始日期", "type": "date", "isKey": "N", "componentType": "readonly", "required": true },
+        { "name": "rmk", "label": "备注", "type": "string", "isKey": "N", "componentType": "readonly", "required": false }
+      ],
+    "notes": [
+      "列表按会计年度降序、会计期间表编号升序展示，当前 3 条",
+      "查看态字段只读；会计期间表字段为 LOOKUP",
+      "样本：会计期间表 01、会计年度 2026、开始日期 2026-11-03、分期数 12、明细 12 行",
+      "首期 2026-11-03~2026-11-30，次期从 2026-12-01 开始，期间连续",
+      "详情 DOM 仅渲染 5 个可见字段与 6 个明细列",
+      "开窗为单选，支持按字段筛选，选中后需点「确认」回填编号与分期数",
+      "仅修改开始日期不会自动生成明细；点击「新增单身明细」或重新选择会计期间表可触发生成",
+      "新增状态不管控会计年度与开始日期；编辑状态已有明细时不可修改",
+      "13 期样本第 13 行为调整期，起止日期均等于前一期结束日；新增/保存/编辑/删除已通过 TP-065-WRITE 验证"
+      ]
+    },
+    {
+      "id": "ar-biz-type",
+      "name": "应收业务单别",
+      "type": "lowcode-list",
+      "status": "candidate",
+      "source": "metadata+dom",
+      "verifiedAt": "2026-11-06",
+      "menuPath": ["应收管理", "基础设置", "应收业务单别"],
+      "menuNodeId": "1018426297694997",
+      "workItemCode": "keeZGBfszTdp",
+      "entity": "biz_type_gen_info",
+      "toolbar": ["新增", "筛选", "导入", "导出"],
+      "columns": [
+        { "colId": "biz_reg", "label": "业务域" },
+        { "colId": "biz_prop", "label": "业务性质" },
+        { "colId": "biz_type_no", "label": "业务类型编号" },
+        { "colId": "biz_type_name", "label": "业务类型名称" },
+        { "colId": "biz_type_fname", "label": "业务类型全称" },
+        { "colId": "auto_code_mode", "label": "自动编码方式" },
+        { "colId": "year_digit_type", "label": "年度位数类型" },
+        { "colId": "serl_digit", "label": "流水号位数" },
+        { "colId": "rmk", "label": "备注" },
+        { "colId": "manage_status", "label": "状态" },
+        { "colId": "operate", "label": "操作" }
+      ],
+      "fields": [
+        { "name": "biz_reg", "label": "业务域", "type": "string", "componentType": "select", "required": true },
+        { "name": "biz_prop", "label": "业务性质", "type": "string", "componentType": "select", "required": true },
+        { "name": "biz_type_no", "label": "业务单别", "type": "string", "componentType": "input", "required": true },
+        { "name": "biz_type_name", "label": "业务单别名称", "type": "string", "componentType": "input", "required": true },
+        { "name": "biz_type_fname", "label": "业务单别全称", "type": "string", "componentType": "input", "required": false },
+        { "name": "auto_code_mode", "label": "自动编码方式", "type": "string", "componentType": "select", "required": true },
+        { "name": "year_digit_type", "label": "年位数", "type": "string", "componentType": "select", "required": false },
+        { "name": "serl_digit", "label": "流水号位数", "type": "number", "componentType": "input-number", "required": false },
+        { "name": "CUS__biz_type_fmt", "label": "编码格式", "type": "string", "componentType": "readonly", "required": false },
+        { "name": "rmk", "label": "备注", "type": "string", "componentType": "input", "required": false }
+      ],
+      "notes": [
+        "新增/编辑/筛选已验证：应收单 + 流水码 + 流水号位数 4 可正常保存",
+        "列表状态为文本「生效/失效」，列表页操作列为查看/编辑 + ...（删除/生效/失效）",
+        "缺陷：列表失效、删除及详情删除确认后均无网络请求，状态与记录不变（D-01）",
+        "业务性质枚举：应收单、其他应收单、应收调汇单、坏账准备单、坏账损失单、坏账收回单、期初开账应收单",
+        "自动编码方式：年月日+流水码、年月+流水码、流水码、手工输入；年位数：无、公元一码/二码/四码"
+      ]
+    },
+    {
+      "id": "ar-biz-type-param",
+      "name": "应收业务单别参数",
+      "type": "lowcode-list",
+      "status": "candidate",
+      "source": "metadata+dom",
+      "verifiedAt": "2026-11-06",
+      "menuPath": ["应收管理", "基础设置", "应收业务单别参数"],
+      "menuNodeId": "1018426297694998",
+      "workItemCode": "pPatSaneKVfy",
+      "entity": "biz_type_ar_param",
+      "toolbar": ["新增", "筛选", "导入", "导出"],
+      "columns": [
+        { "colId": "biz_type_no", "label": "业务类型编号" },
+        { "colId": "verf_mode", "label": "核销方式" },
+        { "colId": "ops_unit_no", "label": "运营单元编号" },
+        { "colId": "ops_unit_name", "label": "运营单元名称" },
+        { "colId": "cash_stlmt_flag", "label": "现结标识" },
+        { "colId": "cash_stlmt_biz_type_no", "label": "现结业务类型编号" },
+        { "colId": "insta_offst_adv_biz_type_no", "label": "分期预收付冲减业务类型编号" },
+        { "colId": "creat_is_auto_aprv", "label": "新增是否自动审核" },
+        { "colId": "operate", "label": "操作" }
+      ],
+      "fields": [
+        { "name": "ops_unit_no", "label": "运营单元编号", "type": "string", "componentType": "openWindow", "required": true },
+        { "name": "biz_type_no", "label": "业务单别", "type": "string", "componentType": "openWindow", "required": true },
+        { "name": "CUS_biz_prop", "label": "单据性质", "type": "string", "componentType": "readonly", "required": false },
+        { "name": "verf_mode", "label": "核销方式", "type": "string", "componentType": "select", "required": false },
+        { "name": "cash_stlmt_flag", "label": "现结标识", "type": "boolean", "componentType": "switch", "required": false },
+        { "name": "cash_stlmt_biz_type_no", "label": "现结业务单别", "type": "string", "componentType": "openWindow", "required": false },
+        { "name": "insta_offst_adv_biz_type_no", "label": "分期冲减单别", "type": "string", "componentType": "openWindow", "required": false },
+        { "name": "creat_is_auto_aprv", "label": "自动审核", "type": "boolean", "componentType": "switch", "required": false }
+      ],
+      "notes": [
+        "运营单元开窗 20 行；业务单别开窗仅应收域且生效",
+        "核销方式选项：无、整单、明细、分期；分期时分期冲减单别必填并启用",
+        "现结标识=Y 时现结单别启用，开窗仅 ST0301/Digi_ST0301（收款单）",
+        "新增（整单）与编辑已验证；分期保存被 VD_biz_type_ar_param_00014/00013 拦截，需补结算参数前置数据（待办 T-01，见 docs/TODO.md）",
+        "缺陷：列表/详情删除确认后无网络请求，记录仍在（D-02）"
+      ]
+    },
+    {
+      "id": "ap-biz-type",
+      "name": "应付业务单别",
+      "type": "lowcode-list",
+      "status": "candidate",
+      "source": "metadata+dom",
+      "verifiedAt": "2026-11-06",
+      "menuPath": ["应付管理", "基础设置", "应付业务单别"],
+      "menuNodeId": "1018426297694987",
+      "workItemCode": "pYIaGDZuhRRK",
+      "entity": "biz_type_gen_info",
+      "toolbar": ["新增", "筛选", "导入", "导出"],
+      "columns": [
+        { "colId": "biz_reg", "label": "业务域" },
+        { "colId": "biz_prop", "label": "业务性质" },
+        { "colId": "biz_type_no", "label": "业务类型编号" },
+        { "colId": "biz_type_name", "label": "业务类型名称" },
+        { "colId": "biz_type_fname", "label": "业务类型全称" },
+        { "colId": "auto_code_mode", "label": "自动编码方式" },
+        { "colId": "year_digit_type", "label": "年度位数类型" },
+        { "colId": "serl_digit", "label": "流水号位数" },
+        { "colId": "rmk", "label": "备注" },
+        { "colId": "manage_status", "label": "状态" },
+        { "colId": "operate", "label": "操作" }
+      ],
+      "fields": [
+        { "name": "biz_reg", "label": "业务域", "type": "string", "componentType": "select", "required": true },
+        { "name": "biz_prop", "label": "业务性质", "type": "string", "componentType": "select", "required": true },
+        { "name": "biz_type_no", "label": "业务单别", "type": "string", "componentType": "input", "required": true },
+        { "name": "biz_type_name", "label": "业务单别名称", "type": "string", "componentType": "input", "required": true },
+        { "name": "biz_type_fname", "label": "业务单别全称", "type": "string", "componentType": "input", "required": false },
+        { "name": "auto_code_mode", "label": "自动编码方式", "type": "string", "componentType": "select", "required": true },
+        { "name": "year_digit_type", "label": "年位数", "type": "string", "componentType": "select", "required": false },
+        { "name": "serl_digit", "label": "流水号位数", "type": "number", "componentType": "input-number", "required": false },
+        { "name": "rmk", "label": "备注", "type": "string", "componentType": "input", "required": false }
+      ],
+      "notes": [
+        "新增/编辑/筛选/失效/生效/删除全链路已验证通过（APAT-01）",
+        "业务性质枚举：应付单、费用应付单、其他应付单、应付调汇单、费用分摊单、暂估应付单、期初开账应付单",
+        "列表页操作列：查看/编辑 + ...（删除/生效/失效）；失效/生效均二次确认",
+        "删除要求记录处于失效状态"
+      ]
+    },
+    {
+      "id": "ap-biz-type-param",
+      "name": "应付业务单别参数",
+      "type": "lowcode-list",
+      "status": "candidate",
+      "source": "metadata+dom",
+      "verifiedAt": "2026-11-06",
+      "menuPath": ["应付管理", "基础设置", "应付业务单别参数"],
+      "menuNodeId": "1018426297694988",
+      "workItemCode": "AyJIheXVzjAK",
+      "entity": "biz_type_ap_param",
+      "toolbar": ["新增", "筛选", "导入", "导出"],
+      "columns": [
+        { "colId": "biz_type_no", "label": "业务类型编号" },
+        { "colId": "ops_unit_no", "label": "运营单元编号" },
+        { "colId": "ops_unit_name", "label": "运营单元名称" },
+        { "colId": "verf_mode", "label": "核销方式" },
+        { "colId": "cash_stlmt_biz_type_no", "label": "现结业务类型编号" },
+        { "colId": "insta_offst_adv_biz_type_no", "label": "分期预收付冲减业务类型编号" },
+        { "colId": "creat_is_auto_aprv", "label": "新增是否自动审核" },
+        { "colId": "cash_stlmt_flag", "label": "现结标识" },
+        { "colId": "operate", "label": "操作" }
+      ],
+      "fields": [
+        { "name": "ops_unit_no", "label": "运营单元编号", "type": "string", "componentType": "openWindow", "required": true },
+        { "name": "biz_type_no", "label": "业务单别", "type": "string", "componentType": "openWindow", "required": true },
+        { "name": "CUS_biz_prop", "label": "单据性质", "type": "string", "componentType": "readonly", "required": false },
+        { "name": "verf_mode", "label": "核销方式", "type": "string", "componentType": "select", "required": false },
+        { "name": "cash_stlmt_flag", "label": "现结标识", "type": "boolean", "componentType": "switch", "required": false },
+        { "name": "cash_stlmt_biz_type_no", "label": "现结业务单别", "type": "string", "componentType": "openWindow", "required": false },
+        { "name": "insta_offst_adv_biz_type_no", "label": "分期冲减单别", "type": "string", "componentType": "openWindow", "required": false },
+        { "name": "creat_is_auto_aprv", "label": "自动审核", "type": "boolean", "componentType": "switch", "required": false }
+      ],
+      "notes": [
+        "列表/筛选/编辑既有记录已验证；AP0101/000W1 自动审核开关切换保存成功",
+        "缺陷：业务单别开窗标题为「弹窗标题」，返回 16 行应收域单别（AR01…YS01），无 AP 单别，导致新增阻断（D-03）",
+        "未创建测试数据，未修改既有业务数据"
+      ]
+    }
+  ]
+}

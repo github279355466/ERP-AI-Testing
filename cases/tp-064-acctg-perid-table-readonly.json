@@ -1,0 +1,77 @@
+{
+  "id": "TP-064",
+  "name": "会计期间表：列表、详情与明细行数（只读）",
+  "steps": [
+    { "action": "snapshot", "name": "TP-064-list" },
+    {
+      "action": "assertGrid",
+      "level": "ui",
+      "name": "列表结构",
+      "minRows": 1,
+      "requiredColIds": ["acctg_perid_table_no", "acctg_perid_table_name", "insta_count", "rmk", "operate"]
+    },
+    { "action": "screenshot", "name": "TP-064-list" },
+    { "action": "click", "text": "查看" },
+    { "action": "waitFor", "selector": "[class*=\"FormItem-module_form-item__\"]" },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "会计期间表编号：控件类型",
+      "fieldPath": "acctg_perid_table.acctg_perid_table_no",
+      "kind": "READONLY",
+      "expectRequired": true
+    },
+    {
+      "action": "assertFieldValue",
+      "level": "business",
+      "name": "会计期间表编号取值",
+      "fieldPath": "acctg_perid_table.acctg_perid_table_no",
+      "expected": "01",
+      "mode": "equals"
+    },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "会计期间表名称：必填",
+      "fieldPath": "acctg_perid_table.acctg_perid_table_name",
+      "expectRequired": true
+    },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "分期数：控件类型",
+      "fieldPath": "acctg_perid_table.insta_count",
+      "kind": "READONLY",
+      "expectRequired": true
+    },
+    {
+      "action": "assertFieldValue",
+      "level": "business",
+      "name": "分期数取值",
+      "fieldPath": "acctg_perid_table.insta_count",
+      "expected": "12",
+      "mode": "equals"
+    },
+    {
+      "action": "assertGridMatchesField",
+      "level": "business",
+      "name": "明细行数等于分期数",
+      "fieldPath": "acctg_perid_table.insta_count"
+    },
+    {
+      "action": "assertGrid",
+      "level": "ui",
+      "name": "明细网格结构",
+      "minRows": 12,
+      "requiredColIds": ["seq", "acctg_perid_no", "acctg_adj_perid_flag", "rmk"]
+    },
+    { "action": "assertGridCell", "level": "business", "name": "首期期号", "rowIndex": 0, "colId": "acctg_perid_no", "expected": "1" },
+    { "action": "assertGridCell", "level": "business", "name": "末期期号", "rowIndex": 11, "colId": "acctg_perid_no", "expected": "12" },
+    { "action": "snapshot", "name": "TP-064-detail" },
+    { "action": "screenshot", "name": "TP-064-detail" },
+    { "action": "closeTab" },
+    { "action": "waitFor", "selector": ".ag-center-cols-container .ag-row[row-index]" },
+    { "action": "assertGrid", "level": "ui", "name": "关闭详情后列表恢复", "minRows": 1 },
+    { "action": "screenshot", "name": "TP-064-list-restored" }
+  ]
+}

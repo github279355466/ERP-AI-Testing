@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-06",
+  "containers": {
+    "portalHeader": "#main-header",
+    "portalSider": ".sider",
+    "portalMenuList": "ul.menu-list",
+    "portalMenuNode": ".menu-content[id]",
+    "portalMenuTitle": ".ant-menu-submenu-title",
+    "businessTabs": ".ant-tabs.ant-tabs-editable-card",
+    "businessTab": ".ant-tabs-tab",
+    "businessTabActive": ".ant-tabs-tab-active",
+    "formItem": "[class*=FormItem-module_form-item__]",
+    "formItemRequired": "[class*=FormItem-module_form-item-label-required__]",
+    "dropdown": ".ath-select-dropdown",
+    "dropdownOption": ".ath-select-item-option",
+    "dropdownOptionSelected": ".ath-select-item-option-selected",
+    "modal": ".rc-dialog-wrap",
+    "modalClose": ".rc-dialog-close",
+    "gridRow": ".ag-row[row-index]",
+    "gridCell": ".ag-cell[col-id]",
+    "gridHeader": ".ag-header-cell[col-id]",
+    "rowActionButton": "button.custom-op-text-btn"
+  },
+  "controls": {
+    "TEXT": {
+      "anchor": "label[for='<entity>.<field>']",
+      "selector": "input.digi-input",
+      "action": "fill",
+      "verified": true
+    },
+    "NUMBER": {
+      "anchor": "label[for='<entity>.<field>']",
+      "selector": "input.digi-input",
+      "action": "fill",
+      "note": "输入后回读格式化值",
+      "verified": false
+    },
+    "DATE": {
+      "anchor": "label[for='<entity>.<field>']",
+      "selector": "input[readonly], input.digi-input",
+      "action": "open-panel",
+      "note": "日期多为只读输入加面板，优先用面板选择",
+      "verified": false
+    },
+    "DROPDOWN": {
+      "anchor": "label[for='<entity>.<field>']",
+      "selector": "[class*=Select-module_select__]",
+      "popup": ".ath-select-dropdown",
+      "option": ".ath-select-item-option",
+      "action": "click-by-bounding-box",
+      "note": "查看态不可交互；需进入编辑态。自定义组件需真实鼠标点击，DOM click 常无效；只读用例只打开、读取、关闭，不选择选项",
+      "verified": true,
+      "verifiedAt": "2026-11-06"
+    },
+    "LOOKUP": {
+      "anchor": "label[for='<entity>.<field>']",
+      "selector": "[class*=WindowSelect-module_windowSelect]",
+      "dialog": ".rc-dialog-wrap",
+      "dialogTitle": "选择<业务对象>",
+      "rowSelect": "input.digi-radio-input",
+      "confirm": "确认",
+      "action": "open-dialog-select-row-confirm",
+      "note": "查看态不可交互；编辑已存在记录时主键禁用，选择器仅在新增态可用；当前只读阶段未验证选择与回写",
+      "verified": true,
+      "verifiedAt": "2026-11-06"
+    },
+    "TREE_SELECT": {
+      "anchor": "label[for='<entity>.<field>']",
+      "selector": "[class*=TreeSelect], [class*=WindowSelect-module_windowSelect]",
+      "action": "expand-and-select",
+      "verified": false
+    },
+    "GRID": {
+      "row": ".ag-row[row-index]",
+      "cell": ".ag-cell[col-id='<field>']",
+      "header": ".ag-header-cell[col-id='<field>']",
+      "note": "虚拟滚动，仅可视行在 DOM；隐藏行需过滤 offsetWidth",
+      "verified": true
+    },
+    "READONLY": {
+      "selector": "[class*=Select-module_disabled__]",
+      "action": "assert-text",
+      "verified": true
+    },
+    "CHECKBOX": {
+      "selector": "input.digi-checkbox-input",
+      "action": "click-label",
+      "verified": false
+    },
+    "SWITCH": {
+      "selector": "button[class*=Switch-module_switch__]",
+      "stateChecked": "class contains Switch-module_checked__",
+      "action": "click",
+      "verified": true
+    },
+    "TAB": {
+      "selector": ".ant-tabs-tab",
+      "active": ".ant-tabs-tab-active",
+      "close": ".ant-tabs-tab-remove",
+      "action": "click-by-title",
+      "verified": true
+    },
+    "MODAL": {
+      "selector": ".rc-dialog-wrap",
+      "close": ".rc-dialog-close",
+      "footer": "取消 / 确认",
+      "action": "scope-locators-inside",
+      "verified": true
+    },
+    "WORKFLOW_BUTTON": {
+      "selector": "button",
+      "match": "textEquals",
+      "action": "click-after-permission-check",
+      "verified": false
+    }
+  },
+  "guardDialogs": {
+    "unsavedLeave": {
+      "trigger": "close tab with dirty form",
+      "buttons": ["取消", "保存并新增", "保存", "继续编辑", "直接离开"],
+      "readonlyPolicy": "直接离开"
+    }
+  },
+  "waitStrategies": [
+    "表单就绪：formItem 数量 > 0 且目标 label 可见",
+    "列表就绪：ag-row 数量 > 0 或空态文案出现",
+    "页签就绪：.ant-tabs-tab-active 标题符合预期",
+    "弹窗就绪：.rc-dialog-wrap 可见后再定位内部元素",
+    "编辑态就绪：详情页出现「取消 / 保存」按钮且目标字段 label 可见"
+  ]
+}

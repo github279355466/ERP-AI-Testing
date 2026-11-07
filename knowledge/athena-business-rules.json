@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-06",
+  "rules": [
+    {
+      "id": "BR-INV-001",
+      "page": "invnt-param",
+      "rule": "运营单元编号是主键，编辑已存在记录时不可修改（控件禁用）",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "编辑态 label[for=ops_unit_invnt_param.ops_unit_no] 对应控件含 Select-module_disabled__；TP-002 运行读到 disabled=true、editable=false"
+    },
+    {
+      "id": "BR-INV-002",
+      "page": "invnt-param",
+      "rule": "运营单元为必填字段，保存前为空应触发校验",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "FormItem 含 required 标记且标签前有 *"
+    },
+    {
+      "id": "BR-INV-003",
+      "page": "invnt-param",
+      "rule": "审核日依据取值：1=系统日，2=单据日",
+      "status": "confirmed",
+      "source": "metadata",
+      "verifiedAt": "2026-11-06",
+      "evidence": "pageDesignInfo x-api valueFields"
+    },
+    {
+      "id": "BR-INV-004",
+      "page": "invnt-param",
+      "rule": "储位管理取值：0=不启用，1=启用",
+      "status": "confirmed",
+      "source": "metadata",
+      "verifiedAt": "2026-11-06",
+      "evidence": "pageDesignInfo x-api valueFields"
+    },
+    {
+      "id": "BR-INV-005",
+      "page": "invnt-param",
+      "rule": "基础资料选择器为单选，选行后需点确认才回写字段",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "选择运营单元弹窗为 radio 单选，页脚 取消/确认"
+    },
+    {
+      "id": "BR-INV-006",
+      "page": "invnt-param",
+      "rule": "审核日依据为系统日时，审核日期取系统日期；为单据日时取单据日期",
+      "status": "candidate",
+      "source": "manual",
+      "verifiedAt": null,
+      "note": "业务语义推测，需以实际审核动作结果验证后再提升为 confirmed"
+    },
+    {
+      "id": "BR-INV-007",
+      "page": "invnt-param",
+      "rule": "查看态表单控件不可交互；下拉与基础资料选择器需进入编辑态才能打开",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-002 运行：查看态点击 Select/WindowSelect 仅聚焦、不出现浮层；点击「编辑」后 aprv_date_basis 下拉可打开，选项为系统日/单据日"
+    },
+    {
+      "id": "BR-ACCTG-001",
+      "page": "acctg-perid-table",
+      "rule": "会计期间表明细行数等于分期数，期号从 1 连续到 N",
+      "status": "confirmed",
+      "source": "dom+prd",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-064 运行：样本 01 分期数=12，明细=12 行，首期期号=1、末期期号=12；PRD v1.6 2.3 步骤 4"
+    },
+    {
+      "id": "BR-ACCTG-002",
+      "page": "acctg-perid-info",
+      "rule": "会计期间信息明细行数等于分期数，首期开始日期等于单头开始日期",
+      "status": "confirmed",
+      "source": "dom+prd",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-065 运行：分期数=12，明细=12 行；单头开始日期 2026-11-03，首期开始日期 2026-11-03；PRD v1.4 2.3 步骤 5"
+    },
+    {
+      "id": "BR-ACCTG-003",
+      "page": "acctg-perid-info",
+      "rule": "相邻会计期间日期连续，前一期结束日的次日为下一期开始日",
+      "status": "confirmed",
+      "source": "dom+prd",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-065 写入运行：13 期样本 2027-01-01 起算，1~12 期逐月连续（首期 01-01~01-31、次期 02-01 起、第12期 12-01~12-31），第13期调整期为 12-31~12-31"
+    },
+    {
+      "id": "BR-ACCTG-004",
+      "page": "acctg-perid-table",
+      "rule": "分期数控件有效范围为 12~13；14 期不在当前交付范围，录入 14 会被拒绝",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "input.input-number aria-valuemin=12、aria-valuemax=13；录入 14 后输入值被清空、明细清空并出现校验错误。需求已确认 14 期不纳入当前交付"
+    },
+    {
+      "id": "BR-ACCTG-005",
+      "page": "acctg-perid-table",
+      "rule": "分期数=13 时第 13 期为调整期（标识勾选），前 12 期不勾选",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-064 写入运行：13 期明细第 13 行 switch aria-checked=true、第 12 行 false；12 期样本全部 false"
+    },
+    {
+      "id": "BR-ACCTG-006",
+      "page": "acctg-perid-info",
+      "rule": "仅修改开始日期不会自动生成明细；点击「新增单身明细」或重新选择会计期间表可触发生成",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-065 写入运行：开始日期置为 2027-01-01 后明细为 0 行；点击「新增单身明细」后生成 13 期并提示「已生成 13 期明细，请核对起止日期」；重新选表同样可触发。需求已确认此交互"
+    },
+    {
+      "id": "BR-ACCTG-007",
+      "page": "acctg-perid-info",
+      "rule": "新增状态不管控会计年度与开始日期；编辑状态已有明细时不可修改",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-065 写入运行：新增状态选表并回填分期数后，acctg_year/begin_date 仍可编辑并用于生成明细；编辑状态已有明细时不再允许修改。需求已确认当前不管控新增状态"
+    },
+    {
+      "id": "BR-ACCTG-008",
+      "page": "acctg-perid-info",
+      "rule": "会计期间表开窗为单选，支持按字段筛选，选中后需点「确认」回填编号与分期数",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-065 写入运行：弹窗标题「查询会计期间表」，列含编号/名称/分期数，行单选；筛选编号后命中 1 行，确认后回填编号与分期数 13"
+    },
+    {
+      "id": "BR-BIZTYPE-001",
+      "page": "ap-biz-type",
+      "rule": "应付业务单别的新增、编辑、失效、生效、删除链路可用",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-061：APAT-01 新建/改名/失效/生效/失效/删除均成功，列表恢复 13 条基线"
+    },
+    {
+      "id": "BR-BIZTYPE-002",
+      "page": "ar-biz-type",
+      "rule": "应收业务单别列表失效/删除及详情删除确认后无请求，状态与记录不变",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-069：失效/删除确认后无非 GET 请求、无提示；DOM 直接点击确认仍无请求；ARAT-01/ARAT-02 残留。对照 AP 页面正常"
+    },
+    {
+      "id": "BR-BIZTYPE-003",
+      "page": "ar-biz-type-param",
+      "rule": "应收业务单别参数列表/详情删除确认后无请求，记录保留",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-070：删除二次确认后无请求、无提示，ARAT-01/000W1 记录仍在"
+    },
+    {
+      "id": "BR-BIZTYPE-004",
+      "page": "ap-biz-type-param",
+      "rule": "应付业务单别参数的业务单别开窗返回应收域数据，无法选择 AP 单别",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-062：开窗标题「弹窗标题」，16 行全部为 AR01/AR0101/AR0201…YS01，无 AP 单别"
+    },
+    {
+      "id": "BR-BIZTYPE-005",
+      "page": "ar-biz-type-param",
+      "rule": "核销方式=分期保存需业务类型结算参数前置数据，否则被后端 00014/00013 拦截",
+      "status": "confirmed",
+      "source": "dom",
+      "verifiedAt": "2026-11-06",
+      "evidence": "TP-070：分期冲减单别选 AR01/AR0101 后保存报 VD_biz_type_ar_param_00014/00013",
+      "note": "待办 T-01：后续测试业务类型结算参数作业时补数据重测，见 docs/TODO.md"
+    }
+  ]
+}

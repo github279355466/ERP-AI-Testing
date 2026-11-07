@@ -1,0 +1,2029 @@
+{
+  "generatedAt": "2026-11-06T14:17:11.697Z",
+  "source": "C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd",
+  "items": [
+    {
+      "workItem": "采购取价策略",
+      "testPlan": "TP-038",
+      "prdVersion": "1.7",
+      "title": "采购取价策略",
+      "entity": "pur_price_strtg",
+      "entityLabel": "采购取价策略",
+      "fieldCount": 8,
+      "fields": [
+        {
+          "label": "取价策略编号",
+          "name": "price_strtg_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "取价策略名称",
+          "name": "price_strtg_name",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "取价方式",
+          "name": "price_mode",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "序号",
+          "name": "seq",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "价格类型",
+          "name": "price_type",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "优先级",
+          "name": "pri",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        }
+      ],
+      "listColumns": [
+        "取价策略编号",
+        "取价策略名称",
+        "状态"
+      ],
+      "operations": [
+        "新增",
+        "编辑",
+        "保存",
+        "删除",
+        "生效",
+        "失效",
+        "新增明细行",
+        "删除明细行"
+      ],
+      "sourceFile": "采购取价策略/采购取价策略PRD.v1.7.md"
+    },
+    {
+      "workItem": "批号编号规则",
+      "testPlan": "TP-027",
+      "prdVersion": "1.5",
+      "title": "批号编号规则",
+      "entity": "code_rule",
+      "entityLabel": "编号规则",
+      "fieldCount": 13,
+      "fields": [
+        {
+          "label": "编码规则编号",
+          "name": "code_rule_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "编码规则说明",
+          "name": "code_rule_desc",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "多行输入框"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "前缀值",
+          "name": "pref_value",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "前缀连接符",
+          "name": "pref_conn",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "后缀值",
+          "name": "suff_value",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "后缀连接符",
+          "name": "suff_conn",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "自动编码方式",
+          "name": "auto_code_mode",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "日期编码依据",
+          "name": "date_code_basis",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "年度位数类型",
+          "name": "year_digit_type",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "流水号位数",
+          "name": "serl_digit",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "编码类型",
+          "name": "code_type",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        }
+      ],
+      "listColumns": [
+        "编码规则编号",
+        "编码规则说明",
+        "备注",
+        "状态"
+      ],
+      "operations": [
+        "新增",
+        "编辑",
+        "保存",
+        "删除",
+        "生效",
+        "失效"
+      ],
+      "sourceFile": "批号编号规则/批号编号规则PRD.v1.5.md"
+    },
+    {
+      "workItem": "询价单",
+      "testPlan": "TP-047",
+      "prdVersion": "1.7",
+      "title": "询价单-新版",
+      "entity": "",
+      "entityLabel": "",
+      "fieldCount": 48,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "业务类型编号",
+          "name": "biz_type_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "单号",
+          "name": "doc_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "单据日期",
+          "name": "doc_date",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "询价日期",
+          "name": "inq_date",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "供应商编号",
+          "name": "supp_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "供应商名称",
+          "name": "supp_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "货币编号",
+          "name": "ccy_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "采购员编号",
+          "name": "purhr_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "采购部门编号",
+          "name": "pur_dept_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "多行输入框"
+        },
+        {
+          "label": "采购价格类型",
+          "name": "pur_price_type",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "询价类型",
+          "name": "inq_type",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "序号",
+          "name": "seq",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "单别",
+          "name": "biz_type_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "单号",
+          "name": "doc_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "品号",
+          "name": "item_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "品名",
+          "name": "item_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "规格",
+          "name": "item_spec",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "单位编号",
+          "name": "unit_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "询价数量",
+          "name": "inq_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "询价单价",
+          "name": "inq_price",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "询价金额",
+          "name": "inq_amt",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "税率",
+          "name": "tax_rate",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "百分比输入框"
+        },
+        {
+          "label": "分量计价",
+          "name": "wtbsd_prc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "核价单价",
+          "name": "pv_price",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "核价金额",
+          "name": "pv_amt",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "核定",
+          "name": "cert",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "最近核价",
+          "name": "last_pv",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "调整幅度",
+          "name": "adj_amp",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "百分比输入框"
+        },
+        {
+          "label": "议价状态",
+          "name": "nego_stat",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "生效日期",
+          "name": "eff_date",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "失效日期",
+          "name": "expy_date",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "询价来源单据类型",
+          "name": "inq_src_doc_type",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "来源单号",
+          "name": "src_doc_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "来源序号",
+          "name": "src_seq",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "多行输入框"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "次序号",
+          "name": "sub_seq",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "阶梯起始数量",
+          "name": "step_begin_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "阶梯截止数量",
+          "name": "step_end_qty",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "单价",
+          "name": "price",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "原单价",
+          "name": "old_price",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "调整幅度",
+          "name": "adj_amp",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "百分比输入框"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "多行输入框"
+        }
+      ],
+      "listColumns": [],
+      "operations": [
+        "新增",
+        "编辑",
+        "保存",
+        "删除",
+        "提交",
+        "驳回",
+        "审核",
+        "撤审",
+        "作废",
+        "取单",
+        "复制",
+        "新增明细行",
+        "删除明细行",
+        "新增分量计价行",
+        "删除分量计价行"
+      ],
+      "sourceFile": "询价单/询价单PRD.v1.7.md"
+    },
+    {
+      "workItem": "供应商品号价格",
+      "testPlan": "TP-039",
+      "prdVersion": "1.7",
+      "title": "供应商品号价格",
+      "entity": "supp_item_price",
+      "entityLabel": "供应商品号价格",
+      "fieldCount": 24,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "采购价格类型",
+          "name": "pur_price_type",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "供应商编号",
+          "name": "supp_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "供应商名称",
+          "name": "supp_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "货币编号",
+          "name": "ccy_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "品号",
+          "name": "item_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "品名",
+          "name": "item_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "规格",
+          "name": "item_spec",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "计价单位编号",
+          "name": "prc_unit_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "单价",
+          "name": "price",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "分量计价",
+          "name": "wtbsd_prc",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "生效日期",
+          "name": "eff_date",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "失效日期",
+          "name": "expy_date",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "核价日期",
+          "name": "pv_date",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "税种编号",
+          "name": "tax_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "税率",
+          "name": "tax_rate",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "百分比输入框"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "多行输入框"
+        },
+        {
+          "label": "阶梯起始数量",
+          "name": "step_begin_qty",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "阶梯截止数量",
+          "name": "step_end_qty",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "采购单价",
+          "name": "pur_price",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "明细备注",
+          "name": "dtl_rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "多行输入框"
+        }
+      ],
+      "listColumns": [],
+      "operations": [
+        "新增",
+        "编辑",
+        "保存",
+        "删除",
+        "生效",
+        "失效",
+        "新增明细行",
+        "删除明细行"
+      ],
+      "sourceFile": "供应商品号价格/供应商品号价格PRD.v1.7.md"
+    },
+    {
+      "workItem": "采购退货单",
+      "testPlan": "TP-051",
+      "prdVersion": "1.11",
+      "title": "采购退货单-新版",
+      "entity": "pur_rtn_doc",
+      "entityLabel": "采购退货单",
+      "fieldCount": 87,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "单据日期",
+          "name": "doc_date",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "业务类型编号",
+          "name": "biz_type_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "采购退货单号",
+          "name": "pur_rtn_doc_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "退货日期",
+          "name": "rtn_date",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "供应商编号",
+          "name": "supp_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "供应商名称",
+          "name": "supp_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "采购员编号",
+          "name": "purhr_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "采购部门编号",
+          "name": "pur_dept_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "无税金额（原币）",
+          "name": "untax_amt_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "税额（原币）",
+          "name": "tax_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "价税合计（原币）",
+          "name": "tawt_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "无税金额（本币）",
+          "name": "untax_amt_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "税额（本币）",
+          "name": "tax_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "价税合计（本币）",
+          "name": "tawt_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "退货运营单元编号",
+          "name": "rtn_ops_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "供应商联系人",
+          "name": "supp_cntac",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "供应商地址",
+          "name": "supp_addr",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "运输方式编号",
+          "name": "trasp_mode_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "货币编号",
+          "name": "ccy_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "汇率",
+          "name": "er",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "付款条件编号",
+          "name": "pmt_terms_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "出库状态",
+          "name": "stkou_stat",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "结算运营单元编号",
+          "name": "stlmt_ops_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "结算供应商编号",
+          "name": "stlmt_supp_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "结算供应商名称",
+          "name": "stlmt_supp_name",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "结算供应商联系人",
+          "name": "stlmt_supp_cntac",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "结算供应商地址",
+          "name": "stlmt_supp_addr",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "直接结账",
+          "name": "dir_pmt",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "当前可结算",
+          "name": "curr_can_stlmt",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "可抵扣VAT标识",
+          "name": "ded_vat_flag",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "税务发票类型",
+          "name": "tax_inv_type",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "税务发票号码",
+          "name": "tax_inv_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "退货说明",
+          "name": "rtn_desc",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "退货方式",
+          "name": "rtn_mode",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "件数",
+          "name": "pcs",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "序号",
+          "name": "seq",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "商品类型",
+          "name": "goods_type",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "品号",
+          "name": "item_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "计价单位和采购单位须相同",
+          "name": "CUS_prc_unit_and_pur_unit_rqd_same",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "品名",
+          "name": "item_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "规格",
+          "name": "item_spec",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "业务数量",
+          "name": "biz_qty",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "业务单位编号",
+          "name": "biz_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "计价数量",
+          "name": "prc_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "计价单位编号",
+          "name": "prc_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "库存单位数量",
+          "name": "invnt_unit_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "库存单位编号",
+          "name": "invnt_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "第二单位数量",
+          "name": "sec_unit_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "第二单位编号",
+          "name": "sec_unit_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "单价",
+          "name": "price",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "金额",
+          "name": "amt",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "折扣率",
+          "name": "disc_rate",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "百分比输入框"
+        },
+        {
+          "label": "折扣后单价",
+          "name": "discd_price",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "折扣额",
+          "name": "disc_amt",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "仓库编号",
+          "name": "whse_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "储位编号",
+          "name": "stsp_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "批号",
+          "name": "lot_no",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "批号说明",
+          "name": "CUS_lot_desc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "生效日期",
+          "name": "CUS_lot_eff_date",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "生效截止日期",
+          "name": "CUS_lot_eff_end_date",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "税率",
+          "name": "tax_rate",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "百分比输入框"
+        },
+        {
+          "label": "无税金额（原币）",
+          "name": "untax_amt_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "税额（原币）",
+          "name": "tax_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "价税合计（原币）",
+          "name": "tawt_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "无税金额（本币）",
+          "name": "untax_amt_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "税额（本币）",
+          "name": "tax_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "价税合计（本币）",
+          "name": "tawt_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "采购类型",
+          "name": "pur_type",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "采购退货来源单据类型",
+          "name": "pur_rtn_src_doc_type",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "来源运营单元编号",
+          "name": "src_ops_unit_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "来源单号",
+          "name": "src_doc_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "来源序号",
+          "name": "src_seq",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "来源次序号",
+          "name": "src_sub_seq",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "采购退货参考来源类型",
+          "name": "pur_rtn_ref_src_type",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "参考来源单号",
+          "name": "ref_src_doc_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "参考来源序号",
+          "name": "ref_src_seq",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "参考来源次序号",
+          "name": "ref_src_sub_seq",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "出库结束码",
+          "name": "stkou_end_code",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "扣已入库量",
+          "name": "ded_alr_stkin_qty",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开关"
+        },
+        {
+          "label": "件数",
+          "name": "pcs",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        }
+      ],
+      "listColumns": [],
+      "operations": [
+        "新增",
+        "编辑",
+        "保存",
+        "删除",
+        "提交",
+        "驳回",
+        "审核",
+        "撤审",
+        "作废",
+        "取单",
+        "复制",
+        "新增",
+        "删除"
+      ],
+      "sourceFile": "采购退货单/采购退货单PRD.v1.11.md"
+    },
+    {
+      "workItem": "采购退货出库单",
+      "testPlan": "TP-052",
+      "prdVersion": "1.24",
+      "title": "采购退货出库单-新版",
+      "entity": "pur_rtn_stkou_doc",
+      "entityLabel": "采购退货出库单",
+      "fieldCount": 53,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "单据日期",
+          "name": "doc_date",
+          "required": true,
+          "readonly": false,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "业务类型编号",
+          "name": "biz_type_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "采购退货出库单号",
+          "name": "pur_rtn_stkou_doc_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "交易日期",
+          "name": "trans_date",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "日期选择器"
+        },
+        {
+          "label": "供应商编号",
+          "name": "supp_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "供应商名称",
+          "name": "supp_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "限用仓库编号",
+          "name": "limit_whse_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "仓管人员编号",
+          "name": "whse_mgmt_pers_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "仓管部门编号",
+          "name": "whse_mgmt_dept_no",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "业务数量合计",
+          "name": "total_biz_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "件数",
+          "name": "pcs",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "过账状态",
+          "name": "post_stat",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "序号",
+          "name": "seq",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "采购退货出库来源单据类型",
+          "name": "pur_rtn_stkou_src_doc_type",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "来源运营单元编号",
+          "name": "src_ops_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "来源单号",
+          "name": "src_doc_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "来源序号",
+          "name": "src_seq",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "品号",
+          "name": "item_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "品名",
+          "name": "item_name",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "规格",
+          "name": "item_spec",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "特征码",
+          "name": "item_feat_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "商品类型",
+          "name": "goods_type",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "仓库编号",
+          "name": "whse_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "储位编号",
+          "name": "stsp_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "批号",
+          "name": "lot_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "业务数量",
+          "name": "biz_qty",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "业务单位编号",
+          "name": "biz_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "计价数量",
+          "name": "prc_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "计价单位编号",
+          "name": "prc_unit_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "库存单位数量",
+          "name": "invnt_unit_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "库存单位编号",
+          "name": "invnt_unit_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "第二单位数量",
+          "name": "sec_unit_qty",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "第二单位编号",
+          "name": "sec_unit_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no",
+          "required": true,
+          "readonly": true,
+          "key": false,
+          "component": "开窗选择器"
+        },
+        {
+          "label": "备注",
+          "name": "rmk",
+          "required": false,
+          "readonly": false,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "采购退货出库参考来源类型",
+          "name": "pur_rtn_stkou_ref_src_type",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "参考来源运营单元编号",
+          "name": "ref_src_ops_unit_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "参考来源单号",
+          "name": "ref_src_doc_no",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "参考来源序号",
+          "name": "ref_src_seq",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "采购类型",
+          "name": "pur_type",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        },
+        {
+          "label": "件数",
+          "name": "pcs",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "单行输入框"
+        },
+        {
+          "label": "无税金额（原币）",
+          "name": "untax_amt_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "税额（原币）",
+          "name": "tax_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "无税金额（本币）",
+          "name": "untax_amt_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "税额（本币）",
+          "name": "tax_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "货款金额（原币）",
+          "name": "pmt_amt_tc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "货款金额（本币）",
+          "name": "pmt_amt_fc",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "数字输入框"
+        },
+        {
+          "label": "结算状态",
+          "name": "stlmt_stat",
+          "required": false,
+          "readonly": true,
+          "key": false,
+          "component": "下拉选择"
+        }
+      ],
+      "listColumns": [],
+      "operations": [
+        "新增",
+        "编辑",
+        "保存",
+        "删除",
+        "审核",
+        "撤审",
+        "作废",
+        "取单",
+        "新增",
+        "删除"
+      ],
+      "sourceFile": "采购退货出库单/采购退货出库单PRD.v1.24.md"
+    }
+  ]
+}

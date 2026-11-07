@@ -1,0 +1,982 @@
+--- list ---
+{
+  "urlPath": "/",
+  "tabs": [
+    "列表"
+  ],
+  "columns": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "$$_no",
+      "label": "序号"
+    },
+    {
+      "colId": "pur_price_type",
+      "label": "采购价格类型"
+    },
+    {
+      "colId": "supp_no",
+      "label": "供应商编号"
+    },
+    {
+      "colId": "supp_name",
+      "label": "供应商名称"
+    },
+    {
+      "colId": "item_no",
+      "label": "品号"
+    },
+    {
+      "colId": "item_name",
+      "label": "品名"
+    },
+    {
+      "colId": "item_spec",
+      "label": "规格"
+    },
+    {
+      "colId": "ccy_no",
+      "label": "货币编号"
+    },
+    {
+      "colId": "ccy_name",
+      "label": "货币名称"
+    },
+    {
+      "colId": "manage_status",
+      "label": "状态"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "rows": [
+    {
+      "i": "0",
+      "cells": {
+        "pur_price_type": "一般采购",
+        "supp_no": "00001",
+        "supp_name": "001",
+        "item_no": "0001",
+        "item_name": "列举测试属性长度11",
+        "item_spec": "测试品号通用信息",
+        "ccy_no": "RMB",
+        "ccy_name": "人民币"
+      }
+    },
+    {
+      "i": "1",
+      "cells": {
+        "pur_price_type": "一般采购",
+        "supp_no": "00001",
+        "supp_name": "001",
+        "item_no": "MA001",
+        "item_name": "列举测试属性长度",
+        "item_spec": "美利达自行车规格",
+        "ccy_no": "RMB",
+        "ccy_name": "人民币"
+      }
+    },
+    {
+      "i": "2",
+      "cells": {
+        "pur_price_type": "一般采购",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "item_no": "BMCPC1001",
+        "item_name": "联想PC1001",
+        "item_spec": "联想intel i732G1TB16英寸windows系统",
+        "ccy_no": "RMB",
+        "ccy_name": "人民币"
+      }
+    },
+    {
+      "i": "3",
+      "cells": {
+        "pur_price_type": "一般采购",
+        "supp_no": "CN06JD001",
+        "supp_name": "华中京东旗舰店",
+        "item_no": "01-1-00003",
+        "item_name": "原材料贵金属",
+        "item_spec": "原材料*贵金属222",
+        "ccy_no": "RMB",
+        "ccy_name": "人民币"
+      }
+    },
+    {
+      "i": "4",
+      "cells": {
+        "pur_price_type": "一般采购",
+        "supp_no": "GN-001-WC-001",
+        "supp_name": "北京微信渠道供应商1",
+        "item_no": "01-1-00003",
+        "item_name": "原材料贵金属",
+        "item_spec": "原材料*贵金属222",
+        "ccy_no": "RMB",
+        "ccy_name": "人民币"
+      }
+    }
+  ],
+  "toolbar": [
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "筛选",
+      "disabled": false
+    },
+    {
+      "text": "导入",
+      "disabled": false
+    },
+    {
+      "text": "导出",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    }
+  ],
+  "footer": "共 20 条"
+}
+--- new ---
+{
+  "urlPath": "/detail",
+  "tabs": [
+    "列表",
+    "详情"
+  ],
+  "fields": [
+    {
+      "path": "supp_item_price.ops_unit_no",
+      "label": "运营单元",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.supp_no",
+      "label": "供应商",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.item_no",
+      "label": "品号",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.item_spec",
+      "label": "规格",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": "255"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.ccy_no",
+      "label": "货币",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.intax_flag",
+      "label": "含税标识",
+      "required": false,
+      "input": null,
+      "select": null,
+      "window": null,
+      "switch": {
+        "checked": "false",
+        "disabled": false
+      }
+    },
+    {
+      "path": "supp_item_price.pur_price_type",
+      "label": "采购价格类型",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "一般采购",
+        "disabled": false
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.prc_unit_no",
+      "label": "计价单位",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.price",
+      "label": "单价",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "16"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.wtbsd_prc",
+      "label": "分量计价",
+      "required": false,
+      "input": null,
+      "select": null,
+      "window": null,
+      "switch": {
+        "checked": "false",
+        "disabled": false
+      }
+    },
+    {
+      "path": "supp_item_price.eff_date",
+      "label": "生效日期",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "2026-11-06",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.expy_date",
+      "label": "失效日期",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.pv_date",
+      "label": "核价日期",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "2026-11-06",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "supp_item_price.rmk",
+      "label": "备注",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    }
+  ],
+  "gridHeaders": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "seq",
+      "label": "*序号"
+    },
+    {
+      "colId": "step_begin_qty",
+      "label": "阶梯起始数量"
+    },
+    {
+      "colId": "step_end_qty",
+      "label": "*阶梯截止数量"
+    },
+    {
+      "colId": "pur_price",
+      "label": "采购单价"
+    },
+    {
+      "colId": "dtl_rmk",
+      "label": "明细备注"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "gridRows": 0,
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "取消",
+      "disabled": false
+    },
+    {
+      "text": "保存并新增",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "disabled": false
+    }
+  ]
+}

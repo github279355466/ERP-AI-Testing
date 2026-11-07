@@ -1,0 +1,2977 @@
+{
+  "version": 1,
+  "sourceRoot": "C:\\Users\\Administrator\\AppData\\Roaming\\ade-client\\ade-workspace\\tenant_digichannel\\solution_smbcloud\\_prd_workspace\\prd",
+  "generatedAt": "2026-11-06T07:25:10.746Z",
+  "entries": [
+    {
+      "workItem": "采购退货出库单",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-052"
+      ],
+      "fileName": "采购退货出库单PRD.v1.22.md",
+      "relativePath": "采购退货出库单/采购退货出库单PRD.v1.22.md",
+      "prdVersion": "1.22",
+      "modifiedAt": "2026-11-06T01:45:44.460Z",
+      "title": "采购退货出库单-新版",
+      "prdType": "表单",
+      "entity": "pur_rtn_stkou_doc",
+      "entityLabel": "采购退货出库单",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "五、字段规则修正清单",
+        "六、附录：平台链路核验结论",
+        "附录 A 变更历史明细"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "3.2 设计器待补建虚拟字段清单（6 个 CUS 字段）",
+        "采购退货出库单-新版列表页",
+        "采购退货出库单-新版详情页",
+        "整体操作",
+        "明细操作",
+        "5.1 单价组：一律不设字段",
+        "5.2 金额组：必须落库、只读、非必填、过账生成",
+        "5.3 税额组：必须落库、只读、非必填、过账生成",
+        "5.4 结算与成本相关字段（本次补入规则，字段配置见第三章）",
+        "5.5 与旧版判断的差异（务必对照）",
+        "A.1 结论速查",
+        "A.2 三张单据的角色与岗位",
+        "A.3 应付结算链路",
+        "A.4 成本链路",
+        "A.5 按实际出库数量折算的算法",
+        "A.6 采购退货单审核是否生成出库单",
+        "A.7 完整数据流",
+        "A.8 核心字段实证",
+        "A.9 核验依据的资产",
+        "A.10 落地风险清单",
+        "A.11 取单赋值核验表（模型字段编码级）",
+        "A.12 取单来源口径裁决（2026-10-30）",
+        "A.13 V1.12 流程图与原型补齐 + 展示设置修复（2026-10-31）",
+        "A.14 V1.13 删除提交与驳回（2026-10-31）",
+        "A.15 V1.14 字段口径收敛（2026-10-31）",
+        "A.16 V1.15 上云静默丢单定位与修复（2026-10-31）",
+        "A.17 V1.16 取单段落 HTML 实体修正（2026-10-31）",
+        "A.18 V1.17 流程图与交互原型补图（2026-10-31）",
+        "A.19 V1.18 虚拟字段补建清单与两处规则缺口（2026-11-01）",
+        "A.20 V1.19 项目编号参数链路收敛与单头变更控制统一（2026-11-04）",
+        "A.21 V1.22 取单增加单头限用仓库过滤（2026-11-06）"
+      ],
+      "fieldCount": 53,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "单据日期",
+          "name": "doc_date"
+        },
+        {
+          "label": "业务类型编号",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop"
+        },
+        {
+          "label": "采购退货出库单号",
+          "name": "pur_rtn_stkou_doc_no"
+        },
+        {
+          "label": "交易日期",
+          "name": "trans_date"
+        },
+        {
+          "label": "供应商编号",
+          "name": "supp_no"
+        },
+        {
+          "label": "供应商名称",
+          "name": "supp_name"
+        },
+        {
+          "label": "限用仓库编号",
+          "name": "limit_whse_no"
+        },
+        {
+          "label": "仓管人员编号",
+          "name": "whse_mgmt_pers_no"
+        },
+        {
+          "label": "仓管部门编号",
+          "name": "whse_mgmt_dept_no"
+        },
+        {
+          "label": "业务数量合计",
+          "name": "total_biz_qty"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "件数",
+          "name": "pcs"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "过账状态",
+          "name": "post_stat"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "采购退货出库来源单据类型",
+          "name": "pur_rtn_stkou_src_doc_type"
+        },
+        {
+          "label": "来源运营单元编号",
+          "name": "src_ops_unit_no"
+        },
+        {
+          "label": "来源单号",
+          "name": "src_doc_no"
+        },
+        {
+          "label": "来源序号",
+          "name": "src_seq"
+        },
+        {
+          "label": "品号",
+          "name": "item_no"
+        },
+        {
+          "label": "品名",
+          "name": "item_name"
+        },
+        {
+          "label": "规格",
+          "name": "item_spec"
+        },
+        {
+          "label": "特征码",
+          "name": "item_feat_no"
+        },
+        {
+          "label": "商品类型",
+          "name": "goods_type"
+        },
+        {
+          "label": "仓库编号",
+          "name": "whse_no"
+        },
+        {
+          "label": "储位编号",
+          "name": "stsp_no"
+        },
+        {
+          "label": "批号",
+          "name": "lot_no"
+        },
+        {
+          "label": "业务数量",
+          "name": "biz_qty"
+        },
+        {
+          "label": "业务单位编号",
+          "name": "biz_unit_no"
+        },
+        {
+          "label": "计价数量",
+          "name": "prc_qty"
+        },
+        {
+          "label": "计价单位编号",
+          "name": "prc_unit_no"
+        },
+        {
+          "label": "库存单位数量",
+          "name": "invnt_unit_qty"
+        },
+        {
+          "label": "库存单位编号",
+          "name": "invnt_unit_no"
+        },
+        {
+          "label": "第二单位数量",
+          "name": "sec_unit_qty"
+        },
+        {
+          "label": "第二单位编号",
+          "name": "sec_unit_no"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "采购退货出库参考来源类型",
+          "name": "pur_rtn_stkou_ref_src_type"
+        },
+        {
+          "label": "参考来源运营单元编号",
+          "name": "ref_src_ops_unit_no"
+        },
+        {
+          "label": "参考来源单号",
+          "name": "ref_src_doc_no"
+        },
+        {
+          "label": "参考来源序号",
+          "name": "ref_src_seq"
+        },
+        {
+          "label": "采购类型",
+          "name": "pur_type"
+        },
+        {
+          "label": "件数",
+          "name": "pcs"
+        },
+        {
+          "label": "无税金额（原币）",
+          "name": "untax_amt_tc"
+        },
+        {
+          "label": "税额（原币）",
+          "name": "tax_tc"
+        },
+        {
+          "label": "无税金额（本币）",
+          "name": "untax_amt_fc"
+        },
+        {
+          "label": "税额（本币）",
+          "name": "tax_fc"
+        },
+        {
+          "label": "货款金额（原币）",
+          "name": "pmt_amt_tc"
+        },
+        {
+          "label": "货款金额（本币）",
+          "name": "pmt_amt_fc"
+        },
+        {
+          "label": "结算状态",
+          "name": "stlmt_stat"
+        }
+      ],
+      "versionCount": 4
+    },
+    {
+      "workItem": "供应商品号价格",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-039"
+      ],
+      "fileName": "供应商品号价格PRD.v1.7.md",
+      "relativePath": "供应商品号价格/供应商品号价格PRD.v1.7.md",
+      "prdVersion": "1.7",
+      "modifiedAt": "2026-11-05T07:34:04.491Z",
+      "title": "供应商品号价格",
+      "prdType": "表单",
+      "entity": "supp_item_price",
+      "entityLabel": "供应商品号价格",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "五、校验规则汇总",
+        "六、权限与数据范围",
+        "七、验收条目（AC）",
+        "八、待业务确认",
+        "附录 A 变更历史明细"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "供应商品号价格列表页",
+        "供应商品号价格详情页",
+        "整体操作",
+        "明细操作"
+      ],
+      "fieldCount": 24,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "采购价格类型",
+          "name": "pur_price_type"
+        },
+        {
+          "label": "供应商编号",
+          "name": "supp_no"
+        },
+        {
+          "label": "供应商名称",
+          "name": "supp_name"
+        },
+        {
+          "label": "货币编号",
+          "name": "ccy_no"
+        },
+        {
+          "label": "品号",
+          "name": "item_no"
+        },
+        {
+          "label": "品名",
+          "name": "item_name"
+        },
+        {
+          "label": "规格",
+          "name": "item_spec"
+        },
+        {
+          "label": "计价单位编号",
+          "name": "prc_unit_no"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag"
+        },
+        {
+          "label": "单价",
+          "name": "price"
+        },
+        {
+          "label": "分量计价",
+          "name": "wtbsd_prc"
+        },
+        {
+          "label": "生效日期",
+          "name": "eff_date"
+        },
+        {
+          "label": "失效日期",
+          "name": "expy_date"
+        },
+        {
+          "label": "核价日期",
+          "name": "pv_date"
+        },
+        {
+          "label": "税种编号",
+          "name": "tax_no"
+        },
+        {
+          "label": "税率",
+          "name": "tax_rate"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "阶梯起始数量",
+          "name": "step_begin_qty"
+        },
+        {
+          "label": "阶梯截止数量",
+          "name": "step_end_qty"
+        },
+        {
+          "label": "采购单价",
+          "name": "pur_price"
+        },
+        {
+          "label": "明细备注",
+          "name": "dtl_rmk"
+        }
+      ],
+      "versionCount": 3
+    },
+    {
+      "workItem": "会计期间表",
+      "pageId": "acctg-perid-table",
+      "testPlanIds": [
+        "TP-064"
+      ],
+      "fileName": "会计期间表PRD.v1.6.md",
+      "relativePath": "会计期间表/会计期间表PRD.v1.6.md",
+      "prdVersion": "1.6",
+      "modifiedAt": "2026-11-04T06:49:06.557Z",
+      "title": "会计期间表",
+      "prdType": "表单",
+      "entity": "acctg_perid_table",
+      "entityLabel": "会计期间表",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更历史明细",
+        "附录 B 待确认事项",
+        "附录 C 回退配置（字段事件不支持建行时启用）"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "会计期间表列表页",
+        "会计期间表详情页",
+        "整体操作",
+        "明细生成规则（由分期数录入触发，无独立按钮）",
+        "明细操作"
+      ],
+      "fieldCount": 10,
+      "fields": [
+        {
+          "label": "会计期间表编号",
+          "name": "acctg_perid_table_no"
+        },
+        {
+          "label": "会计期间表名称",
+          "name": "acctg_perid_table_name"
+        },
+        {
+          "label": "分期数",
+          "name": "insta_count"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "会计期间期号",
+          "name": "acctg_perid_no"
+        },
+        {
+          "label": "季度",
+          "name": "qtr"
+        },
+        {
+          "label": "会计调整期标识",
+          "name": "acctg_adj_perid_flag"
+        },
+        {
+          "label": "会计调整期类型",
+          "name": "acctg_adj_perid_type"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 2
+    },
+    {
+      "workItem": "会计期间信息",
+      "pageId": "acctg-perid-info",
+      "testPlanIds": [
+        "TP-065"
+      ],
+      "fileName": "会计期间信息PRD.v1.4.md",
+      "relativePath": "会计期间信息/会计期间信息PRD.v1.4.md",
+      "prdVersion": "1.4",
+      "modifiedAt": "2026-11-04T06:49:06.558Z",
+      "title": "会计期间信息",
+      "prdType": "表单",
+      "entity": "acctg_perid_info",
+      "entityLabel": "会计期间信息",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更历史明细",
+        "附录 B 待确认事项",
+        "附录 C 回退配置：「生成明细」按钮版"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "会计期间信息列表页",
+        "会计期间信息详情页",
+        "整体操作",
+        "明细生成规则（由开始日期录入触发，无独立按钮）",
+        "明细操作",
+        "C.1 按钮配置：生成明细（仅回退时启用）",
+        "C.2 字段侧需同步调整"
+      ],
+      "fieldCount": 13,
+      "fields": [
+        {
+          "label": "会计期间表编号",
+          "name": "acctg_perid_table_no"
+        },
+        {
+          "label": "分期数",
+          "name": "insta_count"
+        },
+        {
+          "label": "会计年度",
+          "name": "acctg_year"
+        },
+        {
+          "label": "开始日期",
+          "name": "begin_date"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "会计期间期号",
+          "name": "acctg_perid_no"
+        },
+        {
+          "label": "开始日期",
+          "name": "begin_date"
+        },
+        {
+          "label": "结束日期",
+          "name": "end_date"
+        },
+        {
+          "label": "季度",
+          "name": "qtr"
+        },
+        {
+          "label": "会计调整期标识",
+          "name": "acctg_adj_perid_flag"
+        },
+        {
+          "label": "会计调整期类型",
+          "name": "acctg_adj_perid_type"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 2
+    },
+    {
+      "workItem": "结算业务单别",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-068"
+      ],
+      "fileName": "结算业务单别PRD.v1.1.md",
+      "relativePath": "结算业务单别/结算业务单别PRD.v1.1.md",
+      "prdVersion": "1.1",
+      "modifiedAt": "2026-10-28T08:42:42.301Z",
+      "title": "结算业务单别",
+      "prdType": "表单",
+      "entity": "biz_type_gen_info",
+      "entityLabel": "业务类型通用信息",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更历史明细",
+        "附录 B 待确认事项"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 编码规则对照",
+        "3.1 交互原型",
+        "结算业务单别列表页",
+        "结算业务单别详情页",
+        "整体操作"
+      ],
+      "fieldCount": 12,
+      "fields": [
+        {
+          "label": "业务域",
+          "name": "biz_reg"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop"
+        },
+        {
+          "label": "业务单别",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务单别名称",
+          "name": "biz_type_name"
+        },
+        {
+          "label": "业务单别全称",
+          "name": "biz_type_fname"
+        },
+        {
+          "label": "自动编码方式",
+          "name": "auto_code_mode"
+        },
+        {
+          "label": "年位数",
+          "name": "year_digit_type"
+        },
+        {
+          "label": "流水号位数",
+          "name": "serl_digit"
+        },
+        {
+          "label": "编码格式",
+          "name": "CUS_biz_type_fmt"
+        },
+        {
+          "label": "前缀连接符",
+          "name": "pref_conn"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 1
+    },
+    {
+      "workItem": "结算业务单别参数",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-067"
+      ],
+      "fileName": "结算业务单别参数PRD.v1.3.md",
+      "relativePath": "结算业务单别参数/结算业务单别参数PRD.v1.3.md",
+      "prdVersion": "1.3",
+      "modifiedAt": "2026-11-04T06:49:06.549Z",
+      "title": "结算业务单别参数",
+      "prdType": "表单",
+      "entity": "biz_type_st_param",
+      "entityLabel": "业务类型结算参数",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更历史明细",
+        "附录 B 待确认事项",
+        "附录 C 扩展字段补建说明"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 联动规则",
+        "3.1 交互原型",
+        "结算业务单别参数列表页",
+        "结算业务单别参数详情页",
+        "整体操作",
+        "C.1 表单生成后需手工补建的两个字段",
+        "C.2 字段补建后即生效的规则（已在 prd_spec 中，无需再配）",
+        "C.3 为什么要「先上传、后补字段」",
+        "C.4 冒烟验证清单"
+      ],
+      "fieldCount": 9,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "业务单别",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务单别名称",
+          "name": "CUS_biz_type_name"
+        },
+        {
+          "label": "业务性质",
+          "name": "CUS_biz_prop"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "审核后自动过账标识",
+          "name": "aprv_auto_post_flag"
+        },
+        {
+          "label": "自动审核",
+          "name": "creat_is_auto_aprv"
+        },
+        {
+          "label": "修改是否自动审核",
+          "name": "mod_is_auto_aprv"
+        }
+      ],
+      "versionCount": 2
+    },
+    {
+      "workItem": "客户供应商关系",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-072"
+      ],
+      "fileName": "客户供应商关系PRD.v1.7.md",
+      "relativePath": "客户供应商关系/客户供应商关系PRD.v1.7.md",
+      "prdVersion": "1.7",
+      "modifiedAt": "2026-11-05T07:34:04.498Z",
+      "title": "客户供应商关系",
+      "prdType": "表单",
+      "entity": "cust_supp_rela",
+      "entityLabel": "客户供应商关系档",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "五、校验规则汇总",
+        "六、权限与数据范围",
+        "七、验收条目（AC）",
+        "八、开放问题",
+        "附录 A 变更历史明细"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "客户供应商关系列表页",
+        "客户供应商关系详情页",
+        "整体操作"
+      ],
+      "fieldCount": 7,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "客户编号",
+          "name": "cust_no"
+        },
+        {
+          "label": "客户名称",
+          "name": "cust_name"
+        },
+        {
+          "label": "供应商编号",
+          "name": "supp_no"
+        },
+        {
+          "label": "供应商名称",
+          "name": "supp_name"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 2
+    },
+    {
+      "workItem": "其他应付单",
+      "pageId": null,
+      "testPlanIds": [],
+      "fileName": "其他应付单PRD.v1.10.md",
+      "relativePath": "其他应付单/其他应付单PRD.v1.10.md",
+      "prdVersion": "1.10",
+      "modifiedAt": "2026-11-05T07:34:04.494Z",
+      "title": "其他应付单",
+      "prdType": "表单",
+      "entity": "other_pay_doc",
+      "entityLabel": "其他应付单",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "五、字段规则与服务链路",
+        "附录 A 变更历史明细"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 联动规则",
+        "3.1 交互原型",
+        "其他应付单列表页",
+        "其他应付单详情页",
+        "整体操作",
+        "明细操作",
+        "5.1 单号与取号",
+        "5.2 开窗与回填对照",
+        "5.3 状态机",
+        "5.4 自动过账与自动取消过账规则",
+        "5.5 平台必填入参对照",
+        "5.6 一期范围与二期排除",
+        "5.7 字段隐藏/删除口径与名称字段核验"
+      ],
+      "fieldCount": 60,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "业务类型编号",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务类型名称",
+          "name": "biz_type_name"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop"
+        },
+        {
+          "label": "业务方向",
+          "name": "biz_dirct"
+        },
+        {
+          "label": "单号",
+          "name": "doc_no"
+        },
+        {
+          "label": "单据日期",
+          "name": "doc_date"
+        },
+        {
+          "label": "核销方式",
+          "name": "verf_mode"
+        },
+        {
+          "label": "结算对象类型",
+          "name": "stlmt_obj_type"
+        },
+        {
+          "label": "结算对象编号",
+          "name": "stlmt_obj_no"
+        },
+        {
+          "label": "结算对象名称",
+          "name": "stlmt_obj_name"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "责任人编号",
+          "name": "resp_pers_no"
+        },
+        {
+          "label": "责任人名称",
+          "name": "resp_pers_name"
+        },
+        {
+          "label": "责任部门编号",
+          "name": "resp_dept_no"
+        },
+        {
+          "label": "责任部门名称",
+          "name": "resp_dept_name"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no"
+        },
+        {
+          "label": "项目名称",
+          "name": "proj_name"
+        },
+        {
+          "label": "货币编号",
+          "name": "ccy_no"
+        },
+        {
+          "label": "货币名称",
+          "name": "ccy_name"
+        },
+        {
+          "label": "汇率",
+          "name": "er"
+        },
+        {
+          "label": "付款条件编号",
+          "name": "pmt_terms_no"
+        },
+        {
+          "label": "付款条件名称",
+          "name": "pmt_terms_name"
+        },
+        {
+          "label": "付款日",
+          "name": "pmt_date"
+        },
+        {
+          "label": "兑现日",
+          "name": "cashg_date"
+        },
+        {
+          "label": "记账日期",
+          "name": "bk_date"
+        },
+        {
+          "label": "会计年度",
+          "name": "acctg_year"
+        },
+        {
+          "label": "会计期间期号",
+          "name": "acctg_perid_no"
+        },
+        {
+          "label": "会计期间序号",
+          "name": "acctg_perid_seq"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "审核时间",
+          "name": "aprv_time"
+        },
+        {
+          "label": "现结标识",
+          "name": "cash_stlmt_flag"
+        },
+        {
+          "label": "过账状态",
+          "name": "post_stat"
+        },
+        {
+          "label": "现金折扣方式",
+          "name": "cash_disc_mode"
+        },
+        {
+          "label": "责任运营单元编号",
+          "name": "resp_ops_unit_no"
+        },
+        {
+          "label": "责任运营单元名称",
+          "name": "resp_ops_unit_name"
+        },
+        {
+          "label": "应付金额（原币）",
+          "name": "pay_amt_tc"
+        },
+        {
+          "label": "应付金额（本币）",
+          "name": "pay_amt_fc"
+        },
+        {
+          "label": "附加结算费用金额（原币）",
+          "name": "addl_stlmt_exp_amt_tc"
+        },
+        {
+          "label": "附加结算费用金额（本币）",
+          "name": "addl_stlmt_exp_amt_fc"
+        },
+        {
+          "label": "金额合计（原币）",
+          "name": "total_amt_tc"
+        },
+        {
+          "label": "金额合计（本币）",
+          "name": "total_amt_fc"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "其他应付类型",
+          "name": "other_pay_type"
+        },
+        {
+          "label": "其他收付项目编号",
+          "name": "other_ar_ap_item_no"
+        },
+        {
+          "label": "其他收付项目名称",
+          "name": "other_ar_ap_item_name"
+        },
+        {
+          "label": "费用编号",
+          "name": "exp_no"
+        },
+        {
+          "label": "费用名称",
+          "name": "exp_name"
+        },
+        {
+          "label": "结算方式编号",
+          "name": "stlmt_mode_no"
+        },
+        {
+          "label": "结算方式名称",
+          "name": "stlmt_mode_name"
+        },
+        {
+          "label": "银行账号",
+          "name": "bank_acct_no"
+        },
+        {
+          "label": "结算号",
+          "name": "stlmt_no"
+        },
+        {
+          "label": "结算日期",
+          "name": "stlmt_date"
+        },
+        {
+          "label": "到期日",
+          "name": "due_date"
+        },
+        {
+          "label": "金额（原币）",
+          "name": "amt_tc"
+        },
+        {
+          "label": "金额（本币）",
+          "name": "amt_fc"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no"
+        },
+        {
+          "label": "项目名称",
+          "name": "proj_name"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 11
+    },
+    {
+      "workItem": "其他应收单",
+      "pageId": null,
+      "testPlanIds": [],
+      "fileName": "其他应收单PRD.v2.5.md",
+      "relativePath": "其他应收单/其他应收单PRD.v2.5.md",
+      "prdVersion": "2.5",
+      "modifiedAt": "2026-11-05T07:34:04.496Z",
+      "title": "其他应收单",
+      "prdType": "表单",
+      "entity": "other_recev_doc",
+      "entityLabel": "其他应收单",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "五、字段规则与服务链路",
+        "附录 A 变更历史明细"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 联动规则",
+        "3.1 交互原型",
+        "其他应收单列表页",
+        "其他应收单详情页",
+        "整体操作",
+        "明细操作",
+        "5.1 单号与取号",
+        "5.2 开窗与回填对照",
+        "5.3 状态机",
+        "5.4 自动过账与自动取消过账规则",
+        "5.5 平台必填入参对照",
+        "5.6 一期范围与二期排除",
+        "5.7 字段隐藏/删除口径与名称字段核验"
+      ],
+      "fieldCount": 58,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "业务类型编号",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务类型名称",
+          "name": "biz_type_name"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop"
+        },
+        {
+          "label": "业务方向",
+          "name": "biz_dirct"
+        },
+        {
+          "label": "单号",
+          "name": "doc_no"
+        },
+        {
+          "label": "单据日期",
+          "name": "doc_date"
+        },
+        {
+          "label": "核销方式",
+          "name": "verf_mode"
+        },
+        {
+          "label": "结算对象类型",
+          "name": "stlmt_obj_type"
+        },
+        {
+          "label": "结算对象编号",
+          "name": "stlmt_obj_no"
+        },
+        {
+          "label": "结算对象名称",
+          "name": "stlmt_obj_name"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "责任人编号",
+          "name": "resp_pers_no"
+        },
+        {
+          "label": "责任人名称",
+          "name": "resp_pers_name"
+        },
+        {
+          "label": "责任部门编号",
+          "name": "resp_dept_no"
+        },
+        {
+          "label": "责任部门名称",
+          "name": "resp_dept_name"
+        },
+        {
+          "label": "货币编号",
+          "name": "ccy_no"
+        },
+        {
+          "label": "货币名称",
+          "name": "ccy_name"
+        },
+        {
+          "label": "汇率",
+          "name": "er"
+        },
+        {
+          "label": "付款条件编号",
+          "name": "pmt_terms_no"
+        },
+        {
+          "label": "付款条件名称",
+          "name": "pmt_terms_name"
+        },
+        {
+          "label": "付款日",
+          "name": "pmt_date"
+        },
+        {
+          "label": "兑现日",
+          "name": "cashg_date"
+        },
+        {
+          "label": "记账日期",
+          "name": "bk_date"
+        },
+        {
+          "label": "会计年度",
+          "name": "acctg_year"
+        },
+        {
+          "label": "会计期间期号",
+          "name": "acctg_perid_no"
+        },
+        {
+          "label": "会计期间序号",
+          "name": "acctg_perid_seq"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "审核时间",
+          "name": "aprv_time"
+        },
+        {
+          "label": "过账状态",
+          "name": "post_stat"
+        },
+        {
+          "label": "现结标识",
+          "name": "cash_stlmt_flag"
+        },
+        {
+          "label": "现金折扣方式",
+          "name": "cash_disc_mode"
+        },
+        {
+          "label": "责任运营单元编号",
+          "name": "resp_ops_unit_no"
+        },
+        {
+          "label": "责任运营单元名称",
+          "name": "resp_ops_unit_name"
+        },
+        {
+          "label": "应收金额（原币）",
+          "name": "recev_amt_tc"
+        },
+        {
+          "label": "应收金额（本币）",
+          "name": "recev_amt_fc"
+        },
+        {
+          "label": "附加结算费用金额（原币）",
+          "name": "addl_stlmt_exp_amt_tc"
+        },
+        {
+          "label": "附加结算费用金额（本币）",
+          "name": "addl_stlmt_exp_amt_fc"
+        },
+        {
+          "label": "金额合计（原币）",
+          "name": "total_amt_tc"
+        },
+        {
+          "label": "金额合计（本币）",
+          "name": "total_amt_fc"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "其他应收类型",
+          "name": "other_recev_type"
+        },
+        {
+          "label": "其他收付项目编号",
+          "name": "other_ar_ap_item_no"
+        },
+        {
+          "label": "其他收付项目名称",
+          "name": "other_ar_ap_item_name"
+        },
+        {
+          "label": "结算方式编号",
+          "name": "stlmt_mode_no"
+        },
+        {
+          "label": "结算方式名称",
+          "name": "stlmt_mode_name"
+        },
+        {
+          "label": "费用编号",
+          "name": "exp_no"
+        },
+        {
+          "label": "费用名称",
+          "name": "exp_name"
+        },
+        {
+          "label": "银行账号",
+          "name": "bank_acct_no"
+        },
+        {
+          "label": "结算号",
+          "name": "stlmt_no"
+        },
+        {
+          "label": "结算日期",
+          "name": "stlmt_date"
+        },
+        {
+          "label": "到期日",
+          "name": "due_date"
+        },
+        {
+          "label": "金额（原币）",
+          "name": "amt_tc"
+        },
+        {
+          "label": "金额（本币）",
+          "name": "amt_fc"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no"
+        },
+        {
+          "label": "项目名称",
+          "name": "proj_name"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 14
+    },
+    {
+      "workItem": "应付参数",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-063"
+      ],
+      "fileName": "应付参数PRD.v1.10.md",
+      "relativePath": "应付参数/应付参数PRD.v1.10.md",
+      "prdVersion": "1.10",
+      "modifiedAt": "2026-11-05T07:34:04.504Z",
+      "title": "应付参数",
+      "prdType": "表单",
+      "entity": "ops_unit_calc_param",
+      "entityLabel": "运营单元核算参数",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更明细",
+        "附录 B 待确认事项",
+        "附录 C 表单生成链路与字段归属约束"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "应付参数列表页",
+        "应付参数详情页",
+        "整体操作",
+        "不提供的操作",
+        "A.1 V1.0 期间修订（2026-10-13 ～ 2026-10-26）",
+        "A.2 V1.1 评审修订（2026-10-30）",
+        "A.3 V1.2 评审修订（2026-10-30）",
+        "A.4 V1.3 评审确认（2026-10-30）",
+        "A.5 V1.4 列表页生成失败修复（2026-10-31）",
+        "A.6 V1.5 标题名对齐模型官方名（2026-10-31）",
+        "A.7 V1.6 列表页按钮补齐（2026-10-31）",
+        "A.8 V1.7 编辑入口合并载入（2026-10-31）",
+        "A.9 V1.9 R10 填值方式整改（2026-11-04）",
+        "A.9 V1.8 详情页移除编辑按钮（2026-10-31）"
+      ],
+      "fieldCount": 9,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "暂估单模式标识",
+          "name": "pesti_doc_mode_flag"
+        },
+        {
+          "label": "存货暂估冲回方式（存货固资）",
+          "name": "invnt_pesti_rvsl_mode"
+        },
+        {
+          "label": "价款差异实时调整",
+          "name": "price_diff_immed_adj"
+        },
+        {
+          "label": "价款存货调整业务类型",
+          "name": "price_invnt_adj_biz_type"
+        },
+        {
+          "label": "费用分摊差异实时调整",
+          "name": "exp_alloc_diff_immed_adj"
+        },
+        {
+          "label": "费用分摊存货调整业务类型",
+          "name": "exp_alloc_invnt_adj_biz_type"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 8
+    },
+    {
+      "workItem": "应付单",
+      "pageId": null,
+      "testPlanIds": [],
+      "fileName": "应付单PRD.v1.10.md",
+      "relativePath": "应付单/应付单PRD.v1.10.md",
+      "prdVersion": "1.10",
+      "modifiedAt": "2026-11-05T07:34:04.503Z",
+      "title": "应付单",
+      "prdType": "表单",
+      "entity": "pay_doc",
+      "entityLabel": "应付单",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "五、字段规则与服务链路",
+        "附录 A 变更历史明细"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 联动规则",
+        "3.1 交互原型",
+        "应付单列表页",
+        "应付单详情页",
+        "整体操作",
+        "明细操作",
+        "5.1 单号与取号",
+        "5.2 取单来源与校验映射",
+        "5.3 联动计算（bm.pay_doc.lnkg_calc）入参与变化类型",
+        "5.4 状态机",
+        "5.5 自动过账与自动取消过账规则",
+        "5.6 平台必填入参对照",
+        "5.7 一期范围与二期排除",
+        "5.8 字段隐藏/删除口径与名称字段核验"
+      ],
+      "fieldCount": 107,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "业务类型编号",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务类型名称",
+          "name": "biz_type_name"
+        },
+        {
+          "label": "单号",
+          "name": "doc_no"
+        },
+        {
+          "label": "单据日期",
+          "name": "doc_date"
+        },
+        {
+          "label": "核销方式",
+          "name": "verf_mode"
+        },
+        {
+          "label": "结算供应商编号",
+          "name": "stlmt_supp_no"
+        },
+        {
+          "label": "结算供应商名称",
+          "name": "stlmt_supp_name"
+        },
+        {
+          "label": "采购供应商编号",
+          "name": "pur_supp_no"
+        },
+        {
+          "label": "采购供应商名称",
+          "name": "pur_supp_name"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop"
+        },
+        {
+          "label": "应付业务性质",
+          "name": "pay_biz_prop"
+        },
+        {
+          "label": "应付业务类型",
+          "name": "pay_biz_type"
+        },
+        {
+          "label": "应付明细业务类型",
+          "name": "pay_dtl_biz_type"
+        },
+        {
+          "label": "责任人编号",
+          "name": "resp_pers_no"
+        },
+        {
+          "label": "责任人名称",
+          "name": "resp_pers_name"
+        },
+        {
+          "label": "责任部门编号",
+          "name": "resp_dept_no"
+        },
+        {
+          "label": "责任部门名称",
+          "name": "resp_dept_name"
+        },
+        {
+          "label": "货币编号",
+          "name": "ccy_no"
+        },
+        {
+          "label": "货币名称",
+          "name": "ccy_name"
+        },
+        {
+          "label": "汇率",
+          "name": "er"
+        },
+        {
+          "label": "付款条件编号",
+          "name": "pmt_terms_no"
+        },
+        {
+          "label": "付款条件名称",
+          "name": "pmt_terms_name"
+        },
+        {
+          "label": "付款日",
+          "name": "pmt_date"
+        },
+        {
+          "label": "兑现日",
+          "name": "cashg_date"
+        },
+        {
+          "label": "税务发票种类编号",
+          "name": "tax_inv_categ_no"
+        },
+        {
+          "label": "税务发票种类名称",
+          "name": "tax_inv_categ_name"
+        },
+        {
+          "label": "税种编号",
+          "name": "tax_no"
+        },
+        {
+          "label": "税种名称",
+          "name": "tax_name"
+        },
+        {
+          "label": "税率",
+          "name": "tax_rate"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag"
+        },
+        {
+          "label": "税务发票方向",
+          "name": "tax_inv_dirct"
+        },
+        {
+          "label": "税务发票控制标识",
+          "name": "tax_inv_cntl_flag"
+        },
+        {
+          "label": "红冲标识",
+          "name": "rvs_flag"
+        },
+        {
+          "label": "红冲来源单号",
+          "name": "rvs_src_doc_no"
+        },
+        {
+          "label": "红冲单号",
+          "name": "rvs_doc_no"
+        },
+        {
+          "label": "应付暂估冲回状态",
+          "name": "ap_pesti_rvsl_stat"
+        },
+        {
+          "label": "记账日期",
+          "name": "bk_date"
+        },
+        {
+          "label": "会计年度",
+          "name": "acctg_year"
+        },
+        {
+          "label": "会计期间期号",
+          "name": "acctg_perid_no"
+        },
+        {
+          "label": "会计期间序号",
+          "name": "acctg_perid_seq"
+        },
+        {
+          "label": "审核时间",
+          "name": "aprv_time"
+        },
+        {
+          "label": "过账状态",
+          "name": "post_stat"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "税务发票号码合并文本",
+          "name": "tax_inv_no_merge_text"
+        },
+        {
+          "label": "银行账号",
+          "name": "bank_acct_no"
+        },
+        {
+          "label": "税额计算方式",
+          "name": "tax_calc_mode"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no"
+        },
+        {
+          "label": "项目名称",
+          "name": "proj_name"
+        },
+        {
+          "label": "采购运营单元编号",
+          "name": "pur_ops_unit_no"
+        },
+        {
+          "label": "采购运营单元名称",
+          "name": "pur_ops_unit_name"
+        },
+        {
+          "label": "税区编号",
+          "name": "tax_dist_no"
+        },
+        {
+          "label": "税区名称",
+          "name": "tax_dist_name"
+        },
+        {
+          "label": "无税金额（原币）",
+          "name": "untax_amt_tc"
+        },
+        {
+          "label": "税额（原币）",
+          "name": "tax_tc"
+        },
+        {
+          "label": "价税合计（原币）",
+          "name": "tawt_tc"
+        },
+        {
+          "label": "无税金额（本币）",
+          "name": "untax_amt_fc"
+        },
+        {
+          "label": "税额（本币）",
+          "name": "tax_fc"
+        },
+        {
+          "label": "价税合计（本币）",
+          "name": "tawt_fc"
+        },
+        {
+          "label": "存货价差",
+          "name": "ppv"
+        },
+        {
+          "label": "现金折扣方式",
+          "name": "cash_disc_mode"
+        },
+        {
+          "label": "VAT标识",
+          "name": "vat_flag"
+        },
+        {
+          "label": "统一税种税率标识",
+          "name": "uni_tax_rate_flag"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "税务发票号码",
+          "name": "tax_inv_no"
+        },
+        {
+          "label": "税务发票日期",
+          "name": "tax_inv_date"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "应付来源类型",
+          "name": "pay_src_type"
+        },
+        {
+          "label": "来源业务类型编号",
+          "name": "src_biz_type_no"
+        },
+        {
+          "label": "来源单号",
+          "name": "src_doc_no"
+        },
+        {
+          "label": "来源序号",
+          "name": "src_seq"
+        },
+        {
+          "label": "来源日期",
+          "name": "src_date"
+        },
+        {
+          "label": "来源运营单元编号",
+          "name": "src_ops_unit_no"
+        },
+        {
+          "label": "品号",
+          "name": "item_no"
+        },
+        {
+          "label": "品名",
+          "name": "item_name"
+        },
+        {
+          "label": "生产运营单元编号",
+          "name": "prodn_ops_unit_no"
+        },
+        {
+          "label": "生产运营单元名称",
+          "name": "prodn_ops_unit_name"
+        },
+        {
+          "label": "应付采购类型",
+          "name": "pay_pur_type"
+        },
+        {
+          "label": "财务参考单据1类型",
+          "name": "fin_ref_doc1_type"
+        },
+        {
+          "label": "财务参考单据2类型",
+          "name": "fin_ref_doc2_type"
+        },
+        {
+          "label": "商品类型",
+          "name": "goods_type"
+        },
+        {
+          "label": "规格",
+          "name": "item_spec"
+        },
+        {
+          "label": "计价单位编号",
+          "name": "prc_unit_no"
+        },
+        {
+          "label": "计价单位名称",
+          "name": "prc_unit_name"
+        },
+        {
+          "label": "计价数量",
+          "name": "prc_qty"
+        },
+        {
+          "label": "单价",
+          "name": "price"
+        },
+        {
+          "label": "折扣率",
+          "name": "disc_rate"
+        },
+        {
+          "label": "折扣额",
+          "name": "disc_amt"
+        },
+        {
+          "label": "折扣后无税单价",
+          "name": "discd_untax_price"
+        },
+        {
+          "label": "折扣后含税单价",
+          "name": "discd_intax_price"
+        },
+        {
+          "label": "税率",
+          "name": "tax_rate"
+        },
+        {
+          "label": "税种编号",
+          "name": "tax_no"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag"
+        },
+        {
+          "label": "无税金额（原币）",
+          "name": "untax_amt_tc"
+        },
+        {
+          "label": "税额（原币）",
+          "name": "tax_tc"
+        },
+        {
+          "label": "价税合计（原币）",
+          "name": "tawt_tc"
+        },
+        {
+          "label": "无税金额（本币）",
+          "name": "untax_amt_fc"
+        },
+        {
+          "label": "税额（本币）",
+          "name": "tax_fc"
+        },
+        {
+          "label": "价税合计（本币）",
+          "name": "tawt_fc"
+        },
+        {
+          "label": "税额抵扣标识",
+          "name": "tax_ded_flag"
+        },
+        {
+          "label": "存货价差",
+          "name": "ppv"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no"
+        },
+        {
+          "label": "项目名称",
+          "name": "proj_name"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 11
+    },
+    {
+      "workItem": "应付启用期间",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-060"
+      ],
+      "fileName": "应付启用期间PRD.v1.3-cloud.md",
+      "relativePath": "应付启用期间/应付启用期间PRD.v1.3-cloud.md",
+      "prdVersion": "1.3",
+      "modifiedAt": "2026-11-05T07:34:04.505Z",
+      "title": "应付启用期间",
+      "prdType": "表单",
+      "entity": "ops_unit_calc_param",
+      "entityLabel": "运营单元核算参数",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "应付启用期间列表页",
+        "应付启用期间详情页",
+        "整体操作"
+      ],
+      "fieldCount": 5,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "启用年度-应付",
+          "name": "ena_year_pay"
+        },
+        {
+          "label": "启用期号-应付",
+          "name": "ena_perid_no_pay"
+        },
+        {
+          "label": "启用期间序号-应付",
+          "name": "ena_perid_seq_pay"
+        }
+      ],
+      "versionCount": 2
+    },
+    {
+      "workItem": "应付业务单别",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-061"
+      ],
+      "fileName": "应付业务单别PRD.v1.1.md",
+      "relativePath": "应付业务单别/应付业务单别PRD.v1.1.md",
+      "prdVersion": "1.1",
+      "modifiedAt": "2026-10-28T08:51:02.745Z",
+      "title": "应付业务单别",
+      "prdType": "表单",
+      "entity": "biz_type_gen_info",
+      "entityLabel": "业务类型通用信息",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更历史明细",
+        "附录 B 待确认事项"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 编码规则对照",
+        "3.1 交互原型",
+        "应付业务单别列表页",
+        "应付业务单别详情页",
+        "整体操作"
+      ],
+      "fieldCount": 12,
+      "fields": [
+        {
+          "label": "业务域",
+          "name": "biz_reg"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop"
+        },
+        {
+          "label": "业务单别",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务单别名称",
+          "name": "biz_type_name"
+        },
+        {
+          "label": "业务单别全称",
+          "name": "biz_type_fname"
+        },
+        {
+          "label": "自动编码方式",
+          "name": "auto_code_mode"
+        },
+        {
+          "label": "年位数",
+          "name": "year_digit_type"
+        },
+        {
+          "label": "流水号位数",
+          "name": "serl_digit"
+        },
+        {
+          "label": "编码格式",
+          "name": "CUS_biz_type_fmt"
+        },
+        {
+          "label": "前缀连接符",
+          "name": "pref_conn"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 1
+    },
+    {
+      "workItem": "应付业务单别参数",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-062"
+      ],
+      "fileName": "应付业务单别参数PRD.v1.5.md",
+      "relativePath": "应付业务单别参数/应付业务单别参数PRD.v1.5.md",
+      "prdVersion": "1.5",
+      "modifiedAt": "2026-11-05T07:34:04.499Z",
+      "title": "应付业务单别参数",
+      "prdType": "表单",
+      "entity": "biz_type_ap_param",
+      "entityLabel": "业务类型应付参数",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更历史明细",
+        "附录 B 待确认事项",
+        "附录 C 扩展字段补建说明"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 联动规则",
+        "3.1 交互原型",
+        "应付业务单别参数列表页",
+        "应付业务单别参数详情页",
+        "整体操作",
+        "C.1 表单生成后需手工补建的两个字段",
+        "C.2 字段补建后即生效的规则（已在 prd_spec 中，无需再配）",
+        "C.3 为什么要「先上传、后补字段」",
+        "C.4 冒烟验证清单"
+      ],
+      "fieldCount": 14,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "业务单别",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务单别名称",
+          "name": "CUS_biz_type_name"
+        },
+        {
+          "label": "业务性质",
+          "name": "CUS_biz_prop"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "核销方式",
+          "name": "verf_mode"
+        },
+        {
+          "label": "税务发票控制标识",
+          "name": "tax_inv_cntl_flag"
+        },
+        {
+          "label": "现结标识",
+          "name": "cash_stlmt_flag"
+        },
+        {
+          "label": "现结业务单别",
+          "name": "cash_stlmt_biz_type_no"
+        },
+        {
+          "label": "分期冲减单别",
+          "name": "insta_offst_adv_biz_type_no"
+        },
+        {
+          "label": "审核后自动过账标识",
+          "name": "aprv_auto_post_flag"
+        },
+        {
+          "label": "自动审核",
+          "name": "creat_is_auto_aprv"
+        },
+        {
+          "label": "修改是否自动审核",
+          "name": "mod_is_auto_aprv"
+        }
+      ],
+      "versionCount": 3
+    },
+    {
+      "workItem": "应收参数",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-071"
+      ],
+      "fileName": "应收参数PRD.v1.10.md",
+      "relativePath": "应收参数/应收参数PRD.v1.10.md",
+      "prdVersion": "1.10",
+      "modifiedAt": "2026-11-05T07:34:04.512Z",
+      "title": "应收参数",
+      "prdType": "表单",
+      "entity": "ops_unit_calc_param",
+      "entityLabel": "运营单元核算参数",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更明细",
+        "附录 B 待确认事项",
+        "附录 C 表单生成链路与字段归属约束"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "应收参数列表页",
+        "应收参数详情页",
+        "整体操作",
+        "不提供的操作",
+        "A.1 V1.0 期间修订（2026-10-13 ～ 2026-10-20）",
+        "A.2 V1.1 评审修订（2026-10-30）",
+        "A.3 V1.2 评审修订（2026-10-30）",
+        "A.4 V1.3 评审确认（2026-10-30）",
+        "A.5 V1.4 规范补齐（2026-10-31）",
+        "A.6 V1.5 标题名对齐模型官方名（2026-10-31）",
+        "A.7 V1.6 列表页按钮补齐（2026-10-31）",
+        "A.8 V1.7 编辑入口合并载入（2026-10-31）",
+        "A.9 V1.9 R10 填值方式整改（2026-11-04）",
+        "A.9 V1.8 详情页移除编辑按钮（2026-10-31）"
+      ],
+      "fieldCount": 5,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "坏账准备计提方式",
+          "name": "pvn_acrl_mode"
+        },
+        {
+          "label": "坏账准备计提比率",
+          "name": "pvn_acrl_rate"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 8
+    },
+    {
+      "workItem": "应收单",
+      "pageId": null,
+      "testPlanIds": [],
+      "fileName": "应收单PRD.v2.7.md",
+      "relativePath": "应收单/应收单PRD.v2.7.md",
+      "prdVersion": "2.7",
+      "modifiedAt": "2026-11-05T07:34:04.510Z",
+      "title": "应收单",
+      "prdType": "表单",
+      "entity": "recev_doc",
+      "entityLabel": "应收单",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "五、字段规则与服务链路",
+        "附录 A 补充修订记录"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 联动规则",
+        "3.1 交互原型",
+        "应收单列表页",
+        "应收单详情页",
+        "整体操作",
+        "明细操作",
+        "5.1 单号与取号",
+        "5.2 取单来源与校验映射",
+        "5.3 联动计算（bm.recev_doc.lnkg_calc）入参与变化类型",
+        "5.4 状态机",
+        "5.5 自动过账与自动取消过账规则",
+        "5.6 平台必填入参对照",
+        "5.7 一期范围与二期排除",
+        "5.8 字段隐藏/删除口径与名称字段核验"
+      ],
+      "fieldCount": 109,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "业务单别",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务类型名称",
+          "name": "biz_type_name"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop"
+        },
+        {
+          "label": "单号",
+          "name": "doc_no"
+        },
+        {
+          "label": "单据日期",
+          "name": "doc_date"
+        },
+        {
+          "label": "核销方式",
+          "name": "verf_mode"
+        },
+        {
+          "label": "结算客户编号",
+          "name": "stlmt_cust_no"
+        },
+        {
+          "label": "结算客户名称",
+          "name": "stlmt_cust_name"
+        },
+        {
+          "label": "销售客户编号",
+          "name": "sales_cust_no"
+        },
+        {
+          "label": "销售客户名称",
+          "name": "sales_cust_name"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "应收业务性质",
+          "name": "recev_biz_prop"
+        },
+        {
+          "label": "应收业务类型",
+          "name": "recev_biz_type"
+        },
+        {
+          "label": "应收明细业务类型",
+          "name": "recev_dtl_biz_type"
+        },
+        {
+          "label": "责任人编号",
+          "name": "resp_pers_no"
+        },
+        {
+          "label": "责任人名称",
+          "name": "resp_pers_name"
+        },
+        {
+          "label": "责任部门编号",
+          "name": "resp_dept_no"
+        },
+        {
+          "label": "责任部门名称",
+          "name": "resp_dept_name"
+        },
+        {
+          "label": "货币编号",
+          "name": "ccy_no"
+        },
+        {
+          "label": "货币名称",
+          "name": "ccy_name"
+        },
+        {
+          "label": "汇率",
+          "name": "er"
+        },
+        {
+          "label": "付款条件编号",
+          "name": "pmt_terms_no"
+        },
+        {
+          "label": "付款条件名称",
+          "name": "pmt_terms_name"
+        },
+        {
+          "label": "付款日",
+          "name": "pmt_date"
+        },
+        {
+          "label": "兑现日",
+          "name": "cashg_date"
+        },
+        {
+          "label": "税务发票种类编号",
+          "name": "tax_inv_categ_no"
+        },
+        {
+          "label": "税务发票种类名称",
+          "name": "tax_inv_categ_name"
+        },
+        {
+          "label": "税种编号",
+          "name": "tax_no"
+        },
+        {
+          "label": "税种名称",
+          "name": "tax_name"
+        },
+        {
+          "label": "税率",
+          "name": "tax_rate"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag"
+        },
+        {
+          "label": "税务发票控制标识",
+          "name": "tax_inv_cntl_flag"
+        },
+        {
+          "label": "红冲状态",
+          "name": "rvs_stat"
+        },
+        {
+          "label": "红冲来源单号",
+          "name": "rvs_src_doc_no"
+        },
+        {
+          "label": "红冲单号",
+          "name": "rvs_doc_no"
+        },
+        {
+          "label": "税区编号",
+          "name": "tax_dist_no"
+        },
+        {
+          "label": "税区名称",
+          "name": "tax_dist_name"
+        },
+        {
+          "label": "记账日期",
+          "name": "bk_date"
+        },
+        {
+          "label": "会计年度",
+          "name": "acctg_year"
+        },
+        {
+          "label": "会计期间期号",
+          "name": "acctg_perid_no"
+        },
+        {
+          "label": "会计期间序号",
+          "name": "acctg_perid_seq"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "审核时间",
+          "name": "aprv_time"
+        },
+        {
+          "label": "过账状态",
+          "name": "post_stat"
+        },
+        {
+          "label": "税务发票方向",
+          "name": "tax_inv_dirct"
+        },
+        {
+          "label": "税务发票号码合并文本",
+          "name": "tax_inv_no_merge_text"
+        },
+        {
+          "label": "销售运营单元编号",
+          "name": "sales_ops_unit_no"
+        },
+        {
+          "label": "销售运营单元名称",
+          "name": "sales_ops_unit_name"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no"
+        },
+        {
+          "label": "项目名称",
+          "name": "proj_name"
+        },
+        {
+          "label": "结算方式编号",
+          "name": "stlmt_mode_no"
+        },
+        {
+          "label": "银行账号",
+          "name": "bank_acct_no"
+        },
+        {
+          "label": "结算号",
+          "name": "stlmt_no"
+        },
+        {
+          "label": "结算日期",
+          "name": "stlmt_date"
+        },
+        {
+          "label": "税额计算方式",
+          "name": "tax_calc_mode"
+        },
+        {
+          "label": "无税金额（原币）",
+          "name": "untax_amt_tc"
+        },
+        {
+          "label": "税额（原币）",
+          "name": "tax_tc"
+        },
+        {
+          "label": "价税合计（原币）",
+          "name": "tawt_tc"
+        },
+        {
+          "label": "无税金额（本币）",
+          "name": "untax_amt_fc"
+        },
+        {
+          "label": "税额（本币）",
+          "name": "tax_fc"
+        },
+        {
+          "label": "价税合计（本币）",
+          "name": "tawt_fc"
+        },
+        {
+          "label": "分期来源类型",
+          "name": "insta_src_type"
+        },
+        {
+          "label": "现金折扣方式",
+          "name": "cash_disc_mode"
+        },
+        {
+          "label": "统一税种税率标识",
+          "name": "uni_tax_rate_flag"
+        },
+        {
+          "label": "VAT标识",
+          "name": "vat_flag"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "应收来源单据类型",
+          "name": "recev_src_doc_type"
+        },
+        {
+          "label": "来源业务类型编号",
+          "name": "src_biz_type_no"
+        },
+        {
+          "label": "来源单号",
+          "name": "src_doc_no"
+        },
+        {
+          "label": "来源序号",
+          "name": "src_seq"
+        },
+        {
+          "label": "来源日期",
+          "name": "src_date"
+        },
+        {
+          "label": "其他收付项目编号",
+          "name": "other_ar_ap_item_no"
+        },
+        {
+          "label": "品号",
+          "name": "item_no"
+        },
+        {
+          "label": "品名",
+          "name": "item_name"
+        },
+        {
+          "label": "规格",
+          "name": "item_spec"
+        },
+        {
+          "label": "计价单位编号",
+          "name": "prc_unit_no"
+        },
+        {
+          "label": "计价单位名称",
+          "name": "prc_unit_name"
+        },
+        {
+          "label": "计价数量",
+          "name": "prc_qty"
+        },
+        {
+          "label": "单价",
+          "name": "price"
+        },
+        {
+          "label": "折扣率",
+          "name": "disc_rate"
+        },
+        {
+          "label": "折扣无税金额（原币）",
+          "name": "disc_untax_amt_tc"
+        },
+        {
+          "label": "税种编号",
+          "name": "tax_no"
+        },
+        {
+          "label": "税率",
+          "name": "tax_rate"
+        },
+        {
+          "label": "含税标识",
+          "name": "intax_flag"
+        },
+        {
+          "label": "商品类型",
+          "name": "goods_type"
+        },
+        {
+          "label": "无税金额（原币）",
+          "name": "untax_amt_tc"
+        },
+        {
+          "label": "税额（原币）",
+          "name": "tax_tc"
+        },
+        {
+          "label": "价税合计（原币）",
+          "name": "tawt_tc"
+        },
+        {
+          "label": "无税金额（本币）",
+          "name": "untax_amt_fc"
+        },
+        {
+          "label": "税额（本币）",
+          "name": "tax_fc"
+        },
+        {
+          "label": "价税合计（本币）",
+          "name": "tawt_fc"
+        },
+        {
+          "label": "项目编号",
+          "name": "proj_no"
+        },
+        {
+          "label": "项目名称",
+          "name": "proj_name"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        },
+        {
+          "label": "生产运营单元编号",
+          "name": "prodn_ops_unit_no"
+        },
+        {
+          "label": "生产运营单元名称",
+          "name": "prodn_ops_unit_name"
+        },
+        {
+          "label": "来源运营单元编号",
+          "name": "src_ops_unit_no"
+        },
+        {
+          "label": "财务参考单据1类型",
+          "name": "fin_ref_doc1_type"
+        },
+        {
+          "label": "财务参考单据2类型",
+          "name": "fin_ref_doc2_type"
+        },
+        {
+          "label": "折扣后无税单价",
+          "name": "discd_untax_price"
+        },
+        {
+          "label": "折扣后含税单价",
+          "name": "discd_intax_price"
+        },
+        {
+          "label": "折扣含税金额（原币）",
+          "name": "disc_intax_amt_tc"
+        },
+        {
+          "label": "VAT标识",
+          "name": "vat_flag"
+        },
+        {
+          "label": "序号",
+          "name": "seq"
+        },
+        {
+          "label": "税务发票号码",
+          "name": "tax_inv_no"
+        },
+        {
+          "label": "税务发票日期",
+          "name": "tax_inv_date"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 16
+    },
+    {
+      "workItem": "应收启用期间",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-066"
+      ],
+      "fileName": "应收启用期间PRD.v1.3-cloud.md",
+      "relativePath": "应收启用期间/应收启用期间PRD.v1.3-cloud.md",
+      "prdVersion": "1.3",
+      "modifiedAt": "2026-11-05T07:34:04.514Z",
+      "title": "应收启用期间",
+      "prdType": "表单",
+      "entity": "ops_unit_calc_param",
+      "entityLabel": "运营单元核算参数",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "3.1 交互原型",
+        "应收启用期间列表页",
+        "应收启用期间详情页",
+        "整体操作"
+      ],
+      "fieldCount": 5,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "启用年度应收",
+          "name": "ena_year_recev"
+        },
+        {
+          "label": "启用期号应收",
+          "name": "ena_perid_no_recev"
+        },
+        {
+          "label": "启用期间序号应收",
+          "name": "ena_perid_seq_recev"
+        }
+      ],
+      "versionCount": 2
+    },
+    {
+      "workItem": "应收业务单别",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-069"
+      ],
+      "fileName": "应收业务单别PRD.v1.1.md",
+      "relativePath": "应收业务单别/应收业务单别PRD.v1.1.md",
+      "prdVersion": "1.1",
+      "modifiedAt": "2026-10-28T08:51:02.747Z",
+      "title": "应收业务单别",
+      "prdType": "表单",
+      "entity": "biz_type_gen_info",
+      "entityLabel": "业务类型通用信息",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更历史明细",
+        "附录 B 待确认事项"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 编码规则对照",
+        "3.1 交互原型",
+        "应收业务单别列表页",
+        "应收业务单别详情页",
+        "整体操作"
+      ],
+      "fieldCount": 12,
+      "fields": [
+        {
+          "label": "业务域",
+          "name": "biz_reg"
+        },
+        {
+          "label": "业务性质",
+          "name": "biz_prop"
+        },
+        {
+          "label": "业务单别",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务单别名称",
+          "name": "biz_type_name"
+        },
+        {
+          "label": "业务单别全称",
+          "name": "biz_type_fname"
+        },
+        {
+          "label": "自动编码方式",
+          "name": "auto_code_mode"
+        },
+        {
+          "label": "年位数",
+          "name": "year_digit_type"
+        },
+        {
+          "label": "流水号位数",
+          "name": "serl_digit"
+        },
+        {
+          "label": "编码格式",
+          "name": "CUS_biz_type_fmt"
+        },
+        {
+          "label": "前缀连接符",
+          "name": "pref_conn"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "备注",
+          "name": "rmk"
+        }
+      ],
+      "versionCount": 1
+    },
+    {
+      "workItem": "应收业务单别参数",
+      "pageId": null,
+      "testPlanIds": [
+        "TP-070"
+      ],
+      "fileName": "应收业务单别参数PRD.v1.5.md",
+      "relativePath": "应收业务单别参数/应收业务单别参数PRD.v1.5.md",
+      "prdVersion": "1.5",
+      "modifiedAt": "2026-11-05T07:34:04.507Z",
+      "title": "应收业务单别参数",
+      "prdType": "表单",
+      "entity": "biz_type_ar_param",
+      "entityLabel": "业务类型应收参数",
+      "application": "smbcloud",
+      "sections": [
+        "一、变更日志",
+        "二、业务说明",
+        "三、功能说明",
+        "四、操作说明",
+        "附录 A 变更历史明细",
+        "附录 B 待确认事项",
+        "附录 C 扩展字段补建说明"
+      ],
+      "subsections": [
+        "2.1 名词解释",
+        "2.2 需求背景",
+        "2.3 业务流程图",
+        "2.4 联动规则",
+        "3.1 交互原型",
+        "应收业务单别参数列表页",
+        "应收业务单别参数详情页",
+        "整体操作",
+        "C.1 表单生成后需手工补建的两个字段",
+        "C.2 字段补建后即生效的规则（已在 prd_spec 中，无需再配）",
+        "C.3 为什么要「先上传、后补字段」",
+        "C.4 冒烟验证清单"
+      ],
+      "fieldCount": 14,
+      "fields": [
+        {
+          "label": "运营单元编号",
+          "name": "ops_unit_no"
+        },
+        {
+          "label": "运营单元名称",
+          "name": "ops_unit_name"
+        },
+        {
+          "label": "业务单别",
+          "name": "biz_type_no"
+        },
+        {
+          "label": "业务单别名称",
+          "name": "CUS_biz_type_name"
+        },
+        {
+          "label": "业务性质",
+          "name": "CUS_biz_prop"
+        },
+        {
+          "label": "状态",
+          "name": "manage_status"
+        },
+        {
+          "label": "核销方式",
+          "name": "verf_mode"
+        },
+        {
+          "label": "税务发票控制标识",
+          "name": "tax_inv_cntl_flag"
+        },
+        {
+          "label": "现结标识",
+          "name": "cash_stlmt_flag"
+        },
+        {
+          "label": "现结业务单别",
+          "name": "cash_stlmt_biz_type_no"
+        },
+        {
+          "label": "分期冲减单别",
+          "name": "insta_offst_adv_biz_type_no"
+        },
+        {
+          "label": "审核后自动过账标识",
+          "name": "aprv_auto_post_flag"
+        },
+        {
+          "label": "自动审核",
+          "name": "creat_is_auto_aprv"
+        },
+        {
+          "label": "修改是否自动审核",
+          "name": "mod_is_auto_aprv"
+        }
+      ],
+      "versionCount": 3
+    }
+  ]
+}

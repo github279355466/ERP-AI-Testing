@@ -1,0 +1,102 @@
+{
+  "id": "TP-065",
+  "name": "会计期间信息：列表、详情与期间连续性（只读）",
+  "steps": [
+    { "action": "snapshot", "name": "TP-065-list" },
+    {
+      "action": "assertGrid",
+      "level": "ui",
+      "name": "列表结构",
+      "minRows": 1,
+      "requiredColIds": ["acctg_perid_table_no", "insta_count", "acctg_year", "begin_date", "rmk", "operate"]
+    },
+    { "action": "screenshot", "name": "TP-065-list" },
+    { "action": "click", "text": "查看" },
+    { "action": "waitFor", "selector": "[class*=\"FormItem-module_form-item__\"]" },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "会计期间表：控件类型",
+      "fieldPath": "acctg_perid_info.acctg_perid_table_no",
+      "kind": "LOOKUP",
+      "expectRequired": true
+    },
+    {
+      "action": "assertFieldValue",
+      "level": "business",
+      "name": "会计期间表回带值",
+      "fieldPath": "acctg_perid_info.acctg_perid_table_no",
+      "expected": "会计期间表",
+      "mode": "contains"
+    },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "分期数：控件类型",
+      "fieldPath": "acctg_perid_info.insta_count",
+      "kind": "READONLY"
+    },
+    {
+      "action": "assertFieldValue",
+      "level": "business",
+      "name": "分期数回带值",
+      "fieldPath": "acctg_perid_info.insta_count",
+      "expected": "12",
+      "mode": "equals"
+    },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "会计年度：控件类型",
+      "fieldPath": "acctg_perid_info.acctg_year",
+      "kind": "READONLY",
+      "expectRequired": true
+    },
+    {
+      "action": "assertFieldValue",
+      "level": "business",
+      "name": "会计年度取值",
+      "fieldPath": "acctg_perid_info.acctg_year",
+      "expected": "2026",
+      "mode": "equals"
+    },
+    {
+      "action": "assertField",
+      "level": "ui",
+      "name": "开始日期：控件类型",
+      "fieldPath": "acctg_perid_info.begin_date",
+      "kind": "READONLY",
+      "expectRequired": true
+    },
+    {
+      "action": "assertFieldValue",
+      "level": "business",
+      "name": "开始日期取值",
+      "fieldPath": "acctg_perid_info.begin_date",
+      "expected": "2026-11-03",
+      "mode": "equals"
+    },
+    {
+      "action": "assertGridMatchesField",
+      "level": "business",
+      "name": "明细行数等于分期数",
+      "fieldPath": "acctg_perid_info.insta_count"
+    },
+    {
+      "action": "assertGrid",
+      "level": "ui",
+      "name": "明细网格结构",
+      "minRows": 12,
+      "requiredColIds": ["seq", "acctg_perid_no", "begin_date", "end_date", "acctg_adj_perid_flag", "rmk"]
+    },
+    { "action": "assertGridCell", "level": "business", "name": "首期开始日期等于单头", "rowIndex": 0, "colId": "begin_date", "expected": "2026-11-03" },
+    { "action": "assertGridCell", "level": "business", "name": "首期结束日期", "rowIndex": 0, "colId": "end_date", "expected": "2026-11-30" },
+    { "action": "assertGridCell", "level": "business", "name": "次期开始日期连续", "rowIndex": 1, "colId": "begin_date", "expected": "2026-12-01" },
+    { "action": "snapshot", "name": "TP-065-detail" },
+    { "action": "screenshot", "name": "TP-065-detail" },
+    { "action": "closeTab" },
+    { "action": "waitFor", "selector": ".ag-center-cols-container .ag-row[row-index]" },
+    { "action": "assertGrid", "level": "ui", "name": "关闭详情后列表恢复", "minRows": 1 },
+    { "action": "screenshot", "name": "TP-065-list-restored" }
+  ]
+}

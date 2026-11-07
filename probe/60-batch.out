@@ -1,0 +1,803 @@
+--- list ---
+{
+  "urlPath": "/",
+  "tabs": [
+    "列表"
+  ],
+  "columns": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "$$_no",
+      "label": "序号"
+    },
+    {
+      "colId": "code_rule_no",
+      "label": "编码规则编号"
+    },
+    {
+      "colId": "code_rule_desc",
+      "label": "编码规则说明"
+    },
+    {
+      "colId": "rmk",
+      "label": "备注"
+    },
+    {
+      "colId": "manage_status",
+      "label": "状态"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "rows": [
+    {
+      "i": "0",
+      "cells": {
+        "code_rule_no": "001",
+        "code_rule_desc": "年月日",
+        "rmk": "-"
+      }
+    },
+    {
+      "i": "1",
+      "cells": {
+        "code_rule_no": "A01",
+        "code_rule_desc": "A01",
+        "rmk": "1"
+      }
+    },
+    {
+      "i": "2",
+      "cells": {
+        "code_rule_no": "BM010",
+        "code_rule_desc": "编码规则010",
+        "rmk": "-"
+      }
+    },
+    {
+      "i": "3",
+      "cells": {
+        "code_rule_no": "CS20261012",
+        "code_rule_desc": "测试品号通用信息",
+        "rmk": "-"
+      }
+    },
+    {
+      "i": "4",
+      "cells": {
+        "code_rule_no": "CSY2026101201",
+        "code_rule_desc": "测试测试",
+        "rmk": "-"
+      }
+    }
+  ],
+  "toolbar": [
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "筛选",
+      "disabled": false
+    },
+    {
+      "text": "导入",
+      "disabled": false
+    },
+    {
+      "text": "导出",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    }
+  ],
+  "footer": "共 22 条"
+}
+--- new ---
+{
+  "urlPath": "/detail",
+  "tabs": [
+    "列表",
+    "详情"
+  ],
+  "fields": [
+    {
+      "path": "code_rule.code_rule_no",
+      "label": "规则编号",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.code_rule_desc",
+      "label": "规则说明",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.pref_value",
+      "label": "前缀值",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.pref_conn",
+      "label": "前缀连接符",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "无",
+        "disabled": true
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.suff_value",
+      "label": "后缀值",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.suff_conn",
+      "label": "后缀连接符",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "无",
+        "disabled": true
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.auto_code_mode",
+      "label": "编码方式",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "年月日+流水码",
+        "disabled": false
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.serl_digit",
+      "label": "流水号位数",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "1",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "16"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.date_code_basis",
+      "label": "日期编码依据",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "系统日期",
+        "disabled": false
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.year_digit_type",
+      "label": "年度位数类型",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "YYYY",
+        "disabled": false
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.CUS_encoding",
+      "label": "编码样式",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "YYYYMMDD9",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "code_rule.rmk",
+      "label": "备注",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    }
+  ],
+  "gridHeaders": [],
+  "gridRows": 0,
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "取消",
+      "disabled": false
+    },
+    {
+      "text": "保存并新增",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "disabled": false
+    }
+  ]
+}

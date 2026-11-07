@@ -1,0 +1,19 @@
+{
+  "id": "TP-064-CLEANUP-SELFTEST",
+  "name": "失败自动清理钩子自检（故意失败）",
+  "workItem": "会计期间表",
+  "steps": [
+    { "action": "new" },
+    { "action": "fill", "fieldPath": "acctg_perid_table.acctg_perid_table_no", "value": "T064-CLN-{{run}}" },
+    { "action": "fill", "fieldPath": "acctg_perid_table.acctg_perid_table_name", "value": "清理自检-{{run}}" },
+    { "action": "save" },
+    { "action": "assertToast", "level": "business", "name": "保存提示", "expected": "操作成功" },
+    { "action": "closeDetail" },
+    { "action": "waitRows", "min": 1 },
+    { "action": "assertRow", "level": "persistence", "name": "故意失败：记录应不存在", "column": "acctg_perid_table_no", "value": "T064-CLN-{{run}}", "expect": false }
+  ],
+  "cleanup": [
+    { "action": "clearFilter" },
+    { "action": "deleteRowIfPresent", "column": "acctg_perid_table_no", "value": "T064-CLN-{{run}}" }
+  ]
+}

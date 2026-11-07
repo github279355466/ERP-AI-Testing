@@ -1,0 +1,376 @@
+--- list ---
+{
+  "tabs": [
+    "列表",
+    "详情×"
+  ],
+  "toolbar": [
+    {
+      "text": "×",
+      "cls": "ant-tabs-tab-remove",
+      "disabled": false
+    },
+    {
+      "text": "新增",
+      "cls": "Button-module_btn__daEdK Button-module_color-default__gTnTC Button-module_variant-outlined__aZ7Wn Button-module_size-mid",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "cls": "Button-module_btn__daEdK Button-module_color-named__c-zYs Button-module_variant-solid__Rme36 Button-module_size-large__V",
+      "disabled": true
+    }
+  ],
+  "rows": [
+    {
+      "index": "0",
+      "rowId": "6e428f55-c62a-40fd-84ef-b8acb80cd7cf",
+      "text": "11-",
+      "buttons": []
+    },
+    {
+      "index": "1",
+      "rowId": "70993ae3-4742-4014-bf84-ba04df0c2f0d",
+      "text": "22-",
+      "buttons": []
+    },
+    {
+      "index": "2",
+      "rowId": "cc8d24f7-1929-4ba2-8c1c-132174461253",
+      "text": "33-",
+      "buttons": []
+    }
+  ],
+  "checkboxes": 0,
+  "headerCheckbox": true
+}
+--- new-form ---
+{
+  "tabs": [
+    "列表",
+    "详情×"
+  ],
+  "toolbar": [
+    {
+      "text": "×",
+      "cls": "ant-tabs-tab-remove",
+      "disabled": false
+    },
+    {
+      "text": "新增",
+      "cls": "Button-module_btn__daEdK Button-module_color-default__gTnTC Button-module_variant-outlined__aZ7Wn Button-module_size-mid",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "cls": "Button-module_btn__daEdK Button-module_color-named__c-zYs Button-module_variant-solid__Rme36 Button-module_size-large__V",
+      "disabled": true
+    }
+  ],
+  "rows": [
+    {
+      "index": "0",
+      "rowId": "6e428f55-c62a-40fd-84ef-b8acb80cd7cf",
+      "text": "11-",
+      "buttons": []
+    },
+    {
+      "index": "1",
+      "rowId": "70993ae3-4742-4014-bf84-ba04df0c2f0d",
+      "text": "22-",
+      "buttons": []
+    },
+    {
+      "index": "2",
+      "rowId": "cc8d24f7-1929-4ba2-8c1c-132174461253",
+      "text": "33-",
+      "buttons": []
+    }
+  ],
+  "checkboxes": 0,
+  "headerCheckbox": true
+}
+save button count: 1 visible: true
+--- view-form ---
+{
+  "tabs": [
+    "列表",
+    "详情×"
+  ],
+  "toolbar": [
+    {
+      "text": "×",
+      "cls": "ant-tabs-tab-remove",
+      "disabled": false
+    },
+    {
+      "text": "新增",
+      "cls": "Button-module_btn__daEdK Button-module_color-default__gTnTC Button-module_variant-outlined__aZ7Wn Button-module_size-lar",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "cls": "Button-module_btn__daEdK Button-module_color-default__gTnTC Button-module_variant-outlined__aZ7Wn Button-module_size-lar",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "cls": "Button-module_btn__daEdK Button-module_color-default__gTnTC Button-module_variant-outlined__aZ7Wn Button-module_size-lar",
+      "disabled": false
+    }
+  ],
+  "rows": [
+    {
+      "index": "0",
+      "rowId": "ddb679cc-2e79-4246-9a71-af94bf53e58a",
+      "text": "11-",
+      "buttons": []
+    },
+    {
+      "index": "1",
+      "rowId": "cc61a7e0-4173-49eb-bbcc-44f2125078bb",
+      "text": "22-",
+      "buttons": []
+    },
+    {
+      "index": "2",
+      "rowId": "f04cf631-4c3a-4e8d-a261-24a2d3c30d49",
+      "text": "33-",
+      "buttons": []
+    }
+  ],
+  "checkboxes": 0,
+  "headerCheckbox": true
+}
+edit button count: 1
+--- edit-form ---
+{
+  "tabs": [
+    "列表",
+    "详情×"
+  ],
+  "toolbar": [
+    {
+      "text": "×",
+      "cls": "ant-tabs-tab-remove",
+      "disabled": false
+    },
+    {
+      "text": "新增",
+      "cls": "Button-module_btn__daEdK Button-module_color-default__gTnTC Button-module_variant-outlined__aZ7Wn Button-module_size-mid",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "...",
+      "cls": "custom-op-more-btn",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "cls": "Button-module_btn__daEdK Button-module_color-named__c-zYs Button-module_variant-solid__Rme36 Button-module_size-large__V",
+      "disabled": false
+    }
+  ],
+  "rows": [
+    {
+      "index": "0",
+      "rowId": "19c61659-7c2c-4432-b821-eec23b9eadd8",
+      "text": "11-",
+      "buttons": []
+    },
+    {
+      "index": "1",
+      "rowId": "c71c4f03-80a2-47a9-b496-d1a973753b6f",
+      "text": "22-",
+      "buttons": []
+    },
+    {
+      "index": "2",
+      "rowId": "b6daa9fd-9cc6-460c-9f0a-799db5cbb8f6",
+      "text": "33-",
+      "buttons": []
+    }
+  ],
+  "checkboxes": 0,
+  "headerCheckbox": true
+}

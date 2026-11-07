@@ -1,0 +1,682 @@
+--- list ---
+{
+  "urlPath": "/",
+  "tabs": [
+    "列表"
+  ],
+  "columns": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "$$_no",
+      "label": "序号"
+    },
+    {
+      "colId": "ops_unit_no",
+      "label": "运营单元编号"
+    },
+    {
+      "colId": "ops_unit_name",
+      "label": "运营单元名称"
+    },
+    {
+      "colId": "doc_date",
+      "label": "单据日期"
+    },
+    {
+      "colId": "pur_rtn_stkou_doc_no",
+      "label": "采购退货出库单号"
+    },
+    {
+      "colId": "trans_date",
+      "label": "交易日期"
+    },
+    {
+      "colId": "supp_no",
+      "label": "供应商编号"
+    },
+    {
+      "colId": "supp_name",
+      "label": "供应商名称"
+    },
+    {
+      "colId": "whse_mgmt_pers_no",
+      "label": "仓管人员编号"
+    },
+    {
+      "colId": "manage_status",
+      "label": "状态"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "rows": [
+    {
+      "i": "0",
+      "cells": {
+        "ops_unit_no": "QN001",
+        "ops_unit_name": "全能单元001",
+        "doc_date": "2026-10-26",
+        "pur_rtn_stkou_doc_no": "IM0401-2026102600001",
+        "trans_date": "2026-10-26",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "whse_mgmt_pers_no": "-"
+      }
+    },
+    {
+      "i": "1",
+      "cells": {
+        "ops_unit_no": "QN001",
+        "ops_unit_name": "全能单元001",
+        "doc_date": "2026-10-28",
+        "pur_rtn_stkou_doc_no": "IM0401-2026102800001",
+        "trans_date": "2026-10-28",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "whse_mgmt_pers_no": "-"
+      }
+    },
+    {
+      "i": "2",
+      "cells": {
+        "ops_unit_no": "QN001",
+        "ops_unit_name": "全能单元001",
+        "doc_date": "2026-11-02",
+        "pur_rtn_stkou_doc_no": "IM0401-2026110200001",
+        "trans_date": "2026-11-02",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "whse_mgmt_pers_no": "1001"
+      }
+    },
+    {
+      "i": "3",
+      "cells": {
+        "ops_unit_no": "QN001",
+        "ops_unit_name": "全能单元001",
+        "doc_date": "2026-11-03",
+        "pur_rtn_stkou_doc_no": "IM0401-2026110300001",
+        "trans_date": "2026-11-03",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "whse_mgmt_pers_no": "1001"
+      }
+    },
+    {
+      "i": "4",
+      "cells": {
+        "ops_unit_no": "QN001",
+        "ops_unit_name": "全能单元001",
+        "doc_date": "2026-11-03",
+        "pur_rtn_stkou_doc_no": "IM0401-2026110300002",
+        "trans_date": "2026-11-03",
+        "supp_no": "SUPP-1001",
+        "supp_name": "信达物流有限公司",
+        "whse_mgmt_pers_no": "EMP001"
+      }
+    }
+  ],
+  "toolbar": [
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "筛选",
+      "disabled": false
+    },
+    {
+      "text": "导入",
+      "disabled": false
+    },
+    {
+      "text": "导出",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "审核",
+      "disabled": false
+    },
+    {
+      "text": "撤审",
+      "disabled": false
+    },
+    {
+      "text": "作废",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    }
+  ],
+  "footer": "共 8 条"
+}
+--- new ---
+{
+  "urlPath": "/detail",
+  "tabs": [
+    "列表",
+    "详情"
+  ],
+  "fields": [
+    {
+      "path": "pur_rtn_stkou_doc.ops_unit_no",
+      "label": "运营单元",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.ops_unit_name",
+      "label": "运营单元名称",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.doc_date",
+      "label": "单据日期",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "2026-11-06",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.biz_type_no",
+      "label": "单别",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.pur_rtn_stkou_doc_no",
+      "label": "单号",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.trans_date",
+      "label": "交易日期",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "2026-11-06",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.supp_no",
+      "label": "供应商",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.supp_name",
+      "label": "供应商名称",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.limit_whse_no",
+      "label": "限用仓库",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.whse_mgmt_pers_no",
+      "label": "仓管人员",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.whse_mgmt_dept_no",
+      "label": "仓管部门",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.total_biz_qty",
+      "label": "业务数量合计",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "0",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": "16"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.rmk",
+      "label": "备注",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.manage_status",
+      "label": "状态",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "未审核",
+        "disabled": true
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "pur_rtn_stkou_doc.post_stat",
+      "label": "过账状态",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "未过账",
+        "disabled": true
+      },
+      "window": null,
+      "switch": null
+    }
+  ],
+  "gridHeaders": [],
+  "gridRows": 0,
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "取消",
+      "disabled": false
+    },
+    {
+      "text": "保存并新增",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "disabled": false
+    }
+  ]
+}

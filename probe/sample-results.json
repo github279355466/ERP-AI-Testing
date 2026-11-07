@@ -1,0 +1,33 @@
+{
+  "runId": "sample-run",
+  "environment": "athena-test",
+  "tenant": "digichannel",
+  "startedAt": "2026-11-06T10:00:00+08:00",
+  "finishedAt": "2026-11-06T10:01:00+08:00",
+  "cases": [
+    {
+      "id": "TC-INV-001",
+      "name": "存货参数列表加载",
+      "status": "passed",
+      "durationMs": 3200,
+      "assertions": [
+        { "level": "ui", "name": "列表行数", "expected": ">=1", "actual": "9", "passed": true }
+      ],
+      "evidence": ["shots/TC-INV-001-list.png"],
+      "error": null,
+      "repro": []
+    },
+    {
+      "id": "TC-INV-002",
+      "name": "审核日依据筛选",
+      "status": "failed",
+      "durationMs": 4100,
+      "assertions": [
+        { "level": "business", "name": "筛选结果一致", "expected": "全部为单据日", "actual": "第 3 行为系统日", "passed": false }
+      ],
+      "evidence": ["shots/TC-INV-002-filter.png"],
+      "error": "筛选未生效",
+      "repro": ["打开列表", "筛选 审核日依据=单据日"]
+    }
+  ]
+}

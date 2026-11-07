@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/rule.schema.json",
+  "title": "Rule",
+  "type": "object",
+  "required": [
+    "id",
+    "object_type",
+    "name",
+    "description",
+    "rule_type",
+    "source_type",
+    "confidence",
+    "source_refs"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_type": {
+      "const": "Rule"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "rule_type": {
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "PRD_EXPLICIT",
+        "PRD_DERIVED",
+        "PLATFORM_SERVICE",
+        "UI_OBSERVED",
+        "USER_CONFIRMED",
+        "PENDING"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "CONFIRMED",
+        "DERIVED",
+        "AMBIGUOUS",
+        "CONFLICTED",
+        "MISSING"
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "derivation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "open_question_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

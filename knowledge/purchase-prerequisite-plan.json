@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-07",
+  "prefix": "QA20261107",
+  "scope": ["TP-027", "TP-038", "TP-039", "TP-047", "TP-051", "TP-052"],
+  "phases": [
+    {
+      "id": "P0",
+      "name": "组织与公共基础",
+      "dependsOn": [],
+      "data": [
+        { "entity": "运营单元", "workItem": "运营单元（现有）", "tp": "", "key": "000W1", "values": { "ops_unit_no": "000W1", "ops_unit_name": "玄鸟公司" }, "verify": "四个目标页运营单元开窗可查到 000W1" },
+        { "entity": "货币", "workItem": "货币信息", "tp": "TP-007", "key": "CNY", "values": { "ccy_no": "CNY", "ccy_name": "人民币" }, "verify": "货币开窗可查到 CNY" },
+        { "entity": "仓库", "workItem": "仓库信息", "tp": "TP-006", "key": "WH-QA01", "values": { "wh_no": "WH-QA01", "wh_name": "测试仓-QA" }, "verify": "出库单仓库开窗可查到" },
+        { "entity": "批号编号规则", "workItem": "批号编号规则", "tp": "TP-027", "key": "BRL-QA01", "values": { "code_rule_no": "BRL-QA01", "code_rule_desc": "测试批号规则-QA" }, "verify": "品号批号信息可引用" }
+      ],
+      "gate": "G0：000W1、CNY、WH-QA01 查询均 >=1 行"
+    },
+    {
+      "id": "P1",
+      "name": "供应商与品号",
+      "dependsOn": ["P0"],
+      "data": [
+        { "entity": "供应商", "workItem": "供应商通用信息/业务信息/财务信息", "tp": "TP-031/032/033", "key": "SUP-QA01", "values": { "supp_no": "SUP-QA01", "supp_name": "测试供应商01", "short_name": "测试供应商", "manage_status": "生效", "ccy_no": "CNY", "pmt_terms": "月结30天", "tax_rate": "13", "ops_unit_no": "000W1" }, "verify": "四个目标页供应商开窗可查到且状态生效" },
+        { "entity": "品号", "workItem": "品号通用信息/采购信息/批号信息", "tp": "TP-022/024/028", "key": "ITEM-QA01", "values": { "item_no": "ITEM-QA01", "item_name": "测试采购品01", "item_spec": "TEST-SPEC", "unit_no": "PCS", "prc_unit_no": "PCS", "ccy_no": "CNY", "pur_price": "100", "tax_rate": "13", "code_rule_no": "BRL-QA01", "manage_status": "生效" }, "verify": "供应商品号价格/询价单品号开窗可查到" }
+      ],
+      "gate": "G1：四页供应商开窗 >=1 行；品号开窗 >=1 行"
+    },
+    {
+      "id": "P2",
+      "name": "业务单别与取价",
+      "dependsOn": ["P1"],
+      "data": [
+        { "entity": "采购业务单别", "workItem": "采购业务单别", "tp": "TP-040", "key": "INQ-QA01 / RTN-QA01 / RSO-QA01", "values": { "biz_reg": "采购领域", "biz_prop": "询价单/采购退货单/采购退货出库单", "manage_status": "生效" }, "verify": "询价单/退货单/出库单单别开窗可查到" },
+        { "entity": "采购取价策略", "workItem": "采购取价策略", "tp": "TP-038", "key": "PS-QA01", "values": { "price_strtg_no": "PS-QA01", "price_strtg_name": "测试取价策略-QA", "details": [{ "pri": 1, "price_type": "供应商品号价格" }, { "pri": 2, "price_type": "标准采购单价" }] }, "verify": "供应商品号价格取价可引用" },
+        { "entity": "供应商品号价格", "workItem": "供应商品号价格", "tp": "TP-039", "key": "000W1+SUP-QA01+ITEM-QA01+CNY+一般采购", "values": { "price": "100", "eff_date": "2026-11-01", "expy_date": "2027-10-31", "tier": [{ "step_begin_qty": 1, "step_end_qty": 9999, "pur_price": "100" }] }, "verify": "列表可筛选到该组合" }
+      ],
+      "gate": "G2：三支单据单别开窗 >=1 行；供应商品号价格可保存"
+    },
+    {
+      "id": "P3",
+      "name": "源单：采购订单与采购入库单",
+      "dependsOn": ["P2"],
+      "data": [
+        { "entity": "采购订单", "workItem": "采购订单", "tp": "TP-046", "key": "PO-QA01", "values": { "supp_no": "SUP-QA01", "item_no": "ITEM-QA01", "qty": "10", "price": "100", "doc_date": "2026-11-01" }, "verify": "订单审核通过，可用于入库取单" },
+        { "entity": "采购入库单", "workItem": "采购入库单", "tp": "TP-050", "key": "PR-QA01", "values": { "source": "PO-QA01", "item_no": "ITEM-QA01", "qty": "10", "wh_no": "WH-QA01" }, "verify": "入库单审核通过，可用于退货取单" }
+      ],
+      "gate": "G3：采购退货单取单开窗可查到 PR-QA01"
+    },
+    {
+      "id": "P4",
+      "name": "询价单",
+      "dependsOn": ["P2"],
+      "data": [
+        { "entity": "询价单", "workItem": "询价单", "tp": "TP-047", "key": "INQ-DOC-QA01", "values": { "supp_no": "SUP-QA01", "ccy_no": "CNY", "biz_type_no": "INQ-QA01", "item_no": "ITEM-QA01", "inq_qty": "10", "inq_price": "100" }, "verify": "保存→提交→审核→撤审→作废全链路" }
+      ],
+      "gate": "G4：询价单可保存并完成流程"
+    },
+    {
+      "id": "P5",
+      "name": "采购退货单",
+      "dependsOn": ["P3"],
+      "data": [
+        { "entity": "采购退货单", "workItem": "采购退货单", "tp": "TP-051", "key": "RTN-DOC-QA01", "values": { "source": "PR-QA01", "supp_no": "SUP-QA01", "biz_type_no": "RTN-QA01", "item_no": "ITEM-QA01", "rtn_qty": "1" }, "verify": "取单→保存→提交→审核→撤审→作废" }
+      ],
+      "gate": "G5：退货单可保存并完成流程"
+    },
+    {
+      "id": "P6",
+      "name": "采购退货出库单",
+      "dependsOn": ["P5"],
+      "data": [
+        { "entity": "采购退货出库单", "workItem": "采购退货出库单", "tp": "TP-052", "key": "RSO-DOC-QA01", "values": { "source": "RTN-DOC-QA01", "wh_no": "WH-QA01", "supp_no": "SUP-QA01", "biz_type_no": "RSO-QA01" }, "verify": "取单→保存→审核→撤审→作废" }
+      ],
+      "gate": "G6：出库单可保存并完成流程"
+    }
+  ],
+  "cleanupOrder": ["采购退货出库单", "采购退货单", "采购入库单", "采购订单", "供应商品号价格", "采购取价策略", "采购业务单别", "品号", "供应商", "批号编号规则", "仓库"],
+  "rules": [
+    "所有测试数据使用前缀 QA20261107，禁止使用生产数据",
+    "先验证依赖门禁，再做后续阶段；门禁不过不得继续",
+    "清理按反向依赖顺序，先查引用再删除",
+    "不得直接改库；清理失败记录 TODO"
+  ]
+}

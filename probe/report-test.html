@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<title>Athena ERP 回归报告 sample-run</title>
+<style>
+body{font-family:Segoe UI,Microsoft YaHei,sans-serif;margin:32px;color:#1f2330;background:#f6f7fb}
+h1{font-size:22px;margin:0 0 8px}
+.meta{color:#666;margin:0 0 20px}
+.summary{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.card{background:#fff;border:1px solid #e3e6ef;border-radius:10px;padding:12px 18px;min-width:96px}
+.card b{display:block;font-size:22px}
+.case{background:#fff;border:1px solid #e3e6ef;border-radius:10px;padding:16px;margin-bottom:16px}
+.case.failed{border-left:4px solid #d64545}
+.case.blocked{border-left:4px solid #d99b1f}
+.case.passed{border-left:4px solid #2f9e5f}
+.badge{font-size:12px;padding:2px 8px;border-radius:10px;background:#eef0f6;margin-left:8px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid #eef0f6}
+.pass{color:#2f9e5f;font-weight:600}
+.fail{color:#d64545;font-weight:600}
+.error{color:#d64545}
+</style></head><body>
+<h1>Athena ERP 回归报告</h1>
+<p class="meta">runId: sample-run　环境: athena-test　
+租户: digichannel　2026-11-06T10:00:00+08:00 → 2026-11-06T10:01:00+08:00</p>
+<div class="summary">
+<div class="card">总数<b>2</b></div>
+<div class="card">通过<b>1</b></div>
+<div class="card">失败<b>1</b></div>
+<div class="card">阻塞<b>0</b></div>
+<div class="card">跳过<b>0</b></div>
+</div>
+<section class='case passed'><h3>TC-INV-001 存货参数列表加载 <span class='badge'>passed</span></h3><p class='meta'>耗时 3200 ms</p><table><thead><tr><th>级别</th><th>断言</th><th>期望</th><th>实际</th><th>结果</th></tr></thead><tbody><tr><td>ui</td><td>列表行数</td><td>&gt;=1</td><td>9</td><td class='pass'>PASS</td></tr></tbody></table><p>证据</p><ul><li><a href="shots/TC-INV-001-list.png">shots/TC-INV-001-list.png</a></li></ul></section><section class='case failed'><h3>TC-INV-002 审核日依据筛选 <span class='badge'>failed</span></h3><p class='meta'>耗时 4100 ms</p><table><thead><tr><th>级别</th><th>断言</th><th>期望</th><th>实际</th><th>结果</th></tr></thead><tbody><tr><td>business</td><td>筛选结果一致</td><td>全部为单据日</td><td>第 3 行为系统日</td><td class='fail'>FAIL</td></tr></tbody></table><p>证据</p><ul><li><a href="shots/TC-INV-002-filter.png">shots/TC-INV-002-filter.png</a></li></ul><p>复现步骤</p><ol><li>打开列表</li><li>筛选 审核日依据=单据日</li></ol><p class='error'>错误：筛选未生效</p></section>
+</body></html>

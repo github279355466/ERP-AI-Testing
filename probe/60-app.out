@@ -1,0 +1,493 @@
+--- list ---
+{
+  "urlPath": "/",
+  "tabs": [
+    "列表"
+  ],
+  "columns": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "$$_no",
+      "label": "序号"
+    },
+    {
+      "colId": "biz_type_no",
+      "label": "业务类型编号"
+    },
+    {
+      "colId": "ops_unit_no",
+      "label": "运营单元编号"
+    },
+    {
+      "colId": "ops_unit_name",
+      "label": "运营单元名称"
+    },
+    {
+      "colId": "verf_mode",
+      "label": "核销方式"
+    },
+    {
+      "colId": "cash_stlmt_biz_type_no",
+      "label": "现结业务类型编号"
+    },
+    {
+      "colId": "insta_offst_adv_biz_type_no",
+      "label": "分期预收付冲减业务类型编号"
+    },
+    {
+      "colId": "creat_is_auto_aprv",
+      "label": "新增是否自动审核"
+    },
+    {
+      "colId": "cash_stlmt_flag",
+      "label": "现结标识"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "rows": [
+    {
+      "i": "0",
+      "cells": {
+        "biz_type_no": "AP0101",
+        "ops_unit_no": "Digi_OPS",
+        "ops_unit_name": "大陆区分部营运组",
+        "verf_mode": "整单",
+        "cash_stlmt_biz_type_no": "Digi_ST0101",
+        "insta_offst_adv_biz_type_no": "-",
+        "creat_is_auto_aprv": "",
+        "cash_stlmt_flag": ""
+      }
+    },
+    {
+      "i": "1",
+      "cells": {
+        "biz_type_no": "AP0201",
+        "ops_unit_no": "Digi_OPS",
+        "ops_unit_name": "大陆区分部营运组",
+        "verf_mode": "明细",
+        "cash_stlmt_biz_type_no": "-",
+        "insta_offst_adv_biz_type_no": "-",
+        "creat_is_auto_aprv": "",
+        "cash_stlmt_flag": ""
+      }
+    },
+    {
+      "i": "2",
+      "cells": {
+        "biz_type_no": "AP0301",
+        "ops_unit_no": "Digi_OPS",
+        "ops_unit_name": "大陆区分部营运组",
+        "verf_mode": "明细",
+        "cash_stlmt_biz_type_no": "-",
+        "insta_offst_adv_biz_type_no": "-",
+        "creat_is_auto_aprv": "",
+        "cash_stlmt_flag": ""
+      }
+    },
+    {
+      "i": "3",
+      "cells": {
+        "biz_type_no": "AP0601",
+        "ops_unit_no": "Digi_OPS",
+        "ops_unit_name": "大陆区分部营运组",
+        "verf_mode": "明细",
+        "cash_stlmt_biz_type_no": "-",
+        "insta_offst_adv_biz_type_no": "-",
+        "creat_is_auto_aprv": "",
+        "cash_stlmt_flag": ""
+      }
+    },
+    {
+      "i": "4",
+      "cells": {
+        "biz_type_no": "Digi_AP0101",
+        "ops_unit_no": "Digi_OPS",
+        "ops_unit_name": "大陆区分部营运组",
+        "verf_mode": "明细",
+        "cash_stlmt_biz_type_no": "-",
+        "insta_offst_adv_biz_type_no": "-",
+        "creat_is_auto_aprv": "",
+        "cash_stlmt_flag": ""
+      }
+    }
+  ],
+  "toolbar": [
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "筛选",
+      "disabled": false
+    },
+    {
+      "text": "导入",
+      "disabled": false
+    },
+    {
+      "text": "导出",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    }
+  ],
+  "footer": "共 8 条"
+}
+--- new ---
+{
+  "urlPath": "/detail",
+  "tabs": [
+    "列表",
+    "详情"
+  ],
+  "fields": [
+    {
+      "path": "biz_type_ap_param.ops_unit_no",
+      "label": "运营单元编号",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "biz_type_ap_param.biz_type_no",
+      "label": "业务单别",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "biz_type_ap_param.CUS_biz_prop",
+      "label": "单据性质",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": true
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_ap_param.verf_mode",
+      "label": "核销方式",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "明细",
+        "disabled": true
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_ap_param.cash_stlmt_flag",
+      "label": "现结标识",
+      "required": false,
+      "input": null,
+      "select": null,
+      "window": null,
+      "switch": {
+        "checked": "false",
+        "disabled": true
+      }
+    },
+    {
+      "path": "biz_type_ap_param.cash_stlmt_biz_type_no",
+      "label": "现结业务单别",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": true
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "biz_type_ap_param.insta_offst_adv_biz_type_no",
+      "label": "分期冲减单别",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": true
+      },
+      "window": {
+        "text": "请选择"
+      },
+      "switch": null
+    },
+    {
+      "path": "biz_type_ap_param.creat_is_auto_aprv",
+      "label": "自动审核",
+      "required": false,
+      "input": null,
+      "select": null,
+      "window": null,
+      "switch": {
+        "checked": "false",
+        "disabled": false
+      }
+    }
+  ],
+  "gridHeaders": [],
+  "gridRows": 0,
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "disabled": false
+    }
+  ]
+}

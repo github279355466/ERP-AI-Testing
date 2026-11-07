@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/schemas/scenario.schema.json",
+  "title": "Scenario",
+  "type": "object",
+  "required": [
+    "id",
+    "object_type",
+    "title",
+    "scenario_type",
+    "status",
+    "automation_feasibility",
+    "rule_ids",
+    "source_refs"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "object_type": {
+      "const": "Scenario"
+    },
+    "title": {
+      "type": "string"
+    },
+    "scenario_type": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "REVIEW_REQUIRED",
+        "APPROVED",
+        "REJECTED",
+        "EXECUTABLE"
+      ]
+    },
+    "automation_feasibility": {
+      "enum": [
+        "UI_READY",
+        "NEEDS_UI_EXPLORATION",
+        "NEEDS_CONFIRMATION",
+        "NOT_UI_OBSERVABLE"
+      ]
+    },
+    "rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "review_required": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

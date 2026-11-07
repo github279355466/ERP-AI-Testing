@@ -1,0 +1,1 @@
+{"success": true, "checked": ["config", "page-map", "component-map", "business-rules"], "errors": [], "warnings": []}

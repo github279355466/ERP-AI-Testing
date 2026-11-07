@@ -1,0 +1,43 @@
+{
+  "project": {
+    "name": "Athena ERP Test Platform",
+    "schemaVersion": "1.0.0",
+    "timezone": "Asia/Shanghai"
+  },
+  "prd": {
+    "inputDir": "C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd",
+    "includeExtensions": [".md", ".markdown", ".txt", ".json"],
+    "reservedExtensions": [".docx", ".xlsx", ".xls", ".pdf", ".png", ".jpg", ".jpeg"],
+    "excludeDirectories": [".git", "node_modules", "__pycache__", ".cache"],
+    "moduleRules": [
+      { "pattern": "^采购域$", "module": "采购" },
+      { "pattern": "^(基础资料域|供应商域|库存存货域|参数与单别域)$", "module": "基础资料" },
+      { "pattern": "^采购取价策略$|^询价单$|^供应商品号价格$|^采购退货单$|^采购退货出库单$", "module": "采购" },
+      { "pattern": "^(请购单|采购订单|采购到货单|采购入库单|到货单验收|运营单元采购参数)$", "module": "采购" },
+      { "pattern": "^应收|^其他应收单$", "module": "应收" },
+      { "pattern": "^应付|^其他应付单$", "module": "应付" },
+      { "pattern": "^结算|^会计期间|^设置核算参数$", "module": "财务" },
+      { "pattern": "^批号编号规则$|^客户供应商关系$", "module": "基础资料" }
+    ]
+  },
+  "scenarioSources": [
+    {
+      "name": "测试用例",
+      "inputDir": "C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/测试用例",
+      "kind": "TEST_CASE_LIBRARY"
+    }
+  ],
+  "output": {
+    "artifactDir": "artifacts",
+    "reportDir": "reports",
+    "knowledgeDir": "artifacts/knowledge",
+    "sourceIndexDir": "artifacts/source-index"
+  },
+  "policy": {
+    "allowExternalModelCalls": false,
+    "allowErpConnectionInPhase1": false,
+    "scenarioDefaultStatus": "DRAFT",
+    "requireEvidenceForExplicitRules": true,
+    "maxRulesPerDocument": 400
+  }
+}

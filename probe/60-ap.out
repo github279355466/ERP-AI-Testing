@@ -1,0 +1,700 @@
+--- list ---
+{
+  "urlPath": "/",
+  "tabs": [
+    "列表"
+  ],
+  "columns": [
+    {
+      "colId": "$$_checkbox",
+      "label": ""
+    },
+    {
+      "colId": "$$_no",
+      "label": "序号"
+    },
+    {
+      "colId": "biz_reg",
+      "label": "业务域"
+    },
+    {
+      "colId": "biz_prop",
+      "label": "业务性质"
+    },
+    {
+      "colId": "biz_type_no",
+      "label": "业务类型编号"
+    },
+    {
+      "colId": "biz_type_name",
+      "label": "业务类型名称"
+    },
+    {
+      "colId": "biz_type_fname",
+      "label": "业务类型全称"
+    },
+    {
+      "colId": "auto_code_mode",
+      "label": "自动编码方式"
+    },
+    {
+      "colId": "year_digit_type",
+      "label": "年度位数类型"
+    },
+    {
+      "colId": "serl_digit",
+      "label": "流水号位数"
+    },
+    {
+      "colId": "rmk",
+      "label": "备注"
+    },
+    {
+      "colId": "manage_status",
+      "label": "状态"
+    },
+    {
+      "colId": "operate",
+      "label": "操作"
+    }
+  ],
+  "rows": [
+    {
+      "i": "0",
+      "cells": {
+        "biz_reg": "应付领域",
+        "biz_prop": "应付单",
+        "biz_type_no": "AP01",
+        "biz_type_name": "AAP2",
+        "biz_type_fname": "2222",
+        "auto_code_mode": "年月日+流水码",
+        "year_digit_type": "公元四码",
+        "serl_digit": "4",
+        "rmk": "-"
+      }
+    },
+    {
+      "i": "1",
+      "cells": {
+        "biz_reg": "应付领域",
+        "biz_prop": "应付单",
+        "biz_type_no": "AP0101",
+        "biz_type_name": "应付单",
+        "biz_type_fname": "应付单",
+        "auto_code_mode": "年月日+流水码",
+        "year_digit_type": "公元四码",
+        "serl_digit": "6",
+        "rmk": "-"
+      }
+    },
+    {
+      "i": "2",
+      "cells": {
+        "biz_reg": "应付领域",
+        "biz_prop": "费用应付单",
+        "biz_type_no": "AP0201",
+        "biz_type_name": "费用应付单",
+        "biz_type_fname": "费用应付单",
+        "auto_code_mode": "年月日+流水码",
+        "year_digit_type": "公元四码",
+        "serl_digit": "5",
+        "rmk": "-"
+      }
+    },
+    {
+      "i": "3",
+      "cells": {
+        "biz_reg": "应付领域",
+        "biz_prop": "其他应付单",
+        "biz_type_no": "AP0301",
+        "biz_type_name": "其他应付单",
+        "biz_type_fname": "其他应付单",
+        "auto_code_mode": "年月日+流水码",
+        "year_digit_type": "公元四码",
+        "serl_digit": "5",
+        "rmk": "-"
+      }
+    },
+    {
+      "i": "4",
+      "cells": {
+        "biz_reg": "应付领域",
+        "biz_prop": "暂估应付单",
+        "biz_type_no": "AP0601",
+        "biz_type_name": "暂估应付单",
+        "biz_type_fname": "暂估应付单",
+        "auto_code_mode": "年月日+流水码",
+        "year_digit_type": "公元四码",
+        "serl_digit": "5",
+        "rmk": "-"
+      }
+    }
+  ],
+  "toolbar": [
+    {
+      "text": "新增",
+      "disabled": false
+    },
+    {
+      "text": "筛选",
+      "disabled": false
+    },
+    {
+      "text": "导入",
+      "disabled": false
+    },
+    {
+      "text": "导出",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    },
+    {
+      "text": "删除",
+      "disabled": false
+    },
+    {
+      "text": "生效",
+      "disabled": false
+    },
+    {
+      "text": "失效",
+      "disabled": false
+    },
+    {
+      "text": "查看",
+      "disabled": false
+    },
+    {
+      "text": "编辑",
+      "disabled": false
+    }
+  ],
+  "footer": "共 13 条"
+}
+--- new ---
+{
+  "urlPath": "/detail",
+  "tabs": [
+    "列表",
+    "详情"
+  ],
+  "fields": [
+    {
+      "path": "biz_type_gen_info.biz_reg",
+      "label": "业务域",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "应付领域",
+        "disabled": true
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_prop",
+      "label": "业务性质",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "请选择",
+        "disabled": false
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_no",
+      "label": "业务单别",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "20"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_name",
+      "label": "业务单别名称",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "100"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.biz_type_fname",
+      "label": "业务单别全称",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "255"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.auto_code_mode",
+      "label": "自动编码方式",
+      "required": true,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "年月日+流水码",
+        "disabled": false
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.year_digit_type",
+      "label": "年位数",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": true,
+        "maxlength": null
+      },
+      "select": {
+        "text": "公元四码",
+        "disabled": false
+      },
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.serl_digit",
+      "label": "流水号位数",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": "11"
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.CUS_biz_type_fmt",
+      "label": "编码格式",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": true,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    },
+    {
+      "path": "biz_type_gen_info.rmk",
+      "label": "备注",
+      "required": false,
+      "input": {
+        "type": "text",
+        "value": "",
+        "disabled": false,
+        "readonly": false,
+        "maxlength": null
+      },
+      "select": null,
+      "window": null,
+      "switch": null
+    }
+  ],
+  "gridHeaders": [],
+  "gridRows": 0,
+  "buttons": [
+    {
+      "text": "×",
+      "disabled": false
+    },
+    {
+      "text": "保存",
+      "disabled": false
+    }
+  ]
+}
