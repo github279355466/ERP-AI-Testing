@@ -32,6 +32,7 @@ const SAMPLE_MD = `# 测试单据
 | 标题名 | 单号 |
 | 填值方式 | 文本输入 |
 | 是否必填 | ✅ 是 |
+| 必填条件 | 新增时必填 |
 | 是否只读 | ✅ 否 |
 | 是否隐藏 | ✅ 否 |
 | 是否禁用 | ✅ 否 |
@@ -248,6 +249,35 @@ test('负向：状态型规则与状态行矛盾时被 RULE_CONTRADICTS_SOURCE �
   expect(
     validation.errors.some(
       (issue) => issue.code === 'RULE_CONTRADICTS_SOURCE' && issue.object_id === rule!.id
+    )
+  ).toBe(true);
+});
+
+test('条件型规则证据直接指向条件行且摘录含条件原文', () => {
+  const { bundle } = scan();
+  const field = bundle.fields.find((item) => item.label === '单号');
+  expect(field).toBeTruthy();
+  const condLine = field!.attribute_lines?.['必填条件'];
+  expect(condLine).toBeTruthy();
+  const rule = bundle.rules.find((item) => item.field_no === field!.field_no && item.rule_type === 'REQUIRED');
+  expect(rule).toBeTruthy();
+  expect(rule!.source_refs[0].line_start).toBe(condLine);
+  expect(rule!.source_refs[0].excerpt).toContain('新增时必填');
+  const validation = validateKnowledgeBundle(bundle);
+  expect(validation.errors.some((issue) => issue.code === 'EVIDENCE_NOT_COVERING_CONDITION')).toBe(false);
+});
+
+test('负向：条件型规则证据回退到状态行时报 EVIDENCE_NOT_COVERING_CONDITION', () => {
+  const { bundle } = scan();
+  const field = bundle.fields.find((item) => item.label === '单号');
+  const rule = bundle.rules.find((item) => item.field_no === field!.field_no && item.rule_type === 'REQUIRED');
+  expect(rule).toBeTruthy();
+  rule!.source_refs[0].line_start = field!.attribute_lines?.['是否必填'] ?? 1;
+  rule!.source_refs[0].excerpt = '| 是否必填 | ✅ 是 |';
+  const validation = validateKnowledgeBundle(bundle);
+  expect(
+    validation.errors.some(
+      (issue) => issue.code === 'EVIDENCE_NOT_COVERING_CONDITION' && issue.object_id === rule!.id
     )
   ).toBe(true);
 });

@@ -150,13 +150,14 @@ const STATE_ATTRIBUTE_BY_RULE_TYPE: Partial<Record<RuleType, keyof Field>> = {
 };
 
 /**
- * 状态型规则必须与同字段「是否…」状态行一致；冲突时以状态行为准，
- * 校验项原文降级为通用 VALIDATION 规则，冲突登记到 OPEN_QUESTIONS。
+ * 状态型规则只由「是否必填/只读/隐藏/禁用」状态行产生；
+ * 校验项原文一律归为 VALIDATION（含文本提到只读/必填的情况），
+ * 与状态行冲突的部分登记到 OPEN_QUESTIONS。
  */
-function alignRuleTypeWithFieldState(ruleType: RuleType, field: Field): RuleType {
+function validationRuleType(ruleType: RuleType): RuleType {
   const attribute = STATE_ATTRIBUTE_BY_RULE_TYPE[ruleType];
   if (!attribute) return ruleType;
-  return field[attribute] === true ? ruleType : 'VALIDATION';
+  return 'VALIDATION';
 }
 
 function controlTypeOf(fillMethod: string | null): ControlType {
@@ -1046,7 +1047,7 @@ function buildFieldRules(
             `${base}|VALIDATION|${index}`,
             `${label} 校验`,
             `【${label}(${fieldNo})】${item}`,
-            alignRuleTypeWithFieldState(rawRuleType, field),
+            validationRuleType(rawRuleType),
             field,
             entity,
             'SAVE',

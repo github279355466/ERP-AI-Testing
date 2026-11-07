@@ -1,8 +1,8 @@
 # 测试场景草案
 
-生成时间：2026-11-07T15:06:32.572Z
-场景总数：3703
-可行性分布：NEEDS_UI_EXPLORATION=2717，NEEDS_CONFIRMATION=693，NOT_UI_OBSERVABLE=293
+生成时间：2026-11-07T15:08:23.817Z
+场景总数：3717
+可行性分布：NEEDS_UI_EXPLORATION=2731，NEEDS_CONFIRMATION=693，NOT_UI_OBSERVABLE=293
 
 说明：全部场景为 DRAFT，未经评审不得执行；UI_READY 在 Phase 1 不被允许，等待 Phase 2 页面探索后再升级。
 
@@ -168,7 +168,7 @@
 | SCN-D2808C8E9232 | 会计期间表 | 默认值 | NEEDS_UI_EXPLORATION | 验证会计期间表「序号」的默认值规则：【序号(seq)】默认值：默认自动流水号：由明细生成动作按 1、2……N 赋值（N＝分期数）；手工新增明细行时取当前明细最大序号+1。时机点：默认执行时 | 默认值：默认自动流水号：由明细生成动作按 1、2……N 赋值（N＝分期数）；手工新增明细行时取当前明细最大序号+1。时机点：默认执行时 |  | RULE-CC2E91F197C0 |
 | SCN-DA6EDF8D3CD0 | 会计期间表 | 只读校验 | NEEDS_UI_EXPLORATION | 验证会计期间表「序号」的只读校验规则：【序号(seq)】✅ 是 | 字段不可编辑 |  | RULE-B8BF292BF5C7 |
 | SCN-63C250632415 |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付「附加结算费用金额（本币）」的隐藏校验规则：【附加结算费用金额（本币）(addl_stlmt_exp_amt_fc)】✅ 是 | 字段不展示 |  | RULE-2A74A69F4B1B |
-| SCN-2E8EF2BDE356 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0011 | RULE-3210268C9658；RULE-4B301D55E9B1 |
+| SCN-2E8EF2BDE356 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0011 | RULE-3210268C9658 |
 | SCN-6EF751E67805 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「整体操作 处理」的反向校验规则：【整体操作】提示框仅提供单一「确定」按钮 | 按操作说明执行 |  | RULE-1C5F0314D0BB |
 | SCN-F2873F783BB0 | 其他应收单（`other_recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证其他应收单（`other_recev_doc`）「状态迁移 【审核】成功后无条件自动触发（无独立按钮，不判断参数）」的状态迁移规则：状态迁移：N.未过账 --[【审核】成功后无条件自动触发（无独立按钮，不判断参数）]--> Y.已过账 | 状态变为 Y.已过账 |  | RULE-7143F2BE1069 |
 | SCN-06641CB9BBCF |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「责任人编号」的开窗回填规则：【责任人编号(resp_pers_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.运营单元编号(`empl.ops_unit_no`)=【本单据.运营单元编号(`other_pay_doc.ops_unit_no`)】<br/>- 显示字段：员工编号，员工姓名，主要部门编号，主要部门名称<br/>- 回填映射：更新字段(`resp_pers_no`)=员工编号，更新字段(`resp_pers_name`)=员工姓名，更新字段(`resp_dept_no`)… | 开窗：查询员工 |  | RULE-AB2AA34A7C62 |
@@ -181,7 +181,7 @@
 | SCN-42A17DAD26AF | 会计期间表 | 默认值 | NEEDS_UI_EXPLORATION | 验证会计期间表「会计期间期号」的默认值规则：【会计期间期号(acctg_perid_no)】默认值：由明细生成动作赋值：会计期间期号(acctg_perid_no)＝序号值（1、2……13）；手工新增明细行时按同一规则带出。时机点：默认执行时 | 默认值：由明细生成动作赋值：会计期间期号(acctg_perid_no)＝序号值（1、2……13）；手工新增明细行时按同一规则带出。时机点：默认执行时 |  | RULE-46F131EF9CC1 |
 | SCN-E83147B6FEA9 | 会计期间表 | 只读校验 | NEEDS_UI_EXPLORATION | 验证会计期间表「季度」的只读校验规则：【季度(qtr)】✅ 是 | 字段不可编辑 |  | RULE-09252FF02086 |
 | SCN-4A0A0D3E327B |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付「费用编号」的隐藏校验规则：【费用编号(exp_no)】✅ 是 | 字段不展示 |  | RULE-1866C66E6A76 |
-| SCN-51A3E615C86C | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购价格类型」的必填校验规则：【采购价格类型(pur_price_type)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0013 | RULE-AEC6560A4352；RULE-BAFA942076E4 |
+| SCN-51A3E615C86C | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购价格类型」的必填校验规则：【采购价格类型(pur_price_type)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0013 | RULE-AEC6560A4352 |
 | SCN-D0F548EC75E3 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「载入（进入作业） 处理」的反向校验规则：【载入（进入作业）】提示框仅提供单一「确定」按钮 | 按操作说明执行 |  | RULE-FCF39E68F4F4 |
 | SCN-D6516FE3ACAC | 其他应收单（`other_recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证其他应收单（`other_recev_doc`）「状态迁移 【撤审】前置自动触发（无独立按钮）」的状态迁移规则：状态迁移：Y.已过账 --[【撤审】前置自动触发（无独立按钮）]--> N.未过账 | 状态变为 N.未过账 |  | RULE-24924CDFC27B |
 | SCN-E4220876F030 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「责任部门编号」的开窗回填规则：【责任部门编号(resp_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询部门<br/>- 数据来源：调用 查询部门(bm.dept.get) 接口<br/>- 入参条件：部门.运营单元编号(`dept.ops_unit_no`)=【本单据.运营单元编号(`other_pay_doc.ops_unit_no`)】<br/>- 显示字段：部门编号，部门名称<br/>- 回填映射：更新字段(`resp_dept_no`)=部门编号，更新字段(`resp_dept_name`)=部门名称<br/>- 默认排序：`dept.dept_no` 升序 | 开窗：查询部门 |  | RULE-86848B52724C |
@@ -194,7 +194,7 @@
 | SCN-17BD9DEA288C | 会计期间表 | 默认值 | NEEDS_UI_EXPLORATION | 验证会计期间表「季度」的默认值规则：【季度(qtr)】默认值：固定 0，不配置按序号推导的默认值。本作业不使用季度维度。时机点：默认执行时 | 默认值：固定 0，不配置按序号推导的默认值。本作业不使用季度维度。时机点：默认执行时 |  | RULE-DCC2703AEC01 |
 | SCN-3F0970BACD51 | 会计期间表 | 只读校验 | NEEDS_UI_EXPLORATION | 验证会计期间表「会计调整期标识」的只读校验规则：【会计调整期标识(acctg_adj_perid_flag)】✅ 是 | 字段不可编辑 |  | RULE-4865924E3D6E |
 | SCN-3BBBAC1CEE29 |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付「费用名称」的隐藏校验规则：【费用名称(exp_name)】✅ 是 | 字段不展示 |  | RULE-217310DA7BDD |
-| SCN-D2E959C93ED3 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0014 | RULE-40363A19F3A4；RULE-C469D5D2A9F5 |
+| SCN-D2E959C93ED3 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0014 | RULE-40363A19F3A4 |
 | SCN-ED4CDACB328B |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 前置校验」的反向校验规则：【保存】入参：会计期间表编号(acctg_perid_table.acctg_perid_table_no)=本单.会计期间表编号(acctg_perid_table.acctg_perid_table_no) | 校验不通过则操作被拦截 |  | RULE-C816779629C5 |
 | SCN-F2D2CD6549BF |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「撤审 前置校验」的状态迁移规则：【撤审】已自动过账的单据如已核销、已产生收款单或被其他单据使用，不可撤审（以 `other_ar_recog.cxl_post` 服务校验为准，`VD_other_recev_doc_00031~00039`，E+MSG 透出服务原因） | 校验不通过则操作被拦截 |  | RULE-BD8C06064A1B |
 | SCN-357AC063CFB6 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询项目信息<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：项目.运营单元编号(`proj.ops_unit_no`)=【本单据.运营单元编号(`other_pay_doc.ops_unit_no`)】<br/>- 显示字段：项目编号，项目名称<br/>- 回填映射：更新字段(`proj_no`)=项目编号 | 开窗：查询项目信息 | TC-PUR-0021；TC-PUR-0049；TC-PSTK-0045；TC-PARR-0053；TC-PARR-0072；TC-PO-0044；TC-PO-0084；TC-PRTN-0042；TC-PRTN-0085 | RULE-2835459B1C43 |
@@ -207,7 +207,7 @@
 | SCN-0C7734804569 | 会计期间表 | 默认值 | NEEDS_UI_EXPLORATION | 验证会计期间表「会计调整期标识」的默认值规则：【会计调整期标识(acctg_adj_perid_flag)】默认值：1.当【分期数(insta_count)=12】时，默认会计调整期标识(acctg_adj_perid_flag)=未勾选。时机点：默认执行时<br/>2.当【分期数(insta_count)<>12】且【序号(seq)=分期数(insta_count)】时，默认会计调整期标识(acctg_adj_perid_flag)=勾选。时机点：默认执行时<br/>3.当【分期数(insta_count)<>12】且【序号(seq)<>分期数(insta_count)】时，默认会计调整期标识(acctg_adj_perid_flag)… | 默认值：1.当【分期数(insta_count)=12】时，默认会计调整期标识(acctg_adj_perid_flag)=未勾选。时机点：默认执行时<br/>2.当【… |  | RULE-3E62C710731A |
 | SCN-A892788B8EEE | 会计期间表 | 只读校验 | NEEDS_UI_EXPLORATION | 验证会计期间表「会计调整期类型」的只读校验规则：【会计调整期类型(acctg_adj_perid_type)】✅ 是 | 字段不可编辑 |  | RULE-B8EBD339724D |
 | SCN-B124EBD5AEFF |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付「银行账号」的隐藏校验规则：【银行账号(bank_acct_no)】✅ 是 | 字段不展示 |  | RULE-3A2556668D95 |
-| SCN-09A33CB5CEDB | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0008 | RULE-C39388F13AC6；RULE-557DA3B1D181 |
+| SCN-09A33CB5CEDB | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0008 | RULE-C39388F13AC6 |
 | SCN-25B2683850E2 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-FD126547C122 |
 | SCN-2E6FE5531FF6 |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「撤审 处理」的状态迁移规则：【撤审】提示消息：E+MSG："确认撤审？将同时取消该单据的过账与应收台账记录！" | 按操作说明执行 |  | RULE-9193D256AC8D |
 | SCN-A7AD2AFE4ECC |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.运营单元编号(`ccy.ops_unit_no`)=【本单据.运营单元编号(`other_pay_doc.ops_unit_no`)】<br/>- 显示字段：货币编号，货币名称<br/>- 回填映射：更新字段(`ccy_no`)=货币编号，更新字段(`ccy_name`)=货币名称 | 开窗：查询货币 | TC-SIPP-0009；TC-CUSB-0011；TC-PURQ-0023；TC-PARR-0011；TC-PO-0007；TC-PRTN-0037 | RULE-DCEF67EFA182 |
@@ -220,7 +220,7 @@
 | SCN-EC2460F7146F | 会计期间表 | 默认值 | NEEDS_UI_EXPLORATION | 验证会计期间表「会计调整期类型」的默认值规则：【会计调整期类型(acctg_adj_perid_type)】默认值：默认0.无。时机点：默认执行时 | 默认值：默认0.无。时机点：默认执行时 |  | RULE-A640E3BFC237 |
 | SCN-8C17D1B02F46 | 供应商品号价格 | 只读校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-69FD5396B18E |
 | SCN-BD91F6CEDA58 | 其他应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「会计期间序号」的隐藏校验规则：【会计期间序号(acctg_perid_seq)】✅ 是 | 字段不展示 |  | RULE-BD3F3C3968DC |
-| SCN-8E725E3306E9 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0016 | RULE-81085F323B36；RULE-4C993A189CC7 |
+| SCN-8E725E3306E9 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0016 | RULE-81085F323B36 |
 | SCN-E3AB0B9D4A60 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「删除 前置校验」的反向校验规则：【删除】入参：会计期间表编号(acctg_perid_info.acctg_perid_table_no)=本单.会计期间表编号(acctg_perid_table.acctg_perid_table_no) | 校验不通过则操作被拦截 |  | RULE-14ED3EA8A272；RULE-5DC0F9BE08E2 |
 | SCN-A507F661B8F0 |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「作废 前置校验」的状态迁移规则：【作废】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："状态不为未审核，不可作废！" | 校验不通过则操作被拦截 |  | RULE-CE798D367188 |
 | SCN-37CAB904F929 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询收付款条件<br/>- 数据来源：调用 查询收付款条件(`bm.colln_pmt_terms.get`) 接口<br/>- 入参条件：收付款条件.收付款(`colln_pmt_terms.colln_pmt`)=1.付款条件<br/>- 显示字段：付款条件编号，付款条件名称<br/>- 回填映射：更新字段(`pmt_terms_no`)=付款条件编号，更新字段(`pmt_terms_name`)=付款条件名称 | 开窗：查询收付款条件 | TC-SUPP-0013；TC-CUSB-0014；TC-CUSF-0008；TC-PARR-0082；TC-PO-0008；TC-PRTN-0038 | RULE-3F83B1C2FB99 |
@@ -233,7 +233,7 @@
 | SCN-2CB86860E016 |  | 默认值 | NEEDS_CONFIRMATION | 验证财务「明细操作 处理」的默认值规则：【明细操作】序号(seq)=当前明细最大序号+1；会计期间期号(acctg_perid_no)=序号值；季度(qtr)=0；会计调整期标识(acctg_adj_perid_flag)、会计调整期类型(acctg_adj_perid_type) 按默认值带出 | 按操作说明执行 |  | RULE-58018EC25F7C |
 | SCN-404D7DE39A51 | 供应商品号价格 | 只读校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「供应商名称」的只读校验规则：【供应商名称(supp_name)】✅ 是 | 字段不可编辑 |  | RULE-15227D5859A8 |
 | SCN-71DEE51C6E42 | 其他应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「审核时间」的隐藏校验规则：【审核时间(aprv_time)】✅ 是 | 字段不展示 |  | RULE-813A99CA6104 |
-| SCN-B44D6D84E327 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「计价单位编号」的必填校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0018 | RULE-BFC16F78A7CB；RULE-A122B35CB562 |
+| SCN-B44D6D84E327 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「计价单位编号」的必填校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0018 | RULE-BFC16F78A7CB |
 | SCN-7C2CE13AE40D |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-C1A516EF4577 |
 | SCN-47256C288829 |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「作废 处理」的状态迁移规则：【作废】提示消息：E+MSG："确认作废该笔资料？" | 按操作说明执行 |  | RULE-B47E486D9201 |
 | SCN-3E8A1F0FA7C4 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「其他应付类型」的开窗回填规则：【其他应付类型(other_pay_type)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询其他收付项目<br/>- 数据来源：调用 查询其他收付项目(`bm.other_ar_ap_item.get`) 接口<br/>- 入参条件：其他收付项目.运营单元编号(`other_ar_ap_item.ops_unit_no`)=【本单据.运营单元编号(`other_pay_doc.ops_unit_no`)】 and 其他收付项目.其他收付项目类型(`other_ar_ap_item.other_ar_ap_item_type`)=2.付<br/>- 显示字段：其他… | 开窗：查询其他收付项目 |  | RULE-01D5864D8BEB |
@@ -259,8 +259,8 @@
 | SCN-62601EF5DAD0 | 供应商品号价格 | 默认值 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「运营单元编号」的默认值规则：【运营单元编号(ops_unit_no)】默认值：调用 查询员工(bm.empl.get)<br/>入参：员工.员工编号(empl.empl_no) = 当前登录用户对应员工编号<br/>回参：员工.归属运营单元编号(empl.blng_ops_unit_no)<br/>调用 查询运营单元(bm.ops_unit.get)<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no) = 员工.归属运营单元编号(empl.blng_ops_unit_no)<br/>回参：运营单元职能.职能编号(ops_unit_func.func_no)<br/>IF 运营单元职能.职能编… | 默认值：调用 查询员工(bm.empl.get)<br/>入参：员工.员工编号(empl.empl_no) = 当前登录用户对应员工编号<br/>回参：员工.归属运营单… |  | RULE-0FC6606F7FBC |
 | SCN-7EBA6355B30F | 供应商品号价格 | 只读校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「规格」的只读校验规则：【规格(item_spec)】✅ 是 | 字段不可编辑 | TC-SIPP-0001 | RULE-9D0712F99F7E |
 | SCN-0D47094EA17B | 其他应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「附加结算费用金额（原币）」的隐藏校验规则：【附加结算费用金额（原币）(addl_stlmt_exp_amt_tc)】✅ 是 | 字段不展示 |  | RULE-992E477ACBF3 |
-| SCN-58F0B91E3DB9 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「单价」的必填校验规则：【单价(price)】✅ 是；必填条件：IF 【供应商品号价格.分量计价(supp_item_price.wtbsd_prc)】未勾选 THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-06C237CB9C9A；RULE-6616B31A78C6 |
-| SCN-129A85E97D21 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】有效性校验：运营单元须存在且状态为 Y.生效，否则 E+MSG：「运营单元编号不存在或未生效，请重新选择！」 | 按校验规则拦截或提示 |  | RULE-312CABA7D14B；RULE-4996E7680D29 |
+| SCN-58F0B91E3DB9 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「单价」的必填校验规则：【单价(price)】✅ 是；必填条件：IF 【供应商品号价格.分量计价(supp_item_price.wtbsd_prc)】未勾选 THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-06C237CB9C9A |
+| SCN-129A85E97D21 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】必填校验：为空时 E+MSG：「运营单元编号不可为空，请选择运营单元！」 | 按校验规则拦截或提示 |  | RULE-4B301D55E9B1；RULE-312CABA7D14B；RULE-4996E7680D29 |
 | SCN-E905DA7180D5 | 应付单（`pay_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应付单（`pay_doc`）「状态迁移 【撤审】（须未核销、未产生付款单、未被冲减/调汇；先自动取消过账）」的状态迁移规则：状态迁移：Y.已审核 --[【撤审】（须未核销、未产生付款单、未被冲减/调汇；先自动取消过账）]--> N.未审核 | 状态变为 N.未审核 |  | RULE-2A963586A88D |
 | SCN-D9487B5B59FE |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「结算方式编号」的开窗回填规则：【结算方式编号(stlmt_mode_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询结算方式<br/>- 数据来源：调用 查询结算方式(`bm.stlmt_mode.get`) 接口<br/>- 入参条件：结算方式应用组织.运营单元编号(`stlmt_mode_org.ops_unit_no`)=【本单据.运营单元编号(`other_pay_doc.ops_unit_no`)】<br/>- 显示字段：结算方式编号，结算方式名称，结算方式类别<br/>- 回填映射：更新字段(`stlmt_mode_no`)=结算方式编号 | 开窗：查询结算方式 | TC-CUSF-0009 | RULE-317435E0A26F |
 | SCN-FA2D3EC2D96E |  | 字段联动 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的字段联动规则：【保存】兜底纠正①：IF 坏账准备计提方式(pvn_acrl_mode)<>'2.余额百分比法' AND 坏账准备计提比率(pvn_acrl_rate)<>0 THEN 先置 坏账准备计提比率(pvn_acrl_rate)=0，提示"当前计提方式不使用计提比率，已置为 0"（不阻断保存） | 校验不通过则操作被拦截 |  | RULE-12525BE7BB96；RULE-C0F4AA084CFF |
@@ -273,7 +273,7 @@
 | SCN-BAD3BD195CDF | 供应商品号价格 | 只读校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「税种编号」的只读校验规则：【税种编号(tax_no)】✅ 是 | 字段不可编辑 |  | RULE-A45DF673D16D |
 | SCN-EF3E9352CCA0 | 其他应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「附加结算费用金额（本币）」的隐藏校验规则：【附加结算费用金额（本币）(addl_stlmt_exp_amt_fc)】✅ 是 | 字段不展示 |  | RULE-84E38344743D |
 | SCN-CBD8072DE916 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「分量计价」的必填校验规则：【分量计价(wtbsd_prc)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0025 | RULE-FCF5E89D241B |
-| SCN-D6BA664D7DC2 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购价格类型」的反向校验规则：【采购价格类型(pur_price_type)】取值校验：取值须为 1.一般采购、2.工单委外、3.工艺委外 之一，否则 E+MSG：「采购价格类型取值不合法，请重新选择！」 | 按校验规则拦截或提示 |  | RULE-5FE8D017B5F1 |
+| SCN-D6BA664D7DC2 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购价格类型」的反向校验规则：【采购价格类型(pur_price_type)】必填校验：为空时 E+MSG：「采购价格类型不可为空，请选择采购价格类型！」 | 按校验规则拦截或提示 |  | RULE-BAFA942076E4；RULE-5FE8D017B5F1 |
 | SCN-4A9F1AC46474 | 应付单（`pay_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应付单（`pay_doc`）「状态迁移 【作废】」的状态迁移规则：状态迁移：N.未审核 --[【作废】]--> V.作废 | 状态变为 V.作废 |  | RULE-4F6EBDEF83AB |
 | SCN-3C983E26D56F | 其他应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证其他应收单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询运营单元(`bm.ops_unit.get`) 接口<br/>- 入参条件：运营单元.状态(`ops_unit.manage_status`)=Y.生效 and 运营单元.职能编号(`ops_unit.func_no`) IN ('`acct_org`')<br/>- 显示字段：运营单元编号，运营单元名称<br/>- 回填映射：更新字段(`ops_unit_no`)=运营单元编号，更新字段(`ops_unit_name`)=运营单元名称 | 开窗：查询运营单元 |  | RULE-ACB510C93057 |
 | SCN-C08B9A14B2FB |  | 字段联动 | NEEDS_CONFIRMATION | 验证应收「保存 后置处理」的字段联动规则：【保存】透传必带数组（单头对单头整体替换，漏传会清空明细）：运营单元核算参数会计期间表明细(ops_unit_calc_param_d) 与 账簿参数(acct_param_book)，均按 get 回参原样回传并逐行补 update_type='update' | 按操作说明执行 |  | RULE-EAF2DE8B7E37 |
@@ -285,8 +285,8 @@
 | SCN-92390C302361 | 供应商品号价格 | 默认值 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购价格类型」的默认值规则：【采购价格类型(pur_price_type)】默认值：DEFAULT 采购价格类型(pur_price_type) = 1.一般采购<br/>时机点：默认执行时 | 默认值：DEFAULT 采购价格类型(pur_price_type) = 1.一般采购<br/>时机点：默认执行时 |  | RULE-C1198C6AA827 |
 | SCN-5EB295DB1465 | 供应商品号价格 | 只读校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「税率」的只读校验规则：【税率(tax_rate)】✅ 是 | 字段不可编辑 |  | RULE-900796F4BF60 |
 | SCN-2D4739B97705 |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收「费用编号」的隐藏校验规则：【费用编号(exp_no)】✅ 是 | 字段不展示 |  | RULE-127ADF74CC65 |
-| SCN-8B3550D16377 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「生效日期」的必填校验规则：【生效日期(eff_date)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0029 | RULE-C839DA63B915；RULE-7849233DD7D8 |
-| SCN-07E80AA52426 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「计价单位编号」的反向校验规则：【计价单位编号(prc_unit_no)】品号单位换算关系校验：若该品号在单位换算中不存在任何记录，阻断并 E+MSG：「该品号未维护单位换算关系，请先在品号资料维护计价单位！」 | 按校验规则拦截或提示 |  | RULE-884653754A7F |
+| SCN-8B3550D16377 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「生效日期」的必填校验规则：【生效日期(eff_date)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0029 | RULE-C839DA63B915 |
+| SCN-03F0E54BF4AC | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「供应商编号」的反向校验规则：【供应商编号(supp_no)】必填校验：为空时 E+MSG：「供应商编号不可为空，请选择供应商！」 | 按校验规则拦截或提示 |  | RULE-C469D5D2A9F5 |
 | SCN-0862CECEC6FC | 应付单（`pay_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应付单（`pay_doc`）「状态迁移 【审核】成功后无条件自动触发（无独立按钮，不判断参数）」的状态迁移规则：状态迁移：N.未过账 --[【审核】成功后无条件自动触发（无独立按钮，不判断参数）]--> Y.已过账 | 状态变为 Y.已过账 |  | RULE-AC962B9A717A |
 | SCN-8C9582623FFA | 其他应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询业务类型通用信息<br/>- 数据来源：调用 查询业务类型通用信息(`bm.biz_type_gen_info.get`) 接口<br/>- 入参条件：业务类型通用信息.业务域(`biz_type_gen_info.biz_reg`)=AR.应收领域 and 业务类型通用信息.业务性质(`biz_type_gen_info.biz_prop`)='AR02.其他应收单'<br/>- 显示字段：业务类型编号，业务类型名称，业务性质，业务方向<br/>- 回填映射：更新字段(`bi… | 开窗：查询业务类型通用信息 |  | RULE-1500E137BA93 |
 | SCN-14384D7B2867 |  | 字段联动 | NEEDS_CONFIRMATION | 验证基础资料「编辑 前置校验」的字段联动规则：【编辑】IF 【编号规则.状态(code_rule.manage_status)】=Y.生效 THEN | 校验不通过则操作被拦截 |  | RULE-A131CDEAF670 |
@@ -299,7 +299,7 @@
 | SCN-26D1103B73D4 | 供应商品号价格 | 只读校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-C7ACCAD1CBC9 |
 | SCN-6697E0B21D8F |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收「费用名称」的隐藏校验规则：【费用名称(exp_name)】✅ 是 | 字段不展示 |  | RULE-4FFE2FF5B659 |
 | SCN-8FB9AA9BD1EB | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「状态」的必填校验规则：【状态(manage_status)】✅ 是 | 为空时保存应被拦截 |  | RULE-71AB74DDA09F |
-| SCN-8BD01F903661 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「单价」的反向校验规则：【单价(price)】已勾选分量计价：单价必须等于 0，否则 E+MSG：「分量计价勾选时，单价必须为 0！」 | 按校验规则拦截或提示 |  | RULE-E531CB1686BA |
+| SCN-B90E74FB0C67 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「货币编号」的反向校验规则：【货币编号(ccy_no)】必填校验：为空时 E+MSG：「货币编号不可为空，请选择货币！」 | 按校验规则拦截或提示 |  | RULE-557DA3B1D181 |
 | SCN-6589CFDAC0E2 | 应付单（`pay_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应付单（`pay_doc`）「状态迁移 【撤审】前置自动触发（无独立按钮）」的状态迁移规则：状态迁移：Y.已过账 --[【撤审】前置自动触发（无独立按钮）]--> N.未过账 | 状态变为 N.未过账 |  | RULE-E7584E1147E1 |
 | SCN-FD529CF47623 | 其他应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证其他应收单「结算对象编号」的开窗回填规则：【结算对象编号(stlmt_obj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：按结算对象类型(`stlmt_obj_type`)切换<br/>- 开窗标题：结算对象类型='2.客户' 时「查询客户财务信息」，='1.供应商' 时「查询供应商财务信息」<br/>- 数据来源：类型='2.客户' 时调用 查询客户财务信息(`bm.cust_fin_info.get`)；类型='1.供应商' 时调用 查询供应商财务信息(`bm.supp_fin_info.get`)<br/>- 入参条件：客户财务信息.运营单元编号(`cust_fin_info.ops_unit_no`)=【本单据.运… | 开窗：结算对象类型='2.客户' 时「查询客户财务信息」，='1.供应商' 时「查询供应商财务信息」 |  | RULE-754E35E2C477 |
 | SCN-C2A5ABB330E9 |  | 字段联动 | NEEDS_CONFIRMATION | 验证基础资料「删除 前置校验」的字段联动规则：【删除】IF 【编号规则.状态(code_rule.manage_status)】=Y.生效 THEN | 校验不通过则操作被拦截 |  | RULE-E6431DF0F6E5 |
@@ -312,7 +312,7 @@
 | SCN-9872C886FAB0 | 供应商品号价格 | 只读校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯起始数量」的只读校验规则：【阶梯起始数量(step_begin_qty)】✅ 是 | 字段不可编辑 | TC-SIPP-0001 | RULE-79243882029C |
 | SCN-706674B31196 |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收「银行账号」的隐藏校验规则：【银行账号(bank_acct_no)】✅ 是 | 字段不展示 |  | RULE-B35018082835 |
 | SCN-199A6127BCDD | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯起始数量」的必填校验规则：【阶梯起始数量(step_begin_qty)】✅ 是 | 为空时保存应被拦截 |  | RULE-B2D58C2FD612 |
-| SCN-9560D309404C | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「分量计价」的反向校验规则：【分量计价(wtbsd_prc)】勾选时阶梯明细不可为空，否则 E+MSG：「分量计价已勾选，阶梯明细不可为空！」 | 按校验规则拦截或提示 |  | RULE-0F5621EDFCDD；RULE-8125FD528C88 |
+| SCN-08266F54ECCB | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「品号」的反向校验规则：【品号(item_no)】必填校验：为空时 E+MSG：「品号不可为空，请选择品号！」 | 按校验规则拦截或提示 |  | RULE-4C993A189CC7 |
 | SCN-C492CD27712B | 应付单（`pay_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应付单（`pay_doc`）「状态迁移 【红冲】」的状态迁移规则：状态迁移：N.未红冲 --[【红冲】]--> Y.已红冲 | 状态变为 Y.已红冲 |  | RULE-82AA02F10A04 |
 | SCN-39708BA140A3 | 其他应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证其他应收单「责任人编号」的开窗回填规则：【责任人编号(resp_pers_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.运营单元编号(`empl.ops_unit_no`)=【本单据.运营单元编号(`other_recev_doc.ops_unit_no`)】<br/>- 显示字段：员工编号，员工姓名，主要部门编号，主要部门名称<br/>- 回填映射：更新字段(`resp_pers_no`)=员工编号，更新字段(`resp_pers_name`)=员工姓名，更新字段(`resp_dept_no… | 开窗：查询员工 |  | RULE-9E16BE0139E2 |
 | SCN-F04165A06723 |  | 字段联动 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的字段联动规则：【生效】IF 【编号规则.状态(code_rule.manage_status)】<>V.失效 THEN | 校验不通过则操作被拦截 |  | RULE-9F8472A9E45F |
@@ -324,8 +324,8 @@
 | SCN-603BA0E175D3 | 供应商品号价格 | 默认值 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「货币编号」的默认值规则：【货币编号(ccy_no)】默认值：调用 查询供应商业务信息(bm.supp_biz_info.get)<br/>入参：供应商业务信息.运营单元编号(supp_biz_info.ops_unit_no) = 【供应商品号价格.运营单元编号(supp_item_price.ops_unit_no)】 AND 供应商业务信息.供应商编号(supp_biz_info.supp_no) = 【供应商品号价格.供应商编号(supp_item_price.supp_no)】 AND 供应商业务信息.状态(supp_biz_info.manage_status) = Y.生效<br/>回参：供应商业务信息.… | 默认值：调用 查询供应商业务信息(bm.supp_biz_info.get)<br/>入参：供应商业务信息.运营单元编号(supp_biz_info.ops_unit_… |  | RULE-D6060B7480AE |
 | SCN-4BDB18E8B707 |  | 只读校验 | NEEDS_CONFIRMATION | 验证采购「编辑 处理」的只读校验规则：【编辑】载入记录到详情页编辑态；运营单元编号、采购价格类型、供应商编号、货币编号、品号、计价单位编号、生效日期、税种编号置灰不可修改；失效日期、核价日期、备注、分量计价与阶梯明细可修改 | 按操作说明执行 |  | RULE-AE05D6807980 |
 | SCN-F128A2B1BC6D | 业务类型通用信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「前缀连接符」的隐藏校验规则：【前缀连接符(pref_conn)】✅ 是 | 字段不展示 | TC-BZP-0002；TC-INVB-0002 | RULE-FBAA950DC277 |
-| SCN-FFABD82BF8C1 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯截止数量」的必填校验规则：【阶梯截止数量(step_end_qty)】✅ 是 | 为空时保存应被拦截 |  | RULE-2D3012FB9E7E；RULE-9C9AD6403DF4 |
-| SCN-65AB90EBC66D | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「生效日期」的反向校验规则：【生效日期(eff_date)】取值校验：不得晚于 9998-12-31，否则 E+MSG：「生效日期超出允许范围，请重新选择！」 | 按校验规则拦截或提示 |  | RULE-7BBD2BEA21F2 |
+| SCN-FFABD82BF8C1 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯截止数量」的必填校验规则：【阶梯截止数量(step_end_qty)】✅ 是 | 为空时保存应被拦截 |  | RULE-2D3012FB9E7E |
+| SCN-07E80AA52426 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「计价单位编号」的反向校验规则：【计价单位编号(prc_unit_no)】必填校验：为空时 E+MSG：「计价单位编号不可为空，请选择计价单位！」 | 按校验规则拦截或提示 |  | RULE-A122B35CB562；RULE-884653754A7F |
 | SCN-804042FE5DA7 | 应付单（`pay_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应付单（`pay_doc`）「状态迁移 【取消红冲】」的状态迁移规则：状态迁移：Y.已红冲 --[【取消红冲】]--> N.未红冲 | 状态变为 N.未红冲 |  | RULE-EE152413B970 |
 | SCN-3B72F6410C08 | 其他应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证其他应收单「责任部门编号」的开窗回填规则：【责任部门编号(resp_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询部门信息<br/>- 数据来源：调用 查询部门(bm.dept.get) 接口<br/>- 入参条件：部门.运营单元编号(`dept.ops_unit_no`)=【本单据.运营单元编号(`other_recev_doc.ops_unit_no`)】<br/>- 显示字段：部门编号，部门名称<br/>- 回填映射：更新字段(`resp_dept_no`)=部门编号，更新字段(`resp_dept_name`)=部门名称 | 开窗：查询部门信息 |  | RULE-96C28D86F710 |
 | SCN-8E42D5D5BAF4 |  | 字段联动 | NEEDS_CONFIRMATION | 验证基础资料「失效 前置校验」的字段联动规则：【失效】IF 【编号规则.状态(code_rule.manage_status)】<>Y.生效 THEN | 校验不通过则操作被拦截 |  | RULE-E740E56D441B |
@@ -336,8 +336,8 @@
 | SCN-9E61441E007E | 供应商品号价格 | 默认值 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「品号」的默认值规则：【品号(item_no)】默认值：无默认值，由用户开窗选择；运营单元为空时不允许开窗 | 默认值：无默认值，由用户开窗选择；运营单元为空时不允许开窗 |  | RULE-56A631BA6437 |
 | SCN-34F81FD564A9 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 | TC-PURP-0001 | RULE-544701555068 |
 | SCN-C15736094A64 | 业务类型通用信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 |  | RULE-1E3D161DB8BD |
-| SCN-93DC04A5D763 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购单价」的必填校验规则：【采购单价(pur_price)】✅ 是 | 为空时保存应被拦截 |  | RULE-A6BAF5E4C727；RULE-9A77A7255C60 |
-| SCN-8550B9022BDD | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「失效日期」的反向校验规则：【失效日期(expy_date)】先后校验：不为空白时必须大于【供应商品号价格.生效日期(supp_item_price.eff_date)】，否则 E+MSG：「失效日期必须大于生效日期！」 | 按校验规则拦截或提示 |  | RULE-E9201E67D0B6 |
+| SCN-93DC04A5D763 | 供应商品号价格 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购单价」的必填校验规则：【采购单价(pur_price)】✅ 是 | 为空时保存应被拦截 |  | RULE-A6BAF5E4C727 |
+| SCN-8BD01F903661 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「单价」的反向校验规则：【单价(price)】未勾选分量计价：单价必填且必须大于 0；为空时 E+MSG：「单价不可为空，请输入采购单价！」；小于等于 0 时 E+MSG：「单价必须大于 0！」 | 按校验规则拦截或提示 |  | RULE-6616B31A78C6；RULE-E531CB1686BA |
 | SCN-A035D769E5CC |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应付「撤审 前置校验」的状态迁移规则：【撤审】检查 红冲标识(`rvs_flag`)须<>'Y'，否则 E+MSG："已红冲单据不可撤审！" | 校验不通过则操作被拦截 |  | RULE-811FC868F3AE |
 | SCN-64399CF199D4 | 其他应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证其他应收单「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.运营单元编号(`ccy.ops_unit_no`)=【本单据.运营单元编号(`other_recev_doc.ops_unit_no`)】<br/>- 显示字段：货币编号，货币名称<br/>- 回填映射：更新字段(`ccy_no`)=货币编号，更新字段(`ccy_name`)=货币名称 | 开窗：查询货币 |  | RULE-3184B92A24C6 |
 | SCN-94718A7C8882 |  | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购「询价数量」的字段联动规则：【询价数量(inq_qty)】IF 【询价单明细.询价数量(inq_doc_d.inq_qty)】 < 0 THEN E+MSG："询价数量不可小于0 !" ENDIF | 按校验规则拦截或提示 |  | RULE-12230C097F29 |
@@ -349,7 +349,7 @@
 | SCN-22024927E9E2 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「业务类型名称」的只读校验规则：【业务类型名称(biz_type_name)】✅ 是 | 字段不可编辑 |  | RULE-28C657354C32 |
 | SCN-31A6AA4E07B1 | 业务类型应付参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 |  | RULE-D16F981EBA10 |
 | SCN-6C2DD04B76EA |  | 必填校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的必填校验规则：【保存】必填校验：运营单元编号、采购价格类型、供应商编号、货币编号、品号、计价单位编号、生效日期（R01、R04、R05、R07、R08、R10、R14） | 校验不通过则操作被拦截 |  | RULE-1C78D60A1AD7 |
-| SCN-E4F1143B7B44 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「核价日期」的反向校验规则：【核价日期(pv_date)】先后校验：不为空白时不得晚于【供应商品号价格.生效日期(supp_item_price.eff_date)】，否则 E+MSG：「核价日期不得晚于生效日期！」 | 按校验规则拦截或提示 |  | RULE-9304E5B8153C |
+| SCN-9560D309404C | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「分量计价」的反向校验规则：【分量计价(wtbsd_prc)】勾选时阶梯明细不可为空，否则 E+MSG：「分量计价已勾选，阶梯明细不可为空！」 | 按校验规则拦截或提示 |  | RULE-0F5621EDFCDD；RULE-8125FD528C88 |
 | SCN-08558661C2F0 |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应付「撤审 处理」的状态迁移规则：【撤审】提示消息：E+MSG："确认撤审？将同时取消该单据的过账与应付台账记录！" | 按操作说明执行 |  | RULE-FBA633BD4751 |
 | SCN-45321E4C5B48 | 其他应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证其他应收单「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询收付款条件<br/>- 数据来源：调用 查询收付款条件(`bm.colln_pmt_terms.get`) 接口<br/>- 入参条件：收付款条件.收付款(`colln_pmt_terms.colln_pmt`)=2.收款条件<br/>- 显示字段：付款条件编号，付款条件名称<br/>- 回填映射：更新字段(`pmt_terms_no`)=付款条件编号，更新字段(`pmt_terms_name`)=付款条件名称 | 开窗：查询收付款条件 |  | RULE-B2D2B8C1AA76 |
 | SCN-EDFF3DD2A211 |  | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购「询价单价」的字段联动规则：【询价单价(inq_price)】IF 【询价单明细.询价单价(inq_doc_d.inq_price)】 < 0 THEN E+MSG："询价单价不可小于0 !" ENDIF | 按校验规则拦截或提示 |  | RULE-9C635056DA5D |
@@ -361,7 +361,7 @@
 | SCN-E9FD0A67DC61 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「业务性质」的只读校验规则：【业务性质(biz_prop)】✅ 是 | 字段不可编辑 | TC-PSTK-0001；TC-PARR-0001；TC-PRTN-0009；TC-PRTN-0010 | RULE-0A0C6394ED47 |
 | SCN-D8A0469C014B | 业务类型应付参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「税务发票控制标识」的隐藏校验规则：【税务发票控制标识(tax_inv_cntl_flag)】✅ 是 | 字段不展示 |  | RULE-C7005102B3CB |
 | SCN-515615D4475B |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-SUPP-0006；TC-SIPP-0011；TC-BZPP-0003；TC-BASV-0005；TC-IFIN-0005；TC-IPUR-0004；TC-ISAL-0005；TC-CUSB-0006；TC-CUSI-0007；TC-CUSF-0005；TC-INVP-0002；TC-INVC-0002；TC-INVF-0004；TC-QICHK-0007；TC-PURQ-0004；TC-PUR-0042；TC-PURP-0004；TC-PSTK-0006；TC-PARR-0003；TC-PO-0046；TC-PRTN-0003 | RULE-44FBB3184EE4 |
-| SCN-D405413D992F | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「状态」的反向校验规则：【状态(manage_status)】取值校验：只允许 Y.生效 或 V.失效，否则 E+MSG：「状态取值不合法！」 | 按校验规则拦截或提示 |  | RULE-C1A6ABAFAD7A |
+| SCN-65AB90EBC66D | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「生效日期」的反向校验规则：【生效日期(eff_date)】必填校验：为空时 E+MSG：「生效日期不可为空，请选择生效日期！」 | 按校验规则拦截或提示 |  | RULE-7849233DD7D8；RULE-7BBD2BEA21F2 |
 | SCN-23CF206FC945 |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应付「作废 前置校验」的状态迁移规则：【作废】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："状态不为未审核，不可作废！" | 校验不通过则操作被拦截 |  | RULE-B4B01F12DDA5 |
 | SCN-569DF24A1504 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收「其他收付项目编号」的开窗回填规则：【其他收付项目编号(other_ar_ap_item_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询其他收付项目<br/>- 数据来源：调用 查询其他收付项目(`bm.other_ar_ap_item.get`) 接口<br/>- 入参条件：其他收付项目.运营单元编号(`other_ar_ap_item.ops_unit_no`)=【本单据.运营单元编号(`other_recev_doc.ops_unit_no`)】 and 其他收付项目.其他收付项目类型(`other_ar_ap_item.other_ar_ap_item_type`)=1.收 and … | 开窗：查询其他收付项目 |  | RULE-1970091F635A |
 | SCN-C087FDC56631 |  | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购「税率」的字段联动规则：【税率(tax_rate)】IF 【询价单明细.税率(inq_doc_d.tax_rate)】 < 0 OR 【询价单明细.税率(inq_doc_d.tax_rate)】 > 1 THEN E+MSG："税率须在 0~1 之间！" ENDIF | 按校验规则拦截或提示 |  | RULE-C98B044B50CD |
@@ -373,7 +373,7 @@
 | SCN-BAF1AE2C229D |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「业务方向」的只读校验规则：【业务方向(biz_dirct)】✅ 是 | 字段不可编辑 |  | RULE-FDB702E7DCB2 |
 | SCN-BD4BE6A210F0 | 业务类型应付参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「审核后自动过账标识」的隐藏校验规则：【审核后自动过账标识(aprv_auto_post_flag)】✅ 是 | 字段不展示 |  | RULE-EF30894AAC51 |
 | SCN-F6F3B85D1689 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-BZPP-0007；TC-BZP-0003；TC-INVB-0003；TC-INVP-0004；TC-PURQ-0008；TC-PSTK-0003；TC-PARR-0062；TC-PO-0036；TC-PRTN-0011 | RULE-398BAA42083D |
-| SCN-6BAB994B5EDF | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「备注」的反向校验规则：【备注(rmk)】长度校验：超过 255 个字符时 E+MSG：「备注长度不可超过 255 个字符！」 | 按校验规则拦截或提示 |  | RULE-33771B684133 |
+| SCN-8550B9022BDD | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「失效日期」的反向校验规则：【失效日期(expy_date)】先后校验：不为空白时必须大于【供应商品号价格.生效日期(supp_item_price.eff_date)】，否则 E+MSG：「失效日期必须大于生效日期！」 | 按校验规则拦截或提示 |  | RULE-E9201E67D0B6 |
 | SCN-449798EE9645 |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应付「作废 处理」的状态迁移规则：【作废】提示消息：E+MSG："确认作废该笔资料？" | 按操作说明执行 |  | RULE-38EE54560756 |
 | SCN-063AACE71C23 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收「结算方式编号」的开窗回填规则：【结算方式编号(stlmt_mode_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询结算方式<br/>- 数据来源：调用 查询结算方式(`bm.stlmt_mode.get`) 接口<br/>- 入参条件：结算方式.运营单元编号(`stlmt_mode.ops_unit_no`)=【本单据.运营单元编号(`other_recev_doc.ops_unit_no`)】<br/>- 显示字段：结算方式编号，结算方式名称<br/>- 回填映射：更新字段(`stlmt_mode_no`)=结算方式编号，更新字段(`stlmt_mode_name`)=结算方式名称 | 开窗：查询结算方式 | TC-CUSF-0009 | RULE-AD288D9ED15B |
 | SCN-D42201E77C4D |  | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购「核价单价」的字段联动规则：【核价单价(pv_price)】IF 【询价单明细.核价单价(inq_doc_d.pv_price)】 < 0 THEN E+MSG："核价单价须大于等于0" ENDIF | 按校验规则拦截或提示 |  | RULE-8373569C79F1 |
@@ -385,7 +385,7 @@
 | SCN-3028852961DF |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「核销方式」的只读校验规则：【核销方式(verf_mode)】✅ 是 | 字段不可编辑 |  | RULE-C780F0C95E5E |
 | SCN-2C3C6DE25C9F | 业务类型应付参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「修改是否自动审核」的隐藏校验规则：【修改是否自动审核(mod_is_auto_aprv)】✅ 是 | 字段不展示 |  | RULE-89273F117432 |
 | SCN-E580575E6883 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「业务性质」的必填校验规则：【业务性质(biz_prop)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0016；TC-INVB-0011；TC-PRTN-0008 | RULE-0249543CDAFA |
-| SCN-9876A10CA56A | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯起始数量」的反向校验规则：【阶梯起始数量(step_begin_qty)】衔接校验：首笔必须等于 0，其余笔必须等于上一笔阶梯截止数量，否则 E+MSG：「阶梯起始数量必须等于上一笔阶梯截止数量！」 | 按校验规则拦截或提示 |  | RULE-F65B2F9AA49C；RULE-5216A1D643CC |
+| SCN-E4F1143B7B44 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「核价日期」的反向校验规则：【核价日期(pv_date)】先后校验：不为空白时不得晚于【供应商品号价格.生效日期(supp_item_price.eff_date)】，否则 E+MSG：「核价日期不得晚于生效日期！」 | 按校验规则拦截或提示 |  | RULE-9304E5B8153C |
 | SCN-97A066D61C9C | 应收单（`recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应收单（`recev_doc`）「状态迁移 【审核】（同一操作内自动过账）」的状态迁移规则：状态迁移：N.未审核 --[【审核】（同一操作内自动过账）]--> Y.已审核 | 状态变为 Y.已审核 |  | RULE-F59E081953F0 |
 | SCN-D27F05084277 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询项目信息<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：项目.运营单元编号(`proj.ops_unit_no`)=【本单据.运营单元编号(`other_recev_doc.ops_unit_no`)】<br/>- 显示字段：项目编号，项目名称<br/>- 回填映射：更新字段(`proj_no`)=项目编号，更新字段(`proj_name`)=项目名称 | 开窗：查询项目信息 | TC-PUR-0021；TC-PUR-0049；TC-PSTK-0045；TC-PARR-0053；TC-PARR-0072；TC-PO-0044；TC-PO-0084；TC-PRTN-0042；TC-PRTN-0085 | RULE-1B5168C1B7E6 |
 | SCN-CF24F76DFF2A |  | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购「生效日期」的字段联动规则：【生效日期(eff_date)】IF 【询价单明细.失效日期(inq_doc_d.expy_date)】不为空 AND 【询价单明细.失效日期(inq_doc_d.expy_date)】 <= 【询价单明细.生效日期(inq_doc_d.eff_date)】 THEN E+MSG："失效日期不可和生效日期相同或在生效日期的前!" ENDIF | 按校验规则拦截或提示 |  | RULE-372E0AAAC8C6 |
@@ -397,7 +397,7 @@
 | SCN-23891445A48B |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「结算对象名称」的只读校验规则：【结算对象名称(stlmt_obj_name)】✅ 是 | 字段不可编辑 |  | RULE-3F71BCF7A003 |
 | SCN-617740F213E8 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「税种编号」的隐藏校验规则：【税种编号(tax_no)】✅ 是 | 字段不展示 |  | RULE-AEC5B586D543 |
 | SCN-99F5B3D63D82 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「业务方向」的必填校验规则：【业务方向(biz_dirct)】✅ 是 | 为空时保存应被拦截 |  | RULE-9DD7BD192E17 |
-| SCN-C77B77FE27F5 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯截止数量」的反向校验规则：【阶梯截止数量(step_end_qty)】大小校验：必须大于【供应商品号计价分类.阶梯起始数量(supp_item_prc_class.step_begin_qty)】，否则 E+MSG：「阶梯截止数量必须大于阶梯起始数量！」 | 按校验规则拦截或提示 |  | RULE-D77ABB24A81A |
+| SCN-D405413D992F | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「状态」的反向校验规则：【状态(manage_status)】取值校验：只允许 Y.生效 或 V.失效，否则 E+MSG：「状态取值不合法！」 | 按校验规则拦截或提示 |  | RULE-C1A6ABAFAD7A |
 | SCN-FE76424FAFA9 | 应收单（`recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应收单（`recev_doc`）「状态迁移 【撤审】（须未红冲、未核销、未产生收款单；先自动取消过账）」的状态迁移规则：状态迁移：Y.已审核 --[【撤审】（须未红冲、未核销、未产生收款单；先自动取消过账）]--> N.未审核 | 状态变为 N.未审核 |  | RULE-C28BA6954D3C |
 | SCN-642CA912C837 | 客户供应商关系档 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「客户编号」的开窗回填规则：【客户编号(cust_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择客户<br/>- 数据来源：调用 查询客户基本信息(bm.cust_base_info.get)<br/>- 开窗前置条件：运营单元编号(ops_unit_no) 为空时不允许开窗，并提示「请先选择运营单元」<br/>- 入参条件：客户基本信息.运营单元编号(cust_base_info.ops_unit_no) = 客户供应商关系档.运营单元编号(cust_supp_rela.ops_unit_no) AND 客户基本信息.状态(cust_base_info.status) = Y.生效（状态字段码以接口规格为… | 开窗：选择客户 |  | RULE-47FD5865AA52 |
 | SCN-F066ABB1A5F8 |  | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购「失效日期」的字段联动规则：【失效日期(expy_date)】IF 【询价单明细.失效日期(inq_doc_d.expy_date)】不为空 AND 【询价单明细.失效日期(inq_doc_d.expy_date)】 <= 【询价单明细.生效日期(inq_doc_d.eff_date)】 THEN E+MSG："失效日期不可和生效日期相同或在生效日期的前!" ENDIF | 按校验规则拦截或提示 |  | RULE-ED6E1022DDD5 |
@@ -408,8 +408,8 @@
 | SCN-00420734E6DF | 供应商品号价格 | 默认值 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「分量计价」的默认值规则：【分量计价(wtbsd_prc)】默认值：DEFAULT 分量计价(wtbsd_prc) = 未勾选<br/>时机点：默认执行时 | 默认值：DEFAULT 分量计价(wtbsd_prc) = 未勾选<br/>时机点：默认执行时 | TC-SIPP-0028 | RULE-4D29B510E56F |
 | SCN-B87D3A3504EB |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 | TC-BASV-0001；TC-BAS-0001；TC-IPUR-0001；TC-CUSB-0001；TC-CUSI-0001；TC-CUST-0001；TC-PSTK-0001 | RULE-DC6D841D22F4 |
 | SCN-08D10A72A677 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「税种名称」的隐藏校验规则：【税种名称(tax_name)】✅ 是 | 字段不展示 |  | RULE-235AC66D92C0 |
-| SCN-08B44AEDCF89 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「单号」的必填校验规则：【单号(doc_no)】✅ 是；必填条件：IF 业务类型通用信息.自动编码方式(`biz_type_gen_info.auto_code_mode`)='7.手工输入' THEN 不可空白 ENDIF（其他编码方式由服务取号，用户无需填写） | 为空时保存应被拦截 | TC-PURQ-0012 | RULE-C017D990600F；RULE-9AF09DC83516 |
-| SCN-83C7FE3AD4EA | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购单价」的反向校验规则：【采购单价(pur_price)】取值校验：必须大于 0，否则 E+MSG：「采购单价必须大于 0！」 | 按校验规则拦截或提示 |  | RULE-F87171809567 |
+| SCN-08B44AEDCF89 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「单号」的必填校验规则：【单号(doc_no)】✅ 是；必填条件：IF 业务类型通用信息.自动编码方式(`biz_type_gen_info.auto_code_mode`)='7.手工输入' THEN 不可空白 ENDIF（其他编码方式由服务取号，用户无需填写） | 为空时保存应被拦截 | TC-PURQ-0012 | RULE-C017D990600F |
+| SCN-6BAB994B5EDF | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「备注」的反向校验规则：【备注(rmk)】长度校验：超过 255 个字符时 E+MSG：「备注长度不可超过 255 个字符！」 | 按校验规则拦截或提示 |  | RULE-33771B684133 |
 | SCN-D18950487A2C | 应收单（`recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应收单（`recev_doc`）「状态迁移 【作废】」的状态迁移规则：状态迁移：N.未审核 --[【作废】]--> V.作废 | 状态变为 V.作废 |  | RULE-3F9E233BAE4F |
 | SCN-23DF2D8B64D8 | 客户供应商关系档 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 查询供应商基本信息(bm.supp_base_info.get)<br/>- 开窗前置条件：运营单元编号(ops_unit_no) 为空时不允许开窗，并提示「请先选择运营单元」<br/>- 入参条件：供应商基本信息.运营单元编号(supp_base_info.ops_unit_no) = 客户供应商关系档.运营单元编号(cust_supp_rela.ops_unit_no) AND 供应商基本信息.状态(supp_base_info.status) = Y.生效（状态字段码以… | 开窗：选择供应商 |  | RULE-954A5D6A3BFC |
 | SCN-A9B4EB94E7C6 |  | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购「阶梯截止数量」的字段联动规则：【阶梯截止数量(step_end_qty)】IF 【询价分量计价明细.阶梯截止数量(inq_wtbsd_prc_d.step_end_qty)】 <= 【询价分量计价明细.阶梯起始数量(inq_wtbsd_prc_d.step_begin_qty)】 THEN E+MSG："截止数量必须大于起始数量!" ENDIF | 按校验规则拦截或提示 |  | RULE-A7301A22BD71；RULE-176512508525 |
@@ -421,7 +421,7 @@
 | SCN-794C819ABEB6 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「责任人名称」的只读校验规则：【责任人名称(resp_pers_name)】✅ 是 | 字段不可编辑 |  | RULE-A7ABCF7438E1 |
 | SCN-B6059278D7E0 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「税率」的隐藏校验规则：【税率(tax_rate)】✅ 是 | 字段不展示 |  | RULE-B85AEA8F5D85 |
 | SCN-BFF5476B7DF1 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0015；TC-PUR-0035；TC-PSTK-0010；TC-PARR-0059；TC-PO-0034；TC-PRTN-0007 | RULE-A29509309E02 |
-| SCN-74E7DE05F8B2 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「明细备注」的反向校验规则：【明细备注(dtl_rmk)】长度校验：超过 255 个字符时 E+MSG：「明细备注长度不可超过 255 个字符！」 | 按校验规则拦截或提示 |  | RULE-2ED1EC42A607 |
+| SCN-9876A10CA56A | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯起始数量」的反向校验规则：【阶梯起始数量(step_begin_qty)】衔接校验：首笔必须等于 0，其余笔必须等于上一笔阶梯截止数量，否则 E+MSG：「阶梯起始数量必须等于上一笔阶梯截止数量！」 | 按校验规则拦截或提示 |  | RULE-F65B2F9AA49C；RULE-5216A1D643CC |
 | SCN-0DFCB5DB6780 | 应收单（`recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应收单（`recev_doc`）「状态迁移 【审核】成功后无条件自动触发（无独立按钮，不判断参数）」的状态迁移规则：状态迁移：N.未过账 --[【审核】成功后无条件自动触发（无独立按钮，不判断参数）]--> Y.已过账 | 状态变为 Y.已过账 |  | RULE-2BF798516C0F |
 | SCN-82393C8DCD39 | 业务类型应付参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元职能.职能编号 包含 'acct_org'（核算组织） AND 运营单元.状态(ops_unit.manage_status) = Y.生效<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 回填映射：业务类型应付参数.运营单元编号(biz_type_ap_p… | 开窗：选择运营单元 |  | RULE-51AF4A885754 |
 | SCN-3CBFE010CE18 |  | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购「单价」的字段联动规则：【单价(price)】IF 【询价分量计价明细.单价(inq_wtbsd_prc_d.price)】 < 0 THEN E+MSG："此字段必须大于等于零!" ENDIF | 按校验规则拦截或提示 |  | RULE-B45EB1E292D8 |
@@ -433,7 +433,7 @@
 | SCN-65D1732C2D83 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「责任部门名称」的只读校验规则：【责任部门名称(resp_dept_name)】✅ 是 | 字段不可编辑 |  | RULE-FF575E5DD1D5 |
 | SCN-A86EA9D59633 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票方向」的隐藏校验规则：【税务发票方向(tax_inv_dirct)】✅ 是 | 字段不展示 |  | RULE-AF887E9BF52A |
 | SCN-E989EB426720 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「核销方式」的必填校验规则：【核销方式(verf_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-7479D3906E21 |
-| SCN-9A652581944A |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「整体操作 前置校验」的反向校验规则：【整体操作】职能校验：归属运营单元不具备采购组织职能时 E+MSG：「当前运营单元未设置采购组织职能，无法新增供应商品号价格！」，终止进入 | 校验不通过则操作被拦截 |  | RULE-9AD92B0DDE0A；RULE-9CFAEB587660 |
+| SCN-C77B77FE27F5 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯截止数量」的反向校验规则：【阶梯截止数量(step_end_qty)】必填校验：为空时 E+MSG：「阶梯截止数量不可为空，请输入阶梯截止数量！」 | 按校验规则拦截或提示 |  | RULE-9C9AD6403DF4；RULE-D77ABB24A81A |
 | SCN-E86C5C03CEDE | 应收单（`recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应收单（`recev_doc`）「状态迁移 【撤审】前置自动触发（无独立按钮）」的状态迁移规则：状态迁移：Y.已过账 --[【撤审】前置自动触发（无独立按钮）]--> N.未过账 | 状态变为 N.未过账 |  | RULE-6D9C0C7679A4 |
 | SCN-397B7EB482F7 | 业务类型应付参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「业务单别」的开窗回填规则：【业务单别(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择业务单别<br/>- 数据来源：调用 查询业务单别(biz_type_ap_param_001) 查询方案<br/>- 查询模型：业务类型通用信息(biz_type_gen_info)<br/>- 入参条件：业务类型通用信息.业务域(biz_type_gen_info.biz_reg) = AP AND 业务类型通用信息.状态(biz_type_gen_info.manage_status) = Y.生效<br/>- 显示字段：业务类型通用信息.业务单别(biz_type_gen_info.biz_typ… | 开窗：选择业务单别 |  | RULE-7F1B307F07CD |
 | SCN-5214D2680B22 |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的字段联动规则：【保存】日期区间：IF 【询价单明细.失效日期(inq_doc_d.expy_date)】不为空 AND 【询价单明细.失效日期(inq_doc_d.expy_date)】 <= 【询价单明细.生效日期(inq_doc_d.eff_date)】 THEN E+MSG："失效日期不可和生效日期相同或在生效日期的前!" 并中止保存 ENDIF | 校验不通过则操作被拦截 |  | RULE-7B072D76583D |
@@ -445,7 +445,7 @@
 | SCN-64ED8871B735 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「项目名称」的只读校验规则：【项目名称(proj_name)】✅ 是 | 字段不可编辑 |  | RULE-46C6583CFC15 |
 | SCN-15F8F71DAD2E | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「会计期间序号」的隐藏校验规则：【会计期间序号(acctg_perid_seq)】✅ 是 | 字段不展示 |  | RULE-AF8D9C3B2EAD |
 | SCN-ECEC11F8A68F |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「结算对象类型」的必填校验规则：【结算对象类型(stlmt_obj_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-90B1F9EE164E |
-| SCN-FDA533A575E8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「新增 前置校验」的反向校验规则：【新增】职能校验：归属运营单元不具备采购组织职能时 E+MSG：「当前运营单元未设置采购组织职能，无法新增供应商品号价格！」，终止进入 | 校验不通过则操作被拦截 |  | RULE-D31859A62DB9；RULE-C7816845291C |
+| SCN-83C7FE3AD4EA | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「采购单价」的反向校验规则：【采购单价(pur_price)】必填校验：为空时 E+MSG：「采购单价不可为空，请输入采购单价！」 | 按校验规则拦截或提示 |  | RULE-9A77A7255C60；RULE-F87171809567 |
 | SCN-4E98A4BB98D9 | 应收单（`recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应收单（`recev_doc`）「状态迁移 【红冲】」的状态迁移规则：状态迁移：1.未红冲 --[【红冲】]--> 2.已红冲 | 状态变为 2.已红冲 |  | RULE-3BA2436BA212 |
 | SCN-78F370B714C2 | 业务类型应付参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「现结业务单别」的开窗回填规则：【现结业务单别(cash_stlmt_biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择现结业务单别<br/>- 数据来源：调用 查询业务类型通用信息(bm.biz_type_gen_info.get) 接口<br/>- 入参条件：业务域=ST AND 业务性质=ST01.付款单 AND 状态=Y.生效<br/>- 显示字段：业务类型通用信息.业务单别(biz_type_gen_info.biz_type_no)，业务类型通用信息.业务类型名称(biz_type_gen_info.biz_type_name)<br/>- 回填映射：业务类型应付参数.现结业务类型编号… | 开窗：选择现结业务单别 |  | RULE-EFD32C35E6AF |
 | SCN-F2AE6C921510 |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「审核 后置处理」的字段联动规则：【审核】IF 审核日依据 = 1.系统日 THEN 审核日期 = 当前系统日期 ELSE 审核日期 = 【询价单.单据日期(inq_doc.doc_date)】 ENDIF | 按操作说明执行 |  | RULE-11C14E8F9A3C |
@@ -457,7 +457,7 @@
 | SCN-9ABD75014156 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「货币名称」的只读校验规则：【货币名称(ccy_name)】✅ 是 | 字段不可编辑 |  | RULE-E484EC3CB2F7 |
 | SCN-97D20DB468FC | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「审核时间」的隐藏校验规则：【审核时间(aprv_time)】✅ 是 | 字段不展示 |  | RULE-F96C1EE212F3 |
 | SCN-95623BD565B8 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「结算对象编号」的必填校验规则：【结算对象编号(stlmt_obj_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-89B90260398E |
-| SCN-564E994B3D52 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「编辑 前置校验」的反向校验规则：【编辑】未选中行时提示「请选择一笔记录！」 | 校验不通过则操作被拦截 |  | RULE-8E8CA47DC66D；RULE-EE5C64FBA877 |
+| SCN-74E7DE05F8B2 | 供应商品号价格 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「明细备注」的反向校验规则：【明细备注(dtl_rmk)】长度校验：超过 255 个字符时 E+MSG：「明细备注长度不可超过 255 个字符！」 | 按校验规则拦截或提示 |  | RULE-2ED1EC42A607 |
 | SCN-73D3E20CC80B | 应收单（`recev_doc`） | 状态迁移 | NEEDS_UI_EXPLORATION | 验证应收单（`recev_doc`）「状态迁移 【取消红冲】」的状态迁移规则：状态迁移：2.已红冲 --[【取消红冲】]--> 1.未红冲 | 状态变为 1.未红冲 |  | RULE-AF4C00C0AF42 |
 | SCN-A0B40F9F3751 | 业务类型应付参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「分期冲减单别」的开窗回填规则：【分期冲减单别(insta_offst_adv_biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择分期冲减单别<br/>- 数据来源：调用 查询业务类型通用信息(bm.biz_type_gen_info.get) 接口<br/>- 入参条件：业务域=AP AND 状态=Y.生效<br/>- 显示字段：业务类型通用信息.业务单别(biz_type_gen_info.biz_type_no)，业务类型通用信息.业务类型名称(biz_type_gen_info.biz_type_name)<br/>- 回填映射：业务类型应付参数.分期预收付冲减业务类型编号(biz_typ… | 开窗：选择分期冲减单别 |  | RULE-FBBE0F64F2AE |
 | SCN-FB65AB6DF05E |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「取单 后置处理」的字段联动规则：【取单】重置处理：清空全部查询条件 | 按操作说明执行 |  | RULE-4448C26B3E1B |
@@ -469,7 +469,7 @@
 | SCN-35DCFA6CC733 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「付款条件名称」的只读校验规则：【付款条件名称(pmt_terms_name)】✅ 是 | 字段不可编辑 |  | RULE-1CDCFBD7174D |
 | SCN-89FCE29CAEA5 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票号码合并文本」的隐藏校验规则：【税务发票号码合并文本(tax_inv_no_merge_text)】✅ 是 | 字段不展示 |  | RULE-5BF600728727 |
 | SCN-418A0572DCB6 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「结算对象名称」的必填校验规则：【结算对象名称(stlmt_obj_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-B63FD6551AB7 |
-| SCN-C1CDBA86CA1C |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】按顺序执行： | 校验不通过则操作被拦截 |  | RULE-BB0946B8E253；RULE-F6FE2ABD3ADB |
+| SCN-9A652581944A |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「整体操作 前置校验」的反向校验规则：【整体操作】职能校验：归属运营单元不具备采购组织职能时 E+MSG：「当前运营单元未设置采购组织职能，无法新增供应商品号价格！」，终止进入 | 校验不通过则操作被拦截 |  | RULE-9AD92B0DDE0A；RULE-9CFAEB587660 |
 | SCN-13BCEB19069D |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「撤审 前置校验」的状态迁移规则：【撤审】检查 红冲状态(`rvs_stat`)须='1.未红冲'，否则 E+MSG："已红冲单据不可撤审！" | 校验不通过则操作被拦截 |  | RULE-AED5E67C4C0A；RULE-B8C0547F8652 |
 | SCN-8DA7E55F4BD8 | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询运营单元(`bm.ops_unit.get`) 接口<br/>- 入参条件：运营单元.状态(`ops_unit.manage_status`)=Y.生效 and 运营单元职能.职能编号(`ops_unit_func.func_no`) IN ('`acct_org`')<br/>- 显示字段：运营单元编号，运营单元名称<br/>- 回填映射：更新字段(`ops_unit_no`)=运营单元编号，更新字段(`ops_unit_name`)… | 开窗：查询运营单元 |  | RULE-309D5966436A |
 | SCN-F6A22472779B |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「复制 后置处理」的字段联动规则：【复制】以当前单为源新建一张未审核单据：复制单头的运营单元、单别、供应商、币种、含税、采购员、采购部门、询价日期、备注，以及全部询价单明细与询价分量计价明细；单号清空并按单别自动编码方式重新取号；单据日期 = 系统日期；状态 = N.未审核；审核人、审核日期不复制；明细序号、次序号重排；来源单号、来源序号保留以便追溯 | 按操作说明执行 |  | RULE-0D504D125BA4 |
@@ -481,7 +481,7 @@
 | SCN-5F83094A1A50 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「会计年度」的只读校验规则：【会计年度(acctg_year)】✅ 是 | 字段不可编辑 |  | RULE-254A42D042FF |
 | SCN-5CA31A47A040 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「银行账号」的隐藏校验规则：【银行账号(bank_acct_no)】✅ 是 | 字段不展示 |  | RULE-6168D1FCBF2E |
 | SCN-555D1141E66F |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0008；TC-CUSB-0010；TC-CCY-0002；TC-PURQ-0020；TC-PARR-0008；TC-PO-0004；TC-PRTN-0034 | RULE-14D41B64FC67 |
-| SCN-7C300B1AAFA9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 后置处理」的反向校验规则：【保存】保存成功提示「保存成功」，返回列表页并刷新；保存失败按接口返回信息提示并保留画面值 | 按操作说明执行 |  | RULE-52F55F7B0443 |
+| SCN-FDA533A575E8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「新增 前置校验」的反向校验规则：【新增】职能校验：归属运营单元不具备采购组织职能时 E+MSG：「当前运营单元未设置采购组织职能，无法新增供应商品号价格！」，终止进入 | 校验不通过则操作被拦截 |  | RULE-D31859A62DB9；RULE-C7816845291C |
 | SCN-1BF745324A4C |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「撤审 处理」的状态迁移规则：【撤审】提示消息：E+MSG："确认撤审？将同时取消该单据的过账与应收台账记录！" | 按操作说明执行 |  | RULE-42431A005F12 |
 | SCN-600389C039CF | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询应付单别<br/>- 数据来源：调用 查询应付单别(`biz_type_ap_param_001`) 查询方案<br/>- 查询模型：应付业务单别(`biz_type_ap_param`)，关联业务类型通用信息(`biz_type_gen_info`)<br/>- 入参条件：应付业务单别.运营单元编号(`biz_type_ap_param.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】 AND 应付业务单别.状态(`biz_t… | 开窗：查询应付单别 |  | RULE-984F90C0EB42 |
 | SCN-028C12BE391A |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「新增分量计价行 前置校验」的字段联动规则：【新增分量计价行】IF 当前询价单明细行的分量计价未勾选 THEN E+MSG："该笔不是分量计价，不可维护分量计价明细！" 并中止 ENDIF | 校验不通过则操作被拦截 |  | RULE-DF85F296400D |
@@ -493,7 +493,7 @@
 | SCN-59BF9CBF734F |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「会计期间期号」的只读校验规则：【会计期间期号(acctg_perid_no)】✅ 是 | 字段不可编辑 |  | RULE-E9746ADD4826 |
 | SCN-83E56237146E | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「税额计算方式」的隐藏校验规则：【税额计算方式(tax_calc_mode)】✅ 是 | 字段不展示 |  | RULE-F297838D5094 |
 | SCN-EDBEB2D1CA32 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「汇率」的必填校验规则：【汇率(er)】✅ 是 | 为空时保存应被拦截 |  | RULE-BE86C0CC4634 |
-| SCN-07AD792B34E8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除 前置校验」的反向校验规则：【删除】未选中行时提示「请选择一笔记录！」 | 校验不通过则操作被拦截 |  | RULE-3721275D3277；RULE-9604BF19BAD4 |
+| SCN-564E994B3D52 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「编辑 前置校验」的反向校验规则：【编辑】未选中行时提示「请选择一笔记录！」 | 校验不通过则操作被拦截 |  | RULE-8E8CA47DC66D；RULE-EE5C64FBA877 |
 | SCN-5D9CEDE7E4ED |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「作废 前置校验」的状态迁移规则：【作废】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："状态不为未审核，不可作废！" | 校验不通过则操作被拦截 |  | RULE-6B41FD308FDA |
 | SCN-590586C20CB6 | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「结算供应商编号」的开窗回填规则：【结算供应商编号(stlmt_supp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询供应商财务信息<br/>- 数据来源：调用 查询供应商财务信息(`bm.supp_fin_info.get`) 接口<br/>- 入参条件：供应商财务信息.运营单元编号(`supp_fin_info.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】<br/>- 显示字段：供应商编号，供应商名称<br/>- 回填映射：更新字段(`stlmt_supp_no`)=供应商编号，更新字段(`stlmt_supp_name`)=供应… | 开窗：查询供应商财务信息 |  | RULE-781927423AED |
 | SCN-ADD50669E7FD |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「撤审 后置处理」的字段联动规则：【撤审】IF 【采购退货出库单.过账状态(pur_rtn_stkou_doc.post_stat)】=Y.已过账 THEN | 按操作说明执行 |  | RULE-A1D21664E353 |
@@ -504,8 +504,8 @@
 | SCN-76A2E8F26D19 | 供应商品号价格 | 默认值 | NEEDS_UI_EXPLORATION | 验证供应商品号价格「阶梯截止数量」的默认值规则：【阶梯截止数量(step_end_qty)】默认值：当本笔为唯一一笔或最后一笔时，DEFAULT 阶梯截止数量(step_end_qty) = 9999999999；其余笔默认留空，由用户录入<br/>时机点：新增明细行时 | 默认值：当本笔为唯一一笔或最后一笔时，DEFAULT 阶梯截止数量(step_end_qty) = 9999999999；其余笔默认留空，由用户录入<br/>时机点：新… |  | RULE-E18A2B9CF580 |
 | SCN-8F73021AD0B0 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「会计期间序号」的只读校验规则：【会计期间序号(acctg_perid_seq)】✅ 是 | 字段不可编辑 |  | RULE-0E2637C0BE38 |
 | SCN-430438287B2D | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「税区编号」的隐藏校验规则：【税区编号(tax_dist_no)】✅ 是 | 字段不展示 |  | RULE-9E3817D60ACD |
-| SCN-F8F21B18DDFF |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「记账日期」的必填校验规则：【记账日期(bk_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-9427BEA90FD6；RULE-AF147809EDD8 |
-| SCN-763720FE14A8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除 后置处理」的反向校验规则：【删除】入参：主键 supp_item_price_id；提示「删除成功」并刷新列表；取消不执行任何操作 | 按操作说明执行 |  | RULE-2EDDF3C16FA6 |
+| SCN-F8F21B18DDFF |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「记账日期」的必填校验规则：【记账日期(bk_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-9427BEA90FD6 |
+| SCN-C1CDBA86CA1C |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】按顺序执行： | 校验不通过则操作被拦截 |  | RULE-BB0946B8E253；RULE-F6FE2ABD3ADB |
 | SCN-198002A8F21C |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「作废 处理」的状态迁移规则：【作废】提示消息：E+MSG："确认作废该笔资料？" | 按操作说明执行 |  | RULE-021FE56C6243 |
 | SCN-F4EC36643F04 | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「采购供应商编号」的开窗回填规则：【采购供应商编号(pur_supp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询供应商财务信息<br/>- 数据来源：调用 查询供应商财务信息(`bm.supp_fin_info.get`) 接口<br/>- 入参条件：供应商财务信息.运营单元编号(`supp_fin_info.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】<br/>- 显示字段：供应商编号，供应商名称<br/>- 回填映射：更新字段(`pur_supp_no`)=供应商编号，更新字段(`pur_supp_name`)=供应商名称 | 开窗：查询供应商财务信息 |  | RULE-5383F0C614DB |
 | SCN-93CB174BD326 | 采购退货单 | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购退货单「汇率」的字段联动规则：【汇率(er)】IF 【采购退货单.汇率(pur_rtn_doc.er)】 &lt;= 0 THEN E+MSG："[汇率] 须大于零！" ENDIF | 按校验规则拦截或提示 |  | RULE-2FD46B9D6DD6 |
@@ -517,7 +517,7 @@
 | SCN-961635B2CC63 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「审核时间」的只读校验规则：【审核时间(aprv_time)】✅ 是 | 字段不可编辑 | TC-PUR-0001；TC-PO-0001 | RULE-CD2458EE52CC |
 | SCN-5FDCBD754312 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「税区名称」的隐藏校验规则：【税区名称(tax_dist_name)】✅ 是 | 字段不展示 |  | RULE-86C3D37C8195 |
 | SCN-156697B43AED |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「现金折扣方式」的必填校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-4FF8BD95319F |
-| SCN-8BB79170F5DB |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「生效 前置校验」的反向校验规则：【生效】重跑保存的全部校验 R01 至 R25 | 校验不通过则操作被拦截 |  | RULE-4A91F504B682；RULE-74465B59F446 |
+| SCN-7C300B1AAFA9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 后置处理」的反向校验规则：【保存】保存成功提示「保存成功」，返回列表页并刷新；保存失败按接口返回信息提示并保留画面值 | 按操作说明执行 |  | RULE-52F55F7B0443 |
 | SCN-646CFFA748BB |  | 状态迁移 | NEEDS_CONFIRMATION | 验证应收「红冲 前置校验」的状态迁移规则：【红冲】检查 单身未被冲减、无未作废销货单冲减单身，否则 E+MSG："单身已冲减，不可红冲！"（`VD_recev_doc_00046`/00047） | 校验不通过则操作被拦截 |  | RULE-219469797000 |
 | SCN-F49E5A1F817C | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「责任人编号」的开窗回填规则：【责任人编号(resp_pers_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.运营单元编号(`empl.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】<br/>- 显示字段：员工编号，员工姓名，主要部门编号，主要部门名称<br/>- 回填映射：更新字段(`resp_pers_no`)=员工编号，更新字段(`resp_dept_no`)=主要部门编号 | 开窗：查询员工 |  | RULE-3EB4EC048202 |
 | SCN-6F3918086580 | 采购退货单 | 字段联动 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务数量」的字段联动规则：【业务数量(biz_qty)】超退校验：IF 【采购退货单明细.采购退货来源单据类型(pur_rtn_doc_d.pur_rtn_src_doc_type)】 &lt;&gt; '99.其他' AND 【采购退货单明细.业务数量(pur_rtn_doc_d.biz_qty)】 大于 来源可退数量 THEN | 按校验规则拦截或提示 |  | RULE-35F3857A571D |
@@ -528,8 +528,8 @@
 | SCN-EC2B4AF5FC1B |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「整体操作 处理」的默认值规则：【整体操作】入口校验通过后按默认值装配新增页：运营单元编号与名称、采购价格类型 = 1.一般采购、生效日期 = 系统日期、核价日期 = 系统日期、状态 = Y.生效、分量计价 = 未勾选、含税标识 = 未勾选、单价 = 空 | 按操作说明执行 |  | RULE-54F9462DA1B7 |
 | SCN-FF9EEA080B17 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「现结标识」的只读校验规则：【现结标识(cash_stlmt_flag)】✅ 是 | 字段不可编辑 |  | RULE-78E14D53251B |
 | SCN-DE24FF1A9BA2 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「现金折扣方式」的隐藏校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 字段不展示 |  | RULE-3D718803EB17 |
-| SCN-75F619DBC582 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「其他应付类型」的必填校验规则：【其他应付类型(other_pay_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-C4DF748AA24F；RULE-10C4FEC51F38 |
-| SCN-AB83CE88F09D |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「生效 处理」的反向校验规则：【生效】二次确认 E+MSG：「确认将该笔价格置为生效？」 | 按操作说明执行 |  | RULE-900D7BFE5437 |
+| SCN-75F619DBC582 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「其他应付类型」的必填校验规则：【其他应付类型(other_pay_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-C4DF748AA24F |
+| SCN-07AD792B34E8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除 前置校验」的反向校验规则：【删除】未选中行时提示「请选择一笔记录！」 | 校验不通过则操作被拦截 |  | RULE-3721275D3277；RULE-9604BF19BAD4 |
 | SCN-028A6EB3179C |  | 状态迁移 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的状态迁移规则：【审核】IF 【询价单.状态(inq_doc.manage_status)】 = Y.已审核 OR = V.已作废 THEN E+MSG："单据已审核或已作废，不可审核！" ENDIF | 校验不通过则操作被拦截 |  | RULE-692206DD5698 |
 | SCN-2C86939058DF | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「责任部门编号」的开窗回填规则：【责任部门编号(resp_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询部门信息<br/>- 数据来源：调用 查询部门(bm.dept.get) 接口<br/>- 入参条件：部门.运营单元编号(`dept.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】<br/>- 显示字段：部门编号，部门名称<br/>- 回填映射：更新字段(`resp_dept_no`)=部门编号 | 开窗：查询部门信息 |  | RULE-0E547DE61198 |
 | SCN-DB482BBDDA1B | 业务类型通用信息 | 字段联动 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年度位数类型」的字段联动规则：【年度位数类型(year_digit_type)】IF 【业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)】=1.年月日+流水码 OR =3.年月+流水码 THEN 【业务类型通用信息.年度位数类型(biz_type_gen_info.year_digit_type)】不可为1.无 | 按校验规则拦截或提示 |  | RULE-8C2B865C4842；RULE-556747E26A8E；RULE-E567CD072402 |
@@ -541,7 +541,7 @@
 | SCN-1003936CAFF1 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「过账状态」的只读校验规则：【过账状态(post_stat)】✅ 是 | 字段不可编辑 |  | RULE-499FD773446A |
 | SCN-29B7EAD77447 | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「VAT标识」的隐藏校验规则：【VAT标识(vat_flag)】✅ 是 | 字段不展示 |  | RULE-ED26AAC5DF0C |
 | SCN-1560757EAFDB |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「其他收付项目编号」的必填校验规则：【其他收付项目编号(other_ar_ap_item_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-C1CA78A4F82B |
-| SCN-FE2BB1CDA446 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「失效 前置校验」的反向校验规则：【失效】未选中行时提示「请选择一笔记录！」 | 校验不通过则操作被拦截 |  | RULE-970A27F74DC0；RULE-2500BBF72FC3 |
+| SCN-763720FE14A8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除 后置处理」的反向校验规则：【删除】入参：主键 supp_item_price_id；提示「删除成功」并刷新列表；取消不执行任何操作 | 按操作说明执行 |  | RULE-2EDDF3C16FA6 |
 | SCN-BC55C93DC869 | 采购退货出库单 | 状态迁移 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「状态」的状态迁移规则：【状态(manage_status)】由审核 / 撤审 / 作废服务回写，不开放录入。 | 按校验规则拦截或提示 |  | RULE-2C4E3B9BF8A9 |
 | SCN-D796BDDA8E73 | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.运营单元编号(`ccy.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】<br/>- 显示字段：货币编号，货币名称<br/>- 回填映射：更新字段(`ccy_no`)=货币编号 | 开窗：查询货币 |  | RULE-1DF4F4EBCA3D |
 | SCN-FF06D6D7034C |  | 字段联动 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的字段联动规则：【保存】IF 供应商策略 (item_pur_info.supp_strtg) =M.依主要供应商供应 AND 【品号供应商(item_supp)】不为空 且【品号供应商.主要(item_supp.main)】=Y 的笔数<>1 THEN | 校验不通过则操作被拦截 |  | RULE-83EE91EF3D87 |
@@ -553,7 +553,7 @@
 | SCN-AD0558F94038 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「现金折扣方式」的只读校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 字段不可编辑 |  | RULE-CED950600303 |
 | SCN-0DD9E55CFA3C | 应付单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应付单「统一税种税率标识」的隐藏校验规则：【统一税种税率标识(uni_tax_rate_flag)】✅ 是 | 字段不展示 |  | RULE-343C2BC98902 |
 | SCN-384C296959E1 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「金额（原币）」的必填校验规则：【金额（原币）(amt_tc)】✅ 是 | 为空时保存应被拦截 |  | RULE-5473378592EC |
-| SCN-9A9D40272CA5 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「明细操作 前置校验」的反向校验规则：【明细操作】分量计价未勾选时 E+MSG：「未启用分量计价，不可新增阶梯明细！」 | 校验不通过则操作被拦截 |  | RULE-3D4CEF71D7A6；RULE-00405F0C7C38 |
+| SCN-8BB79170F5DB |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「生效 前置校验」的反向校验规则：【生效】重跑保存的全部校验 R01 至 R25 | 校验不通过则操作被拦截 |  | RULE-4A91F504B682；RULE-74465B59F446 |
 | SCN-FFDD6BDCAA89 | 采购退货出库单 | 状态迁移 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「结算状态」的状态迁移规则：【结算状态(stlmt_stat)】已结算（2.结算已完成）或已结算计价数量大于0时，不可取消过账（即不可撤审）。 | 按校验规则拦截或提示 |  | RULE-94B9A4147BDC |
 | SCN-C3322F2E4CCF | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询收付款条件<br/>- 数据来源：调用 查询收付款条件(`bm.colln_pmt_terms.get`) 接口<br/>- 入参条件：收付款条件.收付款(`colln_pmt_terms.colln_pmt`)=1.付款条件<br/>- 显示字段：付款条件编号，付款条件名称<br/>- 回填映射：更新字段(`pmt_terms_no`)=付款条件编号 | 开窗：查询收付款条件 |  | RULE-4147BDE75812 |
 | SCN-087D465CF14B |  | 字段联动 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的字段联动规则：【保存】IF 【银行信息.主要(cust_bank_info.main）】=TRUE 的笔数<>1 THEN | 校验不通过则操作被拦截 |  | RULE-23255B3CC920 |
@@ -565,7 +565,7 @@
 | SCN-0742C324978D |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「责任运营单元编号」的只读校验规则：【责任运营单元编号(resp_ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-1BF03A83A40D |
 | SCN-61107761613F | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 |  | RULE-DDD4E9C63D22 |
 | SCN-46DAE9959B74 |  | 必填校验 | NEEDS_CONFIRMATION | 验证应付「保存 前置校验」的必填校验规则：【保存】检查 单头必填：运营单元编号(`ops_unit_no`)、业务类型编号(`biz_type_no`)、单据日期(`doc_date`)、业务性质(`biz_prop`)、业务方向(`biz_dirct`)、结算对象类型(`stlmt_obj_type`)、结算对象编号(`stlmt_obj_no`)、结算对象名称(`stlmt_obj_name`)、货币编号(`ccy_no`)、汇率(er)、核销方式(`verf_mode`)、现金折扣方式(`cash_disc_mode`)，任一为空则 E+MSG："单头必填项不可为空！" | 校验不通过则操作被拦截 |  | RULE-F95F2092D3FA；RULE-3296AE6B87D7 |
-| SCN-A6CEEE8845F9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「新增明细行 前置校验」的反向校验规则：【新增明细行】分量计价未勾选时 E+MSG：「未启用分量计价，不可新增阶梯明细！」 | 校验不通过则操作被拦截 |  | RULE-E08E7AA120A4；RULE-74F598A3F02B |
+| SCN-AB83CE88F09D |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「生效 处理」的反向校验规则：【生效】二次确认 E+MSG：「确认将该笔价格置为生效？」 | 按操作说明执行 |  | RULE-900D7BFE5437 |
 | SCN-3D1787A2BF0A |  | 状态迁移 | NEEDS_CONFIRMATION | 验证采购「撤审 前置校验」的状态迁移规则：【撤审】单据状态非 Y.已审核时不可撤审。 | 校验不通过则操作被拦截 |  | RULE-1C84FFE727E6 |
 | SCN-B97B280A4357 | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票种类编号」的开窗回填规则：【税务发票种类编号(tax_inv_categ_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询税务发票种类<br/>- 数据来源：调用 查询税务发票种类(`bm.tax_inv_categ.get`) 接口<br/>- 入参条件：税务发票种类.运营单元编号(`tax_inv_categ.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】<br/>- 显示字段：税务发票种类编号，税务发票种类名称<br/>- 回填映射：更新字段(`tax_inv_categ_no`)=税务发票种类编号 | 开窗：查询税务发票种类 |  | RULE-3E07E89281DA |
 | SCN-943A70DFB95E |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的字段联动规则：【保存】IF （【质检业务检验信息.允收数量】+【质检业务检验信息.拒收数量】+【质检业务检验信息.特采数量】+【质检业务检验信息.报废数量】）!=【质检业务检验信息.送检数量】时，THEN | 校验不通过则操作被拦截 |  | RULE-176B2C07700A |
@@ -577,7 +577,7 @@
 | SCN-A0034ED34BC1 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「责任运营单元名称」的只读校验规则：【责任运营单元名称(resp_ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-FD4F7F7BC9D8 |
 | SCN-160F0B12BB68 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-应付」的隐藏校验规则：【启用期间序号-应付(ena_perid_seq_pay)】✅ 是 | 字段不展示 |  | RULE-93076CBADA85 |
 | SCN-9D8C3F9D27DA |  | 必填校验 | NEEDS_CONFIRMATION | 验证应付「审核 前置校验」的必填校验规则：【审核】检查 记账日期(`bk_date`)不可为空白且不可为最小日期(`1900-01-01`)，否则 E+MSG："记账日期不可空白，请重新录入记账日期！" | 校验不通过则操作被拦截 |  | RULE-8EEEE589EB25 |
-| SCN-B7564A873288 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除明细行 前置校验」的反向校验规则：【删除明细行】未选中行时提示「请选择一笔阶梯明细！」 | 校验不通过则操作被拦截 |  | RULE-7B71EE758714 |
+| SCN-FE2BB1CDA446 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「失效 前置校验」的反向校验规则：【失效】未选中行时提示「请选择一笔记录！」 | 校验不通过则操作被拦截 |  | RULE-970A27F74DC0；RULE-2500BBF72FC3 |
 | SCN-6A5797E142C0 |  | 状态迁移 | NEEDS_CONFIRMATION | 验证采购「复制 前置校验」的状态迁移规则：【复制】被复制单据须为可读状态（未作废、未删除）。 | 校验不通过则操作被拦截 |  | RULE-5BD9075F8A76 |
 | SCN-1E8D6EB5FFA5 | 应付单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付单「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询项目信息<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：项目.运营单元编号(`proj.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】<br/>- 显示字段：项目编号，项目名称<br/>- 回填映射：更新字段(`proj_no`)=项目编号 | 开窗：查询项目信息 |  | RULE-DBD66D472BFC |
 | SCN-534AD13A09AC |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「维护分配信息 前置校验」的字段联动规则：【维护分配信息】IF 请购单.状态(requ_doc.manage_status)<>'Y'，THEN | 校验不通过则操作被拦截 |  | RULE-ECBEEA269BE2 |
@@ -589,7 +589,7 @@
 | SCN-019393572E53 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「应付金额（原币）」的只读校验规则：【应付金额（原币）(pay_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-8FD1EAA1DED5 |
 | SCN-A0CDF820DF62 | 业务类型通用信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「前缀连接符」的隐藏校验规则：【前缀连接符(pref_conn)】✅ 是 | 字段不展示 | TC-BZP-0002；TC-INVB-0002 | RULE-CFCD043EA581 |
 | SCN-D7EA30ED9829 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-4A2D33499E8E |
-| SCN-DF84D07AEF82 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除明细行 后置处理」的反向校验规则：【删除明细行】若删除后无明细，分量计价保持勾选但保存时按 R21 拦截，提示用户补充明细或取消分量计价 | 按操作说明执行 |  | RULE-9A654CFF374D |
+| SCN-9A9D40272CA5 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「明细操作 前置校验」的反向校验规则：【明细操作】分量计价未勾选时 E+MSG：「未启用分量计价，不可新增阶梯明细！」 | 校验不通过则操作被拦截 |  | RULE-3D4CEF71D7A6；RULE-00405F0C7C38 |
 | SCN-A67C7A53DE3F |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「品号」的开窗回填规则：【品号(item_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询品号通用信息<br/>- 数据来源：调用 查询品号通用信息(`bm.item_gen_info.get`) 接口<br/>- 入参条件：品号通用信息.运营单元编号(`item_gen_info.ops_unit_no`)=【本单据.运营单元编号(`pay_doc.ops_unit_no`)】<br/>- 显示字段：品号，品名，规格，快捷码，库存单位编号<br/>- 回填映射：更新字段(`item_no`)=品号，更新字段(`item_name`)=品名，更新字段(`item_spec`)=规格… | 开窗：查询品号通用信息 | TC-SIPP-0017；TC-BASV-0004；TC-BASL-0004；TC-IFIN-0004；TC-BAS-0003；TC-IPUR-0003；TC-ISAL-0010；TC-CUSI-0006；TC-PURQ-0033；TC-PUR-0008；TC-PARR-0017；TC-PO-0022；TC-PRTN-0061 | RULE-202A6AD0AEA1 |
 | SCN-B8D9E84A10AF |  | 字段联动 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的字段联动规则：【保存】IF ([单身(PURPB)].记录数<=0) THEN | 校验不通过则操作被拦截 |  | RULE-C2D2ED1119D1 |
 | SCN-59B492DC61A0 | 品号采购信息 | 唯一性 | NEEDS_UI_EXPLORATION | 验证品号采购信息「供应商编号」的唯一性规则：【供应商编号(supp_no)】供应商编号不可重复 | 按校验规则拦截或提示 |  | RULE-E3F8D633DE1A |
@@ -600,7 +600,7 @@
 | SCN-EF29B04513D1 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「应付金额（本币）」的只读校验规则：【应付金额（本币）(pay_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-7C01D6F45588 |
 | SCN-93007AE6F1C7 | 业务类型通用信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 |  | RULE-12B7FFD5F7B4 |
 | SCN-923B809AE9DF | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-1F81E172C95E |
-| SCN-C36111216E3B |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】须为查询方案 查询应付单别(`biz_type_ap_param_001`) 返回的有效单别（运营单元=本单据运营单元、状态=Y.生效、业务性质=AP03.其他应付单），否则 E+MSG："此单别不存在或单据性质不符！" | 按校验规则拦截或提示 |  | RULE-4F4B8AFFC65C |
+| SCN-A6CEEE8845F9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「新增明细行 前置校验」的反向校验规则：【新增明细行】分量计价未勾选时 E+MSG：「未启用分量计价，不可新增阶梯明细！」 | 校验不通过则操作被拦截 |  | RULE-E08E7AA120A4；RULE-74F598A3F02B |
 | SCN-3DA87579D7B9 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应付「计价单位编号」的开窗回填规则：【计价单位编号(prc_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询计量单位<br/>- 数据来源：调用 查询计量单位(`bm.meas_unit.get`) 接口<br/>- 入参条件：计量单位.状态(`meas_unit.manage_status`)=Y.生效<br/>- 显示字段：单位编号，单位名称<br/>- 回填映射：更新字段(`prc_unit_no`)=单位编号 | 开窗：查询计量单位 | TC-SIPP-0021；TC-PARR-0030；TC-PO-0065；TC-PRTN-0066 | RULE-EFC3E7EEE8E3 |
 | SCN-F0B3F5B8BC3E | 交易对象属性 | 唯一性 | NEEDS_UI_EXPLORATION | 验证交易对象属性「属性编号」的唯一性规则：【属性编号(attr_no)】回参若存在，提示：" 属性编号已存在，不可重复！" | 按校验规则拦截或提示 |  | RULE-88DAD7AC7196 |
 | SCN-E2B4BE04BB44 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「删除 可用条件」的权限与数据范围规则：【删除】按钮可用条件：需选中一行 AND IF 状态(manage_status)='V.失效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-04C8C4A686A3 |
@@ -609,7 +609,7 @@
 | SCN-79BD94CDFF43 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「金额合计（原币）」的只读校验规则：【金额合计（原币）(total_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-47E7F7D3BE5A |
 | SCN-A2030496BC3F | 业务类型应收参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 |  | RULE-6BF7289250D0 |
 | SCN-93FBCACC716D | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务性质」的必填校验规则：【业务性质(biz_prop)】✅ 是 | 为空时保存应被拦截 |  | RULE-E17FC3BDEFFE |
-| SCN-253CEA24620D |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「业务方向」的反向校验规则：【业务方向(biz_dirct)】须为 1.正向 或 -1.负向，否则 E+MSG："业务类型未设置业务方向！" | 按校验规则拦截或提示 |  | RULE-61E6577554B7 |
+| SCN-B7564A873288 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除明细行 前置校验」的反向校验规则：【删除明细行】未选中行时提示「请选择一笔阶梯明细！」 | 校验不通过则操作被拦截 |  | RULE-7B71EE758714 |
 | SCN-B6A60E3355C5 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「价款存货调整业务类型」的开窗回填规则：【价款存货调整业务类型(price_invnt_adj_biz_type)】开窗：- 选择模式：单选<br/>- 开窗条件：依赖 价款差异实时调整(price_diff_immed_adj)='Y'，否则不可开窗<br/>- 开窗标题：选择价款存货调整业务类型<br/>- 数据来源：调用 查询业务类型通用信息(bm.biz_type_gen_info.get) 接口<br/>- 入参条件：业务类型通用信息.业务域(biz_type_gen_info.biz_reg)='IM'（存货领域） AND 业务类型通用信息.业务性质(biz_type_gen_info.biz_prop)='IM18.成… | 开窗：选择价款存货调整业务类型 |  | RULE-E78A564FF693 |
 | SCN-C3CC134F3C32 | 交易对象属性 | 唯一性 | NEEDS_UI_EXPLORATION | 验证交易对象属性「属性值」的唯一性规则：【属性值(attr_value)】同【交易对象属性.属性编号(trans_obj_attr.attr_no)】+【交易对象属性明细.属性值(trans_obj_attr_d.attr_value)】不可重复 | 按校验规则拦截或提示 |  | RULE-3DF64AAD244B；RULE-5DBAEDE284E1 |
 | SCN-EF0CF87995D5 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「生效 可用条件」的权限与数据范围规则：【生效】按钮可用条件：需选中一行 AND IF 状态(manage_status)='V.失效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-78001B0187A4 |
@@ -618,7 +618,7 @@
 | SCN-FBB76A9737F2 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「金额合计（本币）」的只读校验规则：【金额合计（本币）(total_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-E5C4BA8CD3B6 |
 | SCN-06FC1D18D283 | 业务类型应收参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「税务发票控制标识」的隐藏校验规则：【税务发票控制标识(tax_inv_cntl_flag)】✅ 是 | 字段不展示 |  | RULE-BDECCB2CAE81 |
 | SCN-D5CA38F06112 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务方向」的必填校验规则：【业务方向(biz_dirct)】✅ 是 | 为空时保存应被拦截 |  | RULE-E158EDAD5C32 |
-| SCN-832E6DFB6486 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「单据日期」的反向校验规则：【单据日期(doc_date)】须>=应付启用期间(`ops_unit_calc_param.ena_year_pay`+`ena_perid_no_pay`) 对应起始日期，否则 E+MSG："输入日期信息不可小于应付现行年月！" | 按校验规则拦截或提示 |  | RULE-E2791292E5B3 |
+| SCN-DF84D07AEF82 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除明细行 后置处理」的反向校验规则：【删除明细行】若删除后无明细，分量计价保持勾选但保存时按 R21 拦截，提示用户补充明细或取消分量计价 | 按操作说明执行 |  | RULE-9A654CFF374D |
 | SCN-76E7B2B79846 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「费用分摊存货调整业务类型」的开窗回填规则：【费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)】开窗：- 选择模式：单选<br/>- 开窗条件：依赖 费用分摊差异实时调整(exp_alloc_diff_immed_adj)='Y'，否则不可开窗<br/>- 开窗标题：选择费用分摊存货调整业务类型<br/>- 数据来源：调用 查询业务类型通用信息(bm.biz_type_gen_info.get) 接口<br/>- 入参条件：业务类型通用信息.业务域(biz_type_gen_info.biz_reg)='IM'（存货领域） AND 业务类型通用信息.业务性质(biz_type_gen_info.biz… | 开窗：选择费用分摊存货调整业务类型 |  | RULE-6A6DEA1B92E4 |
 | SCN-EA0FF18E99C8 | 货币 | 唯一性 | NEEDS_UI_EXPLORATION | 验证货币「货币编号」的唯一性规则：【货币编号(ccy_no)】检查货币是否重复 | 按校验规则拦截或提示 |  | RULE-EE4E0E988AED；RULE-D8F24404911E |
 | SCN-01C3AE867B51 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「失效 可用条件」的权限与数据范围规则：【失效】按钮可用条件：需选中一行 AND IF 状态(manage_status)='Y.生效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-ED22D9EF1514 |
@@ -626,8 +626,8 @@
 | SCN-A578805F1723 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应付「业务方向」的默认值规则：【业务方向(biz_dirct)】默认值：当【业务类型编号(`biz_type_no`)更改 AND 业务类型编号(`biz_type_no`)<>SPACE】时，默认业务方向(`biz_dirct`)=-1.负向（一期业务性质固定 AP03.其他应付单，其他应付属负向单据）。时机点：默认执行时 | 默认值：当【业务类型编号(`biz_type_no`)更改 AND 业务类型编号(`biz_type_no`)<>SPACE】时，默认业务方向(`biz_dirct`)… |  | RULE-D345190F97A3 |
 | SCN-E60C97882741 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「序号」的只读校验规则：【序号(seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001；TC-PUR-0001；TC-PSTK-0001；TC-PARR-0001；TC-PRTN-0001 | RULE-353014AF06E4 |
 | SCN-D637311F027E | 业务类型应收参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「审核后自动过账标识」的隐藏校验规则：【审核后自动过账标识(aprv_auto_post_flag)】✅ 是 | 字段不展示 |  | RULE-0AC4C917ECDF |
-| SCN-853A59DA4C00 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「单号」的必填校验规则：【单号(doc_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-39C2CA259268；RULE-9B8AA17B8461 |
-| SCN-2F8CCBA45850 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「结算对象编号」的反向校验规则：【结算对象编号(stlmt_obj_no)】须存在于对应财务信息档案（供应商/客户）且状态为 Y.生效，否则 E+MSG："结算对象不存在或已失效！" | 按校验规则拦截或提示 |  | RULE-67F792F95CAB |
+| SCN-853A59DA4C00 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「单号」的必填校验规则：【单号(doc_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-39C2CA259268 |
+| SCN-C36111216E3B |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】须为查询方案 查询应付单别(`biz_type_ap_param_001`) 返回的有效单别（运营单元=本单据运营单元、状态=Y.生效、业务性质=AP03.其他应付单），否则 E+MSG："此单别不存在或单据性质不符！" | 按校验规则拦截或提示 |  | RULE-4F4B8AFFC65C |
 | SCN-63105C578BF9 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度-应付」的开窗回填规则：【启用年度-应付(ena_year_pay)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询公司会计期间信息<br/>- 数据来源：调用 查询公司会计期间信息(bm.co_acctg_perid_info.get) 接口<br/>- 入参条件：公司会计期间信息.运营单元编号(co_acctg_perid_info.ops_unit_no)=当前登录运营单元 AND 公司会计期间信息.会计期间作用范围(co_acctg_perid_info.acctg_perid_actn_range)='5'（5.应付）<br/>- 显示字段：公司会计期间信息.会计年度(co_a… | 开窗：查询公司会计期间信息 |  | RULE-47DB03192572 |
 | SCN-29EDAB494BC4 | 请购单 | 唯一性 | NEEDS_UI_EXPLORATION | 验证请购单「单号」的唯一性规则：【单号(doc_no)】IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] = 6.手动输入，CHECK 【请购单.单号(requ_doc.doc_no)】是否重复 | 按校验规则拦截或提示 |  | RULE-56F166144929；RULE-DDFC7D5AEB7F |
 | SCN-42B3B83CD9C3 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「编辑 可用条件」的权限与数据范围规则：【编辑】需选中一行 | 按操作说明执行 |  | RULE-AC2F0FDD1126 |
@@ -636,7 +636,7 @@
 | SCN-0D957B732DCC |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「其他收付项目名称」的只读校验规则：【其他收付项目名称(other_ar_ap_item_name)】✅ 是 | 字段不可编辑 |  | RULE-DAA611A76324 |
 | SCN-B2E21DAA8748 | 业务类型应收参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「修改是否自动审核」的隐藏校验规则：【修改是否自动审核(mod_is_auto_aprv)】✅ 是 | 字段不展示 |  | RULE-2158F81BDFF6 |
 | SCN-E83AE61BA95E | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-0EB956A907DA |
-| SCN-369CE9F54F75 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「汇率」的反向校验规则：【汇率(er)】须大于 0，否则 E+MSG："汇率须大于零！" | 按校验规则拦截或提示 |  | RULE-B9063609B36A |
+| SCN-253CEA24620D |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「业务方向」的反向校验规则：【业务方向(biz_dirct)】须为 1.正向 或 -1.负向，否则 E+MSG："业务类型未设置业务方向！" | 按校验规则拦截或提示 |  | RULE-61E6577554B7 |
 | SCN-2A4E8423EAF4 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号-应付」的开窗回填规则：【启用期号-应付(ena_perid_no_pay)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询公司会计期间信息<br/>- 数据来源：调用 查询公司会计期间信息(bm.co_acctg_perid_info.get) 接口<br/>- 入参条件：公司会计期间信息.运营单元编号(co_acctg_perid_info.ops_unit_no)=当前登录运营单元 AND 公司会计期间信息.会计年度(co_acctg_perid_info.acctg_year)=启用年度-应付(ena_year_pay) AND 公司会计期间信息.会计期间作用范围(co_acct… | 开窗：查询公司会计期间信息 |  | RULE-F52B6A47D33B |
 | SCN-5C7CCB8D751F | 运营单元采购参数 | 唯一性 | NEEDS_UI_EXPLORATION | 验证运营单元采购参数「运营单元编号」的唯一性规则：【运营单元编号(ops_unit_no)】回参若存在，提示："运营单元参数已存在，不可重复设置！" | 按校验规则拦截或提示 |  | RULE-99C03D42730F |
 | SCN-90D923498F9C |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-E125D37A3BE1 |
@@ -645,7 +645,7 @@
 | SCN-0BE07836DDFC |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「费用编号」的只读校验规则：【费用编号(exp_no)】✅ 是 | 字段不可编辑 |  | RULE-7AA24FD1B984 |
 | SCN-299CED85C966 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「税种编号」的隐藏校验规则：【税种编号(tax_no)】✅ 是 | 字段不展示 |  | RULE-2FA9BF8B4D6F |
 | SCN-4B5893CC0136 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「核销方式」的必填校验规则：【核销方式(verf_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-B97ABC4CC782 |
-| SCN-420ADCA22A1B |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「记账日期」的反向校验规则：【记账日期(bk_date)】须>=单据日期(`doc_date`)，否则 E+MSG："记账日期需大于等于单据日期！" | 按校验规则拦截或提示 |  | RULE-6C3650116AC1；RULE-7928B428E56E |
+| SCN-5DC31356E145 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「单号」的反向校验规则：【单号(doc_no)】不可空白，否则 E+MSG："单号不可空白！" | 按校验规则拦截或提示 |  | RULE-9AF09DC83516 |
 | SCN-D8A06F9A1224 | 业务类型应收参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元职能.职能编号 包含 'acct_org'（核算组织） AND 运营单元.状态(ops_unit.manage_status) = Y.生效<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 回填映射：业务类型应收参数.运营单元编号(biz_type_ar_p… | 开窗：选择运营单元 |  | RULE-2EF175DBD73E |
 | SCN-7A7A9FB164C5 | 采购入库单 | 唯一性 | NEEDS_UI_EXPLORATION | 验证采购入库单「采购入库单号」的唯一性规则：【采购入库单号(pur_stkin_doc_no)】1 CHECK 【采购入库单.采购入库单号(pur_stkin_doc.pur_stkin_doc_no)】是否重复，E+MSG："单号重复" | 按校验规则拦截或提示 |  | RULE-305A2A2F1676 |
 | SCN-E4217FE89C77 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「删除 可用条件」的权限与数据范围规则：【删除】按钮可用条件：需选中一行 | 按操作说明执行 |  | RULE-FC396960F732 |
@@ -654,7 +654,7 @@
 | SCN-5F4E95B8F5DB |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「费用名称」的只读校验规则：【费用名称(exp_name)】✅ 是 | 字段不可编辑 |  | RULE-C8B3563C5DD5 |
 | SCN-EDE9DD7E38A1 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「税种名称」的隐藏校验规则：【税种名称(tax_name)】✅ 是 | 字段不展示 |  | RULE-9D4C7E877AB5 |
 | SCN-E14D2C04B961 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「结算对象类型」的必填校验规则：【结算对象类型(stlmt_obj_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-FF7BDC3271FC |
-| SCN-ED02CFDC8090 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「会计期间序号」的反向校验规则：【会计期间序号(acctg_perid_seq)】审核前须非空，否则 E+MSG："会计期间序号不可为空，请检查记账日期所属期间！" | 按校验规则拦截或提示 |  | RULE-D60B498B56B1 |
+| SCN-832E6DFB6486 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「单据日期」的反向校验规则：【单据日期(doc_date)】须>=应付启用期间(`ops_unit_calc_param.ena_year_pay`+`ena_perid_no_pay`) 对应起始日期，否则 E+MSG："输入日期信息不可小于应付现行年月！" | 按校验规则拦截或提示 |  | RULE-E2791292E5B3 |
 | SCN-610694A6E989 | 业务类型应收参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「业务单别」的开窗回填规则：【业务单别(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择业务单别<br/>- 数据来源：调用 查询业务单别(biz_type_ar_param_001) 查询方案<br/>- 查询模型：业务类型通用信息(biz_type_gen_info)<br/>- 入参条件：业务类型通用信息.业务域(biz_type_gen_info.biz_reg) = AR AND 业务类型通用信息.状态(biz_type_gen_info.manage_status) = Y.生效<br/>- 显示字段：业务类型通用信息.业务单别(biz_type_gen_info.biz_typ… | 开窗：选择业务单别 |  | RULE-9B6BE7BFE812 |
 | SCN-479F69BA4B9F | 采购到货单 | 唯一性 | NEEDS_UI_EXPLORATION | 验证采购到货单「采购到货单号」的唯一性规则：【采购到货单号(pur_arr_doc_no)】单号不可重复、单号长度校验： | 按校验规则拦截或提示 |  | RULE-BD4DA29C1FB3；RULE-559DA371BE9E |
 | SCN-B8B5E08EB7FC |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「编辑 可用条件」的权限与数据范围规则：【编辑】按钮可用条件：IF 状态(`manage_status`)='N.未审核' AND 过账状态(`post_stat`)<>'Y.已过账' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-14C89B71FD11 |
@@ -663,7 +663,7 @@
 | SCN-933B44B8577B |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「结算方式名称」的只读校验规则：【结算方式名称(stlmt_mode_name)】✅ 是 | 字段不可编辑 |  | RULE-6613D699457F |
 | SCN-BF946A1C1071 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「税率」的隐藏校验规则：【税率(tax_rate)】✅ 是 | 字段不展示 |  | RULE-017E0203C1FD |
 | SCN-CDF8CF02F78D | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「结算对象编号」的必填校验规则：【结算对象编号(stlmt_obj_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-AE48409683F0 |
-| SCN-F038ABE86345 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「现金折扣方式」的反向校验规则：【现金折扣方式(cash_disc_mode)】须为有效枚举值，否则 E+MSG："现金折扣方式不合法！" | 按校验规则拦截或提示 |  | RULE-85BC8B4B059A |
+| SCN-2F8CCBA45850 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「结算对象编号」的反向校验规则：【结算对象编号(stlmt_obj_no)】须存在于对应财务信息档案（供应商/客户）且状态为 Y.生效，否则 E+MSG："结算对象不存在或已失效！" | 按校验规则拦截或提示 |  | RULE-67F792F95CAB |
 | SCN-0057BC3908AC | 业务类型应收参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「现结业务单别」的开窗回填规则：【现结业务单别(cash_stlmt_biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择现结业务单别<br/>- 数据来源：调用 查询业务类型通用信息(bm.biz_type_gen_info.get) 接口<br/>- 入参条件：业务域=ST AND 业务性质=ST03.收款单 AND 状态=Y.生效<br/>- 显示字段：业务类型通用信息.业务单别(biz_type_gen_info.biz_type_no)，业务类型通用信息.业务类型名称(biz_type_gen_info.biz_type_name)<br/>- 回填映射：业务类型应收参数.现结业务类型编号… | 开窗：选择现结业务单别 |  | RULE-85C963596C7C |
 | SCN-EFBAC82D9359 | 采购取价策略 | 唯一性 | NEEDS_UI_EXPLORATION | 验证采购取价策略「价格类型」的唯一性规则：【价格类型(price_type)】同一取价策略内【采购取价顺序.价格类型(pur_price_strtg.pur_price_order.price_type)】不可重复 | 按校验规则拦截或提示 |  | RULE-12DF7A5A8828；RULE-D72D404231D2；RULE-D6E030C9C060 |
 | SCN-55A194F55EE0 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态（状态(`manage_status`)='N.未审核'） | 按操作说明执行 |  | RULE-FE39879E5224 |
@@ -672,7 +672,7 @@
 | SCN-17138990225D |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「银行账号」的只读校验规则：【银行账号(bank_acct_no)】✅ 是 | 字段不可编辑 |  | RULE-816BAEE56516 |
 | SCN-3C547843309A | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「税区编号」的隐藏校验规则：【税区编号(tax_dist_no)】✅ 是 | 字段不展示 |  | RULE-5A920951D875 |
 | SCN-50968BCE2848 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「结算对象名称」的必填校验规则：【结算对象名称(stlmt_obj_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-3AD8FC642955 |
-| SCN-DF33C545A8B9 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「其他收付项目编号」的反向校验规则：【其他收付项目编号(other_ar_ap_item_no)】须存在于其他收付项目(`other_ar_ap_item`)且状态为 Y.生效、类型为 2.付，否则 E+MSG："其他收付项目不存在或已失效！" | 按校验规则拦截或提示 |  | RULE-06820F247697 |
+| SCN-369CE9F54F75 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「汇率」的反向校验规则：【汇率(er)】须大于 0，否则 E+MSG："汇率须大于零！" | 按校验规则拦截或提示 |  | RULE-B9063609B36A |
 | SCN-1BDC950E6BFB | 业务类型应收参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「分期冲减单别」的开窗回填规则：【分期冲减单别(insta_offst_adv_biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择分期冲减单别<br/>- 数据来源：调用 查询业务类型通用信息(bm.biz_type_gen_info.get) 接口<br/>- 入参条件：业务域=AR AND 状态=Y.生效<br/>- 显示字段：业务类型通用信息.业务单别(biz_type_gen_info.biz_type_no)，业务类型通用信息.业务类型名称(biz_type_gen_info.biz_type_name)<br/>- 回填映射：业务类型应收参数.分期预收付冲减业务类型编号(biz_typ… | 开窗：选择分期冲减单别 |  | RULE-93C855491FA8 |
 | SCN-5DB2E3F65C17 | 采购取价策略 | 唯一性 | NEEDS_UI_EXPLORATION | 验证采购取价策略「优先级」的唯一性规则：【优先级(pri)】同一取价策略内优先级不可重复，IF 【取价策略单身.优先级(pur_price_order.pri)】 不唯一 THEN E+MSG："优先级必须唯一！"。时机点：Edit、Save | 按校验规则拦截或提示 |  | RULE-0AA025F362F4 |
 | SCN-2BBD8782802F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「删除 可用条件」的权限与数据范围规则：【删除】按钮可用条件：IF 状态(`manage_status`)='N.未审核' AND 过账状态(`post_stat`)<>'Y.已过账' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-6D9353EA8C61 |
@@ -681,7 +681,7 @@
 | SCN-C0453A42E12F |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「金额（本币）」的只读校验规则：【金额（本币）(amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-70D702A1764C |
 | SCN-05F2AE3363AC | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「税区名称」的隐藏校验规则：【税区名称(tax_dist_name)】✅ 是 | 字段不展示 |  | RULE-BE9CD5EEABD6 |
 | SCN-22DA699CDD35 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-A04AE8EEFE60 |
-| SCN-AA1DC5B9DFE5 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「结算方式编号」的反向校验规则：【结算方式编号(stlmt_mode_no)】须存在于结算方式、组织相符且类别为现金/银行/其他，否则 E+MSG："结算方式不存在或类别不符！" | 按校验规则拦截或提示 |  | RULE-2C4C665D30FB |
+| SCN-420ADCA22A1B |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「记账日期」的反向校验规则：【记账日期(bk_date)】**不可为空白，且不可为最小日期（`1900-01-01`）**——数据库 `bk_date` 为日期型字段，撤回审核后由撤审服务置为最小日期，画面按显示规则呈现为空；否则 E+MSG："记账日期不可空白，请重新录入记账日期！" | 按校验规则拦截或提示 |  | RULE-AF147809EDD8；RULE-6C3650116AC1；RULE-7928B428E56E |
 | SCN-C9F00CD9FDE2 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询运营单元(`bm.ops_unit.get`) 接口<br/>- 入参条件：运营单元.状态(`ops_unit.manage_status`)=Y.生效 and 运营单元.职能编号(`ops_unit.func_no`) IN ('`acct_org`')<br/>- 显示字段：运营单元编号，运营单元名称<br/>- 回填映射：更新字段(`ops_unit_no`)=运营单元编号，更新字段(`ops_unit_name`)=运营单元名称 | 开窗：查询运营单元 |  | RULE-D2278E965CF0 |
 | SCN-957C579B2A9E | 采购订单 | 唯一性 | NEEDS_UI_EXPLORATION | 验证采购订单「采购订单单号」的唯一性规则：【采购订单单号(po_doc_no)】IF 编码方式='6.手动输入' THEN 校验是否重复 | 按校验规则拦截或提示 |  | RULE-AF7BD45225E4；RULE-F0E70A01D617 |
 | SCN-B08D3122F3FA |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「审核 可用条件」的权限与数据范围规则：【审核】按钮可用条件：IF 状态(`manage_status`) IN ('Y.已审核','V.作废') THEN Disable ELSE Enable ENDIF | 按操作说明执行 |  | RULE-14F23627F87C |
@@ -690,15 +690,15 @@
 | SCN-EB5B6E371180 |  | 只读校验 | NEEDS_CONFIRMATION | 验证应付「编辑 前置校验」的只读校验规则：【编辑】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可修改！" | 校验不通过则操作被拦截 |  | RULE-23C8FE1F3C14 |
 | SCN-6EF3A4113696 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「会计期间序号」的隐藏校验规则：【会计期间序号(acctg_perid_seq)】✅ 是 | 字段不展示 |  | RULE-561987FD45B7 |
 | SCN-5027ED124B5B | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「汇率」的必填校验规则：【汇率(er)】✅ 是 | 为空时保存应被拦截 |  | RULE-34156D30B087 |
-| SCN-792B600C9B17 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 前置校验」的反向校验规则：【保存】检查 业务方向(`biz_dirct`)不可为 '0.无'，否则 E+MSG："业务类型未设置业务方向！" | 校验不通过则操作被拦截 |  | RULE-ECD3D6EA666E |
+| SCN-ED02CFDC8090 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「会计期间序号」的反向校验规则：【会计期间序号(acctg_perid_seq)】审核前须非空，否则 E+MSG："会计期间序号不可为空，请检查记账日期所属期间！" | 按校验规则拦截或提示 |  | RULE-D60B498B56B1 |
 | SCN-EC91E7D68447 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「业务单别」的开窗回填规则：【业务单别(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询业务类型通用信息<br/>- 数据来源：调用 查询业务类型通用信息(`bm.biz_type_gen_info.get`) 接口<br/>- 入参条件：业务类型通用信息.业务域(`biz_type_gen_info.biz_reg`)=AR.应收领域 and 业务类型通用信息.业务性质(`biz_type_gen_info.biz_prop`) IN ('AR01.应收单','AR08.期初开账应收单')<br/>- 显示字段：业务类型编号，业务类型名称，业务性质，应收业务类型，应… | 开窗：查询业务类型通用信息 |  | RULE-35F718B2AA3D |
 | SCN-EF951B919A6E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「撤审 可用条件」的权限与数据范围规则：【撤审】按钮可用条件：IF 状态(`manage_status`)='Y.已审核' AND 红冲标识(`rvs_flag`)<>'Y' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-EE8F851F5A36 |
 | SCN-ABD274A24154 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应付「编辑 处理」的接口契约规则：【编辑】进入编辑态时按当前登录运营单元取数：调用 API 查询运营单元核算参数(bm.ops_unit_calc_param.get)，入参 运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no)=当前登录运营单元，回参取单头全部字段 | 按平台服务调用结果决定是否继续 |  | RULE-E012F0AE9B85 |
 | SCN-023F4D65F258 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应付「责任部门名称」的默认值规则：【责任部门名称(resp_dept_name)】默认值：当【责任部门编号(`resp_dept_no`)更改 AND 责任部门编号(`resp_dept_no`)<>SPACE】时，默认责任部门名称(`resp_dept_name`)=责任部门编号开窗带回的部门名称。时机点：默认执行时 | 默认值：当【责任部门编号(`resp_dept_no`)更改 AND 责任部门编号(`resp_dept_no`)<>SPACE】时，默认责任部门名称(`resp_de… |  | RULE-328D6F26F57E |
 | SCN-D04CAA89A0E5 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-0D5A1CB28E43 |
 | SCN-8138D57FE861 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「审核时间」的隐藏校验规则：【审核时间(aprv_time)】✅ 是 | 字段不展示 |  | RULE-B39C4D04D6D4 |
-| SCN-CAA30D571588 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「记账日期」的必填校验规则：【记账日期(bk_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-7ECEA584E162；RULE-170FDBF38A1D |
-| SCN-B3828FAB8C96 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 处理」的反向校验规则：【保存】新增时先取号：业务类型通用信息.自动编码方式(`auto_code_mode`)<>'7.手工输入' 时按业务类型应付参数的编号规则，调用生单编码生成组件取号（传入 业务类型编号 + 类型=1.业务类型生单 + 单据日期），取号后回填 单号(`doc_no`)；='7.手工输入' 时取画面录入值 | 按操作说明执行 |  | RULE-8BF66C103133 |
+| SCN-CAA30D571588 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「记账日期」的必填校验规则：【记账日期(bk_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-7ECEA584E162 |
+| SCN-F038ABE86345 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「现金折扣方式」的反向校验规则：【现金折扣方式(cash_disc_mode)】须为有效枚举值，否则 E+MSG："现金折扣方式不合法！" | 按校验规则拦截或提示 |  | RULE-85BC8B4B059A |
 | SCN-808E00D99771 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「结算客户编号」的开窗回填规则：【结算客户编号(stlmt_cust_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询客户财务信息<br/>- 数据来源：调用 查询客户财务信息(`bm.cust_fin_info.get`) 接口<br/>- 入参条件：客户财务信息.运营单元编号(`cust_fin_info.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】<br/>- 显示字段：客户编号，客户名称<br/>- 回填映射：更新字段(`stlmt_cust_no`)=客户编号，更新字段(`stlmt_cust_name`)=客户名称 | 开窗：查询客户财务信息 |  | RULE-ECD0505796ED |
 | SCN-6B5584F1DB19 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「作废 可用条件」的权限与数据范围规则：【作废】按钮可用条件：IF 状态(`manage_status`)='N.未审核' AND 过账状态(`post_stat`)<>'Y.已过账' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-A6BFE3912739 |
 | SCN-E968EC1775C9 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应付「保存 处理」的接口契约规则：【保存】调用 API：查询运营单元核算参数(bm.ops_unit_calc_param.get) 取全量回参，与画面值合并后组装提交报文（先读后写，保证未呈现字段不丢值） | 按平台服务调用结果决定是否继续 |  | RULE-D4D8635AEC9F |
@@ -706,7 +706,7 @@
 | SCN-950120FB04BD | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务类型名称」的只读校验规则：【业务类型名称(biz_type_name)】✅ 是 | 字段不可编辑 |  | RULE-4D72A7970C3F |
 | SCN-96B2D0072BC2 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票方向」的隐藏校验规则：【税务发票方向(tax_inv_dirct)】✅ 是 | 字段不展示 |  | RULE-9FAC21F91C76 |
 | SCN-F8C95922DC86 | 其他应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「现金折扣方式」的必填校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-2A5C2AF63DD2 |
-| SCN-8CF68F214192 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 前置校验」的反向校验规则：【删除】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可删除！" | 校验不通过则操作被拦截 |  | RULE-B50F9662FDB2 |
+| SCN-F0806A65F4BF |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「其他应付类型」的反向校验规则：【其他应付类型(other_pay_type)】须为 1/2/3/4 之一，否则 E+MSG："其他应付类型不合法！"（平台新增服务必填入参，且不接受 0.无） | 按校验规则拦截或提示 |  | RULE-10C4FEC51F38 |
 | SCN-9E5DEE3D433D | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「销售客户编号」的开窗回填规则：【销售客户编号(sales_cust_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询客户业务信息<br/>- 数据来源：调用 查询客户业务信息(`bm.cust_biz_info.get`) 接口<br/>- 入参条件：客户业务信息.运营单元编号(`cust_biz_info.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】<br/>- 显示字段：客户编号，客户名称<br/>- 默认排序：客户编号升序<br/>- 回填映射：更新字段(`sales_cust_no`)=客户编号(`recev_doc.sa… | 开窗：查询客户业务信息 |  | RULE-D9FE6670FBAE |
 | SCN-737F517EF4F1 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「红冲 可用条件」的权限与数据范围规则：【红冲】按钮可用条件：IF 状态(`manage_status`)='Y.已审核' AND 红冲标识(`rvs_flag`)='N' THEN Enable ELSE Disable ENDIF（已审核即已自动过账；服务仍校验过账状态，`VD_pay_doc_00056`） | 按操作说明执行 |  | RULE-ABAC514F1C6C |
 | SCN-358055E76381 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应付「保存 后置处理」的接口契约规则：【保存】调用 API：修改运营单元核算参数(bm.ops_unit_calc_param.update) | 按平台服务调用结果决定是否继续 |  | RULE-9FD8B004865C |
@@ -714,7 +714,7 @@
 | SCN-72C771CE191B | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务性质」的只读校验规则：【业务性质(biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-38622F93A385 |
 | SCN-27B67F02B2C4 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票号码合并文本」的隐藏校验规则：【税务发票号码合并文本(tax_inv_no_merge_text)】✅ 是 | 字段不展示 |  | RULE-C4BD8D9A8106 |
 | SCN-9555AA329DA2 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「序号」的必填校验规则：【序号(seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-2C82F1E7BA01 |
-| SCN-BDE44956EA13 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 处理」的反向校验规则：【删除】提示消息：E+MSG："确认删除该笔资料？" | 按操作说明执行 |  | RULE-470ACD59F4D4 |
+| SCN-DF33C545A8B9 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「其他收付项目编号」的反向校验规则：【其他收付项目编号(other_ar_ap_item_no)】须存在于其他收付项目(`other_ar_ap_item`)且状态为 Y.生效、类型为 2.付，否则 E+MSG："其他收付项目不存在或已失效！" | 按校验规则拦截或提示 |  | RULE-06820F247697 |
 | SCN-7E8B35F06D81 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「责任人编号」的开窗回填规则：【责任人编号(resp_pers_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.运营单元编号(`empl.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】<br/>- 显示字段：员工编号，员工姓名，主要部门编号，主要部门名称<br/>- 回填映射：更新字段(`resp_pers_no`)=员工编号，更新字段(`resp_pers_name`)=员工姓名，更新字段(`resp_dept_no`)=主要部… | 开窗：查询员工 |  | RULE-BA9BC462B690 |
 | SCN-97A4E0414D1E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「取消红冲 可用条件」的权限与数据范围规则：【取消红冲】按钮可用条件：IF 红冲标识(`rvs_flag`)='Y' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-76BD2FCE9A9D |
 | SCN-8910A4647FEA |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应付「整体操作 处理」的接口契约规则：【整体操作】调用 API：查询运营单元核算参数(bm.ops_unit_calc_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-9C7E47EA23A4；RULE-9E944F0B3C3A |
@@ -722,7 +722,7 @@
 | SCN-0215C3B2DC1A | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务方向」的只读校验规则：【业务方向(biz_dirct)】✅ 是 | 字段不可编辑 |  | RULE-4C27CF69C90A |
 | SCN-6AAE3F4AAC54 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算方式编号」的隐藏校验规则：【结算方式编号(stlmt_mode_no)】✅ 是 | 字段不展示 |  | RULE-FE6750B28063 |
 | SCN-5290DB840F21 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「其他应收类型」的必填校验规则：【其他应收类型(other_recev_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-D5FBFA9CFA72 |
-| SCN-7ADD0F21DC38 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「审核 前置校验」的反向校验规则：【审核】检查 记账日期(`bk_date`) 须 >= 应付启用期间起始日期，否则 E+MSG："记账日期不得小于应付启用期间！" | 校验不通过则操作被拦截 |  | RULE-4BAA8D656EEE；RULE-0D83ECAA22BB |
+| SCN-AA1DC5B9DFE5 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「结算方式编号」的反向校验规则：【结算方式编号(stlmt_mode_no)】须存在于结算方式、组织相符且类别为现金/银行/其他，否则 E+MSG："结算方式不存在或类别不符！" | 按校验规则拦截或提示 |  | RULE-2C4C665D30FB |
 | SCN-182B7816EF39 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「责任部门编号」的开窗回填规则：【责任部门编号(resp_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询部门信息<br/>- 数据来源：调用 查询部门(bm.dept.get) 接口<br/>- 入参条件：部门.运营单元编号(`dept.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】<br/>- 显示字段：部门编号，部门名称<br/>- 回填映射：更新字段(`resp_dept_no`)=部门编号，更新字段(`resp_dept_name`)=部门名称 | 开窗：查询部门信息 |  | RULE-B930EC334EF5 |
 | SCN-6FC925F9AA95 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「取单 可用条件」的权限与数据范围规则：【取单】IF 【应付单.状态(`pay_doc.manage_status`)】='N.未审核' AND 【应付单.业务性质(`pay_doc.biz_prop`)】='AP01.应付单' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-4130F9F9D224 |
 | SCN-8B1C21F94604 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应付「载入（进入作业） 处理」的接口契约规则：【载入（进入作业）】调用 API：查询运营单元核算参数(bm.ops_unit_calc_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-05A16426C07B；RULE-B33E0338EA69 |
@@ -730,7 +730,7 @@
 | SCN-0097F883A8F6 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「单号」的只读校验规则：【单号(doc_no)】✅ 是 | 字段不可编辑 |  | RULE-E8EC5FBF99D6 |
 | SCN-B16EC53A320A | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「银行账号」的隐藏校验规则：【银行账号(bank_acct_no)】✅ 是 | 字段不展示 |  | RULE-2530C7E026FA |
 | SCN-E0F08E65ACEE |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「其他收付项目编号」的必填校验规则：【其他收付项目编号(other_ar_ap_item_no)】✅ 是；必填条件：当【其他应收类型(`other_recev_type`) IN ('1.暂付业务-款项','3.其他业务收入')】时，必填 | 为空时保存应被拦截 |  | RULE-D2C1152AA7E0 |
-| SCN-AAA078252EC3 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「审核 处理」的反向校验规则：【审核】服务侧校验：记账日期须在开放期间（`VD_other_pay_doc_00027`） | 按操作说明执行 |  | RULE-01579608DAFB |
+| SCN-792B600C9B17 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 前置校验」的反向校验规则：【保存】检查 业务方向(`biz_dirct`)不可为 '0.无'，否则 E+MSG："业务类型未设置业务方向！" | 校验不通过则操作被拦截 |  | RULE-ECD3D6EA666E |
 | SCN-6674E422F8F1 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.运营单元编号(`ccy.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】<br/>- 显示字段：货币编号，货币名称<br/>- 回填映射：更新字段(`ccy_no`)=货币编号，更新字段(`ccy_name`)=货币名称 | 开窗：查询货币 |  | RULE-C02FC9764CF9 |
 | SCN-1E96EF9AC2A0 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「补录税务发票 可用条件」的权限与数据范围规则：【补录税务发票】按钮可用条件：IF 状态(`manage_status`)='Y.已审核' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-E5D93993C1D6 |
 | SCN-76B9E8ED701A |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应付「处理 前置校验」的接口契约规则：【处理】调用 API：查询运营单元核算参数(bm.ops_unit_calc_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-33E07D103381；RULE-1DD573374A83 |
@@ -738,7 +738,7 @@
 | SCN-CB0D7D5772AE | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「核销方式」的只读校验规则：【核销方式(verf_mode)】✅ 是 | 字段不可编辑 |  | RULE-A83EFA9969DA |
 | SCN-F0B88FC67BA8 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算号」的隐藏校验规则：【结算号(stlmt_no)】✅ 是 | 字段不展示 |  | RULE-495451D2ABC6 |
 | SCN-DE79E7BF7805 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「金额（原币）」的必填校验规则：【金额（原币）(amt_tc)】✅ 是 | 为空时保存应被拦截 |  | RULE-1407C9E09F3F |
-| SCN-D63F87AD8E49 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除明细行 处理」的反向校验规则：【删除明细行】删除选中行；保存时该行以 `update_type`=delete 传给修改服务（须带 序号 seq） | 按操作说明执行 |  | RULE-6FAE845DA995 |
+| SCN-B3828FAB8C96 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 处理」的反向校验规则：【保存】新增时先取号：业务类型通用信息.自动编码方式(`auto_code_mode`)<>'7.手工输入' 时按业务类型应付参数的编号规则，调用生单编码生成组件取号（传入 业务类型编号 + 类型=1.业务类型生单 + 单据日期），取号后回填 单号(`doc_no`)；='7.手工输入' 时取画面录入值 | 按操作说明执行 |  | RULE-8BF66C103133 |
 | SCN-C94EC9411FE5 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询收付款条件<br/>- 数据来源：调用 查询收付款条件(`bm.colln_pmt_terms.get`) 接口<br/>- 入参条件：收付款条件.收付款(`colln_pmt_terms.colln_pmt`)=2.收款条件<br/>- 显示字段：付款条件编号，付款条件名称<br/>- 回填映射：更新字段(`pmt_terms_no`)=付款条件编号，更新字段(`pmt_terms_name`)=付款条件名称 | 开窗：查询收付款条件 |  | RULE-B02E078E2990 |
 | SCN-378443AFE70A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「明细操作 可用条件」的权限与数据范围规则：【明细操作】状态(`manage_status`)='N.未审核'（已审核单据不可增行） | 按操作说明执行 |  | RULE-84A633032051 |
 | SCN-FE69500625B4 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应付「处理 处理」的接口契约规则：【处理】调用：查询公司会计期间信息(bm.co_acctg_perid_info.get) | 按平台服务调用结果决定是否继续 |  | RULE-026DC9DE9D3E；RULE-7085E3503748 |
@@ -746,7 +746,7 @@
 | SCN-FDC1DB13784D | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「结算对象名称」的只读校验规则：【结算对象名称(stlmt_obj_name)】✅ 是 | 字段不可编辑 |  | RULE-5E44D9ACB515 |
 | SCN-A3C28F9C0B69 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算日期」的隐藏校验规则：【结算日期(stlmt_date)】✅ 是 | 字段不展示 |  | RULE-AA4326997B63 |
 | SCN-37E1A1D526CA |  | 必填校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的必填校验规则：【保存】检查 单头必填：运营单元编号(`ops_unit_no`)、业务类型编号(`biz_type_no`)、单据日期(`doc_date`)、业务性质(`biz_prop`)、业务方向(`biz_dirct`)、结算对象类型(`stlmt_obj_type`)、结算对象编号(`stlmt_obj_no`)、结算对象名称(`stlmt_obj_name`)、货币编号(`ccy_no`)、汇率(er)、核销方式(`verf_mode`)、现金折扣方式(`cash_disc_mode`)，任一为空则 E+MSG："单头必填项不可为空！" | 校验不通过则操作被拦截 |  | RULE-53AA2DD86020；RULE-F8A91B0FAAB9 |
-| SCN-202AB9F23866 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】须存在于业务类型通用信息(`biz_type_gen_info`)且业务性质为 AR02.其他应收单，否则 E+MSG："此单别不存在或单据性质不符！" | 按校验规则拦截或提示 |  | RULE-A1B6480C87D3 |
+| SCN-8CF68F214192 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 前置校验」的反向校验规则：【删除】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可删除！" | 校验不通过则操作被拦截 |  | RULE-B50F9662FDB2 |
 | SCN-A4B23E2A7AF5 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票种类编号」的开窗回填规则：【税务发票种类编号(tax_inv_categ_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询税务发票种类<br/>- 数据来源：调用 查询税务发票种类(`bm.tax_inv_categ.get`) 接口<br/>- 入参条件：税务发票种类.运营单元编号(`tax_inv_categ.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】<br/>- 显示字段：税务发票种类编号，税务发票种类名称<br/>- 回填映射：更新字段(`tax_inv_categ_no`)=税务发票种类编号，更新字段(`tax_i… | 开窗：查询税务发票种类 |  | RULE-D0637990B68E |
 | SCN-132079308FD3 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「新增明细行 可用条件」的权限与数据范围规则：【新增明细行】状态(`manage_status`)='N.未审核'（已审核单据不可增行） | 按操作说明执行 |  | RULE-8A69CA80830F |
 | SCN-411E29EC246B |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应付「处理 后置处理」的接口契约规则：【处理】重新调用 查询运营单元核算参数(bm.ops_unit_calc_param.get) 刷新页面数据，启用年度-应付、启用期号-应付 按只读条件转为只读，按钮按可用条件置灰 | 按平台服务调用结果决定是否继续 |  | RULE-590134B6B25D |
@@ -754,31 +754,31 @@
 | SCN-8B8A80403084 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-05C90EBA32F1 |
 | SCN-28B8FAA33E75 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「税额计算方式」的隐藏校验规则：【税额计算方式(tax_calc_mode)】✅ 是 | 字段不展示 |  | RULE-93483938CD48 |
 | SCN-1BE0C255EAC0 |  | 必填校验 | NEEDS_CONFIRMATION | 验证应收「审核 前置校验」的必填校验规则：【审核】检查 记账日期(`bk_date`)不可为空白且不可为最小日期(`1900-01-01`)，否则 E+MSG："记账日期不可空白，请重新录入记账日期！" | 校验不通过则操作被拦截 |  | RULE-70D6006FF016 |
-| SCN-DF962367BCAD | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务方向」的反向校验规则：【业务方向(biz_dirct)】须为 1.正向 或 -1.负向，否则 E+MSG："业务类型未设置业务方向！" | 按校验规则拦截或提示 |  | RULE-6F51E521722D |
+| SCN-BDE44956EA13 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 处理」的反向校验规则：【删除】提示消息：E+MSG："确认删除该笔资料？" | 按操作说明执行 |  | RULE-470ACD59F4D4 |
 | SCN-0FF760A4E274 | 应收单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收单「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询项目信息<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：项目.运营单元编号(`proj.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】<br/>- 显示字段：项目编号，项目名称<br/>- 回填映射：更新字段(`proj_no`)=项目编号，更新字段(`proj_name`)=项目名称 | 开窗：查询项目信息 |  | RULE-D2E85D4863A9 |
 | SCN-AC21517E3440 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「删除明细行 可用条件」的权限与数据范围规则：【删除明细行】状态(`manage_status`)='N.未审核' | 按操作说明执行 |  | RULE-DCED272553BB |
 | SCN-091FBB572992 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「保存 后置处理」的接口契约规则：【保存】IF 新增状态 THEN 调用 新增业务类型通用信息(bm.biz_type_gen_info.create) | 按平台服务调用结果决定是否继续 |  | RULE-E431C6217C07；RULE-627EBE01504A |
 | SCN-BFAA592EEAD0 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应付「会计期间序号」的默认值规则：【会计期间序号(acctg_perid_seq)】默认值：当【记账日期(`bk_date`)更改 AND 记账日期(`bk_date`) 不为空】时，默认会计期间序号(`acctg_perid_seq`)=按记账日期取 会计期间信息 的所属期间序号。时机点：默认执行时 | 默认值：当【记账日期(`bk_date`)更改 AND 记账日期(`bk_date`) 不为空】时，默认会计期间序号(`acctg_perid_seq`)=按记账日期取… |  | RULE-97BAEA726AA5 |
 | SCN-A9243E7F7F17 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「责任人名称」的只读校验规则：【责任人名称(resp_pers_name)】✅ 是 | 字段不可编辑 |  | RULE-1B2927E5E897 |
 | SCN-6731081FDC43 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「分期来源类型」的隐藏校验规则：【分期来源类型(insta_src_type)】✅ 是 | 字段不展示 |  | RULE-D373E93D3329 |
-| SCN-0E55DCE62B32 | 客户供应商关系档 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-4FD247690EFF；RULE-2B61D2A94CE2 |
-| SCN-EE17E25F46D1 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「单据日期」的反向校验规则：【单据日期(doc_date)】须>=应收启用期间(`ops_unit_calc_param.ena_year_recev`+`ena_perid_no_recev`) 对应起始日期，否则 E+MSG："输入日期信息不可小于应收现行年月！" | 按校验规则拦截或提示 |  | RULE-A099F2B7CDAB |
+| SCN-0E55DCE62B32 | 客户供应商关系档 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-4FD247690EFF |
+| SCN-7ADD0F21DC38 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「审核 前置校验」的反向校验规则：【审核】检查 记账日期(`bk_date`) 须 >= 应付启用期间起始日期，否则 E+MSG："记账日期不得小于应付启用期间！" | 校验不通过则操作被拦截 |  | RULE-4BAA8D656EEE；RULE-0D83ECAA22BB |
 | SCN-151862586556 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收「其他收付项目编号」的开窗回填规则：【其他收付项目编号(other_ar_ap_item_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询其他收付项目<br/>- 数据来源：调用 查询其他收付项目(`bm.other_ar_ap_item.get`) 接口<br/>- 入参条件：其他收付项目.运营单元编号(`other_ar_ap_item.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】 and 其他收付项目.其他收付项目类型(`other_ar_ap_item.other_ar_ap_item_type`)=1.收<br/>- 显示字段… | 开窗：查询其他收付项目 |  | RULE-DA8F796EF691 |
 | SCN-7B285972781B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「整体操作 可用条件」的权限与数据范围规则：【整体操作】列表页已选中一行（本作业列表按运营单元唯一，仅一条记录）；本操作仅在列表页提供 | 按操作说明执行 |  | RULE-0B0D141377CB |
 | SCN-96609A4BBAEF |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「删除 前置校验」的接口契约规则：【删除】确认提示：E+MSG："确认删除该笔资料？"，用户取消则终止，不调用接口 | 按平台服务调用结果决定是否继续 |  | RULE-7D54DCB3F02E |
 | SCN-796FFB405922 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应付「审核时间」的默认值规则：【审核时间(aprv_time)】默认值：审核成功后由 `bm.other_pay_doc.other_ap_recog.approve` 按系统时间回写。时机点：默认执行时 | 默认值：审核成功后由 `bm.other_pay_doc.other_ap_recog.approve` 按系统时间回写。时机点：默认执行时 |  | RULE-FB4A187B3340 |
 | SCN-53C3451FB9A3 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「责任部门名称」的只读校验规则：【责任部门名称(resp_dept_name)】✅ 是 | 字段不可编辑 |  | RULE-80A631BD2AF6 |
 | SCN-7F33B1CAC005 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「现金折扣方式」的隐藏校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 字段不展示 |  | RULE-6CBB18287D2A |
-| SCN-B48B68E90684 | 客户供应商关系档 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「客户编号」的必填校验规则：【客户编号(cust_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-45B08D7F117B；RULE-2194FE77E6B4 |
-| SCN-64723EA87683 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「结算对象编号」的反向校验规则：【结算对象编号(stlmt_obj_no)】须存在于 结算对象类型 对应的财务信息且状态为生效，否则 E+MSG："结算对象不存在或已失效！" | 按校验规则拦截或提示 |  | RULE-8F2710537DAF |
+| SCN-B48B68E90684 | 客户供应商关系档 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「客户编号」的必填校验规则：【客户编号(cust_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-45B08D7F117B |
+| SCN-AAA078252EC3 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「审核 处理」的反向校验规则：【审核】服务侧校验：记账日期须在开放期间（`VD_other_pay_doc_00027`） | 按操作说明执行 |  | RULE-01579608DAFB |
 | SCN-92CBE1D786CE |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收「品号」的开窗回填规则：【品号(item_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询品号<br/>- 数据来源：调用 查询品号通用信息(`bm.item_gen_info.get`) 接口<br/>- 入参条件：品号通用信息.运营单元编号(`item_gen_info.ops_unit_no`)=【本单据.运营单元编号(`recev_doc.ops_unit_no`)】<br/>- 显示字段：品号，品名，规格，快捷码，库存单位编号<br/>- 默认排序：品号升序<br/>- 回填映射：更新字段(`item_no`)=品号，更新字段(`item_name`)=品名，更新字段(`… | 开窗：查询品号 | TC-SIPP-0017；TC-BASV-0004；TC-BASL-0004；TC-IFIN-0004；TC-BAS-0003；TC-IPUR-0003；TC-ISAL-0010；TC-CUSI-0006；TC-PURQ-0033；TC-PUR-0008；TC-PARR-0017；TC-PO-0022；TC-PRTN-0061 | RULE-BA6996E0B95F |
 | SCN-8C12A654B77A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「编辑 可用条件」的权限与数据范围规则：【编辑】列表页已选中一行（本作业列表按运营单元唯一，仅一条记录）；本操作仅在列表页提供 | 按操作说明执行 |  | RULE-E797458595DE |
 | SCN-E5D8EB2A7F6B |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「删除 处理」的接口契约规则：【删除】调用 API：删除业务类型通用信息(bm.biz_type_gen_info.delete) | 按平台服务调用结果决定是否继续 |  | RULE-1A743D6A3167 |
 | SCN-D637D2CA4EF5 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应付「现金折扣方式」的默认值规则：【现金折扣方式(cash_disc_mode)】默认值：默认1.提前付款。时机点：默认执行时 | 默认值：默认1.提前付款。时机点：默认执行时 |  | RULE-36C191843A2C |
 | SCN-2D5884D30BC9 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「货币名称」的只读校验规则：【货币名称(ccy_name)】✅ 是 | 字段不可编辑 |  | RULE-0B85BDBA3EA7 |
 | SCN-72F3C84C8017 | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「统一税种税率标识」的隐藏校验规则：【统一税种税率标识(uni_tax_rate_flag)】✅ 是 | 字段不展示 |  | RULE-7A4111E24844 |
-| SCN-6455C8F3FBF4 | 客户供应商关系档 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-635F10AF6F7B；RULE-D1A1DA225F26 |
-| SCN-0EE4B70FF02D | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「汇率」的反向校验规则：【汇率(er)】须大于 0，否则 E+MSG："汇率须大于零！" | 按校验规则拦截或提示 |  | RULE-42C9DF524A06 |
+| SCN-6455C8F3FBF4 | 客户供应商关系档 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-635F10AF6F7B |
+| SCN-D63F87AD8E49 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除明细行 处理」的反向校验规则：【删除明细行】删除选中行；保存时该行以 `update_type`=delete 传给修改服务（须带 序号 seq） | 按操作说明执行 |  | RULE-6FAE845DA995 |
 | SCN-C9782E0E1F40 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收「计价单位编号」的开窗回填规则：【计价单位编号(prc_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询计量单位<br/>- 数据来源：调用 查询计量单位(`bm.meas_unit.get`) 接口<br/>- 入参条件：计量单位.状态(`meas_unit.manage_status`)=Y.生效<br/>- 显示字段：单位编号，单位名称<br/>- 默认排序：单位编号升序<br/>- 回填映射：更新字段(`prc_unit_no`)=单位编号(`recev_doc_d.prc_unit_no`)，更新字段(`prc_unit_name`)=单位名称(`recev_doc_d… | 开窗：查询计量单位 | TC-SIPP-0021；TC-PARR-0030；TC-PO-0065；TC-PRTN-0066 | RULE-B6416B4FE50E |
 | SCN-651D3CE76DAA |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「保存 可用条件」的权限与数据范围规则：【保存】编辑状态 | 按操作说明执行 |  | RULE-10FA9A34460F |
 | SCN-1464FDD40021 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「生效 处理」的接口契约规则：【生效】调用 API：修改业务类型通用信息(bm.biz_type_gen_info.update)（入参：manage_status='Y.生效'，其余透传） | 按平台服务调用结果决定是否继续 |  | RULE-C6D0983A370A |
@@ -786,7 +786,7 @@
 | SCN-F8294489E15D | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「付款条件名称」的只读校验规则：【付款条件名称(pmt_terms_name)】✅ 是 | 字段不可编辑 |  | RULE-A7855CBD2F07 |
 | SCN-136C833CD77D | 应收单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收单「VAT标识」的隐藏校验规则：【VAT标识(vat_flag)】✅ 是 | 字段不展示 |  | RULE-6C75094EF27A |
 | SCN-3181840D7F02 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务域」的必填校验规则：【业务域(biz_reg)】✅ 是 | 为空时保存应被拦截 |  | RULE-C5FE0A9F5210 |
-| SCN-FD44A0BEC668 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「记账日期」的反向校验规则：【记账日期(bk_date)】须>=单据日期(`doc_date`)，否则 E+MSG："记账日期需大于等于单据日期！" | 按校验规则拦截或提示 |  | RULE-14E65ECB91A9；RULE-85143CA50C2D |
+| SCN-202AB9F23866 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】须存在于业务类型通用信息(`biz_type_gen_info`)且业务性质为 AR02.其他应收单，否则 E+MSG："此单别不存在或单据性质不符！" | 按校验规则拦截或提示 |  | RULE-A1B6480C87D3 |
 | SCN-19FE1EA61814 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证应收「生产运营单元编号」的开窗回填规则：【生产运营单元编号(prodn_ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询运营单元(`bm.ops_unit.get`) 接口<br/>- 入参条件：运营单元.状态(`ops_unit.manage_status`)=Y.生效<br/>- 显示字段：运营单元编号，运营单元名称<br/>- 默认排序：运营单元编号升序<br/>- 回填映射：更新字段(`prodn_ops_unit_no`)=运营单元编号(`recev_doc_d.prodn_ops_unit_no`)，更新字段(`prodn_o… | 开窗：查询运营单元 |  | RULE-45840EE68F66 |
 | SCN-099DA9CF6B1A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「整体操作 可用条件」的权限与数据范围规则：【整体操作】本作业不提供「新增」按钮；进入作业即按当前登录运营单元载入 | 按操作说明执行 |  | RULE-A2F20051ED83 |
 | SCN-21CB2642D797 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「失效 处理」的接口契约规则：【失效】调用 API：修改业务类型通用信息(bm.biz_type_gen_info.update)（入参：manage_status='V.失效'，其余透传） | 按平台服务调用结果决定是否继续 |  | RULE-485C4C5F7D08 |
@@ -794,7 +794,7 @@
 | SCN-875A19D555AC | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「会计年度」的只读校验规则：【会计年度(acctg_year)】✅ 是 | 字段不可编辑 |  | RULE-16E4A6230EF6 |
 | SCN-173B74E5747D |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收「来源运营单元编号」的隐藏校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 字段不展示 | TC-QICHK-0002；TC-PO-0002 | RULE-074D9A579BD9 |
 | SCN-47671DEE4047 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的必填校验规则：【业务性质(biz_prop)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0016；TC-INVB-0011 | RULE-EDF2D7C68A95 |
-| SCN-7EB0052BE170 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「现金折扣方式」的反向校验规则：【现金折扣方式(cash_disc_mode)】须为有效枚举值，否则 E+MSG："现金折扣方式不合法！" | 按校验规则拦截或提示 |  | RULE-358321FC87EA |
+| SCN-DF962367BCAD | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「业务方向」的反向校验规则：【业务方向(biz_dirct)】须为 1.正向 或 -1.负向，否则 E+MSG："业务类型未设置业务方向！" | 按校验规则拦截或提示 |  | RULE-6F51E521722D |
 | SCN-263E05452EE0 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度应收」的开窗回填规则：【启用年度应收(ena_year_recev)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询公司会计期间信息<br/>- 数据来源：调用 查询公司会计期间信息(bm.co_acctg_perid_info.get) 接口<br/>- 入参条件：公司会计期间信息.运营单元编号(co_acctg_perid_info.ops_unit_no)=当前登录运营单元 AND 公司会计期间信息.会计期间作用范围(co_acctg_perid_info.acctg_perid_actn_range)='4'（4.应收）<br/>- 显示字段：公司会计期间信息.会计年度(co_… | 开窗：查询公司会计期间信息 |  | RULE-C5C2F4173469 |
 | SCN-D40BCB3B02EC |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「载入（进入作业） 可用条件」的权限与数据范围规则：【载入（进入作业）】本作业不提供「新增」按钮；进入作业即按当前登录运营单元载入 | 按操作说明执行 |  | RULE-D67D583345E6 |
 | SCN-B8EF77500923 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「保存 后置处理」的接口契约规则：【保存】IF 新增状态 THEN 调用 新增业务类型应收参数(bm.biz_type_ar_param.create) | 按平台服务调用结果决定是否继续 |  | RULE-356D5E7E07B1；RULE-409F03BF19AA |
@@ -802,7 +802,7 @@
 | SCN-34FCDEA6E004 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「会计期间期号」的只读校验规则：【会计期间期号(acctg_perid_no)】✅ 是 | 字段不可编辑 |  | RULE-ADF089E6B6DC |
 | SCN-8455411C0933 |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据1类型」的隐藏校验规则：【财务参考单据1类型(fin_ref_doc1_type)】✅ 是 | 字段不展示 |  | RULE-8BE12A759F14 |
 | SCN-837DD86EAC54 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的必填校验规则：【业务单别(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0003；TC-INVB-0003 | RULE-48E774FF810A |
-| SCN-19D240BD60CE |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「其他应收类型」的反向校验规则：【其他应收类型(other_recev_type)】须为 1/2/3 之一，否则 E+MSG："其他应收类型不合法！" | 按校验规则拦截或提示 |  | RULE-61F744CCA8CC |
+| SCN-CC3F0BBAD68F | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「单号」的反向校验规则：【单号(doc_no)】不可空白，否则 E+MSG："单号不可空白！" | 按校验规则拦截或提示 |  | RULE-9B8AA17B8461 |
 | SCN-1098627E549C | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号应收」的开窗回填规则：【启用期号应收(ena_perid_no_recev)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询公司会计期间信息<br/>- 数据来源：调用 查询公司会计期间信息(bm.co_acctg_perid_info.get) 接口<br/>- 入参条件：公司会计期间信息.运营单元编号(co_acctg_perid_info.ops_unit_no)=当前登录运营单元 AND 公司会计期间信息.会计年度(co_acctg_perid_info.acctg_year)=启用年度应收(ena_year_recev) AND 公司会计期间信息.会计期间作用范围(co_ac… | 开窗：查询公司会计期间信息 |  | RULE-8C3D79F2F8F1 |
 | SCN-85C2BA2E85AB |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应付「处理 可用条件」的权限与数据范围规则：【处理】按钮可用条件：IF 运营单元编号<>'' AND 会计年度<>'' AND 期间<>'' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-93C5C05007FF |
 | SCN-F15C728E7282 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「删除 前置校验」的接口契约规则：【删除】确认提示：E+MSG："确认删除该笔资料？"，用户取消则终止，不调用接口 | 按平台服务调用结果决定是否继续 |  | RULE-ED61D16EF230 |
@@ -810,7 +810,7 @@
 | SCN-45FFD05489F1 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「会计期间序号」的只读校验规则：【会计期间序号(acctg_perid_seq)】✅ 是 | 字段不可编辑 |  | RULE-2508B25ADE2A |
 | SCN-E83BBD049EB3 |  | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据2类型」的隐藏校验规则：【财务参考单据2类型(fin_ref_doc2_type)】✅ 是 | 字段不展示 |  | RULE-09371B8B00E6 |
 | SCN-41E03C6EA64F | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的必填校验规则：【业务单别名称(biz_type_name)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0004 | RULE-F5A34C9579F1 |
-| SCN-3291FC54AEA7 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「其他收付项目编号」的反向校验规则：【其他收付项目编号(other_ar_ap_item_no)】须存在于其他收付项目(`other_ar_ap_item`)且状态为 Y.生效、类型为 1.收，否则 E+MSG："其他收付项目不存在或已失效！" | 按校验规则拦截或提示 |  | RULE-08138DBB7DB4 |
+| SCN-EE17E25F46D1 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「单据日期」的反向校验规则：【单据日期(doc_date)】须>=应收启用期间(`ops_unit_calc_param.ena_year_recev`+`ena_perid_no_recev`) 对应起始日期，否则 E+MSG："输入日期信息不可小于应收现行年月！" | 按校验规则拦截或提示 |  | RULE-A099F2B7CDAB |
 | SCN-ED8E5D360DFE | 业务类型结算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元职能.职能编号 包含 'acct_org'（核算组织） AND 运营单元.状态(ops_unit.manage_status) = Y.生效<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 回填映射：业务类型结算参数.运营单元编号(biz_type_st_p… | 开窗：选择运营单元 |  | RULE-3C5AF7CBE949 |
 | SCN-2307FD9952E4 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「编辑 可用条件」的权限与数据范围规则：【编辑】需选中一行 | 按操作说明执行 |  | RULE-F9E0F85AF7FA |
 | SCN-524305029476 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「删除 处理」的接口契约规则：【删除】调用 API：删除业务类型应收参数(bm.biz_type_ar_param.delete) | 按平台服务调用结果决定是否继续 |  | RULE-8E944266B2D4 |
@@ -818,7 +818,7 @@
 | SCN-56AE056A3E9E | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「审核时间」的只读校验规则：【审核时间(aprv_time)】✅ 是 | 字段不可编辑 |  | RULE-281BF9E6D5F2 |
 | SCN-B6D1456AD51F | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 |  | RULE-BCFC9FB0B30D |
 | SCN-74963755A3AF | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「自动编码方式」的必填校验规则：【自动编码方式(auto_code_mode)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0015；TC-INVB-0010 | RULE-2842F71D8B0A |
-| SCN-392A92996DEF |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的反向校验规则：【保存】检查 业务方向(`biz_dirct`)不可为 '0.无'，否则 E+MSG："业务类型未设置业务方向！" | 校验不通过则操作被拦截 |  | RULE-AA888382A3DC |
+| SCN-64723EA87683 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「结算对象编号」的反向校验规则：【结算对象编号(stlmt_obj_no)】须存在于 结算对象类型 对应的财务信息且状态为生效，否则 E+MSG："结算对象不存在或已失效！" | 按校验规则拦截或提示 |  | RULE-8F2710537DAF |
 | SCN-990BF169F2E6 | 业务类型结算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「业务单别」的开窗回填规则：【业务单别(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择业务单别<br/>- 数据来源：调用 查询业务单别(biz_type_st_param_001) 查询方案<br/>- 查询模型：业务类型通用信息(biz_type_gen_info)<br/>- 入参条件：业务类型通用信息.业务域(biz_type_gen_info.biz_reg) = ST AND 业务类型通用信息.状态(biz_type_gen_info.manage_status) = Y.生效<br/>- 显示字段：业务类型通用信息.业务单别(biz_type_gen_info.biz_typ… | 开窗：选择业务单别 |  | RULE-DB50CCFC5B81 |
 | SCN-8CC65DE27157 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-82B70A530B67 |
 | SCN-0CB04F1348C4 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「保存 处理」的接口契约规则：【保存】调用 API：新增应收单(`bm.recev_doc.create`)；入参=单头 `recev_doc` + 单身 `recev_doc_d` + 税务发票 `recev_doc_tax_inv`，必填项见第五章 5.6 | 按平台服务调用结果决定是否继续 |  | RULE-2316C0ABD73A；RULE-EF14080791C6 |
@@ -826,7 +826,7 @@
 | SCN-A94FE8CD0482 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「过账状态」的只读校验规则：【过账状态(post_stat)】✅ 是 | 字段不可编辑 |  | RULE-3E194D4ED4BD |
 | SCN-23442363EC10 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号应收」的隐藏校验规则：【启用期间序号应收(ena_perid_seq_recev)】✅ 是 | 字段不展示 |  | RULE-B61B537FC289 |
 | SCN-5F5DAA2D284D | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的必填校验规则：【年位数(year_digit_type)】✅ 是；必填条件：当 自动编码方式(auto_code_mode) IN ('1.年月日+流水码','3.年月+流水码') 时必填 | 为空时保存应被拦截 |  | RULE-8E649B9DF666 |
-| SCN-0351E7DB5D8D |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 前置校验」的反向校验规则：【删除】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可删除！" | 校验不通过则操作被拦截 |  | RULE-B16C4CD27AE9 |
+| SCN-0EE4B70FF02D | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「汇率」的反向校验规则：【汇率(er)】须大于 0，否则 E+MSG："汇率须大于零！" | 按校验规则拦截或提示 |  | RULE-42C9DF524A06 |
 | SCN-3622B368538C | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元职能.职能编号(ops_unit_func.func_no) = acct_org（核算组织）<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运营单元.运营单元编号(ops_unit.ops_unit_no) 升序<br/>- 回填映射：运营单元… | 开窗：选择运营单元 |  | RULE-ED4B5D32B7EA |
 | SCN-73A3C2EBFDAA |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「删除 可用条件」的权限与数据范围规则：【删除】按钮可用条件：需选中一行 AND IF 状态(manage_status)='V.失效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-3B83F10944C8 |
 | SCN-B83BFE646FC6 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「删除 处理」的接口契约规则：【删除】调用 API：删除应收单(`bm.recev_doc.delete`)；入参：运营单元编号(`ops_unit_no`)、单号(`doc_no`) | 按平台服务调用结果决定是否继续 |  | RULE-6B13E761B037 |
@@ -834,7 +834,7 @@
 | SCN-DA1DF4FEFAEE | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「现结标识」的只读校验规则：【现结标识(cash_stlmt_flag)】✅ 是 | 字段不可编辑 |  | RULE-3613E5B8F5CA |
 | SCN-8B5EA0008F9E | 编号规则 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证编号规则「编码类型」的隐藏校验规则：【编码类型(code_type)】✅ 是 | 字段不展示 |  | RULE-7AB587571C76 |
 | SCN-11BC6884D20F | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的必填校验规则：【流水号位数(serl_digit)】✅ 是；必填条件：当 自动编码方式(auto_code_mode)<>'7.手工输入' 时必填 | 为空时保存应被拦截 |  | RULE-BD4610C9FFB7 |
-| SCN-12412616E17F |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 处理」的反向校验规则：【删除】提示消息：E+MSG："确认删除该笔资料？" | 按操作说明执行 |  | RULE-1A032D1F8990 |
+| SCN-FD44A0BEC668 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「记账日期」的反向校验规则：【记账日期(bk_date)】**不可为空白，且不可为最小日期（`1900-01-01`）**——数据库 `bk_date` 为日期型字段，撤回审核后由撤审服务置为最小日期，画面按显示规则呈现为空；否则 E+MSG："记账日期不可空白，请重新录入记账日期！" | 按校验规则拦截或提示 |  | RULE-170FDBF38A1D；RULE-14E65ECB91A9；RULE-85143CA50C2D |
 | SCN-3A084A0C3AF4 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「记账本位币」的开窗回填规则：【记账本位币(fc)】开窗：- 选择模式：单选<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 开窗条件：货币.状态(ccy.manage_status) = Y.生效<br/>- 显示字段：货币.货币编号(ccy.ccy_no)、货币.货币名称(ccy.ccy_name)<br/>- 默认排序：货币.货币编号(ccy.ccy_no) 升序<br/>- 回填映射：货币.货币编号(ccy.ccy_no) → 运营单元核算参数.记账本位币(ops_unit_calc_param.fc) | 开窗：选择货币 |  | RULE-9D57E5F8E278 |
 | SCN-91FACE33AB97 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「生效 可用条件」的权限与数据范围规则：【生效】按钮可用条件：需选中一行 AND IF 状态(manage_status)='V.失效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-D121DDBD01F0 |
 | SCN-418DABDBA87F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「审核 处理」的接口契约规则：【审核】调用 API：应收立账检测(`bm.recev_doc.ar_recog.check`)；入参：运营单元编号(`ops_unit_no`)、会计年度(`acctg_year`)、会计期间序号(`acctg_perid_seq`) | 按平台服务调用结果决定是否继续 |  | RULE-1D6BF77A7DEC；RULE-46394C7E9B4D |
@@ -842,7 +842,7 @@
 | SCN-A4C86EA9D43A | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「现金折扣方式」的只读校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 字段不可编辑 |  | RULE-C2542669719F |
 | SCN-7A2CED21BE11 | 业务类型通用信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「前缀连接符」的隐藏校验规则：【前缀连接符(pref_conn)】✅ 是 | 字段不展示 | TC-BZP-0002；TC-INVB-0002 | RULE-88E68EDF5453 |
 | SCN-53FEA1B7ACF6 | 业务类型应付参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-DEA19D15F050 |
-| SCN-47248032E5F0 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「审核 前置校验」的反向校验规则：【审核】检查 记账日期(`bk_date`) 须 >= 应收启用期间起始日期，否则 E+MSG："记账日期不得小于应收启用期间！" | 校验不通过则操作被拦截 |  | RULE-94DC8A0273AF；RULE-7E9950B0C2DC |
+| SCN-7EB0052BE170 | 其他应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「现金折扣方式」的反向校验规则：【现金折扣方式(cash_disc_mode)】须为有效枚举值，否则 E+MSG："现金折扣方式不合法！" | 按校验规则拦截或提示 |  | RULE-358321FC87EA |
 | SCN-537909E787D9 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「会计期间表编号」的开窗回填规则：【会计期间表编号(acctg_perid_table_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择会计期间表<br/>- 数据来源：调用 查询会计期间表(bm.acctg_perid_table.get) 接口<br/>- 开窗条件：无<br/>- 显示字段：会计期间表.会计期间表编号(acctg_perid_table.acctg_perid_table_no)、会计期间表.会计期间表名称(acctg_perid_table.acctg_perid_table_name)、会计期间表.分期数(acctg_perid_table.insta_count)<br/>- 默认排序：… | 开窗：选择会计期间表 |  | RULE-19A48A8B6D7F |
 | SCN-FF90B17596C9 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「失效 可用条件」的权限与数据范围规则：【失效】按钮可用条件：需选中一行 AND IF 状态(manage_status)='Y.生效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-41E37C350590 |
 | SCN-048B451EE433 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「撤审 处理」的接口契约规则：【撤审】**撤审前置：自动取消过账（本作业不设独立【取消过账】按钮）**——IF 过账状态(`post_stat`)='Y.已过账' THEN 调用 API：取消过账应收单(`bm.recev_doc.ar_recog.cxl_post`)；入参：运营单元编号(`ops_unit_no`)、单号(`doc_no`)；服务内处理：删除应收交易历史 → 删除应收对象档 → 删除应收对象变更历史 → 回写 过账状态=N.未过账、清空过账人与过账时间 | 按平台服务调用结果决定是否继续 |  | RULE-D13BFD20A9C7；RULE-6BAEC9F7C056 |
@@ -850,7 +850,7 @@
 | SCN-117446888B9B | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「责任运营单元编号」的只读校验规则：【责任运营单元编号(resp_ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-FFF8977050D0 |
 | SCN-F4EF95C20AF0 | 业务类型通用信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 |  | RULE-9EA939A34FE2 |
 | SCN-713D2B45624F | 业务类型应付参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「业务单别」的必填校验规则：【业务单别(biz_type_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-637F047D8861 |
-| SCN-E77217430CF9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「审核 处理」的反向校验规则：【审核】服务侧校验：数据存在且状态为未审核（`VD_other_recev_doc_00029` 记账日期须在开放期间） | 按操作说明执行 |  | RULE-91436D6574A3 |
+| SCN-19D240BD60CE |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「其他应收类型」的反向校验规则：【其他应收类型(other_recev_type)】须为 1/2/3 之一，否则 E+MSG："其他应收类型不合法！" | 按校验规则拦截或提示 |  | RULE-61F744CCA8CC |
 | SCN-6B1B9F0AF1B9 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「货币汇率表编号」的开窗回填规则：【货币汇率表编号(ccy_er_table_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择货币汇率表<br/>- 数据来源：调用 查询货币汇率(bm.ccy_er.get) 接口<br/>- 开窗条件：货币汇率.状态(ccy_er.manage_status) = Y.生效，货币汇率.基本货币(ccy_er.base_ccy_no) = 记账本位币(fc)<br/>- 显示字段：货币汇率.货币汇率表编号(ccy_er.ccy_er_table_no)、货币汇率.货币汇率表名称(ccy_er.ccy_er_table_name)<br/>- 默认排序：货币汇率.货币汇率表编号(cc… | 开窗：选择货币汇率表 |  | RULE-037B4EA7BD79 |
 | SCN-40B591A9AAE6 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「编辑 可用条件」的权限与数据范围规则：【编辑】需选中一行 | 按操作说明执行 |  | RULE-25193ADDE722 |
 | SCN-9260EFE1F862 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「撤审 后置处理」的接口契约规则：【撤审】记账日期(`bk_date`) 由撤审服务 `bm.recev_doc.ar_recog.disapprove` 置为最小日期（1900-01-01）、会计期间序号(`acctg_perid_seq`) 置 -1，会计年度与会计期间期号清空；**重新审核前须重新录入记账日期** | 按平台服务调用结果决定是否继续 |  | RULE-6074AA029CA6 |
@@ -858,7 +858,7 @@
 | SCN-CEBF470594FA | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「责任运营单元名称」的只读校验规则：【责任运营单元名称(resp_ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-3A024260DAB7 |
 | SCN-D5D15C852D43 | 业务类型结算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 |  | RULE-883E4D1C8F4D |
 | SCN-A94C4E33CE1A | 业务类型应付参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「现结业务单别」的必填校验规则：【现结业务单别(cash_stlmt_biz_type_no)】✅ 是；必填条件：IF 现结标识(cash_stlmt_flag) 勾选 THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-ADE611041288 |
-| SCN-05ACB9FEDA5D |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除明细行 处理」的反向校验规则：【删除明细行】删除选中行；保存时该行以 `update_type`=delete 传给修改服务（须带 序号 seq） | 按操作说明执行 |  | RULE-2C0BF318F2D2 |
+| SCN-3291FC54AEA7 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「其他收付项目编号」的反向校验规则：【其他收付项目编号(other_ar_ap_item_no)】须存在于其他收付项目(`other_ar_ap_item`)且状态为 Y.生效、类型为 1.收，否则 E+MSG："其他收付项目不存在或已失效！" | 按校验规则拦截或提示 |  | RULE-08138DBB7DB4 |
 | SCN-A69A9FE21374 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度-存货」的开窗回填规则：【现行年度-存货(curr_year_invnt)】开窗：仅可输入 4 位年份数字。首次开账时由用户录入，录入后转只读。 | 开窗：按开窗说明 |  | RULE-0818F0C90529 |
 | SCN-6EC12A18EC6A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-E0675185CB3F |
 | SCN-CEDEDAE500CC |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「作废 处理」的接口契约规则：【作废】调用 API：作废应收单(`bm.recev_doc.void`)；入参：运营单元编号(`ops_unit_no`)、单号(`doc_no`) | 按平台服务调用结果决定是否继续 |  | RULE-0C43D804B968 |
@@ -866,7 +866,7 @@
 | SCN-97A3F95C057C | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「应收金额（原币）」的只读校验规则：【应收金额（原币）(recev_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-C8DEAF96B7EF |
 | SCN-324F28B64BF1 | 业务类型结算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「审核后自动过账标识」的隐藏校验规则：【审核后自动过账标识(aprv_auto_post_flag)】✅ 是 | 字段不展示 |  | RULE-F25FA68114A6 |
 | SCN-9C447AE487F1 | 业务类型应付参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「分期冲减单别」的必填校验规则：【分期冲减单别(insta_offst_adv_biz_type_no)】✅ 是；必填条件：IF 核销方式(verf_mode)='3.分期' THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-128EA8B40538 |
-| SCN-93340B219AE1 | 客户供应商关系档 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】职能校验（保存兜底）：入参.M.运营单元编号 必须具备核算职能，业务校验 VD_cust_supp_rela_00004「运营单元编号的职能类型校验」，不通过时 E+MSG：「该运营单元未设置核算组织职能，不可使用！」 | 按校验规则拦截或提示 |  | RULE-C6CCC02A2C8A；RULE-257061F864BA；RULE-CBCFC61CCCD2 |
+| SCN-392A92996DEF |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的反向校验规则：【保存】检查 业务方向(`biz_dirct`)不可为 '0.无'，否则 E+MSG："业务类型未设置业务方向！" | 校验不通过则操作被拦截 |  | RULE-AA888382A3DC |
 | SCN-1D73D94C7138 | 运营单元核算参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号-存货」的开窗回填规则：【现行期号-存货(curr_perid_no_invnt)】开窗：仅可输入数字。首次开账时由用户录入，录入后转只读。 | 开窗：按开窗说明 |  | RULE-83C54F28C950 |
 | SCN-D05E72DA9419 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「删除 可用条件」的权限与数据范围规则：【删除】按钮可用条件：需选中一行 | 按操作说明执行 |  | RULE-ED08014E7642 |
 | SCN-A97031C419D6 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「红冲 处理」的接口契约规则：【红冲】调用 API：红冲应收单(`bm.recev_doc.rvs.process`) | 按平台服务调用结果决定是否继续 |  | RULE-83A4C4D10726 |
@@ -874,7 +874,7 @@
 | SCN-D529B99A0DAE | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「应收金额（本币）」的只读校验规则：【应收金额（本币）(recev_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-0E6676C709DB |
 | SCN-1237968F5F1B | 业务类型结算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「修改是否自动审核」的隐藏校验规则：【修改是否自动审核(mod_is_auto_aprv)】✅ 是 | 字段不展示 |  | RULE-BFF23D4710FD |
 | SCN-36678D94B25C | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-A3ACFC71BE44 |
-| SCN-EB52BF28017B | 客户供应商关系档 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「客户编号」的反向校验规则：【客户编号(cust_no)】存在性/有效性校验：客户须存在且状态为生效，否则 E+MSG：「客户不存在或未生效，请重新输入！」 | 按校验规则拦截或提示 |  | RULE-73BC88E27B26；RULE-9FAADC66D690 |
+| SCN-0351E7DB5D8D |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 前置校验」的反向校验规则：【删除】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可删除！" | 校验不通过则操作被拦截 |  | RULE-B16C4CD27AE9 |
 | SCN-F571687AF287 | 询价单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证询价单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用接口 查询运营单元(bm.ops_unit.get)<br/>- 入参条件：[运营单元职能.职能编号(ops_unit_func.func_no)] IN ('purc_org') AND [运营单元.状态(ops_unit.manage_status)] = Y.生效<br/>- 显示字段：[运营单元.运营单元编号(ops_unit.ops_unit_no)]，[运营单元.运营单元名称(ops_unit.ops_unit_name)]<br/>- 默认排序：[运营… | 开窗：选择运营单元 | TC-PURQ-0007 | RULE-67A5079A8A4F |
 | SCN-A7D20F221DC2 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「编辑 可用条件」的权限与数据范围规则：【编辑】按钮可用条件：IF 状态(`manage_status`)='N.未审核' AND 过账状态(`post_stat`)<>'Y.已过账' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-FCC91E494687 |
 | SCN-9B6E0CE77757 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「取消红冲 处理」的接口契约规则：【取消红冲】调用 API：取消红冲应收单(`bm.recev_doc.cxl_rvs.process`)；入参：运营单元编号(`ops_unit_no`)、单号(`doc_no`) | 按平台服务调用结果决定是否继续 |  | RULE-BCC41E596D87 |
@@ -882,15 +882,15 @@
 | SCN-31DD14F70366 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「附加结算费用金额（原币）」的只读校验规则：【附加结算费用金额（原币）(addl_stlmt_exp_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-85C05FDE1643 |
 | SCN-0A1C55C44578 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「会计期间表编号」的隐藏校验规则：【会计期间表编号(acctg_perid_table_no)】✅ 是；隐藏条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 勾选 THEN 隐藏 ENDIF | 字段不展示 |  | RULE-3F7F16227743 |
 | SCN-706C338DA7FA | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-1CB52DE87163 |
-| SCN-25D72FA7B82C | 客户供应商关系档 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「供应商编号」的反向校验规则：【供应商编号(supp_no)】存在性/有效性校验：供应商须存在且状态为生效，否则 E+MSG：「供应商不存在或未生效，请重新输入！」 | 按校验规则拦截或提示 |  | RULE-8E9BF2986A6B；RULE-421A9DA0FFAF |
+| SCN-12412616E17F |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 处理」的反向校验规则：【删除】提示消息：E+MSG："确认删除该笔资料？" | 按操作说明执行 |  | RULE-1A032D1F8990 |
 | SCN-F276B19C5220 | 询价单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证询价单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择单别<br/>- 数据来源：调用查询方案 查询采购单别(biz_type_pur_param_001)，查询模型 业务类型采购参数(biz_type_pur_param)<br/>- 入参条件：业务类型采购参数.运营单元编号(biz_type_pur_param.ops_unit_no) = 【询价单.运营单元编号(inq_doc.ops_unit_no)】<br/> 业务类型采购参数.业务性质(biz_type_pur_param.biz_nature) = 'PO02.询价'<br/> 业务类型采… | 开窗：选择单别 | TC-PURQ-0011 | RULE-DF6FABFBC110 |
 | SCN-511C8393D648 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态（状态(`manage_status`)='N.未审核'） | 按操作说明执行 |  | RULE-DBD06677848D |
 | SCN-A0AA3A147C32 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「取单 处理」的接口契约规则：【取单】// 2026-10-31 modi：取单块按《采购退货出库单》PRD v1.8 五段式重写（画面 / 字段说明 / 信息处理 / 其他功能钮 / 补充规则）；来源固定 201~205 五类，取数服务沿用 `bm.recev_doc.src_data_check` 的分支口径，字段编号统一用模型字段编码。 | 按平台服务调用结果决定是否继续 |  | RULE-E17AD708F07E |
 | SCN-DB8401A59B47 |  | 默认值 | NEEDS_CONFIRMATION | 验证应付「新增 后置处理」的默认值规则：【新增】打开空白的新增详情页；执行默认值：运营单元、单据日期、记账日期、结算对象类型=1.供应商、业务性质=AP03.其他应付单、业务方向=-1.负向、核销方式=2.明细、现金折扣方式=1.提前付款、现结标识=N、责任运营单元 | 按操作说明执行 |  | RULE-AA2D8D1F82DE |
 | SCN-F9FB04E0FD1D | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「附加结算费用金额（本币）」的只读校验规则：【附加结算费用金额（本币）(addl_stlmt_exp_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-E7A985C92C40 |
 | SCN-3C5A1768CCD4 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-存货」的隐藏校验规则：【启用期间序号-存货(ena_use_perid_seq_no_invnt)】✅ 是 | 字段不展示 |  | RULE-E887C186D25D |
-| SCN-51A6CF77170A | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「单号」的必填校验规则：【单号(doc_no)】✅ 是；必填条件：IF 业务类型通用信息.自动编码方式(`biz_type_gen_info.auto_code_mode`)='7.手工输入' THEN 不可空白 ENDIF（其他编码方式由服务取号，用户无需填写） | 为空时保存应被拦截 |  | RULE-A01D24872D79；RULE-021159AFA4F2 |
-| SCN-3A2C9932E61B | 客户供应商关系档 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「备注」的反向校验规则：【备注(rmk)】长度校验：超过 255 个字符时 E+MSG：「备注长度不可超过 255 个字符！」 | 按校验规则拦截或提示 |  | RULE-2CB8BB7066C5 |
+| SCN-51A6CF77170A | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「单号」的必填校验规则：【单号(doc_no)】✅ 是；必填条件：IF 业务类型通用信息.自动编码方式(`biz_type_gen_info.auto_code_mode`)='7.手工输入' THEN 不可空白 ENDIF（其他编码方式由服务取号，用户无需填写） | 为空时保存应被拦截 |  | RULE-A01D24872D79 |
+| SCN-47248032E5F0 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「审核 前置校验」的反向校验规则：【审核】检查 记账日期(`bk_date`) 须 >= 应收启用期间起始日期，否则 E+MSG："记账日期不得小于应收启用期间！" | 校验不通过则操作被拦截 |  | RULE-94DC8A0273AF；RULE-7E9950B0C2DC |
 | SCN-3DA05DA7113E | 询价单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证询价单「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 查询供应商业务信息(bm.supp_biz_info.get) 接口<br/>- 入参条件：供应商业务信息.运营单元编号(supp_biz_info.ops_unit_no) = 【询价单.运营单元编号(inq_doc.ops_unit_no)】<br/> 供应商业务信息.状态(supp_biz_info.manage_status) = Y.生效<br/>- 显示字段：供应商业务信息.供应商编号(supp_biz_info.supp_no)、供应商业务信息.供应商名称(su… | 开窗：选择供应商 | TC-PURQ-0019 | RULE-E3510F91F9DA |
 | SCN-7201799B84A9 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「删除 可用条件」的权限与数据范围规则：【删除】按钮可用条件：IF 状态(`manage_status`)='N.未审核' AND 过账状态(`post_stat`)<>'Y.已过账' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-EBD35815CAC7 |
 | SCN-1D620ACF42C7 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「补录税务发票 处理」的接口契约规则：【补录税务发票】调用 API：应收单补录税务发票(`bm.recev_doc.tax_inv_add`)；入参：运营单元编号(`ops_unit_no`)、单号(`doc_no`)、税务发票明细 `recev_doc_tax_inv`、**更新策略(`update_type`)**（insert.新增 / update.修改 / delete.删除）、序号(seq) | 按平台服务调用结果决定是否继续 |  | RULE-D2A346A3712D |
@@ -898,7 +898,7 @@
 | SCN-66F5FBE90218 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「金额合计（原币）」的只读校验规则：【金额合计（原币）(total_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-06C2A5F69364 |
 | SCN-DCA7B3D40280 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号-存货」的隐藏校验规则：【现行期间序号-存货(curr_perid_seq_invnt)】✅ 是 | 字段不展示 |  | RULE-8927342BDBD2 |
 | SCN-56CE96401BE4 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-07177A7B30A4 |
-| SCN-882020E8EE88 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「整体操作 前置校验」的反向校验规则：【整体操作】取员工归属运营单元：取不到时 E+MSG：「未取到您的归属运营单元，无法新增客户供应商关系！」，终止进入 | 校验不通过则操作被拦截 |  | RULE-7D12E4F6AF24；RULE-DD14E38FC8A6；RULE-BBDD1FA4CF9C |
+| SCN-E77217430CF9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「审核 处理」的反向校验规则：【审核】服务侧校验：数据存在且状态为未审核（`VD_other_recev_doc_00029` 记账日期须在开放期间） | 按操作说明执行 |  | RULE-91436D6574A3 |
 | SCN-77678E36BA7F | 询价单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证询价单「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择币种<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.状态(ccy.manage_status) = Y.生效<br/>- 显示字段：货币.货币编号(ccy.ccy_no)、货币.货币名称(ccy.ccy_name)<br/>- 默认排序：货币.货币编号(ccy.ccy_no) 升序<br/>- 回填映射：[货币.货币编号(ccy.ccy_no)] →【询价单.货币编号(inq_doc.ccy_no)】 | 开窗：选择币种 | TC-PURQ-0023 | RULE-1657D695B400 |
 | SCN-ECC02DC9A0FD |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「审核 可用条件」的权限与数据范围规则：【审核】按钮可用条件：IF 状态(`manage_status`) IN ('Y.已审核','V.作废') THEN Disable ELSE Enable ENDIF | 按操作说明执行 |  | RULE-9CFCD29ABEC3 |
 | SCN-B23352467B43 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「整体操作 处理」的接口契约规则：【整体操作】进入编辑态时按当前登录运营单元取数：调用 API 查询运营单元核算参数(bm.ops_unit_calc_param.get)，入参 运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no)=当前登录运营单元，回参取单头全部字段 | 按平台服务调用结果决定是否继续 |  | RULE-B9D013FB010D |
@@ -906,7 +906,7 @@
 | SCN-2D78EE5D68B9 | 其他应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证其他应收单「金额合计（本币）」的只读校验规则：【金额合计（本币）(total_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-D81E07DADD48 |
 | SCN-013EC711571D | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围起-存货」的隐藏校验规则：【开放日期范围起-存货(date_range_begin_invnt)】✅ 是 | 字段不展示 |  | RULE-9ECCD4F45EA0 |
 | SCN-8EB43F742DDC | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「核销方式」的必填校验规则：【核销方式(verf_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-45E93D4DB171 |
-| SCN-CA9C42FEC651 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「新增 前置校验」的反向校验规则：【新增】取员工归属运营单元：取不到时 E+MSG：「未取到您的归属运营单元，无法新增客户供应商关系！」，终止进入 | 校验不通过则操作被拦截 |  | RULE-DCDC93FDD68E；RULE-84AAD5005EF4；RULE-30B57F7263FD |
+| SCN-05ACB9FEDA5D |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除明细行 处理」的反向校验规则：【删除明细行】删除选中行；保存时该行以 `update_type`=delete 传给修改服务（须带 序号 seq） | 按操作说明执行 |  | RULE-2C0BF318F2D2 |
 | SCN-63BBB467648D | 询价单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证询价单「采购员编号」的开窗回填规则：【采购员编号(purhr_no)】开窗：- 选择模式：单选<br/>- 开窗标题：采购员<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：[员工.归属运营单元编号(empl.blng_ops_unit_no)] = 【询价单.运营单元编号(inq_doc.ops_unit_no)】，[员工.状态(empl.manage_status)] = Y.生效<br/>- 显示字段：[员工.员工编号(empl.empl_no)]，[员工.员工姓名(empl.empl_name)]，[员工.主要部门编号(empl.main_dept_no)]，[员工.主要部门名… | 开窗：采购员 | TC-PURQ-0024 | RULE-B0B06A91F12B |
 | SCN-EC6A32BBD431 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「撤审 可用条件」的权限与数据范围规则：【撤审】按钮可用条件：IF 状态(`manage_status`)='Y.已审核' AND 红冲状态(`rvs_stat`)='1.未红冲' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-C379521BBC8C |
 | SCN-87BFBB750C42 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「编辑 处理」的接口契约规则：【编辑】进入编辑态时按当前登录运营单元取数：调用 API 查询运营单元核算参数(bm.ops_unit_calc_param.get)，入参 运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no)=当前登录运营单元，回参取单头全部字段 | 按平台服务调用结果决定是否继续 |  | RULE-F9F2C942E4F9 |
@@ -914,7 +914,7 @@
 | SCN-03AE3B7E5962 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「序号」的只读校验规则：【序号(seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001；TC-PUR-0001；TC-PSTK-0001；TC-PARR-0001；TC-PRTN-0001 | RULE-28C2410A421B |
 | SCN-2A0C5C4809DB | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止-存货」的隐藏校验规则：【开放日期范围止-存货(date_range_end_invnt)】✅ 是 | 字段不展示 |  | RULE-8BD77D2A65DE |
 | SCN-5D9C03B53ACD | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「结算供应商编号」的必填校验规则：【结算供应商编号(stlmt_supp_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-A41E594EC8B6 |
-| SCN-6A71CCE85BC8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「编辑 前置校验」的反向校验规则：【编辑】未选中行时提示「请选择一笔记录」 | 校验不通过则操作被拦截 |  | RULE-3443150D630C |
+| SCN-93340B219AE1 | 客户供应商关系档 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】必填校验：为空时 E+MSG：「请选择运营单元！」 | 按校验规则拦截或提示 |  | RULE-2B61D2A94CE2；RULE-C6CCC02A2C8A；RULE-257061F864BA；RULE-CBCFC61CCCD2 |
 | SCN-3F39EFEC78C8 | 询价单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证询价单「采购部门编号」的开窗回填规则：【采购部门编号(pur_dept_no)】开窗：- 选择模式：单选<br/>- 开窗标题：采购部门<br/>- 数据来源：调用 查询部门(bm.dept.get) 接口<br/>- 入参条件：[部门.状态(dept.manage_status)] = Y.生效，[部门.归属运营单元编号(dept.ops_unit_no)] = 【询价单.运营单元编号(inq_doc.ops_unit_no)】<br/>- 显示字段：[部门.部门编号(dept.dept_no)]，[部门.部门名称(dept.dept_name)]<br/>- 默认排序：[部门.部门编号(dept.dept_no)] 升序<br… | 开窗：采购部门 | TC-PURQ-0025 | RULE-A1D225FD1A8D |
 | SCN-1111F88E0249 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「作废 可用条件」的权限与数据范围规则：【作废】按钮可用条件：IF 状态(`manage_status`)='N.未审核' AND 过账状态(`post_stat`)<>'Y.已过账' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-E3467BD05521 |
 | SCN-E9224EAE81BB |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「保存 处理」的接口契约规则：【保存】调用 API：查询运营单元核算参数(bm.ops_unit_calc_param.get) 取全量回参，与画面值合并后组装提交报文（先读后写，保证未呈现字段不丢值） | 按平台服务调用结果决定是否继续 |  | RULE-D94B023D7CDD |
@@ -922,7 +922,7 @@
 | SCN-E247F1C0474B |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「其他收付项目名称」的只读校验规则：【其他收付项目名称(other_ar_ap_item_name)】✅ 是 | 字段不可编辑 |  | RULE-C1EF50048379 |
 | SCN-79341CD1A702 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-应付」的隐藏校验规则：【启用期间序号-应付(ena_perid_seq_pay)】✅ 是 | 字段不展示 |  | RULE-9DA538560963 |
 | SCN-07FC320661DB | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「结算供应商名称」的必填校验规则：【结算供应商名称(stlmt_supp_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-E69F2D3C3511 |
-| SCN-29608E4A16ED |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】字段级校验按 3.1 及字段小节「校验项」执行 | 校验不通过则操作被拦截 |  | RULE-18106D5A2752；RULE-2BA9D415E0F9 |
+| SCN-EB52BF28017B | 客户供应商关系档 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「客户编号」的反向校验规则：【客户编号(cust_no)】必填校验：为空时 E+MSG：「请选择客户！」 | 按校验规则拦截或提示 |  | RULE-2194FE77E6B4；RULE-73BC88E27B26；RULE-9FAADC66D690 |
 | SCN-4E39F7934AC3 |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购「品号」的开窗回填规则：【品号(item_no)】开窗：- 选择模式：多选<br/>- 开窗标题：查询品号信息<br/>- 数据来源：调用查询方案 查询品号信息(item_gen_info_001)，查询模型 品号通用信息(item_gen_info)<br/>- 入参条件：[品号采购信息.运营单元编号(item_pur_info.ops_unit_no)] = 【询价单.运营单元编号(inq_doc.ops_unit_no)】，[品号采购信息.状态(item_pur_info.manage_status)] = Y.生效<br/>- 显示字段：品号通用信息.品号(item_gen_info.item_no)、品号通… | 开窗：查询品号信息 | TC-SIPP-0017；TC-BASV-0004；TC-BASL-0004；TC-IFIN-0004；TC-BAS-0003；TC-IPUR-0003；TC-ISAL-0010；TC-CUSI-0006；TC-PURQ-0033；TC-PUR-0008；TC-PARR-0017；TC-PO-0022；TC-PRTN-0061 | RULE-4F464E8D280A |
 | SCN-1E8D793A4037 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「红冲 可用条件」的权限与数据范围规则：【红冲】按钮可用条件：IF 状态(`manage_status`)='Y.已审核' AND 红冲状态(`rvs_stat`)='1.未红冲' THEN Enable ELSE Disable ENDIF（已审核即已自动过账；服务仍校验 `post_stat`='Y.已过账'，`VD_recev_doc_00053`） | 按操作说明执行 |  | RULE-5E4724E7D6B4 |
 | SCN-09ACD0256901 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「保存 后置处理」的接口契约规则：【保存】调用 API：修改运营单元核算参数(bm.ops_unit_calc_param.update) | 按平台服务调用结果决定是否继续 |  | RULE-8E62DDA7C61B |
@@ -930,7 +930,7 @@
 | SCN-E649E775E10B |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「结算方式名称」的只读校验规则：【结算方式名称(stlmt_mode_name)】✅ 是 | 字段不可编辑 |  | RULE-C5275A868AA5 |
 | SCN-9415EC2D56E8 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号-应付」的隐藏校验规则：【现行期间序号-应付(curr_perid_seq_pay)】✅ 是 | 字段不展示 |  | RULE-38B766DBD856 |
 | SCN-8F20D1FEEC3C | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「采购供应商编号」的必填校验规则：【采购供应商编号(pur_supp_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-5E307BE63B7B |
-| SCN-B8DE3A53506D |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 后置处理」的反向校验规则：【保存】保存成功提示「保存成功」，返回列表页并刷新；保存失败按接口返回信息提示（E+MSG），保留画面值 | 按操作说明执行 |  | RULE-A205327BEB2A |
+| SCN-25D72FA7B82C | 客户供应商关系档 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「供应商编号」的反向校验规则：【供应商编号(supp_no)】必填校验：为空时 E+MSG：「请选择供应商！」 | 按校验规则拦截或提示 |  | RULE-D1A1DA225F26；RULE-8E9BF2986A6B；RULE-421A9DA0FFAF |
 | SCN-09DFF46A451D |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购「单位编号」的开窗回填规则：【单位编号(unit_no)】开窗：① [F2] 品号库存单位开窗<br/> - 选择模式：单选<br/> - 开窗标题：品号通用信息<br/> - 数据来源：调用接口 查询品号通用信息(bm.item_gen_info.get)<br/> - 入参条件：品号通用信息.品号(item_gen_info.item_no) = 【询价单明细.品号(inq_doc_d.item_no)】 AND 品号通用信息.状态(item_gen_info.manage_status) = Y.生效<br/> - 显示字段：品号通用信息.库存单位编号(item_gen_info.invnt_unit_no)、品号… | 开窗：品号通用信息 | TC-PURQ-0039；TC-PUR-0015 | RULE-78F13047906C |
 | SCN-FB64EF70166A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「取消红冲 可用条件」的权限与数据范围规则：【取消红冲】按钮可用条件：IF 红冲状态(`rvs_stat`)='2.已红冲' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-FE68032517BF |
 | SCN-6B817760F3FE |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「整体操作 处理」的接口契约规则：【整体操作】调用 API：查询运营单元核算参数(bm.ops_unit_calc_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-36A6FB1B1BEB；RULE-832120EFBD0B |
@@ -938,7 +938,7 @@
 | SCN-73E3F297F681 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「费用编号」的只读校验规则：【费用编号(exp_no)】✅ 是 | 字段不可编辑 |  | RULE-B327241281B2 |
 | SCN-10C1348E0D41 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围起-应付」的隐藏校验规则：【开放日期范围起-应付(date_range_begin_pay)】✅ 是 | 字段不展示 |  | RULE-48834A0B9685 |
 | SCN-E7168A5E15E3 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「采购供应商名称」的必填校验规则：【采购供应商名称(pur_supp_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-4A409449E4A3 |
-| SCN-AE4E5F461386 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「删除 前置校验」的反向校验规则：【删除】未选中行时提示「请选择一笔记录」 | 校验不通过则操作被拦截 |  | RULE-5722989BB102 |
+| SCN-3A2C9932E61B | 客户供应商关系档 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「备注」的反向校验规则：【备注(rmk)】长度校验：超过 255 个字符时 E+MSG：「备注长度不可超过 255 个字符！」 | 按校验规则拦截或提示 |  | RULE-2CB8BB7066C5 |
 | SCN-72D8738BAF2B |  | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购「来源单号」的开窗回填规则：【来源单号(src_doc_no)】开窗：当【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 1.请购单 时可用<br/>- 选择模式：单选<br/>- 开窗标题：请购明细<br/>- 数据来源：调用 查询请购明细(bm.pur_req_detail.get) 接口<br/>- 入参条件：[请购明细.运营单元编号(pur_req_d.ops_unit_no)] = 【询价单.运营单元编号(inq_doc.ops_unit_no)】，[请购明细.状态(pur_req_d.manage_status)] = Y.生效，[请购明细.结束码(pur_req_… | 开窗：请购明细 | TC-PURQ-0059 | RULE-5C852F18219D |
 | SCN-517AFE943E0B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「取单 可用条件」的权限与数据范围规则：【取单】IF 【应收单.状态(`recev_doc.manage_status`)】=N.未审核 AND 【应收单.业务性质(`recev_doc.biz_prop`)】IN (AR01.应收单, AR08.期初开账应收单) THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-1F8308D11C58 |
 | SCN-CF44CFCBC680 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「载入（进入作业） 处理」的接口契约规则：【载入（进入作业）】调用 API：查询运营单元核算参数(bm.ops_unit_calc_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-91D15835FEF2；RULE-40B599F9E0AC |
@@ -946,7 +946,7 @@
 | SCN-F07202CA6D5E |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「费用名称」的只读校验规则：【费用名称(exp_name)】✅ 是 | 字段不可编辑 |  | RULE-BEC6ADED38F0 |
 | SCN-DA9B65198CDD | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止-应付」的隐藏校验规则：【开放日期范围止-应付(date_range_end_pay)】✅ 是 | 字段不展示 |  | RULE-2D7B8702BE9B |
 | SCN-16519224B934 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付业务性质」的必填校验规则：【应付业务性质(pay_biz_prop)】✅ 是 | 为空时保存应被拦截 |  | RULE-E2149E6322A7 |
-| SCN-33152E5210FB |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「删除 后置处理」的反向校验规则：【删除】提示「删除成功」，刷新列表；取消则不执行任何操作 | 按操作说明执行 |  | RULE-1A7DBD6A5F18 |
+| SCN-882020E8EE88 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「整体操作 前置校验」的反向校验规则：【整体操作】取员工归属运营单元：取不到时 E+MSG：「未取到您的归属运营单元，无法新增客户供应商关系！」，终止进入 | 校验不通过则操作被拦截 |  | RULE-7D12E4F6AF24；RULE-DD14E38FC8A6；RULE-BBDD1FA4CF9C |
 | SCN-044DFF03B98C | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用接口 查询运营单元(bm.ops_unit.get)<br/>- 入参条件：[运营单元职能.职能编号(ops_unit_func.func_no)] IN ('invt org') AND [运营单元.状态(ops_unit.manage_status)] = Y.生效<br/>- 显示字段：[运营单元.运营单元编号(ops_unit.ops_unit_no)]，[运营单元.运营单元名称(ops_unit.ops_unit_name)]<br… | 开窗：选择运营单元 |  | RULE-6124ECD111C7 |
 | SCN-CB107E3FBD69 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「补录税务发票 可用条件」的权限与数据范围规则：【补录税务发票】按钮可用条件：IF 状态(`manage_status`)='Y.已审核' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-BFE652CFF0C2 |
 | SCN-8C48D651278C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「处理 前置校验」的接口契约规则：【处理】调用 API：查询运营单元核算参数(bm.ops_unit_calc_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-52AADD969950；RULE-8EA230ACFDE9 |
@@ -954,7 +954,7 @@
 | SCN-D87E3BA115DE |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「银行账号」的只读校验规则：【银行账号(bank_acct_no)】✅ 是 | 字段不可编辑 |  | RULE-F2EE992FC5CB |
 | SCN-D1FDBB3447AE | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号应收」的隐藏校验规则：【启用期间序号应收(ena_perid_seq_recev)】✅ 是 | 字段不展示 |  | RULE-9BA05338DC2F |
 | SCN-28DEE6C9A28A | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付业务类型」的必填校验规则：【应付业务类型(pay_biz_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-F89D02A95B0C |
-| SCN-F2064EE4304F | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的反向校验规则：【业务性质(biz_prop)】所选业务性质须属于当前业务域（AP 开头），否则 E+MSG："业务性质与业务域不匹配！" | 按校验规则拦截或提示 |  | RULE-E08015E2165C |
+| SCN-CA9C42FEC651 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「新增 前置校验」的反向校验规则：【新增】取员工归属运营单元：取不到时 E+MSG：「未取到您的归属运营单元，无法新增客户供应商关系！」，终止进入 | 校验不通过则操作被拦截 |  | RULE-DCDC93FDD68E；RULE-84AAD5005EF4；RULE-30B57F7263FD |
 | SCN-4CC536630BF6 | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择存货单别<br/>- 数据来源：调用查询方案 查询存货单别(biz_type_invnt_001)<br/>- 查询模型：业务类型存货参数(biz_type_invnt_param)<br/>- 入参条件：[业务类型存货参数.运营单元编号(biz_type_invnt_param.ops_unit_no)] = 【采购退货出库单.运营单元编号(pur_rtn_stkou_doc.ops_unit_no)】 AND [业务类型存货参数.状态(biz_type_invnt_para… | 开窗：选择存货单别 |  | RULE-EEFBD39984DA |
 | SCN-E75393408614 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「明细操作 可用条件」的权限与数据范围规则：【明细操作】状态(`manage_status`)='N.未审核'（已审核单据不可增行） | 按操作说明执行 |  | RULE-93F821146B2F |
 | SCN-6968E771992A |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「处理 处理」的接口契约规则：【处理】调用：查询公司会计期间信息(bm.co_acctg_perid_info.get) | 按平台服务调用结果决定是否继续 |  | RULE-A438DC45657E；RULE-AF7BF310D4F4 |
@@ -962,7 +962,7 @@
 | SCN-DB9E1525BE5A |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「金额（本币）」的只读校验规则：【金额（本币）(amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-FCCB631CA0EE |
 | SCN-097A39B056DB | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号应收」的隐藏校验规则：【现行期间序号应收(curr_perid_seq_recev)】✅ 是 | 字段不展示 |  | RULE-3B8EB57C55E9 |
 | SCN-46FF01726051 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付明细业务类型」的必填校验规则：【应付明细业务类型(pay_dtl_biz_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-E7AC49CD6B9C |
-| SCN-049D68D285FF | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的反向校验规则：【业务单别(biz_type_no)】不可为空。 | 按校验规则拦截或提示 |  | RULE-51EB35DA007E |
+| SCN-6A71CCE85BC8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「编辑 前置校验」的反向校验规则：【编辑】未选中行时提示「请选择一笔记录」 | 校验不通过则操作被拦截 |  | RULE-3443150D630C |
 | SCN-316B29026159 | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择供应商<br/>//- 数据来源：调用接口 查询运营单元协作关系(bm.ops_unit_coop_rela.get) 获取委托方运营单元编号，再调用接口 查询供应商业务信息(bm.supp_biz_info.get)<br/>//① 调用接口：查询运营单元协作关系(bm.ops_unit_coop_rela.get)<br/>// 入参条件：[运营单元协作关系.受托方运营单元编号(ops_unit_coop_rela.trstee_ops_unit_no)] = 【采购退货出库单.运营… | 开窗：选择供应商 |  | RULE-DD5158715F1B |
 | SCN-092B95B6679A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「新增明细行 可用条件」的权限与数据范围规则：【新增明细行】状态(`manage_status`)='N.未审核'（已审核单据不可增行） | 按操作说明执行 |  | RULE-63D2DAA00D45 |
 | SCN-77F79F9D9405 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证应收「处理 后置处理」的接口契约规则：【处理】重新调用 查询运营单元核算参数(bm.ops_unit_calc_param.get) 刷新页面数据，启用年度应收、启用期号应收 按只读条件转为只读，按钮按可用条件置灰 | 按平台服务调用结果决定是否继续 |  | RULE-88A1953A016D |
@@ -970,7 +970,7 @@
 | SCN-0F6C1D440057 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「项目名称」的只读校验规则：【项目名称(proj_name)】✅ 是 | 字段不可编辑 |  | RULE-1AF16CC2F3FD |
 | SCN-5E95F18D36CB | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围起应收」的隐藏校验规则：【开放日期范围起应收(date_range_begin_recev)】✅ 是 | 字段不展示 |  | RULE-D031C5CCF87E |
 | SCN-5E128295D1B1 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-9C15D632F856 |
-| SCN-51237B9DE526 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的反向校验规则：【业务单别名称(biz_type_name)】不可为空。 | 按校验规则拦截或提示 |  | RULE-D3AD29A1CE1A |
+| SCN-29608E4A16ED |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】字段级校验按 3.1 及字段小节「校验项」执行 | 校验不通过则操作被拦截 |  | RULE-18106D5A2752；RULE-2BA9D415E0F9 |
 | SCN-57B8727A3A91 | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「限用仓库编号」的开窗回填规则：【限用仓库编号(limit_whse_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择仓库<br/>- 数据来源：调用接口 查询仓库(bm.whse.get)<br/>- 入参条件：[仓库.运营单元编号(whse.ops_unit_no)] = 【采购退货出库单.运营单元编号(pur_rtn_stkou_doc.ops_unit_no)】 AND [仓库.仓库属性(whse.whse_prop)] IN ('1.普通仓')<br/>- 显示字段：[仓库.仓库编号(whse.whse_no)]，[仓库.仓库名称(whse.whse_name)]<br/>- 默… | 开窗：选择仓库 |  | RULE-9DFE5CC65A38 |
 | SCN-911277CA2A40 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「删除明细行 可用条件」的权限与数据范围规则：【删除明细行】状态(`manage_status`)='N.未审核' | 按操作说明执行 |  | RULE-1B01545697B1 |
 | SCN-DC3705940995 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】【新增时】调用接口：新增编号规则(bm.code_rule.create)，入参取页面 12 个字段：编码规则编号、编码规则说明、备注、前缀值、前缀连接符、后缀值、后缀连接符、自动编码方式、日期编码依据、年度位数类型、流水号位数、编码类型；成功后回写编码规则编号并返回列表 | 按平台服务调用结果决定是否继续 |  | RULE-0F4FCF0E0708；RULE-0F4D1B7593D2 |
@@ -978,7 +978,7 @@
 | SCN-A2EE3399A234 |  | 只读校验 | NEEDS_CONFIRMATION | 验证应收「编辑 前置校验」的只读校验规则：【编辑】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可修改！" | 校验不通过则操作被拦截 |  | RULE-7ABCABD521A3 |
 | SCN-1816E3329D6A | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止应收」的隐藏校验规则：【开放日期范围止应收(date_range_end_recev)】✅ 是 | 字段不展示 |  | RULE-4CE1E6E7AE55 |
 | SCN-926BD8620715 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「汇率」的必填校验规则：【汇率(er)】✅ 是 | 为空时保存应被拦截 |  | RULE-A4C4C6874220 |
-| SCN-A089BD6FD1DC | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的反向校验规则：【年位数(year_digit_type)】当 自动编码方式 IN ('1.年月日+流水码','3.年月+流水码') 且 年位数='1.无' 时 E+MSG："年、月、日编码方式下，年位数不可为无！" | 按校验规则拦截或提示 |  | RULE-283D9BE9C469 |
+| SCN-B8DE3A53506D |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 后置处理」的反向校验规则：【保存】保存成功提示「保存成功」，返回列表页并刷新；保存失败按接口返回信息提示（E+MSG），保留画面值 | 按操作说明执行 |  | RULE-A205327BEB2A |
 | SCN-AA80BF676DCF | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「仓管人员编号」的开窗回填规则：【仓管人员编号(whse_mgmt_pers_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.归属运营单元编号(empl.ops_unit_no)=【采购退货出库单.运营单元编号(pur_rtn_stkou_doc.ops_unit_no)】 AND 员工.状态(empl.manage_status)=Y.生效<br/>- 显示字段：员工.员工编号(empl.empl_no)、员工.员工姓名(empl.empl_name)、员工.主要部门编号(empl.m… | 开窗：选择员工 |  | RULE-4C955FCF22E6 |
 | SCN-8E1ADA70022A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「整体操作 可用条件」的权限与数据范围规则：【整体操作】列表页已选中一行（本作业列表按运营单元唯一，仅一条记录）；本操作仅在列表页提供 | 按操作说明执行 |  | RULE-732898040055 |
 | SCN-169F62AE5155 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】调用接口：删除编号规则(bm.code_rule.delete) | 按平台服务调用结果决定是否继续 |  | RULE-BDCD5360CF96 |
@@ -986,7 +986,7 @@
 | SCN-EA27FF2DD9E4 | 客户供应商关系档 | 只读校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-3C6770E49CFA |
 | SCN-957F09B6B026 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「新会计年度自动继承上一年度使用的会计期间表」的隐藏校验规则：【新会计年度自动继承上一年度使用的会计期间表(auto_inh_upper_acctg_perid)】✅ 是 | 字段不展示 |  | RULE-E1F439301706 |
 | SCN-87CE299A0174 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票种类编号」的必填校验规则：【税务发票种类编号(tax_inv_categ_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-A28E62BB5B14 |
-| SCN-3A83CD57F147 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的反向校验规则：【流水号位数(serl_digit)】须为 0~11 的整数，否则 E+MSG："流水号位数须为 0~11 的整数！" | 按校验规则拦截或提示 | TC-BZP-0008 | RULE-FDE072E7E0C6；RULE-941B97A1A476；RULE-6C5C47BDF648 |
+| SCN-AE4E5F461386 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「删除 前置校验」的反向校验规则：【删除】未选中行时提示「请选择一笔记录」 | 校验不通过则操作被拦截 |  | RULE-5722989BB102 |
 | SCN-D00EDB9C42D9 | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「仓管部门编号」的开窗回填规则：【仓管部门编号(whse_mgmt_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择部门<br/>- 数据来源：调用 查询部门(bm.dept.get) 接口<br/>- 入参条件：部门.状态(dept.manage_status)=Y.生效 AND 部门.归属运营单元编号(dept.ops_unit_no)=【采购退货出库单.运营单元编号(pur_rtn_stkou_doc.ops_unit_no)】<br/>- 显示字段：部门.部门编号(dept.dept_no)、部门.部门名称(dept.dept_name)<br/>- 默认排序：部门.部门… | 开窗：选择部门 |  | RULE-1F232F8EC0A1 |
 | SCN-2BC88696F078 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「编辑 可用条件」的权限与数据范围规则：【编辑】列表页已选中一行（本作业列表按运营单元唯一，仅一条记录）；本操作仅在列表页提供 | 按操作说明执行 |  | RULE-D014711C7A9C |
 | SCN-FA1CE9F2246C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】调用接口：生效编号规则(bm.code_rule.valid) | 按平台服务调用结果决定是否继续 |  | RULE-01DB1677A8D4 |
@@ -994,7 +994,7 @@
 | SCN-336063D9F686 | 客户供应商关系档 | 只读校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-16EE2C809A44 |
 | SCN-DF24DA869EB7 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「同时连续开放会计期间数目（包括现行期间）」的隐藏校验规则：【同时连续开放会计期间数目（包括现行期间）(conti_open_acctg_perid_count)】✅ 是 | 字段不展示 |  | RULE-3ACAF8D8E537 |
 | SCN-56AC3DCC6F61 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票方向」的必填校验规则：【税务发票方向(tax_inv_dirct)】✅ 是 | 为空时保存应被拦截 |  | RULE-610291D992C8 |
-| SCN-80E8AC7B2260 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 前置校验」的反向校验规则：【保存】检查 业务性质(biz_prop) 须属于当前业务域，否则 E+MSG："业务性质与业务域不匹配！" | 校验不通过则操作被拦截 |  | RULE-9C4DE24AD182 |
+| SCN-33152E5210FB |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「删除 后置处理」的反向校验规则：【删除】提示「删除成功」，刷新列表；取消则不执行任何操作 | 按操作说明执行 |  | RULE-1A7DBD6A5F18 |
 | SCN-FBEFC0AAE266 | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「仓库编号」的开窗回填规则：【仓库编号(whse_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择仓库<br/>- 数据来源：调用 查询仓库(bm.whse.get) 接口<br/>- 入参条件：仓库.运营单元(whse.ops_unit_no)=【采购退货出库单.运营单元编号(pur_rtn_stkou_doc.ops_unit_no)】 AND 仓库.仓库属性(whse.whse_prop) IN ('1.普通仓')<br/>- 显示字段：仓库编号，仓库名称<br/>- 默认排序：仓库编号 升序<br/>- 回填映射：[仓库.仓库编号(whse.whse_no)] →【采购退货出库… | 开窗：选择仓库 |  | RULE-600993719C07 |
 | SCN-AC187F600C11 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「保存 可用条件」的权限与数据范围规则：【保存】编辑状态 | 按操作说明执行 |  | RULE-4E44BE42DAD4 |
 | SCN-B0AACD3E511C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】调用接口：失效编号规则(bm.code_rule.invalid) | 按平台服务调用结果决定是否继续 |  | RULE-31205D3ECBBD |
@@ -1002,15 +1002,15 @@
 | SCN-5699DCA3311B | 客户供应商关系档 | 只读校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「客户名称」的只读校验规则：【客户名称(cust_name)】✅ 是 | 字段不可编辑 |  | RULE-339FE8CEF438 |
 | SCN-D8D65CB40764 | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「是否按自然年月启用会计期间」的隐藏校验规则：【是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid)】✅ 是 | 字段不展示 |  | RULE-EB8DCDD1555B |
 | SCN-A4B6DBBE34C4 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付暂估冲回状态」的必填校验规则：【应付暂估冲回状态(ap_pesti_rvsl_stat)】✅ 是 | 为空时保存应被拦截 |  | RULE-94652177346E |
-| SCN-3A857E80F738 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-D9BB035C4ADA |
+| SCN-F2064EE4304F | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的反向校验规则：【业务性质(biz_prop)】所选业务性质须属于当前业务域（AP 开头），否则 E+MSG："业务性质与业务域不匹配！" | 按校验规则拦截或提示 |  | RULE-E08015E2165C |
 | SCN-926D8E48E15F | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「储位编号」的开窗回填规则：【储位编号(stsp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择储位<br/>- 数据来源：调用 查询仓库(bm.whse.get) 接口<br/>- 入参条件：仓库.运营单元(whse.ops_unit_no)=【采购退货出库单.运营单元编号(pur_rtn_stkou_doc.ops_unit_no)】 AND 仓库.状态(whse.manage_status)=Y.生效 AND 仓库.仓库编号(whse.whse_no)=【采购退货出库单明细.仓库编号(pur_rtn_stkou_doc_d.whse_no)】 AND [储位.状态码(whse.… | 开窗：选择储位 |  | RULE-E081FDAFDE56 |
 | SCN-E71D26ADBE0E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「整体操作 可用条件」的权限与数据范围规则：【整体操作】本作业不提供「新增」按钮；进入作业即按当前登录运营单元载入 | 按操作说明执行 |  | RULE-6128A7865689 |
 | SCN-92F4C84230AC |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「保存 后置处理」的接口契约规则：【保存】IF 新增状态 THEN 调用 新增业务类型通用信息(bm.biz_type_gen_info.create) | 按平台服务调用结果决定是否继续 |  | RULE-034104CE2A13；RULE-9F680B999B51 |
 | SCN-84E49AC85C45 | 其他应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证其他应收单「记账日期」的默认值规则：【记账日期(bk_date)】默认值：1.默认系统日期。时机点：默认执行时<br/>2.当【记账日期(`bk_date`)更改】时，默认会计年度(`acctg_year`)=按记账日期取所属会计年度。时机点：默认执行时<br/>3.当【记账日期(`bk_date`)更改】时，默认会计期间期号(`acctg_perid_no`)=按记账日期取所属会计期间期号。时机点：默认执行时<br/>4.当【记账日期(`bk_date`)更改】时，默认会计期间序号(`acctg_perid_seq`)=按记账日期取所属会计期间序号。时机点：默认执行时<br/>5.撤回审核后，由撤审服务（`disapprove… | 默认值：1.默认系统日期。时机点：默认执行时<br/>2.当【记账日期(`bk_date`)更改】时，默认会计年度(`acctg_year`)=按记账日期取所属会计年度… |  | RULE-D421834C8845 |
 | SCN-D697DD3C50F4 | 客户供应商关系档 | 只读校验 | NEEDS_UI_EXPLORATION | 验证客户供应商关系档「供应商名称」的只读校验规则：【供应商名称(supp_name)】✅ 是 | 字段不可编辑 |  | RULE-F70E0B9FED19 |
 | SCN-A8CCEC237BDC | 运营单元核算参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「已生成公司会计期间」的隐藏校验规则：【已生成公司会计期间(CUS_has_co_acctg_perid)】✅ 是 | 字段不展示 |  | RULE-E06B324EB8E6 |
-| SCN-DA61E8D00E92 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「记账日期」的必填校验规则：【记账日期(bk_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-0632273AEDC3；RULE-99455693898E |
-| SCN-C14179895E74 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-FD7D1C78D7EA |
+| SCN-DA61E8D00E92 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「记账日期」的必填校验规则：【记账日期(bk_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-0632273AEDC3 |
+| SCN-049D68D285FF | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的反向校验规则：【业务单别(biz_type_no)】不可为空。 | 按校验规则拦截或提示 |  | RULE-51EB35DA007E |
 | SCN-9B273ECE51DF | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「批号」的开窗回填规则：【批号(lot_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择批号<br/>- 数据来源：调用 查询品号批号信息(bm.item_lot_info.get) 接口<br/>- 入参条件：品号批号信息.品号(item_lot_info.item_no)=【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】 AND 品号批号信息.状态(item_lot_info.manage_status)=Y.生效 AND 品号批号信息.生效日期(item_lot_info.eff_date)<=【采购退货出库单.单据日期(pur_rtn_… | 开窗：选择批号 |  | RULE-23D80273155F |
 | SCN-78FBEDF1C837 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「载入（进入作业） 可用条件」的权限与数据范围规则：【载入（进入作业）】本作业不提供「新增」按钮；进入作业即按当前登录运营单元载入 | 按操作说明执行 |  | RULE-03A99338BF78 |
 | SCN-DE089338F82E |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「删除 前置校验」的接口契约规则：【删除】确认提示：E+MSG："确认删除该笔资料？"，用户取消则终止，不调用接口 | 按平台服务调用结果决定是否继续 |  | RULE-8D867ACA73E7 |
@@ -1018,7 +1018,7 @@
 | SCN-DFA61194B5DB |  | 只读校验 | NEEDS_CONFIRMATION | 验证基础资料「整体操作 处理」的只读校验规则：【整体操作】判断通过后带出运营单元编号与名称（均只读） | 按操作说明执行 |  | RULE-6CFB6005AD5E |
 | SCN-C6C8E12159B6 | 询价单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证询价单「采购价格类型」的隐藏校验规则：【采购价格类型(pur_price_type)】✅ 是 | 字段不展示 | TC-PURQ-0002 | RULE-029B4E31E77F |
 | SCN-17E90D157B3C | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「税额计算方式」的必填校验规则：【税额计算方式(tax_calc_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-00A318494801 |
-| SCN-09E5BB79261B | 业务类型应付参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】运营单元须存在且职能含核算组织，否则 E+MSG："运营单元不存在或不具备核算组织职能！" | 按校验规则拦截或提示 |  | RULE-CDE0DDF93B8B |
+| SCN-51237B9DE526 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的反向校验规则：【业务单别名称(biz_type_name)】不可为空。 | 按校验规则拦截或提示 |  | RULE-D3AD29A1CE1A |
 | SCN-6BBA0E1B50DD | 采购退货出库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：【采购退货出库单明细.来源单号(pur_rtn_stkou_doc_d.src_doc_no)】= ''<br/>即：只有无前置来源的手工行才允许开窗；取单带入的行一律只读。<br/>- 开窗标题：选择项目<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：[项目.状态(proj.manage_status)] = 'Y.生效'<br/>- 显示字段：[项目.项目编号(proj.proj_no)]、[项目.项目名称(proj.proj_name)]<br/>- 默认排序：[项… | 开窗：选择项目 |  | RULE-B463FC83474A |
 | SCN-643893511F9E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证应收「处理 可用条件」的权限与数据范围规则：【处理】按钮可用条件：IF 运营单元编号<>'' AND 会计年度<>'' AND 期间<>'' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-E37A37BFE887 |
 | SCN-D8D7DEB86DB0 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「删除 处理」的接口契约规则：【删除】调用 API：删除业务类型通用信息(bm.biz_type_gen_info.delete) | 按平台服务调用结果决定是否继续 |  | RULE-1A0A6CBFD9C4 |
@@ -1026,7 +1026,7 @@
 | SCN-C6AD10D42E07 |  | 只读校验 | NEEDS_CONFIRMATION | 验证基础资料「新增 处理」的只读校验规则：【新增】判断通过后带出运营单元编号与名称（均只读） | 按操作说明执行 |  | RULE-44A55349EBB2 |
 | SCN-C519CAA37BF5 | 询价单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证询价单「询价类型」的隐藏校验规则：【询价类型(inq_type)】✅ 是 | 字段不展示 | TC-PURQ-0002 | RULE-258ADAA71591 |
 | SCN-323071F621D8 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「采购运营单元编号」的必填校验规则：【采购运营单元编号(pur_ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-2B4692F05062 |
-| SCN-46BCACD21B28 | 业务类型应付参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「业务单别」的反向校验规则：【业务单别(biz_type_no)】业务单别须存在且生效，否则 E+MSG："业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-5D149DE80F84 |
+| SCN-A089BD6FD1DC | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的反向校验规则：【年位数(year_digit_type)】当 自动编码方式 IN ('1.年月日+流水码','3.年月+流水码') 且 年位数='1.无' 时 E+MSG："年、月、日编码方式下，年位数不可为无！" | 按校验规则拦截或提示 |  | RULE-283D9BE9C469 |
 | SCN-8FC9652BA9F0 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效 AND 运营单元.职能编号(ops_unit.func_no) in ('purc_org')<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运营单元.… | 开窗：查询运营单元 | TC-PRTN-0006 | RULE-9478D706CA9A |
 | SCN-6BFD0F4E512E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「编辑 可用条件」的权限与数据范围规则：【编辑】IF 【编号规则.状态(code_rule.manage_status)】=V.失效 THEN 可用 ENDIF | 按操作说明执行 |  | RULE-8644A329CF41 |
 | SCN-1A059142D806 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「生效 处理」的接口契约规则：【生效】调用 API：修改业务类型通用信息(bm.biz_type_gen_info.update)（入参：manage_status='Y.生效'，其余透传） | 按平台服务调用结果决定是否继续 |  | RULE-C2D5C6C731D2 |
@@ -1034,7 +1034,7 @@
 | SCN-785900F9C952 |  | 只读校验 | NEEDS_CONFIRMATION | 验证基础资料「编辑 处理」的只读校验规则：【编辑】加载该记录数据到详情页（编辑态）；运营单元只读、不可修改；不执行运营单元职能校验 | 按操作说明执行 |  | RULE-2BAAB514B82B |
 | SCN-0FB30E0C77FB | 询价单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证询价单「业务性质」的隐藏校验规则：【业务性质(biz_prop)】✅ 是 | 字段不展示 | TC-PURQ-0002 | RULE-8D6850C2C8C8 |
 | SCN-0DA023C1174F | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「税区编号」的必填校验规则：【税区编号(tax_dist_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-9C6C7B1536D3 |
-| SCN-17E388519E52 | 业务类型应付参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「现结业务单别」的反向校验规则：【现结业务单别(cash_stlmt_biz_type_no)】现结业务单别须存在且生效，否则 E+MSG："现结业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-C372F05711BD |
+| SCN-3A83CD57F147 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的反向校验规则：【流水号位数(serl_digit)】须为 0~11 的整数，否则 E+MSG："流水号位数须为 0~11 的整数！" | 按校验规则拦截或提示 | TC-BZP-0008 | RULE-FDE072E7E0C6；RULE-941B97A1A476；RULE-6C5C47BDF648 |
 | SCN-8B185149A303 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询采购单别<br/>- 数据来源：查询方案 查询采购单别(biz_type_pur_param_001)<br/>- 查询模型：业务类型采购参数(biz_type_pur_param)<br/>- 入参条件：[业务类型采购参数.运营单元编号(biz_type_pur_param.ops_unit_no)] = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 AND [业务类型采购参数.状态(biz_type_pur_param.status)] =… | 开窗：查询采购单别 | TC-PRTN-0014 | RULE-F6E16C2D6C6B |
 | SCN-93367D6052D5 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增状态 或 编辑状态 | 按操作说明执行 |  | RULE-71139CD8911A |
 | SCN-808BF3CDD309 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「失效 处理」的接口契约规则：【失效】调用 API：修改业务类型通用信息(bm.biz_type_gen_info.update)（入参：manage_status='V.失效'，其余透传） | 按平台服务调用结果决定是否继续 |  | RULE-DD36C8509C8A |
@@ -1042,7 +1042,7 @@
 | SCN-ED1C04A62EF3 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务域」的只读校验规则：【业务域(biz_reg)】✅ 是 | 字段不可编辑 | TC-BZP-0001；TC-INVB-0001 | RULE-D97FDBF1FF29 |
 | SCN-27EE027B7E3A | 询价单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证询价单「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 |  | RULE-D85329585638 |
 | SCN-15F72C594927 | 应付单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付单「现金折扣方式」的必填校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-1526D3003E52 |
-| SCN-A3156E5440CF | 业务类型应付参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「分期冲减单别」的反向校验规则：【分期冲减单别(insta_offst_adv_biz_type_no)】分期冲减单别须存在且生效，否则 E+MSG："分期冲减单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-1575E8415043 |
+| SCN-80E8AC7B2260 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 前置校验」的反向校验规则：【保存】检查 业务性质(biz_prop) 须属于当前业务域，否则 E+MSG："业务性质与业务域不匹配！" | 校验不通过则操作被拦截 |  | RULE-9C4DE24AD182 |
 | SCN-EF66ECC4949C | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 查询供应商业务信息(bm.supp_biz_info.get) 接口<br/>- 入参条件：[供应商业务信息.运营单元编号(supp_biz_info.ops_unit_no)] = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】，[供应商业务信息.状态(supp_biz_info.manage_status)] = 'Y.生效'<br/>- 显示字段：[供应商业务信息.供应商编号(supp_biz_info.supp_… | 开窗：选择供应商 | TC-PRTN-0020 | RULE-576B798BC32A |
 | SCN-04AF2AAE277C |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「删除 可用条件」的权限与数据范围规则：【删除】IF 【编号规则.状态(code_rule.manage_status)】=V.失效 THEN 可用 ENDIF | 按操作说明执行 |  | RULE-AD2AE3321FA5 |
 | SCN-7DAB84414109 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「保存 后置处理」的接口契约规则：【保存】IF 新增状态 THEN 调用 新增业务类型结算参数(bm.biz_type_st_param.create) | 按平台服务调用结果决定是否继续 |  | RULE-3FF1E5AD8A91；RULE-087B2E66719B |
@@ -1050,7 +1050,7 @@
 | SCN-0BF446942211 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的只读校验规则：【年位数(year_digit_type)】✅ 是；只读条件：当 自动编码方式(auto_code_mode) IN ('6.流水码','7.手工输入') 时只读 | 字段不可编辑 | TC-BZP-0012；TC-BZP-0013；TC-INVB-0007；TC-INVB-0008 | RULE-89FF0516B80B |
 | SCN-F6F49D45E4B8 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务性质」的隐藏校验规则：【业务性质(biz_prop)】✅ 是 | 字段不展示 |  | RULE-0A517B0064FD |
 | SCN-768052E6A008 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「应付来源类型」的必填校验规则：【应付来源类型(pay_src_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-E78F88582E98 |
-| SCN-2FF000CD0437 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-099985E8DA3A |
+| SCN-3A857E80F738 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-D9BB035C4ADA |
 | SCN-01740EB6D738 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「采购员编号」的开窗回填规则：【采购员编号(purhr_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择采购员<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：[员工.归属运营单元编号(empl.blng_ops_unit_no)] = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】，[员工.状态(empl.manage_status)] = Y.生效<br/>- 显示字段：[员工.员工编号(empl.empl_no)]，[员工.员工姓名(empl.empl_name)]，[员工.主要部门编号(empl.main… | 开窗：选择采购员 | TC-PRTN-0021 | RULE-A24D3CE5FF93 |
 | SCN-7257ED8BF148 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】IF 【编号规则.状态(code_rule.manage_status)】=V.失效 THEN 可用 ENDIF | 按操作说明执行 |  | RULE-B44A0105FDA9 |
 | SCN-A2191D744971 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「删除 前置校验」的接口契约规则：【删除】确认提示：E+MSG："确认删除该笔资料？"，用户取消则终止，不调用接口 | 按平台服务调用结果决定是否继续 |  | RULE-F22CE9C5F5B4 |
@@ -1058,7 +1058,7 @@
 | SCN-19AD9DE2B9F8 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的只读校验规则：【流水号位数(serl_digit)】✅ 是；只读条件：当 自动编码方式(auto_code_mode)='7.手工输入' 时只读 | 字段不可编辑 | TC-BZP-0005；TC-BZP-0006 | RULE-6982FD7C393A |
 | SCN-7E19F330A713 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「件数」的隐藏校验规则：【件数(pcs)】✅ 是 | 字段不展示 |  | RULE-9B71C47B0E68 |
 | SCN-657F4C09FD79 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0016；TC-BASV-0003；TC-BASL-0003；TC-IFIN-0003；TC-BAS-0002；TC-ISAL-0009；TC-CUSI-0005；TC-PURQ-0030；TC-PUR-0007；TC-PARR-0014；TC-PO-0019；TC-PRTN-0058 | RULE-C536AB3A45AD |
-| SCN-855892115F1A |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-B490D2B788A2 |
+| SCN-C14179895E74 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-FD7D1C78D7EA |
 | SCN-BA93043F588F | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「采购部门编号」的开窗回填规则：【采购部门编号(pur_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择部门<br/>- 数据来源：调用 查询部门(bm.dept.get) 接口<br/>- 入参条件：[部门.状态(dept.manage_status)] = Y.生效，[部门.归属运营单元编号(dept.blng_ops_unit_no)] = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】<br/>- 显示字段：[部门.部门编号(dept.dept_no)]，[部门.部门名称(dept.dept_name)]<br/>- 默认排序：[部门.部门… | 开窗：选择部门 | TC-PRTN-0022 | RULE-CBD006C8DF0E |
 | SCN-B991B32D768C |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】IF 【编号规则.状态(code_rule.manage_status)】=Y.生效 THEN 可用 ENDIF | 按操作说明执行 |  | RULE-C287BA69F95E |
 | SCN-B2DC3C1B8AC3 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「删除 处理」的接口契约规则：【删除】调用 API：删除业务类型结算参数(bm.biz_type_st_param.delete) | 按平台服务调用结果决定是否继续 |  | RULE-4F2E6B4183D3 |
@@ -1066,7 +1066,7 @@
 | SCN-34E224713C8F | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「编码格式」的只读校验规则：【编码格式(CUS_biz_type_fmt)】✅ 是 | 字段不可编辑 |  | RULE-ADB07B035E4F |
 | SCN-80DA97920700 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「特征码」的隐藏校验规则：【特征码(item_feat_no)】✅ 是 | 字段不展示 |  | RULE-B656C86BA50C |
 | SCN-7198B1E3A53C |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「品名」的必填校验规则：【品名(item_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-25CFF83B3AAE |
-| SCN-C276DDE242F1 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】须为查询方案 查询应付单别(`biz_type_ap_param_001`) 返回的有效单别（运营单元=本单据运营单元、状态=Y.生效、业务域=AP 且 业务性质 IN ('AP01.应付单','AP07.期初开账应付单')），否则 E+MSG："此单别不存在或业务域不符！" | 按校验规则拦截或提示 |  | RULE-350B839799B0 |
+| SCN-09E5BB79261B | 业务类型应付参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】运营单元须存在且职能含核算组织，否则 E+MSG："运营单元不存在或不具备核算组织职能！" | 按校验规则拦截或提示 |  | RULE-CDE0DDF93B8B |
 | SCN-0D9116909D59 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「退货运营单元编号」的开窗回填规则：【退货运营单元编号(rtn_ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询受托方运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig) 接口<br/>- 入参条件：运营单元协作关系.委托方运营单元编号(ops_unit_coop_rela.trstor_ops_unit_no) = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 AND 运营单元协作关系.运营单元协作编号(ops_unit_coop_rela.… | 开窗：查询运营单元 | TC-PRTN-0027 | RULE-E59CDB579752 |
 | SCN-5AF027363059 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「编辑 可用条件」的权限与数据范围规则：【编辑】需选中一行 | 按操作说明执行 |  | RULE-5BEF753FF9A9 |
 | SCN-843046C9A20E | 运营单元核算参数 | 接口契约 | NOT_UI_OBSERVABLE | 验证运营单元核算参数「运营单元编号」的接口契约规则：【运营单元编号(ops_unit_no)】① 调用查询运营单元(bm.ops_unit.get) 校验，不存在则 E+MSG："运营单元不存在！" | 按平台服务返回结果决定是否放行 |  | RULE-81003FA8D4AA |
@@ -1074,15 +1074,15 @@
 | SCN-3D3BA8FD5E51 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-E34E38627568 |
 | SCN-912229ABBE83 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「计价数量」的隐藏校验规则：【计价数量(prc_qty)】✅ 是 | 字段不展示 |  | RULE-D694A39CCF23 |
 | SCN-86C5F3E3BFAE |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「生产运营单元编号」的必填校验规则：【生产运营单元编号(prodn_ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-A9B7907F0D50 |
-| SCN-8276667C3A91 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「单据日期」的反向校验规则：【单据日期(doc_date)】须>=应付启用期间(`ops_unit_calc_param.ena_year_pay`+`ena_perid_no_pay`) 对应起始日期，否则 E+MSG："输入日期信息不可小于应付启用年月！" | 按校验规则拦截或提示 |  | RULE-ADEBEF1AF695 |
+| SCN-46BCACD21B28 | 业务类型应付参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「业务单别」的反向校验规则：【业务单别(biz_type_no)】业务单别须存在且生效，否则 E+MSG："业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-5D149DE80F84 |
 | SCN-E944718207F4 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「供应商地址」的开窗回填规则：【供应商地址(supp_addr)】开窗：- 选择模式：单选<br/>- 开窗标题：选择供应商地址<br/>- 数据来源：调用 查询供应商业务信息(bm.supp_biz_info.get) 接口<br/>- 入参条件：[供应商业务信息.运营单元编号(supp_biz_info.ops_unit_no)] = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】，[供应商业务信息.状态(supp_biz_info.manage_status)] = 'Y.生效'，[供应商业务信息.供应商编号(supp_biz_info.supp_no)] = 【采购退货单.供应商编号… | 开窗：选择供应商地址 | TC-PRTN-0028 | RULE-8AE217C21071 |
 | SCN-4CE44F018A68 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-2BF1F63471C0 |
 | SCN-E5FCA152764C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「整体操作（4.1） 后置处理」的接口契约规则：【整体操作（4.1）】调用 查询公共参数(bm.param.get)，入参 运营单元编号=当前运营单元，取 是否按自然年月启用会计期间(is_by_natrl_year_month_ena_acctg_perid)，用于控制会计期间表编号的隐藏与初始化分支 | 按平台服务调用结果决定是否继续 |  | RULE-618F46461A66；RULE-D0878D9ACAF0 |
 | SCN-4BA4EBA5C559 | 其他应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证其他应收单「金额合计（原币）」的默认值规则：【金额合计（原币）(total_amt_tc)】默认值：当【应收金额（原币）(`recev_amt_tc`)更改】时，默认金额合计（原币）(`total_amt_tc`)=应收金额（原币）(`recev_amt_tc`)+附加结算费用金额（原币）(`addl_stlmt_exp_amt_tc`)。时机点：默认执行时 | 默认值：当【应收金额（原币）(`recev_amt_tc`)更改】时，默认金额合计（原币）(`total_amt_tc`)=应收金额（原币）(`recev_amt_tc… |  | RULE-77FA0F7CF1DA |
 | SCN-827B114AFE37 |  | 只读校验 | NEEDS_CONFIRMATION | 验证应付「整体操作 后置处理」的只读校验规则：【整体操作】打开空白的新增详情页；业务域按默认值带出 AP.应付领域（只读），自动编码方式默认「1.年月日+流水码」，前缀连接符默认「2.-」，状态默认「Y.生效」 | 按操作说明执行 |  | RULE-FF88AEBC619E |
-| SCN-F6C00693A23A | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「计价单位编号」的隐藏校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 字段不展示 |  | RULE-C603DF6A0D05；RULE-16BCE5913E77 |
+| SCN-F6C00693A23A | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「计价单位编号」的隐藏校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 字段不展示 |  | RULE-C603DF6A0D05 |
 | SCN-66993188A10B |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「应付采购类型」的必填校验规则：【应付采购类型(pay_pur_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-D95F7643EEE6 |
-| SCN-D1B01AFF5BA2 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「核销方式」的反向校验规则：【核销方式(verf_mode)】须为 1.整单 / 2.明细 / 3.分期 之一，不可为 0.无，否则 E+MSG："核销方式不可为 0.无，请检查业务类型应付参数！" | 按校验规则拦截或提示 |  | RULE-C9205794DE3A |
+| SCN-17E388519E52 | 业务类型应付参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「现结业务单别」的反向校验规则：【现结业务单别(cash_stlmt_biz_type_no)】现结业务单别须存在且生效，否则 E+MSG："现结业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-C372F05711BD |
 | SCN-7273EE6A998D | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「运输方式编号」的开窗回填规则：【运输方式编号(trasp_mode_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运输方式<br/>- 数据来源：调用 查询运输方式(bm.trasp_mode.get) 接口<br/>- 入参条件：运输方式.状态(trasp_mode.manage_status) = Y.生效<br/>- 显示字段：运输方式.运输方式编号(trasp_mode.trasp_mode_no)、运输方式.运输方式描述(trasp_mode.trasp_mode_desc)、运输方式.运输类型(trasp_mode.trasp_type)<br/>- 默认排序：运输方式.运… | 开窗：选择运输方式 | TC-PRTN-0029 | RULE-667C82D42EE7 |
 | SCN-F2BC4A7D4E63 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「删除 可用条件」的权限与数据范围规则：【删除】按钮可用条件：需选中一行 AND IF 状态(manage_status)='V.失效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-5217463BE174 |
 | SCN-F9055E59A04C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「新增 后置处理」的接口契约规则：【新增】调用 查询公共参数(bm.param.get)，入参 运营单元编号=当前运营单元，取 是否按自然年月启用会计期间(is_by_natrl_year_month_ena_acctg_perid)，用于控制会计期间表编号的隐藏与初始化分支 | 按平台服务调用结果决定是否继续 |  | RULE-C984370015CE；RULE-935DFE072FDB |
@@ -1090,7 +1090,7 @@
 | SCN-DE11F79E8ECA |  | 只读校验 | NEEDS_CONFIRMATION | 验证应付「新增 后置处理」的只读校验规则：【新增】打开空白的新增详情页；业务域按默认值带出 AP.应付领域（只读），自动编码方式默认「1.年月日+流水码」，前缀连接符默认「2.-」，状态默认「Y.生效」 | 按操作说明执行 |  | RULE-47870A7493DB |
 | SCN-B4F737FC4DA2 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「第二单位数量」的隐藏校验规则：【第二单位数量(sec_unit_qty)】✅ 是；隐藏条件：IF 【采购退货出库单.计量体系(pur_rtn_stkou_doc.CUS_meas_sys)】 &lt;&gt; 'D' THEN 隐藏 ENDIF | 字段不展示 |  | RULE-D411BB271F99 |
 | SCN-CCD3E2A0CFE3 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「财务参考单据1类型」的必填校验规则：【财务参考单据1类型(fin_ref_doc1_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-B765FD94D4D3 |
-| SCN-46473AFA31A0 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付业务性质」的反向校验规则：【应付业务性质(pay_biz_prop)】须为 101/102 之一，否则 E+MSG："应付业务性质不合法！" | 按校验规则拦截或提示 |  | RULE-F8ECD45CBE48 |
+| SCN-A3156E5440CF | 业务类型应付参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「分期冲减单别」的反向校验规则：【分期冲减单别(insta_offst_adv_biz_type_no)】分期冲减单别须存在且生效，否则 E+MSG："分期冲减单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-1575E8415043 |
 | SCN-AB5FC4CE8234 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：[货币.状态(ccy.manage_status)] = Y.生效<br/>- 显示字段：[货币.货币编号(ccy.ccy_no)]，[货币.货币名称(ccy.ccy_name)]<br/>- 默认排序：[货币.货币编号(ccy.ccy_no)] 升序<br/>- 回填映射：[货币.货币编号(ccy.ccy_no)] →【采购退货单.货币编号(pur_rtn_doc.ccy_no)】 | 开窗：选择货币 | TC-PRTN-0037 | RULE-27227D04DB45 |
 | SCN-2275C3AF0EE2 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「生效 可用条件」的权限与数据范围规则：【生效】按钮可用条件：需选中一行 AND IF 状态(manage_status)='V.失效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-149EB90BDC05 |
 | SCN-B2B45F9C8984 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「编辑 处理」的接口契约规则：【编辑】调用 查询运营单元核算参数(bm.ops_unit_calc_param.get) 载入详情 | 按平台服务调用结果决定是否继续 |  | RULE-26255E1568C4 |
@@ -1098,7 +1098,7 @@
 | SCN-FC177BC8A2A7 | 业务类型应付参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-7910A2CF5232 |
 | SCN-E07B6320044D | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「第二单位编号」的隐藏校验规则：【第二单位编号(sec_unit_no)】✅ 是；隐藏条件：IF 【采购退货出库单.计量体系(pur_rtn_stkou_doc.CUS_meas_sys)】 &lt;&gt; 'D' THEN 隐藏 ENDIF | 字段不展示 |  | RULE-DA8FC4FD9013 |
 | SCN-465263727784 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「财务参考单据2类型」的必填校验规则：【财务参考单据2类型(fin_ref_doc2_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-CFE6C0533619 |
-| SCN-AD1BD64FA5E3 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「汇率」的反向校验规则：【汇率(er)】须大于 0，否则 E+MSG："汇率须大于零！" | 按校验规则拦截或提示 |  | RULE-D0F96F6C3CBB |
+| SCN-2FF000CD0437 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-099985E8DA3A |
 | SCN-2A13CB478664 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：收付款条件<br/>- 数据来源：调用 收付款条件查询(bm.colln_pmt_terms.get) 接口<br/>- 入参条件：[收付款条件.状态(colln_pmt_terms.manage_status)] = 'Y' AND [收付款条件.收付款(colln_pmt_terms.colln_pmt)] IN ('0','1')<br/>- 显示字段：收付款条件.付款条件编号(colln_pmt_terms.pmt_terms_no)、收付款条件.付款条件名称(colln… | 开窗：收付款条件 | TC-PRTN-0038 | RULE-7C5580430FCD |
 | SCN-054E13843DC0 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「失效 可用条件」的权限与数据范围规则：【失效】按钮可用条件：需选中一行 AND IF 状态(manage_status)='Y.生效' THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-523716328B14 |
 | SCN-62445A5CC7EF |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「编辑 后置处理」的接口契约规则：【编辑】调用 查询公共参数(bm.param.get)，取 是否按自然年月启用会计期间；为是时不呈现「会计期间表编号」 | 按平台服务调用结果决定是否继续 |  | RULE-E8D657B93DF8；RULE-224100900EF8 |
@@ -1106,7 +1106,7 @@
 | SCN-FFECAAA84205 | 业务类型应付参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「业务单别名称」的只读校验规则：【业务单别名称(CUS_biz_type_name)】✅ 是 | 字段不可编辑 |  | RULE-9421804652E4 |
 | SCN-69DD69521536 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库参考来源类型」的隐藏校验规则：【采购退货出库参考来源类型(pur_rtn_stkou_ref_src_type)】✅ 是 | 字段不展示 |  | RULE-93CE9E9E58CE |
 | SCN-CFB8036AF2A0 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「商品类型」的必填校验规则：【商品类型(goods_type)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0013；TC-PRTN-0057 | RULE-B1D3D4963903 |
-| SCN-57F22634D1B2 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「税种编号」的反向校验规则：【税种编号(tax_no)】保存前须非空，否则 E+MSG："税种编号不可为空，请检查税务发票种类税率！" | 按校验规则拦截或提示 |  | RULE-A25C925E40F9 |
+| SCN-855892115F1A |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-B490D2B788A2 |
 | SCN-D168204DC033 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗标题：选择项目<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：[项目.状态(proj.manage_status)] = Y.生效<br/>- 显示字段：[项目.项目编号(proj.proj_no)]、[项目.项目名称(proj.proj_name)]<br/>- 默认排序：[项目.项目编号(proj.proj_no)] 升序<br/>- 回填映射：[项目.项目编号(proj.proj_no)] → 【采购退货单.项目编号(pur_rtn_doc.proj_no)】 | 开窗：选择项目 | TC-PRTN-0042 | RULE-508068E95555 |
 | SCN-A61AC706FDD0 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「编辑 可用条件」的权限与数据范围规则：【编辑】需选中一行 | 按操作说明执行 |  | RULE-34D710FE277A |
 | SCN-D5E809261E4A |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「保存 后置处理」的接口契约规则：【保存】① 新增时调用 新增运营单元核算参数(bm.ops_unit_calc_param.create)；编辑时调用 修改运营单元核算参数(bm.ops_unit_calc_param.update)；入参取页面全部字段 | 按平台服务调用结果决定是否继续 |  | RULE-622D052E9681 |
@@ -1114,7 +1114,7 @@
 | SCN-8FBE2ED0D2A1 | 业务类型应付参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「业务性质」的只读校验规则：【业务性质(CUS_biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-64EABB1B6E0E |
 | SCN-0180AFB9FC9F | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「参考来源运营单元编号」的隐藏校验规则：【参考来源运营单元编号(ref_src_ops_unit_no)】✅ 是 | 字段不展示 |  | RULE-D9D5D13FCA1D |
 | SCN-FDD5F99B09FC |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应付「计价单位编号」的必填校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0018；TC-PARR-0027；TC-PO-0060；TC-PRTN-0063 | RULE-E41B2C1D39A4 |
-| SCN-1026D8E4842A | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票方向」的反向校验规则：【税务发票方向(tax_inv_dirct)】create 调用前须已赋值，否则 E+MSG："税务发票方向不可为空！" | 按校验规则拦截或提示 |  | RULE-1CDF331B4512 |
+| SCN-C276DDE242F1 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】须为查询方案 查询应付单别(`biz_type_ap_param_001`) 返回的有效单别（运营单元=本单据运营单元、状态=Y.生效、业务域=AP 且 业务性质 IN ('AP01.应付单','AP07.期初开账应付单')），否则 E+MSG："此单别不存在或业务域不符！" | 按校验规则拦截或提示 |  | RULE-350B839799B0 |
 | SCN-B06E4FDEDCEC | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「结算运营单元编号」的开窗回填规则：【结算运营单元编号(stlmt_ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：查询运营单元<br/>- 数据来源：调用 查询受托方运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig) 接口<br/>- 入参条件：运营单元协作关系.委托方运营单元编号(ops_unit_coop_rela.trstor_ops_unit_no) = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 AND 运营单元协作关系.运营单元协作编号(ops_unit_coop_rel… | 开窗：查询运营单元 | TC-PRTN-0047 | RULE-BD4E7E4BDC75 |
 | SCN-F4CF302DC8ED |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-4E137F443F79 |
 | SCN-CB450BAC2638 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证财务「删除 后置处理」的接口契约规则：【删除】调用 API：删除运营单元核算参数(bm.ops_unit_calc_param.delete) | 按平台服务调用结果决定是否继续 |  | RULE-26D708974FA7 |
@@ -1122,7 +1122,7 @@
 | SCN-B31F9BCD1947 | 业务类型应付参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-15636DABD8FE |
 | SCN-046CF34934B8 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「参考来源单号」的隐藏校验规则：【参考来源单号(ref_src_doc_no)】✅ 是 | 字段不展示 |  | RULE-469D980336BC |
 | SCN-1E62950B3D6A |  | 必填校验 | NEEDS_CONFIRMATION | 验证应付「保存 前置校验」的必填校验规则：【保存】检查 单头必填：运营单元编号(`ops_unit_no`)、业务类型编号(`biz_type_no`)、单据日期(`doc_date`)、结算供应商编号(`stlmt_supp_no`)、结算供应商名称(`stlmt_supp_name`)、采购供应商编号(`pur_supp_no`)、采购供应商名称(`pur_supp_name`)、采购运营单元编号(`pur_ops_unit_no`)、应付业务性质(`pay_biz_prop`)、应付业务类型(`pay_biz_type`)、应付明细业务类型(`pay_dtl_biz_type`)、货币编号(`ccy_no`)、汇率(er)、税额… | 校验不通过则操作被拦截 |  | RULE-EB700CF4D70B；RULE-CE2D9E2B29FF |
-| SCN-8FC18F10DE75 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「记账日期」的反向校验规则：【记账日期(bk_date)】须>=单据日期(`doc_date`)，否则 E+MSG："记账日期需大于等于单据日期！" | 按校验规则拦截或提示 |  | RULE-BBB7442ED601；RULE-B6D493180FAB |
+| SCN-85D61FF3923D | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「单号」的反向校验规则：【单号(doc_no)】不可空白，否则 E+MSG："单号不可空白！" | 按校验规则拦截或提示 |  | RULE-021159AFA4F2 |
 | SCN-B417F205C51F | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「品号」的开窗回填规则：【品号(item_no)】开窗：- 选择模式：多选<br/>- 开窗条件：<br/>- 开窗标题：查询品号信息<br/>- 数据来源：调用 查询品号信息(item_gen_info_001) 查询方案<br/>- 查询模型：品号信息(item_gen_info)<br/>- 入参条件：[品号采购信息.运营单元编号(item_pur_info.ops_unit_no)] = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】，[品号存货信息.运营单元编号(item_invnt_info.ops_unit_no)] = 【采购退货单.退货运营单元编号(pur_rtn_d… | 开窗：查询品号信息 |  | RULE-C179F29BEED4 |
 | SCN-19859BD18CF5 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「删除 可用条件」的权限与数据范围规则：【删除】按钮可用条件：需选中一行 | 按操作说明执行 |  | RULE-D71D31ACBBB4 |
 | SCN-A623C584B6F1 | 询价单 | 接口契约 | NOT_UI_OBSERVABLE | 验证询价单「运营单元编号」的接口契约规则：【运营单元编号(ops_unit_no)】调用接口：查询运营单元(bm.ops_unit.get)；入参：[运营单元.运营单元编号(ops_unit.ops_unit_no)] = 【询价单.运营单元编号(inq_doc.ops_unit_no)】，[运营单元职能.职能编号(ops_unit_func.func_no)] IN ('purc_org')，[运营单元.状态(ops_unit.manage_status)] = Y.生效 | 按平台服务返回结果决定是否放行 |  | RULE-88F0C5930DFA |
@@ -1130,7 +1130,7 @@
 | SCN-D64C00C11715 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-18B4B56011E4 |
 | SCN-6ABF82A643A8 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「参考来源序号」的隐藏校验规则：【参考来源序号(ref_src_seq)】✅ 是 | 字段不展示 |  | RULE-A127FD6B183F |
 | SCN-48A3D12A9636 |  | 必填校验 | NEEDS_CONFIRMATION | 验证应付「保存 处理」的必填校验规则：【保存】调用 create 前按序处理（顺序不可颠倒）：①重算单头金额 无税金额/税额/价税合计（原币、本币）= SUM(单身对应金额)；②按重算后的单头价税合计赋值 DEFAULT 税务发票方向(`tax_inv_dirct`)=IF 单头价税合计（原币）(`tawt_tc`)>=0 THEN 1.正向 ELSE -1.负向 ENDIF（平台 create 必填，不允许留空）；③按业务类型应付参数的编号规则取号并回填 单号(`doc_no`) | 按操作说明执行 |  | RULE-AC9C608CAD89 |
-| SCN-0B4C4DE0689D | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「会计期间序号」的反向校验规则：【会计期间序号(acctg_perid_seq)】审核前须非空，否则 E+MSG："会计期间序号不可为空，请检查记账日期所属期间！" | 按校验规则拦截或提示 |  | RULE-AC4E622B51B1 |
+| SCN-8276667C3A91 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「单据日期」的反向校验规则：【单据日期(doc_date)】须>=应付启用期间(`ops_unit_calc_param.ena_year_pay`+`ena_perid_no_pay`) 对应起始日期，否则 E+MSG："输入日期信息不可小于应付启用年月！" | 按校验规则拦截或提示 |  | RULE-ADEBEF1AF695 |
 | SCN-9F6805813DA3 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「计价单位编号」的开窗回填规则：【计价单位编号(prc_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：【采购退货单明细.计价单位和采购单位须相同(pur_rtn_doc_d.CUS_prc_unit_and_pur_unit_rqd_same)】未勾选<br/>- 开窗标题：选择品号单位<br/>- 数据来源：调用 [查询品号单位(smbcloud.item_gen_info.item_unit.get)] 接口<br/>- 入参条件：[品号单位.品号(item_unit.item_no)] = 【采购退货单明细.品号(pur_rtn_doc_d.item_no)】<br/>- 显示字段：[品号单位.单位… | 开窗：选择品号单位 |  | RULE-DC58EAE62C01 |
 | SCN-D65112AA3593 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「编辑 可用条件」的权限与数据范围规则：【编辑】列表行有数据 | 按操作说明执行 |  | RULE-818C9C0F7DD5 |
 | SCN-6247B9B51771 | 询价单 | 接口契约 | NOT_UI_OBSERVABLE | 验证询价单「单据日期」的接口契约规则：【单据日期(doc_date)】调用接口：查询核算运营单元(bm.ops_unit.get_calc_ops_unit)；入参：核算运营单元.运营单元编号(ops_unit.ops_unit_no) = 【询价单.运营单元编号(inq_doc.ops_unit_no)】；回参：核算运营单元.核算运营单元编号(ops_unit.calc_ops_unit_no) | 按平台服务返回结果决定是否放行 |  | RULE-F30C12AC9F50；RULE-3B94D8F940DA |
@@ -1138,7 +1138,7 @@
 | SCN-200F6239FF3C | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「业务类型名称」的只读校验规则：【业务类型名称(biz_type_name)】✅ 是 | 字段不可编辑 |  | RULE-10055D935E36 |
 | SCN-F5C626E7359E | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购类型」的隐藏校验规则：【采购类型(pur_type)】✅ 是 | 字段不展示 |  | RULE-C45830B838E0 |
 | SCN-64394158D999 |  | 必填校验 | NEEDS_CONFIRMATION | 验证应付「审核 前置校验」的必填校验规则：【审核】检查 记账日期(`bk_date`)不可为空白且不可为最小日期(`1900-01-01`)，否则 E+MSG："记账日期不可空白，请重新录入记账日期！" | 校验不通过则操作被拦截 |  | RULE-A3727C926A3B |
-| SCN-A6D1B4FC7A02 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「税区编号」的反向校验规则：【税区编号(tax_dist_no)】不可为空，否则 E+MSG："税区编号不可为空，请检查运营单元核算参数的所属税区！" | 按校验规则拦截或提示 |  | RULE-0333D7B6D8A8 |
+| SCN-D1B01AFF5BA2 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「核销方式」的反向校验规则：【核销方式(verf_mode)】须为 1.整单 / 2.明细 / 3.分期 之一，不可为 0.无，否则 E+MSG："核销方式不可为 0.无，请检查业务类型应付参数！" | 按校验规则拦截或提示 |  | RULE-C9205794DE3A |
 | SCN-A62BEDB1BEC9 | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「仓库编号」的开窗回填规则：【仓库编号(whse_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：仓库查询<br/>- 数据来源：调用 查询仓库(bm.whse.get) 接口<br/>- 入参条件：[仓库.运营单元编号(whse.ops_unit_no)] = 【采购退货单.退货运营单元编号(pur_rtn_doc.rtn_ops_unit_no)】 AND [仓库.状态(whse.manage_status)] = 'Y.生效' AND [仓库.仓库属性(whse.whse_attr)] = '1.普通仓'<br/>- 显示字段：[仓库.仓库编号(whse.whse_no)]、[仓库.… | 开窗：仓库查询 |  | RULE-7B065456533F |
 | SCN-6C763523E90E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-E2FB6CFD8F43 |
 | SCN-AAF62A437884 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.inq_doc.create | 按平台服务调用结果决定是否继续 |  | RULE-0FD828ADB464；RULE-96E7C087F2B6 |
@@ -1146,7 +1146,7 @@
 | SCN-03B6EC109861 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「核销方式」的只读校验规则：【核销方式(verf_mode)】✅ 是 | 字段不可编辑 |  | RULE-B30AA2417CE8 |
 | SCN-969C2B1F4AE0 | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（原币）」的隐藏校验规则：【无税金额（原币）(untax_amt_tc)】✅ 是 | 字段不展示 |  | RULE-509936C86433 |
 | SCN-A9CB91AEECA3 |  | 必填校验 | NEEDS_CONFIRMATION | 验证应付「取单 处理」的必填校验规则：【取单】必填，默认 101.采购入库单；一期下拉仅开放 101/102，103~105 置灰并标注「二期开放」 | 按操作说明执行 |  | RULE-5DB6F3A2FC53 |
-| SCN-ED35C073BDE1 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「现金折扣方式」的反向校验规则：【现金折扣方式(cash_disc_mode)】须为有效枚举值，否则 E+MSG："现金折扣方式不合法！" | 按校验规则拦截或提示 |  | RULE-4A660C990211 |
+| SCN-46473AFA31A0 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付业务性质」的反向校验规则：【应付业务性质(pay_biz_prop)】须为 101/102 之一，否则 E+MSG："应付业务性质不合法！" | 按校验规则拦截或提示 |  | RULE-F8ECD45CBE48 |
 | SCN-4B797B5C94DF | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「储位编号」的开窗回填规则：【储位编号(stsp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择储位<br/>- 数据来源：调用 查询仓库(bm.whse.get) 接口<br/>- 入参条件：[仓库.运营单元编号(whse.ops_unit_no)] = 【采购退货单.退货运营单元编号(pur_rtn_doc.rtn_ops_unit_no)】，[仓库.储位.状态(whse.stsp.manage_status)] = 'Y.生效'，[仓库.仓库编号(whse.whse_no)] = 【采购退货单明细.仓库编号(pur_rtn_doc_d.whse_no)】<br/>- 显示字段：… | 开窗：选择储位 |  | RULE-B9CEDCC7690A |
 | SCN-E03620810F0E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证财务「删除 可用条件」的权限与数据范围规则：【删除】列表行有数据 | 按操作说明执行 |  | RULE-77A5071D8F0F |
 | SCN-57FAB9E39BDA |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.inq_doc.delete | 按平台服务调用结果决定是否继续 |  | RULE-338E5DBDE44B |
@@ -1154,7 +1154,7 @@
 | SCN-BD14D7D9DCF0 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「结算供应商名称」的只读校验规则：【结算供应商名称(stlmt_supp_name)】✅ 是 | 字段不可编辑 |  | RULE-FD42301DE9D4 |
 | SCN-F51E28016E1C | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（原币）」的隐藏校验规则：【税额（原币）(tax_tc)】✅ 是 | 字段不展示 |  | RULE-FF9C8AA08ACF |
 | SCN-32F3F0EFECB6 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-3A6D2534D2F0 |
-| SCN-24D340C57505 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「计价数量」的反向校验规则：【计价数量(prc_qty)】须大于 0，否则 E+MSG："计价数量须大于零！" | 按校验规则拦截或提示 |  | RULE-58A4423EA982 |
+| SCN-AD1BD64FA5E3 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「汇率」的反向校验规则：【汇率(er)】须大于 0，否则 E+MSG："汇率须大于零！" | 按校验规则拦截或提示 |  | RULE-D0F96F6C3CBB |
 | SCN-6E7758C0E63F | 采购退货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购退货单「批号」的开窗回填规则：【批号(lot_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：品号批号信息<br/>- 数据来源：调用 查询品号批号信息(bm.item_lot_info.get) 接口<br/>- 入参条件：[品号批号信息.品号(item_lot_info.item_no)] = 【采购退货单明细.品号(pur_rtn_doc_d.item_no)】 AND [品号批号信息.状态(item_lot_info.manage_status)] = 'Y.生效' AND [品号批号信息.生效日期(item_lot_info.eff_date)] &lt;= 【采购退货单.单据日期… | 开窗：品号批号信息 |  | RULE-409092159859 |
 | SCN-63D1EA5E6B24 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「编辑 可用条件」的权限与数据范围规则：【编辑】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-2A309EED17EA |
 | SCN-5CC18566B975 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「提交 后置处理」的接口契约规则：【提交】● 调用接口：bm.inq_doc.initi_aprv | 按平台服务调用结果决定是否继续 |  | RULE-B9E0E0C43F08 |
@@ -1162,7 +1162,7 @@
 | SCN-1C3EDA3E3E86 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「采购供应商名称」的只读校验规则：【采购供应商名称(pur_supp_name)】✅ 是 | 字段不可编辑 |  | RULE-17ACFA1854A1 |
 | SCN-077E7A32C63A | 采购退货出库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（原币）」的隐藏校验规则：【货款金额（原币）(pmt_amt_tc)】✅ 是 | 字段不展示 |  | RULE-3D5569EF1492 |
 | SCN-B4F8F7CDC715 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「价款存货调整业务类型」的必填校验规则：【价款存货调整业务类型(price_invnt_adj_biz_type)】✅ 是；必填条件：IF 价款差异实时调整(price_diff_immed_adj) 勾选 THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-CE79AB0DDCDD |
-| SCN-0D6EE78942DC |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「单价」的反向校验规则：【单价(price)】须大于等于 0，否则 E+MSG："计价单价不可小于零！" | 按校验规则拦截或提示 | TC-PURQ-0061；TC-PO-0055；TC-PRTN-0072 | RULE-EFA7D605FFA4 |
+| SCN-57F22634D1B2 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「税种编号」的反向校验规则：【税种编号(tax_no)】保存前须非空，否则 E+MSG："税种编号不可为空，请检查税务发票种类税率！" | 按校验规则拦截或提示 |  | RULE-A25C925E40F9 |
 | SCN-1037B3A6919C | 供应商业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 供应商基本信息查询(bm.supp_base_info.get) 接口<br/>- 入参条件：供应商基本信息.状态(supp_base_info.manage_status) <> V.失效<br/>- 显示字段：供应商基本信息.供应商编号(supp_base_info.supp_no)、供应商基本信息.供应商简称(supp_base_info.supp_sname)、供应商基本信息.供应商名称(supp_base_info.supp_name)、供应… | 开窗：选择供应商 | TC-SUPP-0004 | RULE-BD83FDB565CD |
 | SCN-819131795B18 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF（新增 / 编辑态） | 按操作说明执行 |  | RULE-1E64D4FD0323 |
 | SCN-842DE16C745E |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「驳回 后置处理」的接口契约规则：【驳回】● 调用接口：bm.inq_doc.cxl_aprv | 按平台服务调用结果决定是否继续 |  | RULE-8F47CA522EE0 |
@@ -1170,7 +1170,7 @@
 | SCN-241B29D6EE0A | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-7741C02D1DDE |
 | SCN-240E12A5C4AB | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「结算供应商编号」的隐藏校验规则：【结算供应商编号(stlmt_supp_no)】✅ 是 | 字段不展示 |  | RULE-6283BF436F66 |
 | SCN-C9AC90BB4EBA | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「费用分摊存货调整业务类型」的必填校验规则：【费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)】✅ 是；必填条件：IF 费用分摊差异实时调整(exp_alloc_diff_immed_adj) 勾选 THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-6D270E1184C6 |
-| SCN-5E13BD5968D2 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「折扣率」的反向校验规则：【折扣率(disc_rate)】须大于等于 0，否则 E+MSG："折扣率须大于等于零！" | 按校验规则拦截或提示 | TC-PRTN-0074 | RULE-62DAE5A8AD0A |
+| SCN-1026D8E4842A | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票方向」的反向校验规则：【税务发票方向(tax_inv_dirct)】create 调用前须已赋值，否则 E+MSG："税务发票方向不可为空！" | 按校验规则拦截或提示 |  | RULE-1CDF331B4512 |
 | SCN-C9DECD2EB6CF | 供应商业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效<br/> 运营单元职能.职能编号(ops_unit_func.func_no) =purc_org<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运营单… | 开窗：选择运营单元 | TC-SUPP-0007 | RULE-2D187D041218 |
 | SCN-C42C34E6D243 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除 可用条件」的权限与数据范围规则：【删除】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-047C40D90AF7 |
 | SCN-3A4560121DAA |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 后置处理」的接口契约规则：【审核】● 调用接口：bm.inq_doc.approve | 按平台服务调用结果决定是否继续 |  | RULE-FB97D64870DA；RULE-6A73CED34108 |
@@ -1178,7 +1178,7 @@
 | SCN-14632A64E0B9 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「业务性质」的只读校验规则：【业务性质(biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-4B94F6EBE823 |
 | SCN-0E636C4A6E32 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「结算供应商名称」的隐藏校验规则：【结算供应商名称(stlmt_supp_name)】✅ 是 | 字段不展示 |  | RULE-C96DDFF382B2 |
 | SCN-986BEAE85E4A | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-AEB903A8CDAF |
-| SCN-9252F119F71C |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「折扣后无税单价」的反向校验规则：【折扣后无税单价(discd_untax_price)】须大于 0，否则 E+MSG："无税单价须大于零！" | 按校验规则拦截或提示 |  | RULE-10D4C04D6C2E |
+| SCN-8FC18F10DE75 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「记账日期」的反向校验规则：【记账日期(bk_date)】**不可为空白，且不可为最小日期（`1900-01-01`）**——数据库 `bk_date` 为日期型字段，撤回审核后由撤审服务置为最小日期，画面按显示规则呈现为空；否则 E+MSG："记账日期不可空白，请重新录入记账日期！" | 按校验规则拦截或提示 |  | RULE-99455693898E；RULE-BBB7442ED601；RULE-B6D493180FAB |
 | SCN-7F146FE6D581 | 供应商业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「采购员编号」的开窗回填规则：【采购员编号(purhr_no)】开窗：<br/>- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) = 【供应商业务信息.运营单元编号(supp_biz_info.ops_unit_no）】，员工.状态(empl.manage_status) = Y.生效<br/>- 显示字段：员工.员工编号(empl.empl_no)，员工.员工姓名(empl.empl_name)，员工.部门编号(empl_dept_info.de… | 开窗：选择员工 | TC-SUPP-0008 | RULE-48BFA3A13480 |
 | SCN-273E620CEF06 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「提交 可用条件」的权限与数据范围规则：【提交】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-510C72EA58B2 |
 | SCN-46D72B34BD3F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「撤审 后置处理」的接口契约规则：【撤审】● 调用接口：bm.inq_doc.disapprove | 按平台服务调用结果决定是否继续 |  | RULE-17423185DE6C |
@@ -1186,15 +1186,15 @@
 | SCN-2FEC1F7F4A90 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付业务性质」的只读校验规则：【应付业务性质(pay_biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-138E6B9B1EBA |
 | SCN-E5239DA5BFD6 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「结算供应商联系人」的隐藏校验规则：【结算供应商联系人(stlmt_supp_cntac)】✅ 是 | 字段不展示 |  | RULE-F8C50406025B |
 | SCN-E2291803A08E | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度-应付」的必填校验规则：【启用年度-应付(ena_year_pay)】✅ 是 | 为空时保存应被拦截 |  | RULE-300958393539 |
-| SCN-0836A3E9834A |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「折扣后含税单价」的反向校验规则：【折扣后含税单价(discd_intax_price)】须大于 0，否则 E+MSG："含税单价须大于零！" | 按校验规则拦截或提示 |  | RULE-10DA77B87BBC |
+| SCN-0B4C4DE0689D | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「会计期间序号」的反向校验规则：【会计期间序号(acctg_perid_seq)】审核前须非空，否则 E+MSG："会计期间序号不可为空，请检查记账日期所属期间！" | 按校验规则拦截或提示 |  | RULE-AC4E622B51B1 |
 | SCN-F003008DD944 | 供应商业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「采购部门编号」的开窗回填规则：【采购部门编号(pur_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择部门<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.员工编号(empl.empl_no) =【供应商业务信息.采购员编号(supp_biz_info. purhr_no)】、 员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) =【供应商业务信息.运营单元编号(supp_biz_info.ops_unit_no）】<br/>- 显示字段：员工部门信息.部门编号(dept_no.empl_de… | 开窗：选择部门 | TC-SUPP-0012 | RULE-19B331F52AF0 |
 | SCN-BEF5F22D5B5A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「驳回 可用条件」的权限与数据范围规则：【驳回】IF 【询价单.状态(inq_doc.manage_status)】 = W.审核中 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-AA580622CBF5 |
 | SCN-5AB4EFBA95E2 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「作废 后置处理」的接口契约规则：【作废】● 调用接口：bm.inq_doc.void | 按平台服务调用结果决定是否继续 |  | RULE-AA5A7C3D4F86 |
 | SCN-ABCAB2C08D26 | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务域」的默认值规则：【业务域(biz_reg)】默认值：默认 AP.应付领域。时机点：默认执行时 | 默认值：默认 AP.应付领域。时机点：默认执行时 |  | RULE-44417E25C612 |
 | SCN-98CE692072D3 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付业务类型」的只读校验规则：【应付业务类型(pay_biz_type)】✅ 是 | 字段不可编辑 |  | RULE-938D14971E23 |
 | SCN-ECDEB8EAE2B3 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「结算供应商地址」的隐藏校验规则：【结算供应商地址(stlmt_supp_addr)】✅ 是 | 字段不展示 |  | RULE-3AEC27C238FD |
-| SCN-7F537D40FB23 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号-应付」的必填校验规则：【启用期号-应付(ena_perid_no_pay)】✅ 是 | 为空时保存应被拦截 |  | RULE-18099A0D9000；RULE-7F915CE9CCD0 |
-| SCN-E50AC71C207C |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 前置校验」的反向校验规则：【保存】检查 记账日期(`bk_date`)须介于应付开放期间起止日期之间且 >= 单据日期(`doc_date`)，否则 E+MSG："记账日期需在开放期间起止日期范围内且需大于等于单据日期！" | 校验不通过则操作被拦截 |  | RULE-04BC68D478FD |
+| SCN-7F537D40FB23 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号-应付」的必填校验规则：【启用期号-应付(ena_perid_no_pay)】✅ 是 | 为空时保存应被拦截 |  | RULE-18099A0D9000 |
+| SCN-A6D1B4FC7A02 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「税区编号」的反向校验规则：【税区编号(tax_dist_no)】不可为空，否则 E+MSG："税区编号不可为空，请检查运营单元核算参数的所属税区！" | 按校验规则拦截或提示 |  | RULE-0333D7B6D8A8 |
 | SCN-5F95723EA6DA | 供应商业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择收款条件<br/>- 数据来源：调用 查询收付款条件(bm.colln_pmt_terms.get)<br/>- 入参条件：收付款条件.状态(colln_pmt_terms.manage_status)= Y、收付款条件.收付款(colln_pmt_terms.colln_pmt)= (0. <br/>收付款皆适用 or 1.付款条件)<br/>- 显示字段：收付款条件.付款条件编号(colln_pmt_terms.pmt_terms_no)、收付款条件.付款条件名称(col… | 开窗：选择收款条件 | TC-SUPP-0013 | RULE-134D8B85BE85 |
 | SCN-B09FB2AC615D |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「审核 可用条件」的权限与数据范围规则：【审核】IF 【询价单.状态(inq_doc.manage_status)】 IN (N.未审核, W.审核中) THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-1742EF92634D |
 | SCN-DB6BB86F753E |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「取单 后置处理」的接口契约规则：【取单】先取当前运营单元可接受委托的运营单元：调用 查询运营单元协作关系(bm.ops_unit_coop_rela.get)，入参 受托方运营单元编号 = 当前运营单元 AND 运营单元协作编号 = 070需求委托采购 AND 状态 = Y.生效，回参 委托方运营单元编号 | 按平台服务调用结果决定是否继续 |  | RULE-53E7619F53AF；RULE-12672AA69EB7 |
@@ -1202,7 +1202,7 @@
 | SCN-6D5E53704E4F | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付明细业务类型」的只读校验规则：【应付明细业务类型(pay_dtl_biz_type)】✅ 是 | 字段不可编辑 |  | RULE-03AD6753626A |
 | SCN-C53FCA7DBA49 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「直接结账」的隐藏校验规则：【直接结账(dir_pmt)】✅ 是 | 字段不展示 |  | RULE-59BDECE10B71 |
 | SCN-C75A9C05A3CF | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务域」的必填校验规则：【业务域(biz_reg)】✅ 是 | 为空时保存应被拦截 |  | RULE-312A63621629 |
-| SCN-6BF90EB5F6D7 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 前置校验」的反向校验规则：【删除】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可删除！" | 校验不通过则操作被拦截 |  | RULE-3B768EB3CF15 |
+| SCN-ED35C073BDE1 | 应付单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付单「现金折扣方式」的反向校验规则：【现金折扣方式(cash_disc_mode)】须为有效枚举值，否则 E+MSG："现金折扣方式不合法！" | 按校验规则拦截或提示 |  | RULE-4A660C990211 |
 | SCN-66F8F269EF22 | 供应商业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「取价策略编号」的开窗回填规则：【取价策略编号(price_strtg_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择采购取价策略<br/>- 数据来源：调用 采购取价策略查询(bm.pur_price_strtg.get) 接口<br/>- 入参条件：采购取价策略.取价方式(pur_price_strtg.price_mode) = 1.按顺序取价 AND 采购取价策略.状态(pur_price_strtg.manage_status) = Y.生效<br/>- 显示字段：采购取价策略.取价策略编号(pur_price_strtg.price_strtg_no)、采购取价策略.取价策略… | 开窗：选择采购取价策略 | TC-SUPP-0015 | RULE-D77F5BB1612B |
 | SCN-7D4149F7A312 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「撤审 可用条件」的权限与数据范围规则：【撤审】IF 【询价单.状态(inq_doc.manage_status)】 = Y.已审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-E3528C8BD7C9 |
 | SCN-71064F20F279 | 采购退货出库单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货出库单「单据日期」的接口契约规则：【单据日期(doc_date)】调用接口：查询核算运营单元(bm.ops_unit.get_calc_ops_unit)；入参：[核算运营单元.运营单元编号(ops_unit.ops_unit_no)] = 【采购退货出库单.运营单元编号(pur_rtn_stkou_doc.ops_unit_no)】；回参：[核算运营单元.核算运营单元编号(ops_unit.calc_ops_unit_no)] | 按平台服务返回结果决定是否放行 |  | RULE-B712B539385F；RULE-51F431D5D6F7 |
@@ -1210,7 +1210,7 @@
 | SCN-5F999D200640 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「责任人名称」的只读校验规则：【责任人名称(resp_pers_name)】✅ 是 | 字段不可编辑 |  | RULE-6126983F9893 |
 | SCN-68F551900F85 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「当前可结算」的隐藏校验规则：【当前可结算(curr_can_stlmt)】✅ 是 | 字段不展示 |  | RULE-4CBC12E89902 |
 | SCN-43FCAFF1B3B4 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的必填校验规则：【业务性质(biz_prop)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0016；TC-INVB-0011 | RULE-F9A47A30DA57 |
-| SCN-65E31B7AFAB4 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 处理」的反向校验规则：【删除】提示消息：E+MSG："确认删除该笔资料？" | 按操作说明执行 |  | RULE-7C81DA70076F |
+| SCN-24D340C57505 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「计价数量」的反向校验规则：【计价数量(prc_qty)】须大于 0，否则 E+MSG："计价数量须大于零！" | 按校验规则拦截或提示 |  | RULE-58A4423EA982 |
 | SCN-2095E833BED4 | 供应商业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「交易货币编号」的开窗回填规则：【交易货币编号(trans_ccy_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.状态(ccy.manage_status) = Y.生效<br/>- 显示字段：货币.货币编号(ccy.ccy_no)、货币.货币名称(ops_unit.ccy_name)<br/>- 默认排序：货币.货币编号(ccy.ccy_no)升序<br/>- 回填映射：[货币.货币编号(ccy.ccy_no)] →【供应商业务信息.交易货币编号(supp_biz_info.trans… | 开窗：选择货币 | TC-SUPP-0018 | RULE-DF285EB70A46 |
 | SCN-CBD84E71A87A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「作废 可用条件」的权限与数据范围规则：【作废】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-82FC854EA3D6 |
 | SCN-43CD4A60E539 | 采购退货出库单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货出库单「第二单位数量」的接口契约规则：【第二单位数量(sec_unit_qty)】第二数量由业务数量按品号单位换算(bm.item_gen_info.qty_cnv.process)推算并只读，不允许反向回算业务数量；如需调整数量，只修改业务数量。 | 按平台服务返回结果决定是否放行 |  | RULE-6040255D2C6C |
@@ -1218,7 +1218,7 @@
 | SCN-90B28A0B1621 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「责任部门名称」的只读校验规则：【责任部门名称(resp_dept_name)】✅ 是 | 字段不可编辑 |  | RULE-1CCAA2CD36C0 |
 | SCN-7CB4C6CDE164 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「税务发票号码」的隐藏校验规则：【税务发票号码(tax_inv_no)】✅ 是 | 字段不展示 |  | RULE-C118B6821990 |
 | SCN-0CEDFEF8C6BD | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的必填校验规则：【业务单别(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0003；TC-INVB-0003 | RULE-D36732A33AB8 |
-| SCN-75312A850D81 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「审核 前置校验」的反向校验规则：【审核】检查 记账日期(`bk_date`)须 >= 应付启用期间起始日期，否则 E+MSG："记账日期不得小于应付启用期间！" | 校验不通过则操作被拦截 |  | RULE-4B3DD2E9E7CD；RULE-7A78EC1592F7 |
+| SCN-0D6EE78942DC |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「单价」的反向校验规则：【单价(price)】须大于等于 0，否则 E+MSG："计价单价不可小于零！" | 按校验规则拦截或提示 | TC-PURQ-0061；TC-PO-0055；TC-PRTN-0072 | RULE-EFA7D605FFA4 |
 | SCN-3436D40AF18C | 业务类型采购参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元职能.职能编号(ops_unit_func.func_no) 包含 ('purc_org'采购组织 OR 'invt_org'库存组织) AND 运营单元.生效码(ops_unit.manage_status) = Y.生效<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.o… | 开窗：选择运营单元 | TC-BZPP-0006 | RULE-CECCB09EF6E4 |
 | SCN-DEE01B99D210 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「取单 可用条件」的权限与数据范围规则：【取单】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-6C70045B87AC |
 | SCN-0E5F687AF943 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.pur_rtn_stkou_doc.create | 按平台服务调用结果决定是否继续 |  | RULE-0DA02730D907；RULE-7BD11F53E90B |
@@ -1226,7 +1226,7 @@
 | SCN-B792DF196C35 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「货币名称」的只读校验规则：【货币名称(ccy_name)】✅ 是 | 字段不可编辑 |  | RULE-6E7ABC744487 |
 | SCN-25B76FADED1E | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「件数」的隐藏校验规则：【件数(pcs)】✅ 是 | 字段不展示 |  | RULE-B6E0ADCD8E72 |
 | SCN-842A44AB0A1B | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的必填校验规则：【业务单别名称(biz_type_name)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0004 | RULE-A9209EE29887 |
-| SCN-4ECA0B439929 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「红冲 前置校验」的反向校验规则：【红冲】检查 红冲标识(`rvs_flag`)须='N'，否则 E+MSG："红冲生成之单据不可再次红冲！" | 校验不通过则操作被拦截 |  | RULE-30F527111E8E；RULE-C6A0315A98DF；RULE-A92CF3422898 |
+| SCN-5E13BD5968D2 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「折扣率」的反向校验规则：【折扣率(disc_rate)】须大于等于 0，否则 E+MSG："折扣率须大于等于零！" | 按校验规则拦截或提示 | TC-PRTN-0074 | RULE-62DAE5A8AD0A |
 | SCN-3DF873970134 | 业务类型采购参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：(1) 当运营单元职能包含('purc org'采购组织 AND 'invt org'库存组织)时<br/> - 选择模式：单选<br/> - 开窗条件：<br/> - 开窗标题：选择业务类型<br/> - 数据来源：调用 查询业务类型通用信息(bm.biz_type_gen_info.get) 接口<br/> - 入参条件：业务类型通用信息.业务域(biz_type_gen_info.biz_reg) = PO、业务类型通用信息.状态(biz_type_gen_info.manage_status) = Y.生效<br/> - 显示字段：业务类… | 开窗：选择业务类型 | TC-BZPP-0008 | RULE-63E363457E12 |
 | SCN-8A65EB567607 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「复制 可用条件」的权限与数据范围规则：【复制】IF 【询价单.状态(inq_doc.manage_status)】 = Y.已审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-6477550AA458 |
 | SCN-84B7396A17CA |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.pur_rtn_stkou_doc.delete | 按平台服务调用结果决定是否继续 |  | RULE-643A64ACF32D |
@@ -1234,7 +1234,7 @@
 | SCN-03C70CCBDEA0 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「付款条件名称」的只读校验规则：【付款条件名称(pmt_terms_name)】✅ 是 | 字段不可编辑 |  | RULE-430DCAC97B5A |
 | SCN-1BA07B675A80 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「计价单位和采购单位须相同」的隐藏校验规则：【计价单位和采购单位须相同(CUS_prc_unit_and_pur_unit_rqd_same)】✅ 是 | 字段不展示 |  | RULE-6EB61EBFBD2B |
 | SCN-BF60A8373CFA | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「自动编码方式」的必填校验规则：【自动编码方式(auto_code_mode)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0015；TC-INVB-0010 | RULE-752E17ED6CB7 |
-| SCN-5C0BAC5C21E1 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「红冲 处理」的反向校验规则：【红冲】提示消息：E+MSG："确认红冲该笔应付单？"，并在红冲界面录入 红冲单据日期(`doc_date`) 与 红冲记账日期(`bk_date`) | 按操作说明执行 |  | RULE-C3D453B20B76 |
+| SCN-9252F119F71C |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「折扣后无税单价」的反向校验规则：【折扣后无税单价(discd_untax_price)】须大于 0，否则 E+MSG："无税单价须大于零！" | 按校验规则拦截或提示 |  | RULE-10D4C04D6C2E |
 | SCN-E9636E0D6201 | 业务类型采购参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「归属运营单元编号」的开窗回填规则：【归属运营单元编号(blng_ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择归属运营单元<br/>- 数据来源：调用接口 查询受托运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig)<br/>- 入参条件：[运营单元协作关系.运营单元协作编号(ops_unit_coop_rela.ops_unit_coop_no)] =040.采购委托库存收货，[运营单元协作关系.委托运营单元编号(ops_unit_coop_rela.clien_ops_unit_no)] =【业务类型采购参数.… | 开窗：选择归属运营单元 |  | RULE-1AF76822534F |
 | SCN-74B94BC6EB9B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「明细操作 可用条件」的权限与数据范围规则：【明细操作】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-B015B0F41E60 |
 | SCN-1246E2ACB744 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 后置处理」的接口契约规则：【审核】● 步骤1：调用接口：bm.pur_rtn_stkou_doc.approve | 按平台服务调用结果决定是否继续 |  | RULE-06CFDC9266AE |
@@ -1242,7 +1242,7 @@
 | SCN-030D4E81840A | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票种类名称」的只读校验规则：【税务发票种类名称(tax_inv_categ_name)】✅ 是 | 字段不可编辑 |  | RULE-E7857C690774 |
 | SCN-1AB2DE26CFBE | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「第二单位数量」的隐藏校验规则：【第二单位数量(sec_unit_qty)】✅ 是；隐藏条件：IF 【采购退货单.计量体系(pur_rtn_doc.CUS_meas_sys)】 &lt;&gt; 'D' THEN 隐藏 ENDIF | 字段不展示 |  | RULE-8A2986B47690 |
 | SCN-58A71CB9947E | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的必填校验规则：【年位数(year_digit_type)】✅ 是；必填条件：当 自动编码方式(auto_code_mode) IN ('1.年月日+流水码','3.年月+流水码') 时必填 | 为空时保存应被拦截 |  | RULE-F864300362BA |
-| SCN-5E65EAE8BEC8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「取消红冲 前置校验」的反向校验规则：【取消红冲】检查 红冲标识(`rvs_flag`)须='Y'，否则 E+MSG："该单据未红冲！"（`VD_pay_doc_00081`） | 校验不通过则操作被拦截 |  | RULE-1571FAC40F5E |
+| SCN-0836A3E9834A |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应付「折扣后含税单价」的反向校验规则：【折扣后含税单价(discd_intax_price)】须大于 0，否则 E+MSG："含税单价须大于零！" | 按校验规则拦截或提示 |  | RULE-10DA77B87BBC |
 | SCN-FD621273CCFC | 业务类型采购参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「归属业务类型编号」的开窗回填规则：【归属业务类型编号(blng_biz_type_no)】开窗：1.当前业务质性= PO07.直接到货或PO17.期初开账到货单时<br/>- 开窗条件：当前业务质性= PO07.直接到货或PO17.期初开账到货单<br/>- 开窗标题：选择单别<br/>- 数据来源：查询方案：查询存货单别(biz_type_invnt_param_001)<br/>- 入参条件：业务类型存货参数.运营单元编号(biz_type_invnt_param.ops_unit_no) = 【采购出入库单别明细.归属运营单元编号（biz_type_pur_param_d.blng_ops_unit_no）)】，业务类型… | 开窗：选择单别 |  | RULE-729A326FC1D3 |
 | SCN-CA613A8EC450 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「新增明细行 可用条件」的权限与数据范围规则：【新增明细行】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-28743B4075FB |
 | SCN-DA2A4FE350CB |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「撤审 后置处理」的接口契约规则：【撤审】调用接口：bm.pur_rtn_stkou_doc.cxl_post | 按平台服务调用结果决定是否继续 |  | RULE-59F522621074 |
@@ -1250,7 +1250,7 @@
 | SCN-D23B7D84278B | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税种编号」的只读校验规则：【税种编号(tax_no)】✅ 是 | 字段不可编辑 |  | RULE-01A1DCFAC3A8 |
 | SCN-97C6F7A55692 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「第二单位编号」的隐藏校验规则：【第二单位编号(sec_unit_no)】✅ 是；隐藏条件：IF 【采购退货单.计量体系(pur_rtn_doc.CUS_meas_sys)】 &lt;&gt; 'D' THEN 隐藏 ENDIF | 字段不展示 |  | RULE-8692E97D760E |
 | SCN-93F5AB101DE9 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的必填校验规则：【流水号位数(serl_digit)】✅ 是；必填条件：当 自动编码方式(auto_code_mode)<>'7.手工输入' 时必填 | 为空时保存应被拦截 |  | RULE-723C7001CFB6 |
-| SCN-30B2B59212FB |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「取消红冲 处理」的反向校验规则：【取消红冲】提示消息：E+MSG："确认取消红冲？将删除红冲生成之应付单！" | 按操作说明执行 |  | RULE-050AF3A0A967 |
+| SCN-E50AC71C207C |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 前置校验」的反向校验规则：【保存】检查 记账日期(`bk_date`)须介于应付开放期间起止日期之间且 >= 单据日期(`doc_date`)，否则 E+MSG："记账日期需在开放期间起止日期范围内且需大于等于单据日期！" | 校验不通过则操作被拦截 |  | RULE-04BC68D478FD |
 | SCN-F4800D2A0EB9 | 业务类型通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语查询 | 开窗：按开窗说明 | TC-BZP-0009；TC-INVB-0004 | RULE-4739F2E5733A |
 | SCN-4F1204EE7029 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除明细行 可用条件」的权限与数据范围规则：【删除明细行】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-D73B74C95B01 |
 | SCN-88BD2BE0C9F3 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「作废 后置处理」的接口契约规则：【作废】● 调用接口：bm.pur_rtn_stkou_doc.void | 按平台服务调用结果决定是否继续 |  | RULE-6870383D1ABA |
@@ -1258,7 +1258,7 @@
 | SCN-5997286B1EED | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税种名称」的只读校验规则：【税种名称(tax_name)】✅ 是 | 字段不可编辑 |  | RULE-9D354CE94C41 |
 | SCN-3A3E3F121953 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「采购类型」的隐藏校验规则：【采购类型(pur_type)】✅ 是 | 字段不展示 |  | RULE-16AC1DB5A2F2 |
 | SCN-3F585DAEA0C2 | 业务类型应收参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-1267BA9E1D77 |
-| SCN-92E3ACCFEC70 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「补录税务发票 前置校验」的反向校验规则：【补录税务发票】检查 状态(`manage_status`)须='Y.已审核'，否则 E+MSG："应付单不存在或未审核，不可补录税务发票！"（`VD_pay_doc_00042`） | 校验不通过则操作被拦截 |  | RULE-41D11693E609 |
+| SCN-6BF90EB5F6D7 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 前置校验」的反向校验规则：【删除】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可删除！" | 校验不通过则操作被拦截 |  | RULE-3B768EB3CF15 |
 | SCN-1EAE5ECDCE0E | 业务汇率 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务汇率「货币汇率表编号」的开窗回填规则：【货币汇率表编号(ccy_er_table_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币汇率(bm.ccy_er.get) 接口<br/>- 入参条件：<br/>- 显示字段：货币汇率.货币汇率表编号(ccy_er.ccy_er_table_no)、货币汇率.货币汇率表名称(ccy_er.ccy_er_table_name)<br/>- 默认排序：货币汇率.货币汇率表编号(ccy_er.ccy_er_table_no)<br/>- 回填映射：[货币汇率.货币汇率表编号(ccy_er.ccy_er_table_no… | 开窗：选择货币 | TC-FX-0003 | RULE-5665CB55EA6E |
 | SCN-693A1CC1F771 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「新增分量计价行 可用条件」的权限与数据范围规则：【新增分量计价行】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 AND 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-826331ADC018 |
 | SCN-E19309542FD5 | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「运营单元编号」的接口契约规则：【运营单元编号(ops_unit_no)】调用接口：查询运营单元(bm.ops_unit.get)；入参：[运营单元.运营单元编号(ops_unit.ops_unit_no)] = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-2F4F8CC32D7D |
@@ -1266,7 +1266,7 @@
 | SCN-4A27A942FE8B | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税率」的只读校验规则：【税率(tax_rate)】✅ 是 | 字段不可编辑 |  | RULE-46688FC824AA |
 | SCN-67D3751C0A70 | 采购退货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「扣已入库量」的隐藏校验规则：【扣已入库量(ded_alr_stkin_qty)】✅ 是 | 字段不展示 |  | RULE-739F73471099 |
 | SCN-68F373E18A29 | 业务类型应收参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「业务单别」的必填校验规则：【业务单别(biz_type_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-F9FD5675E4A7 |
-| SCN-35D5760D6A3E |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除明细行 处理」的反向校验规则：【删除明细行】删除选中行；保存时该行以 `update_type`=delete 传给修改服务（须带 序号 seq） | 按操作说明执行 |  | RULE-4C4919260031 |
+| SCN-65E31B7AFAB4 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除 处理」的反向校验规则：【删除】提示消息：E+MSG："确认删除该笔资料？" | 按操作说明执行 |  | RULE-7C81DA70076F |
 | SCN-66177530CCBB | 业务汇率 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务汇率「基本货币」的开窗回填规则：【基本货币(CUS_UDF01)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.状态(ccy.manage_status) = Y.生效<br/>- 显示字段：货币.货币编号(ccy.ccy_no)、货币.货币名称(ccy.ccy_name)<br/>- 默认排序：货币.货币编号(ccy.ccy_no) 升序<br/>- 回填映射：[货币.货币编号(ccy.ccy_no)] → 基本货币（CUS_UDF01） | 开窗：选择货币 | TC-FX-0008 | RULE-A7230FF406CD |
 | SCN-0B80A4D8F89F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除分量计价行 可用条件」的权限与数据范围规则：【删除分量计价行】IF 【询价单.状态(inq_doc.manage_status)】 = N.未审核 AND 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN Enable ELSE Disable ENDIF | 按操作说明执行 |  | RULE-8E3F4970D58B |
 | SCN-CB990837C72F | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「单据日期」的接口契约规则：【单据日期(doc_date)】调用接口：查询核算运营单元(bm.ops_unit.get_calc_ops_unit)；入参：[核算运营单元.运营单元编号(ops_unit.ops_unit_no)] = 【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】；回参：[核算运营单元.核算运营单元编号(ops_unit.calc_ops_unit_no)] | 按平台服务返回结果决定是否放行 |  | RULE-50F680A50D43；RULE-2E04D2378FCD |
@@ -1274,7 +1274,7 @@
 | SCN-B1E5B5181513 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票方向」的只读校验规则：【税务发票方向(tax_inv_dirct)】✅ 是 | 字段不可编辑 |  | RULE-A1DFBFD835E3 |
 | SCN-AAD46FD249B2 | 供应商业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「结算供应商编号」的隐藏校验规则：【结算供应商编号(stlmt_supp_no)】✅ 是 | 字段不展示 | TC-SUPP-0002 | RULE-407D385C0BF1 |
 | SCN-8D06375E9863 | 业务类型应收参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「现结业务单别」的必填校验规则：【现结业务单别(cash_stlmt_biz_type_no)】✅ 是；必填条件：IF 现结标识(cash_stlmt_flag) 勾选 THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-037FEBD06AAD |
-| SCN-E860B2B6774C | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「价款存货调整业务类型」的反向校验规则：【价款存货调整业务类型(price_invnt_adj_biz_type)】所选业务类型须存在且生效（业务域=IM 且 业务性质=IM18.成本调整单），否则 E+MSG："价款存货调整业务类型不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-F9A4F10F0070；RULE-8527A4B0914D |
+| SCN-75312A850D81 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「审核 前置校验」的反向校验规则：【审核】检查 记账日期(`bk_date`)须 >= 应付启用期间起始日期，否则 E+MSG："记账日期不得小于应付启用期间！" | 校验不通过则操作被拦截 |  | RULE-4B3DD2E9E7CD；RULE-7A78EC1592F7 |
 | SCN-E0475809E193 | 业务汇率 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务汇率「生效日期」的开窗回填规则：【生效日期(eff_date)】开窗：[F2]日期开窗 | 开窗：按开窗说明 | TC-FX-0010 | RULE-B4183460287E |
 | SCN-0B0B8CEB0F0B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「整体操作 可用条件」的权限与数据范围规则：【整体操作】单据状态=未审核；本单据不允许脱离采购退货单手工新增，必须“先建单 → 再取单”带出退货单明细 | 按操作说明执行 |  | RULE-F070BCA8710A |
 | SCN-D3E9D7768BCB | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「采购退货单号」的接口契约规则：【采购退货单号(pur_rtn_doc_no)】调用接口：查询业务类型通用信息(bm.biz_type_gen_info.get)；入参：[业务类型通用信息.业务类型编号(biz_type_gen_info.biz_type_no)] = 【采购退货单.业务类型编号(pur_rtn_doc.biz_type_no)】，[业务类型通用信息.业务域(biz_type_gen_info.biz_domain)] = 'PO.采购领域'；回参：[业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] | 按平台服务返回结果决定是否放行 |  | RULE-7A70BCBFF069 |
@@ -1282,7 +1282,7 @@
 | SCN-CB699FB7AC7D | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票控制标识」的只读校验规则：【税务发票控制标识(tax_inv_cntl_flag)】✅ 是 | 字段不可编辑 |  | RULE-FB2764F0E2E4 |
 | SCN-603B9E4FBCCB | 供应商业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「允许分批交货」的隐藏校验规则：【允许分批交货(allow_prtl_deliv)】✅ 是 | 字段不展示 | TC-SUPP-0002 | RULE-C635FBD28F28 |
 | SCN-7EC42536C60D | 业务类型应收参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「分期冲减单别」的必填校验规则：【分期冲减单别(insta_offst_adv_biz_type_no)】✅ 是；必填条件：IF 核销方式(verf_mode)='3.分期' THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-2A4AFAC8E929 |
-| SCN-0440FCD762D0 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「费用分摊存货调整业务类型」的反向校验规则：【费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)】所选业务类型须存在且生效（业务域=IM 且 业务性质=IM18.成本调整单），否则 E+MSG："费用分摊存货调整业务类型不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-0A8CB4CF9AE4；RULE-0A25851DE738 |
+| SCN-4ECA0B439929 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「红冲 前置校验」的反向校验规则：【红冲】检查 红冲标识(`rvs_flag`)须='N'，否则 E+MSG："红冲生成之单据不可再次红冲！" | 校验不通过则操作被拦截 |  | RULE-30F527111E8E；RULE-C6A0315A98DF；RULE-A92CF3422898 |
 | SCN-50985311114E | 业务汇率 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务汇率「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语开窗 | 开窗：按开窗说明 | TC-FX-0011 | RULE-BBE6D6794ADA |
 | SCN-4DE462461CBC |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「新增 可用条件」的权限与数据范围规则：【新增】单据状态=未审核；本单据不允许脱离采购退货单手工新增，必须“先建单 → 再取单”带出退货单明细 | 按操作说明执行 |  | RULE-E6F203B1979B |
 | SCN-BEFCA4A76D76 | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「供应商编号」的接口契约规则：【供应商编号(supp_no)】调用接口：查询供应商业务信息(bm.supp_biz_info.get) | 按平台服务返回结果决定是否放行 |  | RULE-ACCA6BF49F82 |
@@ -1290,7 +1290,7 @@
 | SCN-2D402F172971 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「红冲标识」的只读校验规则：【红冲标识(rvs_flag)】✅ 是 | 字段不可编辑 |  | RULE-7A6046B94231 |
 | SCN-F7E629142EA6 | 供应商业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「破坏量计价」的隐藏校验规则：【破坏量计价(dmge_qty_prc)】✅ 是 | 字段不展示 | TC-SUPP-0002 | RULE-E80C57A5DD76 |
 | SCN-8BCC513CC2F8 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-8F1BF6792461 |
-| SCN-95C3B436A2B4 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「整体操作 后置处理」的反向校验规则：【整体操作】DEFAULT 暂估单模式标识(pesti_doc_mode_flag)、暂估冲回方式(invnt_pesti_rvsl_mode)、价款差异实时调整(price_diff_immed_adj)、价款存货调整业务类型(price_invnt_adj_biz_type)、费用分摊差异实时调整(exp_alloc_diff_immed_adj)、费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)、备注(rmk)=回参对应值 | 按操作说明执行 |  | RULE-3FC22BCFD13C；RULE-33D93EB8D873 |
+| SCN-5C0BAC5C21E1 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「红冲 处理」的反向校验规则：【红冲】提示消息：E+MSG："确认红冲该笔应付单？"，并在红冲界面录入 红冲单据日期(`doc_date`) 与 红冲记账日期(`bk_date`) | 按操作说明执行 |  | RULE-C3D453B20B76 |
 | SCN-B9097ACA9A38 | 业务汇率 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证业务汇率「交易货币编号」的开窗回填规则：【交易货币编号(trans_ccy_no)】开窗：- 选择模式：多选<br/>- 开窗条件：<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币汇率(bm.ccy_er.get) 接口<br/>- 入参条件：货币汇率.货币汇率表编号(ccy_er.ccy_er_table_no) = 业务汇率.货币汇率表编号（ccy_er_table_no）、<br/> 货币汇率明细.交易货币编号(ccy_er_d.trans_ccy_no) <> 业务汇率.基本货币（CUS_UDF01）<br/>- 显示字段：货币汇率明细.交易货币编号(ccy_er_d.trans_ccy_no)、货币汇… | 开窗：选择货币 |  | RULE-0A4F7C822E93 |
 | SCN-5834D9ADF31E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「编辑 可用条件」的权限与数据范围规则：【编辑】【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-911103B048D0 |
 | SCN-FB207F794E04 | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「采购员编号」的接口契约规则：【采购员编号(purhr_no)】调用接口：查询员工(bm.empl.get) | 按平台服务返回结果决定是否放行 |  | RULE-8FD75DB66D3B |
@@ -1298,15 +1298,15 @@
 | SCN-EDFA85CA45A7 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「红冲来源单号」的只读校验规则：【红冲来源单号(rvs_src_doc_no)】✅ 是 | 字段不可编辑 |  | RULE-A2F7096D7567 |
 | SCN-823F28BFD650 | 供应商业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「结算起算日类型」的隐藏校验规则：【结算起算日类型(stlmt_begin_calc_date_type)】✅ 是 | 字段不展示 | TC-SUPP-0002 | RULE-0AB583AE2DC5 |
 | SCN-B1C694CF6A16 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「业务单别」的必填校验规则：【业务单别(biz_type_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-498F31CB3E29 |
-| SCN-24AD42EE93CA |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「编辑 后置处理」的反向校验规则：【编辑】DEFAULT 暂估单模式标识(pesti_doc_mode_flag)、暂估冲回方式(invnt_pesti_rvsl_mode)、价款差异实时调整(price_diff_immed_adj)、价款存货调整业务类型(price_invnt_adj_biz_type)、费用分摊差异实时调整(exp_alloc_diff_immed_adj)、费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)、备注(rmk)=回参对应值 | 按操作说明执行 |  | RULE-C3D8E69D8C5B；RULE-CB89966DE701 |
+| SCN-5E65EAE8BEC8 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「取消红冲 前置校验」的反向校验规则：【取消红冲】检查 红冲标识(`rvs_flag`)须='Y'，否则 E+MSG："该单据未红冲！"（`VD_pay_doc_00081`） | 校验不通过则操作被拦截 |  | RULE-1571FAC40F5E |
 | SCN-6B884E8C7237 | 交易对象群组 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证交易对象群组「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语开窗 | 开窗：按开窗说明 | TC-TOG-0006 | RULE-A29F295A7457 |
 | SCN-BD4E3610B25E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-CFDE2D252445 |
 | SCN-F3E114AF39E6 | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「采购部门编号」的接口契约规则：【采购部门编号(pur_dept_no)】调用接口：查询部门(bm.dept.get) | 按平台服务返回结果决定是否放行 |  | RULE-FC08F6B0C012 |
 | SCN-F2D9759C0C91 | 业务类型应付参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型应付参数「审核后自动过账标识」的默认值规则：【审核后自动过账标识(aprv_auto_post_flag)】默认值：默认勾选。时机点：默认执行时 | 默认值：默认勾选。时机点：默认执行时 |  | RULE-11E6FAE8757D |
 | SCN-007142212CE6 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「红冲单号」的只读校验规则：【红冲单号(rvs_doc_no)】✅ 是 | 字段不可编辑 |  | RULE-DB49280AB625 |
 | SCN-1C7302247F9D | 供应商业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「是否加月数」的隐藏校验规则：【是否加月数(is_add_mths)】✅ 是 | 字段不展示 | TC-SUPP-0002 | RULE-55C20A517D8C |
-| SCN-0183554E6AC2 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「单号」的必填校验规则：【单号(doc_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-B89C0FDF75EE；RULE-18ED2CC79C79 |
-| SCN-BB7FD8B7C727 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 后置处理」的反向校验规则：【保存】透传必带项（缺失会被服务端校验拦截）：运营单元核算参数.记账本位币(ops_unit_calc_param.fc)、运营单元核算参数.所属税区编号(ops_unit_calc_param.blng_tax_dist_no)、运营单元核算参数.货币汇率表编号(ops_unit_calc_param.ccy_er_table_no)、运营单元核算参数.会计期间表编号(ops_unit_calc_param.acctg_perid_table_no) | 按操作说明执行 |  | RULE-170D294FD50A |
+| SCN-0183554E6AC2 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「单号」的必填校验规则：【单号(doc_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-B89C0FDF75EE |
+| SCN-30B2B59212FB |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「取消红冲 处理」的反向校验规则：【取消红冲】提示消息：E+MSG："确认取消红冲？将删除红冲生成之应付单！" | 按操作说明执行 |  | RULE-050AF3A0A967 |
 | SCN-61AC0AEC01BC | 交易对象群组 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证交易对象群组「属性编号」的开窗回填规则：【属性编号(attr_no)】开窗：- 选择模式：多选<br/>- 开窗条件：<br/>- 开窗标题：选择交易对象属性<br/>- 数据来源：调用 查询交易对象属性(bm.trans_obj_attr.get) 接口<br/>- 入参条件：交易对象属性.状态(trans_obj_attr.manage_status) = Y.生效、<br/> 交易对象属性.交易对象类型(trans_obj_attr.trans_obj_type) =单头.交易对象类型（trans_obj_type）<br/>- 显示字段：交易对象属性.属性编号(trans_obj_attr.attr_no)、交易对象属性.属… | 开窗：选择交易对象属性 |  | RULE-E926AFF7EE61 |
 | SCN-2E7DD76D04E4 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除 可用条件」的权限与数据范围规则：【删除】【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=N.未审核 AND 【采购退货出库单.过账状态(pur_rtn_stkou_doc.post_stat)】=N.未过账 | 按操作说明执行 |  | RULE-BC7A6D8BDD94 |
 | SCN-F24427D53540 | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「退货运营单元编号」的接口契约规则：【退货运营单元编号(rtn_ops_unit_no)】调用接口：查询受托方运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig) | 按平台服务返回结果决定是否放行 |  | RULE-D86F22FBEB41 |
@@ -1314,7 +1314,7 @@
 | SCN-A705A88321D2 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「应付暂估冲回状态」的只读校验规则：【应付暂估冲回状态(ap_pesti_rvsl_stat)】✅ 是 | 字段不可编辑 |  | RULE-D51C53C75E49 |
 | SCN-925E23CE8686 | 供应商业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「逢」的隐藏校验规则：【逢(std_every)】✅ 是 | 字段不展示 | TC-SUPP-0002 | RULE-7CA93E1B71FF |
 | SCN-A71057A56E7E | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-ABBDBB469687 |
-| SCN-12595F0B03F1 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度-应付」的反向校验规则：【启用年度-应付(ena_year_pay)】输入值须为 1900~9998 的整数，否则 E+MSG："请输入有效的会计年度值！" | 按校验规则拦截或提示 |  | RULE-F03622DDE8D7；RULE-0230DFD40BDD |
+| SCN-92E3ACCFEC70 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「补录税务发票 前置校验」的反向校验规则：【补录税务发票】检查 状态(`manage_status`)须='Y.已审核'，否则 E+MSG："应付单不存在或未审核，不可补录税务发票！"（`VD_pay_doc_00042`） | 校验不通过则操作被拦截 |  | RULE-41D11693E609 |
 | SCN-930D35B5B089 | 交易对象群组 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证交易对象群组「属性默认值」的开窗回填规则：【属性默认值(attr_def_value)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：交易对象属性明细<br/>- 数据来源：查询方案 交易对象属性明细查询(trans_obj_attr_d)<br/>- 入参条件：交易对象属性明细.属性编号(trans_obj_attr_d.attr_no) = 【交易对象群组明细.属性编号(trans_obj_group_d.attr_no)】<br/>- 显示字段：交易对象属性明细.属性值(trans_obj_attr_d.attr_value)、交易对象属性明细.属性值描述(trans_obj_attr_d.attr_v… | 开窗：交易对象属性明细 |  | RULE-FA6D882007AE |
 | SCN-A632CDF2C19F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「审核 可用条件」的权限与数据范围规则：【审核】【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=N.未审核（本单未配置送审流程，W.审核中 不可达） | 按操作说明执行 |  | RULE-78FECE563B32 |
 | SCN-45A3EF2B99A5 | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「货币编号」的接口契约规则：【货币编号(ccy_no)】调用接口：查询货币(bm.ccy.get) | 按平台服务返回结果决定是否放行 |  | RULE-50344BA12331 |
@@ -1322,7 +1322,7 @@
 | SCN-AE09EF0495A9 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「会计年度」的只读校验规则：【会计年度(acctg_year)】✅ 是 | 字段不可编辑 |  | RULE-B983B053A8D8 |
 | SCN-2E97D8B0C627 | 业务类型采购参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-BZPP-0002 | RULE-BA10B2F93D44 |
 | SCN-DE5EDF16A7E9 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「核销方式」的必填校验规则：【核销方式(verf_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-CAE804975D2D |
-| SCN-56A3E804AEF4 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号-应付」的反向校验规则：【启用期号-应付(ena_perid_no_pay)】所选期间须存在于 公司会计期间信息（当前运营单元、当前会计年度、会计期间作用范围='5'、且非调整期）中，否则 E+MSG："所选会计期间不存在或为调整期，请重新选择！" | 按校验规则拦截或提示 |  | RULE-482726C6D705 |
+| SCN-35D5760D6A3E |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「删除明细行 处理」的反向校验规则：【删除明细行】删除选中行；保存时该行以 `update_type`=delete 传给修改服务（须带 序号 seq） | 按操作说明执行 |  | RULE-4C4919260031 |
 | SCN-8A562E5CB2E3 | 品号属性 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号属性「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语开窗 | 开窗：按开窗说明 | TC-IATT-0010 | RULE-CCA7B590948B |
 | SCN-DC9B60DE41CC |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「撤审 可用条件」的权限与数据范围规则：【撤审】【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=Y.已审核 | 按操作说明执行 |  | RULE-27AC3887C481 |
 | SCN-5472E089885B | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「汇率」的接口契约规则：【汇率(er)】调用 获取采购业务默认汇率类型对应的业务汇率(bm.biz_er.pur_biz_def_er_type.get) 接口；入参：[业务汇率.币种编号(biz_er.ccy_no)] = 【采购退货单.货币编号(pur_rtn_doc.ccy_no)】，[业务汇率.日期(biz_er.date)] = 【采购退货单.单据日期(pur_rtn_doc.doc_date)】，[业务汇率.运营单元编号(biz_er.ops_unit_no)] = 【采购退货单.结算运营单元编号(pur_rtn_doc.stlmt_ops_unit_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-2845353C9277 |
@@ -1330,7 +1330,7 @@
 | SCN-67BF0A65ADBE | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「会计期间期号」的只读校验规则：【会计期间期号(acctg_perid_no)】✅ 是 | 字段不可编辑 |  | RULE-CA221A88DFAD |
 | SCN-94E776CAC495 | 业务类型采购参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「修改是否自动审核」的隐藏校验规则：【修改是否自动审核(mod_is_auto_aprv)】✅ 是 | 字段不展示 | TC-BZPP-0002 | RULE-290518276FE2 |
 | SCN-9B1691102587 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算客户编号」的必填校验规则：【结算客户编号(stlmt_cust_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-D2EC73606C64 |
-| SCN-CB866E7426C5 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-应付」的反向校验规则：【启用期间序号-应付(ena_perid_seq_pay)】值为空时不允许提交，由「处理」操作前校验拦截并提示 | 按校验规则拦截或提示 |  | RULE-C1F8587E7238 |
+| SCN-E860B2B6774C | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「价款存货调整业务类型」的反向校验规则：【价款存货调整业务类型(price_invnt_adj_biz_type)】所选业务类型须存在且生效（业务域=IM 且 业务性质=IM18.成本调整单），否则 E+MSG："价款存货调整业务类型不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-F9A4F10F0070；RULE-8527A4B0914D |
 | SCN-F0F0C558D0D0 | 品号群组 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号群组「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语开窗 | 开窗：按开窗说明 | TC-IGRP-0004 | RULE-D5F2810EBA53 |
 | SCN-F444CBFE016C |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「作废 可用条件」的权限与数据范围规则：【作废】【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=N.未审核 AND 【采购退货出库单.过账状态(pur_rtn_stkou_doc.post_stat)】=N.未过账 | 按操作说明执行 |  | RULE-9DF9708FB1D5 |
 | SCN-697632537BEE | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「项目编号」的接口契约规则：【项目编号(proj_no)】调用接口：查询项目(bm.proj.get) | 按平台服务返回结果决定是否放行 |  | RULE-AC3ED3A678BA |
@@ -1338,7 +1338,7 @@
 | SCN-A060857D265B | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「会计期间序号」的只读校验规则：【会计期间序号(acctg_perid_seq)】✅ 是 | 字段不可编辑 |  | RULE-822A242E51D1 |
 | SCN-7F8B4131679D | 业务类型采购参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「归属业务类型编号」的隐藏校验规则：【归属业务类型编号(blng_biz_type_no)】✅ 是 | 字段不展示 | TC-BZPP-0002 | RULE-4BF34978C951 |
 | SCN-669A8647F2BC | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算客户名称」的必填校验规则：【结算客户名称(stlmt_cust_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-CF49C131CA40 |
-| SCN-87672A6FCF86 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「整体操作 后置处理」的反向校验规则：【整体操作】// 不提前提示、不提前退出：自然年下本作业仍有维护动作（维护启用期间），只切换输入方式与校验口径，不套用会计期间表 / 会计期间信息的「提示后退出」处理 | 按操作说明执行 |  | RULE-D1CA2FD7012E |
+| SCN-0440FCD762D0 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「费用分摊存货调整业务类型」的反向校验规则：【费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)】所选业务类型须存在且生效（业务域=IM 且 业务性质=IM18.成本调整单），否则 E+MSG："费用分摊存货调整业务类型不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-0A8CB4CF9AE4；RULE-0A25851DE738 |
 | SCN-7BBD8571754B | 品号群组 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号群组「属性编号」的开窗回填规则：【属性编号(attr_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择属性<br/>- 数据来源：调用 查询品号属性(bm.item_attr.get) 接口<br/>- 入参条件：品号属性.状态(item_attr.manage_status) = Y.生效<br/>- 显示字段：品号属性.属性编号(item_attr.attr_no)、品号属性.属性名称(item_attr.attr_name)<br/>- 默认排序：品号属性.属性编号(item_attr.attr_no) 升序<br/>- 回填映射：[品号属性.属性编号(item_attr.attr_… | 开窗：选择属性 |  | RULE-C9FC6CFF9202 |
 | SCN-1863FADBCF15 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「取单 可用条件」的权限与数据范围规则：【取单】【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=N.未审核 AND 【采购退货出库单.过账状态(pur_rtn_stkou_doc.post_stat)】=N.未过账 | 按操作说明执行 |  | RULE-FCD1583453A4 |
 | SCN-993E63607056 | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「结算运营单元编号」的接口契约规则：【结算运营单元编号(stlmt_ops_unit_no)】调用接口：查询运营单元(bm.ops_unit.get)；入参：[运营单元.运营单元编号(ops_unit.ops_unit_no)] = 【采购退货单.结算运营单元编号(pur_rtn_doc.stlmt_ops_unit_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-D6DAB964BACE |
@@ -1346,7 +1346,7 @@
 | SCN-4C26665B9ABA | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「审核时间」的只读校验规则：【审核时间(aprv_time)】✅ 是 | 字段不可编辑 |  | RULE-E274E985C75F |
 | SCN-884A286EB991 | 业务类型通用信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「前缀连接符」的隐藏校验规则：【前缀连接符(pref_conn)】✅ 是 | 字段不展示 | TC-BZP-0002；TC-INVB-0002 | RULE-E05C0CF1FC76 |
 | SCN-C9FA137C2CB0 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「销售客户编号」的必填校验规则：【销售客户编号(sales_cust_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-A448F8BE89E4 |
-| SCN-6151AFCC81E2 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「载入（进入作业） 后置处理」的反向校验规则：【载入（进入作业）】// 不提前提示、不提前退出：自然年下本作业仍有维护动作（维护启用期间），只切换输入方式与校验口径，不套用会计期间表 / 会计期间信息的「提示后退出」处理 | 按操作说明执行 |  | RULE-6FAE9AC9C437 |
+| SCN-95C3B436A2B4 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「整体操作 后置处理」的反向校验规则：【整体操作】DEFAULT 暂估单模式标识(pesti_doc_mode_flag)、暂估冲回方式(invnt_pesti_rvsl_mode)、价款差异实时调整(price_diff_immed_adj)、价款存货调整业务类型(price_invnt_adj_biz_type)、费用分摊差异实时调整(exp_alloc_diff_immed_adj)、费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)、备注(rmk)=回参对应值 | 按操作说明执行 |  | RULE-3FC22BCFD13C；RULE-33D93EB8D873 |
 | SCN-BAC383730F8C | 品号群组 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号群组「属性默认值」的开窗回填规则：【属性默认值(attr_def_value)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择属性值<br/>- 数据来源：调用 查询品号属性(bm.item_attr.get) 接口<br/>- 入参条件：品号属性.属性编号(item_attr.attr_no)=【品号群组明细.属性编号(item_group_d.attr_no)】、品号属性.状态(item_attr.manage_status)=Y.生效<br/>- 显示字段：品号属性明细.属性值(item_attr_d.attr_value)、品号属性明细.属性值描述(item_attr_d.attr_val… | 开窗：选择属性值 |  | RULE-1CA6F72EED04 |
 | SCN-E069663EBCAF |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「明细操作 可用条件」的权限与数据范围规则：【明细操作】【采购退货出库单.状态(pur_rtn_stkou_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-9D758F20B801 |
 | SCN-6280D972908C | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「计价单位编号」的接口契约规则：【计价单位编号(prc_unit_no)】调用接口：计量单位查询(bm.meas_unit.get) | 按平台服务返回结果决定是否放行 |  | RULE-1983453EC8FE |
@@ -1354,7 +1354,7 @@
 | SCN-9B896B9F164E | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「过账状态」的只读校验规则：【过账状态(post_stat)】✅ 是 | 字段不可编辑 |  | RULE-462E82379933 |
 | SCN-8C5C36F9CC12 | 品号财务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号财务信息「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-IFIN-0002 | RULE-EC5F5F7C0662 |
 | SCN-C8C202B8FF4B | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「销售客户名称」的必填校验规则：【销售客户名称(sales_cust_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-F364472A70B0 |
-| SCN-89B585E92CD9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「处理 前置校验」的反向校验规则：【处理】入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no)=当前登录运营单元 | 校验不通过则操作被拦截 |  | RULE-B7F75D46A394 |
+| SCN-24AD42EE93CA |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「编辑 后置处理」的反向校验规则：【编辑】DEFAULT 暂估单模式标识(pesti_doc_mode_flag)、暂估冲回方式(invnt_pesti_rvsl_mode)、价款差异实时调整(price_diff_immed_adj)、价款存货调整业务类型(price_invnt_adj_biz_type)、费用分摊差异实时调整(exp_alloc_diff_immed_adj)、费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)、备注(rmk)=回参对应值 | 按操作说明执行 |  | RULE-C3D8E69D8C5B；RULE-CB89966DE701 |
 | SCN-78275DEAFB55 | 品号财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号财务信息「品号」的开窗回填规则：【品号(item_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：品号通用信息<br/>- 数据来源：调用 查询品号通用信息(bm.item_gen_info.get) 接口<br/>- 入参条件：品号通用信息.状态(item_gen_info.manage_status) = Y.生效<br/>- 显示字段：品号通用信息.品号(item_gen_info.item_no)、品号通用信息.品名(item_gen_info.item_name)、品号通用信息.规格(item_gen_info.item_spec)、品号通用信息.品号群组名称(item_gen_in… | 开窗：品号通用信息 | TC-IFIN-0004 | RULE-EB273A232DF0 |
 | SCN-FA4A0D1DFBB3 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「编辑 可用条件」的权限与数据范围规则：【编辑】【采购退货单.状态(pur_rtn_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-FEF54C9877EC |
 | SCN-65137E58CC0F | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「储位编号」的接口契约规则：【储位编号(stsp_no)】调用接口：查询仓库(bm.whse.get) | 按平台服务返回结果决定是否放行 |  | RULE-299757DFB5BB |
@@ -1362,7 +1362,7 @@
 | SCN-7BE8F49895C0 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税务发票号码合并文本」的只读校验规则：【税务发票号码合并文本(tax_inv_no_merge_text)】✅ 是 | 字段不可编辑 |  | RULE-4BA36E219F05 |
 | SCN-243AF3392066 | 品号财务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号财务信息「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 | TC-IFIN-0002 | RULE-CC9398448373 |
 | SCN-D9A27A503030 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「应收业务性质」的必填校验规则：【应收业务性质(recev_biz_prop)】✅ 是 | 为空时保存应被拦截 |  | RULE-B96C70CF9F8C |
-| SCN-ACE65BD2840A |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「处理 处理」的反向校验规则：【处理】检查回参存在资料，且回参 公司会计期间信息明细.会计期间期号(co_acctg_perid_info_d.acctg_perid_no)=启用期号-应付(ena_perid_no_pay)，否则 E+MSG："公司会计期间信息中不存在该会计年度与期间的资料，请重新选择！" 并终止处理 | 按操作说明执行 |  | RULE-F0CDEF920F7C |
+| SCN-BB7FD8B7C727 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「保存 后置处理」的反向校验规则：【保存】透传必带项（缺失会被服务端校验拦截）：运营单元核算参数.记账本位币(ops_unit_calc_param.fc)、运营单元核算参数.所属税区编号(ops_unit_calc_param.blng_tax_dist_no)、运营单元核算参数.货币汇率表编号(ops_unit_calc_param.ccy_er_table_no)、运营单元核算参数.会计期间表编号(ops_unit_calc_param.acctg_perid_table_no) | 按操作说明执行 |  | RULE-170D294FD50A |
 | SCN-C8A5E18BD239 | 品号财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号财务信息「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 运营单元查询(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.管理状态(ops_unit.manage_status) = Y.生效，运营单元职能.职能编号(ops_unit.ops_unit_func.func_no) 包含 'acct_org' 核算组织 <br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运… | 开窗：选择运营单元 | TC-IFIN-0006 | RULE-2F0447D83204 |
 | SCN-1E14E9BFA6B2 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-AF6772F0F9E4 |
 | SCN-DDE985278BB2 | 采购退货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购退货单「批号」的接口契约规则：【批号(lot_no)】调用接口：查询品号批号信息(bm.item_lot_info.get) | 按平台服务返回结果决定是否放行 |  | RULE-DBAAFDA7E84B |
@@ -1370,7 +1370,7 @@
 | SCN-BE05C6B8506F | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「银行账号」的只读校验规则：【银行账号(bank_acct_no)】✅ 是 | 字段不可编辑 |  | RULE-9812389FC6AB |
 | SCN-9E5FBED66893 | 品号通用信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「修改批号有效日期」的隐藏校验规则：【修改批号有效日期(mod_lot_valid_date)】✅ 是 | 字段不展示 |  | RULE-4BEFD7F5E3B6 |
 | SCN-A2F88438CB20 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「应收业务类型」的必填校验规则：【应收业务类型(recev_biz_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-38326801E969 |
-| SCN-4ED0AD55B4C9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「处理 后置处理」的反向校验规则：【处理】成功提示："应付启用期间设置成功！" | 按操作说明执行 |  | RULE-AF7AE2583551 |
+| SCN-12595F0B03F1 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度-应付」的反向校验规则：【启用年度-应付(ena_year_pay)】输入值须为 1900~9998 的整数，否则 E+MSG："请输入有效的会计年度值！" | 按校验规则拦截或提示 |  | RULE-F03622DDE8D7；RULE-0230DFD40BDD |
 | SCN-45F35AF180AC | 品号财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号财务信息「存货会计分类编号」的开窗回填规则：【存货会计分类编号(invnt_fin_categ_code)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择存货会计分类<br/>- 数据来源：调用 查询存货会计分类(bm.invnt_fin_categ.get) 接口<br/>- 入参条件：存货会计分类.运营单元编号(invnt_fin_categ.ops_unit_no) = 【品号财务信息.运营单元编号(item_fin_info.ops_unit_no)】<br/>存货会计分类.状态(invnt_fin_categ.manage_status) = Y.生效<br/>- 显示字段：存货会计分类.会计分类… | 开窗：选择存货会计分类 | TC-IFIN-0008 | RULE-BC3B69C84EEF |
 | SCN-9D479FB2ECA4 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除 可用条件」的权限与数据范围规则：【删除】【采购退货单.状态(pur_rtn_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-E55E21DF5624 |
 | SCN-2B9EFFA10A9D |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.pur_rtn_doc.create | 按平台服务调用结果决定是否继续 |  | RULE-9AAA79D15E5D；RULE-7C6C9AF77068 |
@@ -1378,7 +1378,7 @@
 | SCN-F35257887AAE | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税额计算方式」的只读校验规则：【税额计算方式(tax_calc_mode)】✅ 是 | 字段不可编辑 |  | RULE-0D9F655033BC |
 | SCN-CCC47C92F23A | 品号采购信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「状态」的隐藏校验规则：【状态(manage_status)】✅ 是 | 字段不展示 | TC-IPUR-0002 | RULE-8BF6A3D0040C |
 | SCN-1D7491A1249F | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「应收明细业务类型」的必填校验规则：【应收明细业务类型(recev_dtl_biz_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-4C892E744460 |
-| SCN-5D36A2DC6E9E | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的反向校验规则：【业务性质(biz_prop)】所选业务性质须属于当前业务域（AR 开头），否则 E+MSG："业务性质与业务域不匹配！" | 按校验规则拦截或提示 |  | RULE-895CFD09536D |
+| SCN-56A3E804AEF4 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号-应付」的反向校验规则：【启用期号-应付(ena_perid_no_pay)】会计年度为空时不可开窗，否则 E+MSG："请先选择会计年度！" | 按校验规则拦截或提示 |  | RULE-7F915CE9CCD0；RULE-482726C6D705 |
 | SCN-12045467E9C2 | 品号财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号财务信息「存货成本分类编号」的开窗回填规则：【存货成本分类编号(invnt_cost_categ_code)】开窗：- 开窗条件：<br/>- 开窗标题：选择存货成本分类<br/>- 数据来源：调用 查询存货成本分类(bm.invnt_cost_categ.get) 接口<br/>- 入参条件：存货成本分类.运营单元编号(invnt_cost_categ.ops_unit_no) = 【品号财务信息.运营单元编号(item_fin_info.ops_unit_no)】<br/>存货成本分类.状态(invnt_cost_categ.manage_status) = Y.生效<br/>- 显示字段：存货成本分类.成本分类编号(invnt_c… | 开窗：选择存货成本分类 | TC-IFIN-0010 | RULE-925EF3448FCC |
 | SCN-AC67334D1A3F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「提交 可用条件」的权限与数据范围规则：【提交】【采购退货单.状态(pur_rtn_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-CFE2B0153840 |
 | SCN-0ED7E6D23D67 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.pur_rtn_doc.delete | 按平台服务调用结果决定是否继续 |  | RULE-0BE9DB274F37 |
@@ -1386,7 +1386,7 @@
 | SCN-D4B9924FD9A1 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「项目名称」的只读校验规则：【项目名称(proj_name)】✅ 是 | 字段不可编辑 |  | RULE-3DE136FACD30 |
 | SCN-C9E4EBC06681 | 品号采购信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购计划取最低核价标识」的隐藏校验规则：【采购计划取最低核价标识(pur_plan_get_lwst_pv_flag)】✅ 是 | 字段不展示 | TC-IPUR-0002 | RULE-387134698EB5 |
 | SCN-77877D1BDE4F | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-B55C2557674D |
-| SCN-708E87A5A043 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的反向校验规则：【业务单别(biz_type_no)】不可为空。 | 按校验规则拦截或提示 |  | RULE-EB647671BC88 |
+| SCN-CB866E7426C5 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-应付」的反向校验规则：【启用期间序号-应付(ena_perid_seq_pay)】值为空时不允许提交，由「处理」操作前校验拦截并提示 | 按校验规则拦截或提示 |  | RULE-C1F8587E7238 |
 | SCN-373AB01CFDEE | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「品号」的开窗回填规则：【品号(item_no)】开窗：一、参数说明：<br/>品号为空白时，调用功能开窗，传入[查询]=1.新增 否则，传入[查询]=2.查询<br/>功 能 : 品号功能开窗<br/>传 入 值 : [品号群组编号:String]<br/> [查询:String] "1":新增 "2":查询 "3":资料流览查询<br/>传 回 值 : 品号:String<br/> 属性数组[属性，属性名称，属性值，属性值描述，取值方式] //多笔属性数组<br/>二、功能开窗说明(原型如图，分2个页面。第一页为品号群组属性页面，第二页为存在相似性品号页面)：<br/> 1. 品号群组 <br/> * 不可空白<… | 开窗：按开窗说明 | TC-BAS-0003 | RULE-876FA294CC99 |
 | SCN-A37D3DA686CD |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「驳回 可用条件」的权限与数据范围规则：【驳回】【采购退货单.状态(pur_rtn_doc.manage_status)】=W.审核中 | 按操作说明执行 |  | RULE-63B897EC8E64 |
 | SCN-A8924C4A1C39 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「提交 后置处理」的接口契约规则：【提交】● 调用接口：bm.pur_rtn_doc.initi_aprv | 按平台服务调用结果决定是否继续 |  | RULE-D7B22BA572D5 |
@@ -1394,7 +1394,7 @@
 | SCN-63D23546570E | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「采购运营单元编号」的只读校验规则：【采购运营单元编号(pur_ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-78CB5CD8A7DD |
 | SCN-389E3874C3F0 | 品号采购信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购比例」的隐藏校验规则：【采购比例(pur_propo)】✅ 是；隐藏条件：供应商策略 (item_pur_info.supp_strtg) != R.依固定比例供应 | 字段不展示 |  | RULE-0C0CB731F683 |
 | SCN-7C8F96E638DB | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「汇率」的必填校验规则：【汇率(er)】✅ 是 | 为空时保存应被拦截 |  | RULE-61D1FB28391A |
-| SCN-DCE4BEC59F66 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的反向校验规则：【业务单别名称(biz_type_name)】不可为空。 | 按校验规则拦截或提示 |  | RULE-1E18E5D35E1A |
+| SCN-87672A6FCF86 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「整体操作 后置处理」的反向校验规则：【整体操作】// 不提前提示、不提前退出：自然年下本作业仍有维护动作（维护启用期间），只切换输入方式与校验口径，不套用会计期间表 / 会计期间信息的「提示后退出」处理 | 按操作说明执行 |  | RULE-D1CA2FD7012E |
 | SCN-633F49F21D71 | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「品号群组编号」的开窗回填规则：【品号群组编号(item_group_no)】开窗：- 选择模式：单选<br/>- 开窗条件：IF 【品号通用信息.品号(item_gen_info.item_no)】为空<br/>- 开窗标题：选择品号群组<br/>- 数据来源：调用 查询品号群组(bm.item_group.get) 接口<br/>- 入参条件：品号群组.生效码(item_group.manage_status) = Y.生效<br/>- 显示字段：品号群组.群组编号(item_group.item_group_no)、品号群组.群组名称(item_group.item_group_name)、品号群组.备注(item_g… | 开窗：选择品号群组 | TC-BAS-0007 | RULE-78C7D320E121 |
 | SCN-0A9433C3BAF9 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「审核 可用条件」的权限与数据范围规则：【审核】【采购退货单.状态(pur_rtn_doc.manage_status)】=N.未审核 or W.审核中 | 按操作说明执行 |  | RULE-A9505A61EB48 |
 | SCN-C062BC1F8301 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「驳回 后置处理」的接口契约规则：【驳回】● 调用接口：bm.pur_rtn_doc.cxl_aprv | 按平台服务调用结果决定是否继续 |  | RULE-BB031CA9F72F |
@@ -1402,7 +1402,7 @@
 | SCN-85C9F9CC2219 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「采购运营单元名称」的只读校验规则：【采购运营单元名称(pur_ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-C04D04180061 |
 | SCN-F45826C66691 | 品号采购信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「主要」的隐藏校验规则：【主要(main)】✅ 是；隐藏条件：供应商策略 (item_pur_info.supp_strtg) !=M.依主要供应商供应 | 字段不展示 |  | RULE-508C5CFC2E4D |
 | SCN-E532398B79B3 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票种类编号」的必填校验规则：【税务发票种类编号(tax_inv_categ_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-C8EBB18E0735 |
-| SCN-B71097F64E09 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的反向校验规则：【年位数(year_digit_type)】当 自动编码方式 IN ('1.年月日+流水码','3.年月+流水码') 且 年位数='1.无' 时 E+MSG："年、月、日编码方式下，年位数不可为无！" | 按校验规则拦截或提示 |  | RULE-2A6EA7FCC499 |
+| SCN-6151AFCC81E2 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「载入（进入作业） 后置处理」的反向校验规则：【载入（进入作业）】// 不提前提示、不提前退出：自然年下本作业仍有维护动作（维护启用期间），只切换输入方式与校验口径，不套用会计期间表 / 会计期间信息的「提示后退出」处理 | 按操作说明执行 |  | RULE-6FAE9AC9C437 |
 | SCN-9F26DBA1F97E | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「品号图片」的开窗回填规则：【品号图片(item_pic)】开窗：[F2]选择品号图片 | 开窗：按开窗说明 | TC-BAS-0008 | RULE-DD16AC35FADA |
 | SCN-7189072D9DED |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「撤审 可用条件」的权限与数据范围规则：【撤审】【采购退货单.状态(pur_rtn_doc.manage_status)】=Y.已审核 | 按操作说明执行 |  | RULE-B340D6527AB1 |
 | SCN-DF9B1890EF0A |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 后置处理」的接口契约规则：【审核】● 步骤1：调用接口：bm.pur_rtn_doc.approve | 按平台服务调用结果决定是否继续 |  | RULE-BF2018B3C19D；RULE-80BFEFC93708 |
@@ -1410,15 +1410,15 @@
 | SCN-D628969316E1 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税区编号」的只读校验规则：【税区编号(tax_dist_no)】✅ 是 | 字段不可编辑 |  | RULE-4DCD353DE291 |
 | SCN-7159FAB2B114 | 品号采购信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「优先级」的隐藏校验规则：【优先级(pri)】✅ 是 | 字段不展示 | TC-IPUR-0002 | RULE-F72A840102C7 |
 | SCN-45FBEF4C5B04 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「税区编号」的必填校验规则：【税区编号(tax_dist_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-5ED14C2CA8F5 |
-| SCN-831A5FAEAFD0 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的反向校验规则：【流水号位数(serl_digit)】须为 0~11 的整数，否则 E+MSG："流水号位数须为 0~11 的整数！" | 按校验规则拦截或提示 | TC-BZP-0008 | RULE-C16B49E0C837；RULE-76A13F93AED3；RULE-5C3633C8A10F |
+| SCN-89B585E92CD9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「处理 前置校验」的反向校验规则：【处理】入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no)=当前登录运营单元 | 校验不通过则操作被拦截 |  | RULE-B7F75D46A394 |
 | SCN-30057AEBA109 | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「库存单位编号」的开窗回填规则：【库存单位编号(invnt_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择库存单位<br/>- 数据来源：调用查询计量单位bm.meas_unit.get<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/>- 显示字段：计量单位.单位编号(meas_unit.unit_no)、计量单位.单位名称(meas_unit.unit_name)<br/>- 默认排序：计量单位.单位编号(meas_unit.unit_no) 升序<br/>- 回填映射：[计量单位.单位编号(meas_unit.u… | 开窗：选择库存单位 | TC-BAS-0014 | RULE-C20A4BF1C7A5 |
 | SCN-2593CE2569C2 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「作废 可用条件」的权限与数据范围规则：【作废】【采购退货单.状态(pur_rtn_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-AC6F46B3C63D |
 | SCN-AAC6DA81B39A |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「撤审 后置处理」的接口契约规则：【撤审】● 调用接口：bm.pur_rtn_doc.disapprove | 按平台服务调用结果决定是否继续 |  | RULE-60F5D5750FA0 |
 | SCN-315D16F72F13 | 应付单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应付单「责任人名称」的默认值规则：【责任人名称(resp_pers_name)】默认值：当【责任人编号(`resp_pers_no`)更改 AND 责任人编号(`resp_pers_no`)<>SPACE】时，默认责任人名称(`resp_pers_name`)=责任人编号开窗带回的人员名称。时机点：默认执行时 | 默认值：当【责任人编号(`resp_pers_no`)更改 AND 责任人编号(`resp_pers_no`)<>SPACE】时，默认责任人名称(`resp_pers_… |  | RULE-03F94397F59E |
 | SCN-8E431479D4DC | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税区名称」的只读校验规则：【税区名称(tax_dist_name)】✅ 是 | 字段不可编辑 |  | RULE-B09798FDC4B2 |
 | SCN-073C28EBFD31 | 品号销售信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号销售信息「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-ISAL-0002 | RULE-D13EA4AD98CA |
-| SCN-4ACC9EA18252 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「记账日期」的必填校验规则：【记账日期(bk_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-4379011AFFC7；RULE-182B3652805D |
-| SCN-D64D7C7D6DA9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的反向校验规则：【保存】检查 业务性质(biz_prop) 须属于当前业务域，否则 E+MSG："业务性质与业务域不匹配！" | 校验不通过则操作被拦截 |  | RULE-F1DB7CB43AC0 |
+| SCN-4ACC9EA18252 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「记账日期」的必填校验规则：【记账日期(bk_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-4379011AFFC7 |
+| SCN-ACE65BD2840A |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「处理 处理」的反向校验规则：【处理】检查回参存在资料，且回参 公司会计期间信息明细.会计期间期号(co_acctg_perid_info_d.acctg_perid_no)=启用期号-应付(ena_perid_no_pay)，否则 E+MSG："公司会计期间信息中不存在该会计年度与期间的资料，请重新选择！" 并终止处理 | 按操作说明执行 |  | RULE-F0CDEF920F7C |
 | SCN-0E8746365559 | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「第二单位编号」的开窗回填规则：【第二单位编号(sec_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择第二单位<br/>- 数据来源：调用查询计量单位bm.meas_unit.get<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/>- 显示字段：计量单位.单位编号(meas_unit.unit_no)、计量单位.单位名称(meas_unit.unit_name)<br/>- 默认排序：计量单位.单位编号(meas_unit.unit_no) 升序<br/>- 回填映射：[计量单位.单位编号(meas_unit.uni… | 开窗：选择第二单位 | TC-BAS-0019 | RULE-25B9CE96670B |
 | SCN-B9EB11D8ABE3 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「取单 可用条件」的权限与数据范围规则：【取单】【采购退货单.状态(pur_rtn_doc.manage_status)】=N.未审核 AND 【采购退货单.业务性质(pur_rtn_doc.biz_prop)】=PO09.采购退货。业务性质 = PO11.直接退货 时本按钮禁用并置灰，提示"直接退货无上游来源，请手工新增明细"，不打开取单画面。 | 按操作说明执行 |  | RULE-DC1651396D53 |
 | SCN-7BC917F48CD4 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「作废 后置处理」的接口契约规则：【作废】● 调用接口：bm.pur_rtn_doc.void | 按平台服务调用结果决定是否继续 |  | RULE-054A2F978BEE |
@@ -1426,7 +1426,7 @@
 | SCN-03FB694B77DB | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「无税金额（原币）」的只读校验规则：【无税金额（原币）(untax_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-7E52956E74CC |
 | SCN-727E4122420B | 品号销售信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号销售信息「销售计价单位编号」的隐藏校验规则：【销售计价单位编号(sales_prc_unit_no)】✅ 是 | 字段不展示 | TC-ISAL-0002 | RULE-D517AD4037B3 |
 | SCN-74C30277667A | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票方向」的必填校验规则：【税务发票方向(tax_inv_dirct)】✅ 是 | 为空时保存应被拦截 |  | RULE-1CB34B986991 |
-| SCN-C359EA80E376 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-2F952A48D20D |
+| SCN-4ED0AD55B4C9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应付「处理 后置处理」的反向校验规则：【处理】成功提示："应付启用期间设置成功！" | 按操作说明执行 |  | RULE-AF7AE2583551 |
 | SCN-313E9BB42276 | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「批号编码规则编号」的开窗回填规则：【批号编码规则编号(lot_code_rule_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择编码规则<br/>- 数据来源：调用查询编码规则bm.code_rule.get<br/>- 入参条件：编码规则.状态(code_rule.manage_status) = Y.生效<br/>- 显示字段：编码规则.编码规则编号(code_rule.code_rule_no)、编码规则.编码规则说明(code_rule.code_rule_desc)<br/>- 默认排序：编码规则.编码规则编号(code_rule.code_rule_no)升序<br/>- 回填… | 开窗：选择编码规则 | TC-BAS-0031 | RULE-A6906DB96D86 |
 | SCN-CE7B28199739 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「复制 可用条件」的权限与数据范围规则：【复制】【采购退货单.状态(pur_rtn_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-739EE8E0D128 |
 | SCN-B3811C71D71C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「取单 处理」的接口契约规则：【取单】来源类型 = 1.采购订单：调用 查询采购订单(bm.po.get)，入参在二、2 的基础上追加 采购订单.采购订单单号(po.po_doc_no) 包含 单头来源单号、采购订单.采购日期(po.pur_date) 落在业务日期区间、采购订单.单据日期(po.doc_date) 落在单据日期区间、采购订单明细.品号(po_d.item_no) 包含 单头品号。以采购收货明细(po_sd)为主行，唯一键 = 采购订单单号 + 采购订单序号(po_d.po_seq) + 采购订单次序号(po_sd.po_sub_seq)；同一订单行分批收货时展开为多行，逐行独立带入，不合并。 | 按平台服务调用结果决定是否继续 |  | RULE-36D7DF98CE30 |
@@ -1434,7 +1434,7 @@
 | SCN-E6451CBDBD67 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税额（原币）」的只读校验规则：【税额（原币）(tax_tc)】✅ 是 | 字段不可编辑 |  | RULE-FDA8E0C2692F |
 | SCN-97A9EED62A0A | 品号销售信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号销售信息「计价单位和销售单位必须相同」的隐藏校验规则：【计价单位和销售单位必须相同(prc_unit_and_sales_unit_same)】✅ 是 | 字段不展示 | TC-ISAL-0002 | RULE-E2D5AE8FB91E |
 | SCN-C4F63B9DDBEB | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「销售运营单元编号」的必填校验规则：【销售运营单元编号(sales_ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-9246AA918B43 |
-| SCN-8F326B1F638E |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-49E02ED309EF |
+| SCN-5D36A2DC6E9E | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的反向校验规则：【业务性质(biz_prop)】所选业务性质须属于当前业务域（AR 开头），否则 E+MSG："业务性质与业务域不匹配！" | 按校验规则拦截或提示 |  | RULE-895CFD09536D |
 | SCN-DB944E895CD3 | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语查询 | 开窗：按开窗说明 | TC-BAS-0038 | RULE-247C788D8890 |
 | SCN-D365F0956B88 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「明细操作 可用条件」的权限与数据范围规则：【明细操作】【采购退货单.状态(pur_rtn_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-15A58822CB9C |
 | SCN-0B3331AD8993 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「复制 后置处理」的接口契约规则：【复制】● 调用接口：bm.pur_rtn_doc.create | 按平台服务调用结果决定是否继续 |  | RULE-F664A506EE25 |
@@ -1442,7 +1442,7 @@
 | SCN-1E4332925CE2 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「价税合计（原币）」的只读校验规则：【价税合计（原币）(tawt_tc)】✅ 是 | 字段不可编辑 |  | RULE-F22F7DCFBE9C |
 | SCN-64F5A9413179 | 品号销售信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号销售信息「赠备品超交管理」的隐藏校验规则：【赠备品超交管理(gift_spare_over_deliv_mgmt)】✅ 是 | 字段不展示 | TC-ISAL-0002 | RULE-8B04928427AF |
 | SCN-1F289828CB02 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「税额计算方式」的必填校验规则：【税额计算方式(tax_calc_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-CEE2B29B4090 |
-| SCN-7C510709C10E | 业务类型应收参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】运营单元须存在且职能含核算组织，否则 E+MSG："运营单元不存在或不具备核算组织职能！" | 按校验规则拦截或提示 |  | RULE-D43E5F0FD84D |
+| SCN-708E87A5A043 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的反向校验规则：【业务单别(biz_type_no)】不可为空。 | 按校验规则拦截或提示 |  | RULE-EB647671BC88 |
 | SCN-C73C88DF4AB8 | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「属性编号」的开窗回填规则：【属性编号(attr_no)】开窗：功能开窗 | 开窗：按开窗说明 |  | RULE-86C623088208 |
 | SCN-8F9C1C0A6D45 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-4AEA98FA399B |
 | SCN-33E9667560EF |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.supp_biz_info.create | 按平台服务调用结果决定是否继续 |  | RULE-65C68FA10831；RULE-C9B772A64438 |
@@ -1450,7 +1450,7 @@
 | SCN-944E3A334264 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「无税金额（本币）」的只读校验规则：【无税金额（本币）(untax_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-12E264210AA9 |
 | SCN-C3E68C0ED36B | 品号销售信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证品号销售信息「赠备品超交率」的隐藏校验规则：【赠备品超交率(gift_spare_over_deliv_rate)】✅ 是 | 字段不展示 | TC-ISAL-0002 | RULE-63D7A106B3EA |
 | SCN-D3BAEA2B8D2A | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「分期来源类型」的必填校验规则：【分期来源类型(insta_src_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-3DE1EB76F510 |
-| SCN-EEC4F8C97606 | 业务类型应收参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「业务单别」的反向校验规则：【业务单别(biz_type_no)】业务单别须存在且生效，否则 E+MSG："业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-6AC81B553A2E |
+| SCN-DCE4BEC59F66 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的反向校验规则：【业务单别名称(biz_type_name)】不可为空。 | 按校验规则拦截或提示 |  | RULE-1E18E5D35E1A |
 | SCN-C8727D7943AE | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「属性值」的开窗回填规则：【属性值(attr_value)】开窗：调用 查询品号属性(bm.item_attr.get) 接口<br/>入参：品号属性.属性编号(item_attr.attr_no)=【品号属性值.属性编号(item_attr_value.attr_no)】<br/>回参：品号属性.取值方式(item_attr.value_mode)、品号属性. 数据长度(item_attr.data_len )<br/>-->QUERY A<br/>调用 查询品号属性(bm.item_attr.get) 接口<br/>入参：品号属性.属性编号(item_attr.attr_no)=【品号属性值.属性编号(item_a… | 开窗：选择属性值 |  | RULE-E360AFCA84F5 |
 | SCN-0F9108C3E1B6 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【供应商业务信息.状态(supp_biz_info.manage_status)】=N.未生效 | 按操作说明执行 |  | RULE-849B90C9F830；RULE-5876B8145033 |
 | SCN-C47FF911ABF2 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.supp_biz_info.delete | 按平台服务调用结果决定是否继续 |  | RULE-AECD4F72D696 |
@@ -1458,7 +1458,7 @@
 | SCN-735CC37595E6 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「税额（本币）」的只读校验规则：【税额（本币）(tax_fc)】✅ 是 | 字段不可编辑 |  | RULE-9F569F85F4AC |
 | SCN-075FDB921DCB | 客户业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「收货客户编号」的隐藏校验规则：【收货客户编号(rcpt_cust_no)】✅ 是 | 字段不展示 | TC-CUSB-0002 | RULE-376B84D90526 |
 | SCN-2D1E5143A792 | 应收单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收单「现金折扣方式」的必填校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-873C1066E2C1 |
-| SCN-9F0FAFCA65DE | 业务类型应收参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「现结业务单别」的反向校验规则：【现结业务单别(cash_stlmt_biz_type_no)】现结业务单别须存在且生效，否则 E+MSG："现结业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-FA5B4958594C |
+| SCN-B71097F64E09 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的反向校验规则：【年位数(year_digit_type)】当 自动编码方式 IN ('1.年月日+流水码','3.年月+流水码') 且 年位数='1.无' 时 E+MSG："年、月、日编码方式下，年位数不可为无！" | 按校验规则拦截或提示 |  | RULE-2A6EA7FCC499 |
 | SCN-BA38F80656CA | 品号通用信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号通用信息「换算单位编号」的开窗回填规则：【换算单位编号(cnv_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择计量单位<br/>- 数据来源：调用 查询计量单位(bm.meas_unit.get) 接口<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/> 计量单位.单位编号(meas_unit.unit_no) <> 【品号通用信息.库存单位编号(item_gen_info.invnt_unit_no)】<br/>- 显示字段：计量单位.单位编号(meas_unit.unit_no)、计量单位.单位名称(meas_unit.u… | 开窗：选择计量单位 |  | RULE-3F2C30E00547 |
 | SCN-9BC940B2ED2D |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【供应商业务信息.状态(supp_biz_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-BC8D2A59AFCE |
 | SCN-9FCDE93B3BC6 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.supp_biz_info.valid | 按平台服务调用结果决定是否继续 |  | RULE-B1C4D0167C02；RULE-11DB732C886D |
@@ -1466,7 +1466,7 @@
 | SCN-AECA0F58E87C | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「价税合计（本币）」的只读校验规则：【价税合计（本币）(tawt_fc)】✅ 是 | 字段不可编辑 |  | RULE-706C00549581 |
 | SCN-02699FBB83A1 | 客户业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「收货客户名称」的隐藏校验规则：【收货客户名称(rcpt_cust_name)】✅ 是 | 字段不展示 | TC-CUSB-0002 | RULE-8D49014E1854 |
 | SCN-F17D9A551350 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「序号」的必填校验规则：【序号(seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-99C3D84EEE80 |
-| SCN-CBB0E11EEE62 | 业务类型应收参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「分期冲减单别」的反向校验规则：【分期冲减单别(insta_offst_adv_biz_type_no)】分期冲减单别须存在且生效，否则 E+MSG："分期冲减单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-9F5035F935F8 |
+| SCN-831A5FAEAFD0 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的反向校验规则：【流水号位数(serl_digit)】须为 0~11 的整数，否则 E+MSG："流水号位数须为 0~11 的整数！" | 按校验规则拦截或提示 | TC-BZP-0008 | RULE-C16B49E0C837；RULE-76A13F93AED3；RULE-5C3633C8A10F |
 | SCN-449AA046AEF2 | 品号采购信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号采购信息「品号」的开窗回填规则：【品号(item_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：品号通用信息<br/>- 数据来源：调用 查询品号通用信息(bm.item_gen_info.get) 接口<br/>- 入参条件：品号通用信息.状态(item_gen_info.manage_status) = Y.生效<br/>- 显示字段：品号通用信息.品号(item_gen_info.item_no)、品号通用信息.品名(item_gen_info.item_name)、品号通用信息.规格(item_gen_info.item_spec)、品号通用信息.品号群组名称(item_gen_in… | 开窗：品号通用信息 | TC-IPUR-0003 | RULE-2C7D88571418 |
 | SCN-2495D72AFB52 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「取消生效 可用条件」的权限与数据范围规则：【取消生效】【供应商业务信息.状态(supp_biz_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-89C31DC7848C |
 | SCN-CEC5C0E783B4 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.supp_biz_info.invalid | 按平台服务调用结果决定是否继续 |  | RULE-1F7CB9FF1121 |
@@ -1474,7 +1474,7 @@
 | SCN-2476DCF58F39 | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「存货价差」的只读校验规则：【存货价差(ppv)】✅ 是 | 字段不可编辑 |  | RULE-D00D4892CC3F |
 | SCN-A470418B15D7 | 客户业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「允许早交」的隐藏校验规则：【允许早交(allow_lead_deliv)】✅ 是 | 字段不展示 | TC-CUSB-0002 | RULE-BC7FB75AFC7C |
 | SCN-B2CD05F72FD1 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「应收来源单据类型」的必填校验规则：【应收来源单据类型(recev_src_doc_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-2EDE7563BB65 |
-| SCN-7C6FF07C7D58 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-FCEFE43AEEBB |
+| SCN-D64D7C7D6DA9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的反向校验规则：【保存】检查 业务性质(biz_prop) 须属于当前业务域，否则 E+MSG："业务性质与业务域不匹配！" | 校验不通过则操作被拦截 |  | RULE-F1DB7CB43AC0 |
 | SCN-65180A363ED7 | 品号采购信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号采购信息「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效<br/> 运营单元职能.职能编号(ops_unit_func.func_no) = purc_org<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运营… | 开窗：选择运营单元 | TC-IPUR-0005 | RULE-8CBD8CDE1D9A |
 | SCN-65AACE33570C |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-867DC1B3F466 |
 | SCN-AAEB46C10E22 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「取消生效 后置处理」的接口契约规则：【取消生效】● 调用接口：bm.supp_biz_info.cancel_valid | 按平台服务调用结果决定是否继续 |  | RULE-2E9D75E19E34 |
@@ -1482,7 +1482,7 @@
 | SCN-D5B9A891C2ED | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「现金折扣方式」的只读校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 字段不可编辑 |  | RULE-B7E892EBEF89 |
 | SCN-8EC162F7B0B2 | 客户业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「加月」的隐藏校验规则：【加月(add_month)】✅ 是 | 字段不展示 | TC-CUSB-0002 | RULE-91B3769F87E5 |
 | SCN-0A90C8E7CB3D |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0016；TC-BASV-0003；TC-BASL-0003；TC-IFIN-0003；TC-BAS-0002；TC-ISAL-0009；TC-CUSI-0005；TC-PURQ-0030；TC-PUR-0007；TC-PARR-0014；TC-PO-0019；TC-PRTN-0058 | RULE-8A59109E8593 |
-| SCN-5CB1CEADE849 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-4368B632C844 |
+| SCN-C359EA80E376 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-2F952A48D20D |
 | SCN-7D24B12E52FA | 品号采购信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购员编号」的开窗回填规则：【采购员编号(purhr_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.状态(empl.manage_status) = Y.生效<br/>- 显示字段：员工.员工编号(empl.empl_no)、员工.员工姓名(empl.empl_name)<br/>- 默认排序：员工.员工编号(empl.empl_no) 升序<br/>- 回填映射：[员工.员工编号(empl.empl_no)] →【品号采购信息.采购员编号(item_pur_info.purhr_… | 开窗：选择员工 | TC-IPUR-0006 | RULE-2ADC2B2196D1 |
 | SCN-0D7280FD531E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【业务类型采购参数.状态(biz_type_pur_param.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-494C4EA7FA93 |
 | SCN-994162234A4B |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.biz_type_pur_param.create | 按平台服务调用结果决定是否继续 |  | RULE-858FFFEAE088；RULE-1B509F95EAE2 |
@@ -1490,7 +1490,7 @@
 | SCN-70418756119C | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「VAT标识」的只读校验规则：【VAT标识(vat_flag)】✅ 是 | 字段不可编辑 |  | RULE-967D45D83BD8 |
 | SCN-07736DF37DBC | 客户业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「加日」的隐藏校验规则：【加日(is_add_day)】✅ 是 | 字段不展示 | TC-CUSB-0002 | RULE-27FD142F04A6 |
 | SCN-9AE5E989843B |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「品名」的必填校验规则：【品名(item_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-CA514A6328AF |
-| SCN-17E41F0DEEF5 | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「业务单别」的反向校验规则：【业务单别(biz_type_no)】须存在于业务类型通用信息(`biz_type_gen_info`)且业务域为 AR，否则 E+MSG："此单别不存在或业务域不符！" | 按校验规则拦截或提示 |  | RULE-A9738A129E3E |
+| SCN-8F326B1F638E |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-49E02ED309EF |
 | SCN-7F0D1350BDF5 | 品号采购信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购单位编号」的开窗回填规则：【采购单位编号(pur_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择计量单位<br/>- 数据来源：调用 查询计量单位(bm.meas_unit.get) 接口<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/>- 显示字段：计量单位.单位编号(meas_unit.unit_no)、计量单位.单位名称(meas_unit.unit_name)、计量单位.基本单位(meas_unit.base_unit)、计量单位.单位类型(meas_unit.unit_type)<br/>- 默认排序… | 开窗：选择计量单位 | TC-IPUR-0008 | RULE-70B233C02F5C |
 | SCN-E17787F682E1 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【业务类型采购参数.状态(biz_type_pur_param.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-6B27FDE887DD |
 | SCN-52DCBC5B6D7D |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.biz_type_pur_param.delete | 按平台服务调用结果决定是否继续 |  | RULE-EF9308658854 |
@@ -1498,7 +1498,7 @@
 | SCN-CFD8439DA4AE | 应付单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付单「统一税种税率标识」的只读校验规则：【统一税种税率标识(uni_tax_rate_flag)】✅ 是 | 字段不可编辑 |  | RULE-1657FD27A800 |
 | SCN-E7D4899522B2 | 客户业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「逢」的隐藏校验规则：【逢(std_every)】✅ 是 | 字段不展示 | TC-CUSB-0002 | RULE-4C21A96DBD71 |
 | SCN-6A7A6D1FB350 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「计价单位编号」的必填校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0018；TC-PARR-0027；TC-PO-0060；TC-PRTN-0063 | RULE-F15E2376FB2A |
-| SCN-7F4F9E713190 | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「单据日期」的反向校验规则：【单据日期(doc_date)】须>=应收启用期间(`ops_unit_calc_param.ena_year_recev`+`ena_perid_no_recev`) 对应起始日期，否则 E+MSG："输入日期信息不可小于应收启用年月！" | 按校验规则拦截或提示 |  | RULE-58311EA21A41 |
+| SCN-7C510709C10E | 业务类型应收参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】运营单元须存在且职能含核算组织，否则 E+MSG："运营单元不存在或不具备核算组织职能！" | 按校验规则拦截或提示 |  | RULE-D43E5F0FD84D |
 | SCN-131D8E1E001F | 品号采购信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购计价单位编号」的开窗回填规则：【采购计价单位编号(pur_prc_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：品号采购信息.计价单位和采购单位须相同(item_pur_info. prc_unit_and_pur_unit_rqd_same)!=true<br/>- 开窗标题：选择计量单位<br/>- 数据来源：调用 查询计量单位(bm.meas_unit.get) 接口<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/>- 显示字段：计量单位.单位编号(meas_unit.unit_no)、计量单位.单位名称(meas_unit.unit_… | 开窗：选择计量单位 | TC-IPUR-0021 | RULE-0AD4E5B92705 |
 | SCN-A93A940A8BAB |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-BF262F59DC10 |
 | SCN-21BF8A9297AA |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.biz_type_pur_param.valid | 按平台服务调用结果决定是否继续 |  | RULE-F8FD98772E06 |
@@ -1506,7 +1506,7 @@
 | SCN-491691BC754E |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「序号」的只读校验规则：【序号(seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001；TC-PUR-0001；TC-PSTK-0001；TC-PARR-0001；TC-PRTN-0001 | RULE-316F84D5F94B |
 | SCN-F27330E0A90E | 客户业务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-CUSB-0002 | RULE-7EF56CFFA55F |
 | SCN-16E0A50A60A3 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「商品类型」的必填校验规则：【商品类型(goods_type)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0013；TC-PRTN-0057 | RULE-19518A00465E |
-| SCN-B35E5C10159A | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「汇率」的反向校验规则：【汇率(er)】须大于 0，否则 E+MSG："汇率须大于零！" | 按校验规则拦截或提示 |  | RULE-18953B74913A |
+| SCN-EEC4F8C97606 | 业务类型应收参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「业务单别」的反向校验规则：【业务单别(biz_type_no)】业务单别须存在且生效，否则 E+MSG："业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-6AC81B553A2E |
 | SCN-5EA1B64D34D2 | 品号采购信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号采购信息「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：- 选择模式：多选<br/>- 开窗条件：<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 查询供应商基本信息(bm.supp_base_info.get) 接口<br/>- 入参条件：供应商基本信息.状态(supp_base_info.manage_status) = Y.生效<br/>- 显示字段：供应商基本信息.供应商编号(meas_unit. supp_no)、供应商基本信息.供应商名称(meas_unit.supp_name)、供应商基本信息.供应商简称(meas_unit.supp_sname)、供应商基本信息.快捷码(meas_… | 开窗：选择供应商 |  | RULE-649079395F11 |
 | SCN-CAB688FF6117 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【业务类型通用信息.状态(biz_type_gen_info.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-EB678F27D472 |
 | SCN-4E272CF35DD8 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.biz_type_pur_param.invalid | 按平台服务调用结果决定是否继续 |  | RULE-CCE5BA441C0C |
@@ -1514,7 +1514,7 @@
 | SCN-BBCB430E78A9 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「应付来源类型」的只读校验规则：【应付来源类型(pay_src_type)】✅ 是 | 字段不可编辑 |  | RULE-9AA472A58082 |
 | SCN-1B85488D781F | 客户品号 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户品号「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-CUSI-0002 | RULE-8AB6349DB864 |
 | SCN-A935066735EF |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「生产运营单元编号」的必填校验规则：【生产运营单元编号(prodn_ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-04E0D11545A1 |
-| SCN-FE20E2409F8B | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「税区编号」的反向校验规则：【税区编号(tax_dist_no)】不可为空，否则 E+MSG："税区编号不可为空，请检查运营单元核算参数的所属税区！" | 按校验规则拦截或提示 |  | RULE-2A4B944E8818 |
+| SCN-9F0FAFCA65DE | 业务类型应收参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「现结业务单别」的反向校验规则：【现结业务单别(cash_stlmt_biz_type_no)】现结业务单别须存在且生效，否则 E+MSG："现结业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-FA5B4958594C |
 | SCN-2BE134B4F8E6 | 品号销售信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号销售信息「品号」的开窗回填规则：【品号(item_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：品号通用信息<br/>- 数据来源：调用 查询品号通用信息(bm.item_gen_info.get) 接口<br/>- 入参条件：品号通用信息.状态(item_gen_info.manage_status) = Y.生效<br/>- 显示字段：品号通用信息.品号(item_gen_info.item_no)、品号通用信息.品名(item_gen_info.item_name)、品号通用信息.规格(item_gen_info.item_spec)、品号通用信息.品号群组名称(item_gen_in… | 开窗：品号通用信息 | TC-ISAL-0010 | RULE-36C42208322B |
 | SCN-9BEC745745A3 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【业务类型通用信息.状态(biz_type_gen_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-EF14EC7CEF89 |
 | SCN-5F26474DB459 | 业务类型通用信息 | 接口契约 | NOT_UI_OBSERVABLE | 验证业务类型通用信息「业务类型编号」的接口契约规则：【业务类型编号(biz_type_no)】调用接口：查询业务类型通用信息(bm.biz_type_gen_info.get) | 按平台服务返回结果决定是否放行 |  | RULE-42247307EF3D；RULE-AB978901ED77 |
@@ -1522,7 +1522,7 @@
 | SCN-47E7BCB68652 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「来源业务类型编号」的只读校验规则：【来源业务类型编号(src_biz_type_no)】✅ 是 | 字段不可编辑 | TC-BASL-0001 | RULE-3BE132D0AF22 |
 | SCN-DC377D2F7A94 | 客户财务信息 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证客户财务信息「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-CUSF-0002 | RULE-641B23E077BB |
 | SCN-F5026A29A4EF |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据1类型」的必填校验规则：【财务参考单据1类型(fin_ref_doc1_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-755311F6E79E |
-| SCN-19B63BCB7093 | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「记账日期」的反向校验规则：【记账日期(bk_date)】须>=单据日期(`doc_date`)，否则 E+MSG："记账日期需大于等于单据日期！" | 按校验规则拦截或提示 |  | RULE-DF10870E1B9B；RULE-578D4DAB9000 |
+| SCN-CBB0E11EEE62 | 业务类型应收参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「分期冲减单别」的反向校验规则：【分期冲减单别(insta_offst_adv_biz_type_no)】分期冲减单别须存在且生效，否则 E+MSG："分期冲减单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-9F5035F935F8 |
 | SCN-3F3E7CCA9029 | 品号销售信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号销售信息「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 运营单元查询(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.管理状态(ops_unit.manage_status) = Y.生效，运营单元职能.职能编号(ops_unit.ops_unit_func.func_no) 包含 'sale_org '销售组织<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)… | 开窗：选择运营单元 | TC-ISAL-0006 | RULE-11EA1AE92061 |
 | SCN-5BD66A494239 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-C3EAFF26D06F |
 | SCN-273539A1B3C5 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.biz_type_gen_info.all.create | 按平台服务调用结果决定是否继续 |  | RULE-007310737B3C；RULE-C8C587A3DC6A |
@@ -1530,7 +1530,7 @@
 | SCN-62326A10DC47 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「来源单号」的只读校验规则：【来源单号(src_doc_no)】✅ 是 | 字段不可编辑 | TC-BASL-0001；TC-PURQ-0057；TC-PURQ-0058；TC-PUR-0001；TC-PSTK-0001；TC-PARR-0001；TC-PO-0001；TC-PRTN-0001 | RULE-C677E4C6C530 |
 | SCN-420F5189C9B4 | 货币 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证货币「金额取位模式」的隐藏校验规则：【金额取位模式(amt_fetch_mode)】✅ 是 | 字段不展示 | TC-CCY-0001 | RULE-E8F24E4FDF0B |
 | SCN-1336D9529225 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据2类型」的必填校验规则：【财务参考单据2类型(fin_ref_doc2_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-72125F43AAD6 |
-| SCN-1EEAB9B7F2CE | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「分期来源类型」的反向校验规则：【分期来源类型(insta_src_type)】须为有效枚举值，否则 E+MSG："分期来源类型不合法！" | 按校验规则拦截或提示 |  | RULE-C3320217A9EE |
+| SCN-7C6FF07C7D58 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-FCEFE43AEEBB |
 | SCN-61E77ABC4AF9 | 品号销售信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证品号销售信息「销售单位编号」的开窗回填规则：【销售单位编号(sales_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择计量单位<br/>- 数据来源：调用 查询计量单位(bm.meas_unit.get) 接口<br/>- 入参条件：计量单位.状态(meas_unit.manage_status) = Y.生效<br/>- 显示字段：计量单位.单位编号(meas_unit.unit_no)、计量单位.单位名称(meas_unit.unit_name)、计量单位.基本单位(meas_unit.base_unit)、计量单位.单位类型(meas_unit.unit_type)<br/>- 默认… | 开窗：选择计量单位 | TC-ISAL-0008 | RULE-2F3573C60FD5 |
 | SCN-48AFE1C26847 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-5CAC828948DD |
 | SCN-D204DC2E2280 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.biz_type_gen_info.all.delete | 按平台服务调用结果决定是否继续 |  | RULE-DAB3FF5D7490 |
@@ -1538,7 +1538,7 @@
 | SCN-F235E5C7B438 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「来源序号」的只读校验规则：【来源序号(src_seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001；TC-PUR-0001；TC-PARR-0001；TC-PO-0001；TC-PRTN-0001 | RULE-49D526B85820 |
 | SCN-88B029EA99F8 | 货币 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证货币「单位售价精度」的隐藏校验规则：【单位售价精度(unit_sales_price_acc)】✅ 是 | 字段不展示 | TC-CCY-0001 | RULE-BF08B00C1BD7 |
 | SCN-13A1ED8A8524 |  | 必填校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的必填校验规则：【保存】检查 单头必填：运营单元编号(`ops_unit_no`)、业务单别(`biz_type_no`)、单据日期(`doc_date`)、结算客户编号(`stlmt_cust_no`)、销售客户编号(`sales_cust_no`)、货币编号(`ccy_no`)、汇率(er)、税务发票种类编号(`tax_inv_categ_no`)、核销方式(`verf_mode`)、分期来源类型(`insta_src_type`)、现金折扣方式(`cash_disc_mode`)，任一为空则 E+MSG："单头必填项不可为空！" | 校验不通过则操作被拦截 |  | RULE-8683B3A19D95 |
-| SCN-91FF80AF7B9E | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「现金折扣方式」的反向校验规则：【现金折扣方式(cash_disc_mode)】须为有效枚举值，否则 E+MSG："现金折扣方式不合法！" | 按校验规则拦截或提示 |  | RULE-748CA3C325A9 |
+| SCN-5CB1CEADE849 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-4368B632C844 |
 | SCN-3265314ADCF2 | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「客户编号」的开窗回填规则：【客户编号(cust_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择客户<br/>- 数据来源：调用 客户基本信息查询(bm.cust_base_info.get) 接口<br/>- 入参条件：客户基本信息.状态(cust_base_info.manage_status) <> V.失效<br/>- 显示字段：客户基本信息.客户编号(cust_base_info.cust_no)、客户基本信息.客户简称(cust_base_info.cust_sname)、客户基本信息.客户名称(cust_base_info.cust_name)、客户基本信息.客户群组编号(cust_base_in… | 开窗：选择客户 | TC-CUSB-0004 | RULE-4D9E8497E1CC |
 | SCN-59B860F5F757 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【交易对象群组.状态(trans_obj_group.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-0691E5D62BC7 |
 | SCN-95D60B28165C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.biz_type_gen_info.all.valid | 按平台服务调用结果决定是否继续 |  | RULE-3E5FDC2E326B |
@@ -1546,7 +1546,7 @@
 | SCN-C0F9E798B544 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「来源日期」的只读校验规则：【来源日期(src_date)】✅ 是 | 字段不可编辑 |  | RULE-603AB8BEAF4F |
 | SCN-99E22E43F60C | 货币 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证货币「单位生产成本精度」的隐藏校验规则：【单位生产成本精度(unit_prodn_cost_acc)】✅ 是 | 字段不展示 | TC-CCY-0001 | RULE-1E2C53583129 |
 | SCN-0075F1AC7A67 |  | 必填校验 | NEEDS_CONFIRMATION | 验证应收「保存 处理」的必填校验规则：【保存】调用 create 前按序处理（顺序不可颠倒）：①重算单头金额 无税金额/税额/价税合计（原币、本币）= SUM(单身对应金额)；②按重算后的单头价税合计赋值 DEFAULT 税务发票方向(`tax_inv_dirct`)=IF 单头价税合计（原币）(`tawt_tc`)>=0 THEN 1.正向 ELSE -1.负向 ENDIF（本字段隐藏，create 必填，不允许留空）；③按业务类型应收参数的编号规则取号并回填 单号(`doc_no`) | 按操作说明执行 |  | RULE-3217E210EFD0 |
-| SCN-A876A60E41B9 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「计价数量」的反向校验规则：【计价数量(prc_qty)】须大于 0，否则 E+MSG："计价数量须大于零！" | 按校验规则拦截或提示 |  | RULE-818214500BEA |
+| SCN-17E41F0DEEF5 | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「业务单别」的反向校验规则：【业务单别(biz_type_no)】须存在于业务类型通用信息(`biz_type_gen_info`)且业务域为 AR，否则 E+MSG："此单别不存在或业务域不符！" | 按校验规则拦截或提示 |  | RULE-A9738A129E3E |
 | SCN-DBFFB232BF42 | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「结算客户编号」的开窗回填规则：【结算客户编号(stlmt_cust_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择客户<br/>- 数据来源：调用 客户基本信息查询(bm.cust_base_info.get) 接口<br/>- 入参条件：客户基本信息.状态(cust_base_info.manage_status) = Y.生效<br/>- 显示字段：客户基本信息.客户编号(cust_base_info.cust_no)、客户基本信息.客户简称(cust_base_info.cust_sname)、客户基本信息.客户名称(cust_base_info.cust_name)、客户基本信息.客户群组编号(cust_… | 开窗：选择客户 | TC-CUSB-0005 | RULE-D455804D042C |
 | SCN-B160006B5471 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【交易对象群组.状态(trans_obj_group.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-02D6BA6C4F3B |
 | SCN-2C358A725492 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.biz_type_gen_info.all.invalid | 按平台服务调用结果决定是否继续 |  | RULE-F6694551D7E0 |
@@ -1554,7 +1554,7 @@
 | SCN-D017D3107B6B |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「来源运营单元编号」的只读校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 字段不可编辑 | TC-PUR-0001；TC-PSTK-0001；TC-PRTN-0001 | RULE-8F0BD78A6407 |
 | SCN-F376D6B07D86 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「来源运营单元编号」的隐藏校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-7689DFADE6FF |
 | SCN-36867F9B792E |  | 必填校验 | NEEDS_CONFIRMATION | 验证应收「审核 前置校验」的必填校验规则：【审核】检查 记账日期(`bk_date`)不可为空白且不可为最小日期(`1900-01-01`)，否则 E+MSG："记账日期不可空白，请重新录入记账日期！" | 校验不通过则操作被拦截 |  | RULE-6486EE3D38EE |
-| SCN-DE13983C8CD7 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「单价」的反向校验规则：【单价(price)】须大于 0，否则 E+MSG："单价须大于零！" | 按校验规则拦截或提示 | TC-PURQ-0061；TC-PO-0055；TC-PRTN-0072 | RULE-37CB61D366CA |
+| SCN-AEB116ED2B3E | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「单号」的反向校验规则：【单号(doc_no)】不可空白，否则 E+MSG："单号不可空白！" | 按校验规则拦截或提示 |  | RULE-18ED2CC79C79 |
 | SCN-3895963E283A | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 运营单元查询(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.管理状态(ops_unit.manage_status) = Y.生效，运营单元职能.职能编号(ops_unit.ops_unit_func.func_no) 包含 'sale_org '销售组织<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)… | 开窗：选择运营单元 | TC-CUSB-0007 | RULE-03A7C02C2EE8 |
 | SCN-B6BFA638E41D |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-3533457AF4A0 |
 | SCN-829AD42768A9 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.biz_er.create | 按平台服务调用结果决定是否继续 |  | RULE-47EEC4210521；RULE-5DDC40F27CFC |
@@ -1562,7 +1562,7 @@
 | SCN-1F59F84D0F79 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「品名」的只读校验规则：【品名(item_name)】✅ 是 | 字段不可编辑 | TC-SIPP-0001；TC-BASV-0001；TC-BASL-0001；TC-IPUR-0001；TC-ISAL-0001；TC-PURQ-0034；TC-PURQ-0035；TC-PUR-0009；TC-PUR-0010；TC-PSTK-0017；TC-PSTK-0018；TC-PARR-0018；TC-PARR-0019；TC-PO-0023；TC-PO-0024；TC-PRTN-0001 | RULE-3985FFC19315 |
 | SCN-CA8BF9E40D7C | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「来源单据类型」的隐藏校验规则：【来源单据类型(src_doc_type)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-1BCB0C5D5C3F |
 | SCN-82110BA6F1AB |  | 必填校验 | NEEDS_CONFIRMATION | 验证应收「取单 处理」的必填校验规则：【取单】必填，默认 201.销售出库单 | 按操作说明执行 |  | RULE-8816287D9488 |
-| SCN-8EDEBD8915AD |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「折扣率」的反向校验规则：【折扣率(disc_rate)】须大于等于 0，否则 E+MSG："折扣率须大于等于零！" | 按校验规则拦截或提示 | TC-PRTN-0074 | RULE-9018206990F9 |
+| SCN-7F4F9E713190 | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「单据日期」的反向校验规则：【单据日期(doc_date)】须>=应收启用期间(`ops_unit_calc_param.ena_year_recev`+`ena_perid_no_recev`) 对应起始日期，否则 E+MSG："输入日期信息不可小于应收启用年月！" | 按校验规则拦截或提示 |  | RULE-58311EA21A41 |
 | SCN-153659FAE797 | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「业务员编号」的开窗回填规则：【业务员编号(slsm_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) = 【客户业务信息.运营单元编号(cust_biz_info.ops_unit_no）】，员工.状态(empl.manage_status) = Y.生效<br/>- 显示字段：员工.员工编号(empl.empl_no)，员工.员工姓名(empl.empl_name)，员工.部门编号(empl_dept_info.dept_no)，… | 开窗：选择员工 | TC-CUSB-0008 | RULE-29FBEE221569 |
 | SCN-FEBE8B808A67 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【品号属性.状态(item_attr.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-637938D7FE6B |
 | SCN-265A65248C14 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.biz_er.delete | 按平台服务调用结果决定是否继续 |  | RULE-C9BC9E83FF0A |
@@ -1570,7 +1570,7 @@
 | SCN-064D34AB8B6E |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「生产运营单元编号」的只读校验规则：【生产运营单元编号(prodn_ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-2B726D90A128 |
 | SCN-AAF5D450B649 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「来源单号」的隐藏校验规则：【来源单号(src_doc_no)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-8926329CE267 |
 | SCN-17DECD1806F6 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-2124F66A6629 |
-| SCN-C5BBBAD9B32B |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「生产运营单元编号」的反向校验规则：【生产运营单元编号(prodn_ops_unit_no)】不可为空，否则 E+MSG："生产运营单元不可为空！" | 按校验规则拦截或提示 |  | RULE-7055E6E6B226 |
+| SCN-B35E5C10159A | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「汇率」的反向校验规则：【汇率(er)】须大于 0，否则 E+MSG："汇率须大于零！" | 按校验规则拦截或提示 |  | RULE-18953B74913A |
 | SCN-47855C2F5250 | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「所属部门编号」的开窗回填规则：【所属部门编号(blng_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择部门<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.员工编号(empl.empl_no) =【客户业务信息.业务员编号(cust_biz_info. slsm_no)】、 员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) =【客户业务信息.运营单元编号(cust_biz_info.ops_unit_no）】<br/>- 显示字段：员工部门信息.部门编号(dept_no.empl_dept… | 开窗：选择部门 | TC-CUSB-0009 | RULE-8D61A728107E |
 | SCN-01D01F79583F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【品号属性.状态(item_attr.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-62F51CDDCD26 |
 | SCN-883826AB5886 | 交易对象群组 | 接口契约 | NOT_UI_OBSERVABLE | 验证交易对象群组「属性编号」的接口契约规则：【属性编号(attr_no)】调用接口：查询交易对象属性(bm.trans_obj_attr.get)；入参：交易对象属性.属性编号(trans_obj_attr.attr_no) = 【交易对象群组明细.属性编号(trans_obj_group_d.attr_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-5D4D73BA2700 |
@@ -1578,7 +1578,7 @@
 | SCN-3D1F971B47CD |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「生产运营单元名称」的只读校验规则：【生产运营单元名称(prodn_ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-C1D8E5F6E6D6 |
 | SCN-2F1D379DDA31 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「来源序号」的隐藏校验规则：【来源序号(src_seq)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-C23795451E47 |
 | SCN-C6E996865D0F | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「坏账准备计提比率」的必填校验规则：【坏账准备计提比率(pvn_acrl_rate)】✅ 是；必填条件：IF 坏账准备计提方式(pvn_acrl_mode)='2.余额百分比法' THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-F6A6D618F918 |
-| SCN-22946F456933 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据1类型」的反向校验规则：【财务参考单据1类型(fin_ref_doc1_type)】不可为空，否则 E+MSG："财务参考单据1类型不可为空！" | 按校验规则拦截或提示 |  | RULE-41F44B13EF2D |
+| SCN-FE20E2409F8B | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「税区编号」的反向校验规则：【税区编号(tax_dist_no)】不可为空，否则 E+MSG："税区编号不可为空，请检查运营单元核算参数的所属税区！" | 按校验规则拦截或提示 |  | RULE-2A4B944E8818 |
 | SCN-1FEFD225028E | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.状态(ccy.manage_status) = Y.生效<br/>- 显示字段：货币.货币编号(ccy.ccy_no)、货币.货币名称(ops_unit.ccy_name)<br/>- 默认排序：货币.货币编号(ccy.ccy_no)升序<br/>- 回填映射：[货币.货币编号(ccy.ccy_no)] →【客户业务信息.交易货币编号(cust_biz_info.trans_ccy_no)】、[货币.货币名称(ccy.… | 开窗：选择货币 | TC-CUSB-0011 | RULE-4CF98512CFC8 |
 | SCN-3168E6C20002 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-35366FA9B50E |
 | SCN-EA44081658AF | 交易对象群组 | 接口契约 | NOT_UI_OBSERVABLE | 验证交易对象群组「属性默认值」的接口契约规则：【属性默认值(attr_def_value)】调用接口：查询交易对象属性(bm.trans_obj_attr.get)；入参：交易对象属性.属性编号(trans_obj_attr.attr_no) = 【交易对象群组明细.属性编号(trans_obj_group_d.attr_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-72906A78E9B1 |
@@ -1586,7 +1586,7 @@
 | SCN-E6541FF12037 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「应付采购类型」的只读校验规则：【应付采购类型(pay_pur_type)】✅ 是 | 字段不可编辑 |  | RULE-7DF7A4B1732F |
 | SCN-312852245A58 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「运营单元编号」的隐藏校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-A511C52AB10A |
 | SCN-5B9DA48572E6 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-BC4B3AE49FFA |
-| SCN-E5AB9213D972 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据2类型」的反向校验规则：【财务参考单据2类型(fin_ref_doc2_type)】不可为空，否则 E+MSG："财务参考单据2类型不可为空！" | 按校验规则拦截或提示 |  | RULE-69AE2940E790 |
+| SCN-19B63BCB7093 | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「记账日期」的反向校验规则：【记账日期(bk_date)】**不可为空白，且不可为最小日期（`1900-01-01`）**——数据库 `bk_date` 为日期型字段，撤回审核后由撤审服务置为最小日期，画面按显示规则呈现为空；否则 E+MSG："记账日期不可空白，请重新录入记账日期！" | 按校验规则拦截或提示 |  | RULE-182B3652805D；RULE-DF10870E1B9B；RULE-578D4DAB9000 |
 | SCN-149EB373B66F | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「取价策略编号」的开窗回填规则：【取价策略编号(price_strtg_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择销售取价策略<br/>- 数据来源：调用 取价策略查询(bm.price_strtg.get) 接口<br/>- 入参条件： 取价策略.运营单元编号(price_strtg.ops_unit_no)= 【客户业务信息.运营单元编号(cust_biz_info.ops_unit_no）】、取价策略.状态(price_strtg.manage_status) = Y.生效<br/>- 显示字段：取价策略.取价策略编号(price_strtg.price_strtg_no)、取价策略.取价策略名称(pri… | 开窗：选择销售取价策略 | TC-CUSB-0012 | RULE-50FECECEE753 |
 | SCN-7D5F2DA03A36 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【品号群组.状态(item_group.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-A73A41779CFA |
 | SCN-6EEF012DA386 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.trans_obj_group.create | 按平台服务调用结果决定是否继续 |  | RULE-A24B92C439F7；RULE-3857523CAAEB |
@@ -1594,15 +1594,15 @@
 | SCN-54C594D7540C |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「财务参考单据1类型」的只读校验规则：【财务参考单据1类型(fin_ref_doc1_type)】✅ 是 | 字段不可编辑 |  | RULE-016FE5317188 |
 | SCN-1849343EF100 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-80142ADFBCF8 |
 | SCN-7A9E4A445EEA | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度应收」的必填校验规则：【启用年度应收(ena_year_recev)】✅ 是 | 为空时保存应被拦截 |  | RULE-D8AF84237B9B |
-| SCN-88F2EB0B037C |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的反向校验规则：【保存】检查 税区编号(`tax_dist_no`)不可为空，否则 E+MSG："税区编号不可为空，请检查运营单元核算参数的所属税区！" | 校验不通过则操作被拦截 |  | RULE-E4DA2E301C62 |
+| SCN-1EEAB9B7F2CE | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「分期来源类型」的反向校验规则：【分期来源类型(insta_src_type)】须为有效枚举值，否则 E+MSG："分期来源类型不合法！" | 按校验规则拦截或提示 |  | RULE-C3320217A9EE |
 | SCN-27D5AC332BC5 | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「运输方式编号」的开窗回填规则：【运输方式编号(trasp_mode_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择运输方式<br/>- 数据来源：调用 查询运输方式(bm.trasp_mode.get)接口<br/>- 入参条件： 运输方式.状态(trasp_mode.manage_status) = Y.生效<br/>- 显示字段：运输方式.运输方式编号(trasp_mode.trasp_mode_no)、运输方式.运输方式描述(trasp_mode.trasp_mode_desc)、运输方式.运输方式类型(trasp_mode.trasp_type)<br/>- 默认排序：运输方式.运输方式编号(trasp_… | 开窗：选择运输方式 | TC-CUSB-0013 | RULE-D101C17EF128 |
 | SCN-10A135155713 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【品号群组.状态(item_group.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-17A43BFA9870 |
 | SCN-F88919288FA2 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.trans_obj_group.delete | 按平台服务调用结果决定是否继续 |  | RULE-2548713F692E |
 | SCN-7CFDDAB2A4F3 | 应付单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应付单「税区编号」的默认值规则：【税区编号(tax_dist_no)】默认值：默认运营单元核算参数.所属税区编号(`blng_tax_dist_no`)。时机点：默认执行时 | 默认值：默认运营单元核算参数.所属税区编号(`blng_tax_dist_no`)。时机点：默认执行时 |  | RULE-D067051E4E26 |
 | SCN-F7A5779F2FE1 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「财务参考单据2类型」的只读校验规则：【财务参考单据2类型(fin_ref_doc2_type)】✅ 是 | 字段不可编辑 |  | RULE-F8A7485DC8A4 |
 | SCN-D661A1613EEA | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「运营单元名称」的隐藏校验规则：【运营单元名称(CUS_UDF002)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-601F45F23D01 |
-| SCN-6CC337C170F2 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号应收」的必填校验规则：【启用期号应收(ena_perid_no_recev)】✅ 是 | 为空时保存应被拦截 |  | RULE-B2E6BF5F359D；RULE-4783079C63F6 |
-| SCN-10A4A937705B |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 前置校验」的反向校验规则：【删除】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可删除！" | 校验不通过则操作被拦截 |  | RULE-ABA3F0C5ADB1 |
+| SCN-6CC337C170F2 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号应收」的必填校验规则：【启用期号应收(ena_perid_no_recev)】✅ 是 | 为空时保存应被拦截 |  | RULE-B2E6BF5F359D |
+| SCN-91FF80AF7B9E | 应收单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收单「现金折扣方式」的反向校验规则：【现金折扣方式(cash_disc_mode)】须为有效枚举值，否则 E+MSG："现金折扣方式不合法！" | 按校验规则拦截或提示 |  | RULE-748CA3C325A9 |
 | SCN-500581F36F76 | 客户业务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户业务信息「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：<br/>- 开窗条件：<br/>- 开窗标题：选择收款条件<br/>- 数据来源：调用 查询收付款条件(bm.colln_pmt_terms.get)<br/>- 入参条件：收付款条件.状态(colln_pmt_terms.manage_status)= Y、收付款条件.收付款(colln_pmt_terms.colln_pmt)= (0.收付款皆适用 or 2.收款条件)<br/>- 显示字段：收付款条件.付款条件编号(colln_pmt_terms.pmt_terms_no)、收付款条件.付款条件名称(colln_pmt_terms.pm… | 开窗：选择收款条件 | TC-CUSB-0014 | RULE-706C0C57F90D |
 | SCN-3BC7632648B5 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-F848E07B3703 |
 | SCN-49C595E97633 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.trans_obj_group.valid | 按平台服务调用结果决定是否继续 |  | RULE-5C843D62E2AD |
@@ -1610,7 +1610,7 @@
 | SCN-2CF0789BC20F |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「商品类型」的只读校验规则：【商品类型(goods_type)】✅ 是 | 字段不可编辑 |  | RULE-C3D1D6984A29 |
 | SCN-8693694D0B69 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「检验次数」的隐藏校验规则：【检验次数(insp_times)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-B95071FDA8F7 |
 | SCN-A81F0F35D156 | 编号规则 | 必填校验 | NEEDS_UI_EXPLORATION | 验证编号规则「前缀连接符」的必填校验规则：【前缀连接符(pref_conn)】✅ 是 | 为空时保存应被拦截 |  | RULE-FCC7847AACAE |
-| SCN-A8DB6BEC7321 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 处理」的反向校验规则：【删除】提示消息：E+MSG："确认删除该笔资料？" | 按操作说明执行 |  | RULE-6CEA5F1F269C |
+| SCN-A876A60E41B9 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「计价数量」的反向校验规则：【计价数量(prc_qty)】须大于 0，否则 E+MSG："计价数量须大于零！" | 按校验规则拦截或提示 |  | RULE-818214500BEA |
 | SCN-ADE55A836474 | 客户品号 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户品号「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 运营单元查询(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.管理状态(ops_unit.manage_status) = Y.生效，运营单元职能.职能编号(ops_unit.ops_unit_func.func_no) 包含 'sale_org '销售组织<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)… | 开窗：选择运营单元 | TC-CUSI-0008 | RULE-5681D703F254 |
 | SCN-E54268C3E33A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【品号财务信息.状态(item_fin_info.manage_status)】=N.未生效 或【品号财务信息.状态(item_fin_info.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-4025E30985F2 |
 | SCN-1FCAF93BF397 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.trans_obj_group.invalid | 按平台服务调用结果决定是否继续 |  | RULE-DB85CDE27E6F |
@@ -1618,7 +1618,7 @@
 | SCN-42A5D6973924 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「规格」的只读校验规则：【规格(item_spec)】✅ 是 | 字段不可编辑 | TC-SIPP-0001；TC-BASV-0001；TC-ISAL-0001；TC-PURQ-0036；TC-PURQ-0037；TC-PUR-0011；TC-PUR-0012；TC-PSTK-0019；TC-PSTK-0020；TC-PARR-0020；TC-PARR-0021；TC-PO-0017；TC-PO-0018；TC-PRTN-0001 | RULE-A3BB759B66FF |
 | SCN-C67E645B572E | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「不合格数量」的隐藏校验规则：【不合格数量(unq_qty)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-1EB03570D059 |
 | SCN-5B9D3C2072F4 | 编号规则 | 必填校验 | NEEDS_UI_EXPLORATION | 验证编号规则「后缀连接符」的必填校验规则：【后缀连接符(suff_conn)】✅ 是 | 为空时保存应被拦截 |  | RULE-10639359A66D |
-| SCN-A67DC7BF2C7D |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「审核 前置校验」的反向校验规则：【审核】检查 记账日期(`bk_date`)须 >= 应收启用期间起始日期，否则 E+MSG："记账日期不得小于应收启用期间！" | 校验不通过则操作被拦截 |  | RULE-9C6F3D7A2160；RULE-AE03692916FB |
+| SCN-DE13983C8CD7 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「单价」的反向校验规则：【单价(price)】须大于 0，否则 E+MSG："单价须大于零！" | 按校验规则拦截或提示 | TC-PURQ-0061；TC-PO-0055；TC-PRTN-0072 | RULE-37CB61D366CA |
 | SCN-97020577D552 | 客户品号 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户品号「客户编号」的开窗回填规则：【客户编号(cust_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择客户<br/>- 数据来源：调用 客户业务信息查询(bm.cust_biz_info.get) 接口<br/>- 入参条件：客户业务信息.状态(cust_biz_info.manage_status) =Y.生效、客户业务信息.运营单元编号(cust_biz_info.ops_unit_no)=【客户品号信息.运营单元编号(cust_item_no.ops_unit_no)】<br/>- 显示字段：客户业务信息.客户编号(cust_biz_info.cust_no)、客户业务信息.客户简称(cust_biz_info… | 开窗：选择客户 | TC-CUSI-0004 | RULE-F51FE97E57C0 |
 | SCN-6067E9773124 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【品号财务信息.状态(item_fin_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-65396C03EAD7 |
 | SCN-E04EAB375D28 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.item_attr.create | 按平台服务调用结果决定是否继续 |  | RULE-518B0F172DBE；RULE-56DDAF8227D0 |
@@ -1626,7 +1626,7 @@
 | SCN-A226A4817795 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「计价单位名称」的只读校验规则：【计价单位名称(prc_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-DB7D478B7128 |
 | SCN-78D019058768 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「待判定业务数量」的隐藏校验规则：【待判定业务数量(wait_judge_biz_qty)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-3C079DA97CA2 |
 | SCN-BAF15B04FAC4 | 编号规则 | 必填校验 | NEEDS_UI_EXPLORATION | 验证编号规则「自动编码方式」的必填校验规则：【自动编码方式(auto_code_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-4AC8372B0452 |
-| SCN-C0F32F4F87B9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「红冲 前置校验」的反向校验规则：【红冲】检查 红冲状态(`rvs_stat`)须='1.未红冲'，否则 E+MSG："红冲生成之单据不可再次红冲！" | 校验不通过则操作被拦截 |  | RULE-9775B6F047FD；RULE-1180521146B1 |
+| SCN-8EDEBD8915AD |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「折扣率」的反向校验规则：【折扣率(disc_rate)】须大于等于 0，否则 E+MSG："折扣率须大于等于零！" | 按校验规则拦截或提示 | TC-PRTN-0074 | RULE-9018206990F9 |
 | SCN-855E2D5550F2 | 客户品号 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户品号「品号」的开窗回填规则：【品号(item_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择品号<br/>- 数据来源：调用 查询品号销售信息(bm.item_sales_info.get)接口<br/>- 入参条件：品号销售信息.状态(item_sales_info.manage_status) =Y.生效、品号销售信息.运营单元编号(item_sales_info.ops_unit_no)=【客户品号信息.运营单元编号(cust_item_no.ops_unit_no)】<br/>- 显示字段：品号销售信息.品号(item_sales_info.item_no) 、品号销售信息.品名(item_sales_… | 开窗：选择品号 | TC-CUSI-0006 | RULE-CE4F7B5720BD |
 | SCN-13E1F3419655 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「取消生效 可用条件」的权限与数据范围规则：【取消生效】【品号财务信息.状态(item_fin_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-F099F6609DBB |
 | SCN-A830739C60A3 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.item_attr.delete | 按平台服务调用结果决定是否继续 |  | RULE-71F5FD21CD3E |
@@ -1634,7 +1634,7 @@
 | SCN-4F4A2554979D |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应付「折扣额」的只读校验规则：【折扣额(disc_amt)】✅ 是 | 字段不可编辑 | TC-PRTN-0001 | RULE-B22EC97567F3 |
 | SCN-4F6471A54982 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「允收业务数量」的隐藏校验规则：【允收业务数量(accep_biz_qty)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-71778C1571E5 |
 | SCN-24C4B676CD86 | 编号规则 | 必填校验 | NEEDS_UI_EXPLORATION | 验证编号规则「日期编码依据」的必填校验规则：【日期编码依据(date_code_basis)】✅ 是 | 为空时保存应被拦截 |  | RULE-BDBD0B579FE7 |
-| SCN-34988AEDE730 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「红冲 处理」的反向校验规则：【红冲】提示消息：E+MSG："确认红冲该笔应收单？" | 按操作说明执行 |  | RULE-05BDB731BE6E；RULE-2D303DFC5A07 |
+| SCN-C5BBBAD9B32B |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「生产运营单元编号」的反向校验规则：【生产运营单元编号(prodn_ops_unit_no)】不可为空，否则 E+MSG："生产运营单元不可为空！" | 按校验规则拦截或提示 |  | RULE-7055E6E6B226 |
 | SCN-C0CC5CAFCABA | 客户财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户财务信息「客户编号」的开窗回填规则：【客户编号(cust_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择客户<br/>- 数据来源：调用 客户基本信息查询(bm.cust_base_info.get) 接口<br/>- 入参条件：客户基本信息.状态(cust_base_info.manage_status) <> V.失效<br/>- 显示字段：客户基本信息.客户编号(cust_base_info.cust_no)、客户基本信息.客户简称(cust_base_info.cust_sname)、客户基本信息.客户名称(cust_base_info.cust_name)、客户基本信息.客户群组编号(cust_base_in… | 开窗：选择客户 | TC-CUSF-0004 | RULE-C48D7A5BB6CB |
 | SCN-8B43F893AEF6 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-2B09910E15BD |
 | SCN-EF34BFB45673 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.item_attr.valid | 按平台服务调用结果决定是否继续 |  | RULE-B4C58DED18EE |
@@ -1642,7 +1642,7 @@
 | SCN-B2DB8EF2A120 |  | 只读校验 | NEEDS_CONFIRMATION | 验证应付「编辑 前置校验」的只读校验规则：【编辑】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可修改！" | 校验不通过则操作被拦截 |  | RULE-1E3AD0E9B268 |
 | SCN-47C03C28F60B | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「特采业务数量」的隐藏校验规则：【特采业务数量(spad_biz_qty)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-55A264BFD7F5 |
 | SCN-0F1A53CDE331 | 编号规则 | 必填校验 | NEEDS_UI_EXPLORATION | 验证编号规则「年度位数类型」的必填校验规则：【年度位数类型(year_digit_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-BA5E6142F810 |
-| SCN-515583F2DC85 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「取消红冲 前置校验」的反向校验规则：【取消红冲】检查 红冲状态(`rvs_stat`)须='2.已红冲'，否则 E+MSG："该单据未红冲！" | 校验不通过则操作被拦截 |  | RULE-FA57B319D005 |
+| SCN-22946F456933 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据1类型」的反向校验规则：【财务参考单据1类型(fin_ref_doc1_type)】不可为空，否则 E+MSG："财务参考单据1类型不可为空！" | 按校验规则拦截或提示 |  | RULE-41F44B13EF2D |
 | SCN-C3AB98D96370 | 客户财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户财务信息「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 运营单元查询(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元职能.职能编号(ops_unit.ops_unit_func.func_no) 包含 'acct_org' 核算组织 、运营单元.状态(ops_unit.manage_status) = Y.生效 <br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)… | 开窗：选择运营单元 | TC-CUSF-0006 | RULE-570615B6E9E7 |
 | SCN-4658DC779A30 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【品号通用信息.状态(item_gen_info.manage_status)】=N.未生效 | 按操作说明执行 |  | RULE-76EB10B9276A；RULE-991C8FD86904 |
 | SCN-8001235835F6 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.item_attr.invalid | 按平台服务调用结果决定是否继续 |  | RULE-D3A25AA6A53E |
@@ -1650,7 +1650,7 @@
 | SCN-9F1E2BDC6E81 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-C5A8DC10245F |
 | SCN-1E1DE3CEDDB7 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「报废业务数量」的隐藏校验规则：【报废业务数量(scrap_biz_qty)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-EDDE8C60A085 |
 | SCN-B69592C9E3AA | 编号规则 | 必填校验 | NEEDS_UI_EXPLORATION | 验证编号规则「流水号位数」的必填校验规则：【流水号位数(serl_digit)】✅ 是 | 为空时保存应被拦截 |  | RULE-1B5438FBD043 |
-| SCN-484A70A12946 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「取消红冲 处理」的反向校验规则：【取消红冲】提示消息：E+MSG："确认取消红冲？将删除红冲生成之应收单！" | 按操作说明执行 |  | RULE-D5891E9620CE |
+| SCN-E5AB9213D972 |  | 反向校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据2类型」的反向校验规则：【财务参考单据2类型(fin_ref_doc2_type)】不可为空，否则 E+MSG："财务参考单据2类型不可为空！" | 按校验规则拦截或提示 |  | RULE-69AE2940E790 |
 | SCN-045F24C5DC5D | 客户财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户财务信息「收款业务员编号」的开窗回填规则：【收款业务员编号(colln_slsm_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) = 【客户财务信息.运营单元编号(cust_fin_info.ops_unit_no)】，员工.状态(empl.manage_status) = Y.生效<br/>- 显示字段：员工.员工编号(empl.empl_no)，员工.员工姓名(empl.empl_name)，员工.部门编号(empl_dept_info.d… | 开窗：选择员工 | TC-CUSF-0007 | RULE-3EA9A10A32CE |
 | SCN-AF423EA978BE |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【品号通用信息.状态(item_gen_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-791921405B0B |
 | SCN-88426C4AD141 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.item_group.create | 按平台服务调用结果决定是否继续 |  | RULE-BD21BD23ABDD；RULE-15A2EEF84A10 |
@@ -1658,7 +1658,7 @@
 | SCN-86A974BDE284 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-1465913776FD |
 | SCN-01060F6FE4C7 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「拒收业务数量」的隐藏校验规则：【拒收业务数量(rej_biz_qty)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-7F8F960271E8 |
 | SCN-0036178ABD6A | 编号规则 | 必填校验 | NEEDS_UI_EXPLORATION | 验证编号规则「编码类型」的必填校验规则：【编码类型(code_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-064E5B2D5CBF |
-| SCN-E7B28A5EA3C3 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「补录税务发票 前置校验」的反向校验规则：【补录税务发票】检查 状态(`manage_status`)须='Y.已审核'，否则 E+MSG："应收单不存在或未审核，不可补录税务发票！"（`VD_recev_doc_00054`） | 校验不通过则操作被拦截 |  | RULE-395A242BC67B |
+| SCN-88F2EB0B037C |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的反向校验规则：【保存】检查 税区编号(`tax_dist_no`)不可为空，否则 E+MSG："税区编号不可为空，请检查运营单元核算参数的所属税区！" | 校验不通过则操作被拦截 |  | RULE-E4DA2E301C62 |
 | SCN-312F72086547 | 客户财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户财务信息「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择收款条件<br/>- 数据来源：调用 查询收付款条件(bm.colln_pmt_terms.get)<br/>- 入参条件：收付款条件.状态(colln_pmt_terms.manage_status)= Y、收付款条件.收付款(colln_pmt_terms.colln_pmt)= (0.收付款皆适用 or 2.收款条件)<br/>- 显示字段：收付款条件.付款条件编号(colln_pmt_terms.pmt_terms_no)、收付款条件.付款条件名称(colln_pmt_terms.pmt_ter… | 开窗：选择收款条件 | TC-CUSF-0008 | RULE-04F79C710A40 |
 | SCN-DCE92788358F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「复制 可用条件」的权限与数据范围规则：【复制】拥有品号新增按钮权限时可操作，否则禁用 | 按操作说明执行 |  | RULE-16547177BAAA |
 | SCN-9F458F92CA08 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.item_group.delete | 按平台服务调用结果决定是否继续 |  | RULE-DD7ADBC6D81D |
@@ -1666,7 +1666,7 @@
 | SCN-8995B2A051B5 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「存货暂估冲回方式（存货固资）」的只读校验规则：【存货暂估冲回方式（存货固资）(invnt_pesti_rvsl_mode)】✅ 是；只读条件：当 暂估单模式标识(pesti_doc_mode_flag)='N' 时只读 | 字段不可编辑 |  | RULE-B26D47E87382 |
 | SCN-984EC125B858 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「判定日期」的隐藏校验规则：【判定日期(judge_date)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-4E178AF89BFD |
 | SCN-D0E3A8633889 |  | 必填校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的必填校验规则：【保存】必填校验：编码规则编号（取号后不得为空）、前缀连接符、后缀连接符、自动编码方式、日期编码依据、年度位数类型、流水号位数、编码类型 不可为空白 | 校验不通过则操作被拦截 |  | RULE-A7BA7DFBDC95 |
-| SCN-A21E28E86C9F | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「坏账准备计提比率」的反向校验规则：【坏账准备计提比率(pvn_acrl_rate)】输入值须落在 0~1 区间（对应 0%~100%），否则 E+MSG："计提比率需在 0%~100% 之间，请重新输入！" | 按校验规则拦截或提示 |  | RULE-D8D93AA8B898 |
+| SCN-10A4A937705B |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 前置校验」的反向校验规则：【删除】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可删除！" | 校验不通过则操作被拦截 |  | RULE-ABA3F0C5ADB1 |
 | SCN-6EDE378B1268 | 客户财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户财务信息「结算方式编号」的开窗回填规则：【结算方式编号(stlmt_mode_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择结算方式<br/>- 数据来源：调用 结算方式查询(bm.stlmt_mode.get) 接口<br/>- 入参条件：结算方式.状态(stlmt_mode.manage_status) = Y.已生效、结算方式应用组织.运营单元编号(stlmt_mode_org.ops_unit_no)=【客户财务信息.运营单元编号(cust_fin_info.ops_unit_no)】<br/>- 显示字段：结算方式.结算方式编号(stlmt_mode.stlmt_mode_no)、结算… | 开窗：选择结算方式 | TC-CUSF-0009 | RULE-BF8DD2275F20 |
 | SCN-65A93291A225 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「取消生效 可用条件」的权限与数据范围规则：【取消生效】【品号通用信息.状态(item_gen_info.manage_status)】=Y | 按操作说明执行 |  | RULE-D7CF79B11953 |
 | SCN-BB7B27E87C1C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.item_group.valid | 按平台服务调用结果决定是否继续 |  | RULE-EAF7C9168CE5 |
@@ -1674,7 +1674,7 @@
 | SCN-77D6CB400B0A | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「价款存货调整业务类型」的只读校验规则：【价款存货调整业务类型(price_invnt_adj_biz_type)】✅ 是；只读条件：当 价款差异实时调整(price_diff_immed_adj)='N' 时只读 | 字段不可编辑 |  | RULE-7B80410B34E6 |
 | SCN-43140AAF5C3C | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「扣已到货量」的隐藏校验规则：【扣已到货量(ded_arrd_qty)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-36C1433F179C |
 | SCN-014ECF456294 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务域」的必填校验规则：【业务域(biz_reg)】✅ 是 | 为空时保存应被拦截 |  | RULE-4986C4154291 |
-| SCN-E0DBD0148F5C |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「整体操作 后置处理」的反向校验规则：【整体操作】回参为空（无记录）时提示「未找到当前运营单元的核算参数，请先维护核算参数」并退出 | 按操作说明执行 |  | RULE-0DB0D4C83791 |
+| SCN-A8DB6BEC7321 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「删除 处理」的反向校验规则：【删除】提示消息：E+MSG："确认删除该笔资料？" | 按操作说明执行 |  | RULE-6CEA5F1F269C |
 | SCN-B8E8BE11950A | 客户财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户财务信息「交易货币编号」的开窗回填规则：【交易货币编号(trans_ccy_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择货币<br/>- 数据来源：调用 查询货币(bm.ccy.get) 接口<br/>- 入参条件：货币.状态(ccy.manage_status) = Y.生效<br/>- 显示字段：货币.货币编号(ccy.ccy_no)、货币.货币名称(ops_unit.ccy_name)<br/>- 默认排序：货币.货币编号(ccy.ccy_no)升序<br/>- 回填映射：[货币.货币编号(ccy.ccy_no)] →【客户业务信息.交易货币编号(cust_biz_info.trans_ccy_no)】 | 开窗：选择货币 | TC-CUSF-0014 | RULE-CCC8E2AB37CC |
 | SCN-4F240F57AD1B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-AB5CE2F245E6 |
 | SCN-097F4B0C5C17 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.item_group.invalid | 按平台服务调用结果决定是否继续 |  | RULE-535B135CE01F |
@@ -1682,7 +1682,7 @@
 | SCN-B3D43A92B074 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「费用分摊存货调整业务类型」的只读校验规则：【费用分摊存货调整业务类型(exp_alloc_invnt_adj_biz_type)】✅ 是；只读条件：当 费用分摊差异实时调整(exp_alloc_diff_immed_adj)='N' 时只读 | 字段不可编辑 |  | RULE-B91421242825 |
 | SCN-0C08FDBA7782 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「破坏业务数量」的隐藏校验规则：【破坏业务数量(dmge_biz_qty)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-7873B78EBE18 |
 | SCN-068807CC355F | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的必填校验规则：【业务性质(biz_prop)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0016；TC-INVB-0011 | RULE-7770726AD01D |
-| SCN-5D9078D8E12E |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「编辑 后置处理」的反向校验规则：【编辑】回参为空（无记录）时提示「未找到当前运营单元的核算参数，请先维护核算参数」并退出 | 按操作说明执行 |  | RULE-7E6B962B3051 |
+| SCN-A67DC7BF2C7D |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「审核 前置校验」的反向校验规则：【审核】检查 记账日期(`bk_date`)须 >= 应收启用期间起始日期，否则 E+MSG："记账日期不得小于应收启用期间！" | 校验不通过则操作被拦截 |  | RULE-9C6F3D7A2160；RULE-AE03692916FB |
 | SCN-73F2C06D47F9 | 客户财务信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户财务信息「金融机构编号」的开窗回填规则：【金融机构编号(fi_no)】开窗：单选 | 开窗：按开窗说明 |  | RULE-568E32D9A392 |
 | SCN-F9971D031102 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【品号采购信息.状态(item_pur_info.manage_status)】=N.未生效 | 按操作说明执行 |  | RULE-9E9EFBDDEBA8；RULE-9486B9A3CA85 |
 | SCN-4EEEDA52BACF |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】●调用接口：新增品号财务信息(bm.item_fin_info.create)，其中API为当前所选业务服务的 create 接口。 | 按平台服务调用结果决定是否继续 |  | RULE-B2D03157F197；RULE-417C846D6FCE |
@@ -1690,7 +1690,7 @@
 | SCN-C57DE6BA090D | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-96C88DAD5321 |
 | SCN-A6124EEBF1C0 | 质检业务单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「次序号」的隐藏校验规则：【次序号(sub_seq)】✅ 是 | 字段不展示 | TC-QICHK-0002 | RULE-BE80E517EEC3 |
 | SCN-59617AECCC9A | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的必填校验规则：【业务单别(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0003；TC-INVB-0003 | RULE-C967B7220372 |
-| SCN-43B67A5AB4D7 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的反向校验规则：【保存】兜底纠正后，再按下列顺序校验（均基于纠正后的值判定） | 校验不通过则操作被拦截 |  | RULE-73E4B96AE888 |
+| SCN-C0F32F4F87B9 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「红冲 前置校验」的反向校验规则：【红冲】检查 红冲状态(`rvs_stat`)须='1.未红冲'，否则 E+MSG："红冲生成之单据不可再次红冲！" | 校验不通过则操作被拦截 |  | RULE-9775B6F047FD；RULE-1180521146B1 |
 | SCN-585AEA291F56 | 客户基本信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户基本信息「客户群组编号」的开窗回填规则：【客户群组编号(cust_group_no)】开窗：- 开窗条件：<br/> - 开窗标题：选择交易对象群组<br/> - 数据来源：调用 查询交易对象群组(bm.trans_obj_group.get) 接口<br/> - 入参条件：交易对象群组.状态(trans_obj_group.manage_status) = Y.生效，交易对象群组.交易对象类型(trans_obj_group.trans_obj_type) = 1.客户<br/> - 显示字段：交易对象群组.群组编号(trans_obj_group.trans_obj_group_no)、交易对象群组.群组名称(trans_obj… | 开窗：选择交易对象群组 | TC-CUST-0010 | RULE-AD08A1C5B997 |
 | SCN-169E7AB50F58 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【品号采购信息.状态(item_pur_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-224D91206194 |
 | SCN-7EF4AA1D4EEA |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】调用接口：生效品号财务信息(bm.item_fin_info.valid)，其中API为当前所选业务服务的 valid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-D0221CE8BEB1；RULE-71CFECEBD817 |
@@ -1698,7 +1698,7 @@
 | SCN-1D990C71C3B4 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-97CB831E606A |
 | SCN-393BB94A4436 | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「业务性质」的隐藏校验规则：【业务性质(biz_prop)】✅ 是 | 字段不展示 | TC-PUR-0002 | RULE-AACB4F756F15 |
 | SCN-E506EF44A65D | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的必填校验规则：【业务单别名称(biz_type_name)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0004 | RULE-6EA8BF440D70 |
-| SCN-86DAB6729D86 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 后置处理」的反向校验规则：【保存】透传必带项（缺失会被服务端校验拦截）：运营单元核算参数.记账本位币(ops_unit_calc_param.fc)、运营单元核算参数.所属税区编号(ops_unit_calc_param.blng_tax_dist_no)、运营单元核算参数.货币汇率表编号(ops_unit_calc_param.ccy_er_table_no)、运营单元核算参数.会计期间表编号(ops_unit_calc_param.acctg_perid_table_no) | 按操作说明执行 |  | RULE-D684138A8D0E |
+| SCN-34988AEDE730 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「红冲 处理」的反向校验规则：【红冲】提示消息：E+MSG："确认红冲该笔应收单？" | 按操作说明执行 |  | RULE-05BDB731BE6E；RULE-2D303DFC5A07 |
 | SCN-8B26E014FB78 | 客户基本信息 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证客户基本信息「属性值」的开窗回填规则：【属性值(attr_value)】开窗：- 开窗条件：Query A.交易对象属性.取值方式(trans_obj_attr.value_mode) =1.枚举 <br/>- 开窗标题：选择属性<br/>- 数据来源：调用查询交易对象属性(bm.trans_obj_attr.get)<br/>- 入参条件：交易对象属性.属性编号(trans_obj_attr.attr_no)、交易对象属性.状态(trans_obj_attr.manage_status) = Y<br/>- 显示字段：交易对象属性明细.属性值(trans_obj_attr_d.attr_value)、交易对象属性明细.属性值描述… | 开窗：选择属性 |  | RULE-6B18C622B5A4 |
 | SCN-66A66B674E15 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「取消生效 可用条件」的权限与数据范围规则：【取消生效】【品号采购信息.状态(item_pur_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-2A815D686D05 |
 | SCN-CDA54C7E9753 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】调用接口：失效品号财务信息(bm.item_fin_info.invalid)，其中API为当前所选业务服务的 invalid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-8632851D3CC7 |
@@ -1706,7 +1706,7 @@
 | SCN-4A6AB1144BF4 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度-应付」的只读校验规则：【启用年度-应付(ena_year_pay)】✅ 是；只读条件：IF 运营单元核算参数.启用年度-应付(ops_unit_calc_param.ena_year_pay)<>SPACE AND 运营单元核算参数.启用期号-应付(ops_unit_calc_param.ena_perid_no_pay)<>SPACE THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-382BC8C26FF6 |
 | SCN-5FAB5CCAB47B | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「第二单位编号」的隐藏校验规则：【第二单位编号(sec_unit_no)】✅ 是；隐藏条件：IF [公用参数.计量体系(param.meas_sys)] =S.单一计量<br/> 隐藏<br/>ENDIF | 字段不展示 |  | RULE-FAEF92F6D867 |
 | SCN-75717B5D1801 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「自动编码方式」的必填校验规则：【自动编码方式(auto_code_mode)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0015；TC-INVB-0010 | RULE-5BB01C142036 |
-| SCN-B3A33A39A6A9 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度应收」的反向校验规则：【启用年度应收(ena_year_recev)】输入值须为 1900~9998 的整数，否则 E+MSG："请输入有效的会计年度值！" | 按校验规则拦截或提示 |  | RULE-10C0863C8F72；RULE-F9965C3A92FD |
+| SCN-515583F2DC85 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「取消红冲 前置校验」的反向校验规则：【取消红冲】检查 红冲状态(`rvs_stat`)须='2.已红冲'，否则 E+MSG："该单据未红冲！" | 校验不通过则操作被拦截 |  | RULE-FA57B319D005 |
 | SCN-250E2AFB888C | 交易对象属性 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证交易对象属性「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语开窗 | 开窗：按开窗说明 | TC-TOA-0017 | RULE-367D5A2FB8BE |
 | SCN-333CB00B184B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【品号销售信息.状态(item_sales_info.manage_status)】=N.未生效 | 按操作说明执行 |  | RULE-41B06B6E6C3F；RULE-93C863A4228C |
 | SCN-321FAAF2C17A |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】调用接口：删除品号财务信息(bm.item_fin_info.delete)，其中API为当前所选业务服务的 delete 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-261C87E46BD1 |
@@ -1714,7 +1714,7 @@
 | SCN-EF2770F750A9 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号-应付」的只读校验规则：【启用期号-应付(ena_perid_no_pay)】✅ 是；只读条件：IF (运营单元核算参数.启用年度-应付(ops_unit_calc_param.ena_year_pay)<>SPACE AND 运营单元核算参数.启用期号-应付(ops_unit_calc_param.ena_perid_no_pay)<>SPACE) OR 运营单元核算参数.启用年度-应付(ops_unit_calc_param.ena_year_pay)=SPACE THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-7C9B775DEF28 |
 | SCN-BCBBF0F8B68D | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「第二单位数量」的隐藏校验规则：【第二单位数量(sec_unit_qty)】✅ 是；隐藏条件：IF [公用参数.计量体系(param.meas_sys)] =S.单一计量<br/> 隐藏<br/>ENDIF | 字段不展示 |  | RULE-D3E9DF393E48 |
 | SCN-74CD362C8017 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的必填校验规则：【年位数(year_digit_type)】✅ 是；必填条件：当 自动编码方式(auto_code_mode) IN ('1.年月日+流水码','3.年月+流水码') 时必填 | 为空时保存应被拦截 |  | RULE-E777F4B1E1CF |
-| SCN-4A2F993A91DD | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号应收」的反向校验规则：【启用期号应收(ena_perid_no_recev)】所选期间须存在于 公司会计期间信息（当前运营单元、当前会计年度、会计期间作用范围='4'、且非调整期）中，否则 E+MSG："所选会计期间不存在或为调整期，请重新选择！" | 按校验规则拦截或提示 |  | RULE-7A612200CCF2 |
+| SCN-484A70A12946 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「取消红冲 处理」的反向校验规则：【取消红冲】提示消息：E+MSG："确认取消红冲？将删除红冲生成之应收单！" | 按操作说明执行 |  | RULE-D5891E9620CE |
 | SCN-FE9D49063285 | 货币 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证货币「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语查询 | 开窗：按开窗说明 | TC-CCY-0007 | RULE-CC6B76DCD67F |
 | SCN-938D29E65A3D |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【品号销售信息.状态(item_sales_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-FD5539467074 |
 | SCN-D7E0C3F035F9 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「取消生效 后置处理」的接口契约规则：【取消生效】调用接口：取消生效品号财务信息(bm.item_fin_info.cancel_valid)，其中API为当前所选业务服务的 cancel_valid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-B57051DEFC22 |
@@ -1722,7 +1722,7 @@
 | SCN-7B30A5AE48A2 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-应付」的只读校验规则：【启用期间序号-应付(ena_perid_seq_pay)】✅ 是 | 字段不可编辑 |  | RULE-4BC34BF74B93 |
 | SCN-4F7315E67E6D | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「采购运营单元编号」的隐藏校验规则：【采购运营单元编号(pur_ops_unit_no)】✅ 是；隐藏条件：隐藏栏位 | 字段不展示 | TC-PUR-0002 | RULE-CB9F3721A1C8 |
 | SCN-E2EE6A9757A7 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的必填校验规则：【流水号位数(serl_digit)】✅ 是；必填条件：当 自动编码方式(auto_code_mode)<>'7.手工输入' 时必填 | 为空时保存应被拦截 |  | RULE-28A45EE95F1F |
-| SCN-312457565EA2 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号应收」的反向校验规则：【启用期间序号应收(ena_perid_seq_recev)】值为空时不允许提交，由「处理」操作前校验拦截并提示 | 按校验规则拦截或提示 |  | RULE-14BAB3CB5D76 |
+| SCN-E7B28A5EA3C3 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「补录税务发票 前置校验」的反向校验规则：【补录税务发票】检查 状态(`manage_status`)须='Y.已审核'，否则 E+MSG："应收单不存在或未审核，不可补录税务发票！"（`VD_recev_doc_00054`） | 校验不通过则操作被拦截 |  | RULE-395A242BC67B |
 | SCN-70BD3C7E744B | 质检业务单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证质检业务单「运营单元编号」的开窗回填规则：【运营单元编号(CUS_UDF001)】开窗：- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效<br/> 运营单元职能.职能编号(ops_unit_func.func_no) = ‘qual org’<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运营单元.运营单元编号(ops… | 开窗：选择运营单元 | TC-QICHK-0012 | RULE-23EBB4BDDDED |
 | SCN-60AF5448C021 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「取消生效 可用条件」的权限与数据范围规则：【取消生效】【品号销售信息.状态(item_sales_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-E25E2CB79804 |
 | SCN-381A19A67FD2 | 品号通用信息 | 接口契约 | NOT_UI_OBSERVABLE | 验证品号通用信息「库存单位编号」的接口契约规则：【库存单位编号(invnt_unit_no)】调用接口：查询计量单位bm.meas_unit.get；入参：计量单位.单位编号(meas_unit.unit_no)=【品号通用信息.库存单位编号(item_gen_info.unit_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-65949C6E0031；RULE-7F12A8107959 |
@@ -1730,7 +1730,7 @@
 | SCN-D383F47B19D1 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务域」的只读校验规则：【业务域(biz_reg)】✅ 是 | 字段不可编辑 | TC-BZP-0001；TC-INVB-0001 | RULE-D46911AD1F61 |
 | SCN-0CA4EF1256D0 | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「库存单位数量」的隐藏校验规则：【库存单位数量(invnt_unit_qty)】✅ 是 | 字段不展示 | TC-PUR-0002 | RULE-8CD3CF120D9C |
 | SCN-16F32B9DACA9 | 业务类型结算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-151FE1CD49C1 |
-| SCN-1C87DD2EC54C |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「整体操作 后置处理」的反向校验规则：【整体操作】// 不提前提示、不提前退出：自然年下本作业仍有维护动作（维护启用期间），只切换输入方式与校验口径，不套用会计期间表 / 会计期间信息的「提示后退出」处理 | 按操作说明执行 |  | RULE-EF490D3A2BE5 |
+| SCN-A21E28E86C9F | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「坏账准备计提比率」的反向校验规则：【坏账准备计提比率(pvn_acrl_rate)】输入值须落在 0~1 区间（对应 0%~100%），否则 E+MSG："计提比率需在 0%~100% 之间，请重新输入！" | 按校验规则拦截或提示 |  | RULE-D8D93AA8B898 |
 | SCN-089A4CC8C788 | 质检业务单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证质检业务单「业务单位」的开窗回填规则：【业务单位(CUS_UDF006)】开窗：单选 | 开窗：按开窗说明 |  | RULE-787E7A9DAE6F |
 | SCN-A28D98DA0467 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-3FDB18D24430 |
 | SCN-825C6B2D03E5 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.item_gen_info.create | 按平台服务调用结果决定是否继续 |  | RULE-B87F408AD4BB；RULE-2457605F558A |
@@ -1738,7 +1738,7 @@
 | SCN-2B7D0D6CDF4E | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的只读校验规则：【年位数(year_digit_type)】✅ 是；只读条件：当 自动编码方式(auto_code_mode) IN ('6.流水码','7.手工输入') 时只读 | 字段不可编辑 | TC-BZP-0012；TC-BZP-0013；TC-INVB-0007；TC-INVB-0008 | RULE-1A9BF5F32185 |
 | SCN-6804EFCD4DDB | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「库存单位编号」的隐藏校验规则：【库存单位编号(invnt_unit_no)】✅ 是 | 字段不展示 | TC-PUR-0002 | RULE-BE5276BF55F7 |
 | SCN-A768F779A77E | 业务类型结算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「业务单别」的必填校验规则：【业务单别(biz_type_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-9CD5D8907FB7 |
-| SCN-F6787424DA06 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「载入（进入作业） 后置处理」的反向校验规则：【载入（进入作业）】// 不提前提示、不提前退出：自然年下本作业仍有维护动作（维护启用期间），只切换输入方式与校验口径，不套用会计期间表 / 会计期间信息的「提示后退出」处理 | 按操作说明执行 |  | RULE-565ED4C3BF36 |
+| SCN-E0DBD0148F5C |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「整体操作 后置处理」的反向校验规则：【整体操作】回参为空（无记录）时提示「未找到当前运营单元的核算参数，请先维护核算参数」并退出 | 按操作说明执行 |  | RULE-0DB0D4C83791 |
 | SCN-58E35FFB451E | 质检业务单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证质检业务单「备注」的开窗回填规则：【备注(rmk)】开窗：常用语开窗 | 开窗：按开窗说明 | TC-QICHK-0014 | RULE-D1A6911E86FE |
 | SCN-9A129C8A195E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【客户业务信息.状态(cust_biz_info.manage_status)】=N.未生效 | 按操作说明执行 |  | RULE-50332558C1DF；RULE-9E01D10B4BFC |
 | SCN-AE5CB3A87FFC |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.item_gen_info.delete | 按平台服务调用结果决定是否继续 |  | RULE-37F462F18AE0 |
@@ -1746,7 +1746,7 @@
 | SCN-2308D9C71408 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的只读校验规则：【流水号位数(serl_digit)】✅ 是；只读条件：当 自动编码方式(auto_code_mode)='7.手工输入' 时只读 | 字段不可编辑 | TC-BZP-0005；TC-BZP-0006 | RULE-DD44703E45DE |
 | SCN-63A67292F9B5 | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「参考计价单位编号」的隐藏校验规则：【参考计价单位编号(ref_prc_unit_no)】✅ 是 | 字段不展示 |  | RULE-436B8FED0474 |
 | SCN-DA2F8DDD6B51 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-03946203A593 |
-| SCN-4E1B31A9F2FF |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「处理 前置校验」的反向校验规则：【处理】入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no)=当前登录运营单元 | 校验不通过则操作被拦截 |  | RULE-69B79CDC05BC |
+| SCN-5D9078D8E12E |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「编辑 后置处理」的反向校验规则：【编辑】回参为空（无记录）时提示「未找到当前运营单元的核算参数，请先维护核算参数」并退出 | 按操作说明执行 |  | RULE-7E6B962B3051 |
 | SCN-52EB835D53B9 | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「单据日期」的开窗回填规则：【单据日期(doc_date)】开窗：[F2]日期开窗 | 开窗：按开窗说明 | TC-PUR-0036 | RULE-F0711BFB278F |
 | SCN-CE53C35F68E6 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【客户业务信息.状态(cust_biz_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-8E84CF059E0C |
 | SCN-927A33FD03A5 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 前置校验」的接口契约规则：【生效】①调用：检查单位间是否存在换算关系(bm.item_gen_info.unit_cnv.check) | 按平台服务调用结果决定是否继续 |  | RULE-15B42FB423EC |
@@ -1754,7 +1754,7 @@
 | SCN-EF6CA1A390B2 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「编码格式」的只读校验规则：【编码格式(CUS_biz_type_fmt)】✅ 是 | 字段不可编辑 |  | RULE-76A7241B6B94 |
 | SCN-FE473C963748 | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「参考计价数量」的隐藏校验规则：【参考计价数量(ref_prc_qty)】✅ 是 | 字段不展示 |  | RULE-AB46A8AEB6D0 |
 | SCN-12F36CB97A03 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「记账本位币」的必填校验规则：【记账本位币(fc)】✅ 是 | 为空时保存应被拦截 |  | RULE-A60D2980A97D |
-| SCN-332DB635FDC6 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「处理 处理」的反向校验规则：【处理】检查回参存在资料，且回参 公司会计期间信息明细.会计期间期号(co_acctg_perid_info_d.acctg_perid_no)=启用期号应收(ena_perid_no_recev)，否则 E+MSG："公司会计期间信息中不存在该会计年度与期间的资料，请重新选择！" 并终止处理 | 按操作说明执行 |  | RULE-55251768525A |
+| SCN-43B67A5AB4D7 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 前置校验」的反向校验规则：【保存】兜底纠正后，再按下列顺序校验（均基于纠正后的值判定） | 校验不通过则操作被拦截 |  | RULE-73E4B96AE888 |
 | SCN-E86CADD3E002 | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：<br/>单选 - - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择采购单别参数<br/>- 数据来源：查询采购单别(biz_type_pur_param_001)<br/>- 入参条件：业务类型采购参数.运营单元编号(biz_type_pur_param.ops_unit_no) = 【请购单.运营单元编号(requ_doc.ops_unit_no)】，业务类型采购参数.业务性质(biz_type_pur_param.biz_prop) IN (PO01 请购) <br/>- 显示字段：业务类型采购参数.业务类型编号(bi… | 开窗：选择采购单别参数 | TC-PUR-0037 | RULE-65E1C99AD657 |
 | SCN-6B6B28013B3B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「取消生效 可用条件」的权限与数据范围规则：【取消生效】【客户业务信息.状态(cust_biz_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-AD1CE9C15C26 |
 | SCN-4A50269658A2 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.item_gen_info.valid | 按平台服务调用结果决定是否继续 |  | RULE-4D2360F91ED5；RULE-94D67D315D4C |
@@ -1762,7 +1762,7 @@
 | SCN-B06BA7092F4D | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-027C6E289261 |
 | SCN-6B3B2B06F075 | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「参考采购单位编号」的隐藏校验规则：【参考采购单位编号(ref_pur_unit_no)】✅ 是 | 字段不展示 |  | RULE-23A8EAE8492E |
 | SCN-57589BB65269 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「会计期间表编号」的必填校验规则：【会计期间表编号(acctg_perid_table_no)】✅ 是；必填条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 必填 ENDIF | 为空时保存应被拦截 |  | RULE-2BE440FB5D04 |
-| SCN-95ABA4B54873 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「处理 后置处理」的反向校验规则：【处理】成功提示："应收启用期间设置成功！" | 按操作说明执行 |  | RULE-8CC8A30A3347 |
+| SCN-86DAB6729D86 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「保存 后置处理」的反向校验规则：【保存】透传必带项（缺失会被服务端校验拦截）：运营单元核算参数.记账本位币(ops_unit_calc_param.fc)、运营单元核算参数.所属税区编号(ops_unit_calc_param.blng_tax_dist_no)、运营单元核算参数.货币汇率表编号(ops_unit_calc_param.ccy_er_table_no)、运营单元核算参数.会计期间表编号(ops_unit_calc_param.acctg_perid_table_no) | 按操作说明执行 |  | RULE-D684138A8D0E |
 | SCN-CBA768AE349E | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「申请人编号」的开窗回填规则：【申请人编号(applt_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.状态(empl.status) = Y.生效，员工.离职日期(empl.leave_date) >= 当前系统日期<br/>- 显示字段：员工.员工编号(empl.empl_no)、员工.员工姓名(empl.empl_name)、<br/> 员工.部门编号(empl.dept_no)、员工.部门名称(empl.dept_name)<br/>- 默认排序：员工.员工编号(empl.em… | 开窗：选择员工 | TC-PUR-0039 | RULE-5ADE3630D32F |
 | SCN-E8209C273AB1 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【客户品号.状态(cust_item_no.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-165BD372D519 |
 | SCN-25554AE7CF30 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.item_gen_info.invalid | 按平台服务调用结果决定是否继续 |  | RULE-06FDB292B14F |
@@ -1770,7 +1770,7 @@
 | SCN-DE6C48E712E8 |  | 只读校验 | NEEDS_CONFIRMATION | 验证应收「整体操作 后置处理」的只读校验规则：【整体操作】打开空白的新增详情页；业务域按默认值带出 AR.应收领域（只读），自动编码方式默认「1.年月日+流水码」，前缀连接符默认「2.-」，状态默认「Y.生效」 | 按操作说明执行 |  | RULE-09F5F326157E |
 | SCN-6FC34C21363A | 请购单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证请购单「第二单位数量合计」的隐藏校验规则：【第二单位数量合计(total_sec_qty)】✅ 是；隐藏条件：IF [公用参数.计量体系(param.meas_sys)] =S.单一计量<br/> 隐藏<br/>ENDIF | 字段不展示 | TC-PUR-0005；TC-PUR-0006 | RULE-AE40BAFDBF1E |
 | SCN-D99317E7D7AF | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「货币汇率表编号」的必填校验规则：【货币汇率表编号(ccy_er_table_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-FECCED06C40D |
-| SCN-F6BABB82BAA2 | 编号规则 | 反向校验 | NEEDS_UI_EXPLORATION | 验证编号规则「编码规则编号」的反向校验规则：【编码规则编号(code_rule_no)】长度不可超过 50 个字符 | 按校验规则拦截或提示 |  | RULE-A4AD752CFD61 |
+| SCN-B3A33A39A6A9 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度应收」的反向校验规则：【启用年度应收(ena_year_recev)】输入值须为 1900~9998 的整数，否则 E+MSG："请输入有效的会计年度值！" | 按校验规则拦截或提示 |  | RULE-10C0863C8F72；RULE-F9965C3A92FD |
 | SCN-14C21439E404 | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「申请部门编号」的开窗回填规则：【申请部门编号(apply_dept_no)】开窗：单选 - - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择部门<br/>- 数据来源：调用 查询部门(bm.dept.get) 接口<br/>- 入参条件：部门.状态(dept.manage_status) = Y.生效 <br/>- 显示字段：部门.部门编号(dept.dept_no)、部门.部门名称(dept.dept_name)<br/>- 默认排序：部门.部门编号(dept.dept_no) 升序<br/>- 回填映射：[部门.部门编号(dept.dept_no)] →【请购单.申请部门编号(requ_doc.a… | 开窗：选择部门 | TC-PUR-0040 | RULE-8F600EE12FF6 |
 | SCN-6D73773D419E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【客户品号.状态(cust_item_no.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-94C943A192FB |
 | SCN-E3D4DF672845 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「复制 后置处理」的接口契约规则：【复制】新增数据时调用接口：新增品号通用信息(bm.item_gen_info.create) | 按平台服务调用结果决定是否继续 |  | RULE-D77CF3D56956 |
@@ -1778,7 +1778,7 @@
 | SCN-248CCAE0B60A |  | 只读校验 | NEEDS_CONFIRMATION | 验证应收「新增 后置处理」的只读校验规则：【新增】打开空白的新增详情页；业务域按默认值带出 AR.应收领域（只读），自动编码方式默认「1.年月日+流水码」，前缀连接符默认「2.-」，状态默认「Y.生效」 | 按操作说明执行 |  | RULE-A5464EA34853 |
 | SCN-9E6ED6CF7306 | 运营单元采购参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元采购参数「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-PURP-0002 | RULE-FC062232EB37 |
 | SCN-80054F53E9B5 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度-存货」的必填校验规则：【现行年度-存货(curr_year_invnt)】✅ 是 | 为空时保存应被拦截 |  | RULE-722F812F63F7 |
-| SCN-96D5ACD6A080 | 编号规则 | 反向校验 | NEEDS_UI_EXPLORATION | 验证编号规则「日期编码依据」的反向校验规则：【日期编码依据(date_code_basis)】编码方式为 7.手工输入 时，本字段不可为 1.系统日期、2.指定日期 | 按校验规则拦截或提示 |  | RULE-984D9C0DAF7E；RULE-2F5885DF35D4 |
+| SCN-4A2F993A91DD | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号应收」的反向校验规则：【启用期号应收(ena_perid_no_recev)】会计年度为空时不可开窗，否则 E+MSG："请先选择会计年度！" | 按校验规则拦截或提示 |  | RULE-4783079C63F6；RULE-7A612200CCF2 |
 | SCN-B767628F7FCF | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语查询 | 开窗：按开窗说明 | TC-PUR-0041 | RULE-018F1B2CB459 |
 | SCN-C7063C3D8782 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【客户财务信息.状态(cust_fin_info.manage_status)】=N.未生效 | 按操作说明执行 |  | RULE-7F67379049F6；RULE-31EF78119DDD |
 | SCN-6A9191DA2F10 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「取消生效 后置处理」的接口契约规则：【取消生效】● 调用接口：bm.item_gen_info.cancel_valid | 按平台服务调用结果决定是否继续 |  | RULE-103E98A9A2D5 |
@@ -1786,7 +1786,7 @@
 | SCN-1B7F9DDE8C94 | 业务类型应收参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-6E8349CCA81F |
 | SCN-8BE6584EA396 | 运营单元采购参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元采购参数「统计货币所属核算运营单元编号」的隐藏校验规则：【统计货币所属核算运营单元编号(stats_ccy_blng_ops_unit_no)】✅ 是 | 字段不展示 | TC-PURP-0002 | RULE-2431671ED6B7 |
 | SCN-2FE59767C434 | 运营单元核算参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号-存货」的必填校验规则：【现行期号-存货(curr_perid_no_invnt)】✅ 是 | 为空时保存应被拦截 |  | RULE-07877EA0F097 |
-| SCN-F8355128C621 | 编号规则 | 反向校验 | NEEDS_UI_EXPLORATION | 验证编号规则「年度位数类型」的反向校验规则：【年度位数类型(year_digit_type)】编码方式为 1.年月日+流水码 ~ 5.年+流水码 时，本字段不可为 1.无 | 按校验规则拦截或提示 |  | RULE-7E19F84667EB；RULE-C968025A5842；RULE-39289728EB3C |
+| SCN-312457565EA2 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号应收」的反向校验规则：【启用期间序号应收(ena_perid_seq_recev)】值为空时不允许提交，由「处理」操作前校验拦截并提示 | 按校验规则拦截或提示 |  | RULE-14BAB3CB5D76 |
 | SCN-7015B20F1BBF | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.组织职能(ops_unit.org_func) 包含 库存组织，运营单元.状态(ops_unit.manage_status) = Y.生效<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运营单元.运营单元编号(ops_… | 开窗：选择运营单元 | TC-PUR-0045 | RULE-7D862BF91B2F |
 | SCN-D444DBB1230F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【客户财务信息.状态(cust_fin_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-69E947105425 |
 | SCN-DFDF6F6484FC |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 前置校验」的接口契约规则：【保存】调用bm.item_pur_info.valid前校验： | 按平台服务调用结果决定是否继续 |  | RULE-06D027F52FFE |
@@ -1794,7 +1794,7 @@
 | SCN-439BC8D21883 | 业务类型应收参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「业务单别名称」的只读校验规则：【业务单别名称(CUS_biz_type_name)】✅ 是 | 字段不可编辑 |  | RULE-6E4F97B48676 |
 | SCN-77C989A1964A | 运营单元采购参数 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证运营单元采购参数「计价单位和采购单位须相同」的隐藏校验规则：【计价单位和采购单位须相同(prc_unit_and_pur_unit_rqd_same)】✅ 是 | 字段不展示 | TC-PURP-0002 | RULE-86148180C300 |
 | SCN-03352773C50D | 询价单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证询价单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0004 | RULE-30A2DA919E88 |
-| SCN-FC143FCF2BFF | 编号规则 | 反向校验 | NEEDS_UI_EXPLORATION | 验证编号规则「流水号位数」的反向校验规则：【流水号位数(serl_digit)】编码方式不为 7.手工输入 时，必须大于 0 | 按校验规则拦截或提示 |  | RULE-5A802DC800F4；RULE-E48E811356E4 |
+| SCN-1C87DD2EC54C |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「整体操作 后置处理」的反向校验规则：【整体操作】// 不提前提示、不提前退出：自然年下本作业仍有维护动作（维护启用期间），只切换输入方式与校验口径，不套用会计期间表 / 会计期间信息的「提示后退出」处理 | 按操作说明执行 |  | RULE-EF490D3A2BE5 |
 | SCN-94E0E2DE62BE | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择项目<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：项目.生效码(proj.manage_status) = Y.生效<br/>- 显示字段：项目.项目编号(proj.proj_no)、项目.项目名称(proj.proj_name)<br/>- 默认排序：项目.项目编号(proj.proj_no) 升序<br/>- 回填映射：[项目.项目编号(proj.proj_no)] → 【请购单.项目编号(requ_doc.proj_no)】 | 开窗：选择项目 | TC-PUR-0049 | RULE-B272649DD98D |
 | SCN-77C5DA957D3A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「取消生效 可用条件」的权限与数据范围规则：【取消生效】【客户财务信息.状态(cust_fin_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-0AAD1457F23A |
 | SCN-90925A89B92B |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.item_pur_info.create | 按平台服务调用结果决定是否继续 |  | RULE-A9BB9DD09D96；RULE-3BB74B816271 |
@@ -1802,7 +1802,7 @@
 | SCN-EA09032664EF | 业务类型应收参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「业务性质」的只读校验规则：【业务性质(CUS_biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-A1FD49CA4F3C |
 | SCN-94D45A96F20B | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-PSTK-0002 | RULE-0158F6EA139A |
 | SCN-ED8BDEA3FEB0 | 询价单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证询价单「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0008 | RULE-45AE1C0800FB |
-| SCN-CD922902E6E1 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「编辑 前置校验」的反向校验规则：【编辑】SHOW MSG "编号规则已生效，请先失效后再编辑。" | 校验不通过则操作被拦截 |  | RULE-425EBA308578；RULE-857DDDCC4FE8 |
+| SCN-F6787424DA06 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「载入（进入作业） 后置处理」的反向校验规则：【载入（进入作业）】// 不提前提示、不提前退出：自然年下本作业仍有维护动作（维护启用期间），只切换输入方式与校验口径，不套用会计期间表 / 会计期间信息的「提示后退出」处理 | 按操作说明执行 |  | RULE-565ED4C3BF36 |
 | SCN-ACFB64882C7B | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「品号」的开窗回填规则：【品号(item_no)】开窗：- 数据来源：调用查询方案：查询品号存货信息（ item_invnt_info_001 ）<br/>- 入参条件：品号存货信息.状态(item_invnt_info.manage_status) = Y.生效<br/> 运营单元=运营单元编号（ops_unit_no）<br/>- 显示字段：品号存货信息.品号(item_invnt_info.item_no)、品号通用信息.品名(item_gen_info.item_name)、品号存货信息.规格(item_invnt_info.item_spec)、品号存货信息.快捷码(item_invnt_info.shor… | 开窗：按开窗说明 |  | RULE-8DDF0D84E721 |
 | SCN-241296619D9F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【客户基本信息.状态(cust_base_info.manage_status)】=N.未生效 | 按操作说明执行 |  | RULE-AD73BDF7909F；RULE-B3DE6CB6A4E7 |
 | SCN-3FB6B15570CE |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.item_pur_info.delete | 按平台服务调用结果决定是否继续 |  | RULE-96F2B5C7BA1D |
@@ -1810,7 +1810,7 @@
 | SCN-A57CAF4CCEA9 | 业务类型应收参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-8CAB403F4DCB |
 | SCN-1EC2D36521F1 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「供应商名称」的隐藏校验规则：【供应商名称(supp_name)】✅ 是 | 字段不展示 | TC-PSTK-0002 | RULE-E4440DF9DDBC |
 | SCN-BF0C80B38400 | 询价单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证询价单「单号」的必填校验规则：【单号(doc_no)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0012 | RULE-454BC11E66B0 |
-| SCN-A71F8A014C7E |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】VD_code_rule_00001：编码方式不为 7.手工输入 时，流水号位数必须大于 0 | 校验不通过则操作被拦截 |  | RULE-A6F7AF580C06；RULE-E64549273F4D |
+| SCN-4E1B31A9F2FF |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「处理 前置校验」的反向校验规则：【处理】入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no)=当前登录运营单元 | 校验不通过则操作被拦截 |  | RULE-69B79CDC05BC |
 | SCN-A47D9C41F7C0 | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「单位编号」的开窗回填规则：【单位编号(unit_no)】开窗：单选 - - 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择品号单位<br/>- 数据来源：调用 [查询品号单位]接口<br/>- 入参条件：品号= 【请购单明细.品号(requ_doc_d.item_no)】<br/>- 显示字段：单位编号、单位名称<br/>- 默认排序：单位编号 升序<br/>- 回填映射：单位编号 →【请购单明细.单位编号(requ_doc_d.unit_no)】 | 开窗：选择品号单位 |  | RULE-152C3B230142 |
 | SCN-971DD66B14F1 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【客户基本信息.状态(cust_base_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-02FCBF025CF4 |
 | SCN-20A4B7AE5E05 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 前置校验」的接口契约规则：【生效】调用接口：查询品号采购信息(bm.item_pur_info.get) | 按平台服务调用结果决定是否继续 |  | RULE-55296A68BEAC |
@@ -1818,7 +1818,7 @@
 | SCN-590344F2D2C9 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-6839DE97B38C |
 | SCN-C33C2602C8B6 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「会计年度」的隐藏校验规则：【会计年度(acctg_year)】✅ 是 | 字段不展示 | TC-PSTK-0002 | RULE-0005086ECED0 |
 | SCN-D9AD88AE833D | 询价单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证询价单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0015 | RULE-4A912070617D |
-| SCN-62268B332AEA |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「删除 前置校验」的反向校验规则：【删除】SHOW MSG "编号规则已生效，请先失效后再删除。" | 校验不通过则操作被拦截 |  | RULE-2CC0732FD4B3；RULE-0E76EA02B580 |
+| SCN-332DB635FDC6 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「处理 处理」的反向校验规则：【处理】检查回参存在资料，且回参 公司会计期间信息明细.会计期间期号(co_acctg_perid_info_d.acctg_perid_no)=启用期号应收(ena_perid_no_recev)，否则 E+MSG："公司会计期间信息中不存在该会计年度与期间的资料，请重新选择！" 并终止处理 | 按操作说明执行 |  | RULE-55251768525A |
 | SCN-5EAC07733847 | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「需求日期」的开窗回填规则：【需求日期(dem_date)】开窗：[F2]日期开窗 | 开窗：按开窗说明 |  | RULE-AD96779C65E7 |
 | SCN-ABB143141C5D |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「取消生效 可用条件」的权限与数据范围规则：【取消生效】【客户基本信息.状态(cust_base_info.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-5A1F9426385F |
 | SCN-A1D8F6B5444F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.item_pur_info.valid | 按平台服务调用结果决定是否继续 |  | RULE-109DC47B76F8；RULE-E51343C03212 |
@@ -1826,7 +1826,7 @@
 | SCN-7DCDA39F598A | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「业务类型名称」的只读校验规则：【业务类型名称(biz_type_name)】✅ 是 | 字段不可编辑 |  | RULE-D57180C3ED3C |
 | SCN-BEB77612ACFE | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「会计期间序号」的隐藏校验规则：【会计期间序号(acctg_perid_seq)】✅ 是 | 字段不展示 | TC-PSTK-0002 | RULE-7909C300EA8E |
 | SCN-3411E66E04FE | 询价单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证询价单「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0016 | RULE-B8796F0C8328 |
-| SCN-F7291E613320 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的反向校验规则：【生效】SHOW MSG "状态需为失效，才可执行生效" | 校验不通过则操作被拦截 |  | RULE-63687D7A4FED；RULE-E0CBB2900308 |
+| SCN-95ABA4B54873 |  | 反向校验 | NEEDS_CONFIRMATION | 验证应收「处理 后置处理」的反向校验规则：【处理】成功提示："应收启用期间设置成功！" | 按操作说明执行 |  | RULE-8CC8A30A3347 |
 | SCN-FE9FFEB71E04 | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「仓库编号」的开窗回填规则：【仓库编号(whse_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择仓库<br/>- 数据来源：调用 仓库查询(bm.whse.get) 接口<br/>- 入参条件：仓库.状态(whse.manage_status) = Y.生效<br/>仓库.运营单元编号(whse.ops_unit_no) = 【请购单.运营单元编号(requ_doc.ops_unit_no)】<br/>- 显示字段：仓库.仓库编号(whse.whse_no)、仓库.仓库名称(whse.whse_name)<br/>- 默认排序：仓库.仓库编号(whse.whse_no) 升序<br/… | 开窗：选择仓库 |  | RULE-3E3BAB33F0BD |
 | SCN-A053AB062CCA |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-7C9B54200CA1 |
 | SCN-B497136635C6 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.item_pur_info.invalid | 按平台服务调用结果决定是否继续 |  | RULE-6EB62235CCF9 |
@@ -1834,7 +1834,7 @@
 | SCN-8BD66A296195 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「业务性质」的只读校验规则：【业务性质(biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-48E2369D8842 |
 | SCN-2676D45C09DE | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「会计期间期号」的隐藏校验规则：【会计期间期号(acctg_perid_no)】✅ 是 | 字段不展示 | TC-PSTK-0002 | RULE-FF7E416F9558 |
 | SCN-411845BFF6DC | 询价单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证询价单「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0020 | RULE-ADB1BDA8BC97 |
-| SCN-44B01F8ADC5B |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「失效 前置校验」的反向校验规则：【失效】SHOW MSG "状态需为生效，才可执行失效" | 校验不通过则操作被拦截 |  | RULE-B4A2F1F493D4；RULE-58EAB5DB59EB |
+| SCN-F6BABB82BAA2 | 编号规则 | 反向校验 | NEEDS_UI_EXPLORATION | 验证编号规则「编码规则编号」的反向校验规则：【编码规则编号(code_rule_no)】长度不可超过 50 个字符 | 按校验规则拦截或提示 |  | RULE-A4AD752CFD61 |
 | SCN-053A0933A813 | 请购单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证请购单「参考采购员编号」的开窗回填规则：【参考采购员编号(ref_purhr_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：[员工部门信息.归属运营单元编号(empl.empl_dept_info.ops_unit_no)] = 【请购单明细.采购运营单元编号(requ_doc_d.pur_ops_unit_no)】，员工.状态(empl.manage_status) = Y.生效，离职日期（empl.resig_date）>= 单据日期(requ_doc_doc_date)<br/>- 显示字段：… | 开窗：选择员工 |  | RULE-D6D63CF34E87 |
 | SCN-474B8BA89592 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「生效 可用条件」的权限与数据范围规则：【生效】【交易对象属性.状态(trans_obj_attr.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-5831940AC051 |
 | SCN-589DD02A4788 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「取消生效 后置处理」的接口契约规则：【取消生效】● 调用接口：bm.item_pur_info.cancel_valid | 按平台服务调用结果决定是否继续 |  | RULE-3ABF6FBB3B10 |
@@ -1842,7 +1842,7 @@
 | SCN-C8DE22E64ACA | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「单号」的只读校验规则：【单号(doc_no)】✅ 是 | 字段不可编辑 |  | RULE-EA109B852411 |
 | SCN-103A234F441E | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「委外采购质检模式」的隐藏校验规则：【委外采购质检模式(CUS_UDF008)】✅ 是 | 字段不展示 | TC-PSTK-0002 | RULE-DBA35C0D0043 |
 | SCN-D680C6763E76 | 询价单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证询价单「含税标识」的必填校验规则：【含税标识(intax_flag)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0026 | RULE-65249E38CAA1 |
-| SCN-3A5AE3DFA718 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的反向校验规则：【业务性质(biz_prop)】所选业务性质须属于当前业务域（ST 开头），否则 E+MSG："业务性质与业务域不匹配！" | 按校验规则拦截或提示 |  | RULE-26C4F7D91038 |
+| SCN-96D5ACD6A080 | 编号规则 | 反向校验 | NEEDS_UI_EXPLORATION | 验证编号规则「日期编码依据」的反向校验规则：【日期编码依据(date_code_basis)】编码方式为 7.手工输入 时，本字段不可为 1.系统日期、2.指定日期 | 按校验规则拦截或提示 |  | RULE-984D9C0DAF7E；RULE-2F5885DF35D4 |
 | SCN-297C7998A967 | 运营单元采购参数 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证运营单元采购参数「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 运营单元查询(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.管理状态(ops_unit.manage_status) = Y.生效，运营单元职能.职能编号(ops_unit.ops_unit_func.func_no) 包含 'purc org'采购组织<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<… | 开窗：选择运营单元 | TC-PURP-0005 | RULE-E9786602674C |
 | SCN-88BEDA7490FD |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「失效 可用条件」的权限与数据范围规则：【失效】【交易对象属性.状态(trans_obj_attr.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-20B6A4623E24 |
 | SCN-BF0C9B2F1689 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 前置校验」的接口契约规则：【生效】调用接口：查询品号销售信息(bm.item_sales_info.get) | 按平台服务调用结果决定是否继续 |  | RULE-375BCB3A25DC |
@@ -1850,7 +1850,7 @@
 | SCN-783C3B422FCE | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「核销方式」的只读校验规则：【核销方式(verf_mode)】✅ 是 | 字段不可编辑 |  | RULE-85D376BCCE1A |
 | SCN-6A67C15C9821 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「未入库量」的隐藏校验规则：【未入库量(CUS_UDF007)】✅ 是 | 字段不展示 | TC-PSTK-0002 | RULE-56B2465E1BD6 |
 | SCN-D6D50FC7FF44 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购「序号」的必填校验规则：【序号(seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-4B297D46C70C |
-| SCN-35C8D91477B3 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的反向校验规则：【业务单别(biz_type_no)】不可为空。 | 按校验规则拦截或提示 |  | RULE-AEE095328464 |
+| SCN-F8355128C621 | 编号规则 | 反向校验 | NEEDS_UI_EXPLORATION | 验证编号规则「年度位数类型」的反向校验规则：【年度位数类型(year_digit_type)】编码方式为 1.年月日+流水码 ~ 5.年+流水码 时，本字段不可为 1.无 | 按校验规则拦截或提示 |  | RULE-7E19F84667EB；RULE-C968025A5842；RULE-39289728EB3C |
 | SCN-923B2892F9AE | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效<br/> 运营单元职能.职能编号(ops_unit_func.func_no) = invt_org<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运营单元.运营单元编号(ops_… | 开窗：选择运营单元 | TC-PSTK-0007 | RULE-E3BEA83B0131 |
 | SCN-991B215CAE8B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证基础资料「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-1413FEB00727 |
 | SCN-788B148F3DE7 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.item_sales_info.valid | 按平台服务调用结果决定是否继续 |  | RULE-F5CD77248240；RULE-E1D89CB0218F |
@@ -1858,7 +1858,7 @@
 | SCN-AA628400643A | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算客户名称」的只读校验规则：【结算客户名称(stlmt_cust_name)】✅ 是 | 字段不可编辑 |  | RULE-3509312692D6 |
 | SCN-99DB10E195C1 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「批号管理」的隐藏校验规则：【批号管理(CUS_UDF002)】✅ 是 | 字段不展示 | TC-PSTK-0002 | RULE-B66136067F9B |
 | SCN-E1D1C732F324 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0016；TC-BASV-0003；TC-BASL-0003；TC-IFIN-0003；TC-BAS-0002；TC-ISAL-0009；TC-CUSI-0005；TC-PURQ-0030；TC-PUR-0007；TC-PARR-0014；TC-PO-0019；TC-PRTN-0058 | RULE-F3EB7BE0245C |
-| SCN-0C9F497A2254 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的反向校验规则：【业务单别名称(biz_type_name)】不可为空。 | 按校验规则拦截或提示 |  | RULE-573DBDC2B19C |
+| SCN-FC143FCF2BFF | 编号规则 | 反向校验 | NEEDS_UI_EXPLORATION | 验证编号规则「流水号位数」的反向校验规则：【流水号位数(serl_digit)】编码方式不为 7.手工输入 时，必须大于 0 | 按校验规则拦截或提示 |  | RULE-5A802DC800F4；RULE-E48E811356E4 |
 | SCN-6F52C9BF7523 | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择存货单别参数<br/>- 数据来源：查询方案：查询存货单别(biz_type_invnt_param_001)<br/>- 入参条件：业务类型存货参数.运营单元编号(biz_type_invnt_param.ops_unit_no) = 【采购入库单.运营单元编号(pur_stkin_doc.ops_unit_no)】，业务类型通用信息.业务性质(biz_type_gen_info.biz_prop) IN (IM03.采购入库单)<br/>- 显示字段：业务类型参数.业务类型编号(biz_type_in… | 开窗：选择存货单别参数 | TC-PSTK-0004 | RULE-C534ED5FDBB8 |
 | SCN-FA401FF3BF8B |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除 可用条件」的权限与数据范围规则：【删除】【业务质检信息检验.业务判定状态(qi_biz_insp_info.biz_judge_stat)】<>3.已判定 | 按操作说明执行 |  | RULE-3D8182781322 |
 | SCN-4D7B08E21EB2 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】调用接口：失效品号销售信息(bm.item_sales_info.invalid)，其中API为当前所选业务服务的 invalid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-37B3AEAD530A |
@@ -1866,7 +1866,7 @@
 | SCN-90FD19AB6C8A | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「销售客户名称」的只读校验规则：【销售客户名称(sales_cust_name)】✅ 是 | 字段不可编辑 |  | RULE-FB1BF1C908BF |
 | SCN-24B4A316C575 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「第二单位编号」的隐藏校验规则：【第二单位编号(sec_unit_no)】✅ 是；隐藏条件：-调用接口:查询公共参数(param)<br/>-传入参数：无<br/>-返回：[公共参数.计量体系]<br/>当[公共参数.计量体系]不为D.存货双单位时，隐藏 | 字段不展示 |  | RULE-7171198397E1 |
 | SCN-9A066972C912 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购「单位编号」的必填校验规则：【单位编号(unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PURQ-0038 | RULE-1DEBD86EB28B |
-| SCN-9AA60F49C044 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的反向校验规则：【年位数(year_digit_type)】当 自动编码方式 IN ('1.年月日+流水码','3.年月+流水码') 且 年位数='1.无' 时 E+MSG："年、月、日编码方式下，年位数不可为无！" | 按校验规则拦截或提示 |  | RULE-6FE77829D664 |
+| SCN-CD922902E6E1 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「编辑 前置校验」的反向校验规则：【编辑】SHOW MSG "编号规则已生效，请先失效后再编辑。" | 校验不通过则操作被拦截 |  | RULE-425EBA308578；RULE-857DDDCC4FE8 |
 | SCN-FB4F9A0C3EF9 | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 供应商基本信息查询(bm.supp_base_info.get) 接口<br/>- 入参条件：供应商基本信息.状态(supp_base_info.manage_status) =Y.已生效<br/>- 显示字段：供应商基本信息.供应商编号(supp_base_info.supp_no)、供应商基本信息.供应商简称(supp_base_info.supp_sname)、供应商基本信息.供应商名称(supp_base_info.supp_name)、供应商基本信息.状态(supp_b… | 开窗：选择供应商 | TC-PSTK-0005 | RULE-68A3607E269B |
 | SCN-20FF8C7BF347 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「审核 可用条件」的权限与数据范围规则：【审核】【业务质检信息检验.业务判定状态(qi_biz_insp_info.biz_judge_stat)】<>3.已判定 | 按操作说明执行 |  | RULE-37B165313E69 |
 | SCN-E0852866C6B5 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】调用接口：删除品号销售信息(bm.item_sales_info.delete)，其中API为当前所选业务服务的 delete 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-18484B363D3D |
@@ -1874,7 +1874,7 @@
 | SCN-5A70E8ECF4D9 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-5E1136D6D259 |
 | SCN-AE701016054F | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「第二单位数量」的隐藏校验规则：【第二单位数量(sec_unit_qty)】✅ 是；隐藏条件：-调用接口:查询公共参数(param)<br/>-传入参数：无<br/>-返回：[公共参数.计量体系]<br/>当[公共参数.计量体系]不为D.存货双单位时，隐藏 | 字段不展示 |  | RULE-3CCBA1B0F722 |
 | SCN-41525894E6FE |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购「生效日期」的必填校验规则：【生效日期(eff_date)】✅ 是 | 为空时保存应被拦截 | TC-SIPP-0029；TC-FX-0009；TC-PURQ-0056 | RULE-A067F1DD834F |
-| SCN-4411D6A8CEBF | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的反向校验规则：【流水号位数(serl_digit)】须为 0~11 的整数，否则 E+MSG："流水号位数须为 0~11 的整数！" | 按校验规则拦截或提示 | TC-BZP-0008 | RULE-BA0E5D736E94；RULE-20CF4A2687D7；RULE-347014F0C8D0 |
+| SCN-A71F8A014C7E |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】VD_code_rule_00001：编码方式不为 7.手工输入 时，流水号位数必须大于 0 | 校验不通过则操作被拦截 |  | RULE-A6F7AF580C06；RULE-E64549273F4D |
 | SCN-05508A29A8FE | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「采购员编号」的开窗回填规则：【采购员编号(purhr_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) = 【采购入库单.运营单元编号(pur_stkin_doc.ops_unit_no)】，员工.状态(empl.manage_status) = Y.生效<br/>- 显示字段：员工.员工编号(empl.empl_no)、员工.员工姓名(empl.empl_name)<br/>- 默认排序：员工.员工编号(empl.empl_no)… | 开窗：选择员工 | TC-PSTK-0013 | RULE-64D92E73ED05 |
 | SCN-0EFDDF343723 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「撤审 可用条件」的权限与数据范围规则：【撤审】【业务质检信息检验.业务判定状态(qi_biz_insp_info.biz_judge_stat)】=3.已判定 | 按操作说明执行 |  | RULE-BC7534520189 |
 | SCN-D8D8B2384225 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「取消生效 后置处理」的接口契约规则：【取消生效】调用接口：取消生效品号销售信息(bm.item_sales_info.cancel_valid)，其中API为当前所选业务服务的 cancel_valid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-A29DD98CAE9F |
@@ -1882,7 +1882,7 @@
 | SCN-1F6FE292F0E1 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「应收业务性质」的只读校验规则：【应收业务性质(recev_biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-4AD8C38CC9DB |
 | SCN-E97577EBE004 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「核算运营单元编号」的隐藏校验规则：【核算运营单元编号(calc_ops_unit_no)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-CA53AE9215FD |
 | SCN-FD76DB40A5CE |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购「来源单号」的必填校验规则：【来源单号(src_doc_no)】✅ 是；必填条件：IF 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 1.请购单 THEN 必填，不可空白 ENDIF | 为空时保存应被拦截 | TC-QICHK-0005 | RULE-C4D40A2CA140 |
-| SCN-12C603BA7B23 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 前置校验」的反向校验规则：【保存】检查 业务性质(biz_prop) 须属于当前业务域，否则 E+MSG："业务性质与业务域不匹配！" | 校验不通过则操作被拦截 |  | RULE-3A650F4315BE |
+| SCN-62268B332AEA |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「删除 前置校验」的反向校验规则：【删除】SHOW MSG "编号规则已生效，请先失效后再删除。" | 校验不通过则操作被拦截 |  | RULE-2CC0732FD4B3；RULE-0E76EA02B580 |
 | SCN-34D4D8B0AF1B | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「仓管部门编号」的开窗回填规则：【仓管部门编号(whse_mgmt_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择部门<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.员工编号(empl.empl_no) =【采购入库单.采购员编号(pur_stkin_doc.purhr_no)】、 员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) =【采购入库单.运营单元编号(pur_stkin_doc.ops_unit_no)】<br/>- 显示字段：员工部门信息.部门编号(dept_no.empl_d… | 开窗：选择部门 | TC-PSTK-0014 | RULE-711387CF0E05 |
 | SCN-CC59AC5606E2 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-4D8CF258D502 |
 | SCN-76135F7553FE |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 前置校验」的接口契约规则：【保存】调用接口：bm.item_sales_info.valid前校验： | 按平台服务调用结果决定是否继续 |  | RULE-24E231DC1F28；RULE-A3D42914456E |
@@ -1890,7 +1890,7 @@
 | SCN-DF34BA305257 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「应收业务类型」的只读校验规则：【应收业务类型(recev_biz_type)】✅ 是 | 字段不可编辑 |  | RULE-E63FBA482F57 |
 | SCN-F84CA82F051D | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「计价单位编号」的隐藏校验规则：【计价单位编号(prc_unit_no)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-ED9B185E40AF |
 | SCN-3E3A48B06344 |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购「来源序号」的必填校验规则：【来源序号(src_seq)】✅ 是；必填条件：IF 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 1.请购单 THEN 必填，不可空白 ENDIF | 为空时保存应被拦截 | TC-QICHK-0006；TC-PSTK-0046 | RULE-A00825025449 |
-| SCN-1D4CA9038D7C |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-80DE44576E8A |
+| SCN-F7291E613320 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的反向校验规则：【生效】SHOW MSG "状态需为失效，才可执行生效" | 校验不通过则操作被拦截 |  | RULE-63687D7A4FED；RULE-E0CBB2900308 |
 | SCN-2BD8B1A5A89E | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「限用入库仓库编号」的开窗回填规则：【限用入库仓库编号(limit_stkin_whse_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择仓库<br/>- 数据来源：调用 [查询仓库]接口<br/>- 入参条件：[仓库.运营单元编号]=【采购入库单.运营单元编号】、[仓库.状态]=Y.已生效、[仓库.仓库性质]=1.存货仓<br/>- 显示字段：[仓库.仓库编号]、[仓库.名称]、[仓库.仓库性质]、[仓库.纳入可用量计算]、[仓库.储位管理] as 库位管理<br/>- 默认排序：仓库编号 升序<br/>- 回填映射：[仓库.仓库编号)] →【采购入库单.限用仓库编号】 | 开窗：选择仓库 | TC-PSTK-0015 | RULE-62D8FDC477C9 |
 | SCN-F423F169C4D3 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「编辑 可用条件」的权限与数据范围规则：【编辑】【业务质检信息检验.业务判定状态(qi_biz_insp_info.biz_judge_stat)】<>3.已判定 | 按操作说明执行 |  | RULE-D573D32373CE |
 | SCN-D67D7D2FB3DE |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.item_sales_info.create | 按平台服务调用结果决定是否继续 |  | RULE-0E768101F9CC；RULE-8212F99BA5FA |
@@ -1898,7 +1898,7 @@
 | SCN-76552E363759 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「应收明细业务类型」的只读校验规则：【应收明细业务类型(recev_dtl_biz_type)】✅ 是 | 字段不可编辑 |  | RULE-FD955868F625 |
 | SCN-01A6404139DB | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「计价数量」的隐藏校验规则：【计价数量(prc_qty)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-221A2CB90D41 |
 | SCN-39D1E712BBAA |  | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购「次序号」的必填校验规则：【次序号(sub_seq)】✅ 是 | 为空时保存应被拦截 | TC-QICHK-0011 | RULE-0D4506C43A79 |
-| SCN-9D1BBB21975A |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-861A06042C4B |
+| SCN-44B01F8ADC5B |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「失效 前置校验」的反向校验规则：【失效】SHOW MSG "状态需为生效，才可执行失效" | 校验不通过则操作被拦截 |  | RULE-B4A2F1F493D4；RULE-58EAB5DB59EB |
 | SCN-D7ECEF17C36F | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「仓库编号」的开窗回填规则：【仓库编号(whse_no)】开窗：- 选择模式：单选<br/>- 开窗条件：【采购入库单.限用仓库编号】=空 <br/>- 开窗标题：选择仓库<br/>- 数据来源：调用 [查询仓库]接口<br/>- 入参条件：[仓库.运营单元编号]=【采购入库单.运营单元编号】、[仓库.状态]=Y.已生效、[仓库.仓库性质]=1.存货仓<br/>- 显示字段：[仓库.仓库编号]、[仓库.名称]、[仓库.仓库性质]、[仓库.纳入可用量计算]、[仓库.储位管理] as 库位管理<br/>- 默认排序：仓库编号 升序<br/>- 回填映射：[仓库.仓库编号)] →【采购入库单明细.仓库编号】，[仓库.储位管理]… | 开窗：选择仓库 |  | RULE-261C804BF024 |
 | SCN-75EF09A43D01 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「编辑 可用条件」的权限与数据范围规则：【编辑】【请购单.状态(requ_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-D947AF499E72 |
 | SCN-5E70D7E8E865 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.cust_biz_info.valid | 按平台服务调用结果决定是否继续 |  | RULE-67BC156E9E9A；RULE-5502AF089A21 |
@@ -1906,7 +1906,7 @@
 | SCN-C6511640BD52 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「责任人名称」的只读校验规则：【责任人名称(resp_pers_name)】✅ 是 | 字段不可编辑 |  | RULE-9B81A3B42F07 |
 | SCN-3AEEB89D6CE5 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「货款金额（原币）」的隐藏校验规则：【货款金额（原币）(pmt_amt_tc)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-5EAABDD28E39 |
 | SCN-3AFAC1C2DE87 |  | 必填校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的必填校验规则：【保存】单头必填：运营单元编号、业务类型编号、单号、单据日期、供应商编号、货币编号、含税标识 任一为空 → E+MSG："〈字段中文名〉不可为空！" 并中止保存 | 校验不通过则操作被拦截 |  | RULE-C129611E3036；RULE-13462802D573 |
-| SCN-31449B3EB02F | 业务类型结算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】运营单元须存在且职能含核算组织，否则 E+MSG："运营单元不存在或不具备核算组织职能！" | 按校验规则拦截或提示 |  | RULE-094288334607 |
+| SCN-3A5AE3DFA718 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的反向校验规则：【业务性质(biz_prop)】所选业务性质须属于当前业务域（ST 开头），否则 E+MSG："业务性质与业务域不匹配！" | 按校验规则拦截或提示 |  | RULE-26C4F7D91038 |
 | SCN-9AE99077F35D | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「储位编号」的开窗回填规则：【储位编号(stsp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：【采购入库明细.储位管理】=True<br/>- 开窗标题：选择库位<br/>- 数据来源：调用 [查询仓库]接口<br/>- 入参条件：[仓库.运营单元编号]=【采购入库单.运营单元编号】、[仓库.仓库编号]=【采购入库单明细.仓库编号】、[储位.状态码]=Y.生效 <br/>- 显示字段：[储位.储位编号] as 库位编号、[储位.储位名称] as 库位名称<br/>- 默认排序：库存编号 升序<br/>- 回填映射：[储位.储位编号)] →【采购入库单明细.储位编号】 | 开窗：选择库位 |  | RULE-856FD939BB8C |
 | SCN-1A4E308262E9 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-012FC656F2B8 |
 | SCN-0E20551D3C2F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】调用接口：失效客户业务信息(bm.cust_biz_info.invalid)，其中API为当前所选业务服务的 invalid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-5B928CC4A4EE |
@@ -1914,7 +1914,7 @@
 | SCN-544D69D21D58 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「责任部门名称」的只读校验规则：【责任部门名称(resp_dept_name)】✅ 是 | 字段不可编辑 |  | RULE-9BC9D294641B |
 | SCN-399CCFDF16E5 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「税额（原币）」的隐藏校验规则：【税额（原币）(tax_tc)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-52B28FA3FEAF |
 | SCN-A58C991C7BD5 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-ACDBC196EE2C |
-| SCN-BF1DB14B8161 | 业务类型结算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「业务单别」的反向校验规则：【业务单别(biz_type_no)】业务单别须存在且生效，否则 E+MSG："业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-1B592E75DC87 |
+| SCN-35C8D91477B3 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别」的反向校验规则：【业务单别(biz_type_no)】不可为空。 | 按校验规则拦截或提示 |  | RULE-AEE095328464 |
 | SCN-ABD76A8C88FD | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「批号」的开窗回填规则：【批号(lot_no)】开窗：<br/>- 选择模式：单选<br/>- 开窗条件：【采购到货明细.批号管理】 =勾选<br/>- 开窗标题：品号批号信息<br/>- 数据来源：调用 品号批号信息查询(bm.item_lot_info.get) 接口<br/>- 入参条件：品号批号信息.品号(item_lot_info.item_no) = 【采购入库单明细.品号】，品号批号信息.状态(item_lot_info.manage_status) = Y.生效，品号批号信息.生效日期(item_lot_info.eff_date) <= 【采购入库单.单据日期】，品号批号信息.生效截止日期(item… | 开窗：品号批号信息 |  | RULE-CAC640E2CC94 |
 | SCN-BC231E07B682 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除 可用条件」的权限与数据范围规则：【删除】【请购单.状态(requ_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-2F70DAEC0279 |
 | SCN-51420E7F4970 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】调用接口：删除客户业务信息(bm.cust_biz_info.delete)，其中API为当前所选业务服务的 delete 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-3729E05F1613 |
@@ -1922,7 +1922,7 @@
 | SCN-F652BD978DE9 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「货币名称」的只读校验规则：【货币名称(ccy_name)】✅ 是 | 字段不可编辑 |  | RULE-7EC9D9752814 |
 | SCN-B758C45940DA | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「无税金额（原币）」的隐藏校验规则：【无税金额（原币）(untax_amt_tc)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-722F2C697658 |
 | SCN-BBFB4C662C07 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 |  | RULE-E504242D677D |
-| SCN-DFC922E09385 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 前置校验」的反向校验规则：【保存】检查 运营单元编号(ops_unit_no) 与 业务单别(biz_type_no) 均不可为空，否则 E+MSG："运营单元与业务单别不可为空！" | 校验不通过则操作被拦截 |  | RULE-A1A5E8D17B48；RULE-9B4A8B373211 |
+| SCN-0C9F497A2254 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别名称」的反向校验规则：【业务单别名称(biz_type_name)】不可为空。 | 按校验规则拦截或提示 |  | RULE-573DBDC2B19C |
 | SCN-B1FBE24AD93E | 采购入库单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购入库单「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：【运营单元采购参数.是否启用项目管理(pur_reg_param.proj_mgmt_flag)】= TRUE <br/>- 开窗标题：选择项目<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：项目.生效码(proj.manage_status) = Y.生效<br/>- 显示字段：项目.项目编号(proj.proj_no)、项目.项目名称(proj.proj_name)<br/>- 默认排序：项目.项目编号(proj.proj_no) 升序<br/>- 回填映射：[项目.… | 开窗：选择项目 |  | RULE-418F0C856B39 |
 | SCN-1979C7EFE262 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「提交 可用条件」的权限与数据范围规则：【提交】【请购单.状态(requ_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-5AF144328668 |
 | SCN-4A53FE86F186 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「取消生效 后置处理」的接口契约规则：【取消生效】调用接口：取消生效客户业务信息(bm.cust_biz_info.cancel_valid)，其中API为当前所选业务服务的 cancel_valid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-A458F4407C82 |
@@ -1930,7 +1930,7 @@
 | SCN-348764C3B170 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「付款条件名称」的只读校验规则：【付款条件名称(pmt_terms_name)】✅ 是 | 字段不可编辑 |  | RULE-98FC669E0BBE |
 | SCN-741205C664B1 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「价税合计（原币）」的隐藏校验规则：【价税合计（原币）(tawt_tc)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-12B01F8FC7A4 |
 | SCN-FB3176DD7E12 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-8A3F018A7B26 |
-| SCN-5E8029BB46CF |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-D22B7B47F749 |
+| SCN-9AA60F49C044 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的反向校验规则：【年位数(year_digit_type)】当 自动编码方式 IN ('1.年月日+流水码','3.年月+流水码') 且 年位数='1.无' 时 E+MSG："年、月、日编码方式下，年位数不可为无！" | 按校验规则拦截或提示 |  | RULE-6FE77829D664 |
 | SCN-0993A8CF4C02 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 开窗条件：<br/>- 开窗标题：选择运营单元<br/>- 数据来源：调用 查询运营单元(bm.ops_unit.get) 接口<br/>- 入参条件：运营单元.状态(ops_unit.manage_status) = Y.生效<br/> 运营单元职能.职能编号(ops_unit_func.func_no) = purc_org<br/>- 显示字段：运营单元.运营单元编号(ops_unit.ops_unit_no)、运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>- 默认排序：运营单元.运营单元编号(ops_… | 开窗：选择运营单元 | TC-PARR-0004 | RULE-E83EEDAA5558 |
 | SCN-42B2B717629F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「驳回 可用条件」的权限与数据范围规则：【驳回】【请购单.状态(requ_doc.manage_status)】=W.审核中 | 按操作说明执行 |  | RULE-B299CC2B3FD0 |
 | SCN-983E233A1FB4 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.cust_biz_info.create | 按平台服务调用结果决定是否继续 |  | RULE-F0DC3CD5FE5A；RULE-28A82E041B63 |
@@ -1938,7 +1938,7 @@
 | SCN-AFFB681E31A3 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票种类名称」的只读校验规则：【税务发票种类名称(tax_inv_categ_name)】✅ 是 | 字段不可编辑 |  | RULE-380A8FAAB94A |
 | SCN-F9EE721948DB | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「货款金额（本币）」的隐藏校验规则：【货款金额（本币）(pmt_amt_fc)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-2120EDED66BC |
 | SCN-46A9E367F3A8 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库单号」的必填校验规则：【采购退货出库单号(pur_rtn_stkou_doc_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-97C43F2130D0 |
-| SCN-84EAB7799C42 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-31F6D8250C04 |
+| SCN-4411D6A8CEBF | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的反向校验规则：【流水号位数(serl_digit)】须为 0~11 的整数，否则 E+MSG："流水号位数须为 0~11 的整数！" | 按校验规则拦截或提示 | TC-BZP-0008 | RULE-BA0E5D736E94；RULE-20CF4A2687D7；RULE-347014F0C8D0 |
 | SCN-B2BC2C7A2F0E | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择供应商<br/>- 数据来源：调用 查询供应商业务信息(bm.supp_biz_info.get) 接口<br/>- 入参条件：供应商业务信息.运营单元编号=【采购到货单.运营单元编号】、供应商业务信息.状态(supp_biz_info.manage_status) = Y.已生效<br/>- 显示字段：供应商业务信息.供应商编号(supp_biz_info.supp_no)、供应商业务信息.供应商简称(supp_biz_info.supp_sname)、供应商业务信息.供应商名称(su… | 开窗：选择供应商 | TC-PARR-0058 | RULE-14ACE1B8A9E3 |
 | SCN-EB84B2D5095F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「审核 可用条件」的权限与数据范围规则：【审核】【请购单.状态(requ_doc.manage_status)】=N.未审核 or W.审核中 | 按操作说明执行 |  | RULE-CC04A0CF1E91 |
 | SCN-4AE2C53A7B6D |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】调用接口：生效客户品号(bm.cust_item_no.valid)，其中API为当前所选业务服务的 valid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-D1C481C0273E |
@@ -1946,39 +1946,39 @@
 | SCN-A05A4400C4E6 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税种编号」的只读校验规则：【税种编号(tax_no)】✅ 是 | 字段不可编辑 |  | RULE-8C3F5E2DF8EA |
 | SCN-4257BF39B025 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「税额（本币）」的隐藏校验规则：【税额（本币）(tax_fc)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-A7D3EF11338F |
 | SCN-08F5042AF14E | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-C8B5D3B4D290 |
-| SCN-7B6F28CE558E | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「会计期间表编号」的反向校验规则：【会计期间表编号(acctg_perid_table_no)】① 仅当公共参数.是否按自然年月启用会计期间 = 否 时执行下列校验；= 是 时全部跳过 | 按校验规则拦截或提示 |  | RULE-52C37A1FEE3A；RULE-0AF77C544F66；RULE-5150B45D5E82 |
+| SCN-12C603BA7B23 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 前置校验」的反向校验规则：【保存】检查 业务性质(biz_prop) 须属于当前业务域，否则 E+MSG："业务性质与业务域不匹配！" | 校验不通过则操作被拦截 |  | RULE-3A650F4315BE |
 | SCN-43FD90C14D76 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择采购单别参数<br/>- 数据来源：查询方案：查询采购单别(biz_type_pur_param_001)<br/>- 入参条件：业务类型采购参数.运营单元编号(biz_type_pur_param.ops_unit_no) = 【采购到货单.运营单元编号(pur_arr_doc.ops_unit_no)】，业务类型通用信息.业务性质(biz_type_gen_info.biz_prop) IN (PO06 一般到货, PO07 直接到货, PO17 期初到货开账)<br/>-… | 开窗：选择采购单别参数 | TC-PARR-0063 | RULE-5693DB76A52C |
 | SCN-89EA582325E7 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「撤审 可用条件」的权限与数据范围规则：【撤审】【请购单.状态(requ_doc.manage_status)】=Y.已审核 | 按操作说明执行 |  | RULE-422E95CE7662 |
 | SCN-400ABF300C9E |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】调用接口：失效客户品号(bm.cust_item_no.invalid)，其中API为当前所选业务服务的 invalid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-830FBF25AFA6 |
 | SCN-B14189E9886D | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「状态」的默认值规则：【状态(manage_status)】默认值：默认Y.生效。时机点：默认执行时 | 默认值：默认Y.生效。时机点：默认执行时 |  | RULE-27F0203A5865 |
 | SCN-EC457BB57C30 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税种名称」的只读校验规则：【税种名称(tax_name)】✅ 是 | 字段不可编辑 |  | RULE-89081120E393 |
 | SCN-1B5F08CDD9CC | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「无税金额（本币）」的隐藏校验规则：【无税金额（本币）(untax_amt_fc)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-B8C9E65E9BAD |
-| SCN-8B4DD9FC89B4 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库来源单据类型」的必填校验规则：【采购退货出库来源单据类型(pur_rtn_stkou_src_doc_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-9FD06368F5F6；RULE-76E890279472 |
-| SCN-63D864BFF688 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「货币汇率表编号」的反向校验规则：【货币汇率表编号(ccy_er_table_no)】② 货币汇率表的基本货币须与记账本位币一致，否则 E+MSG："记账本位币与货币汇率表的基本货币必须相同！" | 按校验规则拦截或提示 |  | RULE-98ED3000065E |
+| SCN-8B4DD9FC89B4 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库来源单据类型」的必填校验规则：【采购退货出库来源单据类型(pur_rtn_stkou_src_doc_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-9FD06368F5F6 |
+| SCN-1D4CA9038D7C |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-80DE44576E8A |
 | SCN-DB64E2DD13F1 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「采购员编号」的开窗回填规则：【采购员编号(purhr_no)】开窗：<br/>- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) = 【采购到货单.运营单元编号(pur_arr_doc.ops_unit_no)】，员工.状态(empl.manage_status) = Y.生效<br/>- 显示字段：员工.员工编号(empl.empl_no)、员工.员工姓名(empl.empl_name)、员工.部门编号(empl_dept_info.dept_n… | 开窗：选择员工 | TC-PARR-0064 | RULE-1B03C7E6FF62 |
 | SCN-09D1AC443D64 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「作废 可用条件」的权限与数据范围规则：【作废】【请购单.状态(requ_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-DFD536A480EB |
 | SCN-7AC4E0CE270F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】调用接口：删除客户品号(bm.cust_item_no.delete)，其中API为当前所选业务服务的 delete 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-973471A13CE0 |
 | SCN-A40F151BEF4F | 业务类型应收参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「运营单元编号」的默认值规则：【运营单元编号(ops_unit_no)】默认值：调用接口：查询员工(bm.empl.get)<br/>入参：员工.员工编号(empl.empl_no) = 当前系统用户<br/>回参：员工.归属运营单元编号(empl.blng_ops_unit_no)<br/>调用接口：查询运营单元(bm.ops_unit.get)<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no) = 员工.归属运营单元编号(empl.blng_ops_unit_no)<br/>回参：运营单元职能.职能编号(ops_unit_func.func_no)<br/>IF 运营单元职能.职能编号(… | 默认值：调用接口：查询员工(bm.empl.get)<br/>入参：员工.员工编号(empl.empl_no) = 当前系统用户<br/>回参：员工.归属运营单元编号(… |  | RULE-B5973D132869 |
 | SCN-12F95708665B | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税率」的只读校验规则：【税率(tax_rate)】✅ 是 | 字段不可编辑 |  | RULE-C0A600536EBE |
 | SCN-B139EE89731E | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「价税合计（本币）」的隐藏校验规则：【价税合计（本币）(tawt_fc)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-50022F5B1B3A |
-| SCN-4B3E3634B0EA | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源运营单元编号」的必填校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-52CABF41B4C3；RULE-841ED0D7DA90 |
-| SCN-55D9B6C7142B | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「税率」的反向校验规则：【税率(tax_rate)】① 税率不可小于 0 或大于 1（页面 0~100%），否则 E+MSG："此字段必须介于0～1之间 !" | 按校验规则拦截或提示 |  | RULE-2F335FF63408 |
+| SCN-4B3E3634B0EA | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源运营单元编号」的必填校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-52CABF41B4C3 |
+| SCN-9D1BBB21975A |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-861A06042C4B |
 | SCN-98C63FADC440 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「采购部门编号」的开窗回填规则：【采购部门编号(pur_dept_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择部门<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.员工编号(empl.empl_no) =【采购到货单.采购员编号(pur_arr_doc.purhr_no)】、 员工部门信息.归属运营单元编号(empl_dept_info.ops_unit_no) =【采购到货单.运营单元编号(pur_arr_doc.ops_unit_no)】<br/>- 显示字段：员工部门信息.部门编号(dept_no.empl_dept_info)、… | 开窗：选择部门 | TC-PARR-0065 | RULE-77718F718412 |
 | SCN-1E93D4CD6F89 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「维护分配信息 可用条件」的权限与数据范围规则：【维护分配信息】IF 有【请购分配】作业权限 | 按操作说明执行 |  | RULE-4CEDA558A94C；RULE-94B07CC9AF10；RULE-E23322DAF258 |
 | SCN-AFCAC15047EB |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.cust_fin_info.valid | 按平台服务调用结果决定是否继续 |  | RULE-83D61E7B8B38；RULE-D0833E81DA31 |
 | SCN-2F8C38AEE989 | 业务类型应收参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「运营单元名称」的默认值规则：【运营单元名称(ops_unit_name)】默认值：默认赋值：调用 查询运营单元(bm.ops_unit.get) 接口<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no)=运营单元编号(ops_unit_no)<br/>回参：运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>DEFAULT 运营单元名称(ops_unit_name)=运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>时机点：默认编辑时 | 默认值：默认赋值：调用 查询运营单元(bm.ops_unit.get) 接口<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no)=运营单元… |  | RULE-9DDDA9D70837 |
 | SCN-71B2D9C6F834 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票控制标识」的只读校验规则：【税务发票控制标识(tax_inv_cntl_flag)】✅ 是 | 字段不可编辑 |  | RULE-7198DCEA6B4C |
 | SCN-49DB0A211853 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「结算状态」的隐藏校验规则：【结算状态(stlmt_stat)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-277F9EE37792 |
-| SCN-EA313EA011F8 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源单号」的必填校验规则：【来源单号(src_doc_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-C202CA87FCC3；RULE-9D8CAC08365E |
-| SCN-FB5034C6C161 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度-应付」的反向校验规则：【现行年度-应付(curr_year_pay)】非空时须为 4 位整数（1900~9998），否则 E+MSG："请输入有效的会计年度值！" | 按校验规则拦截或提示 |  | RULE-EB019178DDAE |
+| SCN-EA313EA011F8 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源单号」的必填校验规则：【来源单号(src_doc_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-C202CA87FCC3 |
+| SCN-31449B3EB02F | 业务类型结算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】运营单元须存在且职能含核算组织，否则 E+MSG："运营单元不存在或不具备核算组织职能！" | 按校验规则拦截或提示 |  | RULE-094288334607 |
 | SCN-0421BB9AB69C | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择项目<br/>- 数据来源：调用 查询项目(bm.proj.get) 接口<br/>- 入参条件：项目.生效码(proj.manage_status) = Y.生效<br/>- 显示字段：项目.项目编号(proj.proj_no)、项目.项目名称(proj.proj_name)<br/>- 默认排序：项目.项目编号(proj.proj_no) 升序<br/>- 回填映射：[项目.项目编号(proj.proj_no)] →【采购到货单.项目编号(pur_arr_doc.proj_no)】 | 开窗：选择项目 | TC-PARR-0072 | RULE-364B04C32C20 |
 | SCN-4DFE365431CA |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「指定结束 可用条件」的权限与数据范围规则：【指定结束】【请购单.状态(requ_doc.manage_status)】=Y.已审核 且 【请购单明细.结束码(requ_doc_d.end_code)】=0.未结束 且 【请购单明细.分配状态(requ_doc_d.distr_stat)】=1.未分配 时，该笔请购单某些可以指定结束 | 按操作说明执行 |  | RULE-887376534E59 |
 | SCN-3185C741A940 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】调用接口：失效客户财务信息(bm.cust_fin_info.invalid)，其中API为当前所选业务服务的 invalid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-34F943CC3B8F |
 | SCN-FAF303E54B90 | 业务类型应收参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型应收参数「状态」的默认值规则：【状态(manage_status)】默认值：默认 Y.生效。时机点：默认执行时 | 默认值：默认 Y.生效。时机点：默认执行时 |  | RULE-8298E6062385 |
 | SCN-EF28AA860CDD | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「红冲状态」的只读校验规则：【红冲状态(rvs_stat)】✅ 是 | 字段不可编辑 |  | RULE-C2EC137DD353 |
 | SCN-6A6E3D425770 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「预计结算日期」的隐藏校验规则：【预计结算日期(antic_stlmt_date)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-F65741A2C034 |
-| SCN-9B93DCDE18FF | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源序号」的必填校验规则：【来源序号(src_seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-8DCA01FF39B2；RULE-A83A43007BED |
-| SCN-3B056D775B73 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号-应付」的反向校验规则：【现行期号-应付(curr_perid_no_pay)】非空时须为 1~12 的整数，否则 E+MSG："期间须为 1~12 的整数，请重新输入！" | 按校验规则拦截或提示 |  | RULE-EBB7FD8A1546 |
+| SCN-9B93DCDE18FF | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源序号」的必填校验规则：【来源序号(src_seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-8DCA01FF39B2 |
+| SCN-BF1DB14B8161 | 业务类型结算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「业务单别」的反向校验规则：【业务单别(biz_type_no)】业务单别须存在且生效，否则 E+MSG："业务单别不存在或未生效！" | 按校验规则拦截或提示 |  | RULE-1B592E75DC87 |
 | SCN-1135BFD56216 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「收货运营单元编号」的开窗回填规则：【收货运营单元编号(rcpt_ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择收货机构<br/>- 数据来源：调用接口 查询受托运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig)<br/>- 入参条件：[运营单元协作关系.运营单元协作编号(ops_unit_coop_rela.ops_unit_coop_no)] =040.采购委托库存收货，[运营单元协作关系.委托运营单元编号(ops_unit_coop_rela.ops_unit_no)] = 【采购到货单.运营单元编号(pur… | 开窗：选择收货机构 | TC-PARR-0007 | RULE-B309BF6443EC |
 | SCN-43A4D3419059 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-8BFC8D119FC5 |
 | SCN-5E26EEDF2F5C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】调用接口：删除客户财务信息(bm.cust_fin_info.delete)，其中API为当前所选业务服务的 delete 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-D52F52B83C06 |
@@ -1986,7 +1986,7 @@
 | SCN-FE7E3F805341 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「红冲来源单号」的只读校验规则：【红冲来源单号(rvs_src_doc_no)】✅ 是 | 字段不可编辑 |  | RULE-493585C3A98B |
 | SCN-F7A79E6F41C6 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「预计付款日」的隐藏校验规则：【预计付款日(antic_pmt_date)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-CE224B886775 |
 | SCN-F88FBCA3C00B | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-0E228575CFEA |
-| SCN-ACC0B0058215 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度应收」的反向校验规则：【现行年度应收(curr_year_recev)】非空时须为 4 位整数（1900~9998），否则 E+MSG："请输入有效的会计年度值！" | 按校验规则拦截或提示 |  | RULE-0211AF6FCDF6 |
+| SCN-DFC922E09385 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 前置校验」的反向校验规则：【保存】检查 运营单元编号(ops_unit_no) 与 业务单别(biz_type_no) 均不可为空，否则 E+MSG："运营单元与业务单别不可为空！" | 校验不通过则操作被拦截 |  | RULE-A1A5E8D17B48；RULE-9B4A8B373211 |
 | SCN-1C7CC1974D6F | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择币种<br/>- 数据来源：调用 查询币种信息(bm.ccy.get) 接口<br/>- 入参条件：<br/>- 显示字段：币种.币种编号(ccy.ccy_no)、币种.币种名称(ccy.ccy_name)<br/>- 默认排序：币种.币种编号(ccy.ccy_no) 升序<br/>- 回填映射：[币种.币种编号(ccy.ccy_no)] →【采购到货单.货币编号(pur_arr_doc.ccy_no)】（该开窗分支无名称字段可映射） | 开窗：选择币种 | TC-PARR-0011 | RULE-32215356A06D |
 | SCN-E3D64D56B212 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除 可用条件」的权限与数据范围规则：【删除】【采购入库单.状态(pur_stkin_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-03612675E790 |
 | SCN-964C6783560B |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「取消生效 后置处理」的接口契约规则：【取消生效】调用接口：取消生效客户财务信息(bm.cust_fin_info.cancel_valid)，其中API为当前所选业务服务的 cancel_valid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-288540F475C3 |
@@ -1994,7 +1994,7 @@
 | SCN-7714FC60ED6A | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「红冲单号」的只读校验规则：【红冲单号(rvs_doc_no)】✅ 是 | 字段不可编辑 |  | RULE-F319B6801750 |
 | SCN-DD4F2602FE40 | 采购入库单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「成本要素编号」的隐藏校验规则：【成本要素编号(cost_elem_no)】✅ 是；隐藏条件：[新增] 或 [编辑]状态 下隐藏 | 字段不展示 |  | RULE-BEB557C8E091 |
 | SCN-35F82862E6AE | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「商品类型」的必填校验规则：【商品类型(goods_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-10F821A0CA68 |
-| SCN-C50B4B638CDC | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号应收」的反向校验规则：【现行期号应收(curr_perid_no_recev)】非空时须为 1~12 的整数，否则 E+MSG："期间须为 1~12 的整数，请重新输入！" | 按校验规则拦截或提示 |  | RULE-5912ED0AFE3F |
+| SCN-5E8029BB46CF |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 后置处理」的反向校验规则：【保存】成功后提示"保存成功"，刷新列表并返回列表页 | 按操作说明执行 |  | RULE-D22B7B47F749 |
 | SCN-9869B3140ABB | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「收货人编号」的开窗回填规则：【收货人编号(cnee_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择员工<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：[员工部门信息.归属运营单元编号(empl_dept.ops_unit_no)] = 【采购到货单.收货运营单元编号】，[员工.生效码(empl.manage_status)] = Y.生效<br/>- 显示字段：[员工.员工编号(empl.empl_no)]、[员工.员工姓名(empl.empl_name)]、[员工部门.部门编号(empl.dept_no)]、[员工部门.部门名称(emp… | 开窗：选择员工 | TC-PARR-0081 | RULE-F0A1F94152D3 |
 | SCN-550888642B79 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「审核 可用条件」的权限与数据范围规则：【审核】【采购入库单.状态(pur_stkin_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-5188A233E81E |
 | SCN-C9114ADCEBEC |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.cust_fin_info.create | 按平台服务调用结果决定是否继续 |  | RULE-4C29F808B97A；RULE-EB9CBADAE4FB |
@@ -2002,7 +2002,7 @@
 | SCN-BEBBFBC30CBF | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税区编号」的只读校验规则：【税区编号(tax_dist_no)】✅ 是 | 字段不可编辑 |  | RULE-BD860536AA22 |
 | SCN-51F9BB90B659 |  | 隐藏校验 | NEEDS_CONFIRMATION | 验证采购「明细操作 可用条件」的隐藏校验规则：【明细操作】隐藏，不显示 | 按钮或区域不显示 |  | RULE-1B6407D2A92E |
 | SCN-33F6B2954FED | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「仓库编号」的必填校验规则：【仓库编号(whse_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-DF212DE4BB36 |
-| SCN-5C003A29D04B |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 前置校验」的反向校验规则：【保存】按顺序校验，首条不通过即提示并终止： | 校验不通过则操作被拦截 |  | RULE-079B821EC3FF；RULE-3FEE87E0B9AD；RULE-8ADA40E15E40 |
+| SCN-84EAB7799C42 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「删除 后置处理」的反向校验规则：【删除】提示"删除成功"，刷新列表 | 按操作说明执行 |  | RULE-31F6D8250C04 |
 | SCN-B1F82CB4B152 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择付款条件<br/>- 数据来源：调用 查询收付款条件(bm.colln_pmt_terms.get) 接口<br/>- 入参条件：[收付款条件.有效码(colln_pmt_terms.manage_status)] = Y.生效，([收付款条件.收付款类型(colln_pmt_terms.colln_pmt)] = 0.收付款皆适用 OR [收付款条件.收付款类型(colln_pmt_terms.colln_pmt)] = 1.付款条件)<br/>- 显示字段：[收付款条件.… | 开窗：选择付款条件 | TC-PARR-0082 | RULE-F719C75600AA |
 | SCN-203EE58B3F05 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「撤审 可用条件」的权限与数据范围规则：【撤审】【采购入库单.状态(pur_stkin_doc.manage_status)】=Y.已审核 | 按操作说明执行 |  | RULE-CBC2D033C225 |
 | SCN-AD62381FEB7F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.cust_base_info.valid | 按平台服务调用结果决定是否继续 |  | RULE-68E446EB1A46；RULE-18989845B104 |
@@ -2010,7 +2010,7 @@
 | SCN-C05E1A9B0B06 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税区名称」的只读校验规则：【税区名称(tax_dist_name)】✅ 是 | 字段不可编辑 |  | RULE-59FEE3D7C140 |
 | SCN-BBE4F8126A15 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「运营单元名称」的隐藏校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-02E494F324B7 |
 | SCN-A48EABF97A24 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「储位编号」的必填校验规则：【储位编号(stsp_no)】✅ 是；必填条件：IF 采购退货出库单明细.储位管理(pur_rtn_stkou_doc_d.CUS_stsp_mgmt) = '1.启用' THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-36A42ED4F445 |
-| SCN-CBA752A1AE45 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 后置处理」的反向校验规则：【保存】按下列顺序执行；① 失败即终止，②~⑤ 失败只提示、不回滚已保存数据： | 按操作说明执行 |  | RULE-DF2D506B1EBA |
+| SCN-7B6F28CE558E | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「会计期间表编号」的反向校验规则：【会计期间表编号(acctg_perid_table_no)】① 仅当公共参数.是否按自然年月启用会计期间 = 否 时执行下列校验；= 是 时全部跳过 | 按校验规则拦截或提示 |  | RULE-52C37A1FEE3A；RULE-0AF77C544F66；RULE-5150B45D5E82 |
 | SCN-89B27D672B44 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「备注」的开窗回填规则：【备注(rmk)】开窗：调用常用语开窗 | 开窗：按开窗说明 | TC-PARR-0083 | RULE-C3981B49D74A |
 | SCN-BBEE118B078A |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「作废 可用条件」的权限与数据范围规则：【作废】【采购入库单.状态(pur_stkin_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-0F9B008EAB2B |
 | SCN-B6EA8AD7B058 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】调用接口：失效客户基本信息(bm.cust_base_info.invalid)，其中API为当前所选业务服务的 invalid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-68EBA53612F7 |
@@ -2018,7 +2018,7 @@
 | SCN-C12C2A21E2D2 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「会计年度」的只读校验规则：【会计年度(acctg_year)】✅ 是 | 字段不可编辑 |  | RULE-1C9DB9E606DA |
 | SCN-D46B622EEB16 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「供应商全称」的隐藏校验规则：【供应商全称(supp_fname)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-AD0F571F2DE2 |
 | SCN-200D459FD338 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「批号」的必填校验规则：【批号(lot_no)】✅ 是；必填条件：IF 【采购退货出库单明细.批号管理(CUS_lot_mgmt)】勾选 THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-9754E67FF281 |
-| SCN-20ADBC45E664 | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】E+MSG："单据已有明细，不可更改运营单元！" | 按校验规则拦截或提示 |  | RULE-E66CFDAB6510 |
+| SCN-63D864BFF688 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「货币汇率表编号」的反向校验规则：【货币汇率表编号(ccy_er_table_no)】② 货币汇率表的基本货币须与记账本位币一致，否则 E+MSG："记账本位币与货币汇率表的基本货币必须相同！" | 按校验规则拦截或提示 |  | RULE-98ED3000065E |
 | SCN-E95789C0C253 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「结算运营单元编号」的开窗回填规则：【结算运营单元编号(stlmt_ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择结算机构<br/>- 数据来源：调用接口 查询受托运营单元(bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig)<br/>- 入参条件：[运营单元协作关系.运营单元协作编号(ops_unit_coop_rela.ops_unit_coop_no)] = 030.采购组织委托结算，[运营单元协作关系.委托运营单元编号(ops_unit_coop_rela.ops_unit_no)] = 【采购到货单.运营单元编号(p… | 开窗：选择结算机构 | TC-PARR-0075 | RULE-5DE9D0BF2CE3 |
 | SCN-9EB212468AE4 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「驳回 可用条件」的权限与数据范围规则：【驳回】【采购入库单.状态(pur_stkin_doc.manage_status)】=W.审核中 | 按操作说明执行 |  | RULE-690CDD5C780D |
 | SCN-26E3871F20C6 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】调用接口：删除客户基本信息(bm.cust_base_info.delete)，其中API为当前所选业务服务的 delete 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-350460745DEA |
@@ -2026,7 +2026,7 @@
 | SCN-47CBEAAE8AF7 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「会计期间期号」的只读校验规则：【会计期间期号(acctg_perid_no)】✅ 是 | 字段不可编辑 |  | RULE-CBF59CD73B6F |
 | SCN-5AF5D6EB095F | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「供应商名称」的隐藏校验规则：【供应商名称(supp_name)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-5371759A87A4 |
 | SCN-4F2CE3432C41 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务单位编号」的必填校验规则：【业务单位编号(biz_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-A61481C3CF5A |
-| SCN-0FAD803FA6E0 | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】E+MSG："单据已有明细，不可更改单别！" | 按校验规则拦截或提示 |  | RULE-7793275BF768 |
+| SCN-55D9B6C7142B | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「税率」的反向校验规则：【税率(tax_rate)】① 税率不可小于 0 或大于 1（页面 0~100%），否则 E+MSG："此字段必须介于0～1之间 !" | 按校验规则拦截或提示 |  | RULE-2F335FF63408 |
 | SCN-578475D141BA | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「品号」的开窗回填规则：【品号(item_no)】开窗：- 选择模式：多选<br/>- 开窗条件：<br/>- 开窗标题：选择品号<br/>- 数据来源：调用查询方案 查询品号信息(item_gen_info_001)<br/>- 入参条件：品号采购信息.运营单元编号(item_pur_info.ops_unit_no) = 【采购到货单.运营单元编号(pur_arr_doc.ops_unit_no)】、 品号存货信息.运营单元(item_invnt_info.ops_unit_no) = 【采购到货单.收货运营单元编号(pur_arr_doc.rcpt_ops_unit_no)】、 IF 【采购到货单.业务性质(p… | 开窗：选择品号 |  | RULE-0D4646931992 |
 | SCN-C88C1C171983 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「编辑 可用条件」的权限与数据范围规则：【编辑】【采购入库单.状态(pur_stkin_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-14DA89412F3F |
 | SCN-434518329132 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「取消生效 后置处理」的接口契约规则：【取消生效】调用接口：取消生效客户基本信息(bm.cust_base_info.cancel_valid)，其中API为当前所选业务服务的 cancel_valid 接口。入参说明：默认取页面业务主键字段值作为入参。 | 按平台服务调用结果决定是否继续 |  | RULE-C26CE25188EB |
@@ -2034,7 +2034,7 @@
 | SCN-17B953BA451F | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「会计期间序号」的只读校验规则：【会计期间序号(acctg_perid_seq)】✅ 是 | 字段不可编辑 |  | RULE-8468416D49EB |
 | SCN-2634055EBF6E | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「结算供应商编号」的隐藏校验规则：【结算供应商编号(stlmt_supp_no)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-351EFF2971A7 |
 | SCN-CE1168ABB3B1 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「库存单位编号」的必填校验规则：【库存单位编号(invnt_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-20A0A8DCA4FA |
-| SCN-A2EE080A9EAA | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「供应商编号」的反向校验规则：【供应商编号(supp_no)】E+MSG："单据已有明细，不可更改供应商！" | 按校验规则拦截或提示 |  | RULE-2F83BDB3BA44 |
+| SCN-FB5034C6C161 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度-应付」的反向校验规则：【现行年度-应付(curr_year_pay)】非空时须为 4 位整数（1900~9998），否则 E+MSG："请输入有效的会计年度值！" | 按校验规则拦截或提示 |  | RULE-EB019178DDAE；RULE-F6B5ACACD659 |
 | SCN-A58627FE3DAD | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「业务单位编号」的开窗回填规则：【业务单位编号(biz_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择品号单位<br/>- 数据来源：调用 [查询品号单位（smbcloud.item_gen_info.item_unit.get）]接口<br/>- 入参条件：品号= 【采购到货单明细.品号(pur_arr_doc_d.item_no)】<br/>- 显示字段：单位编号、单位名称<br/>- 默认排序：单位编号 升序<br/>- 回填映射：[品号单位.单位编号)] →【采购到货单明细.业务单位编号(pur_arr_doc_d.biz_unit_no)】 | 开窗：选择品号单位 |  | RULE-E32BD7E03018 |
 | SCN-8E96810F6963 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-9602E4707DD8 |
 | SCN-AB9BE5B3B178 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 前置校验」的接口契约规则：【保存】调用接口：查询客户基本信息(bm.cust_base_info.get) | 按平台服务调用结果决定是否继续 |  | RULE-5DF9FECEDC55 |
@@ -2042,7 +2042,7 @@
 | SCN-9D96ABEDA67A | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「审核时间」的只读校验规则：【审核时间(aprv_time)】✅ 是 | 字段不可编辑 |  | RULE-2D156086DDD1 |
 | SCN-A2AECF83B603 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「结算供应商名称」的隐藏校验规则：【结算供应商名称(stlmt_supp_name)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-8FCFF7253797 |
 | SCN-A5370D9C0415 | 采购退货出库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「项目编号」的必填校验规则：【项目编号(proj_no)】✅ 是；必填条件：IF 【采购退货出库单.是否启用项目管理(pur_rtn_stkou_doc.CUS_is_proj_mgmt_enabled)】勾选 THEN 不可空白 ENDIF<br/>即：当运营单元存货参数启用项目管理时必填。驱动值取单头虚拟字段 是否启用项目管理(CUS_is_proj_mgmt_enabled)，取值规则见 3.2 规则 4；条件内不直接调接口 | 为空时保存应被拦截 |  | RULE-A533E1B66F82 |
-| SCN-98E6892A95C3 | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「货币编号」的反向校验规则：【货币编号(ccy_no)】E+MSG："单据已有明细，不可更改币种！" | 按校验规则拦截或提示 |  | RULE-C1D3D2268A47 |
+| SCN-3B056D775B73 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号-应付」的反向校验规则：【现行期号-应付(curr_perid_no_pay)】非空时须为 1~12 的整数，否则 E+MSG："期间须为 1~12 的整数，请重新输入！" | 按校验规则拦截或提示 |  | RULE-EBB7FD8A1546；RULE-5FC12DD65024 |
 | SCN-A770B4A8CB5A | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「计价单位编号」的开窗回填规则：【计价单位编号(prc_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：【采购到货单明细.品号采购单位与计价单位须相同（pur_arr_doc_d.CUS_UDF011）】=FALSE <br/>- 开窗标题：选择品号单位<br/>- 数据来源：调用 [查询品号单位]接口<br/>- 入参条件：品号= 【采购到货单明细.品号(pur_arr_doc_d.item_no)】<br/>- 显示字段：单位编号、单位名称<br/>- 默认排序：单位编号 升序<br/>- 回填映射：[品号单位.单位编号)] →【采购到货单明细.计价单位编号(pur_arr_doc_d.prc_unit… | 开窗：选择品号单位 |  | RULE-3450043D7D4F |
 | SCN-0C75290DF3B2 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「提交 可用条件」的权限与数据范围规则：【提交】【采购入库单.状态(pur_stkin_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-B8C8A7C6BB0C |
 | SCN-9E19EEF2EE61 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.cust_base_info.create | 按平台服务调用结果决定是否继续 |  | RULE-DB9D7A3517C7；RULE-C507C2DC29C4 |
@@ -2050,7 +2050,7 @@
 | SCN-2BC21C037785 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「过账状态」的只读校验规则：【过账状态(post_stat)】✅ 是 | 字段不可编辑 |  | RULE-84DA0665C131 |
 | SCN-9EBF711F54CC | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「品号采购单位与计价单位须相同」的隐藏校验规则：【品号采购单位与计价单位须相同(CUS_UDF011)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-15DA40CF961F |
 | SCN-7F7AF6D6F7A6 |  | 必填校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的必填校验规则：【保存】单头必填校验：运营单元编号、业务类型编号、采购退货出库单号、供应商编号、单据日期不得为空。 | 校验不通过则操作被拦截 |  | RULE-BC6BC8B4B50A |
-| SCN-F2ADAEDCBD39 | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「含税标识」的反向校验规则：【含税标识(intax_flag)】E+MSG："单据已有明细，不可更改含税！" | 按校验规则拦截或提示 |  | RULE-08C5E0D368E4 |
+| SCN-ACC0B0058215 | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度应收」的反向校验规则：【现行年度应收(curr_year_recev)】非空时须为 4 位整数（1900~9998），否则 E+MSG："请输入有效的会计年度值！" | 按校验规则拦截或提示 |  | RULE-0211AF6FCDF6；RULE-F5ADD2B02834 |
 | SCN-8B2E3C20436A | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「仓库编号」的开窗回填规则：【仓库编号(whse_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择仓库<br/>- 数据来源：调用 [查询仓库(bm.whse.get)]接口<br/>- 入参条件：[仓库.运营单元编号]=【采购到货单.运营单元编号】、[仓库.状态]=Y.已生效、[仓库.仓库性质]=1.存货仓<br/>- 显示字段：[仓库.仓库编号]、[仓库.名称]、[仓库.仓库性质]、[仓库.纳入可用量计算]、[仓库.储位管理] as 库位管理<br/>- 默认排序：仓库编号 升序<br/>- 回填映射：[仓库.仓库编号)] →【采购到货单明细.仓库编号】，[仓库.储位管理] →【采… | 开窗：选择仓库 |  | RULE-F6892F3EFF8C |
 | SCN-1E74EA5E0F6C |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「过账 可用条件」的权限与数据范围规则：【过账】【采购入库单.状态(pur_stkin_doc.manage_status)】=Y.已审核 and 【采购入库单.过账状态(pur_stkin_doc.post_stat)】 = N.未过账 | 按操作说明执行 |  | RULE-0F55A4FE30A3 |
 | SCN-CC9E62F5899C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.trans_obj_attr.create | 按平台服务调用结果决定是否继续 |  | RULE-B8066143A163；RULE-4C9519470DE4 |
@@ -2058,7 +2058,7 @@
 | SCN-DEC682206C80 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票方向」的只读校验规则：【税务发票方向(tax_inv_dirct)】✅ 是 | 字段不可编辑 |  | RULE-26824E6739AD |
 | SCN-3BC3357252D4 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「应结算计价数量」的隐藏校验规则：【应结算计价数量(shd_stlmt_prc_qty)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-C4931BFF46DB |
 | SCN-5E69B7491CBF |  | 必填校验 | NEEDS_CONFIRMATION | 验证采购「取单 处理」的必填校验规则：【取单】非必填，空白表示全部 | 按操作说明执行 |  | RULE-09088C399FE3；RULE-7659F8D5631B |
-| SCN-377C52D109BE |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除分量计价行 后置处理」的反向校验规则：【删除分量计价行】删除所选阶梯行，并按次序号重排；删除后剩余行须仍满足「截止数量大于起始数量、末档截止 9999999999」 | 按操作说明执行 |  | RULE-8349C96D3A96 |
+| SCN-C50B4B638CDC | 运营单元核算参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号应收」的反向校验规则：【现行期号应收(curr_perid_no_recev)】非空时须为 1~12 的整数，否则 E+MSG："期间须为 1~12 的整数，请重新输入！" | 按校验规则拦截或提示 |  | RULE-5912ED0AFE3F；RULE-518248498668 |
 | SCN-F1FD6F202FAD | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「储位编号」的开窗回填规则：【储位编号(stsp_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择库位<br/>- 数据来源：调用 [查询仓库(bm.whse.get)]接口<br/>- 入参条件：[仓库.运营单元编号]=【采购到货单.收货运营单元编号】、[仓库.仓库编号]=【采购到货单.仓库编号】、[储位.状态码]=Y.生效 <br/>- 显示字段：[储位.储位编号] 、[储位.储位名称] <br/>- 默认排序：储位编号 升序<br/>- 回填映射：[储位.储位编号)] →【采购到货单明细.储位编号】 | 开窗：选择库位 |  | RULE-32E36BB61B0A |
 | SCN-8B8688578A21 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「取消过账 可用条件」的权限与数据范围规则：【取消过账】【采购入库单.过账状态(pur_stkin_doc.post_stat)】 = Y.已过账 | 按操作说明执行 |  | RULE-33BB13A5B441 |
 | SCN-FDED6CBF6186 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.trans_obj_attr.delete | 按平台服务调用结果决定是否继续 |  | RULE-4A86AF2086BA |
@@ -2066,7 +2066,7 @@
 | SCN-33F0375BA698 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税务发票号码合并文本」的只读校验规则：【税务发票号码合并文本(tax_inv_no_merge_text)】✅ 是 | 字段不可编辑 |  | RULE-8524CC996195 |
 | SCN-C7CDE29D0736 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「采购数量」的隐藏校验规则：【采购数量(CUS_UDF008)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-6EAC8BCF684A |
 | SCN-32C77D4143D9 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0003 | RULE-0D46D8D5D4B4 |
-| SCN-AEB3004BCEA4 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】E+MSG："单据已有明细，不可更改运营单元！" | 按校验规则拦截或提示 |  | RULE-8DD629DA0FE1 |
+| SCN-5C003A29D04B |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 前置校验」的反向校验规则：【保存】按顺序校验，首条不通过即提示并终止： | 校验不通过则操作被拦截 |  | RULE-079B821EC3FF；RULE-3FEE87E0B9AD；RULE-8ADA40E15E40 |
 | SCN-0A1974F0BD25 | 采购到货单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购到货单「批号」的开窗回填规则：【批号(lot_no)】开窗：<br/>- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：品号批号信息<br/>- 数据来源：调用 品号批号信息查询(bm.item_lot_info.get) 接口<br/>- 入参条件：品号批号信息.品号(item_lot_info.item_no) = 【采购到货单明细.品号(pur_arr_doc_d.item_no)】，品号批号信息.状态(item_lot_info.manage_status) = Y.生效，品号批号信息.生效日期(item_lot_info.eff_date) <= 【采购到货单.单据日期(pur_arr_doc.d… | 开窗：品号批号信息 |  | RULE-CA685EF8062E |
 | SCN-7A9855762D38 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「编辑 可用条件」的权限与数据范围规则：【编辑】【采购到货单.状态(pur_arr_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-1CE749AFA7B3 |
 | SCN-4DC369312F2C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.trans_obj_attr.valid | 按平台服务调用结果决定是否继续 |  | RULE-7F5FAF3A5E79 |
@@ -2074,7 +2074,7 @@
 | SCN-3945A213E0D3 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「销售运营单元编号」的只读校验规则：【销售运营单元编号(sales_ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-85D656A9E959 |
 | SCN-7F0949E3AE2D | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「计量体系」的隐藏校验规则：【计量体系(CUS_UDF009)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-2B2B221CE010 |
 | SCN-383595943E4F | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0007 | RULE-5A0792AA9392 |
-| SCN-E7C27D88B65D | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】E+MSG："单据已有明细，不可更改业务类型编号！" | 按校验规则拦截或提示 |  | RULE-F22C05B439C2 |
+| SCN-CBA752A1AE45 |  | 反向校验 | NEEDS_CONFIRMATION | 验证财务「保存 后置处理」的反向校验规则：【保存】按下列顺序执行；① 失败即终止，②~⑤ 失败只提示、不回滚已保存数据： | 按操作说明执行 |  | RULE-DF2D506B1EBA |
 | SCN-3CA473B124E3 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「供应商编号」的开窗回填规则：【供应商编号(supp_no)】开窗：[F2]查询供应商业务信息 bm.supp_biz_info.get<br/>传参：运营单元编号=【采购订单.运营单元编号(po.ops_unit_no)】 and 状态='Y.生效'<br/>显示：供应商编号，供应商名称，快捷码，结算供应商编号，结算供应商名称<br/>带回：【采购订单.供应商编号(po.supp_no)】=供应商业务信息.供应商编号，供应商名称=供应商业务信息.供应商名称，<br/>货币编号=供应商业务信息.交易货币编号，含税标识=供应商业务信息.含税标识，<br/>结算供应商编号=供应商业务信息.结算供应商编号，结算供应商名称=供应商… | 开窗：按开窗说明 | TC-PO-0033 | RULE-1CDE19848B4A |
 | SCN-ECC73CF9F141 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-F32882258F1A |
 | SCN-97A9045D9001 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.trans_obj_attr.invalid | 按平台服务调用结果决定是否继续 |  | RULE-63CD8EB54BBB |
@@ -2082,7 +2082,7 @@
 | SCN-DB865CFFCB8A | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「销售运营单元名称」的只读校验规则：【销售运营单元名称(sales_ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-B91142B0204E |
 | SCN-F37F26ADE99D | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「第二单位数量」的隐藏校验规则：【第二单位数量(sec_unit_qty)】✅ 是；隐藏条件：-调用接口:查询公共参数(param)<br/>-传入参数：无<br/>-返回：[公共参数.计量体系]<br/>当[公共参数.计量体系]不为D.存货双单位时，隐藏 | 字段不展示 |  | RULE-0FB9C8292CB8 |
 | SCN-545580BB2332 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务性质」的必填校验规则：【业务性质(biz_prop)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0008 | RULE-0C7A984C2A54 |
-| SCN-761ED9CD6EFC | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「供应商编号」的反向校验规则：【供应商编号(supp_no)】E+MSG："单据已有明细，不可更改供应商编号！" | 按校验规则拦截或提示 |  | RULE-C8D56AA41996 |
+| SCN-20ADBC45E664 | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】E+MSG："单据已有明细，不可更改运营单元！" | 按校验规则拦截或提示 |  | RULE-E66CFDAB6510 |
 | SCN-405408D0129B | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「单据日期」的开窗回填规则：【单据日期(doc_date)】开窗：[F2]查询日期 | 开窗：按开窗说明 | TC-PO-0035 | RULE-3722B3F1661C |
 | SCN-C279364C1616 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除 可用条件」的权限与数据范围规则：【删除】【采购到货单.状态(pur_arr_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-FF155AC5ADA0 |
 | SCN-50840DD4BE63 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.ccy.create | 按平台服务调用结果决定是否继续 |  | RULE-4CBD7F940F94；RULE-A5F86371A4E7 |
@@ -2090,7 +2090,7 @@
 | SCN-C899F86BD1FB | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「项目名称」的只读校验规则：【项目名称(proj_name)】✅ 是 | 字段不可编辑 |  | RULE-2EE29969AA13 |
 | SCN-93552BF8589E | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「第二单位编号」的隐藏校验规则：【第二单位编号(sec_unit_no)】✅ 是；隐藏条件：-调用接口:查询公共参数(param)<br/>-传入参数：无<br/>-返回：[公共参数.计量体系]<br/>当[公共参数.计量体系]不为D.存货双单位时，隐藏 | 字段不展示 |  | RULE-EE858388CE8A |
 | SCN-9FB2106BB8D6 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0011 | RULE-D4EACE7AC6EA |
-| SCN-CC4D8723AEAC | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「限用仓库编号」的反向校验规则：【限用仓库编号(limit_whse_no)】E+MSG："单据已有明细，不可更改限用仓库编号！" | 按校验规则拦截或提示 |  | RULE-F6C43D211055 |
+| SCN-0FAD803FA6E0 | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】E+MSG："单据已有明细，不可更改单别！" | 按校验规则拦截或提示 |  | RULE-7793275BF768 |
 | SCN-5DA0813CD336 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「业务类型编号」的开窗回填规则：【业务类型编号(biz_type_no)】开窗：[F2]查询采购单别 biz_type_pur_param_001 //查询方案 <br/>传参：运营单元编号=采购订单.运营单元编号(po.ops_unit_no) and 业务性质='PO05.采购订单'<br/>显示：业务类型编号，业务类型名称，编码方式<br/>带回：采购订单.业务类型编号(po.biz_type_no)=业务类型采购参数.业务类型编号 | 开窗：按开窗说明 | TC-PO-0039 | RULE-062548E027CC |
 | SCN-F56DF3D0BC26 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「提交 可用条件」的权限与数据范围规则：【提交】【采购到货单.状态(pur_arr_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-64E9FB0014A4 |
 | SCN-CFF39FA210AB |  | 接口契约 | NOT_UI_OBSERVABLE | 验证基础资料「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.ccy.delete | 按平台服务调用结果决定是否继续 |  | RULE-C65F0680EA1C |
@@ -2098,7 +2098,7 @@
 | SCN-3898AA667A92 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算方式编号」的只读校验规则：【结算方式编号(stlmt_mode_no)】✅ 是 | 字段不可编辑 |  | RULE-D5D9B961EF04 |
 | SCN-A24DE0182DC4 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「批号管理」的隐藏校验规则：【批号管理(CUS_UDF006)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-E46D3AFBDB10 |
 | SCN-1FA162AA9445 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「采购退货单号」的必填校验规则：【采购退货单号(pur_rtn_doc_no)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0015 | RULE-609FC467A6CC |
-| SCN-8B48A45DCC70 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「特征码」的反向校验规则：【特征码(item_feat_no)】过账前校验：品号存货信息.特征码管理='Y' 时不得为空，否则 E+MSG："特征码不可为空！" | 按校验规则拦截或提示 |  | RULE-7AAC4CB8A6B4 |
+| SCN-A2EE080A9EAA | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「供应商编号」的反向校验规则：【供应商编号(supp_no)】E+MSG："单据已有明细，不可更改供应商！" | 按校验规则拦截或提示 |  | RULE-2F83BDB3BA44 |
 | SCN-61E2E9432EB8 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「项目编号」的开窗回填规则：【项目编号(proj_no)】开窗：当 运营单元采购参数.是否启用项目管理(pur_reg_param.is_ena_proj_mgmt)=勾选 时<br/>- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：项目<br/>- 数据来源：调用接口：查询项目(bm.proj.get)<br/>- 入参条件：项目.状态(proj.manage_status)=Y.生效<br/>- 显示字段：项目编号，项目名称<br/>- 默认排序：按项目编号升序<br/>- 回填映射：项目.项目编号(proj.proj_no)→【采购订单.项目编号(po.proj_no)】 | 开窗：项目 | TC-PO-0044 | RULE-A1956DD4D742 |
 | SCN-CBFAB26B2FD8 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「驳回 可用条件」的权限与数据范围规则：【驳回】【采购到货单.状态(pur_arr_doc.manage_status)】=W.审核中 | 按操作说明执行 |  | RULE-9E8BE137E44F |
 | SCN-28205F8AE407 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「查询 后置处理」的接口契约规则：【查询】调用接口：查询质检业务单(bm.qi_biz_doc.get) | 按平台服务调用结果决定是否继续 |  | RULE-13254107BF8B |
@@ -2106,7 +2106,7 @@
 | SCN-0F098A0DCED4 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「银行账号」的只读校验规则：【银行账号(bank_acct_no)】✅ 是 | 字段不可编辑 |  | RULE-4EE6EF7B20FB |
 | SCN-2EB0F2FC220E | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「储位管理」的隐藏校验规则：【储位管理(CUS_UDF005)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-0B1B632A5698 |
 | SCN-EFBE88C1B4C7 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0017 | RULE-0F9CC6378C13 |
-| SCN-8E807CA234D8 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「商品类型」的反向校验规则：【商品类型(goods_type)】保存与过账前校验不得为空，否则 E+MSG："商品类型不可为空！" | 按校验规则拦截或提示 |  | RULE-A49023E07705 |
+| SCN-98E6892A95C3 | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「货币编号」的反向校验规则：【货币编号(ccy_no)】E+MSG："单据已有明细，不可更改币种！" | 按校验规则拦截或提示 |  | RULE-C1D3D2268A47 |
 | SCN-0FBDBE47F9B9 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「结算运营单元编号」的开窗回填规则：【结算运营单元编号(stlmt_ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：受托方运营单元<br/>- 数据来源：调用接口：查询受托方运营单元 bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig<br/>- 入参条件：运营单元协作编号='030.采购组织委托结算' and 委托运营单元编号=【采购订单.运营单元编号(po.ops_unit_no)】 and 生效码='Y.生效'<br/>- 显示字段：受托方运营单元编号，受托方运营单元名称<br/>- 默认排序：按受托方运营单元编号升序<br/… | 开窗：受托方运营单元 | TC-PO-0045 | RULE-98B9CE97BC53 |
 | SCN-8E3BB886CF45 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「审核 可用条件」的权限与数据范围规则：【审核】【采购到货单.状态(pur_arr_doc.manage_status)】=N.未审核 or W.审核中 | 按操作说明执行 |  | RULE-646F4E36E535 |
 | SCN-283D98D3D7F8 | 请购单 | 接口契约 | NOT_UI_OBSERVABLE | 验证请购单「单据日期」的接口契约规则：【单据日期(doc_date)】调用接口：查询核算运营单元(bm.ops_unit.get_calc_ops_unit)；入参：运营单元.运营单元编号(ops_unit.ops_unit_no) = 【请购单.运营单元编号(requ_doc.ops_unit_no)】；回参：运营单元.核算运营单元编号(ops_unit.calc_ops_unit_no) | 按平台服务返回结果决定是否放行 |  | RULE-00B0E1DD4C8E；RULE-B1F84B525D3E |
@@ -2114,7 +2114,7 @@
 | SCN-8BFED0B2415D | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算号」的只读校验规则：【结算号(stlmt_no)】✅ 是 | 字段不可编辑 |  | RULE-F99539687CFE |
 | SCN-65CE3E26119C | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「标准单价」的隐藏校验规则：【标准单价(std_price)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-836A4B4B0A35 |
 | SCN-A9A1B17CCD41 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「退货运营单元编号」的必填校验规则：【退货运营单元编号(rtn_ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0023 | RULE-00D5D340D4A9 |
-| SCN-1DCCF8CD6579 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「批号」的反向校验规则：【批号(lot_no)】入参条件：品号批号信息.品号(item_lot_info.item_no)=【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】 AND 品号批号信息.状态(item_lot_info.manage_status)=Y.生效 AND 品号批号信息.生效日期(item_lot_info.eff_date)<=【采购退货出库单.单据日期(pur_rtn_stkou_doc.doc_date)】 AND 品号批号信息.生效截止日期(item_lot_info.eff_end_date)>=【采购退货出库单.单据日期(pur_rtn_stkou… | 按校验规则拦截或提示 |  | RULE-CAAB60998499 |
+| SCN-F2ADAEDCBD39 | 询价单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证询价单「含税标识」的反向校验规则：【含税标识(intax_flag)】E+MSG："单据已有明细，不可更改含税！" | 按校验规则拦截或提示 |  | RULE-08C5E0D368E4 |
 | SCN-FF8494B67F32 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「运营单元编号」的开窗回填规则：【运营单元编号(ops_unit_no)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：运营单元<br/>- 数据来源：调用接口：查询运营单元 bm.ops_unit.get<br/>- 入参条件：运营单元职能编号 包含 'purc org'（采购组织） and 生效码=Y.生效<br/>- 显示字段：运营单元编号，运营单元名称<br/>- 默认排序：按运营单元编号升序<br/>- 回填映射：运营单元信息.运营单元编号→【采购订单.运营单元编号(po.ops_unit_no)】 | 开窗：运营单元 | TC-PO-0049 | RULE-594D33051F5B |
 | SCN-049EECA7F13E |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「撤审 可用条件」的权限与数据范围规则：【撤审】【采购到货单.状态(pur_arr_doc.manage_status)】=Y.已审核 | 按操作说明执行 |  | RULE-B43FC6C7E239 |
 | SCN-D68DE3B46D02 | 请购单 | 接口契约 | NOT_UI_OBSERVABLE | 验证请购单「申请人编号」的接口契约规则：【申请人编号(applt_no)】调用接口：查询员工(bm.empl.get)；入参：员工.员工编号(empl.empl_no) = 【请购单.申请人编号(requ_doc.applt_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-0EA82ED950FE |
@@ -2122,7 +2122,7 @@
 | SCN-6A0FCA2997FC | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「结算日期」的只读校验规则：【结算日期(stlmt_date)】✅ 是 | 字段不可编辑 |  | RULE-5E72BE3A305B |
 | SCN-0A2A18E4CFEB | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「折扣后单价」的隐藏校验规则：【折扣后单价(discd_price)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-2F95B2075FEF |
 | SCN-21CEE891F21A | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「含税标识」的必填校验规则：【含税标识(intax_flag)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0030 | RULE-A6416039F3C6 |
-| SCN-C629EB93B308 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务数量」的反向校验规则：【业务数量(biz_qty)】检查【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】须大于0。 | 按校验规则拦截或提示 |  | RULE-C4C9AC010386；RULE-9628CD05E1C7；RULE-9CD9E3074775；RULE-4573E1BA0522 |
+| SCN-377C52D109BE |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「删除分量计价行 后置处理」的反向校验规则：【删除分量计价行】删除所选阶梯行，并按次序号重排；删除后剩余行须仍满足「截止数量大于起始数量、末档截止 9999999999」 | 按操作说明执行 |  | RULE-8349C96D3A96 |
 | SCN-595F0F621030 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「采购员编号」的开窗回填规则：【采购员编号(purhr_no)】开窗：[F2]查询员工 bm.empl.get<br/>传参：员工部门信息.归属运营单元编号=【采购订单.运营单元编号(po.ops_unit_no)】 and 状态='Y' and 离职日期 >= 【采购订单.单据日期(po.doc_date)】<br/>显示：员工编号，员工姓名 <br/>带回：采购人员=员工信息.员工编号 | 开窗：按开窗说明 | TC-PO-0025 | RULE-654D682F4FFA |
 | SCN-0F509ABA7638 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「作废 可用条件」的权限与数据范围规则：【作废】【采购到货单.状态(pur_arr_doc.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-C6D4AD9F09E1 |
 | SCN-7C51B507736F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.requ_doc.create | 按平台服务调用结果决定是否继续 |  | RULE-6C383C087D6A；RULE-46942EBEDB25 |
@@ -2130,7 +2130,7 @@
 | SCN-9D0CFAE334C4 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税额计算方式」的只读校验规则：【税额计算方式(tax_calc_mode)】✅ 是 | 字段不可编辑 |  | RULE-5B7182BDEFAA |
 | SCN-25E53208D5C8 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「质检模式」的隐藏校验规则：【质检模式(qi_mode)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-8CC0ED3901B1 |
 | SCN-A015C8A6DCB8 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0034 | RULE-E6BFB10C81A0 |
-| SCN-C1E0B423E72C | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「第二单位数量」的反向校验规则：【第二单位数量(sec_unit_qty)】检查 第二单位数量不可小于零 | 按校验规则拦截或提示 |  | RULE-8ECFA4B09C9C；RULE-94EAFFA3D849 |
+| SCN-AEB3004BCEA4 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】E+MSG："单据已有明细，不可更改运营单元！" | 按校验规则拦截或提示 |  | RULE-8DD629DA0FE1 |
 | SCN-65C3B697CE4F | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「采购部门编号」的开窗回填规则：【采购部门编号(pur_dept_no)】开窗：//[F2]查询部门 bm.dept.get<br/>//传参：状态='Y.生效'，[部门.归属运营单元编号(dept.ops_unit_no)] = 【采购订单.运营单元编号（ops_unit_no）】<br/>//显示：部门编号，部门名称<br/>//带回：【采购订单.采购部门编号(po.pur_dept_no)】=部门信息.部门编号<br/>- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择部门<br/>- 数据来源：调用 查询员工(bm.empl.get) 接口<br/>- 入参条件：员工.员工编号(empl.empl… | 开窗：选择部门 | TC-PO-0026 | RULE-B46651C5C81B |
 | SCN-7B73F4D0C1BC |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「明细操作 可用条件」的权限与数据范围规则：【明细操作】入参：[业务类型采购参数.运营单元编号(biz_type_pur_param.ops_unit_no)] = 【采购到货单.运营单元编号(pur_arr_doc.ops_unit_no)】，[业务类型采购参数.业务类型编号(biz_type_pur_param.biz_type_no)] = 【采购到货单.业务类型编号(pur_arr_doc.biz_type_no)】 | 按操作说明执行 |  | RULE-58C32ABD38ED；RULE-035523CC2E7E |
 | SCN-E0A51EDC3640 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.requ_doc.delete | 按平台服务调用结果决定是否继续 |  | RULE-C555714E7BEC |
@@ -2138,7 +2138,7 @@
 | SCN-F00EA7BAC728 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「无税金额（原币）」的只读校验规则：【无税金额（原币）(untax_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-39A681573FBC |
 | SCN-F741BB0F322A | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「来源次序号」的隐藏校验规则：【来源次序号(src_sub_seq)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-25D9B8C6B7F3 |
 | SCN-5B4BBD54B1B9 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「项目编号」的必填校验规则：【项目编号(proj_no)】✅ 是；必填条件：IF 【采购退货单.是否启用项目管理(pur_rtn_doc.CUS_is_proj_mgmt_enabled)】勾选 THEN 不可空白 ENDIF<br/>即：运营单元采购参数启用项目管理时必填。驱动值取单头虚拟字段 是否启用项目管理(CUS_is_proj_mgmt_enabled)，取值规则见 3.2 规则 1；条件内不直接调接口 | 为空时保存应被拦截 |  | RULE-FCDAF1B0ABCD |
-| SCN-CD4176049264 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（原币）」的反向校验规则：【无税金额（原币）(untax_amt_tc)】不做必填校验（允许为空）；过账后仅校验精度：原币按退货单币别精度取位 | 按校验规则拦截或提示 |  | RULE-61A05D35D1B7 |
+| SCN-E7C27D88B65D | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】E+MSG："单据已有明细，不可更改业务类型编号！" | 按校验规则拦截或提示 |  | RULE-F22C05B439C2 |
 | SCN-2B1AC3E31CBA | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「货币编号」的开窗回填规则：【货币编号(ccy_no)】开窗：[F2]查询货币 bm.ccy.get<br/>传参：生效码='Y.生效'<br/>显示：货币编号，货币名称<br/>带回：采购订单.货币编号(po.ccy_no)=货币信息.货币编号，货币名称=货币信息.货币名称 | 开窗：按开窗说明 | TC-PO-0007 | RULE-3CE5816D76C9 |
 | SCN-947B40AA23F1 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「取单 可用条件」的权限与数据范围规则：【取单】【采购到货单.业务性质】!=PO17.期初开账到货单 | 按操作说明执行 |  | RULE-1BA15FB2010A |
 | SCN-4FA5774A104D |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「提交 后置处理」的接口契约规则：【提交】● 调用接口：bm.requ_doc.initi_aprv | 按平台服务调用结果决定是否继续 |  | RULE-5FAEB8605D38 |
@@ -2146,7 +2146,7 @@
 | SCN-D067D58B407F | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税额（原币）」的只读校验规则：【税额（原币）(tax_tc)】✅ 是 | 字段不可编辑 |  | RULE-76FD84E70007 |
 | SCN-879765BBED83 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「参考来源次序号」的隐藏校验规则：【参考来源次序号(ref_src_sub_seq)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-CE200DEB64DE |
 | SCN-A4CE0F8C8F8B | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「结算运营单元编号」的必填校验规则：【结算运营单元编号(stlmt_ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0043 | RULE-40131F3822A7 |
-| SCN-42D9C2643187 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（原币）」的反向校验规则：【税额（原币）(tax_tc)】不做必填校验（允许为空）；过账后仅校验精度：原币按退货单币别精度取位 | 按校验规则拦截或提示 |  | RULE-E06852DC2DAE |
+| SCN-761ED9CD6EFC | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「供应商编号」的反向校验规则：【供应商编号(supp_no)】E+MSG："单据已有明细，不可更改供应商编号！" | 按校验规则拦截或提示 |  | RULE-C8D56AA41996 |
 | SCN-29FC1679C8A5 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「付款条件编号」的开窗回填规则：【付款条件编号(pmt_terms_no)】开窗：[F2]查询收付款条件 bm.colln_pmt_terms.get<br/>传参：有效码='Y.生效' and (收付款类型='0.收付款皆适用' or 收付款条件='1.付款条件')<br/>显示：付款条件编号，付款条件名称<br/>带回：采购订单.付款条件编号(po.pmt_terms_no)=收付款条件.付款条件编号 | 开窗：按开窗说明 | TC-PO-0008 | RULE-90797D24719A |
 | SCN-F7CEBEB94314 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-7303FA88BF10 |
 | SCN-20CC4CCEDA37 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「驳回 后置处理」的接口契约规则：【驳回】● 调用接口：bm.requ_doc.cxl_aprv | 按平台服务调用结果决定是否继续 |  | RULE-BD26AF15AB9F |
@@ -2154,7 +2154,7 @@
 | SCN-75E076B2E855 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「价税合计（原币）」的只读校验规则：【价税合计（原币）(tawt_tc)】✅ 是 | 字段不可编辑 |  | RULE-9EDF4A13B581 |
 | SCN-1F698C7C4162 | 采购到货单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「参考来源运营单元编号」的隐藏校验规则：【参考来源运营单元编号(ref_src_ops_unit_no)】✅ 是 | 字段不展示 | TC-PARR-0002 | RULE-44D395B259D0 |
 | SCN-73F7F812E07C | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「可抵扣VAT标识」的必填校验规则：【可抵扣VAT标识(ded_vat_flag)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0048 | RULE-0FB8C3255227 |
-| SCN-47259794DC53 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（本币）」的反向校验规则：【无税金额（本币）(untax_amt_fc)】不做必填校验（允许为空）；过账后仅校验精度：本币按核算运营单元记账本位币精度取位 | 按校验规则拦截或提示 |  | RULE-35DD41258428 |
+| SCN-CC4D8723AEAC | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「限用仓库编号」的反向校验规则：【限用仓库编号(limit_whse_no)】E+MSG："单据已有明细，不可更改限用仓库编号！" | 按校验规则拦截或提示 |  | RULE-F6C43D211055 |
 | SCN-86B53AA91661 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「备注」的开窗回填规则：【备注(rmk)】开窗：[F2]常用语查询 | 开窗：按开窗说明 | TC-PO-0014 | RULE-FE1BFC588A83 |
 | SCN-2D31B89C4D0F |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「生效 可用条件」的权限与数据范围规则：【生效】【采购取价策略.状态(pur_price_strtg.manage_status)】=V.失效 | 按操作说明执行 |  | RULE-BF15231BB470 |
 | SCN-2790DB4716F5 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 后置处理」的接口契约规则：【审核】● 调用接口：bm.requ_doc.approve | 按平台服务调用结果决定是否继续 |  | RULE-018CEF0FE159；RULE-C1F4C60A7EE5 |
@@ -2162,7 +2162,7 @@
 | SCN-0B9E99333269 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「无税金额（本币）」的只读校验规则：【无税金额（本币）(untax_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-AB5E10A26F81 |
 | SCN-11CFC412FFA4 | 采购取价策略 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「取价方式」的隐藏校验规则：【取价方式(price_mode)】✅ 是 | 字段不展示 | TC-PPRC-0002 | RULE-DA1A140D521B |
 | SCN-CF1753E34B90 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「税务发票类型」的必填校验规则：【税务发票类型(tax_inv_type)】✅ 是 | 为空时保存应被拦截 | TC-PRTN-0052 | RULE-DAB98EFF6935 |
-| SCN-5AE1DF5613E6 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（本币）」的反向校验规则：【税额（本币）(tax_fc)】不做必填校验（允许为空）；过账后仅校验精度：本币按核算运营单元记账本位币精度取位 | 按校验规则拦截或提示 |  | RULE-D9CA94C25759 |
+| SCN-1A2B1CD574D8 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「过账状态」的反向校验规则：【过账状态(post_stat)】已过账（Y）时不可编辑、不可删除、不可作废；撤审时须先取消过账，取消成功后方可撤审。 | 按校验规则拦截或提示 |  | RULE-2D03B4941F92 |
 | SCN-9734FFADF0A8 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「收货运营单元编号」的开窗回填规则：【收货运营单元编号(rcpt_ops_unit_no)】开窗：[F2]查询受托方运营单元 bm.ops_unit_coop_rela.get_coop_ops_unit.get_assig<br/>传参：运营单元协作编号='040.采购委托库存收货' and 委托运营单元编号=采购订单.运营单元编号(po.ops_unit_no) and 生效码='Y.生效'<br/>显示：受托方运营单元编号，受托方运营单元名称<br/>带回：采购订单.收货运营单元编号(po.rcpt_ops_unit_no)=受托方运营单元.受托方运营单元编号 | 开窗：按开窗说明 | TC-PO-0015 | RULE-123CEF47757F |
 | SCN-FF8955C397B3 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「失效 可用条件」的权限与数据范围规则：【失效】【采购取价策略.状态(pur_price_strtg.manage_status)】=Y.生效 | 按操作说明执行 |  | RULE-119C005066B6 |
 | SCN-C53EE883C642 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「撤审 后置处理」的接口契约规则：【撤审】● 调用接口：bm.requ_doc.disapprove | 按平台服务调用结果决定是否继续 |  | RULE-03127632B5C3 |
@@ -2170,7 +2170,7 @@
 | SCN-6D9E5C3B3AC9 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「税额（本币）」的只读校验规则：【税额（本币）(tax_fc)】✅ 是 | 字段不可编辑 |  | RULE-A27483585C0D |
 | SCN-92CABE3EB421 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「供应商名称」的隐藏校验规则：【供应商名称(supp_name)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-68133626F887 |
 | SCN-01B86A5A594F | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「商品类型」的必填校验规则：【商品类型(goods_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-169895C55BB4 |
-| SCN-716A35B4A598 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（原币）」的反向校验规则：【货款金额（原币）(pmt_amt_tc)】不做必填校验（允许为空）；过账后仅校验精度：原币按退货单币别精度取位 | 按校验规则拦截或提示 |  | RULE-B81D4A2DF746 |
+| SCN-90775FF5FBE2 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库来源单据类型」的反向校验规则：【采购退货出库来源单据类型(pur_rtn_stkou_src_doc_type)】必填校验：为空时阻断 E+MSG："来源单据类型不可为空！"；只允许 1.采购退货。 | 按校验规则拦截或提示 |  | RULE-76E890279472 |
 | SCN-834B29E4F0E6 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「品号」的开窗回填规则：【品号(item_no)】开窗：[F2]查询品号信息 item_gen_info_001<br/>传参：品号采购信息.运营单元编号=运营单元 and 品号存货信息.运营单元编号=收货运营单元编号 <br/>显示：品号，品名，规格，采购单位编号，采购单位名称，税率<br/>带回：品号=品号，品名=品名，规格=规格，业务单位编号=采购单位编号，第二单位编号=第二单位编号，计价单位编号=计价单位编号，品号采购单位与计价单位须相同（po_d.CUS_UDF011）=品号采购单位与计价单位须相同,<br/>仓库 CUS_uiXD007 = 仓库编号,库存单位编号（invnt_unit_no）=库存单位、… | 开窗：按开窗说明 |  | RULE-41E25D502762 |
 | SCN-CC69F86559C0 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「编辑 可用条件」的权限与数据范围规则：【编辑】【采购订单.状态(po.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-3B1E482EB093 |
 | SCN-EDD0401A8197 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「作废 后置处理」的接口契约规则：【作废】● 调用接口：bm.requ_doc.void | 按平台服务调用结果决定是否继续 |  | RULE-BC111A3423F9 |
@@ -2178,7 +2178,7 @@
 | SCN-DA89AB3DFAFA | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「价税合计（本币）」的只读校验规则：【价税合计（本币）(tawt_fc)】✅ 是 | 字段不可编辑 |  | RULE-66128C11C261 |
 | SCN-D8B35C2733CB | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「是否多收货机构」的隐藏校验规则：【是否多收货机构(is_multi_rcpt_insti)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-0761901F7685 |
 | SCN-E56DD9EB36BB | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-DBFE50753199 |
-| SCN-E2CB472CE032 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（本币）」的反向校验规则：【货款金额（本币）(pmt_amt_fc)】不做必填校验（允许为空）；过账后仅校验精度：本币按核算运营单元记账本位币精度取位 | 按校验规则拦截或提示 |  | RULE-F75E128DAC36 |
+| SCN-129843CD964B | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源运营单元编号」的反向校验规则：【来源运营单元编号(src_ops_unit_no)】必填校验：保存与审核时为空则阻断 E+MSG："来源运营单元编号不可为空！" | 按校验规则拦截或提示 |  | RULE-841ED0D7DA90 |
 | SCN-4E1CF317CD48 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「仓库」的开窗回填规则：【仓库(CUS_uiXD007)】开窗：- 选择模式：单选<br/>- 开窗条件：<br/>- 开窗标题：选择仓库<br/>- 数据来源：调用 [查询仓库(bm.whse.get)]接口<br/>- 入参条件：[仓库.运营单元编号]=【采购订单.收货运营单元编号】、[仓库.状态]=Y.已生效、[仓库.仓库性质]=1.存货仓<br/>- 显示字段：[仓库.仓库编号]、[仓库.名称]、[仓库.仓库性质]、[仓库.纳入可用量计算] <br/>- 默认排序：仓库编号 升序<br/>- 回填映射：[仓库.仓库编号)] → 仓库 CUS_uiXD007<br/> [仓库.仓库名称)] →仓库名称（CUS_… | 开窗：选择仓库 |  | RULE-8028C32C9767 |
 | SCN-DAE6671AF776 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「保存 可用条件」的权限与数据范围规则：【保存】新增/编辑状态 | 按操作说明执行 |  | RULE-213871BAB75C |
 | SCN-CC2BF1CF2373 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「指定结束 后置处理」的接口契约规则：【指定结束】调用 请购单明细指定结束(bm.requ_doc.requ_doc_d_close) | 按平台服务调用结果决定是否继续 |  | RULE-2649B6BC61B0 |
@@ -2186,7 +2186,7 @@
 | SCN-3B0560F6F1C2 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「分期来源类型」的只读校验规则：【分期来源类型(insta_src_type)】✅ 是 | 字段不可编辑 |  | RULE-E15F380455E5 |
 | SCN-730F9E034F13 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「结算供应商编号」的隐藏校验规则：【结算供应商编号(stlmt_supp_no)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-CDF6B9248AFF |
 | SCN-D00D899B5F95 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务单位编号」的必填校验规则：【业务单位编号(biz_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-93126A85F3FF |
-| SCN-F81F374B0FDD |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的反向校验规则：【审核】单身至少一行有效明细，否则阻断：E+MSG："无明细不可审核！" | 校验不通过则操作被拦截 |  | RULE-E43A781D337C；RULE-F14813CABD8F；RULE-3DC5AA60E1C9 |
+| SCN-993A5B18E676 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源单号」的反向校验规则：【来源单号(src_doc_no)】必填校验：保存与审核时为空则阻断 E+MSG："来源单号不可为空！"；取值来自取单赋值（采购退货单号）。 | 按校验规则拦截或提示 |  | RULE-9D8CAC08365E |
 | SCN-F48509D515D5 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「业务单位编号」的开窗回填规则：【业务单位编号(biz_unit_no)】开窗：[F2]查询品号单位信息 smbcloud.item_gen_info.item_unit.get<br/>传参：品号=品号 <br/>显示：单位编号，单位名称<br/>带回：业务单位编号 =单位编号 | 开窗：按开窗说明 |  | RULE-1579BB4E2EE4 |
 | SCN-4886617A54C9 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「删除 可用条件」的权限与数据范围规则：【删除】【采购订单.状态(po.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-6C3235B11F01 |
 | SCN-AAD0507DCD7F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.pur_reg_param.create | 按平台服务调用结果决定是否继续 |  | RULE-7C43F74EF8E8；RULE-A4DAB8022B36 |
@@ -2194,7 +2194,7 @@
 | SCN-DB54453165C0 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「现金折扣方式」的只读校验规则：【现金折扣方式(cash_disc_mode)】✅ 是 | 字段不可编辑 |  | RULE-53AF4F59E537 |
 | SCN-651B57C073D4 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「结算供应商名称」的隐藏校验规则：【结算供应商名称(stlmt_supp_name)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-A00D915FAE98 |
 | SCN-452619BBC84E | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「计价单位编号」的必填校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-5A943667AB00 |
-| SCN-A243A7C8DC4E |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 后置处理」的反向校验规则：【审核】本作业不设独立【过账】按钮：审核成功后按 业务类型存货参数.自动过账(auto_post) 判断并自动调用过账服务，过账逻辑并入本操作的步骤3。 | 按操作说明执行 |  | RULE-DA396DCC5304 |
+| SCN-A9209D03765D | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源序号」的反向校验规则：【来源序号(src_seq)】必填校验：为空阻断 E+MSG："来源序号不可为空！"。注意该字段为数值型、缺省 0，平台的非空校验对 0 放行，真正的约束由取单强制赋值与可退量校验承担。 | 按校验规则拦截或提示 |  | RULE-A83A43007BED |
 | SCN-CAB17290628F | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「计价单位编号」的开窗回填规则：【计价单位编号(prc_unit_no)】开窗：[F2]查询品号单位信息 smbcloud.item_gen_info.item_unit.get<br/>传参：品号=品号 <br/>显示：单位编号，单位名称<br/>带回：计价单位编号 =单位编号 | 开窗：按开窗说明 |  | RULE-2699E8FF8B51 |
 | SCN-3FE575DE3D50 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「提交 可用条件」的权限与数据范围规则：【提交】【采购订单.状态(po.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-A53977C2AC01 |
 | SCN-A18531D04E65 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.pur_reg_param.delete | 按平台服务调用结果决定是否继续 |  | RULE-B7BF7709697B |
@@ -2202,7 +2202,7 @@
 | SCN-61990EBAE893 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「统一税种税率标识」的只读校验规则：【统一税种税率标识(uni_tax_rate_flag)】✅ 是 | 字段不可编辑 |  | RULE-DA81DCCBA13C |
 | SCN-5461BAAC74CD | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「允许分批交货」的隐藏校验规则：【允许分批交货(allow_prtl_deliv)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-BF7BBAA20798 |
 | SCN-B6488BC8B8B7 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「库存单位编号」的必填校验规则：【库存单位编号(invnt_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-6441C3B9BDA7 |
-| SCN-6985B84194A4 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「撤审 前置校验」的反向校验规则：【撤审】已产生应付结算（已结算计价数量 > 0）时阻断：E+MSG："本单已结算，不可取消过账！" | 校验不通过则操作被拦截 |  | RULE-5B080ED50A64；RULE-F4C49743C98F |
+| SCN-8B48A45DCC70 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「特征码」的反向校验规则：【特征码(item_feat_no)】过账前校验：品号存货信息.特征码管理='Y' 时不得为空，否则 E+MSG："特征码不可为空！" | 按校验规则拦截或提示 |  | RULE-7AAC4CB8A6B4 |
 | SCN-362DB57AE0C4 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「库存单位编号」的开窗回填规则：【库存单位编号(invnt_unit_no)】开窗：[F2]查询品号单位信息 item_gen_info_001<br/>传参：品号=【采购订单明细.品号(po_d.item_no)】<br/>显示：单位编号，单位名称<br/>带回：库存单位编号 =单位编号 | 开窗：按开窗说明 |  | RULE-6DFB74E1AE5E |
 | SCN-7524074C1C82 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「驳回 可用条件」的权限与数据范围规则：【驳回】【采购订单.状态(po.manage_status)】=W.审核中 | 按操作说明执行 |  | RULE-CD84DEA2FF18 |
 | SCN-9839D501ADD0 | 采购入库单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购入库单「采购入库单号」的接口契约规则：【采购入库单号(pur_stkin_doc_no)】调用接口：查询业务类型通用信息(bm.biz_type_gen_info.get)；入参：业务类型通用信息.业务类型编号(biz_type_gen_info.biz_type_no) = 【采购入库单.业务类型编号(pur_stkin_doc.biz_type_no)】；回参：业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)， 业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit) | 按平台服务返回结果决定是否放行 |  | RULE-7AAE99304DF7 |
@@ -2210,7 +2210,7 @@
 | SCN-AA72E5E412D0 | 应收单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收单「VAT标识」的只读校验规则：【VAT标识(vat_flag)】✅ 是 | 字段不可编辑 |  | RULE-80DD0E38CCF6 |
 | SCN-EDD4CA6986C1 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「业务性质」的隐藏校验规则：【业务性质(biz_prop)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-01BF3CBCADC3 |
 | SCN-0180A562C328 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「仓库编号」的必填校验规则：【仓库编号(whse_no)】✅ 是；必填条件：IF 【采购退货单.业务性质(pur_rtn_doc.biz_prop)】 = 'PO11.直接退货' THEN 不可空白 ENDIF<br/>即：直接退货无上游来源，仓库必须人工指定；采购退货（PO09）由来源单据或品号默认出库仓库带出，允许为空。 | 为空时保存应被拦截 |  | RULE-EA3A090BBCFE |
-| SCN-EC070B8E682A |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「明细操作 前置校验」的反向校验规则：【明细操作】业务数量须大于0且不超过来源可退货量：E+MSG："业务数量不可大于可退数量（可退 X）！" | 校验不通过则操作被拦截 |  | RULE-B26E1F036C27 |
+| SCN-8E807CA234D8 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「商品类型」的反向校验规则：【商品类型(goods_type)】保存与过账前校验不得为空，否则 E+MSG："商品类型不可为空！" | 按校验规则拦截或提示 |  | RULE-A49023E07705 |
 | SCN-9C9006A6C669 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「预计到货日期」的开窗回填规则：【预计到货日期(antic_arr_date)】开窗：[F2]查询日期 | 开窗：按开窗说明 |  | RULE-7A7BF93252B7 |
 | SCN-B8CBB5D5DA27 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「审核 可用条件」的权限与数据范围规则：【审核】【采购订单.状态(po.manage_status)】=N.未审核 or W.审核中 | 按操作说明执行 |  | RULE-2DC11E0B3DC7 |
 | SCN-60CA3E7A7B11 | 采购入库单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购入库单「单据日期」的接口契约规则：【单据日期(doc_date)】调用接口：查询运营单元核算参数(bm.ops_unit_calc_param.get)；入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no) = 【采购入库单.运营单元编号(pur_stkin_doc.ops_unit_no)】；回参：运营单元核算参数.开放日期范围起-存货(ops_unit_calc_param.date_range_begin_invnt)、运营单元核算参数.现行年度-存货(ops_unit_calc_param.ena_year_invnt)、运营单元核算参数.现行期号-存货(ops_uni… | 按平台服务返回结果决定是否放行 |  | RULE-4318A59EBA49 |
@@ -2218,7 +2218,7 @@
 | SCN-BEE7DD44F1AA |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「序号」的只读校验规则：【序号(seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001；TC-PUR-0001；TC-PSTK-0001；TC-PARR-0001；TC-PRTN-0001 | RULE-9916857FF25F |
 | SCN-F70E00E1E5F7 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「品号采购单位与计价单位须相同」的隐藏校验规则：【品号采购单位与计价单位须相同(CUS_UDF011)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-1CE6C3644F13 |
 | SCN-A9E179358BCB | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「储位编号」的必填校验规则：【储位编号(stsp_no)】✅ 是；必填条件：IF 【采购退货单明细.储位管理(pur_rtn_doc_d.CUS_stsp_mgmt)】 = '1.启用' THEN 不可空白 ENDIF<br/>即：仓库启用储位管理时储位必填。驱动值取仓库开窗回填的 储位管理(CUS_stsp_mgmt)，取值规则见 3.2 规则 2；条件内不直接调接口。 | 为空时保存应被拦截 |  | RULE-76EB02654A57 |
-| SCN-FD1071CFA43C | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】与库中值不一致，E+MSG："单据已有明细，不可更改运营单元！" | 按校验规则拦截或提示 |  | RULE-2821E0B17B0C |
+| SCN-1DCCF8CD6579 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「批号」的反向校验规则：【批号(lot_no)】入参条件：品号批号信息.品号(item_lot_info.item_no)=【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】 AND 品号批号信息.状态(item_lot_info.manage_status)=Y.生效 AND 品号批号信息.生效日期(item_lot_info.eff_date)<=【采购退货出库单.单据日期(pur_rtn_stkou_doc.doc_date)】 AND 品号批号信息.生效截止日期(item_lot_info.eff_end_date)>=【采购退货出库单.单据日期(pur_rtn_stkou… | 按校验规则拦截或提示 |  | RULE-CAAB60998499 |
 | SCN-CA3B07F11354 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「第二单位编号」的开窗回填规则：【第二单位编号(sec_unit_no)】开窗：[F2]查询品号单位信息 smbcloud.item_gen_info.item_unit.get<br/>传参：品号=【采购订单明细.品号(po_d.item_no)】<br/>显示：单位编号，单位名称<br/>带回：【采购订单明细.第二单位编号(po_d.sec_unit_no)】=单位编号 | 开窗：按开窗说明 |  | RULE-558A785346E2 |
 | SCN-5C2416F69C1C |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「撤审 可用条件」的权限与数据范围规则：【撤审】【采购订单.状态(po.manage_status)】=Y.已审核 | 按操作说明执行 |  | RULE-B7556AE83F73 |
 | SCN-E45A0713C53F | 采购入库单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购入库单「交易日期」的接口契约规则：【交易日期(trans_date)】调用接口：查询运营单元核算参数(bm.ops_unit_calc_param.get)；入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no) = 【采购入库单.运营单元编号(pur_stkin_doc.ops_unit_no)】；回参：运营单元核算参数.开放日期范围起-存货(ops_unit_calc_param.date_range_begin_invnt)、运营单元核算参数.现行年度-存货(ops_unit_calc_param.ena_year_invnt)、运营单元核算参数.现行期号-存货(ops_u… | 按平台服务返回结果决定是否放行 |  | RULE-331A92834CFB |
@@ -2226,7 +2226,7 @@
 | SCN-981B30D7BD97 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「应收来源单据类型」的只读校验规则：【应收来源单据类型(recev_src_doc_type)】✅ 是 | 字段不可编辑 |  | RULE-F4E8F1BAFDCD |
 | SCN-44858F72551B | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「计价单位编号」的隐藏校验规则：【计价单位编号(prc_unit_no)】✅ 是；隐藏条件：IF 品号采购单位与计价单位须相同（CUS_UDF011） = 'true' THEN<br/>* 隐藏不显示<br/>ENDIF | 字段不展示 |  | RULE-1B848328ADE6 |
 | SCN-26A1CDF10E83 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「批号」的必填校验规则：【批号(lot_no)】✅ 是；必填条件：IF 【采购退货单明细.批号管理(pur_rtn_doc_d.CUS_lot_mgmt)】勾选 THEN 不可空白 ENDIF<br/>即：品号启用批号管理时批号必填。驱动值取品号存货信息的 批号管理(CUS_lot_mgmt)，取值规则见 3.2 规则 3；条件内不直接调接口。 | 为空时保存应被拦截 |  | RULE-16A7BB3107BF |
-| SCN-23239E8698DC | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务性质」的反向校验规则：【业务性质(biz_prop)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.业务性质(pur_rtn_doc.biz_prop)】与库中值不一致，E+MSG："单据已有明细，不可更改业务性质！" | 按校验规则拦截或提示 |  | RULE-C41B5E8D2BB5 |
+| SCN-C629EB93B308 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务数量」的反向校验规则：【业务数量(biz_qty)】检查【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】须大于0。 | 按校验规则拦截或提示 |  | RULE-C4C9AC010386；RULE-9628CD05E1C7；RULE-9CD9E3074775；RULE-4573E1BA0522 |
 | SCN-8AAA7FC61BF2 | 采购订单 | 开窗回填 | NEEDS_UI_EXPLORATION | 验证采购订单「参考来源运营单元」的开窗回填规则：【参考来源运营单元(CUS_uiXDX23)】开窗：[F2]查询运营单元(bm.ops_unit.get) <br/>入参：运营单元编号 =参考来源运营单元 CUS_uiXDX23<br/>带入：参考来源运营单元 CUS_uiXDX23 = 运营单元编号 | 开窗：按开窗说明 |  | RULE-71FA97432C88 |
 | SCN-D8796E328760 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「作废 可用条件」的权限与数据范围规则：【作废】【采购订单.状态(po.manage_status)】=N.未审核 | 按操作说明执行 |  | RULE-B283D4D38702 |
 | SCN-2C7EE14E864C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.pur_stkin_doc.delete | 按平台服务调用结果决定是否继续 |  | RULE-8A4ECD099910 |
@@ -2234,643 +2234,657 @@
 | SCN-ABE44BAF8A01 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「来源业务类型编号」的只读校验规则：【来源业务类型编号(src_biz_type_no)】✅ 是 | 字段不可编辑 | TC-BASL-0001 | RULE-88181FADCD4F |
 | SCN-40CCED8306AB | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「计价数量」的隐藏校验规则：【计价数量(prc_qty)】✅ 是；隐藏条件：计价单位与采购单位相同时隐藏<br/>调用 #服务：查询运营单元采购参数bm.pur_reg_param.get<br/>入参：运营单元编号 = 【采购订单明细.运营单元编号(po.po_d.ops_unit_no)】<br/>回参：计价单位和采购单位须相同<br/>IF 计价单位和采购单位须相同 = 'true' THEN<br/>* 隐藏不显示<br/>ENDIF | 字段不展示 | TC-PO-0002 | RULE-DB38D68FFA2F |
 | SCN-24C4F9E7B6EC | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「采购类型」的必填校验规则：【采购类型(pur_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-9B19B64C7978 |
-| SCN-36C45565716F | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.业务类型编号(pur_rtn_doc.biz_type_no)】与库中值不一致，E+MSG："单据已有明细，不可更改单别！" | 按校验规则拦截或提示 |  | RULE-25358E3CF425 |
+| SCN-31765EDE290A | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「计价单位编号」的反向校验规则：【计价单位编号(prc_unit_no)】无。计价单位在本单为隐藏字段、由取单赋值，页面不做校验；归属与换算的保证在采购退货单侧。 | 按校验规则拦截或提示 |  | RULE-16BCE5913E77 |
 | SCN-26633C93D613 |  | 权限与数据范围 | NEEDS_CONFIRMATION | 验证采购「取单 可用条件」的权限与数据范围规则：【取单】新增或编辑状态可操作 | 按操作说明执行 |  | RULE-E5F0B52BD72C |
 | SCN-D11EF6698777 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 后置处理」的接口契约规则：【审核】● 调用接口：bm.pur_stkin_doc.approve | 按平台服务调用结果决定是否继续 |  | RULE-FAA50D48F3C8；RULE-CC35B6929FEA |
 | SCN-D355B92F021B | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「销售运营单元编号」的默认值规则：【销售运营单元编号(sales_ops_unit_no)】默认值：默认运营单元编号(`ops_unit_no`)。时机点：默认执行时 | 默认值：默认运营单元编号(`ops_unit_no`)。时机点：默认执行时 |  | RULE-26DC4DE412FB |
 | SCN-39B458A65B45 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「来源单号」的只读校验规则：【来源单号(src_doc_no)】✅ 是 | 字段不可编辑 | TC-BASL-0001；TC-PURQ-0057；TC-PURQ-0058；TC-PUR-0001；TC-PSTK-0001；TC-PARR-0001；TC-PO-0001；TC-PRTN-0001 | RULE-D6D06569638D |
 | SCN-10AEED20C04C | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「库存单位数量」的隐藏校验规则：【库存单位数量(invnt_unit_qty)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-404B817D6486 |
 | SCN-9B264B52FD73 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「采购退货来源单据类型」的必填校验规则：【采购退货来源单据类型(pur_rtn_src_doc_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-24C9985827FD |
-| SCN-AA604E8F3008 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「供应商编号」的反向校验规则：【供应商编号(supp_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.供应商编号(pur_rtn_doc.supp_no)】与库中值不一致，E+MSG："单据已有明细，不可更改供应商！" | 按校验规则拦截或提示 |  | RULE-849BB9080F7E |
+| SCN-C1E0B423E72C | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「第二单位数量」的反向校验规则：【第二单位数量(sec_unit_qty)】检查 第二单位数量不可小于零 | 按校验规则拦截或提示 |  | RULE-8ECFA4B09C9C；RULE-94EAFFA3D849 |
 | SCN-1295EF3A0552 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「撤审 后置处理」的接口契约规则：【撤审】● 调用接口：bm.pur_stkin_doc.disapprove | 按平台服务调用结果决定是否继续 |  | RULE-771DFE463C93 |
 | SCN-AAF9846442C2 | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「税额计算方式」的默认值规则：【税额计算方式(tax_calc_mode)】默认值：默认1.单身明细计算。时机点：默认执行时 | 默认值：默认1.单身明细计算。时机点：默认执行时 |  | RULE-C832EA7A0C00 |
 | SCN-2AB7CDD8E7A0 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「来源序号」的只读校验规则：【来源序号(src_seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001；TC-PUR-0001；TC-PARR-0001；TC-PO-0001；TC-PRTN-0001 | RULE-146AC997E0DB |
 | SCN-9C0D1E732323 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「库存单位编号」的隐藏校验规则：【库存单位编号(invnt_unit_no)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-3C58D0F63E0D |
 | SCN-B19BAC5DD395 | 采购退货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「来源单号」的必填校验规则：【来源单号(src_doc_no)】✅ 是；必填条件：IF 【采购退货单明细.采购退货来源单据类型(pur_rtn_doc_d.pur_rtn_src_doc_type)】 &lt;&gt; '99.其他' THEN 不可空白 ENDIF | 为空时保存应被拦截 |  | RULE-9CE859670E0A |
-| SCN-B86CC19AF84E | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「退货运营单元编号」的反向校验规则：【退货运营单元编号(rtn_ops_unit_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.退货运营单元编号(pur_rtn_doc.rtn_ops_unit_no)】与库中值不一致，E+MSG："单据已有明细，不可更改退货运营单元！" | 按校验规则拦截或提示 |  | RULE-56BB7B558AE7 |
+| SCN-CD4176049264 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（原币）」的反向校验规则：【无税金额（原币）(untax_amt_tc)】不做必填校验（允许为空）；过账后仅校验精度：原币按退货单币别精度取位 | 按校验规则拦截或提示 |  | RULE-61A05D35D1B7 |
 | SCN-A86FC48A4327 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「作废 后置处理」的接口契约规则：【作废】● 调用接口：bm.pur_stkin_doc.void | 按平台服务调用结果决定是否继续 |  | RULE-44B93667BC20 |
 | SCN-A1A6DD36621D | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「无税金额（原币）」的默认值规则：【无税金额（原币）(untax_amt_tc)】默认值：当【单身.金额更改】时，默认无税金额（原币）(`untax_amt_tc`)=SUM(单身.无税金额（原币）(`untax_amt_tc`))。时机点：默认执行时 | 默认值：当【单身.金额更改】时，默认无税金额（原币）(`untax_amt_tc`)=SUM(单身.无税金额（原币）(`untax_amt_tc`))。时机点：默认执行… |  | RULE-5C760899D617 |
 | SCN-0912CFB761A4 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「来源日期」的只读校验规则：【来源日期(src_date)】✅ 是 | 字段不可编辑 |  | RULE-CB6AE0A4F508 |
 | SCN-4F46E10641EF | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「来源运营单元编号」的隐藏校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-7388867DAB5C |
 | SCN-BF315AF35FAD |  | 必填校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的必填校验规则：【保存】单头必填校验：运营单元编号、业务类型编号、采购退货单号、单据日期、业务性质、退货运营单元编号、含税标识、货币编号、结算运营单元编号、税务发票类型 均不得为空。 | 校验不通过则操作被拦截 |  | RULE-D6300DD70DE7；RULE-49B6959C108C |
-| SCN-CE36FB0B817E | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「含税标识」的反向校验规则：【含税标识(intax_flag)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.含税标识(pur_rtn_doc.intax_flag)】与库中值不一致，E+MSG："单据已有明细，不可更改含税标识！" | 按校验规则拦截或提示 |  | RULE-0CF9950F58CA |
+| SCN-42D9C2643187 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（原币）」的反向校验规则：【税额（原币）(tax_tc)】不做必填校验（允许为空）；过账后仅校验精度：原币按退货单币别精度取位 | 按校验规则拦截或提示 |  | RULE-E06852DC2DAE |
 | SCN-642F16E8A7F2 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「驳回 后置处理」的接口契约规则：【驳回】● 调用接口：bm.pur_stkin_doc.cxl_aprv | 按平台服务调用结果决定是否继续 |  | RULE-0FD4AE68152B |
 | SCN-DF33A77EEE2F | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「税额（原币）」的默认值规则：【税额（原币）(tax_tc)】默认值：当【单身.金额更改】时，默认税额（原币）(`tax_tc`)=SUM(单身.税额（原币）(`tax_tc`))。时机点：默认执行时 | 默认值：当【单身.金额更改】时，默认税额（原币）(`tax_tc`)=SUM(单身.税额（原币）(`tax_tc`))。时机点：默认执行时 |  | RULE-5894BA343924 |
 | SCN-226836825089 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「品名」的只读校验规则：【品名(item_name)】✅ 是 | 字段不可编辑 | TC-SIPP-0001；TC-BASV-0001；TC-BASL-0001；TC-IPUR-0001；TC-ISAL-0001；TC-PURQ-0034；TC-PURQ-0035；TC-PUR-0009；TC-PUR-0010；TC-PSTK-0017；TC-PSTK-0018；TC-PARR-0018；TC-PARR-0019；TC-PO-0023；TC-PO-0024；TC-PRTN-0001 | RULE-FF340731C11C |
 | SCN-1395A55064D9 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「第二单位编号」的隐藏校验规则：【第二单位编号(sec_unit_no)】✅ 是；隐藏条件：IF [公用参数.计量体系(param.meas_sys)] =S.单一计量<br/> 隐藏<br/>ENDIF | 字段不展示 |  | RULE-3163710C4CB9 |
 | SCN-C5A7C093CDA7 |  | 必填校验 | NEEDS_CONFIRMATION | 验证采购「提交 前置校验」的必填校验规则：【提交】单头与单身必填项须已通过保存校验，未保存的修改不进入送审。 | 校验不通过则操作被拦截 |  | RULE-74C9DABCDD88 |
-| SCN-BDFC52C98FDA | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「货币编号」的反向校验规则：【货币编号(ccy_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.货币编号(pur_rtn_doc.ccy_no)】与库中值不一致，E+MSG："单据已有明细，不可更改货币！" | 按校验规则拦截或提示 |  | RULE-67C234097ECB |
+| SCN-47259794DC53 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（本币）」的反向校验规则：【无税金额（本币）(untax_amt_fc)】不做必填校验（允许为空）；过账后仅校验精度：本币按核算运营单元记账本位币精度取位 | 按校验规则拦截或提示 |  | RULE-35DD41258428 |
 | SCN-E7F6AC83EC7D |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.pur_stkin_doc.create | 按平台服务调用结果决定是否继续 |  | RULE-078109CC1363；RULE-5CB0D6BC1905 |
 | SCN-7110DFFA44EB | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「价税合计（原币）」的默认值规则：【价税合计（原币）(tawt_tc)】默认值：当【单身.金额更改】时，默认价税合计（原币）(`tawt_tc`)=SUM(单身.价税合计（原币）(`tawt_tc`))。时机点：默认执行时 | 默认值：当【单身.金额更改】时，默认价税合计（原币）(`tawt_tc`)=SUM(单身.价税合计（原币）(`tawt_tc`))。时机点：默认执行时 |  | RULE-CC700953BDEE |
 | SCN-DE4BF91A8136 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「规格」的只读校验规则：【规格(item_spec)】✅ 是 | 字段不可编辑 | TC-SIPP-0001；TC-BASV-0001；TC-ISAL-0001；TC-PURQ-0036；TC-PURQ-0037；TC-PUR-0011；TC-PUR-0012；TC-PSTK-0019；TC-PSTK-0020；TC-PARR-0020；TC-PARR-0021；TC-PO-0017；TC-PO-0018；TC-PRTN-0001 | RULE-D3CFAFCC082B |
 | SCN-8D2E042C9B04 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「第二单位数量」的隐藏校验规则：【第二单位数量(sec_unit_qty)】✅ 是；隐藏条件：IF [公用参数.计量体系(param.meas_sys)] =S.单一计量<br/> 隐藏<br/>ENDIF | 字段不展示 | TC-PO-0002 | RULE-4AF25ACE6CB4 |
 | SCN-A6AE7D0C8E39 |  | 必填校验 | NEEDS_CONFIRMATION | 验证采购「明细操作 前置校验」的必填校验规则：【明细操作】单头必填项未齐时不可新增明细：运营单元编号、业务类型编号、单据日期、供应商编号、退货运营单元编号、含税标识、货币编号、结算运营单元编号、税务发票类型 均不得为空，否则 E+MSG："请先完成单头录入，再新增明细！" | 校验不通过则操作被拦截 |  | RULE-6B7490F37372 |
-| SCN-1B3AF00A49F9 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「项目编号」的反向校验规则：【项目编号(proj_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.项目编号(pur_rtn_doc.proj_no)】与库中值不一致，E+MSG："单据已有明细，不可更改项目！" | 按校验规则拦截或提示 |  | RULE-5CBD917DAD29 |
+| SCN-5AE1DF5613E6 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（本币）」的反向校验规则：【税额（本币）(tax_fc)】不做必填校验（允许为空）；过账后仅校验精度：本币按核算运营单元记账本位币精度取位 | 按校验规则拦截或提示 |  | RULE-D9CA94C25759 |
 | SCN-11C6741596F8 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「提交 后置处理」的接口契约规则：【提交】● 调用接口：bm.pur_stkin_doc.initi_aprv | 按平台服务调用结果决定是否继续 |  | RULE-EBB34689221C |
 | SCN-676EC1F64640 | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「无税金额（本币）」的默认值规则：【无税金额（本币）(untax_amt_fc)】默认值：当【单身.金额更改】时，默认无税金额（本币）(`untax_amt_fc`)=SUM(单身.无税金额（本币）(`untax_amt_fc`))。时机点：默认执行时 | 默认值：当【单身.金额更改】时，默认无税金额（本币）(`untax_amt_fc`)=SUM(单身.无税金额（本币）(`untax_amt_fc`))。时机点：默认执行… |  | RULE-6FC30DF6F6EF |
 | SCN-1B498041272F |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「计价单位名称」的只读校验规则：【计价单位名称(prc_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-A0C23B29EC1E |
 | SCN-B05E3CD9B0B0 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「折扣后单价」的隐藏校验规则：【折扣后单价(discd_price)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-3C757AEA1B23 |
 | SCN-AC8739921F40 | 供应商业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 | TC-SUPP-0003 | RULE-9A68E57A8FB6 |
-| SCN-81E5517BE2F5 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「结算运营单元编号」的反向校验规则：【结算运营单元编号(stlmt_ops_unit_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.结算运营单元编号(pur_rtn_doc.stlmt_ops_unit_no)】与库中值不一致，E+MSG："单据已有明细，不可更改结算运营单元！" | 按校验规则拦截或提示 |  | RULE-26BDCB967FAE |
+| SCN-716A35B4A598 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（原币）」的反向校验规则：【货款金额（原币）(pmt_amt_tc)】不做必填校验（允许为空）；过账后仅校验精度：原币按退货单币别精度取位 | 按校验规则拦截或提示 |  | RULE-B81D4A2DF746 |
 | SCN-A39E0A296620 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「过账 后置处理」的接口契约规则：【过账】● 调用接口：bm.pur_stkin_doc.post | 按平台服务调用结果决定是否继续 |  | RULE-603C66FF4FE2 |
 | SCN-9E1E4171C563 | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「税额（本币）」的默认值规则：【税额（本币）(tax_fc)】默认值：当【单身.金额更改】时，默认税额（本币）(`tax_fc`)=SUM(单身.税额（本币）(`tax_fc`))。时机点：默认执行时 | 默认值：当【单身.金额更改】时，默认税额（本币）(`tax_fc`)=SUM(单身.税额（本币）(`tax_fc`))。时机点：默认执行时 |  | RULE-67EF8E45E6F2 |
 | SCN-0486290601EF |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「折扣无税金额（原币）」的只读校验规则：【折扣无税金额（原币）(disc_untax_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-25D041780D31 |
 | SCN-7117930E226D | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「折扣率」的隐藏校验规则：【折扣率(disc_rate)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-99215A1F9156 |
 | SCN-4BDB9760431D | 供应商业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-SUPP-0006 | RULE-8E08F57CBAF3 |
-| SCN-0B09974E65F5 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「税务发票类型」的反向校验规则：【税务发票类型(tax_inv_type)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.税务发票类型(pur_rtn_doc.tax_inv_type)】与库中值不一致，E+MSG："单据已有明细，不可更改发票种类！" | 按校验规则拦截或提示 |  | RULE-C1FD9BD7E267 |
+| SCN-E2CB472CE032 | 采购退货出库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（本币）」的反向校验规则：【货款金额（本币）(pmt_amt_fc)】不做必填校验（允许为空）；过账后仅校验精度：本币按核算运营单元记账本位币精度取位 | 按校验规则拦截或提示 |  | RULE-F75E128DAC36 |
 | SCN-DE61CB3976A3 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「取消过账 后置处理」的接口契约规则：【取消过账】● 调用接口：bm.pur_stkin_doc.cxl_post | 按平台服务调用结果决定是否继续 |  | RULE-5AF251C7BC7B |
 | SCN-3030440B46E0 | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「价税合计（本币）」的默认值规则：【价税合计（本币）(tawt_fc)】默认值：当【单身.金额更改】时，默认价税合计（本币）(`tawt_fc`)=SUM(单身.价税合计（本币）(`tawt_fc`))。时机点：默认执行时 | 默认值：当【单身.金额更改】时，默认价税合计（本币）(`tawt_fc`)=SUM(单身.价税合计（本币）(`tawt_fc`))。时机点：默认执行时 |  | RULE-1D94611CF08A |
 | SCN-285CFE84BC4A |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「商品类型」的只读校验规则：【商品类型(goods_type)】✅ 是 | 字段不可编辑 |  | RULE-D5E54AF5777C |
 | SCN-AD21D44275B3 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「折扣额」的隐藏校验规则：【折扣额(disc_amt)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-6A0E4A1DE20E |
 | SCN-79EEC4DDB100 | 供应商业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「取价策略编号」的必填校验规则：【取价策略编号(price_strtg_no)】✅ 是 | 为空时保存应被拦截 | TC-SUPP-0014 | RULE-BDDF874C4CD4 |
-| SCN-2E4BDC90897A | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「件数」的反向校验规则：【件数(pcs)】必须大于等于零。 | 按校验规则拦截或提示 | TC-PRTN-0055 | RULE-72B1AA8F7943；RULE-39A28D44293A |
+| SCN-F81F374B0FDD |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的反向校验规则：【审核】单身至少一行有效明细，否则阻断：E+MSG："无明细不可审核！" | 校验不通过则操作被拦截 |  | RULE-E43A781D337C；RULE-F14813CABD8F；RULE-3DC5AA60E1C9 |
 | SCN-3E02E8666EBD |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「取单 后置处理」的接口契约规则：【取单】数据来源：调用接口 查询采购到货单 | 按平台服务调用结果决定是否继续 |  | RULE-4638C561CFE3；RULE-C3903537E1A1 |
 | SCN-EF6D0AF04212 | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「分期来源类型」的默认值规则：【分期来源类型(insta_src_type)】默认值：默认0.无。时机点：默认执行时 | 默认值：默认0.无。时机点：默认执行时 |  | RULE-FD3A9B4FC88A |
 | SCN-BEF1CB70268E |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「生产运营单元名称」的只读校验规则：【生产运营单元名称(prodn_ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-F9A12F684F9C |
 | SCN-1A79325D25B8 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「标准单价」的隐藏校验规则：【标准单价(std_price)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-F5CB6B33656E |
 | SCN-1E704BB88FB1 | 供应商业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「交易货币编号」的必填校验规则：【交易货币编号(trans_ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-SUPP-0017 | RULE-27CC34367240 |
-| SCN-3B7C9BF2DB7A | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务数量」的反向校验规则：【业务数量(biz_qty)】检查 业务数量不可小于0 | 按校验规则拦截或提示 |  | RULE-41002563146E；RULE-AC0ECCB17BE2；RULE-C76A9A8D222B |
+| SCN-A243A7C8DC4E |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 后置处理」的反向校验规则：【审核】本作业不设独立【过账】按钮：审核成功后按 业务类型存货参数.自动过账(auto_post) 判断并自动调用过账服务，过账逻辑并入本操作的步骤3。 | 按操作说明执行 |  | RULE-DA396DCC5304 |
 | SCN-3C30B631CDC0 | 采购到货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购到货单「供应商编号」的接口契约规则：【供应商编号(supp_no)】调用接口：查询供应商业务信息(bm.supp_biz_info.get)；入参：供应商业务信息.供应商编号(supp_biz_info.supp_no) = 【采购到货单.供应商编号(pur_arr_doc.supp_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-7DBA2CE3BC63 |
 | SCN-0D6DA3B25DD1 | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「现金折扣方式」的默认值规则：【现金折扣方式(cash_disc_mode)】默认值：默认1.提前付款。时机点：默认执行时 | 默认值：默认1.提前付款。时机点：默认执行时 |  | RULE-75102252FA19 |
 | SCN-FAF91E9A2189 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「来源运营单元编号」的只读校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 字段不可编辑 | TC-PUR-0001；TC-PSTK-0001；TC-PRTN-0001 | RULE-16438E8B2666 |
 | SCN-4B1DFEFE5C05 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「入库结束码」的隐藏校验规则：【入库结束码(stkin_end_code)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-3D90B6918379 |
 | SCN-388B7B45D052 | 供应商业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「加月数」的必填校验规则：【加月数(add_mths)】✅ 是 | 为空时保存应被拦截 | TC-SUPP-0020 | RULE-F45CC7F03682 |
-| SCN-B16BBB969101 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「计价单位编号」的反向校验规则：【计价单位编号(prc_unit_no)】检查 计价单位编号必须存在且有效 | 按校验规则拦截或提示 |  | RULE-476EB5A396BE；RULE-7A79D8BA3EA9；RULE-362B0277CDDB |
+| SCN-6985B84194A4 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「撤审 前置校验」的反向校验规则：【撤审】已产生应付结算（已结算计价数量 > 0）时阻断：E+MSG："本单已结算，不可取消过账！" | 校验不通过则操作被拦截 |  | RULE-5B080ED50A64；RULE-F4C49743C98F |
 | SCN-2F1F9070606E | 采购到货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购到货单「单据日期」的接口契约规则：【单据日期(doc_date)】调用接口：查询运营单元核算参数(bm.ops_unit_calc_param.get)；入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no) = 【采购到货单.结算运营单元编号(pur_arr_doc.stlmt_ops_unit_no)】；回参：运营单元核算参数.开放日期范围起-存货(ops_unit_calc_param.date_range_begin_invnt)、运营单元核算参数.现行年度-存货(ops_unit_calc_param.ena_year_invnt)、运营单元核算参数.现行期号-存货(o… | 按平台服务返回结果决定是否放行 |  | RULE-8E3B3CB4253F |
 | SCN-BD331626BC84 | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「统一税种税率标识」的默认值规则：【统一税种税率标识(uni_tax_rate_flag)】默认值：默认未勾选。时机点：默认执行时 | 默认值：默认未勾选。时机点：默认执行时 |  | RULE-8147266258E7 |
 | SCN-818016901DA7 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据1类型」的只读校验规则：【财务参考单据1类型(fin_ref_doc1_type)】✅ 是 | 字段不可编辑 |  | RULE-14CE116AE493 |
 | SCN-47C7CA593B7D | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「采购订单次序号」的隐藏校验规则：【采购订单次序号(po_sub_seq)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-9BDF72B5A591 |
 | SCN-3C558B92F951 | 供应商业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「地址」的必填校验规则：【地址(addr)】✅ 是 | 为空时保存应被拦截 |  | RULE-AB5D942D7088 |
-| SCN-EFB523C124AB | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「第二单位数量」的反向校验规则：【第二单位数量(sec_unit_qty)】检查 【采购退货单明细.第二单位数量(pur_rtn_doc_d.sec_unit_qty)】不可小于零 | 按校验规则拦截或提示 |  | RULE-6ED34E9AF8A2；RULE-9F4C1214E9DC |
+| SCN-EC070B8E682A |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「明细操作 前置校验」的反向校验规则：【明细操作】业务数量须大于0且不超过来源可退货量：E+MSG："业务数量不可大于可退数量（可退 X）！" | 校验不通过则操作被拦截 |  | RULE-B26E1F036C27 |
 | SCN-E34C9207F0EE | 采购到货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购到货单「到货日期」的接口契约规则：【到货日期(arr_date)】调用接口：查询运营单元核算参数(bm.ops_unit_calc_param.get)；入参：运营单元核算参数.运营单元编号(ops_unit_calc_param.ops_unit_no) = 【采购到货单.结算运营单元编号(pur_arr_doc.stlmt_ops_unit_no)】；回参：运营单元核算参数.开放日期范围起-存货(ops_unit_calc_param.date_range_begin_invnt)、运营单元核算参数.现行年度-存货(ops_unit_calc_param.ena_year_invnt)、运营单元核算参数.现行期号-存货(o… | 按平台服务返回结果决定是否放行 |  | RULE-313C39665332 |
 | SCN-4CD4E8E687AF | 应收单 | 默认值 | NEEDS_UI_EXPLORATION | 验证应收单「VAT标识」的默认值规则：【VAT标识(vat_flag)】默认值：默认未勾选。时机点：默认执行时 | 默认值：默认未勾选。时机点：默认执行时 |  | RULE-917ADF6DEF3F |
 | SCN-8AE215E39752 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据2类型」的只读校验规则：【财务参考单据2类型(fin_ref_doc2_type)】✅ 是 | 字段不可编辑 |  | RULE-76096A2EA91E |
 | SCN-C752E0DA6D45 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「批号」的隐藏校验规则：【批号(lot_no)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-6C7B90761F4A |
 | SCN-B3B1E4D1B68B | 业务类型采购参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-BZPP-0003 | RULE-CA7BB376CA5F |
-| SCN-085AC139E1D1 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「单价」的反向校验规则：【单价(price)】检查 单价须大于等于0 | 按校验规则拦截或提示 |  | RULE-764E9CC7172D；RULE-4A7016C7A7F3 |
+| SCN-FD1071CFA43C | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.运营单元编号(pur_rtn_doc.ops_unit_no)】与库中值不一致，E+MSG："单据已有明细，不可更改运营单元！" | 按校验规则拦截或提示 |  | RULE-2821E0B17B0C |
 | SCN-014C2EB76096 | 采购到货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购到货单「采购到货单号」的接口契约规则：【采购到货单号(pur_arr_doc_no)】调用接口：查询业务类型通用信息(bm.biz_type_gen_info.get)；入参：业务类型通用信息.业务类型编号(biz_type_gen_info.biz_type_no) = 【采购到货单.业务类型编号(pur_arr_doc.biz_type_no)】；回参：业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)、业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit) | 按平台服务返回结果决定是否放行 |  | RULE-35232BEA00A5 |
 | SCN-7F8FD1C396D8 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「序号」的默认值规则：【序号(seq)】默认值：默认取当前单身最大序号 + 1（首行为 1）。时机点：默认执行时 | 默认值：默认取当前单身最大序号 + 1（首行为 1）。时机点：默认执行时 | TC-PURQ-0003；TC-PUR-0004；TC-PSTK-0016；TC-PARR-0012；TC-PRTN-0056 | RULE-291A57CA97D5 |
 | SCN-C9BEB6D575EF |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「折扣后无税单价」的只读校验规则：【折扣后无税单价(discd_untax_price)】✅ 是 | 字段不可编辑 |  | RULE-2A519C79F817 |
 | SCN-AA825B1CD6F2 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「仓库编号」的隐藏校验规则：【仓库编号(whse_no)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-EF8DB6B0D046 |
 | SCN-00E7A701D4AD | 业务类型采购参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-BZPP-0007 | RULE-D371F7F71B0E |
-| SCN-057B67B888F6 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「折扣率」的反向校验规则：【折扣率(disc_rate)】检查 【采购退货单明细.折扣率(pur_rtn_doc_d.disc_rate)】必须大于等于零 | 按校验规则拦截或提示 |  | RULE-ADCE7C5C3B93；RULE-4737ECAA0F63 |
+| SCN-23239E8698DC | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务性质」的反向校验规则：【业务性质(biz_prop)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.业务性质(pur_rtn_doc.biz_prop)】与库中值不一致，E+MSG："单据已有明细，不可更改业务性质！" | 按校验规则拦截或提示 |  | RULE-C41B5E8D2BB5 |
 | SCN-B6A968706CFC | 采购到货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购到货单「货币编号」的接口契约规则：【货币编号(ccy_no)】调用接口：查询币种信息(bm.ccy.get)；入参：币种.币种编号(ccy.ccy_no) = 【采购到货单.货币编号(pur_arr_doc.ccy_no)】 | 按平台服务返回结果决定是否放行 |  | RULE-ED12890215B9 |
 | SCN-1B1BF4961C51 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「应收来源单据类型」的默认值规则：【应收来源单据类型(recev_src_doc_type)】默认值：1.手工新增行默认298.其他-销货。时机点：默认执行时<br/>2.取单行按所选来源类型带入（201/202/203/204/205）。时机点：默认执行时 | 默认值：1.手工新增行默认298.其他-销货。时机点：默认执行时<br/>2.取单行按所选来源类型带入（201/202/203/204/205）。时机点：默认执行时 |  | RULE-5C55441A7095 |
 | SCN-A40062114AA5 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「折扣后含税单价」的只读校验规则：【折扣后含税单价(discd_intax_price)】✅ 是 | 字段不可编辑 |  | RULE-41FB147F712F |
 | SCN-B0E668E0F668 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「已到货业务数量」的隐藏校验规则：【已到货业务数量(arrd_biz_qty)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-2B1B3C00BA7B |
 | SCN-E143BDDF70E0 | 业务类型采购参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「归属运营单元编号」的必填校验规则：【归属运营单元编号(blng_ops_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-3F5259997CCC |
-| SCN-231AAFFD551D | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「折扣后单价」的反向校验规则：【折扣后单价(discd_price)】检查 【采购退货单明细.折扣后单价(pur_rtn_doc_d.discd_price)】必须大于等于零 | 按校验规则拦截或提示 |  | RULE-A596B479DFB0；RULE-1FEAD9FFFA08 |
+| SCN-36C45565716F | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.业务类型编号(pur_rtn_doc.biz_type_no)】与库中值不一致，E+MSG："单据已有明细，不可更改单别！" | 按校验规则拦截或提示 |  | RULE-25358E3CF425 |
 | SCN-194512E10019 | 采购到货单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购到货单「计价数量」的接口契约规则：【计价数量(prc_qty)】调用接口：[品号单位换算] | 按平台服务返回结果决定是否放行 |  | RULE-3738EB24903E |
 | SCN-D886C3101F34 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「品名」的默认值规则：【品名(item_name)】默认值：由品号开窗回填（更新字段(`item_name`)=品名）或取单带入，不可手工输入。时机点：默认执行时 | 默认值：由品号开窗回填（更新字段(`item_name`)=品名）或取单带入，不可手工输入。时机点：默认执行时 |  | RULE-485FBFF29515 |
 | SCN-19C5B23CC991 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证应收「折扣含税金额（原币）」的只读校验规则：【折扣含税金额（原币）(disc_intax_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-C1C87A11BB5A |
 | SCN-33A99CE0A087 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「已入库业务数量」的隐藏校验规则：【已入库业务数量(alr_stkin_biz_qty)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-3644D7B5D574 |
 | SCN-009A9BA5DF95 | 业务类型采购参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「归属业务类型编号」的必填校验规则：【归属业务类型编号(blng_biz_type_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-BAE297919EFF |
-| SCN-093BEE6F8318 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「折扣额」的反向校验规则：【折扣额(disc_amt)】检查 【采购退货单明细.折扣额(pur_rtn_doc_d.disc_amt)】必须大于等于零 | 按校验规则拦截或提示 |  | RULE-B5BFF094FF61；RULE-CFA94360DE45 |
+| SCN-AA604E8F3008 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「供应商编号」的反向校验规则：【供应商编号(supp_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.供应商编号(pur_rtn_doc.supp_no)】与库中值不一致，E+MSG："单据已有明细，不可更改供应商！" | 按校验规则拦截或提示 |  | RULE-849BB9080F7E |
 | SCN-F3725C099479 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 前置校验」的接口契约规则：【保存】调用接口：业务类型采购参数查询(bm.biz_type_pur_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-9949888363F0 |
 | SCN-58FF5FD9DC47 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「计价单位编号」的默认值规则：【计价单位编号(prc_unit_no)】默认值：由品号开窗回填（更新字段(`prc_unit_no`)=库存单位编号）或取单带入。时机点：默认执行时 | 默认值：由品号开窗回填（更新字段(`prc_unit_no`)=库存单位编号）或取单带入。时机点：默认执行时 |  | RULE-14ACDEA91DBF |
 | SCN-41DABC2D40B4 |  | 只读校验 | NEEDS_CONFIRMATION | 验证应收「编辑 前置校验」的只读校验规则：【编辑】检查 状态(`manage_status`)须='N.未审核'，否则 E+MSG："已审核单据不可修改！" | 校验不通过则操作被拦截 |  | RULE-4DBCFD1C4FF2 |
 | SCN-0FA152E15932 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「已入库库存单位数量」的隐藏校验规则：【已入库库存单位数量(alr_stkin_invnt_unit_qty)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-59B5A59862F6 |
 | SCN-B9331B0442C8 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0003；TC-INVB-0003 | RULE-4EB49E1E1AC4 |
-| SCN-C8BB4638B5FA | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「仓库编号」的反向校验规则：【仓库编号(whse_no)】回参若不存在，提示："仓库"不存在！ | 按校验规则拦截或提示 |  | RULE-CF3BF2A67090 |
+| SCN-B86CC19AF84E | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「退货运营单元编号」的反向校验规则：【退货运营单元编号(rtn_ops_unit_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.退货运营单元编号(pur_rtn_doc.rtn_ops_unit_no)】与库中值不一致，E+MSG："单据已有明细，不可更改退货运营单元！" | 按校验规则拦截或提示 |  | RULE-56BB7B558AE7 |
 | SCN-864A4E5D3CD1 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.pur_arr_doc.create | 按平台服务调用结果决定是否继续 |  | RULE-DB27956DC790；RULE-90F872F45794 |
 | SCN-B576FFA3E2D8 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「计价数量」的默认值规则：【计价数量(prc_qty)】默认值：1.当【计价数量(`prc_qty`)更改】时，默认无税金额（原币）(`untax_amt_tc`)=计价数量(`prc_qty`)×单价(price)。时机点：默认执行时<br/>2.当【计价数量(`prc_qty`)更改】时，默认价税合计（原币）(`tawt_tc`)=无税金额（原币）(`untax_amt_tc`)+税额（原币）(`tax_tc`)。时机点：默认执行时 | 默认值：1.当【计价数量(`prc_qty`)更改】时，默认无税金额（原币）(`untax_amt_tc`)=计价数量(`prc_qty`)×单价(price)。时机点… | TC-PRTN-0062 | RULE-035A2AF46012 |
 | SCN-61ED97B123B1 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-FCEB906E6E21 |
 | SCN-2CCF5F3EBFE8 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「已到货库存单位数量」的隐藏校验规则：【已到货库存单位数量(arrd_invnt_unit_qty)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-ACA73AE6EA4B |
 | SCN-0A595321C38A | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务类型名称」的必填校验规则：【业务类型名称(biz_type_name)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0004 | RULE-BBAD1B28BC4A |
-| SCN-6234FEE68768 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「储位编号」的反向校验规则：【储位编号(stsp_no)】回参若不存在，提示：E+MSG："储位不存在！" | 按校验规则拦截或提示 |  | RULE-BAFF50905B19 |
+| SCN-CE36FB0B817E | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「含税标识」的反向校验规则：【含税标识(intax_flag)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.含税标识(pur_rtn_doc.intax_flag)】与库中值不一致，E+MSG："单据已有明细，不可更改含税标识！" | 按校验规则拦截或提示 |  | RULE-0CF9950F58CA |
 | SCN-682472D0444C |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.pur_arr_doc.delete | 按平台服务调用结果决定是否继续 |  | RULE-B3C4D3169DD2 |
 | SCN-4673E9F5172C |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「单价」的默认值规则：【单价(price)】默认值：1.当【单价(price)更改】时，默认无税金额（原币）(`untax_amt_tc`)=计价数量(`prc_qty`)×单价(price)。时机点：默认执行时<br/>2.当【单价(price)更改】时，默认税种编号(`tax_no`)=取品号税务分类对应税种。时机点：默认执行时<br/>3.当【单价(price)更改】时，默认税率(`tax_rate`)=按税种编号(`tax_no`)取税率。时机点：默认执行时 | 默认值：1.当【单价(price)更改】时，默认无税金额（原币）(`untax_amt_tc`)=计价数量(`prc_qty`)×单价(price)。时机点：默认执行时… |  | RULE-B95762C37ED1 |
 | SCN-E7BFD3215EB5 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-4E9D77DF8BAD |
 | SCN-8FECF31C6098 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「已到货计价数量」的隐藏校验规则：【已到货计价数量(arrd_prc_qty)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-7B2966C4309F |
 | SCN-317553D0E696 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「自动编码方式」的必填校验规则：【自动编码方式(auto_code_mode)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0015；TC-INVB-0010 | RULE-661358A50F9A |
-| SCN-FCFEB23676AA | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「批号」的反向校验规则：【批号(lot_no)】回参若不存在，提示：E+MSG："批号不存在！" | 按校验规则拦截或提示 |  | RULE-2B05D7BBAA19 |
+| SCN-BDFC52C98FDA | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「货币编号」的反向校验规则：【货币编号(ccy_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.货币编号(pur_rtn_doc.ccy_no)】与库中值不一致，E+MSG："单据已有明细，不可更改货币！" | 按校验规则拦截或提示 |  | RULE-67C234097ECB |
 | SCN-2671CFCA6B48 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「提交 前置校验」的接口契约规则：【提交】调用接口：业务类型采购参数查询(bm.biz_type_pur_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-49D1D9628416 |
 | SCN-A6EFB45C9179 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「折扣率」的默认值规则：【折扣率(disc_rate)】默认值：1.当【折扣率(`disc_rate`)更改】时，默认折扣无税金额（原币）(`disc_untax_amt_tc`)=计价数量(`prc_qty`)×单价(price)×折扣率(`disc_rate`)。时机点：默认执行时<br/>2.当【折扣率(`disc_rate`)更改】时，默认无税金额（原币）(`untax_amt_tc`)=计价数量(`prc_qty`)×单价(price)-折扣无税金额（原币）(`disc_untax_amt_tc`)。时机点：默认执行时<br/>3.当【折扣率(`disc_rate`)更改】时，默认价税合计（原币）(`taw… | 默认值：1.当【折扣率(`disc_rate`)更改】时，默认折扣无税金额（原币）(`disc_untax_amt_tc`)=计价数量(`prc_qty`)×单价(pr… |  | RULE-D231A04C71D6 |
 | SCN-F4F2489EBC87 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「坏账准备计提比率」的只读校验规则：【坏账准备计提比率(pvn_acrl_rate)】✅ 是；只读条件：当 坏账准备计提方式(pvn_acrl_mode)<>'2.余额百分比法' 时只读 | 字段不可编辑 |  | RULE-CDFA6882E05C |
 | SCN-44EAF6B41A21 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「已入库计价数量」的隐藏校验规则：【已入库计价数量(alr_stkin_prc_qty)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-EAF1DF4260D5 |
 | SCN-97D5AF12B382 | 业务类型通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务性质」的必填校验规则：【业务性质(biz_prop)】✅ 是 | 为空时保存应被拦截 | TC-BZP-0016；TC-INVB-0011 | RULE-3BBC82EF89B3 |
-| SCN-FB77B1E17415 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「税率」的反向校验规则：【税率(tax_rate)】检查 税率必须大于等于0 | 按校验规则拦截或提示 |  | RULE-4665C993918E；RULE-DC2B549567EB |
+| SCN-1B3AF00A49F9 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「项目编号」的反向校验规则：【项目编号(proj_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.项目编号(pur_rtn_doc.proj_no)】与库中值不一致，E+MSG："单据已有明细，不可更改项目！" | 按校验规则拦截或提示 |  | RULE-5CBD917DAD29 |
 | SCN-24DAAC185E0F |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「提交 后置处理」的接口契约规则：【提交】● 调用接口：bm.pur_arr_doc.initi_aprv | 按平台服务调用结果决定是否继续 |  | RULE-7A737BE72420 |
 | SCN-3673900CA80B |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「商品类型」的默认值规则：【商品类型(goods_type)】默认值：默认1.商品。时机点：默认执行时 | 默认值：默认1.商品。时机点：默认执行时 |  | RULE-7DA1811D9F22 |
 | SCN-B020C366153C | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-3C2471916816 |
 | SCN-3AF38B1B4BE2 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「报废业务数量」的隐藏校验规则：【报废业务数量(scrap_biz_qty)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-267A6AADE363 |
 | SCN-CB34565DC70B | 业务汇率 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「货币汇率表编号」的必填校验规则：【货币汇率表编号(ccy_er_table_no)】✅ 是 | 为空时保存应被拦截 | TC-FX-0002 | RULE-506242384CE5 |
-| SCN-EF69D19BDA89 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「提交 前置校验」的反向校验规则：【提交】单身至少一行明细，否则阻断：E+MSG："无明细不可提交！" | 校验不通过则操作被拦截 |  | RULE-50BF26DF4652 |
+| SCN-81E5517BE2F5 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「结算运营单元编号」的反向校验规则：【结算运营单元编号(stlmt_ops_unit_no)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.结算运营单元编号(pur_rtn_doc.stlmt_ops_unit_no)】与库中值不一致，E+MSG："单据已有明细，不可更改结算运营单元！" | 按校验规则拦截或提示 |  | RULE-26BDCB967FAE |
 | SCN-6361664DA210 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「驳回 后置处理」的接口契约规则：【驳回】● 调用接口：bm.pur_arr_doc.cxl_aprv | 按平台服务调用结果决定是否继续 |  | RULE-5190FFBDBB72 |
 | SCN-DF6E82BBE7D7 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「生产运营单元编号」的默认值规则：【生产运营单元编号(prodn_ops_unit_no)】默认值：1.当【应收来源单据类型(`recev_src_doc_type`) IN ('298.其他-销货','299.其他-销退')】时，默认生产运营单元编号(`prodn_ops_unit_no`)=单头.运营单元编号(`recev_doc.ops_unit_no`)。时机点：默认执行时<br/>2.取单行由来源单据的生产运营单元带回。时机点：默认执行时 | 默认值：1.当【应收来源单据类型(`recev_src_doc_type`) IN ('298.其他-销货','299.其他-销退')】时，默认生产运营单元编号(`pr… |  | RULE-78048A0813A5 |
 | SCN-6E04844E4F90 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-B8AC53C3CED7 |
 | SCN-7B2C28DD94CC | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「参考来源单号」的隐藏校验规则：【参考来源单号(ref_src_doc_no)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-5DE821D57782 |
 | SCN-DE9C20B9FA03 | 业务汇率 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「生效日期」的必填校验规则：【生效日期(eff_date)】✅ 是 | 为空时保存应被拦截 | TC-FX-0009 | RULE-88FBC8081969 |
-| SCN-485E7A563D86 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的反向校验规则：【审核】单据状态须为 N.未审核 或 W.审核中，否则阻断：E+MSG："当前状态不可审核！" | 校验不通过则操作被拦截 |  | RULE-FE56280843A2；RULE-FF7E5E9EAC75 |
+| SCN-0B09974E65F5 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「税务发票类型」的反向校验规则：【税务发票类型(tax_inv_type)】与原值比对：编辑状态下，若单据已有明细行且【采购退货单.税务发票类型(pur_rtn_doc.tax_inv_type)】与库中值不一致，E+MSG："单据已有明细，不可更改发票种类！" | 按校验规则拦截或提示 |  | RULE-C1FD9BD7E267 |
 | SCN-8555F02E1B76 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 前置校验」的接口契约规则：【审核】调用接口：业务类型采购参数查询(bm.biz_type_pur_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-947C710FE6B7 |
 | SCN-DF4E3D6B8F5B |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「来源运营单元编号」的默认值规则：【来源运营单元编号(src_ops_unit_no)】默认值：取单行由来源带回；手工行默认单头运营单元。时机点：默认执行时 | 默认值：取单行由来源带回；手工行默认单头运营单元。时机点：默认执行时 |  | RULE-7DACC8E2D78A |
 | SCN-63EC391A231A | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度应收」的只读校验规则：【启用年度应收(ena_year_recev)】✅ 是；只读条件：IF 运营单元核算参数.启用年度应收(ops_unit_calc_param.ena_year_recev)<>SPACE AND 运营单元核算参数.启用期号应收(ops_unit_calc_param.ena_perid_no_recev)<>SPACE THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-FF6E7C06EAEC |
 | SCN-FD60227DAD49 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「参考来源序号」的隐藏校验规则：【参考来源序号(ref_src_seq)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-5B3F7BE4D105 |
 | SCN-00E6730BD87A | 业务汇率 | 必填校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「交易货币编号」的必填校验规则：【交易货币编号(trans_ccy_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-89865E049BB0 |
-| SCN-4F1735574B52 | 供应商业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「订金比率」的反向校验规则：【订金比率(bkfee_rate)】须大于等于零，否则报错 E+MSG："此字段必须大于等于零 !" | 按校验规则拦截或提示 | TC-SUPP-0016 | RULE-7E1BE6DFE184 |
+| SCN-2E4BDC90897A | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「件数」的反向校验规则：【件数(pcs)】必须大于等于零。 | 按校验规则拦截或提示 | TC-PRTN-0055 | RULE-72B1AA8F7943；RULE-39A28D44293A |
 | SCN-BDBD939BF79A |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 后置处理」的接口契约规则：【审核】● 调用接口：bm.pur_arr_doc.approve | 按平台服务调用结果决定是否继续 |  | RULE-97C674B1C31E；RULE-F04D957302B3 |
 | SCN-463D415B4266 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据1类型」的默认值规则：【财务参考单据1类型(fin_ref_doc1_type)】默认值：默认999.其他；取单行按来源覆盖。时机点：默认执行时 | 默认值：默认999.其他；取单行按来源覆盖。时机点：默认执行时 |  | RULE-27F74AF8A1BF |
 | SCN-EACFD5B3F326 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号应收」的只读校验规则：【启用期号应收(ena_perid_no_recev)】✅ 是；只读条件：IF (运营单元核算参数.启用年度应收(ops_unit_calc_param.ena_year_recev)<>SPACE AND 运营单元核算参数.启用期号应收(ops_unit_calc_param.ena_perid_no_recev)<>SPACE) OR 运营单元核算参数.启用年度应收(ops_unit_calc_param.ena_year_recev)=SPACE THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-D8D999EC1F15 |
 | SCN-8B0768C95357 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「参考来源次序号」的隐藏校验规则：【参考来源次序号(ref_src_sub_seq)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-B49CED42B847 |
 | SCN-6E6810F994C9 | 交易对象群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象群组「交易对象群组编号」的必填校验规则：【交易对象群组编号(trans_obj_group_no)】✅ 是 | 为空时保存应被拦截 | TC-TOG-0002 | RULE-02C1EC76B8E1 |
-| SCN-3B91FD1973CF | 供应商业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「税率」的反向校验规则：【税率(tax_rate)】不可小于０，否则报错 E+MSG："此字段必须大于等于零 !" | 按校验规则拦截或提示 | TC-SUPP-0019 | RULE-64994FE3395D |
+| SCN-3B7C9BF2DB7A | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「业务数量」的反向校验规则：【业务数量(biz_qty)】检查 业务数量不可小于0 | 按校验规则拦截或提示 |  | RULE-41002563146E；RULE-AC0ECCB17BE2；RULE-C76A9A8D222B |
 | SCN-24AEEBEF12ED |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「撤审 后置处理」的接口契约规则：【撤审】● 调用接口：bm.pur_arr_doc.disapprove | 按平台服务调用结果决定是否继续 |  | RULE-8E0F36C304CF |
 | SCN-1B53E0321F09 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「财务参考单据2类型」的默认值规则：【财务参考单据2类型(fin_ref_doc2_type)】默认值：默认999.其他；取单行按来源覆盖。时机点：默认执行时 | 默认值：默认999.其他；取单行按来源覆盖。时机点：默认执行时 |  | RULE-586215788A04 |
 | SCN-5CB762A5B6B5 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号应收」的只读校验规则：【启用期间序号应收(ena_perid_seq_recev)】✅ 是 | 字段不可编辑 |  | RULE-0F89575E17A8 |
 | SCN-9819FCF53D29 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「采购订单参考来源类型」的隐藏校验规则：【采购订单参考来源类型(po_ref_src_type)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-27E11C01CAC5 |
 | SCN-88F06F2B03BB | 交易对象群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象群组「交易对象群组名称」的必填校验规则：【交易对象群组名称(trans_obj_group_name)】✅ 是 | 为空时保存应被拦截 | TC-TOG-0003 | RULE-95576E38C6BF |
-| SCN-94D086D4AF81 | 供应商业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「逢某日」的反向校验规则：【逢某日(every_sday)】非空白时，输入值需介于 1～31，否则报错 E+MSG："日期须在 1 ～ 31 的间" | 按校验规则拦截或提示 |  | RULE-AD06BAC698BF |
+| SCN-B16BBB969101 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「计价单位编号」的反向校验规则：【计价单位编号(prc_unit_no)】检查 计价单位编号必须存在且有效 | 按校验规则拦截或提示 |  | RULE-476EB5A396BE；RULE-7A79D8BA3EA9；RULE-362B0277CDDB |
 | SCN-ADFEDF4C7E07 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「作废 后置处理」的接口契约规则：【作废】● 调用接口：bm.pur_arr_doc.void | 按平台服务调用结果决定是否继续 |  | RULE-471A98C829CD |
 | SCN-BD5C8B5A6C2A |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「折扣后无税单价」的默认值规则：【折扣后无税单价(discd_untax_price)】默认值：由联动计算(`bm.recev_doc.lnkg_calc`)按 单价 × (1 − 折扣率) 回算并回写；新增保存前为空。时机点：默认执行时 | 默认值：由联动计算(`bm.recev_doc.lnkg_calc`)按 单价 × (1 − 折扣率) 回算并回写；新增保存前为空。时机点：默认执行时 |  | RULE-9DA3F41FDFB3 |
 | SCN-AE8612E4E175 | 编号规则 | 只读校验 | NEEDS_UI_EXPLORATION | 验证编号规则「编码规则编号」的只读校验规则：【编码规则编号(code_rule_no)】✅ 是；只读条件：IF NOT 新增状态 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-E035A66F5DB3 |
 | SCN-642BA65D0C78 | 采购订单 | 隐藏校验 | NEEDS_UI_EXPLORATION | 验证采购订单「参考来源运营单元编号」的隐藏校验规则：【参考来源运营单元编号(ref_src_ops_unit_no)】✅ 是 | 字段不展示 | TC-PO-0002 | RULE-D278D0981CD4 |
 | SCN-C2453A5240CC | 交易对象群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象群组「交易对象类型」的必填校验规则：【交易对象类型(trans_obj_type)】✅ 是 | 为空时保存应被拦截 | TC-TOG-0004 | RULE-9C64FF3AA2EA |
-| SCN-116611CBD9B6 | 业务类型采购参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】输入值须做存在且生效性检验 | 按校验规则拦截或提示 |  | RULE-7C0DCFE4F55E；RULE-451A583F0E9E |
+| SCN-EFB523C124AB | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「第二单位数量」的反向校验规则：【第二单位数量(sec_unit_qty)】检查 【采购退货单明细.第二单位数量(pur_rtn_doc_d.sec_unit_qty)】不可小于零 | 按校验规则拦截或提示 |  | RULE-6ED34E9AF8A2；RULE-9F4C1214E9DC |
 | SCN-6B280ADECA8E |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「明细操作 可用条件」的接口契约规则：【明细操作】调用接口：查询业务类型采购参数(bm.biz_type_pur_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-F0E7062C063E |
 | SCN-3B243F0F4CEC |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「折扣后含税单价」的默认值规则：【折扣后含税单价(discd_intax_price)】默认值：由联动计算(`bm.recev_doc.lnkg_calc`)回算并回写；新增保存前为空。时机点：默认执行时 | 默认值：由联动计算(`bm.recev_doc.lnkg_calc`)回算并回写；新增保存前为空。时机点：默认执行时 |  | RULE-54729D441B09 |
 | SCN-B1425ED59E7C | 编号规则 | 只读校验 | NEEDS_UI_EXPLORATION | 验证编号规则「前缀连接符」的只读校验规则：【前缀连接符(pref_conn)】✅ 是；只读条件：IF 【编号规则.前缀值(code_rule.pref_value)】=空白 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-DB4D6E6E6E4E |
 | SCN-4D408AD2A752 | 交易对象群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象群组「属性编号」的必填校验规则：【属性编号(attr_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-8B5DF90E2C39 |
-| SCN-5A98D12DB927 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】回参若存在，则报错E+MSG："此业务类型编号已存在本系统或其他系统!" | 按校验规则拦截或提示 |  | RULE-B693B0267399；RULE-D0B5105CBE7C |
+| SCN-085AC139E1D1 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「单价」的反向校验规则：【单价(price)】检查 单价须大于等于0 | 按校验规则拦截或提示 |  | RULE-764E9CC7172D；RULE-4A7016C7A7F3 |
 | SCN-47136493C5DE |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「取单 后置处理」的接口契约规则：【取单】数据来源：调用接口 查询采购订单(bm.po.get) | 按平台服务调用结果决定是否继续 |  | RULE-18B34047AE06 |
 | SCN-A2B2143DF619 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证应收「折扣含税金额（原币）」的默认值规则：【折扣含税金额（原币）(disc_intax_amt_tc)】默认值：当【折扣率(`disc_rate`)更改】时，默认折扣含税金额（原币）(`disc_intax_amt_tc`)=计价数量(`prc_qty`)×单价(price)×折扣率(`disc_rate`)。时机点：默认执行时 | 默认值：当【折扣率(`disc_rate`)更改】时，默认折扣含税金额（原币）(`disc_intax_amt_tc`)=计价数量(`prc_qty`)×单价(pric… |  | RULE-9434A7DED8B1 |
 | SCN-4885A45D265D | 编号规则 | 只读校验 | NEEDS_UI_EXPLORATION | 验证编号规则「后缀连接符」的只读校验规则：【后缀连接符(suff_conn)】✅ 是；只读条件：IF 【编号规则.后缀值(code_rule.suff_value)】=空白 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-762A41AE661F |
 | SCN-619E4A7B692B | 交易对象群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象群组「编码段号」的必填校验规则：【编码段号(code_sectn_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-09ACD62397AC |
-| SCN-D23322F9F0CD | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的反向校验规则：【流水号位数(serl_digit)】【业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit)】须大于等于0 | 按校验规则拦截或提示 | TC-BZP-0008 | RULE-F45C07F2F62C；RULE-9054A76D8545；RULE-31E4D622E25B；RULE-40D954B34852 |
+| SCN-057B67B888F6 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「折扣率」的反向校验规则：【折扣率(disc_rate)】检查 【采购退货单明细.折扣率(pur_rtn_doc_d.disc_rate)】必须大于等于零 | 按校验规则拦截或提示 |  | RULE-ADCE7C5C3B93；RULE-4737ECAA0F63 |
 | SCN-12DBC692224E | 采购取价策略 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购取价策略「取价策略编号」的接口契约规则：【取价策略编号(price_strtg_no)】调用接口：查询采购取价策略(bm.pur_price_strtg.get) | 按平台服务返回结果决定是否放行 |  | RULE-B17F31316E29 |
 | SCN-8B6D60471E0A | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的默认值规则：【运营单元编号(ops_unit_no)】默认值：默认当前登录运营单元。时机点：默认执行时 | 默认值：默认当前登录运营单元。时机点：默认执行时 |  | RULE-69BDEC4A1031 |
 | SCN-70F135F5E42D | 编号规则 | 只读校验 | NEEDS_UI_EXPLORATION | 验证编号规则「日期编码依据」的只读校验规则：【日期编码依据(date_code_basis)】✅ 是；只读条件：IF 【编号规则.自动编码方式(code_rule.auto_code_mode)】=6.流水码 OR 【编号规则.自动编码方式(code_rule.auto_code_mode)】=7.手工输入 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-AB7A8405B747 |
 | SCN-7BC4014C6718 | 品号属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号属性「属性编号」的必填校验规则：【属性编号(attr_no)】✅ 是 | 为空时保存应被拦截 | TC-IATT-0002 | RULE-3BD330035943 |
-| SCN-6D622FF84662 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年度位数类型」的反向校验规则：【年度位数类型(year_digit_type)】E+MSG：“单号总长度不可大于50码 ! ” | 按校验规则拦截或提示 |  | RULE-82B20B376377 |
+| SCN-231AAFFD551D | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「折扣后单价」的反向校验规则：【折扣后单价(discd_price)】检查 【采购退货单明细.折扣后单价(pur_rtn_doc_d.discd_price)】必须大于等于零 | 按校验规则拦截或提示 |  | RULE-A596B479DFB0；RULE-1FEAD9FFFA08 |
 | SCN-456C8C870824 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.pur_price_strtg.create | 按平台服务调用结果决定是否继续 |  | RULE-73F55DCF0EAC；RULE-A08391843BE8 |
 | SCN-774D5B28CBC7 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的默认值规则：【运营单元名称(ops_unit_name)】默认值：默认赋值：取载入回参 运营单元核算参数.运营单元名称(ops_unit_calc_param.ops_unit_name)；回参为空时调用 查询运营单元(bm.ops_unit.get)，入参 运营单元.运营单元编号(ops_unit.ops_unit_no)=运营单元编号(ops_unit_no)，取回参 运营单元.运营单元名称(ops_unit.ops_unit_name)。时机点：默认编辑时 | 默认值：默认赋值：取载入回参 运营单元核算参数.运营单元名称(ops_unit_calc_param.ops_unit_name)；回参为空时调用 查询运营单元(bm.… |  | RULE-A40B9D3E008F |
 | SCN-9EAD227544D8 | 编号规则 | 只读校验 | NEEDS_UI_EXPLORATION | 验证编号规则「年度位数类型」的只读校验规则：【年度位数类型(year_digit_type)】✅ 是；只读条件：IF 【编号规则.自动编码方式(code_rule.auto_code_mode)】=6.流水码 OR 【编号规则.自动编码方式(code_rule.auto_code_mode)】=7.手工输入 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-9F4B97DD81A8 |
 | SCN-2D149825047C | 品号属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号属性「属性名称」的必填校验规则：【属性名称(attr_name)】✅ 是 | 为空时保存应被拦截 | TC-IATT-0003 | RULE-DF35A60F9A5E |
-| SCN-964246F5F7A9 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「货币汇率表编号」的反向校验规则：【货币汇率表编号(ccy_er_table_no)】回参若不存在，提示："货币"不存在！ | 按校验规则拦截或提示 |  | RULE-738A13E451B7 |
+| SCN-093BEE6F8318 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「折扣额」的反向校验规则：【折扣额(disc_amt)】检查 【采购退货单明细.折扣额(pur_rtn_doc_d.disc_amt)】必须大于等于零 | 按校验规则拦截或提示 |  | RULE-B5BFF094FF61；RULE-CFA94360DE45 |
 | SCN-1DB581EB07F7 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.pur_price_strtg.delete | 按平台服务调用结果决定是否继续 |  | RULE-DC3C2FB227FF |
 | SCN-F3851FCC5906 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「坏账准备计提方式」的默认值规则：【坏账准备计提方式(pvn_acrl_mode)】默认值：默认1.账龄分析法。时机点：默认执行时 | 默认值：默认1.账龄分析法。时机点：默认执行时 |  | RULE-9389C590EB5E |
 | SCN-45B22AF35775 | 编号规则 | 只读校验 | NEEDS_UI_EXPLORATION | 验证编号规则「流水号位数」的只读校验规则：【流水号位数(serl_digit)】✅ 是；只读条件：IF 【编号规则.自动编码方式(code_rule.auto_code_mode)】=7.手工输入 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-61B60BB2B379 |
 | SCN-26AE8D22222A | 品号属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号属性「取值方式」的必填校验规则：【取值方式(value_mode)】✅ 是 | 为空时保存应被拦截 | TC-IATT-0004 | RULE-43E2EE4C171D |
-| SCN-31FE6A7A424F | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「生效日期」的反向校验规则：【生效日期(eff_date)】日期合理性校验 | 按校验规则拦截或提示 |  | RULE-F0DD8AD11072 |
+| SCN-C8BB4638B5FA | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「仓库编号」的反向校验规则：【仓库编号(whse_no)】回参若不存在，提示："仓库"不存在！ | 按校验规则拦截或提示 |  | RULE-CF3BF2A67090 |
 | SCN-3A2902CE6CAB |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「生效 后置处理」的接口契约规则：【生效】● 调用接口：bm.pur_price_strtg.valid | 按平台服务调用结果决定是否继续 |  | RULE-25CD1E02111B |
 | SCN-6609B27D6B0B | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「坏账准备计提比率」的默认值规则：【坏账准备计提比率(pvn_acrl_rate)】默认值：当【坏账准备计提方式(pvn_acrl_mode)='1.账龄分析法' OR 坏账准备计提方式(pvn_acrl_mode)='0.无'】时，默认0。载入时按回参小数比率原样带出，由百分比输入框自动按 % 号显示（如 0.1000 显示 10%），不做 ×100 换算。时机点：默认执行时、默认编辑时 | 默认值：当【坏账准备计提方式(pvn_acrl_mode)='1.账龄分析法' OR 坏账准备计提方式(pvn_acrl_mode)='0.无'】时，默认0。载入时按回… |  | RULE-A0572FCD3207 |
 | SCN-FDA264EE83D9 | 编号规则 | 只读校验 | NEEDS_UI_EXPLORATION | 验证编号规则「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-124CD6DB149B |
 | SCN-5C7027E2F9B6 | 品号属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号属性「属性值」的必填校验规则：【属性值(attr_value)】✅ 是 | 为空时保存应被拦截 |  | RULE-0AD62A8674C8 |
-| SCN-E662F1919820 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「银行买入汇率」的反向校验规则：【银行买入汇率(bank_buy_er)】IF【业务汇率明细.银行买入汇率(biz_er_d.bank_buy_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-C9E37A73BB11 |
+| SCN-6234FEE68768 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「储位编号」的反向校验规则：【储位编号(stsp_no)】回参若不存在，提示：E+MSG："储位不存在！" | 按校验规则拦截或提示 |  | RULE-BAFF50905B19 |
 | SCN-4ED4DB37EA2E |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「失效 后置处理」的接口契约规则：【失效】● 调用接口：bm.pur_price_strtg.invalid | 按平台服务调用结果决定是否继续 |  | RULE-F57477BE2DF0 |
 | SCN-88F9D5F50953 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的默认值规则：【运营单元编号(ops_unit_no)】默认值：默认当前登录运营单元。时机点：默认执行时 | 默认值：默认当前登录运营单元。时机点：默认执行时 |  | RULE-5287597E29BB |
 | SCN-3F524429278D |  | 只读校验 | NEEDS_CONFIRMATION | 验证基础资料「编辑 处理」的只读校验规则：【编辑】载入记录；编码规则编号只读 | 按操作说明执行 |  | RULE-271DD4E3CE7A |
 | SCN-3268CA29FACE | 品号属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号属性「属性值描述」的必填校验规则：【属性值描述(attr_value_desc)】✅ 是 | 为空时保存应被拦截 |  | RULE-96791FC7836E |
-| SCN-0B040A7B9CE5 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「银行卖出汇率」的反向校验规则：【银行卖出汇率(bank_sell_er)】IF【业务汇率明细.银行卖出汇率(biz_er_d.bank_sell_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-EE4E657EE219 |
+| SCN-FCFEB23676AA | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「批号」的反向校验规则：【批号(lot_no)】回参若不存在，提示：E+MSG："批号不存在！" | 按校验规则拦截或提示 |  | RULE-2B05D7BBAA19 |
 | SCN-9D8D4BD3B1BD | 采购订单 | 接口契约 | NOT_UI_OBSERVABLE | 验证采购订单「单据日期」的接口契约规则：【单据日期(doc_date)】调用接口：查询核算运营单元(bm.ops_unit.get_calc_ops_unit)；入参：运营单元编号 = 【采购订单.运营单元编号(po.ops_unit_no)】；回参：核算运营单元编号，记为【核算运营单元编号】【采购订单.单据日期(po.doc_date)】必须大于等于存货开放范围的起始日期 | 按平台服务返回结果决定是否放行 |  | RULE-8DC5B49A23E6；RULE-CA84A843C906 |
 | SCN-D8DCB07C21DD | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的默认值规则：【运营单元名称(ops_unit_name)】默认值：默认赋值：调用 查询运营单元(bm.ops_unit.get) 接口<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no)=运营单元编号(ops_unit_no)<br/>回参：运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>DEFAULT 运营单元名称(ops_unit_name)=运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>时机点：默认编辑时 | 默认值：默认赋值：调用 查询运营单元(bm.ops_unit.get) 接口<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no)=运营单元… |  | RULE-569BD2F9F544 |
 | SCN-9198A8F30761 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务域」的只读校验规则：【业务域(biz_reg)】✅ 是 | 字段不可编辑 | TC-BZP-0001；TC-INVB-0001 | RULE-FF7BE62D88A7 |
 | SCN-CDF92DEC17C6 | 品号群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号群组「品号群组编号」的必填校验规则：【品号群组编号(item_group_no)】✅ 是 | 为空时保存应被拦截 | TC-IGRP-0002 | RULE-5631E14BF53A |
-| SCN-B2418B72A0E3 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「海关买入汇率」的反向校验规则：【海关买入汇率(custo_buy_er)】IF【业务汇率明细.海关买入汇率(biz_er_d.custo_buy_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-54D8EC169802 |
+| SCN-FB77B1E17415 | 采购退货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「税率」的反向校验规则：【税率(tax_rate)】检查 税率必须大于等于0 | 按校验规则拦截或提示 |  | RULE-4665C993918E；RULE-DC2B549567EB |
 | SCN-315705B96B24 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 前置校验」的接口契约规则：【保存】调用接口：业务类型采购参数查询(bm.biz_type_pur_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-6093C857718A |
 | SCN-290AFD189C75 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度应收」的默认值规则：【启用年度应收(ena_year_recev)】默认值：当【运营单元核算参数.启用年度应收(ops_unit_calc_param.ena_year_recev)<>SPACE AND 运营单元核算参数.启用期号应收(ops_unit_calc_param.ena_perid_no_recev)<>SPACE】时，默认启用年度应收(ena_year_recev)=运营单元核算参数.启用年度应收(ops_unit_calc_param.ena_year_recev)。时机点：默认执行时 | 默认值：当【运营单元核算参数.启用年度应收(ops_unit_calc_param.ena_year_recev)<>SPACE AND 运营单元核算参数.启用期号应收… |  | RULE-8DA68FCDC54C |
 | SCN-B25F7DE289C8 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的只读校验规则：【年位数(year_digit_type)】✅ 是；只读条件：当 自动编码方式(auto_code_mode) IN ('6.流水码','7.手工输入') 时只读 | 字段不可编辑 | TC-BZP-0012；TC-BZP-0013；TC-INVB-0007；TC-INVB-0008 | RULE-905C43D030DA |
 | SCN-7112A707B7A5 | 品号群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号群组「品号群组名称」的必填校验规则：【品号群组名称(item_group_name)】✅ 是 | 为空时保存应被拦截 | TC-IGRP-0003 | RULE-59ED0EE9215F |
-| SCN-FB727472AEC4 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「海关卖出汇率」的反向校验规则：【海关卖出汇率(custo_sell_er)】IF【业务汇率明细.海关卖出汇率(biz_er_d.custo_sell_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-2767F9E13B56 |
+| SCN-EF69D19BDA89 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「提交 前置校验」的反向校验规则：【提交】单身至少一行明细，否则阻断：E+MSG："无明细不可提交！" | 校验不通过则操作被拦截 |  | RULE-50BF26DF4652 |
 | SCN-BCBA52ED735D |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「保存 后置处理」的接口契约规则：【保存】● 调用接口：bm.po.create | 按平台服务调用结果决定是否继续 |  | RULE-80B0C04BC057；RULE-662D1F0D4B9B |
 | SCN-E130C97B9346 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号应收」的默认值规则：【启用期号应收(ena_perid_no_recev)】默认值：当【运营单元核算参数.启用年度应收(ops_unit_calc_param.ena_year_recev)<>SPACE AND 运营单元核算参数.启用期号应收(ops_unit_calc_param.ena_perid_no_recev)<>SPACE】时，默认启用期号应收(ena_perid_no_recev)=运营单元核算参数.启用期号应收(ops_unit_calc_param.ena_perid_no_recev)。时机点：默认执行时 | 默认值：当【运营单元核算参数.启用年度应收(ops_unit_calc_param.ena_year_recev)<>SPACE AND 运营单元核算参数.启用期号应收… |  | RULE-1F00B582F552 |
 | SCN-82C14F7E91AE | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的只读校验规则：【流水号位数(serl_digit)】✅ 是；只读条件：当 自动编码方式(auto_code_mode)='7.手工输入' 时只读 | 字段不可编辑 | TC-BZP-0005；TC-BZP-0006 | RULE-73028135E907 |
 | SCN-18C83FE59C0B | 品号群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号群组「属性编号」的必填校验规则：【属性编号(attr_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-9C97E8D12E5F |
-| SCN-F7AEFAE39FE6 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「调整汇率」的反向校验规则：【调整汇率(adj_er)】IF【业务汇率明细.调整汇率(biz_er_d.adj_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-BB929D745907 |
+| SCN-485E7A563D86 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的反向校验规则：【审核】单据状态须为 N.未审核 或 W.审核中，否则阻断：E+MSG："当前状态不可审核！" | 校验不通过则操作被拦截 |  | RULE-FE56280843A2；RULE-FF7E5E9EAC75 |
 | SCN-1C2E4274ABD2 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「删除 后置处理」的接口契约规则：【删除】● 调用接口：bm.po.delete | 按平台服务调用结果决定是否继续 |  | RULE-69ECEE07277E |
 | SCN-FC7C284047F6 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号应收」的默认值规则：【启用期间序号应收(ena_perid_seq_recev)】默认值：默认由启用期号应收(ena_perid_no_recev)开窗带回。时机点：默认执行时 | 默认值：默认由启用期号应收(ena_perid_no_recev)开窗带回。时机点：默认执行时 |  | RULE-6EAE4E8D9047 |
 | SCN-ED600D262976 | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「编码格式」的只读校验规则：【编码格式(CUS_biz_type_fmt)】✅ 是 | 字段不可编辑 |  | RULE-D9F4B8B20BB7 |
 | SCN-5EC3F3F83C9B | 品号群组 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号群组「段号」的必填校验规则：【段号(sectn_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-D405CF0C7F6F |
-| SCN-36ACAE448F69 | 交易对象群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证交易对象群组「编码段号」的反向校验规则：【编码段号(code_sectn_no)】【交易对象群组明细.编码段号(trans_obj_group_d.code_sectn_no)】必须介于1和9之间，否则E+MSG：属性编码段号的范围须介于1和9之间！ | 按校验规则拦截或提示 |  | RULE-A2CDB89908C1 |
+| SCN-4F1735574B52 | 供应商业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「订金比率」的反向校验规则：【订金比率(bkfee_rate)】须大于等于零，否则报错 E+MSG："此字段必须大于等于零 !" | 按校验规则拦截或提示 | TC-SUPP-0016 | RULE-7E1BE6DFE184 |
 | SCN-AC8D952461A7 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「提交 前置校验」的接口契约规则：【提交】调用接口：业务类型采购参数查询(bm.biz_type_pur_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-8D3D5ED06205 |
 | SCN-BBE69582EB44 | 编号规则 | 默认值 | NEEDS_UI_EXPLORATION | 验证编号规则「前缀连接符」的默认值规则：【前缀连接符(pref_conn)】默认值：1. DEFAULT 【编号规则.前缀连接符(code_rule.pref_conn)】 = 1.无<br/>时机点：默认执行时<br/>2. IF 【编号规则.前缀值(code_rule.pref_value)】=空白 THEN<br/>DEFAULT 【编号规则.前缀连接符(code_rule.pref_conn)】 = 1.无<br/>ENDIF<br/>时机点：编辑执行时（前缀值变更） | 默认值：1. DEFAULT 【编号规则.前缀连接符(code_rule.pref_conn)】 = 1.无<br/>时机点：默认执行时<br/>2. IF 【编号规则… |  | RULE-C53C0641E23F |
 | SCN-577C11DB196B | 业务类型通用信息 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-B4F8B29B5191 |
 | SCN-85F64BB94A9E | 品号财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号财务信息「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-IFIN-0003 | RULE-AB1297B7C7D8 |
-| SCN-0D28C3E30437 | 品号属性 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号属性「属性值」的反向校验规则：【属性值(attr_value)】E+MSG："属性值%s的字段长度必须等于所设的数据长度！" | 按校验规则拦截或提示 |  | RULE-26A73A87B1BF |
+| SCN-3B91FD1973CF | 供应商业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「税率」的反向校验规则：【税率(tax_rate)】不可小于０，否则报错 E+MSG："此字段必须大于等于零 !" | 按校验规则拦截或提示 | TC-SUPP-0019 | RULE-64994FE3395D |
 | SCN-401D58567B64 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「提交 后置处理」的接口契约规则：【提交】● 调用接口：bm.po.initi_aprv | 按平台服务调用结果决定是否继续 |  | RULE-E740E1F23A5F |
 | SCN-4F518A90AAF5 | 编号规则 | 默认值 | NEEDS_UI_EXPLORATION | 验证编号规则「后缀连接符」的默认值规则：【后缀连接符(suff_conn)】默认值：1. DEFAULT 【编号规则.后缀连接符(code_rule.suff_conn)】 = 1.无<br/>时机点：默认执行时<br/>2. IF 【编号规则.后缀值(code_rule.suff_value)】=空白 THEN<br/>DEFAULT 【编号规则.后缀连接符(code_rule.suff_conn)】 = 1.无<br/>ENDIF<br/>时机点：编辑执行时（后缀值变更） | 默认值：1. DEFAULT 【编号规则.后缀连接符(code_rule.suff_conn)】 = 1.无<br/>时机点：默认执行时<br/>2. IF 【编号规则… |  | RULE-8254CB2F0608 |
 | SCN-7C785E2F4100 |  | 只读校验 | NEEDS_CONFIRMATION | 验证财务「整体操作 后置处理」的只读校验规则：【整体操作】打开空白的新增详情页；业务域按默认值带出 ST.结算领域（只读），自动编码方式默认「1.年月日+流水码」，前缀连接符默认「2.-」，状态默认「Y.生效」 | 按操作说明执行 |  | RULE-5F425FC8ABDE |
 | SCN-74005BC49A80 | 品号财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号财务信息「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-IFIN-0005 | RULE-03A4BD8C1102 |
-| SCN-974C1376198F |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】IF 【品号属性.取值方式(item_attr.value_mode) 】= 1.枚举 | 校验不通过则操作被拦截 |  | RULE-D2CCB8757C31；RULE-96FBF61FE5F8；RULE-B61495872C37 |
+| SCN-94D086D4AF81 | 供应商业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证供应商业务信息「逢某日」的反向校验规则：【逢某日(every_sday)】非空白时，输入值需介于 1～31，否则报错 E+MSG："日期须在 1 ～ 31 的间" | 按校验规则拦截或提示 |  | RULE-AD06BAC698BF |
 | SCN-51F25F534B3B |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「驳回 后置处理」的接口契约规则：【驳回】● 调用接口：bm.po.cxl_aprv | 按平台服务调用结果决定是否继续 |  | RULE-5C84BC6AFAB7 |
 | SCN-EA13860FCE83 | 编号规则 | 默认值 | NEEDS_UI_EXPLORATION | 验证编号规则「自动编码方式」的默认值规则：【自动编码方式(auto_code_mode)】默认值：DEFAULT 【编号规则.自动编码方式(code_rule.auto_code_mode)】 = 1.年月日+流水码<br/>时机点：默认执行时 | 默认值：DEFAULT 【编号规则.自动编码方式(code_rule.auto_code_mode)】 = 1.年月日+流水码<br/>时机点：默认执行时 |  | RULE-65A3E7A9B4EB |
 | SCN-29D2F7281184 |  | 只读校验 | NEEDS_CONFIRMATION | 验证财务「新增 后置处理」的只读校验规则：【新增】打开空白的新增详情页；业务域按默认值带出 ST.结算领域（只读），自动编码方式默认「1.年月日+流水码」，前缀连接符默认「2.-」，状态默认「Y.生效」 | 按操作说明执行 |  | RULE-5B99F5D4E609 |
 | SCN-5CEC9EDA0A41 | 品号财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号财务信息「存货会计分类编号」的必填校验规则：【存货会计分类编号(invnt_fin_categ_code)】✅ 是 | 为空时保存应被拦截 | TC-IFIN-0007 | RULE-15FC15F9E552 |
-| SCN-8CA03B9AAC6D | 品号群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号群组「属性编号」的反向校验规则：【属性编号(attr_no)】回参若不存在，提示："属性不存在！" | 按校验规则拦截或提示 |  | RULE-D7899149183F |
+| SCN-116611CBD9B6 | 业务类型采购参数 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型采购参数「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】输入值须做存在且生效性检验 | 按校验规则拦截或提示 |  | RULE-7C0DCFE4F55E；RULE-451A583F0E9E |
 | SCN-B0D3CD58327A |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 前置校验」的接口契约规则：【审核】调用接口：业务类型采购参数查询(bm.biz_type_pur_param.get) | 按平台服务调用结果决定是否继续 |  | RULE-94D57D9CC7FC |
 | SCN-5D67E36AC177 | 编号规则 | 默认值 | NEEDS_UI_EXPLORATION | 验证编号规则「日期编码依据」的默认值规则：【日期编码依据(date_code_basis)】默认值：1. DEFAULT 【编号规则.日期编码依据(code_rule.date_code_basis)】 = 1.系统日期<br/>时机点：默认执行时<br/>2. IF 【编号规则.自动编码方式(code_rule.auto_code_mode)】=6.流水码 OR 【编号规则.自动编码方式(code_rule.auto_code_mode)】=7.手工输入 THEN<br/>DEFAULT 【编号规则.日期编码依据(code_rule.date_code_basis)】 = 0.无需日期<br/>ENDIF<br/>时机点：编辑执行时… | 默认值：1. DEFAULT 【编号规则.日期编码依据(code_rule.date_code_basis)】 = 1.系统日期<br/>时机点：默认执行时<br/>2… |  | RULE-86EEE278D1C3 |
 | SCN-3873DF451EBE | 业务类型结算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-C31783D9F337 |
 | SCN-9D34C2ADD14F | 品号财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号财务信息「存货成本分类编号」的必填校验规则：【存货成本分类编号(invnt_cost_categ_code)】✅ 是 | 为空时保存应被拦截 | TC-IFIN-0009 | RULE-1EF1F82223D2 |
-| SCN-899FB2DEB79B | 品号群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号群组「品号分隔符」的反向校验规则：【品号分隔符(item_no_sep)】当【品号群组明细.纳入编码类型(item_group_d.incln_code_type)】='0.不纳入编码'时，【品号群组明细.品号分隔符(item_group_d.item_no_sep)】必须为0.无。E+MSG："不纳入编码的属性，品号分隔符必须为0.无" | 按校验规则拦截或提示 |  | RULE-5B0FBCDD91AA；RULE-A09E20EFC0E5 |
+| SCN-5A98D12DB927 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】回参若存在，则报错E+MSG："此业务类型编号已存在本系统或其他系统!" | 按校验规则拦截或提示 |  | RULE-B693B0267399；RULE-D0B5105CBE7C |
 | SCN-BF6775A2A166 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「审核 后置处理」的接口契约规则：【审核】● 调用接口：bm.po.approve | 按平台服务调用结果决定是否继续 |  | RULE-DC39A33D3139；RULE-351C44B347EE |
 | SCN-AFCFFFE00CBD | 编号规则 | 默认值 | NEEDS_UI_EXPLORATION | 验证编号规则「年度位数类型」的默认值规则：【年度位数类型(year_digit_type)】默认值：1. DEFAULT 【编号规则.年度位数类型(code_rule.year_digit_type)】 = 5.公元四码<br/>时机点：默认执行时<br/>2. IF 【编号规则.自动编码方式(code_rule.auto_code_mode)】=6.流水码 OR 【编号规则.自动编码方式(code_rule.auto_code_mode)】=7.手工输入 THEN<br/>DEFAULT 【编号规则.年度位数类型(code_rule.year_digit_type)】 = 1.无<br/>ENDIF<br/>时机点：编辑执行时（编码… | 默认值：1. DEFAULT 【编号规则.年度位数类型(code_rule.year_digit_type)】 = 5.公元四码<br/>时机点：默认执行时<br/>2… |  | RULE-92D5ED2792AD |
 | SCN-0D8B4A193173 | 业务类型结算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「业务单别名称」的只读校验规则：【业务单别名称(CUS_biz_type_name)】✅ 是 | 字段不可编辑 |  | RULE-C7CE0B75097B |
 | SCN-710359C20F2C | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-BAS-0002 | RULE-B4D4B30E6CA1 |
-| SCN-FE69871AD2B0 | 品号群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号群组「段号」的反向校验规则：【段号(sectn_no)】【品号群组明细.段号(item_group_d.sectn_no)】不可小于0 | 按校验规则拦截或提示 |  | RULE-2A806EA63D7B；RULE-033E5144BDD2 |
+| SCN-D23322F9F0CD | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的反向校验规则：【流水号位数(serl_digit)】【业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit)】须大于等于0 | 按校验规则拦截或提示 | TC-BZP-0008 | RULE-F45C07F2F62C；RULE-9054A76D8545；RULE-31E4D622E25B；RULE-40D954B34852 |
 | SCN-6D73BEF763AB |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「撤审 后置处理」的接口契约规则：【撤审】● 调用接口：bm.po.disapprove | 按平台服务调用结果决定是否继续 |  | RULE-4549DD813818 |
 | SCN-CE5EA997D3F8 | 编号规则 | 默认值 | NEEDS_UI_EXPLORATION | 验证编号规则「流水号位数」的默认值规则：【流水号位数(serl_digit)】默认值：1. DEFAULT 【编号规则.流水号位数(code_rule.serl_digit)】 = 1<br/>时机点：默认执行时<br/>2. IF 【编号规则.自动编码方式(code_rule.auto_code_mode)】=7.手工输入 THEN<br/>DEFAULT 【编号规则.流水号位数(code_rule.serl_digit)】 = 1<br/>ENDIF<br/>时机点：编辑执行时（编码方式变更） | 默认值：1. DEFAULT 【编号规则.流水号位数(code_rule.serl_digit)】 = 1<br/>时机点：默认执行时<br/>2. IF 【编号规则.… |  | RULE-A1B3E0FDB435 |
 | SCN-FD1167627E99 | 业务类型结算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「业务性质」的只读校验规则：【业务性质(CUS_biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-1295EAF4CF41 |
 | SCN-CCEED40CAA9B | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「品名」的必填校验规则：【品名(item_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-24E90327F4E9 |
-| SCN-B25D167DFBA8 | 品号群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号群组「相似性检查」的反向校验规则：【相似性检查(simi_check)】当【品号群组明细.取值方式(item_group_d.value_mode)】='4.自动编码'时，【品号群组明细.相似性检查(item_group_d.simi_check)】不可为勾选 | 按校验规则拦截或提示 |  | RULE-2CCC676C0B02；RULE-99181A255DD8 |
+| SCN-6D622FF84662 | 业务类型通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年度位数类型」的反向校验规则：【年度位数类型(year_digit_type)】E+MSG：“单号总长度不可大于50码 ! ” | 按校验规则拦截或提示 |  | RULE-82B20B376377 |
 | SCN-157498446E89 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「作废 后置处理」的接口契约规则：【作废】● 调用接口：bm.po.void | 按平台服务调用结果决定是否继续 |  | RULE-1B44D6E609E1 |
 | SCN-177E0851D39D | 编号规则 | 默认值 | NEEDS_UI_EXPLORATION | 验证编号规则「编码类型」的默认值规则：【编码类型(code_type)】默认值：DEFAULT 【编号规则.编码类型(code_rule.code_type)】 = 2.批号<br/>时机点：默认执行时 | 默认值：DEFAULT 【编号规则.编码类型(code_rule.code_type)】 = 2.批号<br/>时机点：默认执行时 |  | RULE-90F33DF6580C |
 | SCN-8DDCA5ABAF69 | 业务类型结算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-78AC29E7AD37 |
 | SCN-D35578AB4D6C | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「品号群组编号」的必填校验规则：【品号群组编号(item_group_no)】✅ 是 | 为空时保存应被拦截 | TC-BAS-0004 | RULE-B202EC34A134 |
-| SCN-2C1F4E6D4D4B | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「库存单位编号」的反向校验规则：【库存单位编号(invnt_unit_no)】存在性校验 | 按校验规则拦截或提示 |  | RULE-83C3778FCA44；RULE-499E37B065A2 |
+| SCN-964246F5F7A9 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「货币汇率表编号」的反向校验规则：【货币汇率表编号(ccy_er_table_no)】回参若不存在，提示："货币"不存在！ | 按校验规则拦截或提示 |  | RULE-738A13E451B7 |
 | SCN-A96B7C3CA7E0 |  | 接口契约 | NOT_UI_OBSERVABLE | 验证采购「取单 后置处理」的接口契约规则：【取单】数据来源：调用接口 查询请购单(bm.requ_doc.get) | 按平台服务调用结果决定是否继续 |  | RULE-641C9D650FD3 |
 | SCN-467D34A07C82 |  | 默认值 | NEEDS_CONFIRMATION | 验证基础资料「整体操作 处理」的默认值规则：【整体操作】打开空白新增详情页，执行字段默认值：编码方式=1.年月日+流水码、日期依据=1.系统日期、年度位数=5.公元四码、流水号位数=1、前缀/后缀连接符=1.无、编码类型=2.批号 | 按操作说明执行 |  | RULE-909163D6511E |
 | SCN-ED1DF6851C19 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-B1CFEF94F51A |
 | SCN-38C76CA04169 | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「库存单位编号」的必填校验规则：【库存单位编号(invnt_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-BAS-0011 | RULE-DFB581D15DC5 |
-| SCN-10EE851D17F2 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「税率」的反向校验规则：【税率(tax_rate)】不可小于０ | 按校验规则拦截或提示 | TC-BAS-0020 | RULE-FEF2A0A80E00；RULE-B8CE74D183AC |
+| SCN-31FE6A7A424F | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「生效日期」的反向校验规则：【生效日期(eff_date)】日期合理性校验 | 按校验规则拦截或提示 |  | RULE-F0DD8AD11072 |
 | SCN-61F04A405589 |  | 默认值 | NEEDS_CONFIRMATION | 验证基础资料「新增 处理」的默认值规则：【新增】打开空白新增详情页，执行字段默认值：编码方式=1.年月日+流水码、日期依据=1.系统日期、年度位数=5.公元四码、流水号位数=1、前缀/后缀连接符=1.无、编码类型=2.批号 | 按操作说明执行 |  | RULE-5DCD5259EDD5 |
 | SCN-F784FC63DF8C | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-9BEFA8A79138 |
 | SCN-3C22F025DC0B | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「计量体系」的必填校验规则：【计量体系(meas_sys)】✅ 是 | 为空时保存应被拦截 | TC-BAS-0015 | RULE-357B7837DB42 |
-| SCN-B2FDFDF3A323 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「批号管理」的反向校验规则：【批号管理(lot_mgmt)】批号管理开关由打开改为关闭时，报错"启用保质期管理时必须启用批号管理！” | 按校验规则拦截或提示 |  | RULE-ADD05A9B4216 |
+| SCN-E662F1919820 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「银行买入汇率」的反向校验规则：【银行买入汇率(bank_buy_er)】IF【业务汇率明细.银行买入汇率(biz_er_d.bank_buy_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-C9E37A73BB11 |
 | SCN-FCB13DAD1DD1 | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务域」的默认值规则：【业务域(biz_reg)】默认值：默认 ST.结算领域。时机点：默认执行时 | 默认值：默认 ST.结算领域。时机点：默认执行时 |  | RULE-190C97331BDE |
 | SCN-EA9CD62FE5A6 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「会计期间表编号」的只读校验规则：【会计期间表编号(acctg_perid_table_no)】✅ 是；只读条件：IF 已生成公司会计期间(CUS_has_co_acctg_perid) 勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-9F06375DDD8A |
 | SCN-A3DCE54380D8 | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「第二单位编号」的必填校验规则：【第二单位编号(sec_unit_no)】✅ 是；必填条件：若当前品号.计量体系（item_gen_info.meas_sys）=2.存货双单位时 则 必填 | 为空时保存应被拦截 | TC-BAS-0018 | RULE-F1D0BB90835A |
-| SCN-C124CC9813FC | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「批号有效天数」的反向校验规则：【批号有效天数(lot_valid_days)】E+MSG："此字段必须大于等于零 !" | 按校验规则拦截或提示 | TC-BAS-0034 | RULE-4114A42D6186 |
+| SCN-0B040A7B9CE5 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「银行卖出汇率」的反向校验规则：【银行卖出汇率(bank_sell_er)】IF【业务汇率明细.银行卖出汇率(biz_er_d.bank_sell_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-EE4E657EE219 |
 | SCN-3CC07A0EAE29 | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「业务单别全称」的默认值规则：【业务单别全称(biz_type_fname)】默认值：当【业务类型全称(biz_type_fname)=SPACE】时，默认业务类型全称(biz_type_fname)=业务类型名称(biz_type_name)。时机点：默认编辑时 | 默认值：当【业务类型全称(biz_type_fname)=SPACE】时，默认业务类型全称(biz_type_fname)=业务类型名称(biz_type_name)。… |  | RULE-A5A1C8432E55 |
 | SCN-6E12B6D73BC4 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度-存货」的只读校验规则：【启用年度-存货(ena_year_invnt)】✅ 是 | 字段不可编辑 |  | RULE-3CD3B7A0A5F7 |
 | SCN-0BB441C11327 | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「库存检查方式」的必填校验规则：【库存检查方式(invnt_check_mode)】✅ 是 | 为空时保存应被拦截 | TC-BAS-0021 | RULE-C6431220EE28 |
-| SCN-4F24AFCB8658 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「批号复检天数」的反向校验规则：【批号复检天数(lot_rei_days)】E+MSG："此字段必须大于等于零 !" | 按校验规则拦截或提示 | TC-BAS-0037 | RULE-7EDF0EE366B9 |
+| SCN-B2418B72A0E3 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「海关买入汇率」的反向校验规则：【海关买入汇率(custo_buy_er)】IF【业务汇率明细.海关买入汇率(biz_er_d.custo_buy_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-54D8EC169802 |
 | SCN-FA308FB8BBE0 | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「自动编码方式」的默认值规则：【自动编码方式(auto_code_mode)】默认值：默认1.年月日+流水码。时机点：默认执行时 | 默认值：默认1.年月日+流水码。时机点：默认执行时 |  | RULE-2492C2D3C025 |
 | SCN-027B7CE50A05 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号-存货」的只读校验规则：【启用期号-存货(ena_perid_no_invnt)】✅ 是 | 字段不可编辑 |  | RULE-F4A76244AB50 |
 | SCN-9E9ACA7D4948 | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「批号编码规则编号」的必填校验规则：【批号编码规则编号(lot_code_rule_no)】✅ 是；必填条件：IF 【品号通用信息.批号管理(item_gen_info.lot_mgmt)】=TRUE时，必填 | 为空时保存应被拦截 |  | RULE-2E0ECD67A019 |
-| SCN-3CEE1E9FB8FD | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「属性值」的反向校验规则：【属性值(attr_value)】输入值 长度不可大于 QUERY A. 数据长度(item_attr.data_len )，否则报错：输入值不可大于长度%S！ 传入 QUERY A. 数据长度(item_attr.data_len ) | 按校验规则拦截或提示 |  | RULE-AE9A61F720B5 |
+| SCN-FB727472AEC4 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「海关卖出汇率」的反向校验规则：【海关卖出汇率(custo_sell_er)】IF【业务汇率明细.海关卖出汇率(biz_er_d.custo_sell_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-2767F9E13B56 |
 | SCN-3F10BB012A21 | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「年位数」的默认值规则：【年位数(year_digit_type)】默认值：当【自动编码方式(auto_code_mode) IN ('6.流水码','7.手工输入')】时，默认1.无。时机点：默认执行时 | 默认值：当【自动编码方式(auto_code_mode) IN ('6.流水码','7.手工输入')】时，默认1.无。时机点：默认执行时 | TC-BZP-0014；TC-INVB-0009 | RULE-69D90F75616E |
 | SCN-2200714EA15D | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-存货」的只读校验规则：【启用期间序号-存货(ena_use_perid_seq_no_invnt)】✅ 是 | 字段不可编辑 |  | RULE-AA20BD77B4D8 |
 | SCN-FB812AED9888 | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「有效日期推算方式」的必填校验规则：【有效日期推算方式(valid_date_calc_mode)】✅ 是；必填条件：当【品号通用信息.是否启用保质期管理(item_gen_info.is_ena_sl_mgmt)】= Y，不可空白 | 为空时保存应被拦截 | TC-BAS-0041 | RULE-C40D7263AACC |
-| SCN-C4C43B468D66 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「换算单位数量」的反向校验规则：【换算单位数量(cnv_unit_qty)】不可为0，须大于0，否则报错：换算单位数量须大于零 ! | 按校验规则拦截或提示 |  | RULE-01F24C3027D3 |
+| SCN-F7AEFAE39FE6 | 业务汇率 | 反向校验 | NEEDS_UI_EXPLORATION | 验证业务汇率「调整汇率」的反向校验规则：【调整汇率(adj_er)】IF【业务汇率明细.调整汇率(biz_er_d.adj_er)】< 0，E+MSG："汇率必须大于等于0！" | 按校验规则拦截或提示 |  | RULE-BB929D745907 |
 | SCN-55C9DCF23A28 | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「流水号位数」的默认值规则：【流水号位数(serl_digit)】默认值：当【自动编码方式(auto_code_mode)='7.手工输入'】时，默认0。时机点：默认执行时 | 默认值：当【自动编码方式(auto_code_mode)='7.手工输入'】时，默认0。时机点：默认执行时 | TC-BZP-0007 | RULE-F60908BAB06A |
 | SCN-6B9F357F65A4 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度-存货」的只读校验规则：【现行年度-存货(curr_year_invnt)】✅ 是；只读条件：IF 现行年度-存货(curr_year_invnt) <> '' THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-EECE03D2E621 |
 | SCN-5EF56808F11B | 品号通用信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「换算单位编号」的必填校验规则：【换算单位编号(cnv_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-EC3E7B012BAA |
-| SCN-6F9D16A1B589 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「库存单位数量」的反向校验规则：【库存单位数量(invnt_unit_qty)】不可为0，须大于0 | 按校验规则拦截或提示 |  | RULE-B05024C2668B；RULE-D2CF1D6EA8C9 |
+| SCN-36ACAE448F69 | 交易对象群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证交易对象群组「编码段号」的反向校验规则：【编码段号(code_sectn_no)】【交易对象群组明细.编码段号(trans_obj_group_d.code_sectn_no)】必须介于1和9之间，否则E+MSG：属性编码段号的范围须介于1和9之间！ | 按校验规则拦截或提示 |  | RULE-A2CDB89908C1 |
 | SCN-C535B56807F7 | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「编码格式」的默认值规则：【编码格式(CUS_biz_type_fmt)】默认值：1.当【自动编码方式(auto_code_mode) IN ('1.年月日+流水码','3.年月+流水码')】且【年位数(year_digit_type)<>'1.无'】时，默认编码格式=年段码+该编码方式的固定段+流水码（规则见「2.4.1」）。时机点：默认执行时<br/>2.当【自动编码方式(auto_code_mode)='6.流水码'】时，默认编码格式=流水码。时机点：默认执行时<br/>3.当【自动编码方式(auto_code_mode)='7.手工输入'】时，默认编码格式=SPACE。时机点：默认执行时<br/>4.当【自动编… | 默认值：1.当【自动编码方式(auto_code_mode) IN ('1.年月日+流水码','3.年月+流水码')】且【年位数(year_digit_type)<>'… |  | RULE-EE2D3A9D4D62 |
 | SCN-3F42BF089C6F | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号-存货」的只读校验规则：【现行期号-存货(curr_perid_no_invnt)】✅ 是；只读条件：IF 现行期号-存货(curr_perid_no_invnt) <> '' THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-1683ADE5819B |
 | SCN-4A1DB6437DF2 | 品号采购信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-3FE4B3E85246 |
-| SCN-50E9776C118B |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】修改校验： | 校验不通过则操作被拦截 |  | RULE-8D9747BC4FF3；RULE-2841F17383D1；RULE-3D505C9441FE |
+| SCN-0D28C3E30437 | 品号属性 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号属性「属性值」的反向校验规则：【属性值(attr_value)】E+MSG："属性值%s的字段长度必须等于所设的数据长度！" | 按校验规则拦截或提示 |  | RULE-26A73A87B1BF |
 | SCN-F0F5708A46A7 | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「前缀连接符」的默认值规则：【前缀连接符(pref_conn)】默认值：默认2.-。时机点：默认执行时 | 默认值：默认2.-。时机点：默认执行时 |  | RULE-62E8D1483342 |
 | SCN-E56548C05ECF | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号-存货」的只读校验规则：【现行期间序号-存货(curr_perid_seq_invnt)】✅ 是 | 字段不可编辑 |  | RULE-CACB7A97B14E |
 | SCN-6B29D05557B3 | 品号采购信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-IPUR-0004 | RULE-D10798E899A1 |
-| SCN-85B642C6D702 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的反向校验规则：【生效】校验【品号通用信息.第二单位编号(item_gen_info.sec_unit_no)】必须与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算率： | 校验不通过则操作被拦截 |  | RULE-9FAA6B3D1E74；RULE-F4FBBB7423B9 |
+| SCN-974C1376198F |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】IF 【品号属性.取值方式(item_attr.value_mode) 】= 1.枚举 | 校验不通过则操作被拦截 |  | RULE-D2CCB8757C31；RULE-96FBF61FE5F8；RULE-B61495872C37 |
 | SCN-476CAE97C7FA | 业务类型通用信息 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型通用信息「状态」的默认值规则：【状态(manage_status)】默认值：默认Y.生效。时机点：默认执行时 | 默认值：默认Y.生效。时机点：默认执行时 |  | RULE-48BF7589D343 |
 | SCN-6C2CC217557B | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围起-存货」的只读校验规则：【开放日期范围起-存货(date_range_begin_invnt)】✅ 是 | 字段不可编辑 |  | RULE-32748DD7EFB0 |
 | SCN-95244041ED5A | 品号采购信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购单位编号」的必填校验规则：【采购单位编号(pur_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-IPUR-0007 | RULE-0F0D4B51040E |
-| SCN-0A5C838CADB6 | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「单价上限率」的反向校验规则：【单价上限率(price_upper_limit_rate)】【品号采购信息.单价上限率(item_pur_info.price_upper_limit_rate)】须大于等于零 | 按校验规则拦截或提示 | TC-IPUR-0026 | RULE-24A4E1F2288E；RULE-7BC5804C147E |
+| SCN-8CA03B9AAC6D | 品号群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号群组「属性编号」的反向校验规则：【属性编号(attr_no)】回参若不存在，提示："属性不存在！" | 按校验规则拦截或提示 |  | RULE-D7899149183F |
 | SCN-2D3F800F1C77 | 业务类型结算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「运营单元编号」的默认值规则：【运营单元编号(ops_unit_no)】默认值：调用接口：查询员工(bm.empl.get)<br/>入参：员工.员工编号(empl.empl_no) = 当前系统用户<br/>回参：员工.归属运营单元编号(empl.blng_ops_unit_no)<br/>调用接口：查询运营单元(bm.ops_unit.get)<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no) = 员工.归属运营单元编号(empl.blng_ops_unit_no)<br/>回参：运营单元职能.职能编号(ops_unit_func.func_no)<br/>IF 运营单元职能.职能编号(… | 默认值：调用接口：查询员工(bm.empl.get)<br/>入参：员工.员工编号(empl.empl_no) = 当前系统用户<br/>回参：员工.归属运营单元编号(… |  | RULE-63BB7F4FF58A |
 | SCN-FB3BDFCFAAE8 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止-存货」的只读校验规则：【开放日期范围止-存货(date_range_end_invnt)】✅ 是 | 字段不可编辑 |  | RULE-59A169EDDA9B |
 | SCN-21A70BAD26F6 | 品号采购信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购计价单位编号」的必填校验规则：【采购计价单位编号(pur_prc_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-IPUR-0018 | RULE-D89C98C587BD |
-| SCN-1F8980BD3F1A | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购固定前置天数」的反向校验规则：【采购固定前置天数(pur_fix_lead_days)】【品号采购信息.采购固定前置天数(item_pur_info.pur_fix_lead_days)】须大于等于零 | 按校验规则拦截或提示 | TC-IPUR-0027 | RULE-74D4F9081E82；RULE-F74375E8D840 |
+| SCN-899FB2DEB79B | 品号群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号群组「品号分隔符」的反向校验规则：【品号分隔符(item_no_sep)】当【品号群组明细.纳入编码类型(item_group_d.incln_code_type)】='0.不纳入编码'时，【品号群组明细.品号分隔符(item_group_d.item_no_sep)】必须为0.无。E+MSG："不纳入编码的属性，品号分隔符必须为0.无" | 按校验规则拦截或提示 |  | RULE-5B0FBCDD91AA；RULE-A09E20EFC0E5 |
 | SCN-1C9EB11F94E5 | 业务类型结算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「运营单元名称」的默认值规则：【运营单元名称(ops_unit_name)】默认值：默认赋值：调用 查询运营单元(bm.ops_unit.get) 接口<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no)=运营单元编号(ops_unit_no)<br/>回参：运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>DEFAULT 运营单元名称(ops_unit_name)=运营单元.运营单元名称(ops_unit.ops_unit_name)<br/>时机点：默认编辑时 | 默认值：默认赋值：调用 查询运营单元(bm.ops_unit.get) 接口<br/>入参：运营单元.运营单元编号(ops_unit.ops_unit_no)=运营单元… |  | RULE-6FA8BA6B8C3D |
 | SCN-41DB20E874BF | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度-应付」的只读校验规则：【启用年度-应付(ena_year_pay)】✅ 是 | 字段不可编辑 |  | RULE-F5E92892C6AC |
 | SCN-5CFF8EAF8448 | 品号采购信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购比例」的必填校验规则：【采购比例(pur_propo)】✅ 是；必填条件：供应商策略 (item_pur_info.supp_strtg) = R.依固定比例供应 | 为空时保存应被拦截 |  | RULE-93A1ACCC2023 |
-| SCN-E25250C4FC79 | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购变动前置天数」的反向校验规则：【采购变动前置天数(pur_var_lead_days)】【品号采购信息.采购变动前置天数(item_pur_info.pur_var_lead_days)】须大于等于零 | 按校验规则拦截或提示 | TC-IPUR-0028 | RULE-04C518D24297；RULE-3F35571DAC0B |
+| SCN-FE69871AD2B0 | 品号群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号群组「段号」的反向校验规则：【段号(sectn_no)】【品号群组明细.段号(item_group_d.sectn_no)】不可小于0 | 按校验规则拦截或提示 |  | RULE-2A806EA63D7B；RULE-033E5144BDD2 |
 | SCN-CBF853AF6D79 | 业务类型结算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「状态」的默认值规则：【状态(manage_status)】默认值：默认 Y.生效。时机点：默认执行时 | 默认值：默认 Y.生效。时机点：默认执行时 |  | RULE-AEF583B8E1C1 |
 | SCN-16A9AC8F82FA | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号-应付」的只读校验规则：【启用期号-应付(ena_perid_no_pay)】✅ 是 | 字段不可编辑 |  | RULE-A0E4308ED7A5 |
 | SCN-F30B67BCA532 | 品号销售信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号销售信息「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-ISAL-0009 | RULE-182053EDD02C |
-| SCN-8980379EB95D | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购批量」的反向校验规则：【采购批量(pur_batch)】【品号采购信息.采购批量(item_pur_info.pur_batch)】必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0029 | RULE-3CC7D3D901BC；RULE-5A0CA90B4D0B |
+| SCN-B25D167DFBA8 | 品号群组 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号群组「相似性检查」的反向校验规则：【相似性检查(simi_check)】当【品号群组明细.取值方式(item_group_d.value_mode)】='4.自动编码'时，【品号群组明细.相似性检查(item_group_d.simi_check)】不可为勾选 | 按校验规则拦截或提示 |  | RULE-2CCC676C0B02；RULE-99181A255DD8 |
 | SCN-A1C4599F7DBC | 业务类型结算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「审核后自动过账标识」的默认值规则：【审核后自动过账标识(aprv_auto_post_flag)】默认值：默认勾选。时机点：默认执行时 | 默认值：默认勾选。时机点：默认执行时 |  | RULE-5B35E3F23F9B |
 | SCN-53D08C4AF44A | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-应付」的只读校验规则：【启用期间序号-应付(ena_perid_seq_pay)】✅ 是 | 字段不可编辑 |  | RULE-A8A1623CAF17 |
 | SCN-7918DD4BCFCF | 品号销售信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号销售信息「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-ISAL-0005 | RULE-DDF979C67FFF |
-| SCN-97EBEF9A38BA | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「最低补量」的反向校验规则：【最低补量(lwst_addl_qty)】【品号采购信息.最低补量(item_pur_info.lwst_addl_qty)】必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0014 | RULE-C9012E915AC0；RULE-17995D5EEF7E |
+| SCN-2C1F4E6D4D4B | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「库存单位编号」的反向校验规则：【库存单位编号(invnt_unit_no)】存在性校验 | 按校验规则拦截或提示 |  | RULE-83C3778FCA44；RULE-499E37B065A2 |
 | SCN-B927A1F0C9A1 | 业务类型结算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「自动审核」的默认值规则：【自动审核(creat_is_auto_aprv)】默认值：默认未勾选。时机点：默认执行时 | 默认值：默认未勾选。时机点：默认执行时 |  | RULE-F75ECA781F0E |
-| SCN-67C6F6B4A109 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度-应付」的只读校验规则：【现行年度-应付(curr_year_pay)】✅ 是；只读条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-A8232497DEBD；RULE-F6B5ACACD659 |
+| SCN-67C6F6B4A109 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度-应付」的只读校验规则：【现行年度-应付(curr_year_pay)】✅ 是；只读条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-A8232497DEBD |
 | SCN-A43D37B007E4 | 品号销售信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证品号销售信息「销售单位编号」的必填校验规则：【销售单位编号(sales_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-ISAL-0007 | RULE-9A19B0D988EC |
-| SCN-3043C00C659C | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「补货倍量」的反向校验规则：【补货倍量(rplsh_multi_qty)】【品号采购信息.补货倍量(item_pur_info.rplsh_multi_qty)】必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0013 | RULE-76B045C49B08；RULE-87B79FF9869B |
+| SCN-10EE851D17F2 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「税率」的反向校验规则：【税率(tax_rate)】不可小于０ | 按校验规则拦截或提示 | TC-BAS-0020 | RULE-FEF2A0A80E00；RULE-B8CE74D183AC |
 | SCN-977A02264C13 | 业务类型结算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证业务类型结算参数「修改是否自动审核」的默认值规则：【修改是否自动审核(mod_is_auto_aprv)】默认值：默认未勾选。时机点：默认执行时 | 默认值：默认未勾选。时机点：默认执行时 |  | RULE-CA1FCBE84D49 |
-| SCN-1AEA4CCFDF59 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号-应付」的只读校验规则：【现行期号-应付(curr_perid_no_pay)】✅ 是；只读条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-5A1195B1B55F；RULE-5FC12DD65024 |
+| SCN-1AEA4CCFDF59 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号-应付」的只读校验规则：【现行期号-应付(curr_perid_no_pay)】✅ 是；只读条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-5A1195B1B55F |
 | SCN-9BE5E7179062 | 客户业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「客户编号」的必填校验规则：【客户编号(cust_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSB-0003 | RULE-F0C7E6801462 |
-| SCN-B9DFC62E048C | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「标准采购单价」的反向校验规则：【标准采购单价(std_pur_price)】【品号采购信息.标准采购单价(item_pur_info.std_pur_price)】字段必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0033 | RULE-2D9CF7617236；RULE-51D8BFA40CCC |
+| SCN-B2FDFDF3A323 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「批号管理」的反向校验规则：【批号管理(lot_mgmt)】批号管理开关由打开改为关闭时，报错"启用保质期管理时必须启用批号管理！” | 按校验规则拦截或提示 |  | RULE-ADD05A9B4216 |
 | SCN-BAC297B7F031 |  | 默认值 | NEEDS_CONFIRMATION | 验证财务「整体操作 后置处理」的默认值规则：【整体操作】打开空白的新增详情页；运营单元按默认值带出（当前用户归属运营单元具备核算组织职能时）；状态默认「Y.生效」，审核后自动过账默认「Y」，自动审核默认「N」，修改是否自动审核默认「N」 | 按操作说明执行 |  | RULE-C95314DCA97C |
 | SCN-EBB3FCB45501 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号-应付」的只读校验规则：【现行期间序号-应付(curr_perid_seq_pay)】✅ 是 | 字段不可编辑 |  | RULE-7BFC778FF4BB |
 | SCN-719B90B0DAC9 | 客户业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSB-0006 | RULE-29682A0846B1 |
-| SCN-87487881D486 | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「最近采购单价」的反向校验规则：【最近采购单价(last_pur_price)】【品号采购信息.最近采购单价(item_pur_info.last_pur_price)】字段必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0034 | RULE-153AD959BEBD；RULE-4C6DA7F4D613 |
+| SCN-C124CC9813FC | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「批号有效天数」的反向校验规则：【批号有效天数(lot_valid_days)】E+MSG："此字段必须大于等于零 !" | 按校验规则拦截或提示 | TC-BAS-0034 | RULE-4114A42D6186 |
 | SCN-7F272EF88BF0 |  | 默认值 | NEEDS_CONFIRMATION | 验证财务「新增 后置处理」的默认值规则：【新增】打开空白的新增详情页；运营单元按默认值带出（当前用户归属运营单元具备核算组织职能时）；状态默认「Y.生效」，审核后自动过账默认「Y」，自动审核默认「N」，修改是否自动审核默认「N」 | 按操作说明执行 |  | RULE-D33D49FCE33B |
 | SCN-AC7CB1605334 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围起-应付」的只读校验规则：【开放日期范围起-应付(date_range_begin_pay)】✅ 是 | 字段不可编辑 |  | RULE-01F1EACDB72E |
 | SCN-B306A2A6C832 | 客户业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSB-0010 | RULE-6F94E52319C5 |
-| SCN-7C2ED73EDA06 | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购比例」的反向校验规则：【采购比例(pur_propo)】【品号采购信息.采购比例(item_pur_info. pur_propo)】必须大于等于0 | 按校验规则拦截或提示 |  | RULE-282E7E7E13F4；RULE-A283FDD3CF47 |
+| SCN-4F24AFCB8658 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「批号复检天数」的反向校验规则：【批号复检天数(lot_rei_days)】E+MSG："此字段必须大于等于零 !" | 按校验规则拦截或提示 | TC-BAS-0037 | RULE-7EDF0EE366B9 |
 | SCN-69CA95F16BED | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「税率」的默认值规则：【税率(tax_rate)】默认值：0.1300 | 默认值：0.1300 |  | RULE-A22788F9BD8F |
 | SCN-1E1D5A78ABE9 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止-应付」的只读校验规则：【开放日期范围止-应付(date_range_end_pay)】✅ 是 | 字段不可编辑 |  | RULE-F10359B89594 |
 | SCN-D843A86D8136 | 客户业务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「地址」的必填校验规则：【地址(addr)】✅ 是 | 为空时保存应被拦截 |  | RULE-B2C08EB87515 |
-| SCN-775A57676C88 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】Msg Code:ERROR "品号供应商信息中有且只能有一笔主供应商！" | 校验不通过则操作被拦截 |  | RULE-A7E48CDE0516 |
+| SCN-3CEE1E9FB8FD | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「属性值」的反向校验规则：【属性值(attr_value)】输入值 长度不可大于 QUERY A. 数据长度(item_attr.data_len )，否则报错：输入值不可大于长度%S！ 传入 QUERY A. 数据长度(item_attr.data_len ) | 按校验规则拦截或提示 |  | RULE-AE9A61F720B5 |
 | SCN-C5D16EF90705 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-存货」的默认值规则：【启用期间序号-存货(ena_use_perid_seq_no_invnt)】默认值：DEFAULT 【本单.启用期间序号-存货(ena_use_perid_seq_no_invnt)】 = 0<br/>时机点：默认执行时（新增页打开、期间尚未填写） | 默认值：DEFAULT 【本单.启用期间序号-存货(ena_use_perid_seq_no_invnt)】 = 0<br/>时机点：默认执行时（新增页打开、期间尚未填… |  | RULE-AAF390034297 |
 | SCN-C71F08949067 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用年度应收」的只读校验规则：【启用年度应收(ena_year_recev)】✅ 是 | 字段不可编辑 |  | RULE-3A390E3A9C1B |
 | SCN-5FB30E1CFE01 | 客户品号 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户品号「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSI-0007 | RULE-A3E36A6F850B |
-| SCN-A8DDBF46BE7D |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的反向校验规则：【生效】校验品号采购信息中采购单位、采购计价单位与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算关系 | 校验不通过则操作被拦截 |  | RULE-282974BA84CC；RULE-722873901826 |
+| SCN-C4C43B468D66 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「换算单位数量」的反向校验规则：【换算单位数量(cnv_unit_qty)】不可为0，须大于0，否则报错：换算单位数量须大于零 ! | 按校验规则拦截或提示 |  | RULE-01F24C3027D3 |
 | SCN-CE16795B1E10 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号-存货」的默认值规则：【现行期间序号-存货(curr_perid_seq_invnt)】默认值：1. DEFAULT 【本单.现行期间序号-存货(curr_perid_seq_invnt)】 = 0<br/>时机点：默认执行时<br/>2. IF 【本单.是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid)】 = 勾选 THEN<br/>DEFAULT 【本单.现行期间序号-存货(curr_perid_seq_invnt)】 = CAST(【本单.现行期号-存货(curr_perid_no_invnt)】 AS SIGNED)<br/>ENDIF<br/… | 默认值：1. DEFAULT 【本单.现行期间序号-存货(curr_perid_seq_invnt)】 = 0<br/>时机点：默认执行时<br/>2. IF 【本单.… |  | RULE-C6EDDF6B91F5 |
 | SCN-BC6042657DB8 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期号应收」的只读校验规则：【启用期号应收(ena_perid_no_recev)】✅ 是 | 字段不可编辑 |  | RULE-6D6F307670C6 |
 | SCN-03A6FE9AA58B | 客户品号 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户品号「客户编号」的必填校验规则：【客户编号(cust_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSI-0003 | RULE-BEB2E0EE6812 |
-| SCN-6AE2CE90B364 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的反向校验规则：【生效】校验品号销售信息中销售单位、销售计价单位与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算关系 | 校验不通过则操作被拦截 |  | RULE-7D4FDF2082BF；RULE-DA58258AE54D |
+| SCN-6F9D16A1B589 | 品号通用信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号通用信息「库存单位数量」的反向校验规则：【库存单位数量(invnt_unit_qty)】不可为0，须大于0 | 按校验规则拦截或提示 |  | RULE-B05024C2668B；RULE-D2CF1D6EA8C9 |
 | SCN-B1EDAFF59D3D | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止-存货」的默认值规则：【开放日期范围止-存货(date_range_end_invnt)】默认值：9999-12-31 | 默认值：9999-12-31 |  | RULE-395A404B331D |
 | SCN-28085C3E4449 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号应收」的只读校验规则：【启用期间序号应收(ena_perid_seq_recev)】✅ 是 | 字段不可编辑 |  | RULE-850E1E93C12B |
 | SCN-3C29C72FE7EE | 客户品号 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户品号「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSI-0005 | RULE-5B58AFEFBBA1 |
-| SCN-F6D48F86D3F5 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】品号销售信息中销售单位、销售计价单位与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算关系 | 校验不通过则操作被拦截 |  | RULE-DC4A12603FD6 |
+| SCN-50E9776C118B |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】修改校验： | 校验不通过则操作被拦截 |  | RULE-8D9747BC4FF3；RULE-2841F17383D1；RULE-3D505C9441FE |
 | SCN-C21ACB3387E0 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号-应付」的默认值规则：【启用期间序号-应付(ena_perid_seq_pay)】默认值：DEFAULT 【本单.启用期间序号-应付(ena_perid_seq_pay)】 = 0<br/>时机点：默认执行时（新增页打开、期间尚未填写） | 默认值：DEFAULT 【本单.启用期间序号-应付(ena_perid_seq_pay)】 = 0<br/>时机点：默认执行时（新增页打开、期间尚未填写） |  | RULE-1BAB052D3BFB |
-| SCN-D7B02153D0B5 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度应收」的只读校验规则：【现行年度应收(curr_year_recev)】✅ 是；只读条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-76AB6BD169D5；RULE-F5ADD2B02834 |
+| SCN-D7B02153D0B5 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行年度应收」的只读校验规则：【现行年度应收(curr_year_recev)】✅ 是；只读条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-76AB6BD169D5 |
 | SCN-6086E9BA7F3C | 客户品号 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户品号「客户品号」的必填校验规则：【客户品号(cust_item_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSI-0009 | RULE-5AB6DA09544E |
-| SCN-B8E83ED7E173 | 客户业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「加月数」的反向校验规则：【加月数(add_mths)】输入值小于0时，报错：加月数不可小于0！ | 按校验规则拦截或提示 |  | RULE-AEFFF82869A4 |
+| SCN-85B642C6D702 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的反向校验规则：【生效】校验【品号通用信息.第二单位编号(item_gen_info.sec_unit_no)】必须与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算率： | 校验不通过则操作被拦截 |  | RULE-9FAA6B3D1E74；RULE-F4FBBB7423B9 |
 | SCN-C5DD53883ECB | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号-应付」的默认值规则：【现行期间序号-应付(curr_perid_seq_pay)】默认值：1. DEFAULT 【本单.现行期间序号-应付(curr_perid_seq_pay)】 = 0<br/>时机点：默认执行时<br/>2. IF 【本单.是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid)】 = 勾选 THEN<br/>DEFAULT 【本单.现行期间序号-应付(curr_perid_seq_pay)】 = CAST(【本单.现行期号-应付(curr_perid_no_pay)】 AS SIGNED)<br/>ENDIF<br/>时机点：编辑执… | 默认值：1. DEFAULT 【本单.现行期间序号-应付(curr_perid_seq_pay)】 = 0<br/>时机点：默认执行时<br/>2. IF 【本单.是否… |  | RULE-F8A155FB5F17 |
-| SCN-9952FB8E5E87 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号应收」的只读校验规则：【现行期号应收(curr_perid_no_recev)】✅ 是；只读条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-7D867FADCE34；RULE-518248498668 |
+| SCN-9952FB8E5E87 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期号应收」的只读校验规则：【现行期号应收(curr_perid_no_recev)】✅ 是；只读条件：IF 是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid) 未勾选 THEN 只读 ELSE 可编辑 ENDIF | 字段不可编辑 |  | RULE-7D867FADCE34 |
 | SCN-2DB6137B0597 | 客户财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户财务信息「客户编号」的必填校验规则：【客户编号(cust_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSF-0003 | RULE-DBB12B2A94DD |
-| SCN-6ABAE834CE05 | 客户业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「加日数」的反向校验规则：【加日数(add_days)】输入值小于0时，报错：加日数不可小于0！ | 按校验规则拦截或提示 |  | RULE-316FB3D124A8 |
+| SCN-0A5C838CADB6 | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「单价上限率」的反向校验规则：【单价上限率(price_upper_limit_rate)】【品号采购信息.单价上限率(item_pur_info.price_upper_limit_rate)】须大于等于零 | 按校验规则拦截或提示 | TC-IPUR-0026 | RULE-24A4E1F2288E；RULE-7BC5804C147E |
 | SCN-8C6947D1A53F | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止-应付」的默认值规则：【开放日期范围止-应付(date_range_end_pay)】默认值：9999-12-31 | 默认值：9999-12-31 |  | RULE-477F45F9D3A7 |
 | SCN-DD12E766C548 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号应收」的只读校验规则：【现行期间序号应收(curr_perid_seq_recev)】✅ 是 | 字段不可编辑 |  | RULE-198DA8CF544C |
 | SCN-C0FD574E988F | 客户财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户财务信息「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSF-0005 | RULE-887CA083BB90 |
-| SCN-CF2A21D901A0 | 客户业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「逢某日」的反向校验规则：【逢某日(every_sday)】非空白时，输入值需介于 1～31，否则报错 E+MSG："日期须在 1 ～ 31 的间" | 按校验规则拦截或提示 |  | RULE-F535CB4A2D49 |
+| SCN-1F8980BD3F1A | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购固定前置天数」的反向校验规则：【采购固定前置天数(pur_fix_lead_days)】【品号采购信息.采购固定前置天数(item_pur_info.pur_fix_lead_days)】须大于等于零 | 按校验规则拦截或提示 | TC-IPUR-0027 | RULE-74D4F9081E82；RULE-F74375E8D840 |
 | SCN-6F47727C6DBB | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「启用期间序号应收」的默认值规则：【启用期间序号应收(ena_perid_seq_recev)】默认值：DEFAULT 【本单.启用期间序号应收(ena_perid_seq_recev)】 = 0<br/>时机点：默认执行时（新增页打开、期间尚未填写） | 默认值：DEFAULT 【本单.启用期间序号应收(ena_perid_seq_recev)】 = 0<br/>时机点：默认执行时（新增页打开、期间尚未填写） |  | RULE-756F05396518 |
 | SCN-7CF254083929 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围起应收」的只读校验规则：【开放日期范围起应收(date_range_begin_recev)】✅ 是 | 字段不可编辑 |  | RULE-CB3EB406EEA4 |
 | SCN-50C011182CA5 | 客户财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户财务信息「交易货币编号」的必填校验规则：【交易货币编号(trans_ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-CUSF-0013 | RULE-9E8070EAA2D9 |
-| SCN-80383F36EA9A |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】IF 【客户地址信息.主要订单地址】=TRUE 的笔数<>1 或 【客户地址信息.主要收货地址】=TRUE 的笔数<>1 或 【客户地址信息.主要发票邮寄地址】=TRUE 的笔数<>1THEN | 校验不通过则操作被拦截 |  | RULE-1A074EA78E5F；RULE-59748828A63D |
+| SCN-E25250C4FC79 | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购变动前置天数」的反向校验规则：【采购变动前置天数(pur_var_lead_days)】【品号采购信息.采购变动前置天数(item_pur_info.pur_var_lead_days)】须大于等于零 | 按校验规则拦截或提示 | TC-IPUR-0028 | RULE-04C518D24297；RULE-3F35571DAC0B |
 | SCN-F471A2315B00 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「现行期间序号应收」的默认值规则：【现行期间序号应收(curr_perid_seq_recev)】默认值：1. DEFAULT 【本单.现行期间序号应收(curr_perid_seq_recev)】 = 0<br/>时机点：默认执行时<br/>2. IF 【本单.是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid)】 = 勾选 THEN<br/>DEFAULT 【本单.现行期间序号应收(curr_perid_seq_recev)】 = CAST(【本单.现行期号应收(curr_perid_no_recev)】 AS SIGNED)<br/>ENDIF<br/>时机点… | 默认值：1. DEFAULT 【本单.现行期间序号应收(curr_perid_seq_recev)】 = 0<br/>时机点：默认执行时<br/>2. IF 【本单.是… |  | RULE-4A61B0CFDFCB |
 | SCN-1C389DE5E00C | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止应收」的只读校验规则：【开放日期范围止应收(date_range_end_recev)】✅ 是 | 字段不可编辑 |  | RULE-BD1B3BE7FC84 |
 | SCN-EC3B9EBC7240 | 客户财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户财务信息「金融机构编号」的必填校验规则：【金融机构编号(fi_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-E08FE4B58BFB |
-| SCN-0EE916FAB0D6 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】Msg Code:ERROR "客户财务信息中最多只能有一笔主银行信息！" | 校验不通过则操作被拦截 |  | RULE-FB988F5424AF |
+| SCN-8980379EB95D | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购批量」的反向校验规则：【采购批量(pur_batch)】【品号采购信息.采购批量(item_pur_info.pur_batch)】必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0029 | RULE-3CC7D3D901BC；RULE-5A0CA90B4D0B |
 | SCN-CDCF07163658 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「开放日期范围止应收」的默认值规则：【开放日期范围止应收(date_range_end_recev)】默认值：9999-12-31 | 默认值：9999-12-31 |  | RULE-5F88ADF6570F |
 | SCN-854B24C49C42 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「是否按自然年月启用会计期间」的只读校验规则：【是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid)】✅ 是 | 字段不可编辑 |  | RULE-ADA38E631EBF |
 | SCN-76F56CDEA30D | 客户财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户财务信息「银行账号」的必填校验规则：【银行账号(bank_acct_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-2BC4797B261A |
-| SCN-57A37F78D641 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】入参：客户基本信息.客户名称(cust_base_info.cust_sname)=【客户基本信息.客户名称(cust_base_info.cust_sname)】、客户基本信息.客户编号(cust_base_info.cust_no)<>【客户基本信息.客户编号(cust_base_info.cust_no)】 | 校验不通过则操作被拦截 |  | RULE-0194A268BED8；RULE-26B49362D117 |
+| SCN-97EBEF9A38BA | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「最低补量」的反向校验规则：【最低补量(lwst_addl_qty)】【品号采购信息.最低补量(item_pur_info.lwst_addl_qty)】必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0014 | RULE-C9012E915AC0；RULE-17995D5EEF7E |
 | SCN-50C53275BD0D | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「新会计年度自动继承上一年度使用的会计期间表」的默认值规则：【新会计年度自动继承上一年度使用的会计期间表(auto_inh_upper_acctg_perid)】默认值：1（是） | 默认值：1（是） |  | RULE-74806241022C |
 | SCN-74542403E1A1 | 运营单元核算参数 | 只读校验 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「已生成公司会计期间」的只读校验规则：【已生成公司会计期间(CUS_has_co_acctg_perid)】✅ 是 | 字段不可编辑 |  | RULE-6B99BF2B7571 |
 | SCN-C275C485BBE9 | 客户财务信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户财务信息「银行账号户名」的必填校验规则：【银行账号户名(bank_acct_name)】✅ 是 | 为空时保存应被拦截 |  | RULE-3275D1A670E2 |
-| SCN-01CA333B94B8 | 交易对象属性 | 反向校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「数据长度」的反向校验规则：【数据长度(data_len)】只能输入正整数*，数据长度必须介于1-20之间 | 按校验规则拦截或提示 |  | RULE-78937FA139C6 |
+| SCN-3043C00C659C | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「补货倍量」的反向校验规则：【补货倍量(rplsh_multi_qty)】【品号采购信息.补货倍量(item_pur_info.rplsh_multi_qty)】必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0013 | RULE-76B045C49B08；RULE-87B79FF9869B |
 | SCN-3807D7817739 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「同时连续开放会计期间数目（包括现行期间）」的默认值规则：【同时连续开放会计期间数目（包括现行期间）(conti_open_acctg_perid_count)】默认值：12 | 默认值：12 |  | RULE-736A40EEB39F |
 | SCN-163E1EC2D760 |  | 只读校验 | NEEDS_CONFIRMATION | 验证财务「编辑 后置处理」的只读校验规则：【编辑】期间信息区按只读规则展示（开放日期范围 6 个字段不呈现） | 按操作说明执行 |  | RULE-E95AAA45D406 |
 | SCN-BBA9C4A14CE0 | 客户基本信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户基本信息「客户编号」的必填校验规则：【客户编号(cust_no)】✅ 是 | 为空时保存应被拦截 | TC-CUST-0002 | RULE-046C1EBABE6B |
-| SCN-3FE1A1C68D10 | 交易对象属性 | 反向校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「属性值」的反向校验规则：【属性值(attr_value)】E+MSG：'属性【交易对象属性.属性编号(trans_obj_attr.attr_no)】属性值【交易对象属性明细.属性值(trans_obj_attr_d.attr_value)】的字段长度必须等于所设的数据长度！' | 按校验规则拦截或提示 |  | RULE-9DFAEE47C7C4 |
+| SCN-B9DFC62E048C | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「标准采购单价」的反向校验规则：【标准采购单价(std_pur_price)】【品号采购信息.标准采购单价(item_pur_info.std_pur_price)】字段必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0033 | RULE-2D9CF7617236；RULE-51D8BFA40CCC |
 | SCN-320ED35757FD | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「是否按自然年月启用会计期间」的默认值规则：【是否按自然年月启用会计期间(CUS_is_by_natrl_year_month_ena_acctg_perid)】默认值：调用 查询公共参数(bm.param.get)：入参 企业编号(EntId)=当前租户，不传运营单元编号（该参数为租户级全局参数，不区分运营单元，按租户一刀切）；回参 公共参数.是否按自然年月启用会计期间(param.is_by_natrl_year_month_ena_acctg_perid)（布尔型，是/否），取回参 param 首笔，为 是 → 勾选、为 否 → 未勾选。时机点：默认执行时（进入作业、打开新增页与编辑页各取一次） | 默认值：调用 查询公共参数(bm.param.get)：入参 企业编号(EntId)=当前租户，不传运营单元编号（该参数为租户级全局参数，不区分运营单元，按租户一刀切）… |  | RULE-DDAE8C350052 |
 | SCN-D4F56C1669F6 | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是；只读条件：IF 【询价单】有明细行 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0005；TC-PURQ-0006 | RULE-4E43379C53A2 |
 | SCN-5E1A50651EB6 | 客户基本信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户基本信息「客户群组编号」的必填校验规则：【客户群组编号(cust_group_no)】✅ 是 | 为空时保存应被拦截 | TC-CUST-0007 | RULE-5B4976025B7C |
-| SCN-61635824A3E5 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】F 取值方式(CMS.XC004) = 1.枚举 | 校验不通过则操作被拦截 |  | RULE-CA39CA80012A；RULE-E91AB876DBCC |
+| SCN-87487881D486 | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「最近采购单价」的反向校验规则：【最近采购单价(last_pur_price)】【品号采购信息.最近采购单价(item_pur_info.last_pur_price)】字段必须大于等于0 | 按校验规则拦截或提示 | TC-IPUR-0034 | RULE-153AD959BEBD；RULE-4C6DA7F4D613 |
 | SCN-35FAE428B930 | 运营单元核算参数 | 默认值 | NEEDS_UI_EXPLORATION | 验证运营单元核算参数「已生成公司会计期间」的默认值规则：【已生成公司会计期间(CUS_has_co_acctg_perid)】默认值：调用 查询公司会计期间信息(bm.co_acctg_perid_info.get)：入参 公司会计期间信息.运营单元编号(co_acctg_perid_info.ops_unit_no) = 当前运营单元、公司会计期间信息.会计期间作用范围(co_acctg_perid_info.acctg_perid_actn_range) 取 4、5、6；判据 回参 总数(total_results) ≥ 1 → 勾选（已生成）、= 0 → 未勾选。时机点：默认执行时（打开编辑页）、数据源改变时（运营单元编号变化后重取） | 默认值：调用 查询公司会计期间信息(bm.co_acctg_perid_info.get)：入参 公司会计期间信息.运营单元编号(co_acctg_perid_info… |  | RULE-582303943C16 |
 | SCN-E21FC1C73232 | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「业务类型编号」的只读校验规则：【业务类型编号(biz_type_no)】✅ 是；只读条件：IF 【询价单】有明细行 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0009；TC-PURQ-0010 | RULE-5796F231458D |
 | SCN-E34B23C5800A | 客户基本信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户基本信息「客户简称」的必填校验规则：【客户简称(cust_sname)】✅ 是 | 为空时保存应被拦截 | TC-CUST-0011 | RULE-80E436F52E85 |
-| SCN-66113203EBAF | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「送检数量」的反向校验规则：【送检数量(sfi_qty)】输入值>(【质检业务检验信息.到货数量】-【质检业务检验信息.已检验数量】时，报错“本次检验数量不可超过到货单未检验数量！” | 按校验规则拦截或提示 |  | RULE-F816733B2D25；RULE-95F759C9529B |
+| SCN-7C2ED73EDA06 | 品号采购信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证品号采购信息「采购比例」的反向校验规则：【采购比例(pur_propo)】【品号采购信息.采购比例(item_pur_info. pur_propo)】必须大于等于0 | 按校验规则拦截或提示 |  | RULE-282E7E7E13F4；RULE-A283FDD3CF47 |
 | SCN-2DDD7BAAE125 |  | 默认值 | NEEDS_CONFIRMATION | 验证财务「保存 后置处理」的默认值规则：【保存】③ 新增时生成默认存货成本分类：#01 加权平均，不存在才新增 | 按操作说明执行 |  | RULE-E23BC57669F0 |
 | SCN-829A300A1D45 | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「单号」的只读校验规则：【单号(doc_no)】✅ 是；只读条件：IF 【询价单.自动编码方式(inq_doc.CUS_auto_code_mode)】 <> 7.手工输入 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0013；TC-PURQ-0014 | RULE-6C6533050777 |
 | SCN-7321779272B6 | 客户基本信息 | 必填校验 | NEEDS_UI_EXPLORATION | 验证客户基本信息「客户性质」的必填校验规则：【客户性质(cust_prop)】✅ 是 | 为空时保存应被拦截 | TC-CUST-0003 | RULE-A633974A17B0 |
-| SCN-B5E5A92B72DF | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「合格数量」的反向校验规则：【合格数量(quald_qty)】输入值小于0时，报错“允收数量不可小于0” | 按校验规则拦截或提示 |  | RULE-F063A00B3815；RULE-61C5D530F033 |
+| SCN-775A57676C88 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】Msg Code:ERROR "品号供应商信息中有且只能有一笔主供应商！" | 校验不通过则操作被拦截 |  | RULE-A7E48CDE0516 |
 | SCN-DF0417A027EF | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「运营单元编号」的默认值规则：【运营单元编号(ops_unit_no)】默认值：调用接口：查询员工(bm.empl.get)<br/>入参：[员工.用户编号(empl.user_no)] = 当前系统用户<br/>回参：[员工.归属运营单元编号(empl.blng_ops_unit_no)]<br/>调用接口：查询运营单元(bm.ops_unit.get)<br/>入参：[运营单元.运营单元编号(ops_unit.ops_unit_no)] = [员工.归属运营单元编号(empl.blng_ops_unit_no)]<br/>回参：[运营单元职能.职能编号(ops_unit_func.func_no)]<br/>IF [运… | 默认值：调用接口：查询员工(bm.empl.get)<br/>入参：[员工.用户编号(empl.user_no)] = 当前系统用户<br/>回参：[员工.归属运营单元… |  | RULE-311DDF6C925E |
 | SCN-B4BFB604F1F2 | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「询价日期」的只读校验规则：【询价日期(inq_date)】✅ 是 | 字段不可编辑 | TC-PURQ-0001 | RULE-726C5AD31FB0 |
 | SCN-F1BC32EC5861 | 交易对象属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「属性编号」的必填校验规则：【属性编号(attr_no)】✅ 是 | 为空时保存应被拦截 | TC-TOA-0002 | RULE-42C948A02C76 |
-| SCN-924059E50E60 | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「特采数量」的反向校验规则：【特采数量(CUS_UDF008)】输入值小于0时，报错“特采数量不可小于0” | 按校验规则拦截或提示 |  | RULE-39F8E182BE2F；RULE-0636AE1772F8 |
+| SCN-A8DDBF46BE7D |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的反向校验规则：【生效】校验品号采购信息中采购单位、采购计价单位与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算关系 | 校验不通过则操作被拦截 |  | RULE-282974BA84CC；RULE-722873901826 |
 | SCN-AF69AE8D5ED6 | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「业务类型编号」的默认值规则：【业务类型编号(biz_type_no)】默认值：DEFAULT 【询价单.业务类型编号(inq_doc.biz_type_no)】 = 上一笔【询价单.业务类型编号(inq_doc.biz_type_no)】<br/>时机点：连续新增时 | 默认值：DEFAULT 【询价单.业务类型编号(inq_doc.biz_type_no)】 = 上一笔【询价单.业务类型编号(inq_doc.biz_type_no)】… |  | RULE-7C2866DFF6B6 |
 | SCN-F63A52918525 | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「供应商编号」的只读校验规则：【供应商编号(supp_no)】✅ 是；只读条件：IF 【询价单】有明细行 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0017；TC-PURQ-0018 | RULE-33B55219B90D |
 | SCN-31D64E827077 | 交易对象属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「属性名称」的必填校验规则：【属性名称(attr_name)】✅ 是 | 为空时保存应被拦截 | TC-TOA-0003 | RULE-9FACA17DB772 |
-| SCN-22878D498D65 | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「不合格数量」的反向校验规则：【不合格数量(unq_qty)】输入值小于0时，报错“拒收数量不可小于0” | 按校验规则拦截或提示 |  | RULE-656D12D68758 |
+| SCN-6AE2CE90B364 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「生效 前置校验」的反向校验规则：【生效】校验品号销售信息中销售单位、销售计价单位与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算关系 | 校验不通过则操作被拦截 |  | RULE-7D4FDF2082BF；RULE-DA58258AE54D |
 | SCN-E9AC0BF45631 | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「单号」的默认值规则：【单号(doc_no)】默认值：调用接口：自动生单号服务(bm.biz_type_gen_info.auto_gnrt_doc_no.process)<br/>使用模型：业务类型信息(biz_type_gen_info)<br/>入参：业务类型信息.业务类型编号(biz_type_gen_info.biz_type_no) = 【询价单.业务类型编号(inq_doc.biz_type_no)】<br/> 业务类型信息.单据日期(biz_type_gen_info.doc_date) = 【询价单.单据日期(inq_doc.doc_date)】<br/>回参：业务类型信息.单号(biz_type… | 默认值：调用接口：自动生单号服务(bm.biz_type_gen_info.auto_gnrt_doc_no.process)<br/>使用模型：业务类型信息(biz_… |  | RULE-FD2CABB92F39 |
 | SCN-B4AAE7E4317A | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「供应商名称」的只读校验规则：【供应商名称(supp_name)】✅ 是 | 字段不可编辑 | TC-PURQ-0001 | RULE-6C16325D69AD |
 | SCN-A8CC4556D0E5 | 交易对象属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「交易对象类型」的必填校验规则：【交易对象类型(trans_obj_type)】✅ 是 | 为空时保存应被拦截 | TC-TOA-0004 | RULE-F98AA6AFE89D |
-| SCN-C602BA17FE1D | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「拒收数量」的反向校验规则：【拒收数量(CUS_UDF016)】输入值小于0时，报错“拒收数量不可小于0！” | 按校验规则拦截或提示 |  | RULE-212232E4E10E；RULE-FFCD80B073C4 |
+| SCN-F6D48F86D3F5 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】品号销售信息中销售单位、销售计价单位与【品号通用信息.库存单位编号(item_gen_info.unit_no)】存在换算关系 | 校验不通过则操作被拦截 |  | RULE-DC4A12603FD6 |
 | SCN-C429B1174BBC | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「单据日期」的默认值规则：【单据日期(doc_date)】默认值：DEFAULT 【询价单.单据日期(inq_doc.doc_date)】 = 系统日期<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价单.单据日期(inq_doc.doc_date)】 = 系统日期<br/>时机点：默认执行时 |  | RULE-324DA3B7D665 |
 | SCN-42CA109207FA | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「货币编号」的只读校验规则：【货币编号(ccy_no)】✅ 是；只读条件：IF 【询价单】有明细行 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0021；TC-PURQ-0022 | RULE-768705D2E130 |
 | SCN-6736F670D9CF | 交易对象属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「数据类型」的必填校验规则：【数据类型(data_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-C8A54243FD9F |
-| SCN-C38C5A674097 | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「检验破坏数量」的反向校验规则：【检验破坏数量(insp_dmge_qty)】输入值小于0时，报错“破坏数量不可小于0” | 按校验规则拦截或提示 |  | RULE-C965E3B751A1；RULE-BCBE8F9EA943 |
+| SCN-B8E83ED7E173 | 客户业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「加月数」的反向校验规则：【加月数(add_mths)】输入值小于0时，报错：加月数不可小于0！ | 按校验规则拦截或提示 |  | RULE-AEFFF82869A4 |
 | SCN-3813E279B7B1 | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「询价日期」的默认值规则：【询价日期(inq_date)】默认值：DEFAULT 【询价单.询价日期(inq_doc.inq_date)】 = 【询价单.单据日期(inq_doc.doc_date)】<br/>时机点：编辑执行时 | 默认值：DEFAULT 【询价单.询价日期(inq_doc.inq_date)】 = 【询价单.单据日期(inq_doc.doc_date)】<br/>时机点：编辑执行… |  | RULE-834E8FC73915 |
 | SCN-27C3FEC65AEE | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「含税标识」的只读校验规则：【含税标识(intax_flag)】✅ 是；只读条件：IF 【询价单】有明细行 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0027；TC-PURQ-0028 | RULE-67CC28A81999 |
 | SCN-D0C8805F58A8 | 交易对象属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「取值方式」的必填校验规则：【取值方式(value_mode)】✅ 是 | 为空时保存应被拦截 | TC-TOA-0006 | RULE-165082A115DC |
-| SCN-3CABDC3D33B7 | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「报废数量」的反向校验规则：【报废数量(CUS_UDF007)】输入值小于0时，报错“报废数量不可小于0” | 按校验规则拦截或提示 |  | RULE-C1D79B002DB7；RULE-4A9A0A1813B6 |
+| SCN-6ABAE834CE05 | 客户业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「加日数」的反向校验规则：【加日数(add_days)】输入值小于0时，报错：加日数不可小于0！ | 按校验规则拦截或提示 |  | RULE-316FB3D124A8 |
 | SCN-53734A0C7022 | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「含税标识」的默认值规则：【含税标识(intax_flag)】默认值：DEFAULT 【询价单.含税标识(inq_doc.intax_flag)】 = 未勾选<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价单.含税标识(inq_doc.intax_flag)】 = 未勾选<br/>时机点：默认执行时 | TC-PURQ-0029 | RULE-D6D844C91EFB |
 | SCN-BF71E9C7B746 | 询价单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证询价单「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-FB323694424E |
 | SCN-09CF72DEA5DE | 交易对象属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「属性值」的必填校验规则：【属性值(attr_value)】✅ 是 | 为空时保存应被拦截 |  | RULE-676BDA5F0EAA |
-| SCN-A018142C4A8E |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】数量合理性校验： | 校验不通过则操作被拦截 |  | RULE-91D2695F9B92；RULE-D49C33F51314 |
+| SCN-CF2A21D901A0 | 客户业务信息 | 反向校验 | NEEDS_UI_EXPLORATION | 验证客户业务信息「逢某日」的反向校验规则：【逢某日(every_sday)】非空白时，输入值需介于 1～31，否则报错 E+MSG："日期须在 1 ～ 31 的间" | 按校验规则拦截或提示 |  | RULE-F535CB4A2D49 |
 | SCN-5A06EFAC3736 | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「采购价格类型」的默认值规则：【采购价格类型(pur_price_type)】默认值：DEFAULT 【询价单.采购价格类型(inq_doc.pur_price_type)】 = 1.一般采购<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价单.采购价格类型(inq_doc.pur_price_type)】 = 1.一般采购<br/>时机点：默认执行时 |  | RULE-785E2305947A |
 | SCN-BC7365349088 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「序号」的只读校验规则：【序号(seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001；TC-PUR-0001；TC-PSTK-0001；TC-PARR-0001；TC-PRTN-0001 | RULE-555770FDD222 |
 | SCN-81C8E76761D6 | 交易对象属性 | 必填校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「属性值描述」的必填校验规则：【属性值描述(attr_value_desc)】✅ 是 | 为空时保存应被拦截 |  | RULE-6BCDBADC89BB |
-| SCN-0A547A6ADE65 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「单据日期」的反向校验规则：【单据日期(doc_date)】CHECK DATE：校验日期格式。E+MSG："输入的日期格式不合法" | 按校验规则拦截或提示 |  | RULE-B983F558F936；RULE-AED0D849EC2A |
+| SCN-80383F36EA9A |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】IF 【客户地址信息.主要订单地址】=TRUE 的笔数<>1 或 【客户地址信息.主要收货地址】=TRUE 的笔数<>1 或 【客户地址信息.主要发票邮寄地址】=TRUE 的笔数<>1THEN | 校验不通过则操作被拦截 |  | RULE-1A074EA78E5F；RULE-59748828A63D |
 | SCN-2481A3E29590 | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「询价类型」的默认值规则：【询价类型(inq_type)】默认值：DEFAULT 【询价单.询价类型(inq_doc.inq_type)】 = 99.其他<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价单.询价类型(inq_doc.inq_type)】 = 99.其他<br/>时机点：默认执行时 |  | RULE-34D2D1B32F91 |
 | SCN-E81305311B24 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「品号」的只读校验规则：【品号(item_no)】✅ 是；只读条件：IF 【询价单.询价类型(inq_doc.inq_type)】 <> 99.其他 THEN 只读 ENDIF | 字段不可编辑 | TC-IPUR-0001；TC-PURQ-0031；TC-PURQ-0032；TC-PSTK-0001；TC-PARR-0015；TC-PARR-0016；TC-PO-0020；TC-PO-0021；TC-PRTN-0059；TC-PRTN-0060 | RULE-28ECDFB92F5B |
 | SCN-26928DE025D0 |  | 必填校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的必填校验规则：【保存】若无单身，则报错:#消息: 0013775 属性%s的取值方式为'列举'时，属性值明细必填！({属性编号}) | 校验不通过则操作被拦截 |  | RULE-73C2A6634419 |
-| SCN-AA78A2746668 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】回参若不存在，提示："单别不存在！" | 按校验规则拦截或提示 |  | RULE-9BA44454DC47 |
+| SCN-0EE916FAB0D6 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】Msg Code:ERROR "客户财务信息中最多只能有一笔主银行信息！" | 校验不通过则操作被拦截 |  | RULE-FB988F5424AF |
 | SCN-47E0458A21B0 | 询价单 | 默认值 | NEEDS_UI_EXPLORATION | 验证询价单「状态」的默认值规则：【状态(manage_status)】默认值：DEFAULT 【询价单.状态(inq_doc.manage_status)】 = N.未审核<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价单.状态(inq_doc.manage_status)】 = N.未审核<br/>时机点：默认执行时 |  | RULE-9DC962D6FA9F |
 | SCN-20F6236C4C75 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「品名」的只读校验规则：【品名(item_name)】✅ 是；只读条件：IF 【询价单明细.归类品(inq_doc_d.CUS_blng_prod)】未勾选 THEN 只读 ENDIF | 字段不可编辑 | TC-SIPP-0001；TC-BASV-0001；TC-BASL-0001；TC-IPUR-0001；TC-ISAL-0001；TC-PURQ-0034；TC-PURQ-0035；TC-PUR-0009；TC-PUR-0010；TC-PSTK-0017；TC-PSTK-0018；TC-PARR-0018；TC-PARR-0019；TC-PO-0023；TC-PO-0024；TC-PRTN-0001 | RULE-E4A3672E3E35 |
 | SCN-86B329C90798 | 货币 | 必填校验 | NEEDS_UI_EXPLORATION | 验证货币「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-CCY-0002 | RULE-4AD4E10A3174 |
-| SCN-1002930FE8B5 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「申请人编号」的反向校验规则：【申请人编号(applt_no)】非空白时，输入值须存在且有效 | 按校验规则拦截或提示 |  | RULE-7E18AF48477C；RULE-305A8B17F119 |
+| SCN-57A37F78D641 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】入参：客户基本信息.客户名称(cust_base_info.cust_sname)=【客户基本信息.客户名称(cust_base_info.cust_sname)】、客户基本信息.客户编号(cust_base_info.cust_no)<>【客户基本信息.客户编号(cust_base_info.cust_no)】 | 校验不通过则操作被拦截 |  | RULE-0194A268BED8；RULE-26B49362D117 |
 | SCN-E0457F50CBB0 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「序号」的默认值规则：【序号(seq)】默认值：DEFAULT 【询价单明细.序号(inq_doc_d.seq)】 = 流水号<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价单明细.序号(inq_doc_d.seq)】 = 流水号<br/>时机点：默认执行时 | TC-PURQ-0003；TC-PUR-0004；TC-PSTK-0016；TC-PARR-0012；TC-PRTN-0056 | RULE-8117083CDA3C |
 | SCN-FE5C1176C84E |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「规格」的只读校验规则：【规格(item_spec)】✅ 是；只读条件：IF 【询价单明细.归类品(inq_doc_d.CUS_blng_prod)】未勾选 THEN 只读 ENDIF | 字段不可编辑 | TC-SIPP-0001；TC-BASV-0001；TC-ISAL-0001；TC-PURQ-0036；TC-PURQ-0037；TC-PUR-0011；TC-PUR-0012；TC-PSTK-0019；TC-PSTK-0020；TC-PARR-0020；TC-PARR-0021；TC-PO-0017；TC-PO-0018；TC-PRTN-0001 | RULE-55E88A0FC779 |
 | SCN-FBC5966457F6 | 货币 | 必填校验 | NEEDS_UI_EXPLORATION | 验证货币「金额小数位数」的必填校验规则：【金额小数位数(amt_dec_digit)】✅ 是 | 为空时保存应被拦截 | TC-CCY-0003 | RULE-A29D85878F1C |
-| SCN-80C27EE517D1 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「请购数量」的反向校验规则：【请购数量(requ_qty)】需大于等于0 | 按校验规则拦截或提示 |  | RULE-44FB6E64AF5C；RULE-7415DD263079 |
+| SCN-01CA333B94B8 | 交易对象属性 | 反向校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「数据长度」的反向校验规则：【数据长度(data_len)】只能输入正整数*，数据长度必须介于1-20之间 | 按校验规则拦截或提示 |  | RULE-78937FA139C6 |
 | SCN-B1D65B6844F9 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「询价数量」的默认值规则：【询价数量(inq_qty)】默认值：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN<br/>DEFAULT 【询价单明细.询价数量(inq_doc_d.inq_qty)】 = 0<br/>ENDIF<br/>时机点：编辑执行时 | 默认值：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN<br/>DEFAULT 【询价单明细.询价数量(inq_doc_d.in… |  | RULE-49AB47330C77 |
 | SCN-A80F0443A06E |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「询价数量」的只读校验规则：【询价数量(inq_qty)】✅ 是；只读条件：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0040；TC-PURQ-0041 | RULE-66983B4BFC3A |
 | SCN-1C507D96D0C9 | 货币 | 必填校验 | NEEDS_UI_EXPLORATION | 验证货币「单位进价精度」的必填校验规则：【单位进价精度(unit_pur_price_acc)】✅ 是 | 为空时保存应被拦截 | TC-CCY-0004 | RULE-8560CB1D4523 |
-| SCN-F5B298121992 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「第二单位数量」的反向校验规则：【第二单位数量(sec_unit_qty)】【请购单明细.第二单位数量(requ_doc_d.sec_unit_qty)】需大于等于0 | 按校验规则拦截或提示 |  | RULE-546AFE25FDA8；RULE-CBFE78AC3991 |
+| SCN-3FE1A1C68D10 | 交易对象属性 | 反向校验 | NEEDS_UI_EXPLORATION | 验证交易对象属性「属性值」的反向校验规则：【属性值(attr_value)】E+MSG：'属性【交易对象属性.属性编号(trans_obj_attr.attr_no)】属性值【交易对象属性明细.属性值(trans_obj_attr_d.attr_value)】的字段长度必须等于所设的数据长度！' | 按校验规则拦截或提示 |  | RULE-9DFAEE47C7C4 |
 | SCN-865CBD1AE48E |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「询价单价」的默认值规则：【询价单价(inq_price)】默认值：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN<br/>DEFAULT 【询价单明细.询价单价(inq_doc_d.inq_price)】 = 0<br/>ENDIF<br/>时机点：编辑执行时 | 默认值：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN<br/>DEFAULT 【询价单明细.询价单价(inq_doc_d.in… |  | RULE-1CBCB8453188 |
 | SCN-258E31952C52 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「询价单价」的只读校验规则：【询价单价(inq_price)】✅ 是；只读条件：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0042；TC-PURQ-0043 | RULE-A07B04842304 |
 | SCN-F4C425753A36 | 货币 | 必填校验 | NEEDS_UI_EXPLORATION | 验证货币「单位发出成本精度」的必填校验规则：【单位发出成本精度(unit_issue_cost_acc)】✅ 是 | 为空时保存应被拦截 | TC-CCY-0005 | RULE-DD21006EF401 |
-| SCN-65FA92CC56BC | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「需求日期」的反向校验规则：【需求日期(dem_date)】CHECK DATE：校验日期格式。E+MSG："输入的日期格式不合法" | 按校验规则拦截或提示 |  | RULE-9EA72ABC03AD |
+| SCN-61635824A3E5 |  | 反向校验 | NEEDS_CONFIRMATION | 验证基础资料「保存 前置校验」的反向校验规则：【保存】F 取值方式(CMS.XC004) = 1.枚举 | 校验不通过则操作被拦截 |  | RULE-CA39CA80012A；RULE-E91AB876DBCC |
 | SCN-47C007CCE185 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「询价金额」的默认值规则：【询价金额(inq_amt)】默认值：1. IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN<br/>DEFAULT 【询价单明细.询价金额(inq_doc_d.inq_amt)】 = 0<br/>ENDIF<br/>2. IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】未勾选 THEN<br/>DEFAULT 【询价单明细.询价金额(inq_doc_d.inq_amt)】 = 【询价单明细.询价数量(inq_doc_d.inq_qty)】 × 【询价单明细.询价单价(inq_doc_d.inq_price)】<br/>ENDIF<… | 默认值：1. IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN<br/>DEFAULT 【询价单明细.询价金额(inq_doc_d… |  | RULE-89FE6F282E08 |
 | SCN-72C2D0BC6204 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「询价金额」的只读校验规则：【询价金额(inq_amt)】✅ 是 | 字段不可编辑 | TC-PURQ-0044；TC-PURQ-0045 | RULE-3997C4EAF24C |
 | SCN-427A298430AF | 货币 | 必填校验 | NEEDS_UI_EXPLORATION | 验证货币「金额取位模式」的必填校验规则：【金额取位模式(amt_fetch_mode)】✅ 是 | 为空时保存应被拦截 | TC-CCY-0006 | RULE-FA13748B7846 |
-| SCN-177D752FB5F3 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「维护分配信息 前置校验」的反向校验规则：【维护分配信息】报错:“请先审核请购单再维护分配信息” | 校验不通过则操作被拦截 |  | RULE-639A6ADC400A；RULE-384FCA4A1A2A |
+| SCN-66113203EBAF | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「送检数量」的反向校验规则：【送检数量(sfi_qty)】输入值>(【质检业务检验信息.到货数量】-【质检业务检验信息.已检验数量】时，报错“本次检验数量不可超过到货单未检验数量！” | 按校验规则拦截或提示 |  | RULE-F816733B2D25；RULE-95F759C9529B |
 | SCN-00E01A639920 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「分量计价」的默认值规则：【分量计价(wtbsd_prc)】默认值：DEFAULT 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】 = 未勾选<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】 = 未勾选<br/>时机点：默认执行时 | TC-SIPP-0028；TC-PURQ-0048 | RULE-A66404293217 |
 | SCN-8E7ABB5B2BAF |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「分量计价」的只读校验规则：【分量计价(wtbsd_prc)】✅ 是；只读条件：IF 询价分量计价明细 记录数 > 0 THEN 只读 ENDIF | 字段不可编辑 | TC-SIPP-0026；TC-SIPP-0027；TC-PURQ-0046；TC-PURQ-0047 | RULE-92EF943EE523 |
 | SCN-A2B005BF6854 | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「来源运营单元编号」的必填校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-QICHK-0003 | RULE-E09F2A8BE7D1 |
-| SCN-B0F77D536257 | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】更改时判断，若单身有信息 则报错 | 按校验规则拦截或提示 |  | RULE-DD201EC32ACE；RULE-EE09304252D4；RULE-18F0F68DC0F6；RULE-0E79F756B792 |
+| SCN-B5E5A92B72DF | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「合格数量」的反向校验规则：【合格数量(quald_qty)】输入值小于0时，报错“允收数量不可小于0” | 按校验规则拦截或提示 |  | RULE-F063A00B3815；RULE-61C5D530F033 |
 | SCN-BE51449A1FEA |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「核定」的默认值规则：【核定(cert)】默认值：IF 【询价单明细.议价状态(inq_doc_d.nego_stat)】 = 2.需议价 THEN<br/>DEFAULT 【询价单明细.核定(inq_doc_d.cert)】 = 未勾选<br/>ELSE<br/>DEFAULT 【询价单明细.核定(inq_doc_d.cert)】 = 勾选<br/>ENDIF<br/>时机点：默认执行时 | 默认值：IF 【询价单明细.议价状态(inq_doc_d.nego_stat)】 = 2.需议价 THEN<br/>DEFAULT 【询价单明细.核定(inq_doc_… | TC-PURQ-0055 | RULE-5223391F60F1 |
 | SCN-5BAD68B87F2B |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「核价单价」的只读校验规则：【核价单价(pv_price)】✅ 是；只读条件：IF 【询价单明细.核定(inq_doc_d.cert)】未勾选 OR 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0049；TC-PURQ-0050 | RULE-7E174C70C755 |
 | SCN-29982F2AA3BB | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「来源单据类型」的必填校验规则：【来源单据类型(src_doc_type)】✅ 是 | 为空时保存应被拦截 | TC-QICHK-0004 | RULE-CA1F6A6205F7 |
-| SCN-B467A8668462 | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「采购入库单号」的反向校验规则：【采购入库单号(pur_stkin_doc_no)】2 若单号长度!=业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit)，则报错“单号长度须为%S！”传入 业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit) | 按校验规则拦截或提示 |  | RULE-0EE0D0D57C06 |
+| SCN-924059E50E60 | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「特采数量」的反向校验规则：【特采数量(CUS_UDF008)】输入值小于0时，报错“特采数量不可小于0” | 按校验规则拦截或提示 |  | RULE-39F8E182BE2F；RULE-0636AE1772F8 |
 | SCN-203FD0D91025 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「最近核价」的默认值规则：【最近核价(last_pv)】默认值：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN<br/>DEFAULT 【询价单明细.最近核价(inq_doc_d.last_pv)】 = 0<br/>ELSE<br/>调用接口：供应商取价服务(bm.supp_item_price.getprice)<br/>使用模型：供应商品号价格(default_supp_item_price)<br/>入参：[供应商取价服务.运营单元] = 【询价单.运营单元编号(inq_doc.ops_unit_no)】 AND [供应商取价服务.价格类型] = '1.一般采购' AND … | 默认值：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN<br/>DEFAULT 【询价单明细.最近核价(inq_doc_d.la… |  | RULE-90186D3D4DA6 |
 | SCN-9A490B9281CE |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「核价金额」的只读校验规则：【核价金额(pv_amt)】✅ 是；只读条件：IF 【询价单明细.核定(inq_doc_d.cert)】未勾选 OR 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 THEN 只读 ENDIF | 字段不可编辑 | TC-PURQ-0052；TC-PURQ-0053 | RULE-B7640BCE3769 |
 | SCN-50924A87BEDA | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「来源单号」的必填校验规则：【来源单号(src_doc_no)】✅ 是 | 为空时保存应被拦截 | TC-QICHK-0005 | RULE-FCC1F942308C |
-| SCN-CCA1187E432A | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「供应商编号」的反向校验规则：【供应商编号(supp_no)】更改供应商时判断，若单身有信息，则报错 | 按校验规则拦截或提示 |  | RULE-59CC362EA954；RULE-5F6CD2A5C381 |
+| SCN-22878D498D65 | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「不合格数量」的反向校验规则：【不合格数量(unq_qty)】输入值小于0时，报错“拒收数量不可小于0” | 按校验规则拦截或提示 |  | RULE-656D12D68758 |
 | SCN-406366D97947 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「调整幅度」的默认值规则：【调整幅度(adj_amp)】默认值：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 OR 【询价单明细.核价单价(inq_doc_d.pv_price)】 <= 0 OR 【询价单明细.最近核价(inq_doc_d.last_pv)】 <= 0 THEN<br/>DEFAULT 【询价单明细.调整幅度(inq_doc_d.adj_amp)】 = 0<br/>ELSE<br/>DEFAULT 【询价单明细.调整幅度(inq_doc_d.adj_amp)】 = (【询价单明细.核价单价(inq_doc_d.pv_price)】 - 【询价单明细.最近核价(inq_d… | 默认值：IF 【询价单明细.分量计价(inq_doc_d.wtbsd_prc)】勾选 OR 【询价单明细.核价单价(inq_doc_d.pv_price)】 <= 0 … |  | RULE-7F98C076DE65 |
 | SCN-88903903BB1C |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「最近核价」的只读校验规则：【最近核价(last_pv)】✅ 是 | 字段不可编辑 | TC-PURQ-0001 | RULE-3CA5F02E8895 |
 | SCN-8377E77B2F62 | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「来源序号」的必填校验规则：【来源序号(src_seq)】✅ 是 | 为空时保存应被拦截 | TC-QICHK-0006 | RULE-049DFD4D27E5 |
-| SCN-3808A64478D6 | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「单据日期」的反向校验规则：【单据日期(doc_date)】E+MSG："输入日期信息不可小于库存现行年月 !" | 按校验规则拦截或提示 |  | RULE-CCBD80A84E9C |
+| SCN-C602BA17FE1D | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「拒收数量」的反向校验规则：【拒收数量(CUS_UDF016)】输入值小于0时，报错“拒收数量不可小于0！” | 按校验规则拦截或提示 |  | RULE-212232E4E10E；RULE-FFCD80B073C4 |
 | SCN-F575B2244C4C |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「议价状态」的默认值规则：【议价状态(nego_stat)】默认值：调用接口：业务类型采购参数(bm.biz_type_pur_param.get)<br/>入参：[业务类型采购参数.运营单元编号(biz_type_pur_param.ops_unit_no)] = 【询价单.运营单元编号(inq_doc.ops_unit_no)】 AND [业务类型采购参数.业务类型编号(biz_type_pur_param.biz_type_no)] = 【询价单.业务类型编号(inq_doc.biz_type_no)】 AND [业务类型采购参数.状态(biz_type_pur_param.manage_status)] = Y… | 默认值：调用接口：业务类型采购参数(bm.biz_type_pur_param.get)<br/>入参：[业务类型采购参数.运营单元编号(biz_type_pur_pa… |  | RULE-84F677B85685 |
 | SCN-AF09A55CDC9F |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「调整幅度」的只读校验规则：【调整幅度(adj_amp)】✅ 是 | 字段不可编辑 | TC-PURQ-0001 | RULE-83644069237E |
 | SCN-5A21F60B4507 | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-QICHK-0007 | RULE-6BD31C87D4BF |
-| SCN-40D73680439C | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「交易日期」的反向校验规则：【交易日期(trans_date)】E+MSG："输入日期信息不可小于库存现行年月 !" | 按校验规则拦截或提示 |  | RULE-5459F4D7C14F |
+| SCN-C38C5A674097 | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「检验破坏数量」的反向校验规则：【检验破坏数量(insp_dmge_qty)】输入值小于0时，报错“破坏数量不可小于0” | 按校验规则拦截或提示 |  | RULE-C965E3B751A1；RULE-BCBE8F9EA943 |
 | SCN-879C574A7A1F |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「生效日期」的默认值规则：【生效日期(eff_date)】默认值：1. DEFAULT 【询价单明细.生效日期(inq_doc_d.eff_date)】 = 系统日期<br/>时机点：默认执行时<br/>2. DEFAULT 【询价单明细.生效日期(inq_doc_d.eff_date)】 = 上一笔【询价单明细.生效日期(inq_doc_d.eff_date)】<br/>时机点：连续新增时 | 默认值：1. DEFAULT 【询价单明细.生效日期(inq_doc_d.eff_date)】 = 系统日期<br/>时机点：默认执行时<br/>2. DEFAULT … |  | RULE-D71891A62E88 |
 | SCN-ABBF0DC92BE2 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「来源单号」的只读校验规则：【来源单号(src_doc_no)】✅ 是；只读条件：IF 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 99.其他 THEN 只读，空白 ENDIF | 字段不可编辑 | TC-BASL-0001；TC-PURQ-0057；TC-PURQ-0058；TC-PUR-0001；TC-PSTK-0001；TC-PARR-0001；TC-PO-0001；TC-PRTN-0001 | RULE-E8FF8C24B238 |
 | SCN-2DFECFDDE56E | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「检验次数」的必填校验规则：【检验次数(insp_times)】✅ 是 | 为空时保存应被拦截 |  | RULE-C03141B3261C |
-| SCN-2A0EF3642B0B | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「业务数量」的反向校验规则：【业务数量(biz_qty)】输入值须大于0 | 按校验规则拦截或提示 |  | RULE-FD0F6DACE064；RULE-521AF76C405C；RULE-40F9E2D4FC69 |
+| SCN-3CABDC3D33B7 | 质检业务单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「报废数量」的反向校验规则：【报废数量(CUS_UDF007)】输入值小于0时，报错“报废数量不可小于0” | 按校验规则拦截或提示 |  | RULE-C1D79B002DB7；RULE-4A9A0A1813B6 |
 | SCN-CB9F01249FDF |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「失效日期」的默认值规则：【失效日期(expy_date)】默认值：DEFAULT 【询价单明细.失效日期(inq_doc_d.expy_date)】 = 上一笔【询价单明细.失效日期(inq_doc_d.expy_date)】<br/>时机点：连续新增时 | 默认值：DEFAULT 【询价单明细.失效日期(inq_doc_d.expy_date)】 = 上一笔【询价单明细.失效日期(inq_doc_d.expy_date)】… |  | RULE-52D5B0E12E09 |
 | SCN-1035E6764593 |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「来源序号」的只读校验规则：【来源序号(src_seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001；TC-PUR-0001；TC-PARR-0001；TC-PO-0001；TC-PRTN-0001 | RULE-987E70E35609 |
 | SCN-617ED1BC4751 | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「合格数量」的必填校验规则：【合格数量(quald_qty)】✅ 是 | 为空时保存应被拦截 | TC-QICHK-0013 | RULE-6C3F229F3CAB |
-| SCN-72836E82BDA7 | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「报废业务数量」的反向校验规则：【报废业务数量(scrap_biz_qty)】输入值须不小于0 | 按校验规则拦截或提示 |  | RULE-4907B3E1D4C5 |
+| SCN-A018142C4A8E |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】数量合理性校验： | 校验不通过则操作被拦截 |  | RULE-91D2695F9B92；RULE-D49C33F51314 |
 | SCN-654D578734EA |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「询价来源单据类型」的默认值规则：【询价来源单据类型(inq_src_doc_type)】默认值：DEFAULT 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 99.其他<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价单明细.询价来源单据类型(inq_doc_d.inq_src_doc_type)】 = 99.其他<br/>时机点：默认执行时 |  | RULE-9EF211C9A622 |
 | SCN-40878CA7BA8A |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「次序号」的只读校验规则：【次序号(sub_seq)】✅ 是 | 字段不可编辑 | TC-PURQ-0001 | RULE-25A050D76BBF |
 | SCN-1FD9FAA2C2D7 | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「允收业务数量」的必填校验规则：【允收业务数量(accep_biz_qty)】✅ 是 | 为空时保存应被拦截 |  | RULE-AE331A5E1D72 |
-| SCN-407F2E835E0A | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「拒收业务数量」的反向校验规则：【拒收业务数量(rej_biz_qty)】输入值须不小于0 | 按校验规则拦截或提示 |  | RULE-58D62D58E179 |
+| SCN-0A547A6ADE65 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「单据日期」的反向校验规则：【单据日期(doc_date)】CHECK DATE：校验日期格式。E+MSG："输入的日期格式不合法" | 按校验规则拦截或提示 |  | RULE-B983F558F936；RULE-AED0D849EC2A |
 | SCN-CBCDC6D82C62 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「次序号」的默认值规则：【次序号(sub_seq)】默认值：DEFAULT 【询价分量计价明细.次序号(inq_wtbsd_prc_d.sub_seq)】 = 流水号<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价分量计价明细.次序号(inq_wtbsd_prc_d.sub_seq)】 = 流水号<br/>时机点：默认执行时 | TC-PURQ-0060 | RULE-BA4E309E4397 |
 | SCN-A618051386ED |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「阶梯起始数量」的只读校验规则：【阶梯起始数量(step_begin_qty)】✅ 是 | 字段不可编辑 | TC-SIPP-0001；TC-PURQ-0001 | RULE-8AD99416FFDD |
 | SCN-A7F625C309C0 | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「特采业务数量」的必填校验规则：【特采业务数量(spad_biz_qty)】✅ 是 | 为空时保存应被拦截 |  | RULE-BED47C8E8219 |
-| SCN-5B2EEA64AD56 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】更改时判断，若单身有信息 则报错 | 按校验规则拦截或提示 |  | RULE-5E6018A98197；RULE-759A591C037D；RULE-736584E64C2F；RULE-9D62179382F1 |
+| SCN-AA78A2746668 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「业务类型编号」的反向校验规则：【业务类型编号(biz_type_no)】回参若不存在，提示："单别不存在！" | 按校验规则拦截或提示 |  | RULE-9BA44454DC47 |
 | SCN-861C7BD658E5 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「阶梯起始数量」的默认值规则：【阶梯起始数量(step_begin_qty)】默认值：1. IF 本行第一笔 THEN<br/>DEFAULT 【询价分量计价明细.阶梯起始数量(inq_wtbsd_prc_d.step_begin_qty)】 = 0<br/>ENDIF<br/>时机点：默认执行时<br/>2. IF 非第一笔 THEN<br/>DEFAULT 【询价分量计价明细.阶梯起始数量(inq_wtbsd_prc_d.step_begin_qty)】 = 上一笔【询价分量计价明细.阶梯截止数量(inq_wtbsd_prc_d.step_end_qty)】<br/>ENDIF<br/>时机点：连续新增时 | 默认值：1. IF 本行第一笔 THEN<br/>DEFAULT 【询价分量计价明细.阶梯起始数量(inq_wtbsd_prc_d.step_begin_qty)】 =… |  | RULE-EBF5208E16CE |
 | SCN-2BDE4E1A72CE |  | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购「原单价」的只读校验规则：【原单价(old_price)】✅ 是 | 字段不可编辑 | TC-PURQ-0001 | RULE-6E9A8C0EDC22 |
 | SCN-FB156C269340 | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「报废业务数量」的必填校验规则：【报废业务数量(scrap_biz_qty)】✅ 是 | 为空时保存应被拦截 |  | RULE-FA23F4C1AFFF |
-| SCN-613FC43F08F3 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「供应商编号」的反向校验规则：【供应商编号(supp_no)】更改供应商时判断，若单身有信息，则报错 | 按校验规则拦截或提示 |  | RULE-E161AAAB7943；RULE-9C441722B020；RULE-54296D904DB0 |
+| SCN-1002930FE8B5 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「申请人编号」的反向校验规则：【申请人编号(applt_no)】非空白时，输入值须存在且有效 | 按校验规则拦截或提示 |  | RULE-7E18AF48477C；RULE-305A8B17F119 |
 | SCN-4CE669586E75 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「阶梯截止数量」的默认值规则：【阶梯截止数量(step_end_qty)】默认值：DEFAULT 【询价分量计价明细.阶梯截止数量(inq_wtbsd_prc_d.step_end_qty)】 = 9999999999<br/>时机点：默认执行时 | 默认值：DEFAULT 【询价分量计价明细.阶梯截止数量(inq_wtbsd_prc_d.step_end_qty)】 = 9999999999<br/>时机点：默认执… |  | RULE-C01259F8CAD2 |
 | SCN-95774B18E90D | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是；只读条件：IF 【采购退货出库单】有明细行 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-5BBF388DBF9D |
 | SCN-043167212533 | 质检业务单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证质检业务单「次序号」的必填校验规则：【次序号(sub_seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-2F89F667EBED |
-| SCN-2F836F87F9AC | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「单据日期」的反向校验规则：【单据日期(doc_date)】E+MSG："输入日期信息不可小于库存现行年月 !" | 按校验规则拦截或提示 |  | RULE-EDDF6FB0A4C4 |
+| SCN-80C27EE517D1 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「请购数量」的反向校验规则：【请购数量(requ_qty)】需大于等于0 | 按校验规则拦截或提示 |  | RULE-44FB6E64AF5C；RULE-7415DD263079 |
 | SCN-FAA8318F60C9 |  | 默认值 | NEEDS_UI_EXPLORATION | 验证采购「原单价」的默认值规则：【原单价(old_price)】默认值：调用接口：供应商取价服务(bm.supp_item_price.getprice)<br/>使用模型：供应商品号价格(default_supp_item_price)<br/>入参：<br/> [供应商品号价格.运营单元编号(default_supp_item_price.ops_unit_no)] = 【询价单.运营单元编号(inq_doc.ops_unit_no)】<br/> [供应商品号价格.采购价格类型(default_supp_item_price.pur_price_type)] = '1.一般采购'<br/> [供应商品号价格.供应商编号(… | 默认值：调用接口：供应商取价服务(bm.supp_item_price.getprice)<br/>使用模型：供应商品号价格(default_supp_item_pri… |  | RULE-53743A68DD6F |
 | SCN-C887A628663A | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「运营单元名称」的只读校验规则：【运营单元名称(ops_unit_name)】✅ 是 | 字段不可编辑 |  | RULE-2340D6B29B9E |
 | SCN-61FFCFD364CA | 请购单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证请购单「单号」的必填校验规则：【单号(doc_no)】✅ 是；必填条件：IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] = 6.手动输入，【请购单.单号(requ_doc.doc_no)】不可空白 | 为空时保存应被拦截 |  | RULE-7FC1FE1729E6 |
-| SCN-93E8007A7A43 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「到货日期」的反向校验规则：【到货日期(arr_date)】E+MSG："输入日期信息不可小于库存现行年月 !" | 按校验规则拦截或提示 |  | RULE-3258299B68A7 |
+| SCN-F5B298121992 | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「第二单位数量」的反向校验规则：【第二单位数量(sec_unit_qty)】【请购单明细.第二单位数量(requ_doc_d.sec_unit_qty)】需大于等于0 | 按校验规则拦截或提示 |  | RULE-546AFE25FDA8；RULE-CBFE78AC3991 |
 | SCN-288E880C6EAD |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「整体操作 后置处理」的默认值规则：【整体操作】打开空白详情页，按默认值规则带出运营单元、单据日期、询价日期、询价类型、采购类型、业务性质、含税、状态 | 按操作说明执行 |  | RULE-3C8B727BFA3F |
 | SCN-4F3CE95F9A6A | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务类型编号」的只读校验规则：【业务类型编号(biz_type_no)】✅ 是；只读条件：IF 【采购退货出库单】有明细行 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-784E9B2C9C3C |
 | SCN-B6902C09C2FE | 请购单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证请购单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 | TC-PUR-0035 | RULE-DB4AD2803A8B |
-| SCN-C9BE4688006B | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「采购到货单号」的反向校验规则：【采购到货单号(pur_arr_doc_no)】2 若单号长度!=业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit)，则报错“单号长度须为%S！”传入 业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit) | 按校验规则拦截或提示 |  | RULE-7655111C3A85 |
+| SCN-65FA92CC56BC | 请购单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证请购单「需求日期」的反向校验规则：【需求日期(dem_date)】CHECK DATE：校验日期格式。E+MSG："输入的日期格式不合法" | 按校验规则拦截或提示 |  | RULE-9EA72ABC03AD |
 | SCN-6D8488A4CD34 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「新增 后置处理」的默认值规则：【新增】打开空白详情页，按默认值规则带出运营单元、单据日期、询价日期、询价类型、采购类型、业务性质、含税、状态 | 按操作说明执行 |  | RULE-3A5C0D4A0437 |
 | SCN-01272BC5FD1A | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务性质」的只读校验规则：【业务性质(biz_prop)】✅ 是 | 字段不可编辑 |  | RULE-C7DC91F983FE |
 | SCN-6F74FDBAEDF0 | 请购单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证请购单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PUR-0042 | RULE-6DD6EB672251 |
-| SCN-7C5132740277 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「收货运营单元编号」的反向校验规则：【收货运营单元编号(rcpt_ops_unit_no)】更改时判断，若单身有信息 则报错 | 按校验规则拦截或提示 |  | RULE-CE165D5FFD7B；RULE-545C70E87389 |
+| SCN-177D752FB5F3 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「维护分配信息 前置校验」的反向校验规则：【维护分配信息】报错:“请先审核请购单再维护分配信息” | 校验不通过则操作被拦截 |  | RULE-639A6ADC400A；RULE-384FCA4A1A2A |
 | SCN-46171B5AB074 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「编辑 后置处理」的默认值规则：【编辑】载入单据全部字段值；不重算、不重置默认值 | 按操作说明执行 |  | RULE-8D5129CB75F3 |
 | SCN-BE437947322E | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库单号」的只读校验规则：【采购退货出库单号(pur_rtn_stkou_doc_no)】✅ 是；只读条件：IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] != 7.手工输入 THEN 只读 ENDIF<br/>IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] != 7.手工输入 THEN 跳离(TabStop=False) ENDIF | 字段不可编辑 |  | RULE-76975FFA718A |
 | SCN-89EBFAA2D038 | 请购单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证请购单「项目编号」的必填校验规则：【项目编号(proj_no)】✅ 是；必填条件：- 查询运营单元存货参数(bm.ops_unit_invnt_param.get)<br/>- 入参：运营单元存货参数.运营单元编号(ops_unit_invnt_param.ops_unit_no) = 【请购单.运营单元编号(requ_doc.ops_unit_no)】<br/>- 回参：运营单元存货参数.是否启用项目管理(ops_unit_invnt_param.is_ena_proj_mgmt)<br/>- IF 【运营单元存货参数.是否启用项目管理(ops_unit_invnt_param.is_ena_proj_mgmt) 】= tr… | 为空时保存应被拦截 | TC-PUR-0046 | RULE-2B665520B625 |
-| SCN-7629CFF53D62 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「货币编号」的反向校验规则：【货币编号(ccy_no)】更改时判断，若单身有信息，则报错 | 按校验规则拦截或提示 |  | RULE-B94EB5F58246；RULE-1A66F1D93FE8；RULE-3D155CCB14C7 |
+| SCN-B0F77D536257 | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】更改时判断，若单身有信息 则报错 | 按校验规则拦截或提示 |  | RULE-DD201EC32ACE；RULE-EE09304252D4；RULE-18F0F68DC0F6；RULE-0E79F756B792 |
 | SCN-E3499A0CEDF9 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「保存 后置处理」的默认值规则：【保存】● 入参说明：默认取页面所有字段值作为入参 | 按操作说明执行 |  | RULE-474ACDA5F842 |
 | SCN-64544CFC8D84 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「交易日期」的只读校验规则：【交易日期(trans_date)】✅ 是 | 字段不可编辑 |  | RULE-EA0CA37A21D5 |
 | SCN-B90FFB29D360 | 请购单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证请购单「序号」的必填校验规则：【序号(seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-8BCBB754E1FF |
-| SCN-204E08B0EC19 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「汇率」的反向校验规则：【汇率(er)】此字段必须大于0，E+MSG："此字段必须大于0" | 按校验规则拦截或提示 |  | RULE-CE67CB5DA50A；RULE-F8D9B8667E14 |
+| SCN-B467A8668462 | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「采购入库单号」的反向校验规则：【采购入库单号(pur_stkin_doc_no)】2 若单号长度!=业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit)，则报错“单号长度须为%S！”传入 业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit) | 按校验规则拦截或提示 |  | RULE-0EE0D0D57C06 |
 | SCN-953C9B204C4A |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「删除 后置处理」的默认值规则：【删除】● 入参说明：默认取页面业务主键字段值作为入参 | 按操作说明执行 |  | RULE-47D23C541D43 |
 | SCN-85EEA39C2EFC | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「供应商编号」的只读校验规则：【供应商编号(supp_no)】✅ 是；只读条件：IF 【采购退货出库单】有明细行 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-7CF7CAC97BD0 |
 | SCN-33A575BA713B | 请购单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证请购单「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-DF4A61C46F25 |
-| SCN-16BA648FA65F | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「含税标识」的反向校验规则：【含税标识(intax_flag)】更改时判断，若单身有信息 则报错 | 按校验规则拦截或提示 |  | RULE-8D48CA4674FD；RULE-4F6974F3D159 |
+| SCN-CCA1187E432A | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「供应商编号」的反向校验规则：【供应商编号(supp_no)】更改供应商时判断，若单身有信息，则报错 | 按校验规则拦截或提示 |  | RULE-59CC362EA954；RULE-5F6CD2A5C381 |
 | SCN-4DD0462D18F5 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「提交 后置处理」的默认值规则：【提交】● 入参说明：默认取页面业务主键字段值作为入参 | 按操作说明执行 |  | RULE-9FB147921580 |
 | SCN-A58BB3698925 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「供应商名称」的只读校验规则：【供应商名称(supp_name)】✅ 是 | 字段不可编辑 |  | RULE-99A1A5071CA3 |
 | SCN-734AD7319354 | 运营单元采购参数 | 必填校验 | NEEDS_UI_EXPLORATION | 验证运营单元采购参数「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PURP-0004 | RULE-CCB280A8294D |
-| SCN-B4C4AA69541A | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「收货人编号」的反向校验规则：【收货人编号(cnee_no)】回参若不存在，提示："员工"不存在！ | 按校验规则拦截或提示 |  | RULE-B49B20F29C09 |
+| SCN-3808A64478D6 | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「单据日期」的反向校验规则：【单据日期(doc_date)】E+MSG："输入日期信息不可小于库存现行年月 !" | 按校验规则拦截或提示 |  | RULE-CCBD80A84E9C |
 | SCN-DC05F69212D4 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「驳回 后置处理」的默认值规则：【驳回】● 入参说明：默认取页面业务主键字段值作为入参 | 按操作说明执行 |  | RULE-B16DD862C7D9 |
 | SCN-193EA2C38DC5 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「限用仓库编号」的只读校验规则：【限用仓库编号(limit_whse_no)】✅ 是；只读条件：IF 【采购退货出库单】有明细行 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-CACFE0C1DE50 |
 | SCN-D0927B12D71C | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PSTK-0006 | RULE-78C1F9096750 |
-| SCN-EB7A5971AE05 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「付款条件编号」的反向校验规则：【付款条件编号(pmt_terms_no)】回参若不存在，提示："收付款条件"不存在！ | 按校验规则拦截或提示 |  | RULE-F3DACD24026B |
+| SCN-40D73680439C | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「交易日期」的反向校验规则：【交易日期(trans_date)】E+MSG："输入日期信息不可小于库存现行年月 !" | 按校验规则拦截或提示 |  | RULE-5459F4D7C14F |
 | SCN-17CD28ADC95F |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「作废 后置处理」的默认值规则：【作废】● 入参说明：默认取页面业务主键字段值作为入参 | 按操作说明执行 |  | RULE-677CFD5FAA5F |
 | SCN-3A1D5FA59F84 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务数量合计」的只读校验规则：【业务数量合计(total_biz_qty)】✅ 是 | 字段不可编辑 |  | RULE-3ECBA0385AFC |
 | SCN-057B5EBC3376 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-PSTK-0003 | RULE-A4D51FEE586C |
-| SCN-BD5494CAA3D5 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「业务数量」的反向校验规则：【业务数量(biz_qty)】输入值小于等于0时报错“到货数量需大于0” | 按校验规则拦截或提示 |  | RULE-CA84290C1080 |
+| SCN-2A0EF3642B0B | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「业务数量」的反向校验规则：【业务数量(biz_qty)】输入值须大于0 | 按校验规则拦截或提示 |  | RULE-FD0F6DACE064；RULE-521AF76C405C；RULE-40F9E2D4FC69 |
 | SCN-5A7F52976A02 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「新增分量计价行 后置处理」的默认值规则：【新增分量计价行】在当前明细行下插入阶梯行：次序号按流水号生成；首档起始数量 0（默认执行时），后续档起始数量 = 上一笔截止数量（连续新增时）；截止数量默认 9999999999；原单价按供应商取价服务带出；调整幅度按公式计算 | 按操作说明执行 |  | RULE-DD22A953D075 |
 | SCN-C36EBAEDD10F | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「件数」的只读校验规则：【件数(pcs)】✅ 是 | 字段不可编辑 |  | RULE-FF27F928F7A8 |
 | SCN-35EFADFAF616 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「采购入库单号」的必填校验规则：【采购入库单号(pur_stkin_doc_no)】✅ 是；必填条件：调用接口：查询业务类型通用信息(bm.biz_type_gen_info.get)<br/>入参：业务类型通用信息.业务类型编号(biz_type_gen_info.biz_type_no) = 【采购入库单.业务类型编号(pur_stkin_doc.biz_type_no)】<br/>回参：业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)<br/>IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] = 7.手动编号 … | 为空时保存应被拦截 |  | RULE-E488ADC7E6FB |
-| SCN-1C8BBEDE6CE7 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「计价数量」的反向校验规则：【计价数量(prc_qty)】计价数量 <0时，报错：“计价数量不可小于0” | 按校验规则拦截或提示 |  | RULE-91AD4DFBD43F；RULE-D073B69BE87D；RULE-D15AA7E03E63 |
+| SCN-72836E82BDA7 | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「报废业务数量」的反向校验规则：【报废业务数量(scrap_biz_qty)】输入值须不小于0 | 按校验规则拦截或提示 |  | RULE-4907B3E1D4C5 |
 | SCN-90E0B1E9B3B5 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「运营单元编号」的默认值规则：【运营单元编号(ops_unit_no)】默认值：调用接口：查询员工(bm.empl.get)<br/>入参：[员工.用户编号(empl.user_no)] = 当前系统用户<br/>回参：[员工.归属运营单元编号(empl.blng_ops_unit_no)]<br/>调用接口：查询运营单元(bm.ops_unit.get)<br/>入参：[运营单元.运营单元编号(ops_unit.ops_unit_no)] = [员工.归属运营单元编号(empl.blng_ops_unit_no)]<br/>回参：[运营单元职能.职能编号(ops_unit_func.func_no)]<br/>IF [运… | 默认值：调用接口：查询员工(bm.empl.get)<br/>入参：[员工.用户编号(empl.user_no)] = 当前系统用户<br/>回参：[员工.归属运营单元… |  | RULE-F753A9AA85A4 |
 | SCN-B1DB27991A29 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「状态」的只读校验规则：【状态(manage_status)】✅ 是 | 字段不可编辑 |  | RULE-3172706B42C7 |
 | SCN-E8D4684073C5 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 | TC-PSTK-0010 | RULE-D14620961CFF |
-| SCN-19D3D52C62D3 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「单价」的反向校验规则：【单价(price)】输入值小于0时，报错“单价不可小于0！” | 按校验规则拦截或提示 |  | RULE-F0B66B08833C |
+| SCN-407F2E835E0A | 采购入库单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「拒收业务数量」的反向校验规则：【拒收业务数量(rej_biz_qty)】输入值须不小于0 | 按校验规则拦截或提示 |  | RULE-58D62D58E179 |
 | SCN-22F05821B088 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「单据日期」的默认值规则：【单据日期(doc_date)】默认值：1. 默认系统日期<br/>时机点：默认执行时<br/>2. 默认前一笔【采购退货出库单.单据日期(pur_rtn_stkou_doc.doc_date)】<br/>时机点：连续新增时 | 默认值：1. 默认系统日期<br/>时机点：默认执行时<br/>2. 默认前一笔【采购退货出库单.单据日期(pur_rtn_stkou_doc.doc_date)】<b… |  | RULE-7084EF2ECD9D |
-| SCN-D7F6E301DDFE | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「过账状态」的只读校验规则：【过账状态(post_stat)】✅ 是 | 字段不可编辑 |  | RULE-11EC8572361D；RULE-2D03B4941F92 |
+| SCN-D7F6E301DDFE | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「过账状态」的只读校验规则：【过账状态(post_stat)】✅ 是 | 字段不可编辑 |  | RULE-11EC8572361D |
 | SCN-99F5E7AB807A | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「序号」的必填校验规则：【序号(seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-5AB658D7248D |
-| SCN-4DE848924332 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「税率」的反向校验规则：【税率(tax_rate)】输入值小于0时，报错“税率不可小于0！” | 按校验规则拦截或提示 |  | RULE-C967F1337941 |
+| SCN-5B2EEA64AD56 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「运营单元编号」的反向校验规则：【运营单元编号(ops_unit_no)】更改时判断，若单身有信息 则报错 | 按校验规则拦截或提示 |  | RULE-5E6018A98197；RULE-759A591C037D；RULE-736584E64C2F；RULE-9D62179382F1 |
 | SCN-8726D426AF2B | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务类型编号」的默认值规则：【业务类型编号(biz_type_no)】默认值：默认前一笔【采购退货出库单.业务类型编号(pur_rtn_stkou_doc.biz_type_no)】<br/>时机点：连续新增时 | 默认值：默认前一笔【采购退货出库单.业务类型编号(pur_rtn_stkou_doc.biz_type_no)】<br/>时机点：连续新增时 |  | RULE-62ED033331F7 |
 | SCN-D24E800FDEE2 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「序号」的只读校验规则：【序号(seq)】✅ 是 | 字段不可编辑 |  | RULE-58742EC36204 |
 | SCN-86D759029703 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-5AF5035048BF |
-| SCN-F9C0432DF02C |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-9BB2CAD5A95A；RULE-585E5632DBBA |
+| SCN-613FC43F08F3 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「供应商编号」的反向校验规则：【供应商编号(supp_no)】更改供应商时判断，若单身有信息，则报错 | 按校验规则拦截或提示 |  | RULE-E161AAAB7943；RULE-9C441722B020；RULE-54296D904DB0 |
 | SCN-442A448407BA | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库单号」的默认值规则：【采购退货出库单号(pur_rtn_stkou_doc_no)】默认值：IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] != 7.手工输入 THEN<br/>调用接口：自动生单号服务(bm.biz_type_gen_info.auto_gnrt_doc_no.process)<br/>入参：[业务类型信息.业务类型编号(biz_type_gen_info.biz_type_no)] = 【采购退货出库单.业务类型编号(pur_rtn_stkou_doc.biz_type_no)】，[业务类型信息.单据日期(biz_type_gen_… | 默认值：IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] != 7.手工输入 THEN<br/>调用接口：自… |  | RULE-DE0E384EFE27 |
 | SCN-08D0AAEE8F5D | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库来源单据类型」的只读校验规则：【采购退货出库来源单据类型(pur_rtn_stkou_src_doc_type)】✅ 是 | 字段不可编辑 |  | RULE-774DC0F27924 |
 | SCN-8C7911691848 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「仓库编号」的必填校验规则：【仓库编号(whse_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-FBE1C6DFCEF2 |
-| SCN-6EDBE4D7CF43 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「提交 前置校验」的反向校验规则：【提交】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-B1370D3C4FFE；RULE-CB962C9D6855 |
+| SCN-2F836F87F9AC | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「单据日期」的反向校验规则：【单据日期(doc_date)】E+MSG："输入日期信息不可小于库存现行年月 !" | 按校验规则拦截或提示 |  | RULE-EDDF6FB0A4C4 |
 | SCN-C58FC8012BC7 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「交易日期」的默认值规则：【交易日期(trans_date)】默认值：DEFAULT【采购退货出库单.单据日期(pur_rtn_stkou_doc.doc_date)】。<br/>时机点：编辑执行时 | 默认值：DEFAULT【采购退货出库单.单据日期(pur_rtn_stkou_doc.doc_date)】。<br/>时机点：编辑执行时 |  | RULE-0972AEA2751F |
 | SCN-635099121D63 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源运营单元编号」的只读校验规则：【来源运营单元编号(src_ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-B7F601416D62 |
 | SCN-42FAACED6AA8 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「储位编号」的必填校验规则：【储位编号(stsp_no)】✅ 是；必填条件：当【采购到货明细.储位管理】=1 时必填 | 为空时保存应被拦截 |  | RULE-FB3C9E32CF86 |
-| SCN-2F98C56FB43B |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的反向校验规则：【审核】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-BDD26E8FF29E；RULE-EE7BAE27F702 |
+| SCN-93E8007A7A43 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「到货日期」的反向校验规则：【到货日期(arr_date)】E+MSG："输入日期信息不可小于库存现行年月 !" | 按校验规则拦截或提示 |  | RULE-3258299B68A7 |
 | SCN-555E20319383 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「仓管人员编号」的默认值规则：【仓管人员编号(whse_mgmt_pers_no)】默认值：调用接口：查询员工(bm.empl.get)<br/>入参：员工.关联用户编号(empl.linkd_user_no)=当前系统用户 AND 员工.归属运营单元编号(empl.ops_unit_no)=【采购退货出库单.运营单元编号(pur_rtn_stkou_doc.ops_unit_no)】<br/>回参：员工.员工编号(empl.empl_no)、员工.主要部门编号(empl.main_dept_no)<br/>DEFAULT 仓管人员编号=员工.员工编号(empl.empl_no)<br/>时机点：编辑执行时 | 默认值：调用接口：查询员工(bm.empl.get)<br/>入参：员工.关联用户编号(empl.linkd_user_no)=当前系统用户 AND 员工.归属运营单元… |  | RULE-B06BB78421A9 |
 | SCN-5B1EEF675C67 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源单号」的只读校验规则：【来源单号(src_doc_no)】✅ 是 | 字段不可编辑 |  | RULE-AC9C94F1755B |
 | SCN-F5D8F476F7B6 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「批号」的必填校验规则：【批号(lot_no)】✅ 是；必填条件：【采购入库单明细.批号管理】 = 勾选 时必填 | 为空时保存应被拦截 |  | RULE-FDDC09830838 |
-| SCN-8DFEEE52E060 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「取单 后置处理」的反向校验规则：【取单】数据来源：调用查询方案 查询品号信息(item_gen_info_001) | 按操作说明执行 |  | RULE-7AFED93E683C |
+| SCN-C9BE4688006B | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「采购到货单号」的反向校验规则：【采购到货单号(pur_arr_doc_no)】2 若单号长度!=业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit)，则报错“单号长度须为%S！”传入 业务类型通用信息.流水号位数(biz_type_gen_info.serl_digit) | 按校验规则拦截或提示 |  | RULE-7655111C3A85 |
 | SCN-67E2BC3A3796 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务数量合计」的默认值规则：【业务数量合计(total_biz_qty)】默认值：累计【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】。<br/>时机点：编辑执行时 | 默认值：累计【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】。<br/>时机点：编辑执行时 |  | RULE-7FD28EB12961 |
 | SCN-042141B0F49D | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「来源序号」的只读校验规则：【来源序号(src_seq)】✅ 是 | 字段不可编辑 |  | RULE-62A450E4E83F |
 | SCN-2067614B7148 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「库存单位编号」的必填校验规则：【库存单位编号(invnt_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-5BD2EF8AA76D |
-| SCN-4950FEE991E5 | 采购取价策略 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「取价策略编号」的反向校验规则：【取价策略编号(price_strtg_no)】回参若已存在，提示：E+MSG："取价策略编号已存在，请重新输入！" | 按校验规则拦截或提示 |  | RULE-D2B2E39E620B |
+| SCN-7C5132740277 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「收货运营单元编号」的反向校验规则：【收货运营单元编号(rcpt_ops_unit_no)】更改时判断，若单身有信息 则报错 | 按校验规则拦截或提示 |  | RULE-CE165D5FFD7B；RULE-545C70E87389 |
 | SCN-B953AA639862 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「件数」的默认值规则：【件数(pcs)】默认值：累计【采购退货出库单明细.件数(pur_rtn_stkou_doc_d.pcs)】。<br/>时机点：编辑执行时 | 默认值：累计【采购退货出库单明细.件数(pur_rtn_stkou_doc_d.pcs)】。<br/>时机点：编辑执行时 |  | RULE-FB3A31CBE9C8 |
 | SCN-43ECB1A0A3BB | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「品号」的只读校验规则：【品号(item_no)】✅ 是 | 字段不可编辑 |  | RULE-E6C404798765 |
 | SCN-8CF8FFE7F500 | 采购入库单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购入库单「来源序号」的必填校验规则：【来源序号(src_seq)】✅ 是 | 为空时保存应被拦截 |  | RULE-102158988B38 |
-| SCN-77CCFC3D69F4 | 采购取价策略 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「优先级」的反向校验规则：【优先级(pri)】优先级必须大于0，E+MSG："优先级必须大于0！" | 按校验规则拦截或提示 |  | RULE-40620BA672A3 |
+| SCN-7629CFF53D62 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「货币编号」的反向校验规则：【货币编号(ccy_no)】更改时判断，若单身有信息，则报错 | 按校验规则拦截或提示 |  | RULE-B94EB5F58246；RULE-1A66F1D93FE8；RULE-3D155CCB14C7 |
 | SCN-5CA3FD190532 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「状态」的默认值规则：【状态(manage_status)】默认值：DEFAULT N.未审核。<br/>时机点：默认执行时 | 默认值：DEFAULT N.未审核。<br/>时机点：默认执行时 |  | RULE-0A34D84F93B6 |
 | SCN-38D6EBA6343E | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「品名」的只读校验规则：【品名(item_name)】✅ 是 | 字段不可编辑 |  | RULE-046988AC66A0 |
 | SCN-DB01662BFE46 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0003 | RULE-0B5F051E1211 |
-| SCN-551EBDAD1731 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】VD_pur_price_strtg_00010 取价顺序设置页签必须有数据 | 校验不通过则操作被拦截 |  | RULE-CE6B8FC704C9；RULE-328EC45F76C7 |
+| SCN-204E08B0EC19 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「汇率」的反向校验规则：【汇率(er)】此字段必须大于0，E+MSG："此字段必须大于0" | 按校验规则拦截或提示 |  | RULE-CE67CB5DA50A；RULE-F8D9B8667E14 |
 | SCN-DB2EDA41040A | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「过账状态」的默认值规则：【过账状态(post_stat)】默认值：DEFAULT N.未过账。<br/>时机点：默认执行时 | 默认值：DEFAULT N.未过账。<br/>时机点：默认执行时 |  | RULE-39D243B22257 |
 | SCN-A83AB825108A | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「规格」的只读校验规则：【规格(item_spec)】✅ 是 | 字段不可编辑 |  | RULE-05EE60D8AEE7 |
 | SCN-9ECD15C32BDD | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0055 | RULE-066C67D0DA84 |
-| SCN-C4A078B2276B | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「供应商编号」的反向校验规则：【供应商编号(supp_no)】当供应商变更时，若单身已有数据则报错，E+MSG："单身已有信息，供应商不可更改" | 按校验规则拦截或提示 |  | RULE-B461CB3DE8C7 |
+| SCN-16BA648FA65F | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「含税标识」的反向校验规则：【含税标识(intax_flag)】更改时判断，若单身有信息 则报错 | 按校验规则拦截或提示 |  | RULE-8D48CA4674FD；RULE-4F6974F3D159 |
 | SCN-228CDA7FFE1F | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「序号」的默认值规则：【序号(seq)】默认值：DEFAULT 自动流水号。<br/>时机点：默认执行时 | 默认值：DEFAULT 自动流水号。<br/>时机点：默认执行时 |  | RULE-2E9F193D1573 |
 | SCN-1F8332613302 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「特征码」的只读校验规则：【特征码(item_feat_no)】✅ 是 | 字段不可编辑 |  | RULE-C0B50B3ED878 |
 | SCN-67ADC5216B13 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0059 | RULE-AD9B5C2EC414 |
-| SCN-79DFBFF450C2 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「单据日期」的反向校验规则：【单据日期(doc_date)】CHECK DATE，E+MSG："请输入正确的日期格式" | 按校验规则拦截或提示 |  | RULE-2D5E034B6FC8 |
+| SCN-B4C4AA69541A | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「收货人编号」的反向校验规则：【收货人编号(cnee_no)】回参若不存在，提示："员工"不存在！ | 按校验规则拦截或提示 |  | RULE-B49B20F29C09 |
 | SCN-CA74E62D0863 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库来源单据类型」的默认值规则：【采购退货出库来源单据类型(pur_rtn_stkou_src_doc_type)】默认值：DEFAULT '1.采购退货'（固定值；取单是唯一建单路径，来源恒为采购退货单）。<br/>时机点：默认执行时 | 默认值：DEFAULT '1.采购退货'（固定值；取单是唯一建单路径，来源恒为采购退货单）。<br/>时机点：默认执行时 |  | RULE-79FAC6A29C5C |
 | SCN-1C01AC1FBFE7 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「商品类型」的只读校验规则：【商品类型(goods_type)】✅ 是 | 字段不可编辑 |  | RULE-5C05AC5158D7 |
 | SCN-0517569DB40C | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0062 | RULE-8450B17A2644 |
-| SCN-93E117684523 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「货币编号」的反向校验规则：【货币编号(ccy_no)】当货币编号变更时，若单身已有数据则报错 | 按校验规则拦截或提示 |  | RULE-9B87BE645715；RULE-BA7212B24842 |
+| SCN-EB7A5971AE05 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「付款条件编号」的反向校验规则：【付款条件编号(pmt_terms_no)】回参若不存在，提示："收付款条件"不存在！ | 按校验规则拦截或提示 |  | RULE-F3DACD24026B |
 | SCN-9529F1D062AD | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「特征码」的默认值规则：【特征码(item_feat_no)】默认值：取单带入 采购退货单明细.特征码(pur_rtn_doc_d.item_feat_no)。<br/>时机点：取单赋值时 | 默认值：取单带入 采购退货单明细.特征码(pur_rtn_doc_d.item_feat_no)。<br/>时机点：取单赋值时 |  | RULE-E9A67E3929D7 |
 | SCN-6F6A60E215DA | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「仓库编号」的只读校验规则：【仓库编号(whse_no)】✅ 是；只读条件：IF 【采购退货出库单.限用仓库编号(pur_rtn_stkou_doc.limit_whse_no)】不为空白 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-EFCAB04AD638 |
 | SCN-03AA0BE45D02 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「采购到货单号」的必填校验规则：【采购到货单号(pur_arr_doc_no)】✅ 是；必填条件：调用接口：查询业务类型通用信息(bm.biz_type_gen_info.get)<br/>入参：业务类型通用信息.业务类型编号(biz_type_gen_info.biz_type_no) = 【采购到货单.业务类型编号(pur_arr_doc.biz_type_no)】<br/>回参：业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)<br/>IF [业务类型通用信息.自动编码方式(biz_type_gen_info.auto_code_mode)] = 7.手动编号 THEN… | 为空时保存应被拦截 |  | RULE-6475A5A78588 |
-| SCN-0FA52F475FF6 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「汇率」的反向校验规则：【汇率(er)】校验：汇率须大于 0 | 按校验规则拦截或提示 |  | RULE-9EC64B6887D6；RULE-210C7C202E01 |
+| SCN-BD5494CAA3D5 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「业务数量」的反向校验规则：【业务数量(biz_qty)】输入值小于等于0时报错“到货数量需大于0” | 按校验规则拦截或提示 |  | RULE-CA84290C1080 |
 | SCN-26661F914026 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「商品类型」的默认值规则：【商品类型(goods_type)】默认值：取单带入 采购退货单明细.商品类型(pur_rtn_doc_d.goods_type)；回参为空时默认 1.商品。<br/>时机点：取单赋值时 | 默认值：取单带入 采购退货单明细.商品类型(pur_rtn_doc_d.goods_type)；回参为空时默认 1.商品。<br/>时机点：取单赋值时 |  | RULE-4D3E57C824A9 |
 | SCN-CF5377E021F3 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「储位编号」的只读校验规则：【储位编号(stsp_no)】✅ 是；只读条件：IF 采购退货出库单明细.储位管理(pur_rtn_stkou_doc_d.CUS_stsp_mgmt) = '0.不启用' THEN 只读 ENDIF | 字段不可编辑 |  | RULE-3CB00D1E85F4 |
 | SCN-74B7F9DC6091 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「收货运营单元编号」的必填校验规则：【收货运营单元编号(rcpt_ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0005 | RULE-58B754496D0E |
-| SCN-EFA4B7BDD62F | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「业务数量」的反向校验规则：【业务数量(biz_qty)】业务数量必须大于等于 0 | 按校验规则拦截或提示 |  | RULE-F70E34A0BE9C；RULE-48B9E1BC7DB4 |
+| SCN-1C8BBEDE6CE7 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「计价数量」的反向校验规则：【计价数量(prc_qty)】计价数量 <0时，报错：“计价数量不可小于0” | 按校验规则拦截或提示 |  | RULE-91AD4DFBD43F；RULE-D073B69BE87D；RULE-D15AA7E03E63 |
 | SCN-4066A13CEC76 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「仓库编号」的默认值规则：【仓库编号(whse_no)】默认值：当【采购退货出库单.限用仓库编号(pur_rtn_stkou_doc.limit_whse_no)】不为空时，默认【采购退货出库单.限用仓库编号(pur_rtn_stkou_doc.limit_whse_no)】，否则默认上一笔【采购退货出库单明细.仓库编号(pur_rtn_stkou_doc_d.whse_no)】。<br/>时机点：编辑执行时 | 默认值：当【采购退货出库单.限用仓库编号(pur_rtn_stkou_doc.limit_whse_no)】不为空时，默认【采购退货出库单.限用仓库编号(pur_rtn… |  | RULE-E2D22DD6D1AF |
 | SCN-81FFA3C49BBE | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「批号」的只读校验规则：【批号(lot_no)】✅ 是；只读条件：IF 【采购退货出库单明细.批号管理(CUS_lot_mgmt)】未勾选 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-F8C34BEFB673 |
 | SCN-9ACC58A4CE16 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0008 | RULE-94AF3DED37EE |
-| SCN-5A6DCB89AA56 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「单价」的反向校验规则：【单价(price)】Validator:单价必须大于等于 0 | 按校验规则拦截或提示 |  | RULE-00B7C41D1432；RULE-AB17267C4B16 |
+| SCN-19D3D52C62D3 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「单价」的反向校验规则：【单价(price)】输入值小于0时，报错“单价不可小于0！” | 按校验规则拦截或提示 |  | RULE-F0B66B08833C |
 | SCN-9DFEF41ACE98 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「批号」的默认值规则：【批号(lot_no)】默认值：由【采购退货出库单明细.批号管理(CUS_lot_mgmt)】驱动：IF 【采购退货出库单明细.批号管理(CUS_lot_mgmt)】未勾选 THEN 默认空 ENDIF<br/>即：品号未启用批号管理时批号固定为空；启用时由取单带入 采购退货单明细.批号(pur_rtn_doc_d.lot_no)。<br/>时机点：编辑执行时 | 默认值：由【采购退货出库单明细.批号管理(CUS_lot_mgmt)】驱动：IF 【采购退货出库单明细.批号管理(CUS_lot_mgmt)】未勾选 THEN 默认空 … |  | RULE-F9635C495C8A |
 | SCN-CEF2B99FB8BE | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务单位编号」的只读校验规则：【业务单位编号(biz_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-32E63346765E |
 | SCN-ADD69332580C | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「结算运营单元编号」的必填校验规则：【结算运营单元编号(stlmt_ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PARR-0073 | RULE-49A0584CE715 |
-| SCN-6CAC885881B7 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「金额」的反向校验规则：【金额(amt)】E+MSG：'此字段必须大于等于零 !' | 按校验规则拦截或提示 |  | RULE-0044365B70DD |
+| SCN-4DE848924332 | 采购到货单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「税率」的反向校验规则：【税率(tax_rate)】输入值小于0时，报错“税率不可小于0！” | 按校验规则拦截或提示 |  | RULE-C967F1337941 |
 | SCN-279298AE9194 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「业务数量」的默认值规则：【业务数量(biz_qty)】默认值：IF 由取单带入 THEN DEFAULT 【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】 = 来源采购退货单明细.业务数量 - 来源采购退货单明细.已退货业务数量(alr_rtn_biz_qty)<br/>ELSE 空<br/>ENDIF<br/>时机点：取单赋值时 | 默认值：IF 由取单带入 THEN DEFAULT 【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】 = 来源采购退货单明细.… |  | RULE-B6B21A58B7C3 |
 | SCN-D402745F3F6D | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「计价数量」的只读校验规则：【计价数量(prc_qty)】✅ 是 | 字段不可编辑 |  | RULE-8F43647DEE28 |
 | SCN-72994F406E11 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「商品类型」的必填校验规则：【商品类型(goods_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-EEA0ED2E7932 |
-| SCN-4719ECF86473 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「预计到货日期」的反向校验规则：【预计到货日期(antic_arr_date)】日期格式校验 | 按校验规则拦截或提示 |  | RULE-F180A4602714；RULE-41567DACAB05 |
+| SCN-F9C0432DF02C |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-9BB2CAD5A95A；RULE-585E5632DBBA |
 | SCN-EA530FDA09B8 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「计价数量」的默认值规则：【计价数量(prc_qty)】默认值：IF 【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】更改 AND 【采购退货出库单明细.业务单位编号(pur_rtn_stkou_doc_d.biz_unit_no)】<>'' AND 【采购退货出库单明细.计价单位编号(pur_rtn_stkou_doc_d.prc_unit_no)】<>'' THEN<br/>调用接口：查询品号通用信息(bm.item_gen_info.get)<br/>入参：[品号通用信息.品号(item_no)] = 【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.i… | 默认值：IF 【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】更改 AND 【采购退货出库单明细.业务单位编号(pur_rtn… |  | RULE-B603B5F12836 |
 | SCN-118A75C7835B | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「计价单位编号」的只读校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-5356161A8643 |
 | SCN-C212EB83003D | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「品号」的必填校验规则：【品号(item_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-736CE3F28215 |
-| SCN-F10DEE580DD7 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「税率」的反向校验规则：【税率(tax_rate)】税率必须大于等于 0 | 按校验规则拦截或提示 |  | RULE-EDD113C85679；RULE-B4BF1894E9C9 |
+| SCN-6EDBE4D7CF43 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「提交 前置校验」的反向校验规则：【提交】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-B1370D3C4FFE；RULE-CB962C9D6855 |
 | SCN-0C03E881B9C8 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「计价单位编号」的默认值规则：【计价单位编号(prc_unit_no)】默认值：IF 由取单带入 THEN DEFAULT 【采购退货出库单明细.计价单位编号(pur_rtn_stkou_doc_d.prc_unit_no)】 = 来源采购退货单明细.计价单位<br/>ELSE 空<br/>ENDIF<br/>时机点：取单赋值时<br/>说明：该字段隐藏且由取单赋值，取消必填校验，避免隐藏字段阻断保存。 | 默认值：IF 由取单带入 THEN DEFAULT 【采购退货出库单明细.计价单位编号(pur_rtn_stkou_doc_d.prc_unit_no)】 = 来源采购… |  | RULE-470E6C007B58 |
 | SCN-F7A9E393769A | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「库存单位数量」的只读校验规则：【库存单位数量(invnt_unit_qty)】✅ 是 | 字段不可编辑 |  | RULE-152796253CBC |
 | SCN-B47B04E624F7 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「业务单位编号」的必填校验规则：【业务单位编号(biz_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-22C23550EA51 |
-| SCN-2867D25CC404 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-634E3556D718；RULE-689A980337B5 |
+| SCN-2F98C56FB43B |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的反向校验规则：【审核】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-BDD26E8FF29E；RULE-EE7BAE27F702 |
 | SCN-B0AB26ACAAF7 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「库存单位数量」的默认值规则：【库存单位数量(invnt_unit_qty)】默认值：调用接口：查询品号通用信息(bm.item_gen_info.get)<br/>入参：品号通用信息.品号(item_gen_info.item_no)=【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】<br/>回参：品号通用信息.库存单位编号(item_gen_info.invnt_unit_no)<br/>调用接口：品号单位换算(bm.item_gen_info.qty_cnv.process)<br/>入参：品号单位换算.换算前单位编号=【采购退货出库单明细.业务单位编号(pur_rtn_stko… | 默认值：调用接口：查询品号通用信息(bm.item_gen_info.get)<br/>入参：品号通用信息.品号(item_gen_info.item_no)=【采购退… |  | RULE-03D943EEC3B2 |
 | SCN-DE3690EAFBDC | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「库存单位编号」的只读校验规则：【库存单位编号(invnt_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-5E47F2E931D3 |
 | SCN-217D018A390D | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「计价单位编号」的必填校验规则：【计价单位编号(prc_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-E4956BD40FE8 |
-| SCN-23960862ACB0 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「提交 前置校验」的反向校验规则：【提交】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-E2FF693667FB；RULE-396777B89C49 |
+| SCN-8DFEEE52E060 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「取单 后置处理」的反向校验规则：【取单】数据来源：调用查询方案 查询品号信息(item_gen_info_001) | 按操作说明执行 |  | RULE-7AFED93E683C |
 | SCN-382500FE0FC5 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「库存单位编号」的默认值规则：【库存单位编号(invnt_unit_no)】默认值：当【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】更改时：<br/>调用接口：查询品号通用信息(bm.item_gen_info.get)<br/>入参：品号通用信息.品号(item_gen_info.item_no)=【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】<br/>回参：品号通用信息.库存单位编号(item_gen_info.invnt_unit_no)<br/>IF 品号通用信息.库存单位编号(item_gen_info.invnt_unit_no)<… | 默认值：当【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】更改时：<br/>调用接口：查询品号通用信息(bm.item_gen_i… |  | RULE-C99D8A016341 |
 | SCN-12F25877A3CA | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「第二单位数量」的只读校验规则：【第二单位数量(sec_unit_qty)】✅ 是 | 字段不可编辑 |  | RULE-A3BC31FD1A47 |
 | SCN-0B4B4EF533FA | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「库存单位编号」的必填校验规则：【库存单位编号(invnt_unit_no)】✅ 是 | 为空时保存应被拦截 |  | RULE-7B5217D1633E |
-| SCN-A7A92EC2E6A1 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的反向校验规则：【审核】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-696466E27CB8；RULE-2E0F77D3CFBB |
+| SCN-4950FEE991E5 | 采购取价策略 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「取价策略编号」的反向校验规则：【取价策略编号(price_strtg_no)】回参若已存在，提示：E+MSG："取价策略编号已存在，请重新输入！" | 按校验规则拦截或提示 |  | RULE-D2B2E39E620B |
 | SCN-8579E1956816 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「第二单位数量」的默认值规则：【第二单位数量(sec_unit_qty)】默认值：IF 【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】更改 THEN<br/>调用接口：品号单位换算(bm.item_gen_info.qty_cnv.process)<br/>入参：品号单位换算.换算前单位编号=【采购退货出库单明细.业务单位编号(pur_rtn_stkou_doc_d.biz_unit_no)】<br/>品号单位换算.品号=【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】<br/>品号单位换算.换算前单位数量=【采购退货出库单明细.业务数量(p… | 默认值：IF 【采购退货出库单明细.业务数量(pur_rtn_stkou_doc_d.biz_qty)】更改 THEN<br/>调用接口：品号单位换算(bm.item_… |  | RULE-C9566ECA1133 |
 | SCN-5449E53966B5 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「第二单位编号」的只读校验规则：【第二单位编号(sec_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-557FFF142C6A |
 | SCN-0E0D314DBB42 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「仓库编号」的必填校验规则：【仓库编号(whse_no)】✅ 是；必填条件：【采购到货单.业务性质】=PO07.直接到货时 必填 | 为空时保存应被拦截 |  | RULE-BAB473CF4C01 |
+| SCN-77CCFC3D69F4 | 采购取价策略 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「优先级」的反向校验规则：【优先级(pri)】优先级必须大于0，E+MSG："优先级必须大于0！" | 按校验规则拦截或提示 |  | RULE-40620BA672A3 |
 | SCN-C3DFCAA569E8 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「第二单位编号」的默认值规则：【第二单位编号(sec_unit_no)】默认值：当【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】更改时：<br/>调用接口：查询品号通用信息(bm.item_gen_info.get)<br/>入参：品号通用信息.品号(item_gen_info.item_no)=【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】<br/>回参：品号通用信息.第二单位编号(item_gen_info.sec_unit_no)<br/>IF 品号通用信息.第二单位编号(item_gen_info.sec_unit_no)<>'' TH… | 默认值：当【采购退货出库单明细.品号(pur_rtn_stkou_doc_d.item_no)】更改时：<br/>调用接口：查询品号通用信息(bm.item_gen_i… |  | RULE-4C73B57EFEDC |
 | SCN-92D075510D47 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「项目编号」的只读校验规则：【项目编号(proj_no)】✅ 是；只读条件：IF 【采购退货出库单明细.来源单号(pur_rtn_stkou_doc_d.src_doc_no)】 &lt;&gt; '' OR 【采购退货出库单.是否启用项目管理(pur_rtn_stkou_doc.CUS_is_proj_mgmt_enabled)】未勾选 THEN 只读 ENDIF | 字段不可编辑 |  | RULE-226E5359BC09 |
 | SCN-90E032CB8450 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「储位编号」的必填校验规则：【储位编号(stsp_no)】✅ 是；必填条件：当【采购到货明细.储位管理】=1 且 【采购到货单.业务性质】=PO07.直接到货时 必填 | 为空时保存应被拦截 |  | RULE-597562AE3A81 |
+| SCN-551EBDAD1731 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】VD_pur_price_strtg_00010 取价顺序设置页签必须有数据 | 校验不通过则操作被拦截 |  | RULE-CE6B8FC704C9；RULE-328EC45F76C7 |
 | SCN-D5BAF121D964 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「项目编号」的默认值规则：【项目编号(proj_no)】默认值：1. 取单时由采购退货单明细带回：项目编号(pur_rtn_stkou_doc_d.proj_no) = 采购退货单明细.项目编号(pur_rtn_doc_d.proj_no)，见第四章取单操作「确定」段。<br/>2. 本单无单头「限用项目」字段（模型确认无该字段，见附录 A.24），所以「单头限用项目非空则随单头」这一分支在本单不成立，等价于单头恒为空——只有无前置来源的手工行才可开窗自选。<br/>时机点：取单赋值时 / 编辑执行时 | 默认值：1. 取单时由采购退货单明细带回：项目编号(pur_rtn_stkou_doc_d.proj_no) = 采购退货单明细.项目编号(pur_rtn_doc_d.… |  | RULE-9D16F23CECCB |
 | SCN-0766157291F0 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购退货出库参考来源类型」的只读校验规则：【采购退货出库参考来源类型(pur_rtn_stkou_ref_src_type)】✅ 是 | 字段不可编辑 |  | RULE-BDB3BBDBA012 |
 | SCN-B7F9645535F2 | 采购到货单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购到货单「批号」的必填校验规则：【批号(lot_no)】✅ 是；必填条件：【采购到货单明细.批号管理】= 勾选 且【采购到货单.业务性质(pur_arr_doc.biz_prop)】 = PO07.直接到货 时 必填 | 为空时保存应被拦截 |  | RULE-873A2E99F8E8 |
+| SCN-C4A078B2276B | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「供应商编号」的反向校验规则：【供应商编号(supp_no)】当供应商变更时，若单身已有数据则报错，E+MSG："单身已有信息，供应商不可更改" | 按校验规则拦截或提示 |  | RULE-B461CB3DE8C7 |
 | SCN-8A5E3985675A | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购类型」的默认值规则：【采购类型(pur_type)】默认值：默认'1.一般采购'。<br/>时机点：默认执行时 | 默认值：默认'1.一般采购'。<br/>时机点：默认执行时 |  | RULE-3CA4424B9680 |
 | SCN-9854BC2BF9A3 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「参考来源运营单元编号」的只读校验规则：【参考来源运营单元编号(ref_src_ops_unit_no)】✅ 是 | 字段不可编辑 |  | RULE-D28438342615 |
 | SCN-321EA2C63DBA | 采购取价策略 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「取价策略编号」的必填校验规则：【取价策略编号(price_strtg_no)】✅ 是 | 为空时保存应被拦截 | TC-PPRC-0003 | RULE-68F633C7225F |
+| SCN-79DFBFF450C2 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「单据日期」的反向校验规则：【单据日期(doc_date)】CHECK DATE，E+MSG："请输入正确的日期格式" | 按校验规则拦截或提示 |  | RULE-2D5E034B6FC8 |
 | SCN-993FA5C292F8 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（原币）」的默认值规则：【无税金额（原币）(untax_amt_tc)】默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据无法保存。 | 默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据… |  | RULE-B96C0FB955B9 |
 | SCN-DBDC0FB84BF2 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「参考来源单号」的只读校验规则：【参考来源单号(ref_src_doc_no)】✅ 是 | 字段不可编辑 |  | RULE-A2488786C439 |
 | SCN-1171C0D96DA0 | 采购取价策略 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「取价策略名称」的必填校验规则：【取价策略名称(price_strtg_name)】✅ 是 | 为空时保存应被拦截 | TC-PPRC-0006 | RULE-B7A9ED2B6F76 |
+| SCN-93E117684523 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「货币编号」的反向校验规则：【货币编号(ccy_no)】当货币编号变更时，若单身已有数据则报错 | 按校验规则拦截或提示 |  | RULE-9B87BE645715；RULE-BA7212B24842 |
 | SCN-3E4CCDE04B06 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（原币）」的默认值规则：【税额（原币）(tax_tc)】默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据无法保存。 | 默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据… |  | RULE-2B3216625D44 |
 | SCN-31EADA3C34D1 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「参考来源序号」的只读校验规则：【参考来源序号(ref_src_seq)】✅ 是 | 字段不可编辑 |  | RULE-1BF747946EB5 |
 | SCN-1E37661B93CC | 采购取价策略 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「取价方式」的必填校验规则：【取价方式(price_mode)】✅ 是 | 为空时保存应被拦截 |  | RULE-063B4FCC5D7D |
+| SCN-0FA52F475FF6 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「汇率」的反向校验规则：【汇率(er)】校验：汇率须大于 0 | 按校验规则拦截或提示 |  | RULE-9EC64B6887D6；RULE-210C7C202E01 |
 | SCN-1F164C0D987D | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（本币）」的默认值规则：【无税金额（本币）(untax_amt_fc)】默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据无法保存。 | 默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据… |  | RULE-C06B2495AA37 |
 | SCN-FA7173A57736 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「采购类型」的只读校验规则：【采购类型(pur_type)】✅ 是 | 字段不可编辑 |  | RULE-DB74C19F9722 |
 | SCN-5E8FD8507962 | 采购取价策略 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「价格类型」的必填校验规则：【价格类型(price_type)】✅ 是 | 为空时保存应被拦截 |  | RULE-B7771842059F |
+| SCN-EFA4B7BDD62F | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「业务数量」的反向校验规则：【业务数量(biz_qty)】业务数量必须大于等于 0 | 按校验规则拦截或提示 |  | RULE-F70E34A0BE9C；RULE-48B9E1BC7DB4 |
 | SCN-1667722C8432 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（本币）」的默认值规则：【税额（本币）(tax_fc)】默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据无法保存。 | 默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据… |  | RULE-A8D7E89BA8E0 |
 | SCN-37DFD85C077D | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（原币）」的只读校验规则：【无税金额（原币）(untax_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-2C481BEF4C64 |
 | SCN-2C9EE40C5BD4 | 采购取价策略 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购取价策略「优先级」的必填校验规则：【优先级(pri)】✅ 是 | 为空时保存应被拦截 |  | RULE-F40FB98FA556 |
+| SCN-5A6DCB89AA56 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「单价」的反向校验规则：【单价(price)】Validator:单价必须大于等于 0 | 按校验规则拦截或提示 |  | RULE-00B7C41D1432；RULE-AB17267C4B16 |
 | SCN-963046B9AD82 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（原币）」的默认值规则：【货款金额（原币）(pmt_amt_tc)】默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据无法保存。 | 默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据… |  | RULE-9F887CBFE3F8 |
 | SCN-6A4247E3DC79 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（原币）」的只读校验规则：【税额（原币）(tax_tc)】✅ 是 | 字段不可编辑 |  | RULE-046E4C349FA6 |
 | SCN-67893EE478B3 | 采购订单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购订单「采购订单单号」的必填校验规则：【采购订单单号(po_doc_no)】✅ 是 | 为空时保存应被拦截 | TC-PO-0027 | RULE-A0F4525B0668 |
+| SCN-6CAC885881B7 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「金额」的反向校验规则：【金额(amt)】E+MSG：'此字段必须大于等于零 !' | 按校验规则拦截或提示 |  | RULE-0044365B70DD |
 | SCN-3DDBA5A558F6 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（本币）」的默认值规则：【货款金额（本币）(pmt_amt_fc)】默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据无法保存。 | 默认值：空。过账时由 bm.pur_rtn_stkou_doc.post 写入。<br/>时机点：过账执行时<br/>说明：过账前为空属正常状态，不得设为必填，否则单据… |  | RULE-0933C96F438C |
 | SCN-905DE5519D4B | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「无税金额（本币）」的只读校验规则：【无税金额（本币）(untax_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-443FC9A17D2F |
 | SCN-2BB2368FCC9F | 采购订单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购订单「供应商编号」的必填校验规则：【供应商编号(supp_no)】✅ 是 | 为空时保存应被拦截 | TC-PO-0030 | RULE-23D03A07E321 |
+| SCN-4719ECF86473 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「预计到货日期」的反向校验规则：【预计到货日期(antic_arr_date)】日期格式校验 | 按校验规则拦截或提示 |  | RULE-F180A4602714；RULE-41567DACAB05 |
 | SCN-F5425CB202A6 | 采购退货出库单 | 默认值 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「结算状态」的默认值规则：【结算状态(stlmt_stat)】默认值：新增默认：品号商品类型为赠品/备品，或仓库为VMI仓时 = 0.不需结算；其余 = 1.结算未完成。<br/>应付单审核后由系统回写为 2.结算已完成。<br/>时机点：默认执行时 / 应付单审核时 | 默认值：新增默认：品号商品类型为赠品/备品，或仓库为VMI仓时 = 0.不需结算；其余 = 1.结算未完成。<br/>应付单审核后由系统回写为 2.结算已完成。<br/… |  | RULE-64E34736B7F7 |
 | SCN-4C76A4303341 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「税额（本币）」的只读校验规则：【税额（本币）(tax_fc)】✅ 是 | 字段不可编辑 |  | RULE-D747304615FE |
 | SCN-6239E5AB67E6 | 采购订单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购订单「单据日期」的必填校验规则：【单据日期(doc_date)】✅ 是 | 为空时保存应被拦截 | TC-PO-0034 | RULE-A30A4A7E679F |
+| SCN-F10DEE580DD7 | 采购订单 | 反向校验 | NEEDS_UI_EXPLORATION | 验证采购订单「税率」的反向校验规则：【税率(tax_rate)】税率必须大于等于 0 | 按校验规则拦截或提示 |  | RULE-EDD113C85679；RULE-B4BF1894E9C9 |
 | SCN-E1FEE5075E41 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「保存 后置处理」的默认值规则：【保存】● 入参说明：默认取页面所有字段值作为入参。 | 按操作说明执行 |  | RULE-4FECEA62F72D |
 | SCN-B2625E7EE265 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（原币）」的只读校验规则：【货款金额（原币）(pmt_amt_tc)】✅ 是 | 字段不可编辑 |  | RULE-85AAAF10EFD8 |
 | SCN-BF9BB64E43BA | 采购订单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购订单「业务类型编号」的必填校验规则：【业务类型编号(biz_type_no)】✅ 是 | 为空时保存应被拦截 | TC-PO-0036 | RULE-05F029C6D231 |
+| SCN-2867D25CC404 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「保存 前置校验」的反向校验规则：【保存】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-634E3556D718；RULE-689A980337B5 |
 | SCN-DBCD6B193433 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「删除 后置处理」的默认值规则：【删除】● 入参说明：默认取页面业务主键字段值作为入参。 | 按操作说明执行 |  | RULE-CA93342EF1A9 |
 | SCN-EB8E334B3F8C | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「货款金额（本币）」的只读校验规则：【货款金额（本币）(pmt_amt_fc)】✅ 是 | 字段不可编辑 |  | RULE-201BD379C18A |
 | SCN-B49AB55BE370 | 采购订单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购订单「项目编号」的必填校验规则：【项目编号(proj_no)】✅ 是；必填条件：调用接口：查询运营单元采购参数(bm.pur_reg_param.get)<br/>入参：运营单元采购参数.运营单元编号(pur_reg_param.ops_unit_no)=【采购订单.运营单元编号(po.ops_unit_no)】<br/>回参：运营单元采购参数.是否启用项目管理(pur_reg_param.is_ena_proj_mgmt)<br/>IF 运营单元采购参数.是否启用项目管理(pur_reg_param.is_ena_proj_mgmt) 勾选 THEN 必填 | 为空时保存应被拦截 |  | RULE-58C12761139A |
+| SCN-23960862ACB0 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「提交 前置校验」的反向校验规则：【提交】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-E2FF693667FB；RULE-396777B89C49 |
 | SCN-3A80C556E317 |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「审核 后置处理」的默认值规则：【审核】● 入参说明：默认取页面业务主键字段值、审核日期 | 按操作说明执行 |  | RULE-D03B1CB6292D |
 | SCN-C6496DD777F7 | 采购退货出库单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货出库单「结算状态」的只读校验规则：【结算状态(stlmt_stat)】✅ 是 | 字段不可编辑 |  | RULE-3F8095D2A2CA |
 | SCN-8A5583397402 | 采购订单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购订单「运营单元编号」的必填校验规则：【运营单元编号(ops_unit_no)】✅ 是 | 为空时保存应被拦截 | TC-PO-0046 | RULE-2E906A50EBC0 |
+| SCN-A7A92EC2E6A1 |  | 反向校验 | NEEDS_CONFIRMATION | 验证采购「审核 前置校验」的反向校验规则：【审核】单价为0检查： | 校验不通过则操作被拦截 |  | RULE-696466E27CB8；RULE-2E0F77D3CFBB |
 | SCN-03C74339412B |  | 默认值 | NEEDS_CONFIRMATION | 验证采购「撤审 后置处理」的默认值规则：【撤审】入参说明：默认取页面业务主键字段值作为入参。 | 按操作说明执行 |  | RULE-932A203A0AB7 |
 | SCN-40B5764CEA6C | 采购退货单 | 只读校验 | NEEDS_UI_EXPLORATION | 验证采购退货单「运营单元编号」的只读校验规则：【运营单元编号(ops_unit_no)】✅ 是；只读条件：IF 【采购退货单】有明细行 THEN 只读 ENDIF | 字段不可编辑 | TC-PRTN-0004；TC-PRTN-0005 | RULE-609550F03D23 |
 | SCN-939EB80A9EC9 | 采购订单 | 必填校验 | NEEDS_UI_EXPLORATION | 验证采购订单「货币编号」的必填校验规则：【货币编号(ccy_no)】✅ 是 | 为空时保存应被拦截 | TC-PO-0004 | RULE-A116C492C0C7 |
