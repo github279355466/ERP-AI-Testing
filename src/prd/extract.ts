@@ -142,6 +142,23 @@ function isFlagRestatement(text: string): boolean {
   return FLAG_RESTATEMENT_HEAD.test(text) && !FLAG_RESTATEMENT_EXTRA.test(text);
 }
 
+const STATE_ATTRIBUTE_BY_RULE_TYPE: Partial<Record<RuleType, keyof Field>> = {
+  REQUIRED: 'required',
+  READONLY: 'readonly',
+  HIDDEN: 'hidden',
+  DISABLED: 'disabled',
+};
+
+/**
+ * 状态型规则必须与同字段「是否…」状态行一致；冲突时以状态行为准，
+ * 校验项原文降级为通用 VALIDATION 规则，冲突登记到 OPEN_QUESTIONS。
+ */
+function alignRuleTypeWithFieldState(ruleType: RuleType, field: Field): RuleType {
+  const attribute = STATE_ATTRIBUTE_BY_RULE_TYPE[ruleType];
+  if (!attribute) return ruleType;
+  return field[attribute] === true ? ruleType : 'VALIDATION';
+}
+
 function controlTypeOf(fillMethod: string | null): ControlType {
   if (!fillMethod) return 'UNKNOWN';
   if (/开窗|\[F2\]|查询方案/.test(fillMethod)) return 'LOOKUP';
@@ -1022,13 +1039,14 @@ function buildFieldRules(
       const items = splitValidationItems(field.validation_text).filter((item) => !isFlagRestatement(item));
       for (const [index, item] of items.slice(0, 4).entries()) {
         const isService = /调用接口|bm\.|接口/.test(item);
+        const rawRuleType: RuleType = isService ? 'API_CONTRACT' : classifyRule(item);
         rules.push(
           makeRule(
             document,
             `${base}|VALIDATION|${index}`,
             `${label} 校验`,
             `【${label}(${fieldNo})】${item}`,
-            isService ? 'API_CONTRACT' : classifyRule(item),
+            alignRuleTypeWithFieldState(rawRuleType, field),
             field,
             entity,
             'SAVE',
@@ -1570,6 +1588,34 @@ function buildOpenQuestions(
       evidence: [document.relative_path],
       impact: '字段定位可能歧义',
       suggested_owner: 'PRD 作者',
+      status: 'OPEN',
+      created_at: now,
+    });
+  }
+  for (const field of fields) {
+    if (!field.validation_text) continue;
+    const conflicts: string[] = [];
+    for (const item of splitValidationItems(field.validation_text)) {
+      const ruleType = classifyRule(item);
+      const attribute = STATE_ATTRIBUTE_BY_RULE_TYPE[ruleType];
+      if (!attribute) continue;
+      if (field[attribute] === true) continue;
+      conflicts.push(`${ruleType}：${truncate(item, 120)}`);
+    }
+    if (conflicts.length === 0) continue;
+    questions.push({
+      id: questionId(`${document.id}|conflict|${field.id}`),
+      object_type: 'OpenQuestion',
+      question: `字段 ${field.field_no ?? field.label} 的校验项与状态行矛盾，已按状态行判定：${field.label}`,
+      category: 'RULE_CONTRADICTS_SOURCE',
+      severity: 'MEDIUM',
+      document_ids: [document.id],
+      evidence: [
+        `${document.relative_path}:${field.source_refs[0]?.line_start ?? ''}`,
+        ...conflicts.slice(0, 3),
+      ],
+      impact: '校验项描述的状态与「是否必填/只读/隐藏/禁用」不一致，需 PRD 作者确认以哪条为准',
+      suggested_owner: 'PRD 作者 / 业务',
       status: 'OPEN',
       created_at: now,
     });

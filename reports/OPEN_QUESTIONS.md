@@ -1,15 +1,16 @@
 # 待确认问题清单
 
-生成时间：2026-11-07T15:01:50.930Z
-问题总数：369
+生成时间：2026-11-07T15:06:32.572Z
+问题总数：553
 
 ## 分布
 
 | 维度 | 值 | 数量 |
 | --- | --- | --- |
-| 严重度 | MEDIUM | 47 |
+| 严重度 | MEDIUM | 231 |
 | 严重度 | LOW | 289 |
 | 严重度 | HIGH | 33 |
+| 类别 | RULE_CONTRADICTS_SOURCE | 184 |
 | 类别 | AMBIGUOUS_RULE | 3 |
 | 类别 | MISSING_DEFINITION | 86 |
 | 类别 | VERSION_CONFLICT | 20 |

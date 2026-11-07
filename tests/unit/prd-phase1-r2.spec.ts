@@ -54,6 +54,21 @@ const SAMPLE_MD = `# 测试单据
 | 开窗类型 | 无 |
 | 开窗说明 |  |
 | 校验项 |  |
+
+##### 说明 (memo)
+
+| 字段项 | 详细内容 |
+| --- | --- |
+| 标题名 | 说明 |
+| 填值方式 | 文本输入 |
+| 是否必填 | ✅ 否 |
+| 是否只读 | ✅ 否 |
+| 是否隐藏 | ✅ 否 |
+| 是否禁用 | ✅ 否 |
+| 默认值 |  |
+| 开窗类型 | 无 |
+| 开窗说明 |  |
+| 校验项 | 1. 说明只读，不可修改。 |
 `;
 
 const JSON_ATTR = {
@@ -205,6 +220,34 @@ test('负向：空单元格证据被 RULE_EMPTY_EVIDENCE 检出', () => {
   expect(
     validation.errors.some(
       (issue) => issue.code === 'RULE_EMPTY_EVIDENCE' && issue.object_id === rule!.id
+    )
+  ).toBe(true);
+});
+
+test('校验项与状态行冲突时按状态行降级为 VALIDATION', () => {
+  const { bundle } = scan();
+  const memoRules = bundle.rules.filter((rule) => rule.field_name === '说明');
+  expect(memoRules.length).toBeGreaterThan(0);
+  expect(memoRules.some((rule) => rule.rule_type === 'READONLY')).toBe(false);
+  expect(memoRules.some((rule) => rule.description.includes('只读'))).toBe(true);
+  expect(
+    bundle.openQuestions.some(
+      (question) => question.category === 'RULE_CONTRADICTS_SOURCE' && question.question.includes('说明')
+    )
+  ).toBe(true);
+});
+
+test('负向：状态型规则与状态行矛盾时被 RULE_CONTRADICTS_SOURCE 检出', () => {
+  const { bundle } = scan();
+  const memo = bundle.fields.find((field) => field.label === '说明');
+  expect(memo).toBeTruthy();
+  const rule = bundle.rules.find((item) => item.field_no === memo!.field_no && item.rule_type === 'VALIDATION');
+  expect(rule).toBeTruthy();
+  rule!.rule_type = 'READONLY';
+  const validation = validateKnowledgeBundle(bundle);
+  expect(
+    validation.errors.some(
+      (issue) => issue.code === 'RULE_CONTRADICTS_SOURCE' && issue.object_id === rule!.id
     )
   ).toBe(true);
 });
