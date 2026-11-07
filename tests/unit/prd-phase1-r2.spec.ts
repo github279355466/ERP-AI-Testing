@@ -486,3 +486,67 @@ test('S-08 负向：同名实体仍存在时被 ENTITY_SPLIT_LABEL 检出', () =
     )
   ).toBe(true);
 });
+
+test('S-06 负向：同一摘录被大量规则引用时报 EVIDENCE_DUPLICATE_EXCERPTS', () => {
+  const { bundle } = scan();
+  const base = bundle.rules.find((rule) => rule.source_type === 'PRD_EXPLICIT');
+  expect(base).toBeTruthy();
+  for (let index = 0; index < 60; index += 1) {
+    bundle.rules.push({
+      ...base!,
+      id: `RULE-DUP-${index}`,
+      source_refs: [{ ...base!.source_refs[0] }],
+    });
+  }
+  const validation = validateKnowledgeBundle(bundle);
+  expect(validation.warnings.some((issue) => issue.code === 'EVIDENCE_DUPLICATE_EXCERPTS')).toBe(true);
+});
+
+test('S-06 负向：关系证据含否定表述时报 RELATION_CONTRADICTS_SOURCE', () => {
+  const { bundle } = scan();
+  const relation: Dependency = {
+    id: 'DEP-NEGATED',
+    object_type: 'Dependency',
+    name: '测试单据 ← 采购退货出库单',
+    module: '基础资料',
+    status: 'ACTIVE',
+    source_refs: [
+      {
+        document_id: bundle.documents[0].id,
+        file_path: bundle.documents[0].relative_path,
+        line_start: 1,
+        excerpt: '本作业不提供【取单】按钮，《采购退货出库单》五段式取单样式不适用',
+      },
+    ],
+    created_by_parser_version: 'test',
+    updated_at: '2026-11-07T00:00:00.000Z',
+    source_id: bundle.entities[0]?.id ?? 'ENT-X',
+    target_id: null,
+    target_ref: 'pur_rtn_stkou_doc',
+    relation_type: 'DERIVED_FROM',
+    mapping: null,
+    source_type: 'PRD_EXPLICIT',
+    confidence: 'CONFIRMED',
+    document_id: bundle.documents[0].id,
+  };
+  bundle.dependencies.push(relation);
+  const validation = validateKnowledgeBundle(bundle);
+  expect(
+    validation.errors.some(
+      (issue) => issue.code === 'RELATION_CONTRADICTS_SOURCE' && issue.object_id === 'DEP-NEGATED'
+    )
+  ).toBe(true);
+});
+
+test('S-06 负向：场景断言无法在规则原文找到依据时报 SCENARIO_ASSERTION_NOT_FROM_RULE', () => {
+  const { bundle } = scan();
+  const scenario = bundle.scenarios[0];
+  expect(scenario).toBeTruthy();
+  scenario.assertions = [{ type: 'business', target: '单据', expected: '上下游数据完全一致且无差异' }];
+  const validation = validateKnowledgeBundle(bundle);
+  expect(
+    validation.errors.some(
+      (issue) => issue.code === 'SCENARIO_ASSERTION_NOT_FROM_RULE' && issue.object_id === scenario.id
+    )
+  ).toBe(true);
+});
