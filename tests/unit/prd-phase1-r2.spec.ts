@@ -7,6 +7,7 @@ import { buildKnowledge } from '../../src/prd/pipeline';
 import { KnowledgeBundle } from '../../src/prd/types';
 import { buildEntityRelations } from '../../src/prd/relations';
 import { Dependency, DocumentRecord, Entity, OpenQuestion } from '../../src/prd/types';
+import { mergeEntities } from '../../src/prd/link';
 import { resolveJsonPath, validateKnowledgeBundle } from '../../src/prd/validate';
 
 const SAMPLE_MD = `# 测试单据
@@ -434,4 +435,54 @@ test('S-05 方向修正：原文「生成下游单据」时关系方向反转并
   expect(relation!.name).toBe('采购退货出库单 ← 源单据');
   expect(relation!.source_id).toBe('ENT-OUT');
   expect(questions.some((item) => item.category === 'RELATION_DIRECTION_FIXED')).toBe(true);
+});
+
+function bareEntity(id: string, label: string, entityNo: string | null, fieldCount: number, documentIds: string[]): Entity {
+  return {
+    id,
+    object_type: 'Entity',
+    name: label,
+    label,
+    entity_no: entityNo,
+    module: '采购',
+    status: 'ACTIVE',
+    parent_entity_no: null,
+    document_ids: documentIds,
+    field_count: fieldCount,
+    page_count: 0,
+    rule_count: 0,
+  } as Entity;
+}
+
+test('S-08 同名实体归并到字段最多的主实体并记录 superseded', () => {
+  const documents = [
+    { id: 'DOC-1', is_latest: true },
+    { id: 'DOC-2', is_latest: false },
+  ] as unknown as DocumentRecord[];
+  const empty = bareEntity('ENT-EMPTY', '采购退货出库单', null, 0, ['DOC-1', 'DOC-2']);
+  const rich = bareEntity('ENT-RICH', '采购退货出库单（`pur_rtn_stkou_doc`）', 'pur_rtn_stkou_doc', 1292, ['DOC-1']);
+  const result = mergeEntities([empty, rich], documents, []);
+  expect(result.entities).toHaveLength(1);
+  expect(result.entities[0].id).toBe('ENT-RICH');
+  expect(result.entities[0].field_count).toBe(1292);
+  expect(result.entities[0].superseded_entity_ids).toContain('ENT-EMPTY');
+  expect(result.entities[0].entity_kind).toBe('BUSINESS');
+  expect(result.idMap.get('ENT-EMPTY')).toBe('ENT-RICH');
+});
+
+test('S-08 零字段实体标记 HEADER_ONLY', () => {
+  const result = mergeEntities([bareEntity('ENT-H', '批号编号规则', null, 0, [])], [], []);
+  expect(result.entities[0].entity_kind).toBe('HEADER_ONLY');
+});
+
+test('S-08 负向：同名实体仍存在时被 ENTITY_SPLIT_LABEL 检出', () => {
+  const { bundle } = scan();
+  bundle.entities.push(bareEntity('ENT-DUP-A', '测试单据', 'test_doc', 3, []));
+  bundle.entities.push(bareEntity('ENT-DUP-B', '测试单据（`test_doc`）', null, 0, []));
+  const validation = validateKnowledgeBundle(bundle);
+  expect(
+    validation.errors.some(
+      (issue) => issue.code === 'ENTITY_SPLIT_LABEL' && issue.object_id.includes('ENT-DUP-A')
+    )
+  ).toBe(true);
 });

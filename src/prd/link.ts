@@ -5,6 +5,7 @@ import {
   DocumentRecord,
   Entity,
   ExistingCaseRecord,
+  Field,
   OpenQuestion,
   PARSER_VERSION,
   Rule,
@@ -23,22 +24,114 @@ export function compareVersions(left: string, right: string): number {
   return 0;
 }
 
-export function mergeEntities(entities: Entity[]): Entity[] {
-  const merged = new Map<string, Entity>();
+function normalizeEntityLabel(label: string | null | undefined): string {
+  return (label ?? '')
+    .replace(/[`'"“”‘’]/g, '')
+    .replace(/[（(][^）)]*[）)]/g, '')
+    .replace(/\s+/g, '')
+    .trim();
+}
+
+export interface EntityMergeResult {
+  entities: Entity[];
+  /** 被归并实体 ID -> 主实体 ID，供字段/规则/页面/关系重指向 */
+  idMap: Map<string, string>;
+}
+
+export function mergeEntities(
+  entities: Entity[],
+  documents: DocumentRecord[] = [],
+  fields: Field[] = []
+): EntityMergeResult {
+  const latestDocuments = new Set(documents.filter((item) => item.is_latest).map((item) => item.id));
+  const parent = new Map<string, string>();
+  const find = (key: string): string => {
+    let current = key;
+    while (parent.has(current) && parent.get(current) !== current) current = parent.get(current) as string;
+    return current;
+  };
+  const union = (left: string, right: string): void => {
+    const a = find(left);
+    const b = find(right);
+    if (a === b) return;
+    parent.set(a, b);
+  };
+  const keysOf = (entity: Entity): string[] => {
+    const keys = [`id:${entity.id}`];
+    if (entity.entity_no) keys.push(`no:${entity.entity_no}`);
+    const label = normalizeEntityLabel(entity.label ?? entity.name);
+    if (label) keys.push(`label:${label}`);
+    return keys;
+  };
   for (const entity of entities) {
-    const key = entity.entity_no ?? entity.label;
-    const existing = merged.get(key);
-    if (!existing) {
-      merged.set(key, { ...entity, document_ids: [...new Set(entity.document_ids)] });
-      continue;
+    const keys = keysOf(entity);
+    for (const key of keys) {
+      if (!parent.has(key)) parent.set(key, key);
+      union(keys[0], key);
     }
-    existing.document_ids = [...new Set([...existing.document_ids, ...entity.document_ids])];
-    existing.field_count += entity.field_count;
-    existing.page_count += entity.page_count;
-    existing.rule_count += entity.rule_count;
-    if (!existing.parent_entity_no && entity.parent_entity_no) existing.parent_entity_no = entity.parent_entity_no;
   }
-  return [...merged.values()].sort((left, right) => left.name.localeCompare(right.name, 'zh-CN'));
+  // 零字段实体：若其全部文档的字段都归属唯一另一个实体，视为误建并归并
+  const ownerByDocument = new Map<string, Set<string>>();
+  const entityById = new Map(entities.map((item) => [item.id, item]));
+  for (const field of fields) {
+    const owner = field.entity_id ? entityById.get(field.entity_id) : undefined;
+    if (!owner) continue;
+    const set = ownerByDocument.get(field.document_id) ?? new Set<string>();
+    set.add(find(`id:${owner.id}`));
+    ownerByDocument.set(field.document_id, set);
+  }
+  for (const entity of entities) {
+    if (entity.field_count > 0) continue;
+    const owners = new Set<string>();
+    for (const documentId of entity.document_ids) {
+      for (const owner of ownerByDocument.get(documentId) ?? []) owners.add(owner);
+    }
+    if (owners.size !== 1) continue;
+    const [owner] = [...owners];
+    if (owner !== find(`id:${entity.id}`)) union(`id:${entity.id}`, owner);
+  }
+  const groups = new Map<string, Entity[]>();
+  for (const entity of entities) {
+    const root = find(`id:${entity.id}`);
+    const list = groups.get(root) ?? [];
+    list.push(entity);
+    groups.set(root, list);
+  }
+  const idMap = new Map<string, string>();
+  const merged: Entity[] = [];
+  for (const list of groups.values()) {
+    const score = (entity: Entity): number =>
+      (entity.document_ids.some((id) => latestDocuments.has(id)) ? 1_000_000 : 0) + entity.field_count * 100 + entity.document_ids.length;
+    const survivor = [...list].sort((left, right) => score(right) - score(left))[0];
+    const result: Entity = {
+      ...survivor,
+      document_ids: [...new Set(list.flatMap((item) => item.document_ids))],
+      field_count: list.reduce((sum, item) => sum + item.field_count, 0),
+      page_count: list.reduce((sum, item) => sum + item.page_count, 0),
+      rule_count: list.reduce((sum, item) => sum + item.rule_count, 0),
+      superseded_entity_ids: [
+        ...new Set([
+          ...(survivor.superseded_entity_ids ?? []),
+          ...list.filter((item) => item.id !== survivor.id).map((item) => item.id),
+          ...list.flatMap((item) => item.superseded_entity_ids ?? []),
+        ]),
+      ].filter((id) => id !== survivor.id),
+    };
+    if (!result.parent_entity_no) {
+      result.parent_entity_no = list.map((item) => item.parent_entity_no).find(Boolean) ?? null;
+    }
+    if (result.field_count > 0) {
+      result.entity_kind = 'BUSINESS';
+    } else if (/_(d|dtl|detail)$/i.test(result.entity_no ?? '')) {
+      result.entity_kind = 'DETAIL';
+    } else {
+      result.entity_kind = 'HEADER_ONLY';
+    }
+    for (const item of list) idMap.set(item.id, survivor.id);
+    merged.push(result);
+  }
+  merged.sort((left, right) => left.name.localeCompare(right.name, 'zh-CN'));
+  return { entities: merged, idMap };
 }
 
 export function versionFromFileName(fileName: string): string | null {

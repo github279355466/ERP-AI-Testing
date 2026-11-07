@@ -353,6 +353,10 @@ function buildDocument(
 }
 
 function buildEntities(document: DocumentRecord, seeds: EntitySeed[], now: string): Entity[] {
+  // 审查报告 / 变更对比 / 条件写法体检等非 PRD 产物不建业务实体
+  if (/条件写法体检|云端漂移|-v\d+(?:\.\d+)*-to-v|会议议程|审查报告|确认事项清单/.test(document.file_name)) {
+    return [];
+  }
   return seeds.map((seed) => ({
     id: entityId(seed.entityNo ?? seed.label),
     object_type: 'Entity' as const,

@@ -445,7 +445,7 @@ export function validateKnowledgeBundle(bundle: KnowledgeBundle, options: Valida
     });
   }
   for (const entity of bundle.entities) {
-    if (entity.field_count === 0 && entity.entity_kind !== 'HEADER_ONLY') {
+    if (entity.field_count === 0 && !entity.entity_kind) {
       issues.push({
         code: 'ENTITY_HEADER_ONLY_UNMARKED',
         severity: 'WARN',

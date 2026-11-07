@@ -348,7 +348,20 @@ export function buildKnowledge(
     });
   }
 
-  const mergedEntities = mergeEntities(entities);
+  const entityMerge = mergeEntities(entities, documents, fields);
+  const mergedEntities = entityMerge.entities;
+  for (const field of fields) {
+    if (field.entity_id) field.entity_id = entityMerge.idMap.get(field.entity_id) ?? field.entity_id;
+  }
+  for (const page of pages) {
+    if (page.entity_id) page.entity_id = entityMerge.idMap.get(page.entity_id) ?? page.entity_id;
+  }
+  for (const rule of rules) {
+    rule.applies_to = [...new Set(rule.applies_to.map((id) => entityMerge.idMap.get(id) ?? id))];
+  }
+  for (const workflow of workflows) {
+    if (workflow.entity_id) workflow.entity_id = entityMerge.idMap.get(workflow.entity_id) ?? workflow.entity_id;
+  }
   const latestDocumentIds = markLatestDocuments(documents, new Set(fields.map((field) => field.document_id)));
   const knownFieldNos = new Set(fields.map((field) => field.field_no).filter((item): item is string => Boolean(item)));
   const relationQuestions: OpenQuestion[] = [];
