@@ -5,6 +5,8 @@ import { expect, test } from '@playwright/test';
 import { loadPrdConfig, PrdModelingConfig } from '../../src/prd/config';
 import { buildKnowledge } from '../../src/prd/pipeline';
 import { KnowledgeBundle } from '../../src/prd/types';
+import { buildEntityRelations } from '../../src/prd/relations';
+import { Dependency, DocumentRecord, Entity, OpenQuestion } from '../../src/prd/types';
 import { resolveJsonPath, validateKnowledgeBundle } from '../../src/prd/validate';
 
 const SAMPLE_MD = `# 测试单据
@@ -280,4 +282,84 @@ test('负向：条件型规则证据回退到状态行时报 EVIDENCE_NOT_COVERI
       (issue) => issue.code === 'EVIDENCE_NOT_COVERING_CONDITION' && issue.object_id === rule!.id
     )
   ).toBe(true);
+});
+
+function relationFixture(body: string): {
+  relations: Dependency[];
+  questions: OpenQuestion[];
+} {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'athena-rel-'));
+  const file = path.join(root, '源单据PRD.v1.0.md');
+  fs.writeFileSync(file, body, 'utf8');
+  const document = {
+    id: 'DOC-SRC',
+    object_type: 'Document',
+    name: '源单据',
+    module: '采购',
+    status: 'ACTIVE',
+    file_path: file,
+    relative_path: '采购域/源单据/源单据PRD.v1.0.md',
+    file_name: '源单据PRD.v1.0.md',
+    sha256: 'a'.repeat(64),
+    title: '源单据',
+    doc_version: '1.0',
+    entity_names: ['源单据'],
+    source_role: 'PRD',
+    is_latest: true,
+    job_directory: '源单据',
+    supersedes: [],
+    superseded_by: null,
+    related_document_ids: [],
+  } as unknown as DocumentRecord;
+  const entity = (id: string, label: string, entityNo: string): Entity =>
+    ({ id, object_type: 'Entity', name: label, label, entity_no: entityNo, module: '采购', status: 'ACTIVE', document_ids: [], field_count: 1 }) as Entity;
+  const entities = [
+    { ...entity('ENT-SRC', '源单据', 'src_doc'), document_ids: ['DOC-SRC'] } as Entity,
+    entity('ENT-OUT', '采购退货出库单', 'pur_rtn_stkou_doc'),
+    entity('ENT-PO', '采购订单', 'po'),
+  ];
+  const questions: OpenQuestion[] = [];
+  const relations = buildEntityRelations([document], entities, '2026-11-07T00:00:00.000Z', questions);
+  return { relations, questions };
+}
+
+test('S-04 否定语义：不提供取单按钮不建立确认关系', () => {
+  const { relations, questions } = relationFixture(`# 源单据
+
+## 三、取单
+
+本作业不提供【取单】按钮；《采购退货出库单》的五段式取单样式在本作业不适用，无需对齐。
+`);
+  expect(relations.filter((item) => item.relation_type === 'DERIVED_FROM')).toHaveLength(0);
+  expect(questions.some((item) => item.category === 'NEGATED_RELATION')).toBe(true);
+});
+
+test('S-04 否定语义：不作为来源单据类型不建立确认关系', () => {
+  const { relations } = relationFixture(`# 源单据
+
+## 三、取单
+
+主来源为采购退货单；采购订单不作为来源单据类型，仅作筛选条件。
+`);
+  expect(relations.some((item) => item.name.includes('采购订单') && item.relation_type === 'DERIVED_FROM')).toBe(false);
+});
+
+test('S-04 格式声明：五段式重写不建立确认关系', () => {
+  const { relations } = relationFixture(`# 源单据
+
+## 三、取单
+
+取单块按《采购退货出库单》PRD 五段式重写（画面 / 字段说明 / 信息处理）。
+`);
+  expect(relations.filter((item) => item.relation_type === 'DERIVED_FROM')).toHaveLength(0);
+});
+
+test('S-04 正向：显式来源声明仍建立 DERIVED_FROM', () => {
+  const { relations } = relationFixture(`# 源单据
+
+## 三、取单
+
+依据来源开启不同清单——采购订单、采购退货出库单。
+`);
+  expect(relations.some((item) => item.name.includes('采购订单') && item.relation_type === 'DERIVED_FROM')).toBe(true);
 });

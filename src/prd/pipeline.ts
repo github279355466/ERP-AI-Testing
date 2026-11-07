@@ -18,7 +18,7 @@ import { buildEvidence } from './evidence';
 import { renderAllReports } from './reports';
 import { generateScenarios } from './scenarios';
 import { scanSources, ScanResult, writeScanState } from './scanner';
-import { KnowledgeBundle, PARSER_VERSION, SCHEMA_VERSION } from './types';
+import { KnowledgeBundle, OpenQuestion, PARSER_VERSION, SCHEMA_VERSION } from './types';
 import { validateKnowledgeBundle, ValidationResult } from './validate';
 
 export interface PipelineResult {
@@ -351,8 +351,9 @@ export function buildKnowledge(
   const mergedEntities = mergeEntities(entities);
   const latestDocumentIds = markLatestDocuments(documents, new Set(fields.map((field) => field.document_id)));
   const knownFieldNos = new Set(fields.map((field) => field.field_no).filter((item): item is string => Boolean(item)));
+  const relationQuestions: OpenQuestion[] = [];
   const relationDependencies = [
-    ...buildEntityRelations(documents, mergedEntities, now),
+    ...buildEntityRelations(documents, mergedEntities, now, relationQuestions),
     ...buildMasterDataRelations(documents, mergedEntities, now),
   ];
   dependencies.push(...relationDependencies);
@@ -379,6 +380,7 @@ export function buildKnowledge(
     ...detectVersionConflicts(documents, now),
     ...detectConflictingRules(rules, mergedEntities, now, latestDocumentIds),
     ...detectBrokenFlows(dependencies, workflows, mergedEntities, now, knownFieldNos),
+    ...relationQuestions,
     ...buildRelationQuestions(documents, relationDependencies, now),
     ...buildSourceQuestions(documents, rules, scan, now),
     ...buildDependencyQuestions(dependencies, now),

@@ -15,12 +15,18 @@ const RELATION_DOC_NAMES = [
 
 const SECTION_PATTERN = /取单|来源单据|来源类型|上下游|关联单据/;
 const MASTER_DATA_API = /\bbm\.([a-z][a-z0-9_]*)\.([a-z][a-z0-9_]*)\b/gi;
+/** 命中行及其相邻行出现否定表述时，不得建 PRD_EXPLICIT 关系 */
+const NEGATION_PATTERN = /不提供|不作为|不适用|不生成|不含|无需|不支持|非来源|无需对齐|只作筛选|仅作筛选|不改变来源|不作为来源|仅当|只当|参考来源|若把|如果将|假如|改为/;
+/** 排版/格式声明不属于来源关系证据 */
+const FORMAT_DECLARATION = /五段式|重写样式|样式对齐|重写/;
 
 interface RelationHit {
   targetName: string;
   line: number;
   text: string;
   explicit: boolean;
+  negated: boolean;
+  formatOnly: boolean;
 }
 
 function resolveEntity(entities: Entity[], name: string): Entity | null {
@@ -29,6 +35,17 @@ function resolveEntity(entities: Entity[], name: string): Entity | null {
     entities.find((entity) => (entity.label ?? '').includes(name) || (entity.name ?? '').includes(name)) ??
     null
   );
+}
+
+/** 排除「采购订单号」「采购订单编号」等字段名，只保留真正的单据引用 */
+function mentionsDocument(text: string, name: string): boolean {
+  let index = text.indexOf(name);
+  while (index >= 0) {
+    const next = text[index + name.length] ?? '';
+    if (!/[号编]/.test(next)) return true;
+    index = text.indexOf(name, index + name.length);
+  }
+  return false;
 }
 
 function readLines(document: DocumentRecord): string[] {
@@ -66,11 +83,35 @@ function collectHits(document: DocumentRecord, lines: string[], selfName: string
   for (const range of sectionRanges(lines)) {
     for (let index = range.start; index < Math.min(range.end, range.start + 60); index += 1) {
       const text = lines[index] ?? '';
+      const segments = text
+        .split(/[。；;]|<br\s*\/?>/i)
+        .map((segment) => segment.trim())
+        .filter((segment) => segment.length > 0);
       for (const name of RELATION_DOC_NAMES) {
         if (name === selfName) continue;
-        if (!text.includes(name)) continue;
-        const explicit = /取单|来源|暂时只有|上游|依据.*选择|引用/.test(text);
-        hits.push({ targetName: name, line: index + 1, text: text.trim(), explicit });
+        if (!mentionsDocument(text, name)) continue;
+        const candidates = segments
+          .filter((segment) => mentionsDocument(segment, name))
+          .map((segment) => ({
+            segment,
+            explicit: /取单|来源|暂时只有|上游|依据.*选择|引用/.test(segment),
+            negated: NEGATION_PATTERN.test(segment),
+            formatOnly: FORMAT_DECLARATION.test(segment),
+          }));
+        if (candidates.length === 0) continue;
+        const formatMention = segments.some(
+          (segment) => FORMAT_DECLARATION.test(segment) && mentionsDocument(segment, name)
+        );
+        const chosen =
+          candidates.find((item) => item.explicit && !item.negated && !item.formatOnly) ?? candidates[0];
+        hits.push({
+          targetName: name,
+          line: index + 1,
+          text: chosen.segment.slice(0, 240),
+          explicit: chosen.explicit,
+          negated: chosen.negated,
+          formatOnly: chosen.formatOnly || formatMention,
+        });
       }
     }
   }
@@ -92,7 +133,8 @@ function toRef(document: DocumentRecord, line: number, text: string): SourceRef 
 export function buildEntityRelations(
   documents: DocumentRecord[],
   entities: Entity[],
-  now: string
+  now: string,
+  questions: OpenQuestion[] = []
 ): Dependency[] {
   const relations: Dependency[] = [];
   const seen = new Set<string>();
@@ -114,6 +156,22 @@ export function buildEntityRelations(
     for (const [targetName, hit] of byTarget) {
       const target = resolveEntity(entities, targetName);
       if (!target || target.id === selfEntity?.id) continue;
+      if (hit.negated || hit.formatOnly) {
+        questions.push({
+          id: questionId(`negated-relation:${document.id}:${targetName}`),
+          object_type: 'OpenQuestion',
+          question: `${selfName} 与 ${targetName} 的命中行包含否定或格式声明表述，未建确认关系：${hit.text.slice(0, 80)}`,
+          category: 'NEGATED_RELATION',
+          severity: 'MEDIUM',
+          document_ids: [document.id],
+          evidence: [`${document.relative_path}:${hit.line}`],
+          impact: '该来源关系未被确认为 DERIVED_FROM，需业务确认是否存在取单关系',
+          suggested_owner: 'PRD 作者 / 业务',
+          status: 'OPEN',
+          created_at: now,
+        });
+        continue;
+      }
       const key = `${selfEntity?.entity_no ?? document.id}->${target.entity_no ?? target.label}`;
       if (seen.has(key)) continue;
       seen.add(key);

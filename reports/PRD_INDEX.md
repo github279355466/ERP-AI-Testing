@@ -1,6 +1,6 @@
 # PRD 文档索引
 
-- 生成时间：2026-11-07T15:08:23.817Z
+- 生成时间：2026-11-07T15:17:08.119Z
 - 扫描目录：`C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd`
 - 文档总数：333（PRD 299，测试用例库 34）
 - 总字节数：20465800
