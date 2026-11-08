@@ -108,7 +108,7 @@ scripts/
 ### P1-01 基线冻结与快照
 
 - 目标：让 P1 改动可回溯、可回滚。
-- 输入：当前 Git 状态、Phase 2 未提交成果、知识库批次、测试结果。
+- 输入：当前 Git 状态（HEAD 899b14d，Phase 2 已提交）、P0 文档状态、知识库批次、测试结果。
 - 任务：
   1. 记录 `git status`、`HEAD`、文件清单、知识库 `generated_at`、`KM-*`、测试计数。
   2. 与用户确认提交范围（建议：源码/测试/配置/文档；`probe/` 诊断文件本地保留）。
@@ -116,7 +116,7 @@ scripts/
   4. 生成 `docs/upgrade/baseline-manifest.json`（可选）记录文件 SHA-256。
 - 产物：基线提交/标签、baseline manifest。
 - 验收：可从基线复现 `typecheck/build/test:unit/test:integration`。
-- 风险：未提交成果丢失；提交范围不当把临时证据带入 Git。
+- 风险：基线标签遗漏 P0 文档；提交范围不当把临时证据带入 Git。
 - 依赖：无。
 - 工作量：S。
 

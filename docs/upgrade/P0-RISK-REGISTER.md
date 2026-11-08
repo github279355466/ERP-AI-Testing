@@ -8,7 +8,7 @@
 
 | ID | 等级 | 风险 | 证据 | 影响 | 缓解措施 | 负责人/决策点 | 阶段 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| R-P0-01 | S0 | Phase 2 成果未提交，工作区可能丢失 | `HEAD 530bfc5`；16 modified + 206 untracked | 迁移基线不可回溯，回滚困难 | 先冻结基线提交/标签；只提交源码/测试/配置/文档 | Q-P0-01 | P1-01 |
+| R-P0-01 | S0 | 基线标签未创建；P2 证据未跟踪 | `HEAD 899b14d`，Phase 2 已提交；199 个 `probe/` P2 证据 + 1 个 Phase3 文档未跟踪；无基线标签 | 迁移基线不可回溯，证据范围不清 | 创建基线标签；确认 probe 证据归档策略 | Q-P0-01 | P1-01 |
 | R-P0-02 | S0 | 审核/删除可绕过授权 | `rowAction` 按 `row-action` 放行；页面对象 `audit()` 直接调 `MasterDataActions`；写配置 `allowHighRiskActions=true` | 误审核/误删除/越权写 | 写操作冻结；P1 ActionRegistry + per-case 授权 + 审计；P4 复验 | D-P0-006 / Q-P0-05 | P1/P4 |
 | R-P0-03 | S0 | 生产环境/错误环境误连 | 已有 host 白名单/生产阻断，但环境配置单点、无 per-run 审批 | 误操作共享/生产数据 | 保留 `ALLOW_ERP_UI_TEST`；增加 environment profile/运行审批；启动横幅 | P1-07 | P1 |
 | R-P0-04 | S1 | 平台核心含采购业务逻辑 | CLI、diagnostics、page-mapper、PRD relations/scenarios/config、navigation | 第二模块接入必须改平台代码 | P1 边界；P2/P4/P6 分批外置；平台纯度审计 | D-P0-003 | P1-P6 |

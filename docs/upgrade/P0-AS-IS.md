@@ -2,7 +2,7 @@
 
 > 盘点日期：2026-11-08
 > 仓库：`D:\AIProject\ERP-AI-Testing`
-> 代码基线：Git `HEAD = 530bfc5`，Phase 2 改动尚未提交
+> 代码基线：Git `HEAD = 899b14d`，Phase 2 代码已分 10 个提交纳入 Git；基线标签尚未创建
 > 盘点方式：只读代码/文档/配置/产物复核；未连接 ERP、未启动浏览器、未执行写操作
 
 ## 1. 结论摘要
@@ -28,7 +28,7 @@ Phase 1 的工程门禁当前可复现通过（`prd:validate` 0 error / 40 warni
 | JSON Schema | `ajv` 8.x，Draft 2020-12 |
 | 源码规模 | `src/` 87 个 `.ts`，15,818 行 |
 | 测试规模 | `tests/` 28 个 `.ts`，2,736 行；25 个 unit spec、2 个 integration spec、1 个 smoke spec |
-| Git 状态 | `HEAD 530bfc5`；16 个已跟踪文件被修改；206 个未跟踪文件（P0 文档新增前的基线，含 Phase 2 源码、测试、文档、probe 证据） |
+| Git 状态 | `HEAD 899b14d`；Phase 2 已提交；3 个 P0 文档修改未提交；200 个未跟踪文件（199 个 `probe/` P2 证据 + 1 个 `docs/PHASE3-字段规则校验要求.md`） |
 | 构建 | `npm run typecheck` 通过；`npm run build` 通过 |
 | 单测 / 集成 | `npm run test:unit` 139 passed；`npm run test:integration` 27 passed |
 | Phase 1 校验 | `npm run prd:validate -- --json`：`valid=true`，0 error / 40 warning |
@@ -158,7 +158,7 @@ flowchart TB
 | `config/phase2.navigation.json` | 采购 5 个页面、菜单路径、workItemCode、业务查询参数 | 页面键为采购；环境 URL 混在导航配置 |
 | `config/prd-modeling.config.json` | PRD 目录、扩展名、模块规则、场景来源、输出目录、策略 | 模块规则硬编码采购/应收/应付/财务等 |
 | `config/prd-modeling.config.local.json` | 本机 PRD 路径 | 已 Git 忽略 |
-| `.env.example` | `ALLOW_ERP_UI_TEST=false`、凭据键名、高风险开关默认 false、CDP/代理/模型版本 | 未提交（当前 untracked） |
+| `.env.example` | `ALLOW_ERP_UI_TEST=false`、凭据键名、高风险开关默认 false、CDP/代理/模型版本 | 已提交 |
 
 ### 5.2 安全机制
 
@@ -276,7 +276,7 @@ flowchart TB
 - `artifacts/phase2/`：00-discovery、01-planning、02-adapters、03-page-mapping、acceptance、最终报告。
 - `docs/PHASE2-配置说明.md`、`docs/PHASE2-运行手册.md`。
 - `config/athena.write.config.json`、`config/phase2.navigation.json`、`.env.example`。
-- 代码/测试/配置/文档均未提交；当前 Git 基线仍是 `530bfc5`。
+- Phase 2 代码/测试/配置/文档已分 10 个提交纳入 Git，当前 `HEAD=899b14d`；基线标签尚未创建；`probe/` 下 199 个 P2 证据文件仍未跟踪。
 
 ## 8. Phase 3 成果盘点
 
@@ -438,4 +438,4 @@ flowchart TB
 - 未发现 Phase 2 数据清理记录；P2.4 创建的单据默认保留。
 - 未执行 `test:smoke`，因为需要真实浏览器/登录态。
 - 未对真实 ERP 做任何本次 P0 复核；Phase 2 结论引用既有证据。
-- 未读取或打印任何明文密码；`.env` 当前不存在，`.env.example` 未提交。
+- 未读取或打印任何明文密码；`.env` 当前不存在，`.env.example` 已提交且只含键名。

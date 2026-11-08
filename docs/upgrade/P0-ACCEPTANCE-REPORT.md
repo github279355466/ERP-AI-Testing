@@ -4,6 +4,8 @@
 > 验收范围：v2.0 开发包 P0“现状盘点与架构基线”
 > 结论：**P0 通过（文档/盘点层面）；P1 未开始，等待人工确认。**
 
+> 2026-11-08 更新：人工裁决已收到，见 `P0-DECISIONS.md` 第 5 节。因本轮目标 token 预算耗尽，基线提交/标签与 P1 尚未执行。
+
 ## 1. 验收结论
 
 P0 要求的四个核心交付已完成：
@@ -32,7 +34,7 @@ P0 要求的四个核心交付已完成：
 | 旧阶段映射 | 原 Phase 1/2/3 每项成果均有映射 | `P0-AS-IS.md` 第 6-10 节逐项列出 Phase 1/2/3/0 成果与映射表 | 通过 |
 | 处理建议 | 每项标注保留/适配/迁移/重构/废弃及理由 | `P0-AS-IS.md` 第 10 节映射表；`P0-MIGRATION-PLAN.md` 第 2-6 节 | 通过 |
 | 风险 | 高风险项有规避措施和负责人/决策点 | `P0-GAP-MATRIX.md` 第 6 节；`P0-DECISIONS.md` 第 2 节 | 通过 |
-| 代码变更 | 未获批准前核心代码无破坏性改动 | 只新增 `docs/upgrade/` 文档；Git 中原有 16 modified + 206 untracked 为盘点前既有状态，未被本次修改 | 通过 |
+| 代码变更 | 未获批准前核心代码无破坏性改动 | 只新增/更新 `docs/upgrade/` 文档；未修改现有源码、配置、知识库或测试 | 通过 |
 
 补充验收：
 
@@ -87,8 +89,8 @@ git status --short
 | `npm run test:unit` | 139 passed / 0 failed |
 | `npm run test:integration` | 27 passed / 0 failed |
 | `npm run prd:validate -- --json` | `valid=true`，0 error / 40 warning；`mode=READ_ONLY` |
-| `git log` | `HEAD 530bfc5`；Phase 1 整改提交在历史上；Phase 2 未提交 |
-| `git status` | 16 modified tracked + 206 untracked（P0 前既有） |
+| `git log` | `HEAD 899b14d`；Phase 2 已分 10 个提交纳入 Git；Phase 1 整改提交在历史上 |
+| `git status` | 3 个 P0 文档修改 + 200 个未跟踪文件（199 个 `probe/` P2 证据 + 1 个 `docs/PHASE3-字段规则校验要求.md`） |
 
 未执行：
 
@@ -103,7 +105,7 @@ git status --short
 
 | 优先级 | 风险 | 证据 | 处置 |
 | --- | --- | --- | --- |
-| 1 | Phase 2 成果未提交 | 16 modified + 206 untracked；HEAD 仍 530bfc5 | Q-P0-01：先冻结基线 |
+| 1 | 基线标签尚未创建；P2 证据未跟踪 | Phase 2 代码已提交（HEAD 899b14d），但无基线标签；199 个 `probe/` P2 证据 + 1 个 Phase3 文档未跟踪 | Q-P0-01：创建基线标签并确认证据归档范围 |
 | 2 | 审核/删除授权可绕过 | `rowAction` 按 `row-action` 放行；页面对象 `audit()` 绕过 SafetyPolicy | D-P0-006：写操作冻结；P1 补 ActionRegistry/授权/审计 |
 | 3 | 平台核心含采购逻辑 | CLI、diagnostics、page-mapper、PRD relations/scenarios/config、navigation | P1 边界 + P2/P4/P6 迁移 |
 | 4 | 无模块包/集成包/核心契约 | 无 `business-modules/`、`integration-tests/`、Module/TestCase/DataRecipe/Report Schema | P1 建骨架与契约 |
@@ -124,7 +126,7 @@ git status --short
 | 知识库冻结清单 | 未建立 | P1/P2 处理 |
 | 测试数据清理 | 未执行 | 需人工确认 |
 | 文档事实源统一 | 未执行 | P1 处理 |
-| 秘密/PII 扫描 | 未做全量 | 已确认 `.env` 不存在、`.env.example` 未提交、profile 已忽略；至少一份 manifest 的 operator 为真实姓名，需 P1 策略 |
+| 秘密/PII 扫描 | 未做全量 | 已确认 `.env` 不存在、`.env.example` 仅含键名且已提交、profile 已忽略；至少一份 manifest 的 operator 为真实姓名，需 P1 策略 |
 
 ## 7. 门禁结论
 

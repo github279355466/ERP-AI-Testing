@@ -6,7 +6,7 @@
 ## 1. 迁移原则
 
 1. **不推翻重写**：现有浏览器、适配器、证据、PRD 扫描、执行器是可复用资产，优先“适配/迁移”，避免“推倒重来”。
-2. **先冻结基线**：在改动前把当前工作区（含 Phase 2 未提交成果）冻结为可回溯基线。
+2. **先冻结基线**：把当前 HEAD（Phase 2 已提交）与 P0 文档状态冻结为可回溯标签；`probe/` 证据单独归档。
 3. **先契约后代码**：P1 先建立 Module/Scenario/TestCase/PageMapping/DataRecipe/Report/Integration/ActionRegistry Schema，再迁移实现。
 4. **平台与业务分离**：采购逻辑从 `src/` 平台核心迁出到 `business-modules/purchase`；平台核心不出现采购字段/流程/选择器。
 5. **双轨兼容**：迁移期间保留旧路径/旧 API 作为兼容层，新路径稳定后再废弃；P0/P1 不删除旧代码。
@@ -170,7 +170,7 @@ Athena-ERP-Automation-Platform/
 任务：
 
 1. 记录当前 Git 状态、文件哈希、知识库批次、依赖版本、测试结果。
-2. 将 Phase 2 未提交成果提交为基线（需人工确认提交范围）。
+2. 为当前 HEAD 创建基线标签；Phase 2 代码已在 HEAD 899b14d，剩余 P0 文档提交/标签需确认范围。
 3. 创建 `docs/architecture/`、`docs/contracts/`、`docs/decisions/`、`docs/runbooks/`。
 4. 标记旧文档为 historical/legacy，指定单一事实源。
 5. 建立 `docs/upgrade/` 索引（本目录）。
