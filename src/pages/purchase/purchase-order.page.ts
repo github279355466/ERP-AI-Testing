@@ -136,16 +136,7 @@ export class PurchaseOrderPage extends BasePageObject {
   }
 
   async openExisting(documentNo: string): Promise<void> {
-    const target = await this.masterData.openRowAction('po_doc_no', documentNo, '查看');
-    if (target.ownsPage) {
-      throw new Error('[PURCHASE_ORDER_OPENED_IN_NEW_PAGE] 当前页面对象未绑定新窗口');
-    }
-    await this.page.waitForFunction(
-      () => document.querySelectorAll('[class*="FormItem-module_form-item__"]').length > 0,
-      undefined,
-      { timeout: this.config.browser.readyTimeoutMs },
-    );
-    await this.page.waitForTimeout(800);
+    await this.openRowPanel(documentNo, '查看');
   }
 
   async readHeader(): Promise<Record<string, string>> {
@@ -170,6 +161,166 @@ export class PurchaseOrderPage extends BasePageObject {
     await this.adapters.button.click(submit, { text: '提交', actionType: 'click' });
     await this.page.waitForTimeout(2_500);
     return this.readToast();
+  }
+
+  async openForEdit(documentNo: string): Promise<void> {
+    await this.openRowPanel(documentNo, '编辑');
+  }
+
+  private async openRowPanel(documentNo: string, action: string): Promise<void> {
+    await this.ensureRowVisible(documentNo);
+    const opened = await this.clickVisibleRowControl(documentNo, action);
+    if (!opened) throw new Error(`[PURCHASE_ORDER_ACTION_MISSING] 单据 ${documentNo} 无操作「${action}」`);
+    await this.page.waitForTimeout(2_200);
+    const tab = this.page.locator('.ant-tabs-tab', { hasText: '详情' }).last();
+    if ((await tab.count()) > 0) {
+      await tab.click().catch(() => undefined);
+      await this.page.waitForTimeout(800);
+    }
+    await this.page.waitForFunction(
+      () => Array.from(document.querySelectorAll('[class*="FormItem-module_form-item__"]')).some((node) => (node as HTMLElement).offsetWidth > 0),
+      undefined,
+      { timeout: this.config.browser.readyTimeoutMs },
+    );
+    await this.page.waitForTimeout(600);
+  }
+
+  async readStatus(documentNo: string): Promise<string> {
+    const row = await this.readListRow(documentNo);
+    return row?.manage_status ?? '';
+  }
+
+  async updateRemark(documentNo: string, remark: string): Promise<{ before: string; after: string; toast: string; status: string }> {
+    await this.openForEdit(documentNo);
+    const before = await this.inputValue('po.rmk');
+    await this.fillRemark(remark);
+    const saved = await this.save();
+    await this.closeDetail();
+    await this.ensureRowVisible(documentNo);
+    const status = await this.readStatus(documentNo);
+    await this.openExisting(documentNo);
+    const after = await this.inputValue('po.rmk');
+    await this.closeDetail();
+    return {
+      before,
+      after,
+      toast: saved.toast,
+      status,
+    };
+  }
+
+  async submitFromRow(documentNo: string): Promise<{ dialog: string; toast: string; status: string }> {
+    return this.rowAction(documentNo, '提交');
+  }
+
+  async auditFromRow(documentNo: string): Promise<{ dialog: string; toast: string; status: string }> {
+    return this.rowAction(documentNo, '审核');
+  }
+
+  async unauditFromRow(documentNo: string): Promise<{ dialog: string; toast: string; status: string }> {
+    return this.rowAction(documentNo, '撤审');
+  }
+
+  async deleteFromRow(documentNo: string): Promise<{ dialog: string; toast: string; exists: boolean }> {
+    const result = await this.rowAction(documentNo, '删除');
+    await this.page.waitForTimeout(1_500);
+    return { dialog: result.dialog, toast: result.toast, exists: await this.findRowAcrossPages(documentNo) };
+  }
+
+  private async findRowAcrossPages(documentNo: string): Promise<boolean> {
+    const first = this.page.locator('.dg-pagination-item', { hasText: '1' }).first();
+    if ((await first.count()) > 0) {
+      await first.click().catch(() => undefined);
+      await this.page.waitForTimeout(1_200);
+    }
+    for (let page = 0; page < 20; page += 1) {
+      if ((await this.masterData.rowIndex('po_doc_no', documentNo)) >= 0) return true;
+      const next = this.page.locator('.dg-pagination-next').first();
+      const cls = (await next.getAttribute('class').catch(() => '')) ?? '';
+      if ((await next.count()) === 0 || cls.includes('disabled')) break;
+      await next.click().catch(() => undefined);
+      await this.page.waitForTimeout(1_200);
+    }
+    return false;
+  }
+
+  private async rowAction(documentNo: string, text: string): Promise<{ dialog: string; toast: string; status: string }> {
+    await this.ensureRowVisible(documentNo);
+    const direct = await this.clickVisibleRowControl(documentNo, text);
+    if (!direct) {
+      const more = await this.clickVisibleRowControl(documentNo, '...');
+      if (!more) throw new Error(`[PURCHASE_ORDER_ACTION_MISSING] 单据 ${documentNo} 无可用动作「${text}」`);
+      await this.page.waitForTimeout(600);
+      const menuItem = this.page.locator('.digi-dropdown-menu-item:visible', { hasText: text }).first();
+      if ((await menuItem.count()) === 0) throw new Error(`[PURCHASE_ORDER_ACTION_MISSING] 单据 ${documentNo} 下拉菜单无动作「${text}」`);
+      await menuItem.click();
+    }
+    await this.page.waitForTimeout(1_200);
+    const dialog = await this.confirmDialogIfAny();
+    await this.page.waitForTimeout(1_500);
+    return { dialog, toast: await this.readToast(), status: await this.readStatus(documentNo) };
+  }
+
+  /**
+   * 列表操作列存在离屏克隆节点，不能直接 locator.click；
+   * 仅对可见按钮用包围盒相对坐标点击（自定义组件）。
+   */
+  private async clickVisibleRowControl(documentNo: string, text: string): Promise<boolean> {
+    const index = await this.masterData.rowIndex('po_doc_no', documentNo);
+    if (index < 0) return false;
+    const rect = await this.page.evaluate(
+      (args) => {
+        for (const container of ['.ag-pinned-right-cols-container', '.ag-center-cols-container']) {
+          const rows = Array.from(document.querySelectorAll(`${container} .ag-row[row-index="${args.index}"]`));
+          for (const row of rows) {
+            for (const button of Array.from(row.querySelectorAll('button.custom-op-text-btn, button.custom-op-more-btn'))) {
+              if (((button.textContent || '').trim()) !== args.text) continue;
+              const box = button.getBoundingClientRect();
+              if (box.width > 0 && box.height > 0 && box.x >= 0 && box.x < window.innerWidth && box.y >= 0 && box.y < window.innerHeight) {
+                return box.toJSON();
+              }
+            }
+          }
+        }
+        return null;
+      },
+      { index, text },
+    );
+    if (!rect) return false;
+    await this.page.mouse.click(rect.x + rect.width / 2, rect.y + rect.height / 2);
+    return true;
+  }
+
+  private async ensureRowVisible(documentNo: string): Promise<number> {
+    let index = await this.masterData.rowIndex('po_doc_no', documentNo);
+    if (index >= 0) return index;
+    for (let page = 0; page < 10; page += 1) {
+      const next = this.page.locator('.dg-pagination-next').first();
+      if ((await next.count()) === 0 || (await next.getAttribute('class').catch(() => ''))?.includes('disabled')) break;
+      await next.click().catch(() => undefined);
+      await this.page.waitForTimeout(1_500);
+      index = await this.masterData.rowIndex('po_doc_no', documentNo);
+      if (index >= 0) return index;
+    }
+    await this.filterByDocumentNo(documentNo);
+    const filtered = await this.masterData.rowIndex('po_doc_no', documentNo);
+    if (filtered < 0) throw new Error(`[PURCHASE_ORDER_ROW_MISSING] 列表未找到单据 ${documentNo}`);
+    return filtered;
+  }
+
+  private async confirmDialogIfAny(): Promise<string> {
+    const dialog = this.page.locator('.rc-dialog-wrap:visible').last();
+    if ((await dialog.count()) === 0) return '';
+    const text = ((await dialog.innerText().catch(() => '')) ?? '').replace(/\s+/g, ' ').trim();
+    for (const name of ['确定', '确认', '是', '提交', '审核', '撤审', '删除']) {
+      const button = dialog.getByRole('button', { name, exact: true });
+      if ((await button.count()) > 0) {
+        await button.last().click({ timeout: this.config.browser.actionTimeoutMs }).catch(() => undefined);
+        break;
+      }
+    }
+    await this.page.waitForTimeout(2_000);
+    return text;
   }
 
   async audit(documentNo: string): Promise<{ toast: string; row: Record<string, string> | null }> {

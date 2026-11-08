@@ -30,6 +30,7 @@
     "platform:run:simulate": "npm run build && node dist/cli/platform-run.js simulate",
     "p6:system-smoke": "npm run build && node scripts/run-system-smoke.mjs",
     "p6:system-smoke:write": "npm run build && node scripts/run-system-smoke.mjs --with-write",
+    "p7:purchase-lifecycle": "npm run build && node dist/cli/platform-run.js run --module purchase --case SMOKE-PURCHASE-ORDER-LIFECYCLE --allow-write --config config/athena.write.config.json",
     "platform:check": "npm run typecheck && npm run test:unit && npm run test:contract && npm run test:platform",
     "test:smoke": "playwright test tests/smoke",
     "athena": "node dist/cli/main.js",

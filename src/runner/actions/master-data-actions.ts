@@ -19,15 +19,38 @@ export class MasterDataActions {
 
   async filterBy(field: string, value: string): Promise<void> {
     const page = this.getPage();
-    await page.locator('button:visible', { hasText: '筛选' }).first().click();
+    const openPopover = page.locator('[class*="MultiConditionFilter-module_popover-content"]:visible');
+    if ((await openPopover.count()) === 0) {
+      await page.locator('button:visible', { hasText: '筛选' }).first().click();
+    }
     await page.waitForTimeout(700);
-    const root = page.locator('[class*="MultiConditionFilter-module_popover-content"]').first();
-    await root.locator('[class*="ConditionRow-module_row-field"] .ath-select').first().click();
-    await page.waitForTimeout(500);
-    await page
-      .locator('.ath-select-dropdown:not(.ath-select-dropdown-hidden) .ath-select-item-option:visible', { hasText: field })
-      .first()
-      .click();
+    const root = page.locator('[class*="MultiConditionFilter-module_popover-content"]:visible').last();
+    const clear = root.locator('button', { hasText: '清空' }).last();
+    if ((await clear.count()) > 0) {
+      await clear.click().catch(() => undefined);
+      await page.waitForTimeout(400);
+    }
+    const fieldRow = root.locator('[class*="ConditionRow-module_row-field"] .ath-select').first();
+    const currentField = ((await fieldRow.innerText().catch(() => '')) ?? '').replace(/\s+/g, ' ').trim();
+    if (!currentField.includes(field)) {
+      await fieldRow.click();
+      await page.waitForTimeout(1_200);
+      let option = page
+        .locator('.ath-select-dropdown:not(.ath-select-dropdown-hidden) .ath-select-item-option:visible', { hasText: field })
+        .first();
+      if ((await option.count()) === 0) {
+        await fieldRow.click().catch(() => undefined);
+        await page.waitForTimeout(1_200);
+        option = page
+          .locator('.ath-select-dropdown:not(.ath-select-dropdown-hidden) .ath-select-item-option:visible', { hasText: field })
+          .first();
+      }
+      if ((await option.count()) === 0) {
+        await page.keyboard.press('Escape');
+        throw new Error(`[FILTER_FIELD_NOT_FOUND] 筛选字段「${field}」不存在；当前字段=${currentField}`);
+      }
+      await option.click();
+    }
     await page.waitForTimeout(300);
     const input = root.locator('input[placeholder="请输入值"]').first();
     await input.click();

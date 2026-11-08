@@ -1,0 +1,43 @@
+schema_version: "1.0"
+id: SMOKE-PURCHASE-ORDER-LIFECYCLE
+module_id: purchase
+version: 0.1.0
+title: 采购订单全操作闭环（新增/修改/提交/审核/撤审/删除）
+objective: 真实 UI 验证采购订单增改查、提交、审核、撤审与删除，并保留可追溯证据
+scenario_refs: [SCN-PURCHASE-ORDER-LIFECYCLE]
+source_refs:
+  - document_id: SRC-PAGE-PO-FLOW
+    file_path: src/pages/purchase/purchase-order.flow.ts
+    source_type: UI_OBSERVED
+    excerpt: createPurchaseOrder 主流程；P7 扩展修改/提交/审核/撤审/删除
+preconditions:
+  - 已登录测试环境并具备采购订单新增/提交/审核/撤审/删除权限
+  - 基础资料 QN002 / SUPP-1001 / PO0501 / 01-2-00011 存在
+  - 本次运行显式授权写操作与删除，仅操作本代理创建的数据
+data_recipe_refs: [RECIPE-PURCHASE-ORDER-BASIC]
+dependencies: []
+steps:
+  - action: navigate
+    target: purchase-order
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: purchase-order-lifecycle
+    value: '{"opsUnit":"QN002","supplier":"SUPP-1001","bizType":"PO0501","itemNo":"01-2-00011","qty":"1","price":"10","runTag":"${RUN_TIMESTAMP}"}'
+    evidence: true
+assertions:
+  - type: status
+    target: 采购订单状态链路
+    expected: 未审核→审核中→已审核→未审核
+    level: business
+    source_ref:
+      document_id: SRC-PAGE-PO-FLOW
+      file_path: src/pages/purchase/purchase-order.flow.ts
+      source_type: UI_OBSERVED
+      excerpt: 行操作 submit/audit/unaudit 后回读 manage_status
+cleanup_policy: mark_for_cleanup
+status: reviewed
+timeout_ms: 900000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

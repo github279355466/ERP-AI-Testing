@@ -36,6 +36,7 @@ test.describe('模块包接入', () => {
 
   test('模块流程注册表可解析采购流程与内置只读流程', () => {
     expect(typeof getModuleFlow('purchase', 'purchase-order-create')).toBe('function');
+    expect(typeof getModuleFlow('purchase', 'purchase-order-lifecycle')).toBe('function');
     expect(typeof getModuleFlow('base', 'platform:list-smoke')).toBe('function');
     expect(() => getModuleFlow('base', 'purchase-order-create')).toThrow(/FLOW_NOT_REGISTERED/);
   });

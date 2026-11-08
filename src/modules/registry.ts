@@ -1,10 +1,11 @@
 import { ModuleFlow } from './types';
-import { purchaseOrderCreate, purchaseOrderListSmoke } from './purchase/flows';
+import { purchaseOrderCreate, purchaseOrderLifecycle, purchaseOrderListSmoke } from './purchase/flows';
 import { listSmokeFlow } from './builtin';
 
 const FLOWS: Record<string, Record<string, ModuleFlow>> = {
   purchase: {
     'purchase-order-create': purchaseOrderCreate,
+    'purchase-order-lifecycle': purchaseOrderLifecycle,
     'purchase-order-list-smoke': purchaseOrderListSmoke,
   },
 };
