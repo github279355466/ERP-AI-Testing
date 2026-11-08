@@ -99,14 +99,19 @@ PRD 索引 `knowledge/athena-prd-map.json` 由 `prd:index` 从外部 PRD 目录�
 
 Phase 1 是独立子项目，产物与 legacy 知识库隔离，目录为 `src/prd/`、`artifacts/knowledge/`、`artifacts/source-index/`、`reports/`、`schemas/`。
 
-- **流水线**：`scanner`（递归扫描 + SHA-256 + 稳定 ID + 增量状态）→ `extract` / `cases`（MD、平台 `prd_spec` JSON、TXT 与用例库解析）→ `link`（版本归并、引用解析、覆盖率）→ `relations`（单据取单/回写关系）→ `evidence`（原文行切片证据）→ `scenarios`（场景草案）→ `validate` → `reports`。
+- **流水线**：`scanner`（递归扫描 + SHA-256 + 稳定 ID + 增量状态）→ `extract` / `cases`（MD、平台 `prd_spec` JSON、TXT 与用例库解析）→ `link`（实体归并、版本归并、引用解析、覆盖率）→ `relations`（单据取单/回写关系）→ `evidence`（原文行切片证据）→ `scenarios`（场景草案与去重）→ `remediation`（整改问题自动登记）→ `validate` → `reports`。
 - **13 类对象**：Document / Entity / Page / Field / Control / Rule / Action / Workflow / Dependency / Scenario / OpenQuestion / ExistingCase / Evidence，落 `artifacts/knowledge/*.json`。
-- **证据契约**：`SourceRef` 必须内嵌 `document_id`、`file_path`、`doc_version`、`sha256`、`section`、`line_start` 与逐字 `excerpt`。`prd:validate` 通过 `document_id → DocumentRecord.file_path` 解析绝对路径（兼容 PRD 根与用例库两个来源），回读原文逐行比对；不一致即 ERROR。
+- **证据契约**：`SourceRef` 必须内嵌 `document_id`、`file_path`、`doc_version`、`sha256`、`section` 与逐字 `excerpt`；Markdown 用 `line_start` 定位，平台 `prd_spec` JSON 用 `json_path` 定位属性节点（可穿透 JSON 字符串节点），此时 `line_start` 置空。`prd:validate` 通过 `document_id → DocumentRecord.file_path` 解析绝对路径（兼容 PRD 根与用例库两个来源），回读原文逐行比对，并对 `json_path` 做可达性校验；不一致即 ERROR。
+- **规则出处**：状态型规则（REQUIRED / READONLY / HIDDEN / DISABLED）只由「是否必填 / 是否只读 / 是否隐藏 / 是否禁用」状态行产生；校验项文本一律归 `VALIDATION`，与状态行冲突时以状态行判定并登记 `RULE_CONTRADICTS_SOURCE`。有条件的规则证据必须落在条件行。空单元格、纯结构行不生成规则。
+- **关系语义**：取单关系按句判定否定与格式声明（不提供 / 不作为 / 不适用 / 仅作筛选 / 参考来源 / 五段式重写等），「采购订单号」这类字段名不算单据引用；原文「生成 / 下推 目标单据」时方向反转。`mapping` 只接受解析出的 `本单字段 = 来源单据.字段` 数组，解析不出置 `null` 并登记 `MAPPING_UNRESOLVED`。
+- **实体归并**：归并键为「规范化业务对象名（去括号与反引号）+ 实体编码」，保留有最新版文档且字段最多的主实体，其余 ID 进入 `superseded_entity_ids` 并回指字段/规则/页面/关系；零字段实体仅在其文档字段全部归属唯一其他实体时归并，否则标记 `HEADER_ONLY` / `DETAIL`。审查报告、变更对比、条件写法体检、云端漂移等非 PRD 产物不建实体。
+- **场景去重**：去重键为「业务对象 + 字段/动作 + 规则语义指纹」，并二次按标题合并，合并结果写入 `merged_scenario_ids`；断言必须取自规则原文（引号内提示消息 / 条件原文 / 描述片段），禁止「按规则执行」类模板串；生成正常业务、异常输入、边界值、数量与金额四类场景族。
 - **来源分层**：`PRD_EXPLICIT` / `PRD_DERIVED` / `PLATFORM_SERVICE` / `UI_OBSERVED` / `USER_CONFIRMED` / `PENDING`。引用平台服务的字段行为单独登记口径待确认，不默认等同 PRD 明确规则。
 - **场景准入**：引用 `PRD_DERIVED` 或非 CONFIRMED 规则的场景必须 `NEEDS_CONFIRMATION`；Phase 1 不产出 `UI_READY`；全部场景 `DRAFT` + `review_required=true`，无执行入口。
 - **只读命令**：`prd:validate` / `prd:report` 仅加载既有产物，不重扫、不写知识库；`prd:report --out <dir>` 可重定向。
 - **运行时消费**：`PrdKnowledgeBase.load({ knowledgeDir, sourceIndexDir })` 提供文档、最新版、实体、字段、规则、依赖、证据与覆盖率查询；Phase 2 必须经由此适配层读取，不得直接解析 JSON。
 - **Schema**：`npm run prd:schemas` 生成 13 类 + `common.schema.json`，`prd:validate` 用 ajv（Draft 2020-12）执行。
+- **语义门禁**：`prd:validate` 除结构与逐字比对外，还执行 `RULE_EMPTY_EVIDENCE`、`EVIDENCE_JSON_PATH_UNRESOLVED`、`RULE_CONTRADICTS_SOURCE`、`EVIDENCE_NOT_COVERING_CONDITION`、`EVIDENCE_DUPLICATE_EXCERPTS`、`RELATION_CONTRADICTS_SOURCE`、`RELATION_MAPPING_PLACEHOLDER`、`ENTITY_SPLIT_LABEL`、`SCENARIO_ASSERTION_NOT_FROM_RULE` 九类语义校验，均不接受白名单放行。
 
 ## 5. 数据流
 
@@ -135,13 +140,20 @@ src/
   browser/  controls/  locator/  discovery/
   assertion/  evidence/  reporting/  runner/
   knowledge/  config/  cli/  prd/
+  platform/   v2.0 平台核心：契约、知识引擎、场景编译、执行调度、断言、报告
+  modules/    v2.0 业务模块包（purchase 等）
+  session/  navigation/  pages/   CDP 会话、页面导航与页面对象
+business-modules/  模块包资产：页面映射、场景、用例、数据配方、套件
+integration-tests/ 跨模块链路包（如 purchase-to-ap）
 tests/
-  unit/     纯逻辑单测
+  unit/     纯逻辑单测（25 spec / 139 用例）
+  platform/ v2.0 契约与引擎测试
   smoke/    真实浏览器冒烟（手动触发）
 knowledge/  页面与控件知识
 artifacts/  运行产物（git 忽略；含 Phase 1 knowledge/ 与 source-index/）
 reports/    Phase 1 渲染报告
 schemas/    Phase 1 正式 JSON Schema
+platform/contracts/schemas/  v2.0 契约 Schema
 ```
 
 ## 8. 非目标

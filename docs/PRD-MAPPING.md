@@ -1,4 +1,7 @@
-# PRD 关联索引
+# PRD 关联索引（legacy）
+
+> **时效声明（2026-11-08）**：本文件由框架命令 `npm run athena -- prd:index` 生成，只扫描作业目录顶层 MD，样本停在 2026-11-06 的 19 个作业（如采购退货出库单 v1.22）。
+> 当前权威 PRD 建模结果以 `artifacts/knowledge/`（`prd:scan` 产出）为准；本表仅用于 legacy `knowledge/athena-prd-map.json` 的历史对照，不要用它判断版本是否最新。
 
 来源目录：`C:/Users/Administrator/AppData/Roaming/ade-client/ade-workspace/tenant_digichannel/solution_smbcloud/_prd_workspace/prd`
 生成文件：`knowledge/athena-prd-map.json`

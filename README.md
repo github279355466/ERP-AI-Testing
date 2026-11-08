@@ -48,15 +48,31 @@ npm run prd:report            # 只读渲染报告（不重扫；--out <dir> 可
 产出：
 
 - `artifacts/knowledge/*.json`：Document / Entity / Page / Field / Control / Rule / Action / Workflow / Dependency / Scenario / OpenQuestion / ExistingCase / Evidence 共 13 类对象。
-- `artifacts/source-index/DOCUMENT_REGISTER.json`：540 个扫描文件全登记，含未建模与不支持格式原因。
+- `artifacts/source-index/DOCUMENT_REGISTER.json`：540 个扫描文件全登记（其中 333 份进入建模），含未建模与不支持格式原因。
 - `reports/*.md`：PRD 索引、分析、覆盖率矩阵、待确认问题、版本冲突、场景草案。
 - `schemas/*.schema.json`：正式 JSON Schema，由 `npm run prd:schemas` 生成，`prd:validate` 用 ajv 执行。
 
 PRD 路径不写死在仓库：默认配置使用 `${PRD_WORKSPACE}` 占位符，本机路径放在被 Git 忽略的
 `config/prd-modeling.config.local.json`；也可用环境变量 `PRD_INPUT_DIR` 或 `--prd <dir>` 覆盖。
 
-规则证据必须可定位：`source_refs` 内含 `doc_version`、`sha256`、`line_start` 与该行逐字 `excerpt`，
-`prd:validate` 会对每条 `PRD_EXPLICIT` 规则回读原文比对，不一致即 ERROR。
+规则证据必须可定位：Markdown 文档的 `source_refs` 内含 `doc_version`、`sha256`、`line_start` 与该行逐字 `excerpt`；
+平台 `prd_spec` JSON 文档改用 `json_path` 指向属性节点（`field_attr_cfg_cont.cnst.read.cond` 等），不再用首行充当证据。
+`prd:validate` 会回读原文逐行比对，并对 `json_path` 做可达性校验，不一致即 ERROR。
+
+### 第二轮整改（2026-11-08）
+
+针对 `artifacts/acceptance/PHASE1-REMEDIATION-INSTRUCTIONS-R2.md` 的 9 项 P0 缺陷完成整改，逐项 before/after 见
+`artifacts/acceptance/PHASE1-REMEDIATION-R2.md`，判定口径见根目录 `DECISIONS.md`。
+
+| 指标 | 整改后 |
+| --- | --- |
+| 规模 | 333 文档 / 43 实体 / 8454 字段 / 26498 规则 / 850 依赖 / 3204 场景 / 33510 证据 |
+| 校验 | `prd:validate` PASS（0 error / 40 warning） |
+| 单测 | `npx playwright test tests/unit` → 139 passed（2026-11-08 实测） |
+| 验收复算 | 空证据 0、反证 0、条件孤儿 0、占位 mapping 0、同名实体分裂 0、重复场景 0 |
+
+规则证据有效性（空单元格、纯结构行、`✅ 是/否` 状态标记）与关系否定语义的判定口径已固化在 `DECISIONS.md` D-001 / D-002；
+第二轮遗留项：采购链路字段级映射可解析 5/12，未解析的 7 条登记 `MAPPING_UNRESOLVED`。
 
 ## 环境要求
 

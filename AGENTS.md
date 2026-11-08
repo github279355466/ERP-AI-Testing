@@ -106,6 +106,7 @@ npm run athena -- verify --case <case.json>
 - `knowledge/athena-page-map.json`：页面入口、`workItemCode`、实体、字段。
 - `knowledge/athena-component-map.json`：控件到定位配方的映射。
 - `knowledge/athena-business-rules.json`：仅收录已验证规则。
+- 改变「规则/关系是否可信」判定口径时，必须在根目录 `DECISIONS.md` 追加一条决策记录（背景、决策、影响范围、复算命令）。
 - 更新后运行 `npm run athena -- verify` 自查，并确认知识库能被 `KnowledgeBase.load` 正常加载。
 - 新模块知识应放 `business-modules/<module-id>/knowledge/`，通过页面映射与 `source_ref` 追溯来源。
 

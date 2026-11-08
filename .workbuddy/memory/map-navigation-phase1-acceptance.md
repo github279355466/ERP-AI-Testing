@@ -1,6 +1,7 @@
 # 地图导航项目总结 — Phase 1 独立质量验收（2026-11-07）
 
 > 触发原因：本次为长会话多成员协作，按「Conversations get compacted, files don't」原则落盘，防止压缩后任务/进度丢失。
+> **状态更新（2026-11-08）**：第一轮整改（16/17）与第二轮整改（S-01~S-09）均已完成自检，当前申请第三轮独立验收；最新结论见 `artifacts/acceptance/PHASE1-REMEDIATION-R2.md` 与 `.workbuddy/memory/MEMORY.md`。本文件以下内容是 2026-11-07 验收当天的历史快照。
 
 ## 1. 项目地图
 

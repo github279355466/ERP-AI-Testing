@@ -1,5 +1,8 @@
 # 工作区交接说明（2026-11-06）
 
+> **时效声明（2026-11-08）**：本文件是 2026-11-06 工作区迁移当天的快照，文中的单测数量、知识库份数、run 数与目录清单已过期。
+> 当前状态与目录以 `README.md`、`docs/ARCHITECTURE.md`、`.workbuddy/memory/MEMORY.md` 为准；迁移结论（profile 不进会话目录、产物留仓库）仍然有效。
+
 > 给后续会话/协作者看：项目资产已全部迁到 `D:\AIProject\ERP-AI-Testing`，agent 会话目录不再存放任何文件。
 > 后续工作请直接在本目录进行，不要再读写 `C:\Users\Administrator\Documents\IndepthAI\2026-11-06\new-chat`。
 
