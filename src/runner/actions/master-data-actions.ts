@@ -67,11 +67,12 @@ export class MasterDataActions {
         (item) => (item.querySelector(`.ag-cell[col-id="${args.column}"]`)?.textContent || '').trim() === args.value,
       );
       if (!row) return null;
+      const index = row.getAttribute('row-index');
+      const cells = Array.from(
+        document.querySelectorAll(`.ag-row[row-index="${index}"] .ag-cell[col-id]`),
+      );
       return Object.fromEntries(
-        Array.from(row.querySelectorAll('.ag-cell[col-id]')).map((cell) => [
-          cell.getAttribute('col-id') || '',
-          (cell.textContent || '').trim(),
-        ]),
+        cells.map((cell) => [cell.getAttribute('col-id') || '', (cell.textContent || '').trim()]),
       );
     }, { column, value });
   }
@@ -85,12 +86,8 @@ export class MasterDataActions {
     const index = await this.rowIndex(column, value);
     if (index < 0) throw new Error(`未找到目标行: ${column}=${value}`);
     const before = new Set(page.context().pages());
-    await page
-      .locator(`.ag-row[row-index="${index}"] .custom-op-container:not(.custom-op-measure-container) > button.custom-op-text-btn`, {
-        hasText: text,
-      })
-      .first()
-      .click();
+    const row = await this.actionRow(page, index, column);
+    await row.locator('button.custom-op-text-btn:visible', { hasText: text }).first().click();
     await page.waitForTimeout(2200);
 
     const created = page.context().pages().filter((item) => !before.has(item));
@@ -113,13 +110,16 @@ export class MasterDataActions {
     const page = this.getPage();
     const index = await this.rowIndex(column, value);
     if (index < 0) throw new Error(`未找到目标行: ${column}=${value}`);
-    await page
-      .locator(`.ag-row[row-index="${index}"] .custom-op-container:not(.custom-op-measure-container) > button.custom-op-text-btn`, {
-        hasText: '删除',
-      })
-      .first()
-      .click();
+    const row = await this.actionRow(page, index, column);
+    await row.locator('button.custom-op-text-btn:visible', { hasText: '删除' }).first().click();
     await page.waitForTimeout(1000);
+  }
+
+  private async actionRow(page: Page, index: number, column: string) {
+    const root = page.locator(`.ag-root:has(.ag-header-cell[col-id="${column}"])`).first();
+    const pinnedRight = root.locator(`.ag-pinned-right-cols-container .ag-row[row-index="${index}"]`).first();
+    if ((await pinnedRight.count()) > 0) return pinnedRight;
+    return root.locator(`.ag-row[row-index="${index}"]`).last();
   }
 
   /** 确认当前删除弹窗，返回弹窗文案与操作提示。 */
