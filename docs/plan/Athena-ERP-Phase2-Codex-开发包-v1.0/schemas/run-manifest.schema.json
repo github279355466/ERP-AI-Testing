@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Athena ERP Phase 2 Run Manifest",
+  "type": "object",
+  "required": [
+    "runId",
+    "startedAt",
+    "environmentName",
+    "environmentType",
+    "testCaseId",
+    "outcome"
+  ],
+  "properties": {
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finishedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "environmentName": {
+      "type": "string"
+    },
+    "environmentType": {
+      "enum": [
+        "development",
+        "test",
+        "staging"
+      ]
+    },
+    "baseURL": {
+      "type": "string",
+      "format": "uri"
+    },
+    "testCaseId": {
+      "type": "string"
+    },
+    "knowledgeModelVersion": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "codeCommit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operator": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "createdDocumentIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outcome": {
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "not_run"
+      ]
+    },
+    "evidenceFiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

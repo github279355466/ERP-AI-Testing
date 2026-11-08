@@ -1,0 +1,36 @@
+{
+  "environment": {
+    "name": "请填写非生产测试环境名称",
+    "type": "test",
+    "baseURL": "https://请填写已批准的测试环境地址",
+    "allowedOrigins": [
+      "https://请填写已批准的测试环境地址"
+    ],
+    "blockedOrigins": []
+  },
+  "browser": {
+    "engine": "chromium",
+    "headless": false,
+    "defaultTimeoutMs": 15000,
+    "navigationTimeoutMs": 30000
+  },
+  "safety": {
+    "requireExplicitEnable": true,
+    "allowHighRiskActions": false,
+    "allowDelete": false,
+    "allowAudit": false,
+    "allowUnAudit": false,
+    "allowPosting": false
+  },
+  "evidence": {
+    "captureScreenshotOnFailure": true,
+    "captureTrace": true,
+    "localOnly": true,
+    "retentionDays": 14,
+    "redactSecrets": true
+  },
+  "knowledge": {
+    "frozenModelPath": "./artifacts/knowledge",
+    "expectedModelVersion": "请填写Phase1冻结版本"
+  }
+}

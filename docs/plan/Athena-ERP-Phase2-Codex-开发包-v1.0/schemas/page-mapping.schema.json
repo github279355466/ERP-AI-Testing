@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Athena ERP Page Mapping",
+  "type": "object",
+  "required": [
+    "pageKey",
+    "knowledgePageId",
+    "reviewStatus",
+    "fields"
+  ],
+  "properties": {
+    "pageKey": {
+      "type": "string"
+    },
+    "knowledgePageId": {
+      "type": "string"
+    },
+    "actualPageName": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "navigationPath": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reviewStatus": {
+      "enum": [
+        "draft",
+        "needs_review",
+        "approved",
+        "blocked"
+      ]
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "fieldKey",
+          "status"
+        ],
+        "properties": {
+          "fieldKey": {
+            "type": "string"
+          },
+          "locatorStrategy": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "controlTypeObserved": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "MATCHED",
+              "PRD_FIELD_NOT_FOUND",
+              "UNDOCUMENTED_UI_FIELD",
+              "CONTROL_TYPE_MISMATCH",
+              "LOCATOR_UNRESOLVED",
+              "NEEDS_HUMAN_REVIEW"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
