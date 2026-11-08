@@ -149,3 +149,48 @@ schemas/    Phase 1 正式 JSON Schema
 - 不做测试计划解析与批量调度（下一阶段）。
 - 写入默认关闭；仅在独立配置档与明确授权下启用单笔增删改与清理（见 4.4 / 4.5）。
 - 不做跨租户、跨环境参数化。
+
+## 9. Phase 2 自动化底座
+
+Phase 2 在 Phase 1 知识模型之上增加真实页面执行层，仍保持三层分离：
+
+- 业务知识层：Phase 1 冻结模型（artifacts/knowledge）与 PRD 索引，只提供规则与字段契约。
+- 页面操作层：src/browser、src/session、src/navigation、src/adapters、src/pages，只负责真实 UI 交互。
+- 测试执行层：src/cli 与 src/runner，按流程编排、断言与证据采集。
+
+### 9.1 模块
+
+| 模块 | 职责 |
+| --- | --- |
+| src/environment | 环境门禁、运行上下文、run manifest |
+| src/browser | CDP/启动适配、PageManager、ContextManager、列表就绪与页签重置 |
+| src/session | 登录态诊断、表单登录兜底、会话检查 |
+| src/navigation | 菜单路径解析、别名归一化、业务页打开 |
+| src/adapters | Input/Button/Dropdown/Date/Lookup/Grid/Tab/Modal/Tree |
+| src/pages | 页面对象与业务流程（采购订单、到货、入库、退货） |
+| src/diagnostics | 失败采集、控件探测、页面侦察 |
+| src/evidence | 截图、DOM、Trace、console/request 日志、脱敏 |
+| src/knowledge | 模型版本、PRD-页面映射 |
+
+### 9.2 关键约束
+
+- 写操作只在 athena.write.config.json + ALLOW_ERP_UI_TEST=true 下启用。
+- 页面对象不写业务断言；断言在 flow 中按 ui/business/persistence 分层组织。
+- 页面导航以 workItemCode 与真实菜单为准，配置中使用 candidate/confirmed 与 verifiedAt。
+- 列表就绪必须等待表头与数据行信号，不能以“页签出现”作为就绪。
+- 自定义开窗使用元素包围盒或单元格双击/单击触发，不使用绝对坐标。
+- 失败必须保留截图、DOM、console、request 与 Trace，runId 与单据号写入 manifest。
+
+### 9.3 已实现流程
+
+- create-po：采购订单新增、保存、重查、断言；可选提交/审核。
+- create-arrival：采购到货单从采购订单取单、保存、重查、断言。
+- create-inbound：采购入库单从采购到货单取单、补仓库、保存、重查、断言。
+- create-return：采购退货单从采购订单取单、补数量与仓库、保存、重查、断言。
+- submit-audit*：各单据提交与审核。
+
+### 9.4 已知限制
+
+- QN002 退货单审核触发 bm.pur_rtn_stkou_doc.create 时返回供应商校验错误，采购退货出库单未生成。
+- QN001 单别 PO09 自动编码与后端“不允许输入单号”校验冲突。
+- 上述为环境/产品配置问题，修复前 Phase 2 不满足五单链路最终放行。
