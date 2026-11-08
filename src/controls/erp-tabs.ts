@@ -34,6 +34,23 @@ export class ErpTabs {
    * 只读测试不应产生脏数据；该动作不写入 ERP。
    */
   async closeActiveWithDiscard(): Promise<CloseTabResult> {
+    for (let guard = 0; guard < 2; guard += 1) {
+      if ((await this.page.locator('[class*="Drawer-module_mask-visible"]').count()) === 0) break;
+      await this.page.keyboard.press('Escape').catch(() => undefined);
+      await this.page.waitForTimeout(400);
+    }
+    for (let guard = 0; guard < 3; guard += 1) {
+      const modal = this.page.locator('.rc-dialog-wrap:visible').last();
+      if ((await modal.count()) === 0) break;
+      await this.page.keyboard.press('Escape').catch(() => undefined);
+      await this.page.waitForTimeout(300);
+      if ((await this.page.locator('.rc-dialog-wrap:visible').count()) === 0) break;
+      const cancel = modal.getByRole('button', { name: '取消', exact: true });
+      if ((await cancel.count()) > 0) {
+        await cancel.last().click().catch(() => undefined);
+        await this.page.waitForTimeout(300);
+      }
+    }
     const activeTab = this.page.locator(`${SELECTORS.business.tabActive} ${SELECTORS.business.tabRemove}`).first();
     if ((await activeTab.count()) === 0) {
       return { closed: false, guardShown: false };

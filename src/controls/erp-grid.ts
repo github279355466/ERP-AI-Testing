@@ -82,7 +82,8 @@ export class ErpGrid {
   }
 
   async clickRowAction(rowIndex: number, actionText: string): Promise<void> {
-    const row = await this.row(rowIndex);
+    const pinnedRight = this.page.locator(`.ag-pinned-right-cols-container .ag-row[row-index="${rowIndex}"]`).first();
+    const row = (await pinnedRight.count()) > 0 ? pinnedRight : await this.row(rowIndex);
     const button = row.locator(SELECTORS.buttons.rowAction, { hasText: actionText }).first();
     if ((await button.count()) === 0) {
       throw new Error(`第 ${rowIndex} 行没有操作按钮: ${actionText}`);
