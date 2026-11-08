@@ -1,0 +1,40 @@
+gate,id,requirement,result,evidence,gap,severity
+P1,P1-01,平台/适配器/模块包/集成包/运行配置分层,PASS,"src/platform,src/modules,adapters,business-modules,integration-tests,runtime","",-
+P1,P1-02,业务规则不硬编码在平台核心,PASS,"tests/platform/runtime.spec.ts#模块核心不包含采购选择器","",-
+P1,P1-03,模块/场景/用例/页面/数据/报告/动作契约具备 schema,PASS,"platform/contracts/schemas 16 文件; platform:validate 19/19","",-
+P1,P1-04,契约版本与兼容策略,PASS,"src/platform/contracts/semver.ts; tests/contract","",-
+P1,P1-05,环境/账号/运行配置与代码分离,PASS,"runtime/environments,runtime/users,runtime/run-configs","",-
+P1,P1-06,执行记录绑定版本,PASS,"run-manifest-v2 schema 与工厂; tests/contract/run-manifest-v2.spec.ts","",-
+P2,P2-01,递归扫描与文件清单,PASS,"artifacts/modules/purchase/knowledge/documents.json 122 文档","",-
+P2,P2-02,增量扫描识别新增/修改,PASS,"tests/platform/prd-scanner.spec.ts#增量扫描","",-
+P2,P2-03,抽取页面/字段/规则/流程/关系,PASS,"fields 2616 rules 9316 workflows 28 dependencies 209","",-
+P2,P2-04,规则来源可追溯,PASS,"rules.json source_refs; PRD_INDEX.md","",-
+P2,P2-05,冲突保留并待确认,PASS,"open-questions.json 381; VERSION_CONFLICTS.md","",-
+P2,P2-06,未证实内容不补造,PASS,"confidence/status 字段; P2 验收文档","",-
+P2,P2-07,规则覆盖现有用例,PASS WITH CONDITIONS,"coverage rate 26.63%","GAP-01",S2
+P3,P3-01,场景/用例/步骤/前后置/断言,PASS,"src/platform/plan/compile.ts; test-case schema","",-
+P3,P3-02,依赖 DAG,PASS,"src/platform/plan/dag.ts; dag.spec.ts 4 项","",-
+P3,P3-03,循环/缺失依赖检测,PASS,"dag.spec.ts; plan.spec.ts","",-
+P3,P3-04,Dry-run 不执行写操作,PASS,"artifacts/modules/purchase/compiled/dry-run.json","",-
+P3,P3-05,用例版本可追溯,PASS,"testcase.version 0.1.0; report 绑定 platform/module","",-
+P3,P3-06,编排可复用,PASS,"plan/module-plan.ts; 4 模块共用","",-
+P3,P3-07,用例可执行状态,PASS WITH CONDITIONS,"1664 用例全部 draft; 步骤启发式","GAP-02,GAP-05",S2
+P4,P4-01,Playwright 真实 UI,PASS,"P6/P7/P8 run reports","",-
+P4,P4-02,页面适配与模块资产分离,PASS,"src/platform/pages + business-modules/*/page-mappings","",-
+P4,P4-03,语义定位优先,PASS,"label/role/css 策略; 包围盒仅自定义组件","",-
+P4,P4-04,至少一次 UI 造数闭环,PASS,"P6-PO-20261108-04 创建单号 PO0501-2026110800006","",-
+P4,P4-05,数据唯一标识/范围/清理策略,PASS,"P6AUTO/P7LIFE 前缀; mark_for_cleanup; run-manifest","",-
+P4,P4-06,凭证不外泄,PASS,"证据脱敏; 扫描 1 条单测假密码","",-
+P4,P4-07,页面映射复核率,PASS WITH CONDITIONS,"36 字段仅 8 verified","GAP-03",S2
+P5,P5-01,依赖顺序/跳过/中止/重试,PASS,"execution.spec.ts 12 项","",-
+P5,P5-02,断言覆盖页面/字段/状态/一致性,PASS,"assertion engine; P7 9 条断言","",-
+P5,P5-03,失败分类,PASS,"classifyFailure 五类测试","",-
+P5,P5-04,失败证据,PASS,"captureFailureEvidence; tests/integration/failure-evidence.spec.ts","",-
+P5,P5-05,重试安全,PASS,"action-registry retry_safe; save 不重试测试","",-
+P5,P5-06,三格式报告与复查,PASS,"report.{json,md,html}; run id 目录","",-
+P5,P5-07,通用执行器动作覆盖,PASS WITH CONDITIONS,"浏览器执行器仅支持已注册流程/基础动作","GAP-06",S3
+P6,P6-01,采购端到端链路,PASS,"P7-PO-LIFECYCLE-01 9/9","",-
+P6,P6-02,模块资产完整,PASS,"manifest/knowledge/page-mappings/testcases/data-recipes","",-
+P6,P6-03,异常/负向测试,PASS WITH CONDITIONS,"字段规则警告/保存拦截未自动执行","GAP-06",S3
+P6,P6-04,非采购模块最小接入,PASS WITH CONDITIONS,"base/ar/ap 列表冒烟通过","GAP-04,GAP-08",S2
+P6,P6-05,文档齐备,PASS,"docs/architecture,contracts,runbooks,acceptance","",-
