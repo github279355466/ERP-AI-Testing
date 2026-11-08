@@ -139,6 +139,16 @@ function toScannedFile(
   };
 }
 
+function matchesIncludePath(relativePath: string, includePaths: string[]): boolean {
+  if (includePaths.length === 0) return true;
+  const normalized = relativePath.replace(/\\/g, '/');
+  return includePaths.some((raw) => {
+    const include = raw.replace(/\\/g, '/').replace(/\/+$/, '');
+    if (!include) return true;
+    return normalized === include || normalized.startsWith(`${include}/`);
+  });
+}
+
 const PRD_ORIGINAL_NAME = /\/DOC\d+_[^/]+_V\d+(?:\.\d+)*\.md$/i;
 
 export function isPrdOriginal(relativePath: string): boolean {
@@ -157,13 +167,17 @@ export function scanSources(
   if (fs.existsSync(config.prd.inputDir)) {
     const buffer: Array<{ absolute: string; relative: string }> = [];
     walk(config.prd.inputDir, config.prd.inputDir, config, buffer);
-    for (const item of buffer) collected.push({ ...item, role: 'PRD' });
+    for (const item of buffer) {
+      if (!matchesIncludePath(item.relative, config.prd.includePaths)) continue;
+      collected.push({ ...item, role: 'PRD' });
+    }
   }
   for (const source of config.scenarioSources) {
     if (!fs.existsSync(source.inputDir)) continue;
     const buffer: Array<{ absolute: string; relative: string }> = [];
     walk(source.inputDir, source.inputDir, config, buffer);
     for (const item of buffer) {
+      if (!matchesIncludePath(item.relative, source.includePaths ?? [])) continue;
       const role = isPrdOriginal(item.relative) ? 'PRD' : 'TEST_CASE_LIBRARY';
       collected.push({ ...item, role });
     }

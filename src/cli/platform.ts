@@ -14,6 +14,7 @@ interface Args {
 
 const SCHEMA_NAMES: ContractSchemaName[] = [
   'module-manifest',
+  'source-index',
   'scenario',
   'test-case',
   'page-mapping',

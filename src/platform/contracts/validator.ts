@@ -9,6 +9,7 @@ export const CONTRACT_SCHEMA_VERSION = '1.0';
 
 export type ContractSchemaName =
   | 'module-manifest'
+  | 'source-index'
   | 'scenario'
   | 'test-case'
   | 'page-mapping'
@@ -39,6 +40,7 @@ export interface ContractValidationResult {
 
 const SCHEMA_FILES: Record<ContractSchemaName, string> = {
   'module-manifest': 'module-manifest.schema.json',
+  'source-index': 'source-index.schema.json',
   scenario: 'scenario.schema.json',
   'test-case': 'test-case.schema.json',
   'page-mapping': 'page-mapping.schema.json',
@@ -265,6 +267,7 @@ export function validateAll(options: { root?: string; directory?: string } = {})
   const results: ContractValidationResult[] = [];
   const examples: Array<[string, ContractSchemaName]> = [
     ['platform/contracts/examples/module.valid.yaml', 'module-manifest'],
+    ['platform/contracts/examples/source-index.valid.yaml', 'source-index'],
     ['platform/contracts/examples/scenario.valid.json', 'scenario'],
     ['platform/contracts/examples/testcase.valid.json', 'test-case'],
     ['platform/contracts/examples/page-mapping.valid.json', 'page-mapping'],

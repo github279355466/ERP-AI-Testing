@@ -1,0 +1,14 @@
+schema_version: "1.0"
+module_id: demo
+module_name: 示例模块
+prd_roots:
+  - "${PRD_WORKSPACE}/prd"
+include_paths:
+  - "示例域/"
+scenario_sources:
+  - name: 测试用例
+    path: "${PRD_WORKSPACE}/测试用例"
+    kind: TEST_CASE_LIBRARY
+module_rules:
+  - pattern: "^示例域$"
+    module: 示例模块

@@ -1,0 +1,30 @@
+schema_version: "1.0"
+module_id: purchase
+module_name: 采购管理
+prd_roots:
+  - "${PRD_WORKSPACE}/prd"
+include_paths:
+  - "采购取价策略/"
+  - "采购退货出库单/"
+  - "采购退货单/"
+  - "供应商品号价格/"
+  - "询价单/"
+  - "客户供应商关系/"
+  - "批号编号规则/"
+scenario_sources:
+  - name: 测试用例-采购域
+    path: "${PRD_WORKSPACE}/测试用例"
+    kind: TEST_CASE_LIBRARY
+    include_paths:
+      - "采购域/"
+      - "供应商域/"
+      - "库存存货域/"
+      - "参数与单别域/"
+      - "基础资料域/品号"
+      - "基础资料域/客户供应商关系"
+      - "基础资料域/交易对象群组"
+      - "基础资料域/维护交易对象属性"
+module_rules:
+  - pattern: "^.*$"
+    module: 采购
+notes: P2 采购模块来源登记；主 PRD 与测试用例库分开登记，页面对象仍留在 src/pages/purchase，P4 迁移。

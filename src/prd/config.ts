@@ -11,6 +11,7 @@ export interface PrdSourceConfig {
   includeExtensions: string[];
   reservedExtensions: string[];
   excludeDirectories: string[];
+  includePaths: string[];
   moduleRules: ModuleRule[];
 }
 
@@ -18,6 +19,7 @@ export interface ScenarioSourceConfig {
   name: string;
   inputDir: string;
   kind: 'TEST_CASE_LIBRARY';
+  includePaths?: string[];
 }
 
 export interface PrdModelingConfig {
@@ -76,6 +78,7 @@ function emptyConfig(): PrdModelingConfig {
       includeExtensions: ['.md', '.markdown', '.txt', '.json'],
       reservedExtensions: ['.docx', '.xlsx', '.xls', '.pdf', '.png', '.jpg', '.jpeg'],
       excludeDirectories: ['.git', 'node_modules', '__pycache__', '.cache'],
+      includePaths: [],
       moduleRules: DEFAULT_MODULE_RULES,
     },
     scenarioSources: [],
@@ -101,6 +104,7 @@ function mergeConfig(base: PrdModelingConfig, patch: Partial<PrdModelingConfig>)
     prd: {
       ...base.prd,
       ...(patch.prd ?? {}),
+      includePaths: patch.prd?.includePaths ?? base.prd.includePaths,
       moduleRules: patch.prd?.moduleRules ?? base.prd.moduleRules,
     },
     scenarioSources: patch.scenarioSources ?? base.scenarioSources,

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/source-index.schema.json",
+  "title": "Athena Module Source Index",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "module_id",
+    "module_name",
+    "prd_roots",
+    "include_paths",
+    "scenario_sources",
+    "module_rules"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "module_name": { "type": "string", "minLength": 1 },
+    "prd_roots": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "include_paths": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "scenario_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "path", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "kind": { "const": "TEST_CASE_LIBRARY" },
+          "include_paths": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "module_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["pattern", "module"],
+        "additionalProperties": false,
+        "properties": {
+          "pattern": { "type": "string", "minLength": 1 },
+          "module": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}
