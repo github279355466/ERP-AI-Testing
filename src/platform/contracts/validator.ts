@@ -12,6 +12,7 @@ export type ContractSchemaName =
   | 'source-index'
   | 'scenario'
   | 'test-case'
+  | 'field-rule'
   | 'page-mapping'
   | 'data-recipe'
   | 'execution-report'
@@ -43,6 +44,7 @@ const SCHEMA_FILES: Record<ContractSchemaName, string> = {
   'source-index': 'source-index.schema.json',
   scenario: 'scenario.schema.json',
   'test-case': 'test-case.schema.json',
+  'field-rule': 'field-rule.schema.json',
   'page-mapping': 'page-mapping.schema.json',
   'data-recipe': 'data-recipe.schema.json',
   'execution-report': 'execution-report.schema.json',

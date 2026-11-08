@@ -4,7 +4,12 @@
 
 ## 项目定位
 
-TypeScript + Playwright 的 Athena ERP 自动化测试框架，默认只读。当前为 **v2.0 三层架构**（Platform Core / Business Module Packs / Integration Test Packs），已推进到 P7 采购订单全操作闭环，P8 字段规则校验开发中。legacy `src/`、`knowledge/`、`cases/` 与 Phase 1 PRD 建模子系统并存。铁律见根目录 `AGENTS.md`。
+TypeScript + Playwright 的 Athena ERP 自动化测试框架，默认只读。当前两条工作线：
+
+- **v2.0 平台线**：三层架构（Platform Core / Business Module Packs / Integration Test Packs），已推进到 P7 采购订单全操作闭环，P8 字段规则校验开发中。
+- **legacy 框架线**：Phase 1 PRD 建模申请第三轮验收；Phase 2 底座（P2.0~P2.4）已完成，采购订单 → 到货 → 入库真实跑通，采购退货 → 退货出库被库存过账缺陷阻断（`docs/defects/BUG-20261108-01-采购入库单审核未过账.md`）。
+
+铁律见根目录 `AGENTS.md`。
 
 ## 关键路径索引
 
@@ -22,7 +27,11 @@ TypeScript + Playwright 的 Athena ERP 自动化测试框架，默认只读。�
 | Phase 1 产出 | `artifacts/knowledge/`（13 JSON）、`artifacts/source-index/`、`reports/`（10 md） |
 | Phase 1 读取适配层 | `src/knowledge/prd-knowledge.ts`（`PrdKnowledgeBase.load`），与 legacy `knowledge/athena-*.json` 并存 |
 | 框架运行时知识库 | `knowledge/athena-*.json` + `src/knowledge/knowledge-base.ts` |
-| 测试 | `tests/unit/`（25 spec / 97 用例）、`tests/smoke/`（需浏览器，默认不跑） |
+| Phase 2 操作与配置 | `docs/PHASE2-运行手册.md`、`docs/PHASE2-配置说明.md` |
+| Phase 2 缺陷与方向性问题 | `docs/defects/`、`artifacts/phase2/acceptance/P2.4-DIRECTION-BUGS.md`（本地） |
+| 字段级规则校验要求（未执行） | `docs/PHASE3-字段规则校验要求.md`（50 条规则 / 10 域） |
+| 未完成事项与阻塞 | `docs/TODO.md`（T-04~T-07） |
+| 测试 | `tests/unit/`（139 用例）、`tests/integration/`（27 用例）、`tests/smoke/`（需浏览器，默认不跑） |
 | 独立验收报告 | `artifacts/acceptance/01~08 + PHASE1-ACCEPTANCE-REPORT.md` |
 | 整改与复验 | `artifacts/acceptance/PHASE1-REMEDIATION-REPORT.md`、`PHASE1-REGRESSION-REPORT.md`、`PHASE1-REMEDIATION-R2.md`（第二轮）、`DECISIONS.md`（判定口径） |
 | 团队收口 | `deliverables/gstack/quality-acceptance-phase1-prd-2026-11-07.md` |
@@ -38,6 +47,10 @@ TypeScript + Playwright 的 Athena ERP 自动化测试框架，默认只读。�
 - **当前状态：申请第三轮独立验收**，验收通过前 Phase 1 门禁仍为 No-Go；Phase 3 仍 No-Go。
 - 残余：采购链路字段级映射 5/12（未解析 7 条登记 `MAPPING_UNRESOLVED`）、33 条证据无版本、233 条关系主体为平台服务/表结构、TXT 无真实样本、7 个库存存货域作业缺 PRD。
 - **代码主线已推进到 P7**：`22a0291 feat(purchase): P7 采购订单全操作闭环`；P8 字段规则校验尚未完成——工作区存在未提交改动（`src/cli/platform.ts`、`src/modules/purchase/flows.ts`、`business-modules/purchase/field-rules/`、`platform/contracts/schemas/field-rule.schema.json`、`tests/platform/field-rules.spec.ts` 等），接手前先确认这批改动归属。
+- **legacy Phase 2 底座已完成（2026-11-08）**：P2.0 配置/门禁/run manifest、P2.1 浏览器/会话/导航、P2.2 九类控件适配器、P2.3 页面对象与字段映射、P2.4 采购四单据流程；11 个模块提交 `82d5edd`~`899b14d`，位于 P1-P7 平台提交之前。
+- **Phase 2 真实链路**：订单 `PO0501-2026110800001`~`0005`、到货 `PO0602-2611080001`~`0004`、入库 `IM0301-2026110800002`~`0004` 已跑通；退货 `P2RTN-20261108-02/03`（供应商范围）与 `P2RTN-20261108-04`（库存过账）未通过。
+- **Phase 2 缺陷**：`BUG-20261108-01` 入库审核未过账（对照实验：临时开启允许负库存后审批 `code=0`，出库单 `IM0402-202611080001` 已过账；配置已恢复，遗留 00CP/01-2-00011 负库存 1 KG）；`DIR-09` 取单弹窗 0 条；`DIR-10` 储位选择器；`DIR-11` 品号财务信息缺失。
+- **Phase 2 验证口径**：P2.4 通过的是流程贯通与输入回填一致性；字段级业务规则（金额/税额/数量上限/项目/仓库/储位）未验证，清单见 `docs/PHASE3-字段规则校验要求.md`。
 - `artifacts/` 被 gitignore，知识库为可再生产物；第二轮整改的 10 个提交位于 P2 平台提交之前。
 - **知识库漂移（2026-11-08 发现）**：外部 PRD 根已把 `采购退货单PRD.v1.11.md` 移到 `_history/`，顶层升为 `v1.12`；当前 `artifacts/knowledge` 仍是 2026-11-07 15:48 批次，引用 v1.11 路径，`evidence-grain.js` / `contrary.js` 等读原文的脚本会 ENOENT。第三轮验收前必须先 `npm run prd:scan` 重建并重跑复算，否则数字不可比。
 

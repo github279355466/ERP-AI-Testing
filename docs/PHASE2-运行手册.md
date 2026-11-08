@@ -142,3 +142,12 @@ node dist/cli/main.js submit-audit-return --config config/athena.write.config.js
 
 - 仓库“储位管理=启用”（如 QN002/C001 原料仓）时，入库单明细的“储位”必填，否则保存按钮禁用。
 - 储位选择器是下拉网格，不是标准开窗对话框，现有自动化 `setGridLookup` 会等待开窗超时；需先补适配器或改走储位不启用的仓库（如 00CP）。
+
+## 13. 相关文档
+
+| 用途 | 路径 |
+| --- | --- |
+| 缺陷单（入库未过账，阻断退货出库） | `docs/defects/BUG-20261108-01-采购入库单审核未过账.md` |
+| 字段级规则校验要求（平台升级后执行） | `docs/PHASE3-字段规则校验要求.md` |
+| 待办与阻塞项 | `docs/TODO.md`（T-04～T-07） |
+| 方向性 Bug 与证据（本地，不入 Git） | `artifacts/phase2/acceptance/P2.4-DIRECTION-BUGS.md` |

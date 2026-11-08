@@ -17,6 +17,7 @@ const SCHEMA_NAMES: ContractSchemaName[] = [
   'source-index',
   'scenario',
   'test-case',
+  'field-rule',
   'page-mapping',
   'data-recipe',
   'execution-report',

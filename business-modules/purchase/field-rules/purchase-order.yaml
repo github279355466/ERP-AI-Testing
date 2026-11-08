@@ -1,0 +1,158 @@
+schema_version: "1.0"
+module_id: purchase
+page_key: purchase-order
+rules:
+  - id: FR-PO-REQ-OPS-UNIT
+    type: REQUIRED
+    field: po.ops_unit_no
+    trigger: FORM_OPEN
+    expected: { required: true }
+    status: verified
+    source_ref:
+      document_id: RULE-DADF21D39E92
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-DADF21D39E92
+      excerpt: "【运营单元编号(ops_unit_no)】✅ 是；必填条件：始终必填"
+    notes: 由采购订单实体 ENT-B59B1333FB19 规则抽取
+  - id: FR-PO-REQ-SUPP
+    type: REQUIRED
+    field: po.supp_no
+    trigger: FORM_OPEN
+    expected: { required: true }
+    status: verified
+    source_ref:
+      document_id: RULE-1EFF8A3567E5
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-1EFF8A3567E5
+      excerpt: "【供应商编号(supp_no)】✅ 是；必填条件：始终必填"
+  - id: FR-PO-REQ-CCY
+    type: REQUIRED
+    field: po.ccy_no
+    trigger: FORM_OPEN
+    expected: { required: true }
+    status: verified
+    source_ref:
+      document_id: RULE-FAE4F4B8B311
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-FAE4F4B8B311
+      excerpt: "【货币编号(ccy_no)】✅ 是；必填条件：始终必填"
+  - id: FR-PO-DEF-OPS-UNIT
+    type: DEFAULT_VALUE
+    field: po.ops_unit_no
+    trigger: FORM_OPEN
+    expected: { value_mode: not_empty }
+    status: candidate
+    source_ref:
+      document_id: RULE-20370D52FB85
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-20370D52FB85
+      excerpt: "【运营单元编号(ops_unit_no)】默认值：调用查询员工/运营单元按当前登录用户带出"
+    notes: 依赖当前登录用户员工绑定，候选规则；UI 实测为空时记为 warning
+  - id: FR-PO-LNK-SUPP-CCY
+    type: LINKAGE
+    field: po.ccy_no
+    trigger: ON_CHANGE
+    when: { field: po.supp_no, state: not_empty }
+    expected: { value_mode: not_empty }
+    status: verified
+    source_ref:
+      document_id: RULE-9A59E7DCB5DB
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-9A59E7DCB5DB
+      excerpt: "【货币编号(ccy_no)】默认值：供应商变更后按供应商业务信息带出并覆盖"
+  - id: FR-PO-READONLY-SUPP-NAME
+    type: READONLY
+    field: po.supp_name
+    trigger: FORM_OPEN
+    expected: { readonly: true }
+    status: candidate
+    source_ref:
+      document_id: RULE-FC8E17DAD6C4
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-FC8E17DAD6C4
+      excerpt: "【供应商名称(supp_name)】只读条件：始终只读"
+    notes: 当前采购订单表单未渲染该字段，执行时记为 skipped
+  - id: FR-PO-LNK-SUPP-NAME
+    type: LINKAGE
+    field: po.supp_name
+    trigger: ON_CHANGE
+    when: { field: po.supp_no, state: not_empty }
+    expected: { value_mode: not_empty }
+    status: candidate
+    source_ref:
+      document_id: RULE-704914EC3C9A
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-704914EC3C9A
+      excerpt: "【供应商名称(supp_name)】供应商变更后按供应商业务信息带出"
+  - id: FR-PO-READONLY-TAX-NO
+    type: READONLY
+    field: po.tax_no
+    trigger: FORM_OPEN
+    expected: { readonly: true }
+    status: candidate
+    source_ref:
+      document_id: RULE-274001E3F815
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-274001E3F815
+      excerpt: "【税种编号(tax_no)】只读条件：始终只读"
+    notes: 当前表单未渲染该字段
+  - id: FR-PO-LNK-TAX-NO
+    type: LINKAGE
+    field: po.tax_no
+    trigger: ON_CHANGE
+    when: { field: po.supp_no, state: not_empty }
+    expected: { value_mode: not_empty }
+    status: candidate
+    source_ref:
+      document_id: RULE-05153C311A38
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-05153C311A38
+      excerpt: "【税种编号(tax_no)】供应商变更后覆盖带出"
+  - id: FR-PO-READONLY-TAX-RATE
+    type: READONLY
+    field: po.tax_rate
+    trigger: FORM_OPEN
+    expected: { readonly: true }
+    status: candidate
+    source_ref:
+      document_id: RULE-0542FC7BCB44
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-0542FC7BCB44
+      excerpt: "【税率(tax_rate)】只读条件：始终只读"
+    notes: 当前表单未渲染该字段
+  - id: FR-PO-LNK-TAX-RATE
+    type: LINKAGE
+    field: po.tax_rate
+    trigger: ON_CHANGE
+    when: { field: po.supp_no, state: not_empty }
+    expected: { value_mode: not_empty }
+    status: candidate
+    source_ref:
+      document_id: RULE-37EBE8CF8545
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-37EBE8CF8545
+      excerpt: "【税率(tax_rate)】供应商变更后覆盖带出"
+  - id: FR-PO-SAVE-BLOCK-REQUIRED
+    type: SAVE_BLOCK
+    field: po.supp_no
+    trigger: SAVE
+    expected: { blocked: true, message_contains: "不能" }
+    status: candidate
+    source_ref:
+      document_id: RULE-1EFF8A3567E5
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      section: RULE-1EFF8A3567E5
+      excerpt: "为空时保存应被拦截"
+    notes: 保存会实际生成草稿单，默认不执行；需单独立项并在专用数据+清理授权下验证

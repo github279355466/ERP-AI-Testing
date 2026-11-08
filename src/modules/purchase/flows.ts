@@ -1,6 +1,9 @@
 import { PurchaseOrderPage } from '../../pages/purchase/purchase-order.page';
 import { createPurchaseOrder } from '../../pages/purchase/purchase-order.flow';
 import { ModuleFlow, flowAssertion } from '../types';
+import { loadFieldRuleSets, rulesForPage } from '../../platform/rules/loader';
+import { captureFieldStates } from '../../platform/rules/browser-probe';
+import { evaluateFieldRuleSet } from '../../platform/rules/engine';
 
 function requireParam(params: Record<string, string>, key: string): string {
   const value = params[key];
@@ -119,5 +122,61 @@ export const purchaseOrderLifecycle: ModuleFlow = async (context) => {
     assertions,
     documents,
     notes: `全操作闭环：A=${createdA.documentNo}（修改/提交/审核/撤审后保留），B=${createdB.documentNo}（创建后删除）`,
+  };
+};
+
+export const purchaseOrderFieldRules: ModuleFlow = async (context) => {
+  const loaded = loadFieldRuleSets(process.cwd(), 'purchase');
+  if (loaded.issues.length > 0) {
+    throw new Error(`[FIELD_RULE_INVALID] ${loaded.issues.map((entry) => `${entry.file}: ${entry.messages.join('; ')}`).join(' | ')}`);
+  }
+  const rules = rulesForPage(loaded.sets, 'purchase-order');
+  if (rules.length === 0) throw new Error('[FIELD_RULE_EMPTY] purchase-order 未配置字段规则');
+  const fields = [...new Set(rules.map((rule) => rule.field))];
+  const po = new PurchaseOrderPage(context.page, context.config, context.adapters, context.pages);
+
+  await context.pages.resetTabs(context.page).catch(() => 0);
+  await context.pages.ensureListState(context.page, { forceReload: true });
+  await context.pages.waitReady(context.page);
+
+  await po.openNew();
+  const before = await captureFieldStates(context.page, fields);
+  await po.ensureHeader({
+    opsUnit: requireParam(context.params, 'opsUnit'),
+    supplier: requireParam(context.params, 'supplier'),
+    bizType: requireParam(context.params, 'bizType'),
+  });
+  await context.page.waitForTimeout(1_200);
+  const after = await captureFieldStates(context.page, fields);
+  await po.closeDetail();
+  await context.pages.ensureListState(context.page, { forceReload: true });
+  await context.pages.waitReady(context.page);
+
+  const evaluation = evaluateFieldRuleSet(rules, { before, after });
+  const assertions = evaluation.results.map((result) => {
+    const warning = result.status === 'warning';
+    const skipped = result.status === 'skipped';
+    return flowAssertion(
+      `${result.rule_id}${warning ? '（候选/警告）' : ''}${skipped ? '（跳过）' : ''}`,
+      result.status === 'passed' || warning || skipped,
+      result.expected,
+      skipped ? `跳过：${result.actual}` : result.actual,
+      ['READONLY', 'DISABLED'].includes(result.type) ? 'ui' : 'business',
+      context.sourceRef,
+    );
+  });
+  assertions.push(
+    flowAssertion(
+      '规则集-无失败',
+      evaluation.passed,
+      'verified 规则全部通过',
+      `passed=${evaluation.results.length - evaluation.failed - evaluation.warnings - evaluation.skipped} failed=${evaluation.failed} warnings=${evaluation.warnings} skipped=${evaluation.skipped}`,
+      'business',
+      context.sourceRef,
+    ),
+  );
+  return {
+    assertions,
+    notes: `字段规则：${evaluation.results.length} 条，failed=${evaluation.failed}，warning=${evaluation.warnings}，skipped=${evaluation.skipped}`,
   };
 };

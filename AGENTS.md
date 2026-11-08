@@ -81,6 +81,7 @@ Integration Test Packs   integration-tests/<id>/   跨模块组合
 npm run build
 npm run typecheck
 npm run test:unit
+npm run test:integration
 npm run test:contract
 npm run platform:validate
 npm run platform:check
@@ -130,3 +131,15 @@ npm run athena -- verify --case <case.json>
 | 测试运行证据 | `artifacts/<run-id>/` |
 
 浏览器 profile 含数万小文件与 Cookie，放进会话工作区会让客户端打开会话时扫描卡顿，必须留在仓库内。
+
+## 10. 文档索引
+
+| 目的 | 路径 |
+| --- | --- |
+| 当前状态与两条工作线 | `README.md` |
+| 框架技术设计与 Phase 2 底座 | `docs/ARCHITECTURE.md` |
+| Phase 2 操作与排查 | `docs/PHASE2-运行手册.md`、`docs/PHASE2-配置说明.md` |
+| 未完成事项与阻塞 | `docs/TODO.md`（T-04～T-07） |
+| 缺陷单 | `docs/defects/` |
+| 字段级规则校验要求 | `docs/PHASE3-字段规则校验要求.md` |
+| 跨会话记忆索引 | `.workbuddy/memory/MEMORY.md` |

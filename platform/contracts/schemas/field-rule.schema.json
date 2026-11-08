@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/field-rule.schema.json",
+  "title": "Athena Field Rule Set",
+  "type": "object",
+  "required": ["schema_version", "module_id", "page_key", "rules"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "page_key": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "field", "trigger", "expected", "status", "source_ref"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "type": { "enum": ["REQUIRED", "DEFAULT_VALUE", "LINKAGE", "READONLY", "DISABLED", "SAVE_BLOCK"] },
+          "field": { "type": "string", "minLength": 1 },
+          "trigger": { "enum": ["FORM_OPEN", "ON_CHANGE", "SAVE"] },
+          "when": {
+            "type": "object",
+            "required": ["field", "state"],
+            "additionalProperties": false,
+            "properties": {
+              "field": { "type": "string", "minLength": 1 },
+              "state": { "enum": ["empty", "not_empty", "changed"] }
+            }
+          },
+          "expected": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "required": { "type": "boolean" },
+              "readonly": { "type": "boolean" },
+              "disabled": { "type": "boolean" },
+              "blocked": { "type": "boolean" },
+              "value_mode": { "enum": ["equals", "not_empty", "empty", "today", "regex"] },
+              "value": { "type": "string" },
+              "message_contains": { "type": "string" }
+            }
+          },
+          "status": { "enum": ["verified", "candidate"] },
+          "source_ref": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/sourceRef" },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

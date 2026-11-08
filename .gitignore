@@ -17,6 +17,9 @@ auth*.json
 Thumbs.db
 probe/chrome-profile/
 probe/chrome-profile2/
+probe/*
+!probe/p6-menu-inventory.json
+!probe/p6-open-ap2.js
 .archive/
 executions/*
 !executions/README.md
