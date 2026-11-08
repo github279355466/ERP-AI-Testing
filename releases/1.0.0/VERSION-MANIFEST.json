@@ -1,0 +1,17 @@
+{
+  "release_version": "1.0.0",
+  "package_version": "1.0.0",
+  "platform_api_version": "1.0.0",
+  "contract_schema_version": "1.0",
+  "git": {
+    "commit": "ebc4fe279c7ad8acb5d90c9e241eba6b23d04cc0",
+    "branch": "master"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "playwright": "1.62.1",
+    "os": "win32"
+  },
+  "generated_at": "2026-11-08T15:33:30.717Z"
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "file": "action-registry.schema.json",
+    "id": "https://athena.local/contracts/action-registry.schema.json",
+    "title": "Athena Action Registry",
+    "sha256": "68ae45ba479439dbb01fc29e2690c4a70bef5fb2d89e4699cc0f8cb6e2a4095c"
+  },
+  {
+    "file": "common.schema.json",
+    "id": "https://athena.local/contracts/common.schema.json",
+    "title": "Athena Platform Common Definitions",
+    "sha256": "0b3f4dd624c7bf9fe615cec92a3f4fef1562da8e86d340692cb35212962a1517"
+  },
+  {
+    "file": "data-recipe.schema.json",
+    "id": "https://athena.local/contracts/data-recipe.schema.json",
+    "title": "Athena Data Recipe",
+    "sha256": "8e9b2adb058d33f7152fc958b486a7b6e2c8c4e358da22609a11d154cd9ccbf7"
+  },
+  {
+    "file": "environment-profile.schema.json",
+    "id": "https://athena.local/contracts/environment-profile.schema.json",
+    "title": "Athena Environment Profile",
+    "sha256": "7bf357ad65796dbc00bb77cd07a5bebee0b7d79eb2abf222cb82a139b694498c"
+  },
+  {
+    "file": "execution-plan.schema.json",
+    "id": "https://athena.local/contracts/execution-plan.schema.json",
+    "title": "Athena Execution Plan",
+    "sha256": "9a7c8c3efc7d83f230c441731dbf332e2b1fa6b1d1bc3d3b5bdbbddf07e8f3d6"
+  },
+  {
+    "file": "execution-report.schema.json",
+    "id": "https://athena.local/contracts/execution-report.schema.json",
+    "title": "Athena Execution Report",
+    "sha256": "cab5f9fe9b0880f10be056983800e1f035b263ca04ba7a579c933ba2195a4557"
+  },
+  {
+    "file": "field-rule.schema.json",
+    "id": "https://athena.local/contracts/field-rule.schema.json",
+    "title": "Athena Field Rule Set",
+    "sha256": "c67ad62c16cee5fd4b2f2e095a551851bbf7155a3d3d7fd1eeb3be8ab0d7daee"
+  },
+  {
+    "file": "integration-pack.schema.json",
+    "id": "https://athena.local/contracts/integration-pack.schema.json",
+    "title": "Athena Integration Test Pack",
+    "sha256": "7b710bd700410ae415fbbbeca943d732043fe349bf7722d49a8e897bfdbdc9b0"
+  },
+  {
+    "file": "module-manifest.schema.json",
+    "id": "https://athena.local/contracts/module-manifest.schema.json",
+    "title": "Athena Business Module Manifest",
+    "sha256": "b5181613b83ea5e3ce95eef71f0af1eff5a660960868986b18c0c11f38cba66f"
+  },
+  {
+    "file": "page-mapping.schema.json",
+    "id": "https://athena.local/contracts/page-mapping.schema.json",
+    "title": "Athena Page Mapping",
+    "sha256": "a3ef3d7720bed2feb84c3244fc368b9cc92e6443b3629cdb561dbcd623e4d54e"
+  },
+  {
+    "file": "run-config.schema.json",
+    "id": "https://athena.local/contracts/run-config.schema.json",
+    "title": "Athena Run Config",
+    "sha256": "07c56deb0fa1588b588401a88286a721c2640654f2e7d89537a876dfc0783b70"
+  },
+  {
+    "file": "run-manifest-v2.schema.json",
+    "id": "https://athena.local/contracts/run-manifest-v2.schema.json",
+    "title": "Athena Run Manifest v2",
+    "sha256": "f360e9cf8ce9ac7e35a47b5e0bfe49cbd9206e80f45b68d675fee6bf8c7b10f6"
+  },
+  {
+    "file": "scenario.schema.json",
+    "id": "https://athena.local/contracts/scenario.schema.json",
+    "title": "Athena Scenario",
+    "sha256": "48ae09df2e6a2d85c45d90a2583314f2c5c375d66d49fcef1d6fd0c9a3bbc314"
+  },
+  {
+    "file": "source-index.schema.json",
+    "id": "https://athena.local/contracts/source-index.schema.json",
+    "title": "Athena Module Source Index",
+    "sha256": "e813ae64794a72a13f783e24f222a1a88b807dcc747cc7e4a341dbab99f0ca7c"
+  },
+  {
+    "file": "test-case.schema.json",
+    "id": "https://athena.local/contracts/test-case.schema.json",
+    "title": "Athena Test Case",
+    "sha256": "f1a698ce8a471f2702be965ffeaaf974c8f4f63a7a6fe875384c9723ccf441e4"
+  },
+  {
+    "file": "test-suite.schema.json",
+    "id": "https://athena.local/contracts/test-suite.schema.json",
+    "title": "Athena Test Suite",
+    "sha256": "afcdde95a549d7a5084f894e5269f9ee2ecf3de2398d90ffd13d4735908ba3b1"
+  },
+  {
+    "file": "user-profile.schema.json",
+    "id": "https://athena.local/contracts/user-profile.schema.json",
+    "title": "Athena User Profile",
+    "sha256": "38f4bcb3746dcf56111c39e1654a62e993975514ff5083faa53845294752abab"
+  }
+]

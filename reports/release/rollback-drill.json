@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-11-08T15:36:00.443Z",
+  "release_version": "1.0.0",
+  "previous_version": "1.0.0-rc1",
+  "steps": [
+    {
+      "version": "1.0.0-rc1",
+      "deploy_dir": "releases\\1.0.0-rc1\\deploy-drill-rc1",
+      "activated": true,
+      "health": {
+        "status": 2,
+        "success": false,
+        "checks": [
+          {
+            "name": "runtime-node",
+            "ok": true,
+            "required": true,
+            "detail": "24.19.0"
+          },
+          {
+            "name": "config",
+            "ok": false,
+            "required": true,
+            "detail": "配置 Schema 校验失败（D:\\AIProject\\ERP-AI-Testing\\releases\\1.0.0-rc1\\deploy-drill-rc1\\schemas\\athena-config.schema.json）：/ 缺少配置 Schema: D:\\AIProject\\ERP-AI-Testing\\releases\\1.0.0-rc1\\deploy-drill-rc1\\schemas\\athena-config.schema.json"
+          },
+          {
+            "name": "schemas",
+            "ok": true,
+            "required": true,
+            "detail": "17 schema @ D:\\AIProject\\ERP-AI-Testing\\releases\\1.0.0-rc1\\deploy-drill-rc1\\platform\\contracts\\schemas"
+          },
+          {
+            "name": "module-packs",
+            "ok": true,
+            "required": true,
+            "detail": "4 modules; invalid=none"
+          },
+          {
+            "name": "artifacts-writable",
+            "ok": true,
+            "required": true,
+            "detail": "D:\\AIProject\\ERP-AI-Testing\\releases\\1.0.0-rc1\\deploy-drill-rc1\\artifacts"
+          }
+        ]
+      },
+      "contract": {
+        "status": 0,
+        "success": true,
+        "passed": 19,
+        "total": 19
+      }
+    },
+    {
+      "version": "1.0.0",
+      "deploy_dir": "releases\\1.0.0\\deploy-drill-100",
+      "activated": true,
+      "health": {
+        "status": 0,
+        "success": true,
+        "checks": [
+          {
+            "name": "runtime-node",
+            "ok": true,
+            "required": true,
+            "detail": "24.19.0"
+          },
+          {
+            "name": "config",
+            "ok": true,
+            "required": true,
+            "detail": "config/athena.config.json / athena-test"
+          },
+          {
+            "name": "schemas",
+            "ok": true,
+            "required": true,
+            "detail": "17 schema @ D:\\AIProject\\ERP-AI-Testing\\releases\\1.0.0\\deploy-drill-100\\platform\\contracts\\schemas"
+          },
+          {
+            "name": "module-packs",
+            "ok": true,
+            "required": true,
+            "detail": "4 modules; invalid=none"
+          },
+          {
+            "name": "artifacts-writable",
+            "ok": true,
+            "required": true,
+            "detail": "D:\\AIProject\\ERP-AI-Testing\\releases\\1.0.0\\deploy-drill-100\\artifacts"
+          },
+          {
+            "name": "cdp",
+            "ok": true,
+            "required": false,
+            "detail": "http://127.0.0.1:9333 Chrome/157.0.8103.39"
+          }
+        ]
+      },
+      "contract": {
+        "status": 0,
+        "success": true,
+        "passed": 19,
+        "total": 19
+      }
+    }
+  ],
+  "final_active": "1.0.0"
+}

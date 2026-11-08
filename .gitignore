@@ -26,4 +26,4 @@ executions/*
 reports/runs/
 releases/*/package/
 releases/*/*.tgz
-releases/*/deploy-drill/
+releases/*/deploy-drill*/
