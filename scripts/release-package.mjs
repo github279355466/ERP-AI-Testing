@@ -18,6 +18,7 @@ fs.mkdirSync(stage, { recursive: true });
 const include = [
   'dist',
   'config',
+  'schemas',
   'platform/contracts',
   'business-modules',
   'integration-tests',

@@ -24,3 +24,6 @@ probe/*
 executions/*
 !executions/README.md
 reports/runs/
+releases/*/package/
+releases/*/*.tgz
+releases/*/deploy-drill/
