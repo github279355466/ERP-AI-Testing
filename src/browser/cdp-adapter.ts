@@ -1,5 +1,6 @@
 import { chromium } from '@playwright/test';
 import { AthenaConfig } from '../config/athena-config';
+import { EnvironmentGuard } from '../environment/environment-guard';
 import { BrowserSession } from './session';
 
 /**
@@ -7,6 +8,7 @@ import { BrowserSession } from './session';
  * 注意：CDP 连接得到的 Browser 不调用 close()，否则会关闭用户正在使用的浏览器。
  */
 export async function connectCdp(config: AthenaConfig): Promise<BrowserSession> {
+  new EnvironmentGuard(config).assertConnectionAllowed();
   const browser = await chromium.connectOverCDP(config.browser.cdpEndpoint, {
     timeout: config.browser.navigationTimeoutMs,
   });

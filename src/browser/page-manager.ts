@@ -21,6 +21,15 @@ export interface ReadyState extends ReadySignals {
   elapsedMs: number;
 }
 
+export interface ListReadyState {
+  ok: boolean;
+  elapsedMs: number;
+  headers: number;
+  rows: number;
+  emptyState: boolean;
+  toolbarButtons: string[];
+}
+
 export class PageManager {
   constructor(
     private readonly context: BrowserContext,
@@ -108,6 +117,23 @@ export class PageManager {
    */
   async resetTabs(page: Page): Promise<number> {
     if (hostOf(page.url()) !== this.config.environment.lowcodeHost) return 0;
+    for (let guard = 0; guard < 2; guard += 1) {
+      if ((await page.locator('[class*="Drawer-module_mask-visible"]').count()) === 0) break;
+      await page.keyboard.press('Escape').catch(() => undefined);
+      await page.waitForTimeout(400);
+    }
+    for (let guard = 0; guard < 3; guard += 1) {
+      const modal = page.locator('.rc-dialog-wrap:visible').last();
+      if ((await modal.count()) === 0) break;
+      await page.keyboard.press('Escape').catch(() => undefined);
+      await page.waitForTimeout(300);
+      if ((await page.locator('.rc-dialog-wrap:visible').count()) === 0) break;
+      const cancel = modal.getByRole('button', { name: '取消', exact: true });
+      if ((await cancel.count()) > 0) {
+        await cancel.last().click().catch(() => undefined);
+        await page.waitForTimeout(300);
+      }
+    }
     let closed = 0;
     for (let guard = 0; guard < 10; guard += 1) {
       const tabs = page.locator(SELECTORS.business.tabs);
@@ -189,5 +215,39 @@ export class PageManager {
       await page.waitForTimeout(300);
     }
     return count;
+  }
+
+  /**
+   * 列表页业务就绪：必须出现表头，并出现真实数据行或明确空态。
+   * 仅出现页签不算就绪，避免在低代码页面尚未渲染时继续操作。
+   */
+  async waitForListReady(page: Page, timeoutMs = 30_000): Promise<ListReadyState> {
+    const started = Date.now();
+    let signals: Omit<ListReadyState, 'ok' | 'elapsedMs'> = {
+      headers: 0,
+      rows: 0,
+      emptyState: false,
+      toolbarButtons: [],
+    };
+    while (Date.now() - started < timeoutMs) {
+      signals = await page.evaluate(() => {
+        const text = document.body.innerText || '';
+        return {
+          headers: document.querySelectorAll('.ag-header-cell').length,
+          rows: document.querySelectorAll('.ag-center-cols-container .ag-row[row-index]').length,
+          emptyState: /暂无数据|共\s*0\s*条/.test(text),
+          toolbarButtons: Array.from(document.querySelectorAll('button'))
+            .filter((button) => (button as HTMLElement).offsetWidth > 0)
+            .map((button) => (button.textContent ?? '').replace(/\s+/g, ' ').trim())
+            .filter(Boolean)
+            .slice(0, 20),
+        };
+      });
+      if (signals.headers > 0 && (signals.rows > 0 || signals.emptyState)) {
+        return { ok: true, elapsedMs: Date.now() - started, ...signals };
+      }
+      await page.waitForTimeout(500);
+    }
+    return { ok: false, elapsedMs: Date.now() - started, ...signals };
   }
 }
