@@ -1,0 +1,15 @@
+页面,对象,状态字段,起始状态,触发动作,前置状态,后置状态,副作用观察,验证结果,证据
+仓库信息,仓库,manage_status,生效,失效,生效,失效,生效→失效；失效后行操作变为查看/重新生效/删除，编辑隐藏,通过,artifacts/P9-FDN-20261108164955/whse-lifecycle.json
+仓库信息,仓库,manage_status,失效,生效,失效,生效,失效→生效；恢复查看/编辑/失效/仓库性质变更/删除,通过,artifacts/P9-FDN-20261108164955/whse-lifecycle.json
+计量单位,计量单位,manage_status,生效,失效,生效,失效,生效→失效；单位换算仍可用,通过,artifacts/P9-FDN-20261108165730/unit-finish.json
+计量单位,计量单位,manage_status,失效,生效,失效,生效,失效→生效,通过,artifacts/P9-FDN-20261108165730/unit-finish.json
+客户通用信息,客户,manage_status,未生效,生效,未生效,生效,新增默认未生效；生效后可失效/取消生效/重新生效,通过,artifacts/P9-FDN-20261108172045/customer-life.json
+客户通用信息,客户,manage_status,生效,失效,生效,失效,失效后仍可重新生效/取消生效,通过,artifacts/P9-FDN-20261108172045/customer-life.json
+客户通用信息,客户,manage_status,失效,重新生效,失效,生效,重新生效直接回到生效态,通过,artifacts/P9-FDN-20261108172045/customer-life.json
+客户通用信息,客户,manage_status,生效,取消生效,生效,未生效,取消生效回到未生效态,通过,artifacts/P9-FDN-20261108172045/customer-life.json
+供应商通用信息,供应商,manage_status,未生效,生效,未生效,生效,新增默认未生效,通过,artifacts/P9-FDN-20261108173328/supplier-life2.json
+供应商通用信息,供应商,manage_status,生效,失效,生效,失效,失效后行操作仅查看/重新生效/删除,通过,artifacts/P9-FDN-20261108173328/supplier-life2.json
+供应商通用信息,供应商,manage_status,失效,重新生效,失效,生效,重新生效恢复编辑能力,通过,artifacts/P9-FDN-20261108173328/supplier-life2.json
+运输方式,运输方式,manage_status,生效,失效,生效,失效,按钮存在；未单独执行状态用例,未执行,artifacts/session-outputs/foundation-button-inventory.json
+交易对象群组,交易对象群组,manage_status,生效,失效/生效,生效,失效/生效,按钮存在；未单独执行状态用例,未执行,artifacts/session-outputs/foundation-button-inventory.json
+品号通用信息,品号,manage_status,生效,取消生效/失效,生效,未生效/失效,按钮存在；未单独执行状态用例,未执行,artifacts/session-outputs/foundation-button-inventory.json

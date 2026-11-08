@@ -1,0 +1,38 @@
+[
+  {
+    "module_id": "ap",
+    "version": "0.1.0",
+    "status": "draft",
+    "page_mappings": 2,
+    "testcases": 1,
+    "field_rules": 0,
+    "data_recipes": 0
+  },
+  {
+    "module_id": "ar",
+    "version": "0.1.0",
+    "status": "draft",
+    "page_mappings": 2,
+    "testcases": 1,
+    "field_rules": 0,
+    "data_recipes": 0
+  },
+  {
+    "module_id": "base",
+    "version": "0.1.0",
+    "status": "draft",
+    "page_mappings": 1,
+    "testcases": 1,
+    "field_rules": 0,
+    "data_recipes": 0
+  },
+  {
+    "module_id": "purchase",
+    "version": "0.1.0",
+    "status": "draft",
+    "page_mappings": 4,
+    "testcases": 4,
+    "field_rules": 1,
+    "data_recipes": 1
+  }
+]
