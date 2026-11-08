@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/action-registry.schema.json",
+  "title": "Athena Action Registry",
+  "type": "object",
+  "required": ["schema_version", "actions"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "description",
+          "parameters",
+          "risk_level",
+          "retry_safe",
+          "idempotent",
+          "requires_authorization",
+          "evidence_policy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "navigate",
+              "search",
+              "open_record",
+              "select_master_data",
+              "fill",
+              "select_option",
+              "upload",
+              "save",
+              "submit",
+              "approve",
+              "unapprove",
+              "delete",
+              "assert_visible",
+              "assert_text",
+              "assert_value",
+              "assert_row",
+              "capture_evidence"
+            ]
+          },
+          "description": { "type": "string", "minLength": 1 },
+          "parameters": { "type": "object" },
+          "risk_level": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/riskLevel" },
+          "retry_safe": { "type": "boolean" },
+          "idempotent": { "type": "boolean" },
+          "requires_authorization": { "type": "boolean" },
+          "evidence_policy": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/evidencePolicy" }
+        }
+      }
+    }
+  }
+}

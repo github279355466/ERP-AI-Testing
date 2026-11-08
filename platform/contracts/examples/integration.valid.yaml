@@ -1,0 +1,19 @@
+schema_version: "1.0"
+integration:
+  id: purchase-to-ap
+  name: 采购到应付
+  version: 0.1.0
+  status: draft
+  owner: qa
+  description: 首条跨模块集成链路骨架，流程待业务确认
+module_dependencies:
+  - module_id: purchase
+    version_range: ">=0.1.0 <1.0.0"
+  - module_id: ap
+    version_range: ">=0.1.0 <1.0.0"
+business_goal: 验证采购到应付的跨模块业务链路（候选，待 PRD/页面确认）
+steps: []
+data_mapping: []
+assertions: []
+cleanup_policy: mark_for_cleanup
+failure_propagation: block_downstream

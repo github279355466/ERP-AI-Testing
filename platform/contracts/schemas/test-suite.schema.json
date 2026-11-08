@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/test-suite.schema.json",
+  "title": "Athena Test Suite",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "module_id",
+    "name",
+    "version",
+    "status",
+    "case_ids",
+    "execution_order",
+    "tags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/semver" },
+    "status": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/artifactStatus" },
+    "case_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "execution_order": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

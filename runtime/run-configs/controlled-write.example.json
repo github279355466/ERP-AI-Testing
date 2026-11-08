@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "run_id_prefix": "ATN-CW",
+  "mode": "controlled_write",
+  "authorization": {
+    "allow_write": true,
+    "allow_high_risk_actions": false,
+    "allowed_actions": [
+      "navigate",
+      "search",
+      "open_record",
+      "select_master_data",
+      "fill",
+      "select_option",
+      "save",
+      "submit",
+      "assert_visible",
+      "assert_text",
+      "assert_value",
+      "assert_row",
+      "capture_evidence"
+    ]
+  },
+  "environment_ref": "athena-test",
+  "user_ref": "qa-demo",
+  "module_packs": [{ "module_id": "purchase", "version": "0.1.0" }],
+  "integration_packs": [],
+  "cleanup_policy": "mark_for_cleanup"
+}

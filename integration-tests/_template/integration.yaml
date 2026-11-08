@@ -1,0 +1,19 @@
+schema_version: "1.0"
+integration:
+  id: template-integration
+  name: 跨模块集成模板
+  version: 0.1.0
+  status: draft
+  owner: qa
+  description: 复制本目录后修改 integration.id、模块依赖与业务目标
+module_dependencies:
+  - module_id: module-a
+    version_range: ">=0.1.0 <1.0.0"
+  - module_id: module-b
+    version_range: ">=0.1.0 <1.0.0"
+business_goal: 待确认的跨模块业务目标
+steps: []
+data_mapping: []
+assertions: []
+cleanup_policy: mark_for_cleanup
+failure_propagation: block_downstream

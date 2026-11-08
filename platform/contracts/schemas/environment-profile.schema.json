@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/environment-profile.schema.json",
+  "title": "Athena Environment Profile",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "name",
+    "type",
+    "base_url",
+    "tenant_id",
+    "application_code",
+    "lowcode_host",
+    "allowed_origins"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "name": { "type": "string", "minLength": 1 },
+    "type": { "enum": ["development", "test", "staging"] },
+    "base_url": { "type": "string", "minLength": 1 },
+    "tenant_id": { "type": "string", "minLength": 1 },
+    "application_code": { "type": "string", "minLength": 1 },
+    "lowcode_host": { "type": "string", "minLength": 1 },
+    "allowed_origins": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "blocked_origins": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

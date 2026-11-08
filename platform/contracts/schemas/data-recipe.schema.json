@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/data-recipe.schema.json",
+  "title": "Athena Data Recipe",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "module_id",
+    "title",
+    "entities",
+    "create_order",
+    "references",
+    "uniqueness_strategy",
+    "reuse_policy",
+    "cleanup",
+    "assertions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "entities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "key", "create_order", "reuse_policy"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "type": { "type": "string", "minLength": 1 },
+          "key": { "type": "string", "minLength": 1 },
+          "create_order": { "type": "integer", "minimum": 0 },
+          "reuse_policy": { "enum": ["never", "within_run", "approved_shared"] }
+        }
+      }
+    },
+    "create_order": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "field", "required"],
+        "additionalProperties": false,
+        "properties": {
+          "from": { "type": "string", "minLength": 1 },
+          "to": { "type": "string", "minLength": 1 },
+          "field": { "type": "string", "minLength": 1 },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "uniqueness_strategy": {
+      "type": "object",
+      "required": ["prefix", "include_run_id", "timestamp"],
+      "additionalProperties": false,
+      "properties": {
+        "prefix": { "type": "string", "minLength": 1 },
+        "include_run_id": { "type": "boolean" },
+        "timestamp": { "type": "boolean" }
+      }
+    },
+    "reuse_policy": { "enum": ["never", "within_run", "approved_shared"] },
+    "cleanup": {
+      "type": "object",
+      "required": ["policy", "order", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "policy": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/cleanupPolicy" },
+        "order": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/assertion" }
+    }
+  }
+}

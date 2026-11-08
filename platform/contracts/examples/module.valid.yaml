@@ -1,0 +1,19 @@
+schema_version: "1.0"
+module:
+  id: demo
+  name: 示例模块
+  version: 0.1.0
+  status: draft
+  owner: qa
+  description: P1 契约校验用示例模块，不包含真实业务规则
+compatibility:
+  platform_api: ">=1.0.0 <2.0.0"
+sources:
+  prd_index: source-index/index.yaml
+assets:
+  knowledge: knowledge/
+  page_mappings: page-mappings/
+  scenarios: scenarios/
+  testcases: testcases/
+  data_recipes: data-recipes/
+  test_suites: test-suites/

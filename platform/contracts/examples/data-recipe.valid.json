@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "id": "DR-DEMO-001",
+  "module_id": "demo",
+  "title": "示例数据配方",
+  "entities": [
+    {
+      "id": "demo-entity",
+      "type": "MASTER_DATA",
+      "key": "DEMO-{{run}}",
+      "create_order": 1,
+      "reuse_policy": "never"
+    }
+  ],
+  "create_order": ["demo-entity"],
+  "references": [],
+  "uniqueness_strategy": {
+    "prefix": "DEMO",
+    "include_run_id": true,
+    "timestamp": false
+  },
+  "reuse_policy": "never",
+  "cleanup": {
+    "policy": "mark_for_cleanup",
+    "order": ["demo-entity"],
+    "notes": "P1 示例，不执行真实清理"
+  },
+  "assertions": [
+    {
+      "type": "visible",
+      "target": "demo-entity",
+      "expected": "创建成功",
+      "level": "business",
+      "source_ref": {
+        "document_id": "DOC-DEMO-001",
+        "file_path": "docs/examples/demo-prd.md",
+        "source_type": "USER_CONFIRMED",
+        "section": "测试数据",
+        "excerpt": "示例数据由 UI 创建。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "run_id": "20261108-120000-demo",
+  "platform_version": "1.0.0",
+  "module_packs": [{ "module_id": "demo", "version": "0.1.0" }],
+  "environment": { "name": "athena-test", "type": "test", "tenant_id": "digichannel" },
+  "operator": "qa",
+  "started_at": "2026-11-08T12:00:00Z",
+  "finished_at": "2026-11-08T12:00:05Z",
+  "outcome": "passed",
+  "failure_category": "none",
+  "cases": [
+    {
+      "case_id": "TC-DEMO-001",
+      "status": "passed",
+      "duration_ms": 5000,
+      "steps": [{ "action": "navigate", "status": "passed", "detail": "demo-page" }],
+      "assertions": [
+        {
+          "name": "示例字段可见",
+          "level": "ui",
+          "expected": "可见",
+          "actual": "可见",
+          "passed": true,
+          "source_ref": {
+            "document_id": "DOC-DEMO-001",
+            "file_path": "docs/examples/demo-prd.md",
+            "source_type": "PRD_EXPLICIT",
+            "section": "字段说明",
+            "line_start": 10,
+            "excerpt": "示例字段在详情页可见。"
+          }
+        }
+      ],
+      "evidence": ["shots/demo.png"]
+    }
+  ],
+  "data_preparation": { "status": "passed", "recipe_refs": ["DR-DEMO-001"], "notes": "" },
+  "cleanup": { "status": "skipped", "notes": "示例不清理" },
+  "evidence": ["shots/demo.png"]
+}

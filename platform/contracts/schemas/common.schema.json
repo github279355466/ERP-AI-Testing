@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/common.schema.json",
+  "title": "Athena Platform Common Definitions",
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+([+-][0-9A-Za-z.-]+)?$"
+    },
+    "versionRange": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifactStatus": {
+      "enum": ["draft", "reviewed", "approved", "deprecated"]
+    },
+    "riskLevel": {
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "cleanupPolicy": {
+      "enum": ["keep", "delete_after_run", "mark_for_cleanup", "manual"]
+    },
+    "sourceType": {
+      "enum": [
+        "PRD_EXPLICIT",
+        "PRD_DERIVED",
+        "PLATFORM_SERVICE",
+        "UI_OBSERVED",
+        "USER_CONFIRMED",
+        "PENDING"
+      ]
+    },
+    "sourceRef": {
+      "type": "object",
+      "required": ["document_id", "file_path", "source_type"],
+      "additionalProperties": false,
+      "properties": {
+        "document_id": { "type": "string", "minLength": 1 },
+        "file_path": { "type": "string", "minLength": 1 },
+        "source_type": { "$ref": "#/$defs/sourceType" },
+        "section": { "type": "string" },
+        "line_start": { "type": "integer", "minimum": 1 },
+        "line_end": { "type": "integer", "minimum": 1 },
+        "excerpt": { "type": "string" }
+      }
+    },
+    "assertion": {
+      "type": "object",
+      "required": ["type", "target", "expected", "level", "source_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "visible",
+            "text",
+            "value",
+            "row",
+            "count",
+            "status",
+            "document_no",
+            "summary_value",
+            "relation"
+          ]
+        },
+        "target": { "type": "string", "minLength": 1 },
+        "expected": { "type": "string" },
+        "level": { "enum": ["ui", "business", "persistence"] },
+        "source_ref": { "$ref": "#/$defs/sourceRef" }
+      }
+    },
+    "step": {
+      "type": "object",
+      "required": ["action", "target"],
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "navigate",
+            "search",
+            "open_record",
+            "select_master_data",
+            "fill",
+            "select_option",
+            "upload",
+            "save",
+            "submit",
+            "approve",
+            "unapprove",
+            "delete",
+            "assert_visible",
+            "assert_text",
+            "assert_value",
+            "assert_row",
+            "capture_evidence"
+          ]
+        },
+        "target": { "type": "string", "minLength": 1 },
+        "value": { "type": "string" },
+        "timeout_ms": { "type": "integer", "minimum": 1 },
+        "evidence": { "type": "boolean" }
+      }
+    },
+    "retryPolicy": {
+      "type": "object",
+      "required": ["max_attempts", "retry_safe_actions_only"],
+      "additionalProperties": false,
+      "properties": {
+        "max_attempts": { "type": "integer", "minimum": 1 },
+        "retry_safe_actions_only": { "type": "boolean" }
+      }
+    },
+    "moduleRef": {
+      "type": "object",
+      "required": ["module_id", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "version": { "$ref": "#/$defs/semver" }
+      }
+    },
+    "evidencePolicy": {
+      "type": "object",
+      "required": ["screenshot", "dom", "trace"],
+      "additionalProperties": false,
+      "properties": {
+        "screenshot": { "enum": ["never", "on_failure", "always"] },
+        "dom": { "enum": ["never", "on_failure", "always"] },
+        "trace": { "enum": ["never", "on_failure", "always"] }
+      }
+    }
+  }
+}

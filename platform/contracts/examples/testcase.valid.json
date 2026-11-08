@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "id": "TC-DEMO-001",
+  "module_id": "demo",
+  "version": "0.1.0",
+  "title": "示例字段可见性",
+  "objective": "验证示例页面字段可见",
+  "scenario_refs": ["SCN-DEMO-001"],
+  "source_refs": [
+    {
+      "document_id": "DOC-DEMO-001",
+      "file_path": "docs/examples/demo-prd.md",
+      "source_type": "PRD_EXPLICIT",
+      "section": "字段说明",
+      "line_start": 10,
+      "excerpt": "示例字段在详情页可见。"
+    }
+  ],
+  "preconditions": ["已进入示例页面"],
+  "data_recipe_refs": ["DR-DEMO-001"],
+  "dependencies": [],
+  "steps": [
+    { "action": "navigate", "target": "demo-page", "timeout_ms": 30000 },
+    { "action": "assert_visible", "target": "demo-field", "evidence": true }
+  ],
+  "assertions": [
+    {
+      "type": "visible",
+      "target": "demo-field",
+      "expected": "可见",
+      "level": "ui",
+      "source_ref": {
+        "document_id": "DOC-DEMO-001",
+        "file_path": "docs/examples/demo-prd.md",
+        "source_type": "PRD_EXPLICIT",
+        "section": "字段说明",
+        "line_start": 10,
+        "excerpt": "示例字段在详情页可见。"
+      }
+    }
+  ],
+  "cleanup_policy": "keep",
+  "status": "draft",
+  "timeout_ms": 120000,
+  "retry_policy": { "max_attempts": 1, "retry_safe_actions_only": true }
+}

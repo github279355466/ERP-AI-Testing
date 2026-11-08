@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/test-case.schema.json",
+  "title": "Athena Test Case",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "module_id",
+    "version",
+    "title",
+    "objective",
+    "scenario_refs",
+    "source_refs",
+    "preconditions",
+    "data_recipe_refs",
+    "dependencies",
+    "steps",
+    "assertions",
+    "cleanup_policy",
+    "status",
+    "timeout_ms",
+    "retry_policy"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "version": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/semver" },
+    "title": { "type": "string", "minLength": 1 },
+    "objective": { "type": "string", "minLength": 1 },
+    "scenario_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/sourceRef" }
+    },
+    "preconditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "data_recipe_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["case_id", "required"],
+        "additionalProperties": false,
+        "properties": {
+          "case_id": { "type": "string", "minLength": 1 },
+          "required": { "type": "boolean" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/step" }
+    },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/assertion" }
+    },
+    "cleanup_policy": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/cleanupPolicy" },
+    "status": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/artifactStatus" },
+    "timeout_ms": { "type": "integer", "minimum": 1 },
+    "retry_policy": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/retryPolicy" }
+  }
+}

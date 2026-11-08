@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "run_id": "ATN-RO-20261108-001",
+  "platform_version": "1.0.0",
+  "module_packs": [
+    { "module_id": "purchase", "version": "0.1.0" }
+  ],
+  "integration_packs": [],
+  "environment": {
+    "name": "athena-test",
+    "type": "test",
+    "tenant_id": "tenant-demo"
+  },
+  "operator": "qa-demo",
+  "test_case_id": "TC-DEMO-001",
+  "started_at": "2026-11-08T10:00:00+08:00",
+  "finished_at": "2026-11-08T10:00:05+08:00",
+  "outcome": "passed",
+  "failure_category": "none",
+  "created_documents": [],
+  "data_recipe_runs": [],
+  "cleanup_status": "not_run",
+  "evidence_files": ["artifacts/ATN-RO-20261108-001/results.json"]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/user-profile.schema.json",
+  "title": "Athena User Profile",
+  "description": "只保存操作者标识与凭据环境变量前缀，不保存账号、口令、Token、Cookie。",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "operator_id",
+    "display_name",
+    "roles",
+    "environment_refs",
+    "credential_env_prefix"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "operator_id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string", "minLength": 1 },
+    "roles": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "environment_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "credential_env_prefix": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" }
+  }
+}

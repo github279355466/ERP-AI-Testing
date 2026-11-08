@@ -1,0 +1,19 @@
+schema_version: "1.0"
+module:
+  id: demo-template
+  name: 示例模块模板
+  version: 0.1.0
+  status: draft
+  owner: qa
+  description: 复制本目录后修改 module.id / name / owner，再填充业务资产
+compatibility:
+  platform_api: ">=1.0.0 <2.0.0"
+sources:
+  prd_index: source-index/index.yaml
+assets:
+  knowledge: knowledge/
+  page_mappings: page-mappings/
+  scenarios: scenarios/
+  testcases: testcases/
+  data_recipes: data-recipes/
+  test_suites: test-suites/

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/run-manifest-v2.schema.json",
+  "title": "Athena Run Manifest v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "platform_version",
+    "module_packs",
+    "integration_packs",
+    "environment",
+    "operator",
+    "test_case_id",
+    "started_at",
+    "finished_at",
+    "outcome",
+    "failure_category",
+    "created_documents",
+    "data_recipe_runs",
+    "cleanup_status",
+    "evidence_files"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "2.0" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "platform_version": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/semver" },
+    "module_packs": {
+      "type": "array",
+      "items": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/moduleRef" }
+    },
+    "integration_packs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["integration_id", "version"],
+        "additionalProperties": false,
+        "properties": {
+          "integration_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "version": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/semver" }
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["name", "type", "tenant_id"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "type": { "enum": ["development", "test", "staging"] },
+        "tenant_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "operator": { "type": "string", "minLength": 1 },
+    "test_case_id": { "type": "string", "minLength": 1 },
+    "started_at": { "type": "string", "minLength": 1 },
+    "finished_at": { "type": ["string", "null"] },
+    "outcome": {
+      "enum": ["passed", "failed", "blocked", "skipped", "cancelled", "error"]
+    },
+    "failure_category": {
+      "enum": ["none", "environment", "data_preparation", "step", "assertion", "platform", "manual"]
+    },
+    "created_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["document_type", "identifier"],
+        "additionalProperties": false,
+        "properties": {
+          "document_type": { "type": "string", "minLength": 1 },
+          "identifier": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "data_recipe_runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["recipe_id", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "recipe_id": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["passed", "failed", "blocked", "skipped", "not_run"] }
+        }
+      }
+    },
+    "cleanup_status": {
+      "enum": ["passed", "failed", "blocked", "skipped", "not_run"]
+    },
+    "evidence_files": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

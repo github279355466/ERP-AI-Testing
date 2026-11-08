@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/execution-plan.schema.json",
+  "title": "Athena Execution Plan",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "plan_id",
+    "suite_id",
+    "platform_version",
+    "module_packs",
+    "steps",
+    "dry_run",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "plan_id": { "type": "string", "minLength": 1 },
+    "suite_id": { "type": "string", "minLength": 1 },
+    "platform_version": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/semver" },
+    "module_packs": {
+      "type": "array",
+      "items": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/moduleRef" }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["order", "case_id", "depends_on"],
+        "additionalProperties": false,
+        "properties": {
+          "order": { "type": "integer", "minimum": 1 },
+          "case_id": { "type": "string", "minLength": 1 },
+          "depends_on": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "dry_run": { "type": "boolean" },
+    "created_at": { "type": "string", "minLength": 1 }
+  }
+}

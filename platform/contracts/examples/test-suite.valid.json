@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "id": "SUITE-DEMO-001",
+  "module_id": "demo",
+  "name": "示例冒烟套件",
+  "version": "0.1.0",
+  "status": "draft",
+  "case_ids": ["TC-DEMO-001"],
+  "execution_order": ["TC-DEMO-001"],
+  "tags": ["demo", "smoke"]
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "run_id_prefix": "DEMO",
+  "mode": "read_only",
+  "authorization": {
+    "allow_write": false,
+    "allow_high_risk_actions": false,
+    "allowed_actions": [
+      "navigate",
+      "search",
+      "open_record",
+      "assert_visible",
+      "assert_text",
+      "assert_value",
+      "assert_row",
+      "capture_evidence"
+    ]
+  },
+  "environment_ref": "athena-test",
+  "user_ref": "qa-demo",
+  "module_packs": [{ "module_id": "demo", "version": "0.1.0" }],
+  "integration_packs": [],
+  "cleanup_policy": "keep"
+}

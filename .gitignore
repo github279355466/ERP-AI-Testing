@@ -18,3 +18,6 @@ Thumbs.db
 probe/chrome-profile/
 probe/chrome-profile2/
 .archive/
+executions/*
+!executions/README.md
+reports/runs/

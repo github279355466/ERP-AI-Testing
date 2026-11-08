@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "module_id": "demo",
+  "page_key": "demo-page",
+  "page_name": "示例页面",
+  "navigation": {
+    "menu_path": ["示例模块", "示例页面"],
+    "work_item_code": "DEMO001",
+    "route": "/list"
+  },
+  "status": "candidate",
+  "review_status": "needs_review",
+  "locator_priority": ["label", "role", "testid", "css"],
+  "fields": [
+    {
+      "name": "demo_field",
+      "label": "示例字段",
+      "control_type": "TEXT_INPUT",
+      "locator": {
+        "strategy": "label",
+        "value": "demo.demo_field",
+        "unique": true
+      },
+      "required": false,
+      "readonly": false,
+      "verified": false,
+      "source_ref": {
+        "document_id": "DOC-DEMO-001",
+        "file_path": "docs/examples/demo-prd.md",
+        "source_type": "PRD_EXPLICIT",
+        "section": "字段说明",
+        "line_start": 10,
+        "excerpt": "示例字段在详情页可见。"
+      }
+    }
+  ]
+}

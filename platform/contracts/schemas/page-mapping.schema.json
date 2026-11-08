@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/page-mapping.schema.json",
+  "title": "Athena Page Mapping",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "module_id",
+    "page_key",
+    "page_name",
+    "navigation",
+    "status",
+    "review_status",
+    "locator_priority",
+    "fields"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "page_key": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "page_name": { "type": "string", "minLength": 1 },
+    "navigation": {
+      "type": "object",
+      "required": ["menu_path", "work_item_code", "route"],
+      "additionalProperties": false,
+      "properties": {
+        "menu_path": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "work_item_code": { "type": "string", "minLength": 1 },
+        "route": { "type": "string", "minLength": 1 }
+      }
+    },
+    "status": { "enum": ["candidate", "confirmed", "deprecated"] },
+    "review_status": { "enum": ["draft", "needs_review", "approved", "blocked"] },
+    "locator_priority": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "enum": ["role", "label", "placeholder", "testid", "css", "xpath"] }
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "label", "control_type", "locator", "required", "readonly", "verified", "source_ref"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "control_type": {
+            "enum": [
+              "TEXT_INPUT",
+              "NUMBER_INPUT",
+              "DATE_PICKER",
+              "DROPDOWN",
+              "LOOKUP",
+              "TREE_SELECT",
+              "CHECKBOX",
+              "RADIO",
+              "GRID",
+              "BUTTON",
+              "TAB",
+              "MODAL",
+              "UNKNOWN"
+            ]
+          },
+          "locator": {
+            "type": "object",
+            "required": ["strategy", "value", "unique"],
+            "additionalProperties": false,
+            "properties": {
+              "strategy": { "enum": ["role", "label", "placeholder", "testid", "css", "xpath"] },
+              "value": { "type": "string", "minLength": 1 },
+              "unique": { "type": "boolean" }
+            }
+          },
+          "required": { "type": "boolean" },
+          "readonly": { "type": "boolean" },
+          "verified": { "type": "boolean" },
+          "source_ref": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/sourceRef" }
+        }
+      }
+    }
+  }
+}

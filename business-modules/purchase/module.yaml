@@ -1,0 +1,19 @@
+schema_version: "1.0"
+module:
+  id: purchase
+  name: 采购管理
+  version: 0.1.0
+  status: draft
+  owner: qa
+  description: 采购模块资产包；P1 只登记资产，页面对象/流程仍在 src/pages/purchase，P4/P6 迁移
+compatibility:
+  platform_api: ">=1.0.0 <2.0.0"
+sources:
+  prd_index: source-index/index.yaml
+assets:
+  knowledge: knowledge/
+  page_mappings: page-mappings/
+  scenarios: scenarios/
+  testcases: testcases/
+  data_recipes: data-recipes/
+  test_suites: test-suites/

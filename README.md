@@ -2,7 +2,30 @@
 
 基于 TypeScript + Playwright 的 Athena ERP 测试框架，支持接管已登录 Chrome（CDP）与独立 Chromium 回归两种模式。
 
-当前阶段：**框架 MVP + 只读验证**。未实现写入型用例，也不会批量执行测试计划。
+当前阶段：**v2.0 P1 平台骨架与契约治理**。三层架构骨架与核心契约已建立；采购仍是第一个示范模块，采购实现尚未迁移。默认只读，写操作必须由运行配置显式授权。
+
+架构入口：`docs/architecture/TO-BE.md`；边界规则：`docs/architecture/BOUNDARIES.md`；升级过程：`docs/upgrade/`。
+
+## v2.0 三层架构
+
+```text
+Platform Core            通用能力：浏览器、定位、控件、场景、用例、执行、断言、报告、治理
+Business Module Packs    业务差异：purchase / sales / inventory / ar / ap / production
+Integration Test Packs   跨模块链路：purchase-to-ap 等
+```
+
+- 平台核心只建设一次，不得写入采购等具体业务字段、流程或选择器。
+- 模块包只提供本模块的页面映射、场景、用例、数据配方与套件。
+- 集成包只引用模块用例，不复制模块内部步骤。
+- 当前 P1 只建立骨架与契约；`src/`、`knowledge/`、`cases/` 保留为 legacy，P2-P6 分阶段迁移。
+
+契约校验：
+
+```bash
+npm run platform:validate   # 全量校验示例、模块包、集成包
+npm run platform:check      # typecheck + 单测 + 契约测试
+npm run test:contract       # 契约正反例与版本兼容测试
+```
 
 工作区交接与目录说明见 `docs/WORKSPACE-HANDOFF-20261106.md`；浏览器 profile 位于 `probe/chrome-profile`，用 `npm run browser:start` 启动。
 
@@ -117,8 +140,19 @@ npm run test:smoke
 
 ```
 config/athena.config.json     环境、浏览器、超时、安全策略、PRD 目录
-knowledge/                    页面 / 控件 / 业务规则 / PRD 索引
-cases/                        只读用例定义
+platform/                     平台核心契约、校验器与后续引擎
+adapters/                     业务无关控件/页面适配原语（P4）
+business-modules/             业务模块包（purchase 为示范模块）
+integration-tests/            跨模块集成测试包（purchase-to-ap）
+runtime/                      环境、用户标识与运行配置（不含凭据）
+executions/                   单次运行产物（P5）
+tools/                        平台治理工具（当前入口 src/cli/platform.ts）
+docs/architecture/            AS-IS / TO-BE / 边界（当前架构事实源）
+docs/contracts/               契约说明
+docs/decisions/               ADR
+docs/runbooks/                校验与模块接入操作手册
+knowledge/                    [legacy] 页面 / 控件 / 业务规则 / PRD 索引
+cases/                        [legacy] 只读用例定义
 src/
   browser/   CDP 与 Chromium 适配器、页面管理
   locator/   稳定选择器与字段锚点
@@ -130,23 +164,30 @@ src/
   runner/    只读执行器与安全策略
   knowledge/ 知识库加载与校验
   cli/       命令行入口
-tests/unit/  纯逻辑单元测试
-tests/smoke/ 真实浏览器冒烟
+tests/unit/     纯逻辑单元测试
+tests/contract/ 契约正反例、版本兼容与 CLI 测试
+tests/platform/ 平台自检（P1 静态检查在 contract）
+tests/smoke/    真实浏览器冒烟
 docs/        架构、连接、探索报告、验收报告
 skills/      项目级 athena-erp-testing Skill
 ```
 
+`src/`、`knowledge/`、`cases/` 在 P1 保持可运行，但不再作为新能力的落点；P2-P6 按 `docs/upgrade/P0-MIGRATION-PLAN.md` 迁移。
+
 ## 安全边界
 
-- 默认只读：执行器只接受 `open`、`click`、`waitFor`、`assert*`、`dropdownOptions`、`lookupInfo`、`screenshot`、`snapshot`、`closeTab`。
-- 点击前先解析目标元素文本；文本为空或命中「保存 / 删除 / 审核 / 反审核 / 结账 / 过账 / 作废」等词会被直接拒绝。
+- 默认只读：运行配置默认 `read_only`，高风险动作默认关闭。
+- `controlled_write` 必须显式授权，并声明允许动作、专用测试数据与清理方案；未授权时保存、提交、审核、撤审、删除一律拒绝。
+- 点击前先解析目标元素文本；文本为空或命中「保存 / 删除 / 审核 / 反审核 / 结账 / 过账 / 作废」等词时，只在已授权动作范围内放行。
 - `open` 仅允许门户与低代码业务主机；下拉和选择器只允许打开、读取、关闭，不选择、不确认。
 - 不保存账号口令；URL 与日志中的 `token`、`password`、`cookie` 自动脱敏。
 - 关闭未保存页签统一选择「直接离开」。
 
 ## 当前状态
 
-- 已实现：CDP 接管、页面管理、DOM/截图采集、控件识别、只读执行、三级断言、证据与报告、知识库校验。
-- 未实现：测试计划（Markdown）解析与批量调度、写入型用例、数据清理、跨租户参数化、云端发布。
+- 已实现：三层架构骨架、15 个核心 Schema（含公共定义）、校验器、运行清单 v2 与 v1 适配、模块/集成包模板、运行时配置骨架、版本兼容检查、契约测试与 CLI。
+- 保留可用：CDP 接管、页面管理、DOM/截图采集、控件识别、执行器、三级断言、证据与报告、Phase 1 PRD 静态建模。
+- 待建设：PRD/知识引擎平台化（P2）、场景与用例编译（P3）、页面适配与数据配方（P4）、执行/断言/报告分层（P5）、采购模块验收（P6）。
+- 未实现：跨租户参数化、云端发布；采购退货出库已知 Bug 暂不处理。
 
-详见 [MVP 验证报告](docs/MVP-VALIDATION.md) 与 [技术设计](docs/ARCHITECTURE.md)。
+详见 [MVP 验证报告](docs/MVP-VALIDATION.md)、[历史技术设计](docs/ARCHITECTURE.md) 与 [当前架构](docs/architecture/TO-BE.md)。

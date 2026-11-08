@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/execution-report.schema.json",
+  "title": "Athena Execution Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "platform_version",
+    "module_packs",
+    "environment",
+    "operator",
+    "started_at",
+    "finished_at",
+    "outcome",
+    "failure_category",
+    "cases",
+    "data_preparation",
+    "cleanup",
+    "evidence"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "platform_version": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/semver" },
+    "module_packs": {
+      "type": "array",
+      "items": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/moduleRef" }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["name", "type", "tenant_id"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "type": { "enum": ["development", "test", "staging"] },
+        "tenant_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "operator": { "type": "string", "minLength": 1 },
+    "started_at": { "type": "string", "minLength": 1 },
+    "finished_at": { "type": "string", "minLength": 1 },
+    "outcome": { "enum": ["passed", "failed", "blocked", "skipped", "cancelled", "error"] },
+    "failure_category": {
+      "enum": ["none", "environment", "data_preparation", "step", "assertion", "platform", "manual"]
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["case_id", "status", "duration_ms", "steps", "assertions", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "case_id": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["passed", "failed", "blocked", "skipped", "cancelled", "error"] },
+          "duration_ms": { "type": "integer", "minimum": 0 },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["action", "status"],
+              "additionalProperties": false,
+              "properties": {
+                "action": { "type": "string" },
+                "status": { "enum": ["passed", "failed", "blocked", "skipped", "cancelled", "error"] },
+                "detail": { "type": "string" }
+              }
+            }
+          },
+          "assertions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "level", "expected", "actual", "passed", "source_ref"],
+              "additionalProperties": false,
+              "properties": {
+                "name": { "type": "string" },
+                "level": { "enum": ["ui", "business", "persistence"] },
+                "expected": { "type": "string" },
+                "actual": { "type": "string" },
+                "passed": { "type": "boolean" },
+                "source_ref": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/sourceRef" }
+              }
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "data_preparation": {
+      "type": "object",
+      "required": ["status", "recipe_refs", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "status": { "enum": ["passed", "failed", "blocked", "skipped", "not_run"] },
+        "recipe_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "cleanup": {
+      "type": "object",
+      "required": ["status", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "status": { "enum": ["passed", "failed", "blocked", "skipped", "not_run"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

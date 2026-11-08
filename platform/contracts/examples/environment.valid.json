@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "name": "athena-test",
+  "type": "test",
+  "base_url": "https://athena-test.digiwincloud.com.cn/",
+  "tenant_id": "digichannel",
+  "application_code": "smbcloud",
+  "lowcode_host": "lowcode-form-render-test.apps.digiwincloud.com.cn",
+  "allowed_origins": [
+    "https://athena-test.digiwincloud.com.cn/",
+    "https://lowcode-form-render-test.apps.digiwincloud.com.cn"
+  ],
+  "blocked_origins": []
+}

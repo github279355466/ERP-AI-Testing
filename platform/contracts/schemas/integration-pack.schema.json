@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/integration-pack.schema.json",
+  "title": "Athena Integration Test Pack",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "integration",
+    "module_dependencies",
+    "business_goal",
+    "steps",
+    "data_mapping",
+    "assertions",
+    "cleanup_policy",
+    "failure_propagation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "integration": {
+      "type": "object",
+      "required": ["id", "name", "version", "status", "owner", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/semver" },
+        "status": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/artifactStatus" },
+        "owner": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "module_dependencies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["module_id", "version_range"],
+        "additionalProperties": false,
+        "properties": {
+          "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "version_range": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/versionRange" }
+        }
+      }
+    },
+    "business_goal": { "type": "string", "minLength": 1 },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "module_id", "case_ref", "action"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "module_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "case_ref": { "type": "string", "minLength": 1 },
+          "action": { "type": "string", "minLength": 1 },
+          "data_mapping": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["from", "to"],
+              "additionalProperties": false,
+              "properties": {
+                "from": { "type": "string", "minLength": 1 },
+                "to": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_mapping": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "additionalProperties": false,
+        "properties": {
+          "from": { "type": "string", "minLength": 1 },
+          "to": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "items": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/assertion" }
+    },
+    "cleanup_policy": { "$ref": "https://athena.local/contracts/common.schema.json#/$defs/cleanupPolicy" },
+    "failure_propagation": {
+      "enum": ["block_downstream", "skip_downstream", "continue"]
+    }
+  }
+}

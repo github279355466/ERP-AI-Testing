@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0",
+  "actions": [
+    {
+      "type": "navigate",
+      "description": "导航到菜单或页面",
+      "parameters": { "type": "object" },
+      "risk_level": "low",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "search",
+      "description": "列表查询",
+      "parameters": { "type": "object" },
+      "risk_level": "low",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "open_record",
+      "description": "打开记录",
+      "parameters": { "type": "object" },
+      "risk_level": "low",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "select_master_data",
+      "description": "通过 UI 搜索选择基础资料",
+      "parameters": { "type": "object" },
+      "risk_level": "medium",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "fill",
+      "description": "填写字段",
+      "parameters": { "type": "object" },
+      "risk_level": "medium",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "select_option",
+      "description": "选择下拉/单选项",
+      "parameters": { "type": "object" },
+      "risk_level": "medium",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "upload",
+      "description": "上传附件",
+      "parameters": { "type": "object" },
+      "risk_level": "high",
+      "retry_safe": false,
+      "idempotent": false,
+      "requires_authorization": true,
+      "evidence_policy": { "screenshot": "always", "dom": "on_failure", "trace": "always" }
+    },
+    {
+      "type": "save",
+      "description": "保存单据",
+      "parameters": { "type": "object" },
+      "risk_level": "high",
+      "retry_safe": false,
+      "idempotent": false,
+      "requires_authorization": true,
+      "evidence_policy": { "screenshot": "always", "dom": "on_failure", "trace": "always" }
+    },
+    {
+      "type": "submit",
+      "description": "提交单据",
+      "parameters": { "type": "object" },
+      "risk_level": "high",
+      "retry_safe": false,
+      "idempotent": false,
+      "requires_authorization": true,
+      "evidence_policy": { "screenshot": "always", "dom": "on_failure", "trace": "always" }
+    },
+    {
+      "type": "approve",
+      "description": "审核单据",
+      "parameters": { "type": "object" },
+      "risk_level": "critical",
+      "retry_safe": false,
+      "idempotent": false,
+      "requires_authorization": true,
+      "evidence_policy": { "screenshot": "always", "dom": "always", "trace": "always" }
+    },
+    {
+      "type": "unapprove",
+      "description": "撤审单据",
+      "parameters": { "type": "object" },
+      "risk_level": "critical",
+      "retry_safe": false,
+      "idempotent": false,
+      "requires_authorization": true,
+      "evidence_policy": { "screenshot": "always", "dom": "always", "trace": "always" }
+    },
+    {
+      "type": "delete",
+      "description": "删除记录/单据",
+      "parameters": { "type": "object" },
+      "risk_level": "critical",
+      "retry_safe": false,
+      "idempotent": false,
+      "requires_authorization": true,
+      "evidence_policy": { "screenshot": "always", "dom": "always", "trace": "always" }
+    },
+    {
+      "type": "assert_visible",
+      "description": "断言元素可见",
+      "parameters": { "type": "object" },
+      "risk_level": "low",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "assert_text",
+      "description": "断言文本",
+      "parameters": { "type": "object" },
+      "risk_level": "low",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "assert_value",
+      "description": "断言字段值",
+      "parameters": { "type": "object" },
+      "risk_level": "low",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "assert_row",
+      "description": "断言列表行",
+      "parameters": { "type": "object" },
+      "risk_level": "low",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "on_failure", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "capture_evidence",
+      "description": "采集截图/DOM/Trace 证据",
+      "parameters": { "type": "object" },
+      "risk_level": "low",
+      "retry_safe": true,
+      "idempotent": true,
+      "requires_authorization": false,
+      "evidence_policy": { "screenshot": "always", "dom": "on_failure", "trace": "on_failure" }
+    }
+  ]
+}

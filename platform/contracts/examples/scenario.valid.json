@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "SCN-DEMO-001",
+  "module_id": "demo",
+  "title": "示例字段可见性",
+  "business_goal": "验证示例页面字段可观察且可追溯",
+  "source_refs": [
+    {
+      "document_id": "DOC-DEMO-001",
+      "file_path": "docs/examples/demo-prd.md",
+      "source_type": "PRD_EXPLICIT",
+      "section": "字段说明",
+      "line_start": 10,
+      "excerpt": "示例字段在详情页可见。"
+    }
+  ],
+  "preconditions": ["已进入示例页面"],
+  "business_flow": ["打开详情", "读取字段"],
+  "risk_level": "low",
+  "status": "draft",
+  "tags": ["demo", "ui"]
+}
