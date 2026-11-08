@@ -1,0 +1,144 @@
+schema_version: "1.0"
+module_id: purchase
+page_key: purchase-return
+page_name: 采购退货单
+navigation:
+  menu_path: ["采购管理", "退货管理", "采购退货单"]
+  work_item_code: MWHdpGcpoeWT
+  route: purchase-return
+status: candidate
+review_status: needs_review
+locator_priority: [label, role, css]
+fields:
+  - name: pur_rtn_doc.ops_unit_no
+    label: 运营单元编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_rtn_doc.ops_unit_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_rtn_doc.ops_unit_no', ...)"
+  - name: pur_rtn_doc.supp_no
+    label: 供应商编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_rtn_doc.supp_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_rtn_doc.supp_no', ...)"
+  - name: pur_rtn_doc.biz_type_no
+    label: 单别
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_rtn_doc.biz_type_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_rtn_doc.biz_type_no', ...)"
+  - name: pur_rtn_doc.rtn_ops_unit_no
+    label: 退货运营单元
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_rtn_doc.rtn_ops_unit_no, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_rtn_doc.rtn_ops_unit_no', ...)"
+  - name: pur_rtn_doc.stlmt_ops_unit_no
+    label: 结算运营单元
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_rtn_doc.stlmt_ops_unit_no, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_rtn_doc.stlmt_ops_unit_no', ...)"
+  - name: pur_rtn_doc.purhr_no
+    label: 采购员
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_rtn_doc.purhr_no, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_rtn_doc.purhr_no', ...)"
+  - name: pur_rtn_doc.doc_date
+    label: 单据日期
+    control_type: DATE_PICKER
+    locator: { strategy: label, value: pur_rtn_doc.doc_date, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.input('pur_rtn_doc.doc_date')"
+  - name: pur_rtn_doc.pur_rtn_doc_no
+    label: 单号
+    control_type: TEXT_INPUT
+    locator: { strategy: label, value: pur_rtn_doc.pur_rtn_doc_no, unique: true }
+    required: false
+    readonly: true
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.input('pur_rtn_doc.pur_rtn_doc_no')"
+  - name: pur_rtn_doc.ccy_no
+    label: 币别
+    control_type: TEXT_INPUT
+    locator: { strategy: label, value: pur_rtn_doc.ccy_no, unique: true }
+    required: false
+    readonly: true
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('pur_rtn_doc.ccy_no')"
+  - name: pur_rtn_doc.tax_inv_type
+    label: 发票类型
+    control_type: DROPDOWN
+    locator: { strategy: label, value: pur_rtn_doc.tax_inv_type, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('pur_rtn_doc.tax_inv_type')"
+  - name: pur_rtn_doc.detail.item_no
+    label: 品号
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"item_no\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN
+      file_path: src/pages/purchase/purchase-return.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "grid.cell(rowIndex, 'item_no')"

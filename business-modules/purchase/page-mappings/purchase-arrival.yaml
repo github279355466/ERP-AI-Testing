@@ -1,0 +1,120 @@
+schema_version: "1.0"
+module_id: purchase
+page_key: purchase-arrival
+page_name: 采购到货单
+navigation:
+  menu_path: ["采购管理", "入库验收", "采购到货单"]
+  work_item_code: TamjPZejafdk
+  route: purchase-arrival
+status: candidate
+review_status: needs_review
+locator_priority: [label, role, css]
+fields:
+  - name: pur_arr_doc.ops_unit_no
+    label: 运营单元编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_arr_doc.ops_unit_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_arr_doc.ops_unit_no', '运营单元编号', ...)"
+  - name: pur_arr_doc.supp_no
+    label: 供应商编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_arr_doc.supp_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_arr_doc.supp_no', '供应商编号', ...)"
+  - name: pur_arr_doc.biz_type_no
+    label: 单别
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_arr_doc.biz_type_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_arr_doc.biz_type_no', '单别', ...)"
+  - name: pur_arr_doc.stlmt_ops_unit_no
+    label: 结算运营单元
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_arr_doc.stlmt_ops_unit_no, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_arr_doc.stlmt_ops_unit_no', ...)"
+  - name: pur_arr_doc.rcpt_ops_unit_no
+    label: 收货运营单元
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_arr_doc.rcpt_ops_unit_no, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "selectSearchField('pur_arr_doc.rcpt_ops_unit_no', ...)"
+  - name: pur_arr_doc.doc_date
+    label: 单据日期
+    control_type: DATE_PICKER
+    locator: { strategy: label, value: pur_arr_doc.doc_date, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.input('pur_arr_doc.doc_date')"
+  - name: pur_arr_doc.tax_inv_type
+    label: 发票类型
+    control_type: DROPDOWN
+    locator: { strategy: label, value: pur_arr_doc.tax_inv_type, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('pur_arr_doc.tax_inv_type')"
+  - name: pur_arr_doc.ccy_no
+    label: 币别
+    control_type: TEXT_INPUT
+    locator: { strategy: label, value: pur_arr_doc.ccy_no, unique: true }
+    required: false
+    readonly: true
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('pur_arr_doc.ccy_no')"
+  - name: pur_arr_doc.detail.item_no
+    label: 品号
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"item_no\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-ARRIVAL
+      file_path: src/pages/purchase/purchase-arrival.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "grid.cell(rowIndex, 'item_no')"

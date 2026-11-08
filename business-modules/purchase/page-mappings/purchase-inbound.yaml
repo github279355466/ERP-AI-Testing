@@ -1,0 +1,84 @@
+schema_version: "1.0"
+module_id: purchase
+page_key: purchase-inbound
+page_name: 采购入库单
+navigation:
+  menu_path: ["采购管理", "入库验收", "采购入库单"]
+  work_item_code: FWGGvzbgedYY
+  route: purchase-inbound
+status: candidate
+review_status: needs_review
+locator_priority: [label, role, css]
+fields:
+  - name: pur_stkin_doc.ops_unit_no
+    label: 运营单元编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_stkin_doc.ops_unit_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-INBOUND
+      file_path: src/pages/purchase/purchase-inbound.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('pur_stkin_doc.ops_unit_no')"
+  - name: pur_stkin_doc.supp_no
+    label: 供应商编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_stkin_doc.supp_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-INBOUND
+      file_path: src/pages/purchase/purchase-inbound.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('pur_stkin_doc.supp_no')"
+  - name: pur_stkin_doc.biz_type_no
+    label: 单别
+    control_type: LOOKUP
+    locator: { strategy: label, value: pur_stkin_doc.biz_type_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-INBOUND
+      file_path: src/pages/purchase/purchase-inbound.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('pur_stkin_doc.biz_type_no')"
+  - name: pur_stkin_doc.doc_date
+    label: 单据日期
+    control_type: DATE_PICKER
+    locator: { strategy: label, value: pur_stkin_doc.doc_date, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-INBOUND
+      file_path: src/pages/purchase/purchase-inbound.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.input('pur_stkin_doc.doc_date')"
+  - name: pur_stkin_doc.ccy_no
+    label: 币别
+    control_type: TEXT_INPUT
+    locator: { strategy: label, value: pur_stkin_doc.ccy_no, unique: true }
+    required: false
+    readonly: true
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-INBOUND
+      file_path: src/pages/purchase/purchase-inbound.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('pur_stkin_doc.ccy_no')"
+  - name: pur_stkin_doc.detail.item_no
+    label: 品号
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"item_no\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-INBOUND
+      file_path: src/pages/purchase/purchase-inbound.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "grid.cell(rowIndex, 'item_no')"

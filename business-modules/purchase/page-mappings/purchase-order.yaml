@@ -1,0 +1,132 @@
+schema_version: "1.0"
+module_id: purchase
+page_key: purchase-order
+page_name: 采购订单
+navigation:
+  menu_path: ["采购管理", "请釆管理", "采购订单"]
+  work_item_code: ujtGFTEuPMdk
+  route: purchase-order
+status: candidate
+review_status: needs_review
+locator_priority: [label, role, css]
+fields:
+  - name: po.ops_unit_no
+    label: 运营单元编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: po.ops_unit_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.lookup('po.ops_unit_no')"
+  - name: po.supp_no
+    label: 供应商编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: po.supp_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.lookup('po.supp_no')"
+  - name: po.biz_type_no
+    label: 业务类型编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: po.biz_type_no, unique: true }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.lookup('po.biz_type_no')"
+  - name: po.doc_date
+    label: 单据日期
+    control_type: DATE_PICKER
+    locator: { strategy: label, value: po.doc_date, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.input('po.doc_date')"
+  - name: po.proj_no
+    label: 项目编号
+    control_type: LOOKUP
+    locator: { strategy: label, value: po.proj_no, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.lookup('po.proj_no')"
+  - name: po.rmk
+    label: 备注
+    control_type: TEXT_INPUT
+    locator: { strategy: label, value: po.rmk, unique: true }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "profile.input('po.rmk')"
+  - name: po.ccy_no
+    label: 币别
+    control_type: TEXT_INPUT
+    locator: { strategy: label, value: po.ccy_no, unique: true }
+    required: false
+    readonly: true
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "formItemText('po.ccy_no')"
+  - name: po.detail.item_no
+    label: 品号
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"item_no\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "grid.cell(rowIndex, 'item_no')"
+  - name: po.detail.biz_qty
+    label: 数量
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"biz_qty\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "grid.setCell(rowIndex, 'biz_qty', ...)"
+  - name: po.detail.price
+    label: 单价
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"price\"]", unique: false }
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-PO
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "grid.setCell(rowIndex, 'price', ...)"

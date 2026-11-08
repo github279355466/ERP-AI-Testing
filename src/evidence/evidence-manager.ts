@@ -78,14 +78,14 @@ export class EvidenceManager {
   writeJson(name: string, data: unknown): string {
     fs.mkdirSync(this.root, { recursive: true });
     const file = path.join(this.root, `${sanitize(name)}.json`);
-    fs.writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+    fs.writeFileSync(file, redactSecrets(`${JSON.stringify(data, null, 2)}\n`), 'utf8');
     return relativeTo(this.root, file);
   }
 
   writeText(name: string, content: string): string {
     fs.mkdirSync(this.root, { recursive: true });
     const file = path.join(this.root, sanitize(name));
-    fs.writeFileSync(file, content, 'utf8');
+    fs.writeFileSync(file, redactSecrets(content), 'utf8');
     return relativeTo(this.root, file);
   }
 

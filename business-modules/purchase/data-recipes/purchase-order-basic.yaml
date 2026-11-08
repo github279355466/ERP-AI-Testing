@@ -1,0 +1,30 @@
+schema_version: "1.0"
+id: RECIPE-PURCHASE-ORDER-BASIC
+module_id: purchase
+title: 采购订单基础单据（UI 造数）
+entities:
+  - id: purchase-order
+    type: purchase_order
+    key: po.rmk
+    create_order: 1
+    reuse_policy: never
+create_order: [purchase-order]
+references: []
+uniqueness_strategy:
+  prefix: PURPO
+  include_run_id: true
+  timestamp: true
+reuse_policy: never
+cleanup:
+  policy: mark_for_cleanup
+  order: [purchase-order]
+  notes: 默认只读；删除需单独授权并核对测试数据清单
+assertions:
+  - type: document_no
+    target: 采购订单单号
+    expected: 保存成功后自动生成
+    level: business
+    source_ref:
+      document_id: SRC-RECIPE-PURCHASE-ORDER
+      file_path: business-modules/purchase/data-recipes/purchase-order-basic.yaml
+      source_type: PENDING
