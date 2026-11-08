@@ -11,7 +11,8 @@
 [CmdletBinding()]
 param(
     [string]$ConfigPath = '',
-    [switch]$Force
+    [switch]$Force,
+    [switch]$DisableWebSecurity
 )
 
 $ErrorActionPreference = 'Stop'
@@ -80,6 +81,12 @@ $args = @(
     '--lang=zh-CN'
 )
 if ($browser.proxy) { $args += "--proxy-server=$($browser.proxy)" }
+if ($DisableWebSecurity) {
+    # 仅用于专用自动化 profile：测试环境 semc-test 的跨域响应缺少 ACAO，
+    # 会导致门户菜单 appWork/click 被浏览器拦截。不得用于日常浏览或生产环境。
+    $args += '--disable-web-security'
+    $args += '--disable-features=IsolateOrigins,site-per-process'
+}
 $args += $baseUrl
 
 $quoted = $args | ForEach-Object { if ($_ -match '\s') { '"' + $_ + '"' } else { $_ } }

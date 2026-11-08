@@ -16,5 +16,6 @@ export default defineConfig({
   projects: [
     { name: 'unit', testDir: 'tests/unit' },
     { name: 'smoke', testDir: 'tests/smoke' },
+    { name: 'integration', testDir: 'tests/integration' },
   ],
 });
