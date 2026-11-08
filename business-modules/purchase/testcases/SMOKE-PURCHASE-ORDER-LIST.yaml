@@ -1,0 +1,40 @@
+schema_version: "1.0"
+id: SMOKE-PURCHASE-ORDER-LIST
+module_id: purchase
+version: 0.1.0
+title: 采购订单-列表只读冒烟
+objective: 验证采购订单页面可打开、列表列头与行数可读
+scenario_refs: [SCN-PURCHASE-ORDER-LIST]
+source_refs:
+  - document_id: SRC-PAGE-PO-FLOW
+    file_path: src/pages/purchase/purchase-order.page.ts
+    source_type: UI_OBSERVED
+    excerpt: "采购订单列表页 workItemCode=ujtGFTEuPMdk"
+preconditions:
+  - 已登录测试环境
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: purchase-order
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: "platform:list-smoke"
+    evidence: true
+assertions:
+  - type: row
+    target: 采购订单列表
+    expected: 列表可读
+    level: ui
+    source_ref:
+      document_id: SRC-PAGE-PO-FLOW
+      file_path: src/pages/purchase/purchase-order.page.ts
+      source_type: UI_OBSERVED
+      excerpt: "采购订单列表可读"
+cleanup_policy: keep
+status: reviewed
+timeout_ms: 180000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

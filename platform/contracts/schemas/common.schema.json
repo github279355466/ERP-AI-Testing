@@ -91,7 +91,8 @@
             "assert_text",
             "assert_value",
             "assert_row",
-            "capture_evidence"
+            "capture_evidence",
+            "invoke_flow"
           ]
         },
         "target": { "type": "string", "minLength": 1 },

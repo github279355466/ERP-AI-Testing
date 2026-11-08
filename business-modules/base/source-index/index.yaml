@@ -1,0 +1,19 @@
+schema_version: "1.0"
+module_id: base
+module_name: 基础管理
+prd_roots:
+  - "${PRD_WORKSPACE}/prd"
+include_paths:
+  - "客户供应商关系/"
+  - "批号编号规则/"
+scenario_sources:
+  - name: 测试用例-基础资料域
+    path: "${PRD_WORKSPACE}/测试用例"
+    kind: TEST_CASE_LIBRARY
+    include_paths:
+      - "基础资料域/"
+      - "参数与单别域/"
+module_rules:
+  - pattern: "^.*$"
+    module: 基础
+notes: 基础管理无独立 PRD 目录，主要来源为测试用例库与已核实页面知识。

@@ -52,8 +52,22 @@ npm run test:contract
 npm run platform:integration -- integration-tests/<pack>
 ```
 
-## 6. 边界
+## 6. 从页面观测到可执行用例（P6 实证路径）
 
-- P1 只建立骨架与契约，不迁移现有采购实现。
-- 不连接 ERP、不启动浏览器、不执行写操作。
-- 不复制其他模块的页面对象或内部步骤。
+以 `base` / `ar` / `ap` 三个模块的接入为例：
+
+1. **观测页面入口**：用只读脚本在门户点击菜单或复用已打开页签，记录页面标题与 `workItemCode`。
+   P6 实测：`ar-biz-type=keeZGBfszTdp`、`ap-biz-type=pYIaGDZuhRRK`、`ap-biz-type-param=AyJIheXVzjAK`、`inventory-param=DTBBArnXZHrt`。
+2. **写页面映射**：在 `page-mappings/<page-key>.yaml` 登记 `menu_path`、`work_item_code` 与字段；未逐字段复核的保持 `status: candidate`、`verified: false`。
+3. **写用例**：`testcases/*.yaml` 中先 `navigate` 到页面，再 `invoke_flow` 调用流程；只读列表可用平台内置流程 `platform:list-smoke`。
+4. **校验**：`npm run platform:module -- business-modules/<id>` 与 `npm run platform:runtime:doctor -- --module <id>`。
+5. **只读执行**：启用 `ALLOW_ERP_UI_TEST=true` 后运行
+   `node dist/cli/platform-run.js run --module <id> --case <case-id>`。
+6. **写用例执行**：必须同时提供 `--allow-write` 与 `safety.allowWrite=true` 的运行配置（如 `config/athena.write.config.json`），并保持唯一数据前缀与 `mark_for_cleanup`。
+7. **回填复核结果**：真实跑通的字段把 `verified` 改为 `true`；页面整体仍需人工评审后再改 `confirmed`。
+
+## 7. 边界
+
+- 平台核心不写模块字段、选择器或业务流程；流程实现放在 `src/modules/<module-id>/`，页面知识放在模块包。
+- 默认只读；写操作必须显式授权，且不得自动重试非幂等动作。
+- 不复制其他模块的页面对象或内部步骤；需要复用能力时抽到平台通用层。

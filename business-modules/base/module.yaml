@@ -1,0 +1,19 @@
+schema_version: "1.0"
+module:
+  id: base
+  name: 基础管理
+  version: 0.1.0
+  status: draft
+  owner: qa
+  description: 基础管理模块包（P6 第二模块试接入；PRD 覆盖有限，主要依赖测试用例库与已核实页面知识）
+compatibility:
+  platform_api: ">=1.0.0 <2.0.0"
+sources:
+  prd_index: source-index/index.yaml
+assets:
+  knowledge: knowledge/
+  page_mappings: page-mappings/
+  scenarios: scenarios/
+  testcases: testcases/
+  data_recipes: data-recipes/
+  test_suites: test-suites/

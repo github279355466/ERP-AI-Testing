@@ -16,7 +16,7 @@ fields:
     locator: { strategy: label, value: po.ops_unit_no, unique: true }
     required: true
     readonly: false
-    verified: false
+    verified: true
     source_ref:
       document_id: SRC-PAGE-PO
       file_path: src/pages/purchase/purchase-order.page.ts
@@ -28,7 +28,7 @@ fields:
     locator: { strategy: label, value: po.supp_no, unique: true }
     required: true
     readonly: false
-    verified: false
+    verified: true
     source_ref:
       document_id: SRC-PAGE-PO
       file_path: src/pages/purchase/purchase-order.page.ts
@@ -40,7 +40,7 @@ fields:
     locator: { strategy: label, value: po.biz_type_no, unique: true }
     required: true
     readonly: false
-    verified: false
+    verified: true
     source_ref:
       document_id: SRC-PAGE-PO
       file_path: src/pages/purchase/purchase-order.page.ts
@@ -76,7 +76,7 @@ fields:
     locator: { strategy: label, value: po.rmk, unique: true }
     required: false
     readonly: false
-    verified: false
+    verified: true
     source_ref:
       document_id: SRC-PAGE-PO
       file_path: src/pages/purchase/purchase-order.page.ts
@@ -88,7 +88,7 @@ fields:
     locator: { strategy: label, value: po.ccy_no, unique: true }
     required: false
     readonly: true
-    verified: false
+    verified: true
     source_ref:
       document_id: SRC-PAGE-PO
       file_path: src/pages/purchase/purchase-order.page.ts
@@ -100,7 +100,7 @@ fields:
     locator: { strategy: css, value: ".ag-cell[col-id=\"item_no\"]", unique: false }
     required: true
     readonly: false
-    verified: false
+    verified: true
     source_ref:
       document_id: SRC-PAGE-PO
       file_path: src/pages/purchase/purchase-order.page.ts
@@ -112,7 +112,7 @@ fields:
     locator: { strategy: css, value: ".ag-cell[col-id=\"biz_qty\"]", unique: false }
     required: true
     readonly: false
-    verified: false
+    verified: true
     source_ref:
       document_id: SRC-PAGE-PO
       file_path: src/pages/purchase/purchase-order.page.ts
@@ -124,7 +124,7 @@ fields:
     locator: { strategy: css, value: ".ag-cell[col-id=\"price\"]", unique: false }
     required: false
     readonly: false
-    verified: false
+    verified: true
     source_ref:
       document_id: SRC-PAGE-PO
       file_path: src/pages/purchase/purchase-order.page.ts

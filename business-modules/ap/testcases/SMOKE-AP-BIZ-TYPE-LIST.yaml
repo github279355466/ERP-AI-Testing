@@ -1,0 +1,40 @@
+schema_version: "1.0"
+id: SMOKE-AP-BIZ-TYPE-LIST
+module_id: ap
+version: 0.1.0
+title: 应付业务单别-列表只读冒烟
+objective: 验证应付业务单别页面可打开、列表列头与行数可读
+scenario_refs: [SCN-AP-BIZ-TYPE-LIST]
+source_refs:
+  - document_id: SRC-UI-AP-BIZ-TYPE
+    file_path: probe/p6-open-ap2.js
+    source_type: UI_OBSERVED
+    excerpt: "应付业务单别 workItemCode=pYIaGDZuhRRK"
+preconditions:
+  - 已登录测试环境
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: ap-biz-type
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: "platform:list-smoke"
+    evidence: true
+assertions:
+  - type: row
+    target: 应付业务单别列表
+    expected: 列表可读
+    level: ui
+    source_ref:
+      document_id: SRC-UI-AP-BIZ-TYPE
+      file_path: probe/p6-open-ap2.js
+      source_type: UI_OBSERVED
+      excerpt: "应付业务单别列表可读"
+cleanup_policy: keep
+status: reviewed
+timeout_ms: 180000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

@@ -170,6 +170,16 @@
       "idempotent": true,
       "requires_authorization": false,
       "evidence_policy": { "screenshot": "always", "dom": "on_failure", "trace": "on_failure" }
+    },
+    {
+      "type": "invoke_flow",
+      "description": "调用模块包注册的业务流程（流程实现属于模块，平台只负责装载与审计）",
+      "parameters": { "type": "object" },
+      "risk_level": "high",
+      "retry_safe": false,
+      "idempotent": false,
+      "requires_authorization": true,
+      "evidence_policy": { "screenshot": "always", "dom": "on_failure", "trace": "always" }
     }
   ]
 }

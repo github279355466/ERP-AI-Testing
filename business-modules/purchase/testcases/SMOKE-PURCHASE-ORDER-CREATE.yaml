@@ -1,0 +1,42 @@
+schema_version: "1.0"
+id: SMOKE-PURCHASE-ORDER-CREATE
+module_id: purchase
+version: 0.1.0
+title: 采购订单新增-保存-重查（只创建，不审核）
+objective: 通过真实 UI 新增一张采购订单，验证表头、明细、保存单号与列表/详情重查
+scenario_refs: [SCN-PURCHASE-ORDER-CREATE]
+source_refs:
+  - document_id: SRC-PAGE-PO-FLOW
+    file_path: src/pages/purchase/purchase-order.flow.ts
+    source_type: UI_OBSERVED
+    excerpt: createPurchaseOrder：新增→表头→明细→保存→列表重查→详情重查
+preconditions:
+  - 已登录测试环境并具备采购订单新增权限
+  - 基础资料 QN002 / SUPP-1001 / 01-2-00011 存在
+data_recipe_refs: [RECIPE-PURCHASE-ORDER-BASIC]
+dependencies: []
+steps:
+  - action: navigate
+    target: purchase-order
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: purchase-order-create
+    value: '{"opsUnit":"QN002","supplier":"SUPP-1001","bizType":"PO0501","itemNo":"01-2-00011","qty":"2","price":"10","remark":"P6AUTO-${RUN_TIMESTAMP}"}'
+    evidence: true
+assertions:
+  - type: document_no
+    target: 采购订单单号
+    expected: 保存成功后自动生成
+    level: business
+    source_ref:
+      document_id: SRC-PAGE-PO-FLOW
+      file_path: src/pages/purchase/purchase-order.flow.ts
+      source_type: UI_OBSERVED
+      excerpt: 保存后 extractDocumentNo，断言单据号非空
+cleanup_policy: mark_for_cleanup
+status: reviewed
+timeout_ms: 300000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

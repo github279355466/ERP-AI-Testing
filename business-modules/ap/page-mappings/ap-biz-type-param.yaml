@@ -1,0 +1,24 @@
+schema_version: "1.0"
+module_id: ap
+page_key: ap-biz-type-param
+page_name: 应付业务单别参数
+navigation:
+  menu_path: ["应付管理", "应付业务单别参数"]
+  work_item_code: AyJIheXVzjAK
+  route: ap-biz-type-param
+status: candidate
+review_status: needs_review
+locator_priority: [css, label, role]
+fields:
+  - name: ap-biz-type-param.ops_unit_no
+    label: 运营单元编号
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"ops_unit_no\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-UI-AP-BIZ-TYPE-PARAM
+      file_path: probe/p6-open-ap2.js
+      source_type: UI_OBSERVED
+      excerpt: "菜单打开观测：应付业务单别参数 workItemCode=AyJIheXVzjAK"

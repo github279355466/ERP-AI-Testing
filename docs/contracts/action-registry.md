@@ -22,8 +22,10 @@
 
 - 只读：`navigate`、`search`、`open_record`、`assert_*`、`capture_evidence`。
 - 输入：`select_master_data`、`fill`、`select_option`。
-- 写操作：`upload`、`save`、`submit` 为 `high`。
+- 写操作：`upload`、`save`、`submit`、`invoke_flow` 为 `high`。
 - 高风险：`approve`、`unapprove`、`delete` 为 `critical`。
+
+`invoke_flow` 用于调用模块包注册的业务流程：平台只负责装载、授权与审计，流程实现和业务字段属于模块包，不得写进平台核心。
 
 ## 规则
 

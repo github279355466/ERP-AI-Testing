@@ -1,0 +1,26 @@
+schema_version: "1.0"
+module_id: ar
+module_name: 应收管理
+prd_roots:
+  - "${PRD_WORKSPACE}/prd"
+include_paths:
+  - "应收业务单别/"
+  - "应收业务单别参数/"
+  - "应收参数/"
+  - "应收单/"
+  - "其他应收单/"
+  - "应收启用期间/"
+  - "会计期间表/"
+  - "会计期间信息/"
+  - "结算业务单别/"
+  - "结算业务单别参数/"
+scenario_sources:
+  - name: 测试用例-应收域
+    path: "${PRD_WORKSPACE}/测试用例"
+    kind: TEST_CASE_LIBRARY
+    include_paths:
+      - "参数与单别域/"
+module_rules:
+  - pattern: "^.*$"
+    module: 应收
+notes: 应收模块 P6 首次接入，先验证页面入口与列表只读能力。

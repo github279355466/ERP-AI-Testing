@@ -12,9 +12,12 @@ export function redactSecrets(text: string): string {
   return text.replace(SECRET_PATTERN, (_match, key: string, sep: string) => `${key}${sep}<redacted>`);
 }
 
+const RUN_ID_SPACE = 36 ** 4;
+let runIdSequence = Math.floor(Math.random() * RUN_ID_SPACE);
+
 export function createRunId(now = new Date()): string {
   const stamp = now.toISOString().replace(/[-:]/g, '').replace(/\..+/, '').replace('T', '-');
-  const suffix = Math.random().toString(36).slice(2, 6);
+  const suffix = (runIdSequence++ % RUN_ID_SPACE).toString(36).padStart(4, '0');
   return `${stamp}-${suffix}`;
 }
 

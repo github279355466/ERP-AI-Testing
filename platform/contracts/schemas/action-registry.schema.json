@@ -42,7 +42,8 @@
               "assert_text",
               "assert_value",
               "assert_row",
-              "capture_evidence"
+              "capture_evidence",
+              "invoke_flow"
             ]
           },
           "description": { "type": "string", "minLength": 1 },

@@ -13,7 +13,9 @@ module_dependencies:
     version_range: ">=0.1.0 <1.0.0"
 business_goal: 验证采购订单→到货/入库→应付立账→付款/核销的跨模块链路（候选，待确认）
 steps: []
-data_mapping: []
+data_mapping:
+  - from: purchase.purchase_order.document_no
+    to: ap.payable.source_doc_no
 assertions: []
 cleanup_policy: mark_for_cleanup
 failure_propagation: block_downstream

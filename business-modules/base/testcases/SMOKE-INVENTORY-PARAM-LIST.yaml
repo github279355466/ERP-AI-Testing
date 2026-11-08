@@ -1,0 +1,40 @@
+schema_version: "1.0"
+id: SMOKE-INVENTORY-PARAM-LIST
+module_id: base
+version: 0.1.0
+title: 存货参数-列表只读冒烟
+objective: 验证基础管理存货参数页面可打开、列表列头与行数可读
+scenario_refs: [SCN-BASE-INVENTORY-PARAM-LIST]
+source_refs:
+  - document_id: SRC-KB-INVNT-PARAM
+    file_path: knowledge/athena-page-map.json
+    source_type: UI_OBSERVED
+    excerpt: "存货参数列表 workItemCode=DTBBArnXZHrt，列 ops_unit_no"
+preconditions:
+  - 已登录测试环境
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: inventory-param
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: "platform:list-smoke"
+    evidence: true
+assertions:
+  - type: row
+    target: 存货参数列表
+    expected: 列表可读
+    level: ui
+    source_ref:
+      document_id: SRC-KB-INVNT-PARAM
+      file_path: knowledge/athena-page-map.json
+      source_type: UI_OBSERVED
+      excerpt: "存货参数列表列头可读"
+cleanup_policy: keep
+status: reviewed
+timeout_ms: 180000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

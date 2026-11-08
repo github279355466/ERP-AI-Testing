@@ -4,6 +4,16 @@ import { loadCompiledPlan, PLATFORM_VERSION } from '../platform/plan/module-plan
 import { PlatformTestCase } from '../platform/plan/compile';
 import { CaseRunner, CaseRunOutput, ReportAssertion, runSchedule } from '../platform/execution/scheduler';
 import { buildExecutionReport, validateReport, writeReports } from '../platform/report/engine';
+import { BrowserManager } from '../browser/browser-manager';
+import { ContextManager } from '../browser/context-manager';
+import { PageManager } from '../browser/page-manager';
+import { SessionManager } from '../session/session-manager';
+import { loadConfig } from '../config/athena-config';
+import { createRunId, EvidenceManager } from '../evidence/evidence-manager';
+import { PageMappingRegistry } from '../platform/pages/mapping';
+import { loadModuleTestCases, requireTestCase } from '../platform/execution/case-loader';
+import { BrowserCaseRunner } from '../platform/execution/browser-runner';
+import { createRunManifestV2, validateRunManifestV2 } from '../platform/governance/run-manifest-v2';
 
 interface Args {
   [key: string]: string | boolean | undefined;
@@ -34,6 +44,8 @@ function printHelp(): void {
       '',
       '用法：',
       '  node dist/cli/platform-run.js simulate --module purchase [--limit 20] [--fail-at 5] [--concurrency 1]',
+      '  node dist/cli/platform-run.js cases --module purchase',
+      '  node dist/cli/platform-run.js run --module purchase --case SMOKE-PURCHASE-ORDER-CREATE --allow-write',
       '',
       '说明：simulate 使用占位执行器验证调度/断言/报告链路，不启动浏览器、不访问 ERP。',
       '真实 UI 执行由平台运行器在显式授权后调用。',
@@ -130,6 +142,129 @@ async function main(): Promise<number> {
     return validation.valid ? 0 : 2;
   }
 
+  if (command === 'cases') {
+    const loaded = loadModuleTestCases(root, moduleId);
+    process.stdout.write(
+      `${JSON.stringify(
+        {
+          mode: 'READ_ONLY',
+          command,
+          success: loaded.issues.length === 0,
+          module_id: moduleId,
+          directory: loaded.directory,
+          cases: loaded.cases.map((entry) => ({ id: entry.id, title: entry.title, status: entry.status, steps: entry.steps.length })),
+          issues: loaded.issues,
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    return loaded.issues.length === 0 ? 0 : 2;
+  }
+
+  if (command === 'run') {
+    const caseId = typeof args.case === 'string' ? args.case : '';
+    if (!caseId) {
+      process.stderr.write('必须提供 --case <case-id>（可用 cases 命令查看）\n');
+      return 1;
+    }
+    const allowWrite = args['allow-write'] === true;
+    const runId = typeof args['run-id'] === 'string' ? args['run-id'] : createRunId();
+    const operator = process.env.ATHENA_OPERATOR ?? 'athena-agent';
+    const configPath = typeof args.config === 'string' ? args.config : 'config/athena.config.json';
+    const config = loadConfig(configPath);
+    if (allowWrite && !config.safety.allowWrite) {
+      process.stderr.write(`运行配置 ${configPath} 未启用 safety.allowWrite，拒绝写用例\n`);
+      return 1;
+    }
+    const testCase = requireTestCase(root, moduleId, caseId);
+    const mappings = PageMappingRegistry.load(root, moduleId);
+    const browser = new BrowserManager(config);
+    const session = await browser.connect();
+    const contextManager = new ContextManager(session.context);
+    const pages = new PageManager(session.context, config);
+    const sessionManager = new SessionManager(config, contextManager, pages);
+    const evidence = new EvidenceManager(config, runId);
+    evidence.init();
+    const runner = new BrowserCaseRunner({
+      moduleId,
+      config,
+      pages,
+      context: contextManager,
+      session: sessionManager,
+      mappings,
+      evidence,
+      allowWrite,
+      runId,
+      operator,
+    });
+    const startedAt = new Date();
+    const plan = {
+      schema_version: '1.0' as const,
+      plan_id: `PLAN-${moduleId.toUpperCase()}-MANUAL-${Date.now()}`,
+      suite_id: `SUITE-${moduleId.toUpperCase()}-MANUAL`,
+      platform_version: PLATFORM_VERSION,
+      module_packs: [{ module_id: moduleId, version: '0.1.0' }],
+      steps: [{ order: 1, case_id: testCase.id, depends_on: [] as string[] }],
+      dry_run: false,
+      created_at: startedAt.toISOString(),
+    };
+    const result = await runSchedule(plan, { runner, cases: [testCase], concurrency: 1 });
+    const finishedAt = new Date();
+    const report = buildExecutionReport({
+      runId,
+      platformVersion: PLATFORM_VERSION,
+      modulePacks: [{ module_id: moduleId, version: '0.1.0' }],
+      environment: { name: config.environment.name, type: config.environment.type as 'development' | 'test' | 'staging', tenant_id: config.environment.tenantId },
+      operator,
+      startedAt: startedAt.toISOString(),
+      finishedAt: finishedAt.toISOString(),
+      outcomes: result.outcomes,
+    });
+    const validation = validateReport(report);
+    const files = writeReports(path.join(root, 'artifacts', runId), report);
+    const outcome = result.outcomes[0];
+    const manifest = createRunManifestV2({
+      run_id: runId,
+      platform_version: PLATFORM_VERSION,
+      module_packs: [{ module_id: moduleId, version: '0.1.0' }],
+      environment: report.environment,
+      operator,
+      test_case_id: testCase.id,
+      started_at: report.started_at,
+      finished_at: report.finished_at,
+      outcome: report.outcome === 'pending' ? 'error' : report.outcome,
+      failure_category: report.failure_category,
+      created_documents: outcome?.created_documents ?? [],
+      cleanup_status: 'not_run',
+      evidence_files: report.evidence,
+    });
+    const manifestValidation = validateRunManifestV2(manifest);
+    fs.writeFileSync(path.join(root, 'artifacts', runId, 'run-manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
+    await browser.disconnect(session);
+    process.stdout.write(
+      `${JSON.stringify(
+        {
+          mode: 'REAL_UI',
+          command,
+          success: validation.valid && report.outcome === 'passed',
+          run_id: runId,
+          case_id: testCase.id,
+          outcome: report.outcome,
+          failure_category: report.failure_category,
+          error: outcome?.error_message ?? null,
+          created_documents: manifest.created_documents,
+          report_validation: validation,
+          manifest_validation: { valid: manifestValidation.valid, issues: manifestValidation.issues },
+          files,
+        },
+        null,
+        2,
+      )}\n`,
+    );
+    return validation.valid && manifestValidation.valid ? (report.outcome === 'passed' ? 0 : 2) : 2;
+  }
+
   process.stderr.write(`未知命令: ${command}\n`);
   printHelp();
   return 1;
@@ -137,7 +272,7 @@ async function main(): Promise<number> {
 
 main()
   .then((code) => {
-    process.exitCode = code;
+    process.exit(code);
   })
   .catch((error: unknown) => {
     process.stderr.write(`${error instanceof Error ? error.message : String(error)}\n`);

@@ -1,0 +1,24 @@
+schema_version: "1.0"
+module_id: base
+page_key: inventory-param
+page_name: 存货参数
+navigation:
+  menu_path: ["基础管理", "系统参数", "存货参数"]
+  work_item_code: DTBBArnXZHrt
+  route: inventory-param
+status: candidate
+review_status: needs_review
+locator_priority: [css, label, role]
+fields:
+  - name: inventory-param.ops_unit_no
+    label: 运营单元编号
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"ops_unit_no\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-KB-INVNT-PARAM
+      file_path: knowledge/athena-page-map.json
+      source_type: UI_OBSERVED
+      excerpt: "存货参数列表列 ops_unit_no，workItemCode=DTBBArnXZHrt"

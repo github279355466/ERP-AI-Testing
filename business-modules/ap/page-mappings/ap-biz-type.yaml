@@ -1,0 +1,24 @@
+schema_version: "1.0"
+module_id: ap
+page_key: ap-biz-type
+page_name: 应付业务单别
+navigation:
+  menu_path: ["应付管理", "应付业务单别"]
+  work_item_code: pYIaGDZuhRRK
+  route: ap-biz-type
+status: candidate
+review_status: needs_review
+locator_priority: [css, label, role]
+fields:
+  - name: ap-biz-type.biz_type_no
+    label: 业务类型编号
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"biz_type_no\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-UI-AP-BIZ-TYPE
+      file_path: probe/p6-open-ap2.js
+      source_type: UI_OBSERVED
+      excerpt: "菜单打开观测：应付业务单别 workItemCode=pYIaGDZuhRRK"

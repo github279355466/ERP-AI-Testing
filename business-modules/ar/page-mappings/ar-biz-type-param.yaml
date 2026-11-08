@@ -1,0 +1,24 @@
+schema_version: "1.0"
+module_id: ar
+page_key: ar-biz-type-param
+page_name: 应收业务单别参数
+navigation:
+  menu_path: ["应收管理", "应收业务单别参数"]
+  work_item_code: pPatSaneKVfy
+  route: ar-biz-type-param
+status: candidate
+review_status: needs_review
+locator_priority: [css, label, role]
+fields:
+  - name: ar-biz-type-param.ops_unit_no
+    label: 运营单元编号
+    control_type: GRID
+    locator: { strategy: css, value: ".ag-cell[col-id=\"ops_unit_no\"]", unique: false }
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-UI-AR-BIZ-TYPE-PARAM
+      file_path: probe/p6-menu-inventory.json
+      source_type: UI_OBSERVED
+      excerpt: "P4 浏览器冒烟观测到 应收业务单别参数 页面，workItemCode=pPatSaneKVfy"

@@ -1,0 +1,26 @@
+schema_version: "1.0"
+module_id: ap
+module_name: 应付管理
+prd_roots:
+  - "${PRD_WORKSPACE}/prd"
+include_paths:
+  - "应付业务单别/"
+  - "应付业务单别参数/"
+  - "应付参数/"
+  - "应付单/"
+  - "其他应付单/"
+  - "应付启用期间/"
+  - "会计期间表/"
+  - "会计期间信息/"
+  - "结算业务单别/"
+  - "结算业务单别参数/"
+scenario_sources:
+  - name: 测试用例-应付域
+    path: "${PRD_WORKSPACE}/测试用例"
+    kind: TEST_CASE_LIBRARY
+    include_paths:
+      - "参数与单别域/"
+module_rules:
+  - pattern: "^.*$"
+    module: 应付
+notes: 应付模块 P6 首次接入，先验证页面入口与列表只读能力。

@@ -2,7 +2,7 @@
 
 基于 TypeScript + Playwright 的 Athena ERP 测试框架，支持接管已登录 Chrome（CDP）与独立 Chromium 回归两种模式。
 
-当前阶段：**v2.0 P3 场景编译与执行计划**。三层架构骨架、核心契约、模块化 PRD 扫描与场景编译已完成；采购是第一个示范模块，页面适配与执行引擎尚未迁移。默认只读，写操作必须由运行配置显式授权。
+当前阶段：**v2.0 P6 采购示范验收与平台固化**。平台核心、模块包、执行/断言/报告链路已打通；采购订单主流程真实 UI 执行通过，基础管理/应收/应付完成列表只读冒烟。默认只读，写操作必须由运行配置显式授权。
 
 架构入口：`docs/architecture/TO-BE.md`；边界规则：`docs/architecture/BOUNDARIES.md`；升级过程：`docs/upgrade/`。
 
@@ -25,6 +25,10 @@ Integration Test Packs   跨模块链路：purchase-to-ap 等
 npm run platform:validate   # 全量校验示例、模块包、集成包
 npm run platform:check      # typecheck + 单测 + 契约测试
 npm run test:contract       # 契约正反例与版本兼容测试
+npm run platform:prd:scan -- --module purchase   # 模块化 PRD 扫描
+npm run platform:plan:dry-run -- --module purchase  # 场景编译 + 执行计划推演（不连 ERP）
+npm run p6:system-smoke     # 四模块只读冒烟（需 ALLOW_ERP_UI_TEST=true）
+npm run p6:system-smoke:write  # 追加采购订单创建（写授权）
 ```
 
 工作区交接与目录说明见 `docs/WORKSPACE-HANDOFF-20261106.md`；浏览器 profile 位于 `probe/chrome-profile`，用 `npm run browser:start` 启动。
@@ -187,8 +191,9 @@ skills/      项目级 athena-erp-testing Skill
 
 - 已实现：三层架构骨架、15 个核心 Schema（含公共定义）、校验器、运行清单 v2 与 v1 适配、模块/集成包模板、运行时配置骨架、版本兼容检查、契约测试与 CLI。
 - 保留可用：CDP 接管、页面管理、DOM/截图采集、控件识别、执行器、三级断言、证据与报告、Phase 1 PRD 静态建模。
-- 已完成：P1 平台骨架与契约治理、P2 PRD/知识引擎平台化、P3 场景编译与执行计划。
-- 待建设：页面适配与数据配方（P4）、执行/断言/报告分层（P5）、采购模块验收（P6）。
+- 已完成：P1 平台骨架、P2 知识引擎、P3 场景编译、P4 页面适配与数据配方、P5 执行/断言/报告、P6 采购示范与多模块试接入。
+- 验收文档：`docs/acceptance/P1-ACCEPTANCE.md` ~ `P6-ACCEPTANCE.md`、`docs/acceptance/FINAL-ACCEPTANCE.md`。
+- 后续扩展：采购到货/入库/退货流程迁移、应收/应付业务深度、跨模块 purchase→ap、测试数据清理执行器。
 - 未实现：跨租户参数化、云端发布；采购退货出库已知 Bug 暂不处理。
 
 详见 [MVP 验证报告](docs/MVP-VALIDATION.md)、[历史技术设计](docs/ARCHITECTURE.md) 与 [当前架构](docs/architecture/TO-BE.md)。

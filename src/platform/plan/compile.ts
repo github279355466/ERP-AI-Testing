@@ -43,7 +43,8 @@ export interface PlatformStep {
     | 'assert_text'
     | 'assert_value'
     | 'assert_row'
-    | 'capture_evidence';
+    | 'capture_evidence'
+    | 'invoke_flow';
   target: string;
   value?: string;
   timeout_ms?: number;

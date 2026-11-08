@@ -41,10 +41,10 @@ export class NavigationManager {
     private readonly context: ContextManager,
     private readonly pages: PageManager,
     private readonly session: SessionManager,
-    navigationFile = 'config/phase2.navigation.json',
+    navigationFile: string | NavigationFile = 'config/phase2.navigation.json',
   ) {
     this.guard = new EnvironmentGuard(config);
-    this.navigationFile = loadNavigationFile(config, navigationFile);
+    this.navigationFile = typeof navigationFile === 'string' ? loadNavigationFile(config, navigationFile) : navigationFile;
   }
 
   listPages(): Array<{ key: string; entry: PageNavigationEntry }> {

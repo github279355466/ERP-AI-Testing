@@ -1,0 +1,19 @@
+schema_version: "1.0"
+module:
+  id: ap
+  name: 应付管理
+  version: 0.1.0
+  status: draft
+  owner: qa
+  description: 应付管理模块包（P6 第二模块试接入；先覆盖业务单别与参数页只读冒烟）
+compatibility:
+  platform_api: ">=1.0.0 <2.0.0"
+sources:
+  prd_index: source-index/index.yaml
+assets:
+  knowledge: knowledge/
+  page_mappings: page-mappings/
+  scenarios: scenarios/
+  testcases: testcases/
+  data_recipes: data-recipes/
+  test_suites: test-suites/
