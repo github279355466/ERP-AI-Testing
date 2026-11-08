@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Athena ERP Page Mapping",
+  "type": "object",
+  "required": ["pageKey", "knowledgePageId", "reviewStatus", "fields"],
+  "additionalProperties": false,
+  "properties": {
+    "pageKey": { "type": "string" },
+    "knowledgePageId": { "type": "string" },
+    "knowledgeModelVersion": { "type": ["string", "null"] },
+    "actualPageName": { "type": ["string", "null"] },
+    "navigationPath": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reviewStatus": {
+      "enum": ["draft", "needs_review", "approved", "blocked"]
+    },
+    "locatorMap": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "observedControls": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "unmappedFields": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "unexpectedFields": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "controlTypeMismatches": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fieldKey", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "fieldKey": { "type": "string" },
+          "locatorStrategy": { "type": ["string", "null"] },
+          "controlTypeObserved": { "type": ["string", "null"] },
+          "status": {
+            "enum": [
+              "MATCHED",
+              "PRD_FIELD_NOT_FOUND",
+              "UNDOCUMENTED_UI_FIELD",
+              "CONTROL_TYPE_MISMATCH",
+              "LOCATOR_UNRESOLVED",
+              "NEEDS_HUMAN_REVIEW"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

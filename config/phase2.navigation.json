@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "source": "UI_OBSERVED",
+  "businessQuery": {
+    "dmcUrl": "https://dmc-hw-test.digiwincloud.com.cn",
+    "deployEnv": "1",
+    "espUrl": "https://esp-test.apps.digiwincloud.com.cn/CROSS/RESTful",
+    "requestUrl": "https://lowcode-form-web-test.apps.digiwincloud.com.cn",
+    "dwLang": "zh_CN"
+  },
+  "pages": {
+    "purchase-request": {
+      "title": "请购单",
+      "menuPath": [
+        "采购管理",
+        "请釆管理",
+        "请购单"
+      ],
+      "menuAliases": {
+        "请购管理": "请釆管理"
+      },
+      "workItemCode": null,
+      "status": "candidate",
+      "ready": "list"
+    },
+    "purchase-order": {
+      "title": "采购订单",
+      "menuPath": [
+        "采购管理",
+        "请釆管理",
+        "采购订单"
+      ],
+      "menuAliases": {
+        "请购管理": "请釆管理"
+      },
+      "workItemCode": "ujtGFTEuPMdk",
+      "status": "confirmed",
+      "ready": "list",
+      "verifiedAt": "2026-11-08"
+    },
+    "purchase-arrival": {
+      "title": "采购到货单",
+      "menuPath": [
+        "采购管理",
+        "入库验收",
+        "采购到货单"
+      ],
+      "menuAliases": {},
+      "workItemCode": "TamjPZejafdk",
+      "status": "confirmed",
+      "ready": "list",
+      "verifiedAt": "2026-11-08"
+    },
+    "purchase-inbound": {
+      "title": "采购入库单",
+      "menuPath": [
+        "采购管理",
+        "入库验收",
+        "采购入库单"
+      ],
+      "menuAliases": {},
+      "workItemCode": "FWGGvzbgedYY",
+      "status": "confirmed",
+      "ready": "list",
+      "verifiedAt": "2026-11-08"
+    },
+    "purchase-return": {
+      "title": "采购退货单",
+      "menuPath": [
+        "采购管理",
+        "退货管理",
+        "采购退货单"
+      ],
+      "menuAliases": {},
+      "workItemCode": "MWHdpGcpoeWT",
+      "status": "confirmed",
+      "ready": "list",
+      "verifiedAt": "2026-11-08"
+    },
+    "purchase-return-outbound": {
+      "title": "采购退货出库单",
+      "menuPath": [
+        "采购管理",
+        "退货管理",
+        "采购退货出库单"
+      ],
+      "menuAliases": {},
+      "workItemCode": "GqXCkXLlQWbb",
+      "status": "confirmed",
+      "ready": "list",
+      "verifiedAt": "2026-11-08"
+    }
+  }
+}

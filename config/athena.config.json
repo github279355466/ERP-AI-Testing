@@ -1,18 +1,27 @@
 {
   "environment": {
     "name": "athena-test",
+    "type": "test",
     "baseUrl": "https://athena-test.digiwincloud.com.cn/",
     "tenantId": "digichannel",
     "applicationCode": "smbcloud",
-    "lowcodeHost": "lowcode-form-render-test.apps.digiwincloud.com.cn"
+    "lowcodeHost": "lowcode-form-render-test.apps.digiwincloud.com.cn",
+    "allowedOrigins": [
+      "https://athena-test.digiwincloud.com.cn/",
+      "https://lowcode-form-render-test.apps.digiwincloud.com.cn"
+    ],
+    "blockedOrigins": []
   },
   "browser": {
     "mode": "cdp",
+    "engine": "chromium",
     "cdpEndpoint": "http://127.0.0.1:9333",
     "proxy": "http://127.0.0.1:10808",
     "headless": true,
     "storageState": "",
     "userDataDir": "probe/chrome-profile",
+    "persistSession": false,
+    "trace": true,
     "viewport": { "width": 1600, "height": 950 },
     "navigationTimeoutMs": 120000,
     "readyTimeoutMs": 30000,
@@ -27,7 +36,29 @@
   },
   "safety": {
     "readOnly": true,
+    "allowWrite": false,
+    "allowHighRiskActions": false,
+    "allowDelete": false,
+    "allowAudit": false,
+    "allowUnAudit": false,
+    "allowPosting": false,
+    "allowStatusChange": false,
     "forbiddenActionTexts": ["保存", "保存并新增", "删除", "审核", "反审核", "批量审核", "结账", "过账", "作废", "提交"],
     "allowFixedCoordinates": false
+  },
+  "evidence": {
+    "captureScreenshotOnFailure": true,
+    "captureTrace": true,
+    "localOnly": true,
+    "retentionDays": 14,
+    "redactSecrets": true
+  },
+  "knowledge": {
+    "expectedModelVersion": "KM-380242c08313e3c2",
+    "frozenModelPath": "artifacts/knowledge"
+  },
+  "run": {
+    "operator": "",
+    "testCaseId": ""
   }
 }
