@@ -262,3 +262,28 @@
 | 证据 | `probe/q-b4-prereq.json`、`probe/q-requ.json`、`probe/q-requ-list.json` |
 
 请购单说明：明细列包含 `CUS_UDF001`、`item_no`、`unit_no`、`requ_qty`、`sec_unit_no`、`sec_unit_qty`、`dem_date`，本轮仅验证品号与请购数量，需求日期等未逐项构造。
+
+### 10.5 询价单
+
+| 项 | 结果 |
+| --- | --- |
+| 前置 | 新建询价单别 `QA20261109-BT4`（PO02.询价）与 000W1 单别参数 |
+| 表头 | 运营单元、单别、供应商、币种联动正确（供应商带出币种 RMB、税率 13%） |
+| 明细 | 品号 `Z900014`、询价数量 10、询价单价 100，金额列自动生成 |
+| 保存 | **失败**：`UI_VD_inq_doc_00039 询价单明细-第1行-失效日期 失效日期字段不可为空` |
+| 关键问题 | 明细网格列集合中没有 `expy_date`（失效日期）列，用户无法录入该必填字段，单据无法保存 |
+| 判定 | **DEF-10（S2）**：必填字段未渲染，保存链路不可用 |
+| 证据 | `probe/q-inq.json`、`probe/q-inq-fix.js` 输出 |
+
+询价单明细实际渲染列：`seq、item_no、item_name、item_spec、unit_no、inq_qty、inq_price、inq_amt、tax_rate、wtbsd_prc、pv_price、pv_amt、cert、last_pv、sub_seq、step_begin_qty、step_end_qty、price、old_price、adj_amp、rmk`，不含 `expy_date`。
+
+## 11. 缺陷补充
+
+### DEF-10 询价单必填“失效日期”未渲染（S2）
+
+- 页面：询价单 `EkevusFWVcVu`
+- 复现步骤：1. 新增询价单并填写运营单元、单别、供应商；2. 新增明细行，选品号、填数量与单价；3. 保存。
+- 实际结果：前端校验提示“询价单明细-第1行-失效日期 失效日期字段不可为空”，但明细网格没有失效日期列，无法录入。
+- 期望结果：失效日期列应渲染，或该字段不应为必填。
+- 影响：询价单无法保存，后续议价审核单链路不可用。
+- 证据：`probe/q-inq.json`、`probe/q-inq-fix.js`。
