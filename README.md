@@ -4,7 +4,7 @@
 
 当前有两条并行工作线：
 
-- **v2.0 平台线**：已完成 P1~P7，采购订单新增/修改/提交/审核/撤审/删除已真实验证，基础管理/应收/应付完成列表只读冒烟。
+- **v2.0 平台线**：已完成 P1~P7 与 P8 采购订单表头字段规则；基础管理 37 个作业完成 CRUD 广度（34/35）与状态流转复核，缺陷与缺口见 `reports/foundation/`。
 - **legacy 框架线**：Phase 1 PRD 建模已申请第三轮验收；Phase 2 自动化底座（P2.0~P2.4）已完成，采购订单 → 到货 → 入库链路真实跑通，采购退货 → 退货出库被库存过账缺陷阻断（`docs/defects/BUG-20261108-01-采购入库单审核未过账.md`）。
 
 默认只读，写操作必须由运行配置显式授权。
@@ -179,7 +179,7 @@ docs/decisions/               ADR
 docs/runbooks/                校验与模块接入操作手册
 docs/PHASE2-运行手册.md       Phase 2 自动化底座操作手册（命令、取单、退货排查）
 docs/PHASE2-配置说明.md       Phase 2 配置项与控制开关
-docs/PHASE3-字段规则校验要求.md  字段级规则校验清单（本轮未执行）
+docs/PHASE3-字段规则校验要求.md  字段级规则校验清单（分批执行中）
 docs/defects/                 缺陷单（可直接提交产品/研发）
 knowledge/                    [legacy] 页面 / 控件 / 业务规则 / PRD 索引
 cases/                        [legacy] 只读用例定义
@@ -220,6 +220,6 @@ skills/      项目级 athena-erp-testing Skill
 - 已完成：P1 平台骨架、P2 知识引擎、P3 场景编译、P4 页面适配与数据配方、P5 执行/断言/报告、P6 采购示范与多模块试接入。
 - 验收文档：`docs/acceptance/P1-ACCEPTANCE.md` ~ `P7-ACCEPTANCE.md`、`docs/acceptance/FINAL-ACCEPTANCE.md`。
 - 后续扩展：采购退货→出库链路待缺陷修复后复跑、应收/应付业务深度、跨模块 purchase→ap、测试数据清理执行器。
-- 未实现：跨租户参数化、云端发布；字段级规则校验（`docs/PHASE3-字段规则校验要求.md`）待平台升级后统一执行。
+- 未实现：跨租户参数化、云端发布；字段级规则校验进行中——基础管理 9 个关键对象已完成，采购仅表头 12 条，计划见 `docs/plan/下一步测试计划-20261109.md` 与 `docs/plan/采购管理-字段逻辑验证计划.md`。
 
 详见 [MVP 验证报告](docs/MVP-VALIDATION.md)、[历史技术设计](docs/ARCHITECTURE.md) 与 [当前架构](docs/architecture/TO-BE.md)。
