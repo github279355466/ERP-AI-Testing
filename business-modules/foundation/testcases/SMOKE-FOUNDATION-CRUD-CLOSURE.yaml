@@ -1,0 +1,84 @@
+schema_version: "1.0"
+id: SMOKE-FOUNDATION-CRUD-CLOSURE
+module_id: foundation
+version: 0.1.0
+title: 基础管理 CRUD 全量补全（第二批）
+objective: 在真实 Web UI 上验证此前仅做字段/按钮盘点的作业是否具备新增、查询、编辑、状态流转与删除能力
+scenario_refs:
+  - SCN-FOUNDATION-CRUD
+source_refs:
+  - document_id: FDN-CRUD-CLOSURE-20261109
+    file_path: reports/foundation/CRUD-COMPLETION-PROGRESS.md
+    source_type: UI_OBSERVED
+    section: 全量 37 个作业闭环状态
+    excerpt: 34/35 个含新增入口页面完成新增+回读；20 项完成编辑；8 项状态流转通过
+preconditions:
+  - 已登录 athena-test / digichannel，具备基础管理维护权限
+  - 已存在品号 Z900014、客户 Z900100、品号群组 Z197、会计分类 Z865、成本分类 Z306
+  - 使用 Z9 前缀测试数据，本轮不清理
+data_recipe_refs:
+  - foundation-crud-second-batch
+dependencies: []
+steps:
+  - action: navigate
+    target: foundation.crud.pages
+    value: '["DTBBArnXZHrt","VixECUUtxaXP","eFmPtxHiiVJN","NnyQwwpmtLID","JXmxeVVSngwa","KeYnLZdSEmoq","tBXLEaeWFEzn","zbGMtKQBygPU","HVAWHbOWqvJd","aDMlfCuatABY","MAeVgDZLVabf"]'
+    timeout_ms: 120000
+    evidence: true
+  - action: invoke_flow
+    target: foundation-crud-closure
+    value: '{"strategy":"create-read-edit-status","keepData":true}'
+    evidence: true
+  - action: assert_row
+    target: '核算参数/000W1'
+    value: '备注回读为自动化编辑1109，随后清空'
+    evidence: true
+  - action: assert_row
+    target: '销售参数/XS002'
+    value: '审核日依据 系统日 → 单据日 → 系统日'
+    evidence: true
+  - action: assert_row
+    target: '通用单位换算/千克1(KG1)'
+    value: '新增 1 千克1 = 1 千克，保存后 8→9 行，删除后回到 8 行'
+    evidence: true
+  - action: assert_row
+    target: '品号批号信息/Z9LOT001'
+    value: '新增、回读、编辑通过；失效返回 item_feat_no 缺失'
+    evidence: true
+assertions:
+  - type: row
+    target: 新增 + 回读
+    expected: 34/35 个含新增入口页面通过，采购参数被 DEF-04 阻断
+    level: business
+    source_ref:
+      document_id: FDN-CRUD-CLOSURE-20261109
+      file_path: reports/foundation/CRUD-COMPLETION-PROGRESS.md
+      source_type: UI_OBSERVED
+      section: 2.1 汇总
+      excerpt: 含新增入口页面完成新增+回读 34/35
+  - type: row
+    target: 编辑闭环
+    expected: 20 项保存成功并可回读或返回操作成功
+    level: business
+    source_ref:
+      document_id: FDN-CRUD-CLOSURE-20261109
+      file_path: reports/foundation/CRUD-COMPLETION-PROGRESS.md
+      source_type: UI_OBSERVED
+      section: 2.1 汇总
+      excerpt: 编辑闭环 20 项
+  - type: status
+    target: 参数类缺陷
+    expected: 存货参数编辑、采购参数新增均被 UV_ID 唯一性规则误拦，登记 DEF-03/DEF-04
+    level: business
+    source_ref:
+      document_id: FDN-CRUD-CLOSURE-20261109
+      file_path: reports/foundation/DEFECT-AND-GAP-REPORT.md
+      source_type: UI_OBSERVED
+      section: 2.1 第二轮新增缺陷
+      excerpt: UV_ID_16561 / UV_ID_38362 运营单元参数已存在
+cleanup_policy: keep
+status: reviewed
+timeout_ms: 900000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true
