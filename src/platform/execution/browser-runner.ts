@@ -16,7 +16,7 @@ import { captureFailureEvidence } from '../evidence/diagnostics';
 import { CaseRunOutput, CaseRunner, ReportAssertion, ReportStep, classifyFailure } from './scheduler';
 
 const WRITE_ACTIONS = new Set(['fill', 'select_master_data', 'select_option', 'save', 'submit', 'approve', 'unapprove', 'delete', 'upload', 'invoke_flow']);
-const READ_ONLY_FLOWS = new Set(['platform:list-smoke']);
+const READ_ONLY_FLOWS = new Set(['platform:list-smoke', 'foundation-field-rules']);
 
 export interface BrowserRunnerDeps {
   moduleId: string;

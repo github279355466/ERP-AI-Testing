@@ -1,0 +1,45 @@
+schema_version: "1.0"
+id: SMOKE-FOUNDATION-CURRENCY-FIELD-RULES
+module_id: foundation
+version: 0.1.0
+title: 货币信息字段规则
+objective: 在真实新增表单上验证货币信息的必填、默认值、只读、禁用、长度与唯一性规则
+scenario_refs:
+  - SCN-FOUNDATION-CURRENCY
+source_refs:
+  - document_id: FDN-BNiXNsoxHMSu
+    file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+    source_type: UI_OBSERVED
+    section: 货币信息
+    excerpt: 货币信息 字段规则集合（Gate C 采集）
+preconditions:
+  - 已登录测试环境并具备基础管理查看权限
+  - 仅打开新增表单，不保存业务数据
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: currency
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: foundation-field-rules
+    value: '{"pageKey":"currency"}'
+    evidence: true
+assertions:
+  - type: status
+    target: 货币信息字段规则
+    expected: 规则无失败（候选规则警告允许）
+    level: business
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 字段规则汇总
+cleanup_policy: keep
+status: reviewed
+timeout_ms: 300000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

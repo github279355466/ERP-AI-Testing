@@ -18,7 +18,20 @@
         "additionalProperties": false,
         "properties": {
           "id": { "type": "string", "minLength": 1 },
-          "type": { "enum": ["REQUIRED", "DEFAULT_VALUE", "LINKAGE", "READONLY", "DISABLED", "SAVE_BLOCK"] },
+          "type": {
+            "enum": [
+              "REQUIRED",
+              "DEFAULT_VALUE",
+              "LINKAGE",
+              "READONLY",
+              "DISABLED",
+              "SAVE_BLOCK",
+              "UNIQUE",
+              "MAX_LENGTH",
+              "FORMAT",
+              "RANGE"
+            ]
+          },
           "field": { "type": "string", "minLength": 1 },
           "trigger": { "enum": ["FORM_OPEN", "ON_CHANGE", "SAVE"] },
           "when": {
@@ -38,6 +51,10 @@
               "readonly": { "type": "boolean" },
               "disabled": { "type": "boolean" },
               "blocked": { "type": "boolean" },
+              "unique": { "type": "boolean" },
+              "max_length": { "type": "integer", "minimum": 0 },
+              "min": { "type": "number" },
+              "max": { "type": "number" },
               "value_mode": { "enum": ["equals", "not_empty", "empty", "today", "regex"] },
               "value": { "type": "string" },
               "message_contains": { "type": "string" }

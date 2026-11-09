@@ -1,0 +1,50 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: trans-obj-attr
+page_name: 交易对象属性
+navigation:
+  menu_path:
+    - 基础管理
+    - 交易对象管理
+    - 交易对象属性
+  work_item_code: HDWWlvaQVWIS
+  route: trans-obj-attr
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: trans_obj_attr.attr_no
+    label: 属性编号
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="trans_obj_attr.attr_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / 属性编号（Gate C 页面盘点）
+  - name: trans_obj_attr.attr_name
+    label: 属性名称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="trans_obj_attr.attr_name"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / 属性名称（Gate C 页面盘点）

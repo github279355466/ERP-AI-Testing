@@ -1,0 +1,50 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: meas-unit
+page_name: 计量单位
+navigation:
+  menu_path:
+    - 基础管理
+    - 公共信息
+    - 计量单位
+  work_item_code: uyaxVfhglsZN
+  route: meas-unit
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: meas_unit.unit_no
+    label: 单位编号
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="meas_unit.unit_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / 单位编号（Gate C 页面盘点）
+  - name: meas_unit.unit_name
+    label: 单位名称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="meas_unit.unit_name"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / 单位名称（Gate C 页面盘点）

@@ -1,0 +1,66 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: supplier
+page_name: 供应商通用信息
+navigation:
+  menu_path:
+    - 基础管理
+    - 供应商信息
+    - 供应商通用信息
+  work_item_code: AgmFoWLpurdf
+  route: supplier
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: supp_base_info.supp_no
+    label: 供应商编号
+    control_type: LOOKUP
+    locator:
+      strategy: css
+      value: '[id="supp_base_info.supp_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / 供应商编号（Gate C 页面盘点）
+  - name: supp_base_info.supp_sname
+    label: 供应商简称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="supp_base_info.supp_sname"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / 供应商简称（Gate C 页面盘点）
+  - name: supp_base_info.supp_name
+    label: 供应商名称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="supp_base_info.supp_name"]'
+      unique: false
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / 供应商名称（Gate C 页面盘点）

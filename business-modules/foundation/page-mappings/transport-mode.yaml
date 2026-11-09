@@ -1,0 +1,50 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: transport-mode
+page_name: 运输方式
+navigation:
+  menu_path:
+    - 基础管理
+    - 公共信息
+    - 运输方式
+  work_item_code: XlKvvozLmhCl
+  route: transport-mode
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: trasp_mode.trasp_mode_no
+    label: 运输方式编号
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="trasp_mode.trasp_mode_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-XlKvvozLmhCl
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 运输方式
+      excerpt: 运输方式 / 运输方式编号（Gate C 页面盘点）
+  - name: trasp_mode.trasp_mode_desc
+    label: 运输方式描述
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="trasp_mode.trasp_mode_desc"]'
+      unique: false
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-XlKvvozLmhCl
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 运输方式
+      excerpt: 运输方式 / 运输方式描述（Gate C 页面盘点）

@@ -1,0 +1,50 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: warehouse
+page_name: 仓库信息
+navigation:
+  menu_path:
+    - 基础管理
+    - 公共信息
+    - 仓库信息
+  work_item_code: RwlRpYjDJXNF
+  route: warehouse
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: whse.whse_no
+    label: 仓库编号
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="whse.whse_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / 仓库编号（Gate C 页面盘点）
+  - name: whse.whse_name
+    label: 仓库名称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="whse.whse_name"]'
+      unique: false
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / 仓库名称（Gate C 页面盘点）

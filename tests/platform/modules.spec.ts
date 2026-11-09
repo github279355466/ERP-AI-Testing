@@ -10,7 +10,7 @@ import { loadRecipes } from '../../src/platform/data/recipe';
 const root = process.cwd();
 
 test.describe('模块包接入', () => {
-  for (const moduleId of ['purchase', 'base', 'ar', 'ap']) {
+  for (const moduleId of ['purchase', 'base', 'ar', 'ap', 'foundation']) {
     test(`${moduleId} 模块包通过契约并能加载页面映射/用例`, () => {
       const pack = validateModulePack(`business-modules/${moduleId}`, { root });
       expect(pack.valid).toBe(true);

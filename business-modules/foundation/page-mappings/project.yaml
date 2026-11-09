@@ -1,0 +1,50 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: project
+page_name: 项目信息
+navigation:
+  menu_path:
+    - 基础管理
+    - 公共信息
+    - 项目信息
+  work_item_code: VTdUTYFuHOdI
+  route: project
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: proj.proj_no
+    label: 项目编号
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="proj.proj_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-VTdUTYFuHOdI
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 项目信息
+      excerpt: 项目信息 / 项目编号（Gate C 页面盘点）
+  - name: proj.proj_name
+    label: 项目名称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="proj.proj_name"]'
+      unique: false
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-VTdUTYFuHOdI
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 项目信息
+      excerpt: 项目信息 / 项目名称（Gate C 页面盘点）

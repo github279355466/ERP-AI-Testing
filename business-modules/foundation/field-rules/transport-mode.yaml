@@ -1,0 +1,72 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: transport-mode
+rules:
+  - id: FR-FDN-TRANSPORTMODE-001
+    type: REQUIRED
+    field: trasp_mode.trasp_mode_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-XlKvvozLmhCl
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 运输方式
+      excerpt: 运输方式 / trasp_mode.trasp_mode_no / 运输方式编号
+    expected:
+      required: true
+  - id: FR-FDN-TRANSPORTMODE-002
+    type: MAX_LENGTH
+    field: trasp_mode.trasp_mode_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-XlKvvozLmhCl
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 运输方式
+      excerpt: 运输方式 / trasp_mode.trasp_mode_no / 运输方式编号
+    expected:
+      max_length: 100
+  - id: FR-FDN-TRANSPORTMODE-003
+    type: MAX_LENGTH
+    field: trasp_mode.trasp_mode_desc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-XlKvvozLmhCl
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 运输方式
+      excerpt: 运输方式 / trasp_mode.trasp_mode_desc / 运输方式描述
+    expected:
+      max_length: 100
+  - id: FR-FDN-TRANSPORTMODE-004
+    type: DEFAULT_VALUE
+    field: trasp_mode.trasp_type
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-XlKvvozLmhCl
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 运输方式
+      excerpt: 运输方式 / trasp_mode.trasp_type / 运输类型
+    expected:
+      value_mode: equals
+      value: 陆运
+  - id: FR-FDN-TRANSPORTMODE-005
+    type: UNIQUE
+    field: trasp_mode.trasp_mode_no
+    trigger: SAVE
+    status: verified
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-XlKvvozLmhCl
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 运输方式
+      excerpt: 运输方式 / trasp_mode.trasp_mode_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示

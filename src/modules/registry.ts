@@ -1,5 +1,6 @@
 import { ModuleFlow } from './types';
 import { purchaseOrderCreate, purchaseOrderFieldRules, purchaseOrderLifecycle, purchaseOrderListSmoke } from './purchase/flows';
+import { foundationFieldRules } from './foundation/flows';
 import { listSmokeFlow } from './builtin';
 
 const FLOWS: Record<string, Record<string, ModuleFlow>> = {
@@ -8,6 +9,9 @@ const FLOWS: Record<string, Record<string, ModuleFlow>> = {
     'purchase-order-lifecycle': purchaseOrderLifecycle,
     'purchase-order-field-rules': purchaseOrderFieldRules,
     'purchase-order-list-smoke': purchaseOrderListSmoke,
+  },
+  foundation: {
+    'foundation-field-rules': foundationFieldRules,
   },
 };
 

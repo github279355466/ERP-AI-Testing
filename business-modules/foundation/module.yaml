@@ -1,0 +1,19 @@
+schema_version: "1.0"
+module:
+  id: foundation
+  name: 基础管理（关键对象）
+  version: 0.1.0
+  status: draft
+  owner: qa
+  description: 基础管理 9 个关键对象的字段规则包；规则来源 Gate C 真实 UI 盘点
+compatibility:
+  platform_api: ">=1.0.0 <2.0.0"
+sources:
+  prd_index: source-index/index.yaml
+assets:
+  knowledge: knowledge/
+  page_mappings: page-mappings/
+  scenarios: scenarios/
+  testcases: testcases/
+  data_recipes: data-recipes/
+  test_suites: test-suites/

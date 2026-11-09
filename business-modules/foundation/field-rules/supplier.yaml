@@ -1,0 +1,176 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: supplier
+rules:
+  - id: FR-FDN-SUPPLIER-001
+    type: REQUIRED
+    field: supp_base_info.supp_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.supp_no / 供应商编号
+    expected:
+      required: true
+  - id: FR-FDN-SUPPLIER-002
+    type: REQUIRED
+    field: supp_base_info.supp_sname
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.supp_sname / 供应商简称
+    expected:
+      required: true
+  - id: FR-FDN-SUPPLIER-003
+    type: MAX_LENGTH
+    field: supp_base_info.supp_sname
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.supp_sname / 供应商简称
+    expected:
+      max_length: 100
+  - id: FR-FDN-SUPPLIER-004
+    type: MAX_LENGTH
+    field: supp_base_info.supp_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.supp_name / 供应商名称
+    expected:
+      max_length: 100
+  - id: FR-FDN-SUPPLIER-005
+    type: MAX_LENGTH
+    field: supp_base_info.sc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.sc / 快捷码
+    expected:
+      max_length: 100
+  - id: FR-FDN-SUPPLIER-006
+    type: REQUIRED
+    field: supp_base_info.supp_group_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.supp_group_no / 供应商群组
+    expected:
+      required: true
+  - id: FR-FDN-SUPPLIER-007
+    type: MAX_LENGTH
+    field: supp_base_info.uni_soc_cr_code
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.uni_soc_cr_code / 统一社会信用代码
+    expected:
+      max_length: 20
+  - id: FR-FDN-SUPPLIER-008
+    type: MAX_LENGTH
+    field: supp_base_info.ldr_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.ldr_name / 负责人名称
+    expected:
+      max_length: 100
+  - id: FR-FDN-SUPPLIER-009
+    type: REQUIRED
+    field: supp_base_info.setup_date
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.setup_date / 开业日期
+    expected:
+      required: true
+  - id: FR-FDN-SUPPLIER-010
+    type: MAX_LENGTH
+    field: supp_base_info.capit_amt
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.capit_amt / 开业资金
+    expected:
+      max_length: 16
+  - id: FR-FDN-SUPPLIER-011
+    type: DEFAULT_VALUE
+    field: supp_base_info.hc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.hc / 员工人数
+    expected:
+      value_mode: equals
+      value: "0"
+  - id: FR-FDN-SUPPLIER-012
+    type: MAX_LENGTH
+    field: supp_base_info.hc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.hc / 员工人数
+    expected:
+      max_length: 11
+  - id: FR-FDN-SUPPLIER-013
+    type: UNIQUE
+    field: supp_base_info.supp_no
+    trigger: SAVE
+    status: candidate
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-AgmFoWLpurdf
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 供应商通用信息
+      excerpt: 供应商通用信息 / supp_base_info.supp_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示

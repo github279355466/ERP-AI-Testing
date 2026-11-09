@@ -1,0 +1,112 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: meas-unit
+rules:
+  - id: FR-FDN-MEASUNIT-001
+    type: REQUIRED
+    field: meas_unit.unit_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / meas_unit.unit_no / 单位编号
+    expected:
+      required: true
+  - id: FR-FDN-MEASUNIT-002
+    type: MAX_LENGTH
+    field: meas_unit.unit_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / meas_unit.unit_no / 单位编号
+    expected:
+      max_length: 100
+  - id: FR-FDN-MEASUNIT-003
+    type: REQUIRED
+    field: meas_unit.unit_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / meas_unit.unit_name / 单位名称
+    expected:
+      required: true
+  - id: FR-FDN-MEASUNIT-004
+    type: MAX_LENGTH
+    field: meas_unit.unit_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / meas_unit.unit_name / 单位名称
+    expected:
+      max_length: 100
+  - id: FR-FDN-MEASUNIT-005
+    type: DEFAULT_VALUE
+    field: meas_unit.unit_type
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / meas_unit.unit_type / 单位类型
+    expected:
+      value_mode: equals
+      value: 数量
+  - id: FR-FDN-MEASUNIT-006
+    type: REQUIRED
+    field: meas_unit.dec_digit
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / meas_unit.dec_digit / 小数位数
+    expected:
+      required: true
+  - id: FR-FDN-MEASUNIT-007
+    type: DEFAULT_VALUE
+    field: meas_unit.dec_digit
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / meas_unit.dec_digit / 小数位数
+    expected:
+      value_mode: equals
+      value: 保留3位小数
+  - id: FR-FDN-MEASUNIT-008
+    type: UNIQUE
+    field: meas_unit.unit_no
+    trigger: SAVE
+    status: verified
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-uyaxVfhglsZN
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 计量单位
+      excerpt: 计量单位 / meas_unit.unit_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示

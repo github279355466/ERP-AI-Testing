@@ -2,7 +2,7 @@ import { PurchaseOrderPage } from '../../pages/purchase/purchase-order.page';
 import { createPurchaseOrder } from '../../pages/purchase/purchase-order.flow';
 import { ModuleFlow, flowAssertion } from '../types';
 import { loadFieldRuleSets, rulesForPage } from '../../platform/rules/loader';
-import { captureFieldStates } from '../../platform/rules/browser-probe';
+import { captureFieldStates, captureSaveOutcome } from '../../platform/rules/browser-probe';
 import { evaluateFieldRuleSet } from '../../platform/rules/engine';
 
 function requireParam(params: Record<string, string>, key: string): string {
@@ -148,11 +148,41 @@ export const purchaseOrderFieldRules: ModuleFlow = async (context) => {
   });
   await context.page.waitForTimeout(1_200);
   const after = await captureFieldStates(context.page, fields);
+  const attemptSave = context.params.saveAttempt === 'true';
+  const save = attemptSave ? await captureSaveOutcome(context.page) : undefined;
+  let draftNo = '';
+  if (attemptSave) {
+    draftNo = await context.page
+      .locator('[id="po.po_doc_no"] input')
+      .last()
+      .inputValue()
+      .catch(() => '');
+    if (!draftNo) {
+      const body = await context.page.evaluate(() => document.body.innerText || '');
+      draftNo = /PO\d{4}-\d{12}/.exec(body)?.[0] ?? '';
+    }
+  }
+  if (attemptSave) {
+    await context.page.locator('.validator-drawer-close-btn:visible').last().click({ timeout: 2_000 }).catch(() => undefined);
+    const modal = context.page.locator('.rc-dialog-wrap:visible').last();
+    if ((await modal.count()) > 0) {
+      await modal.getByRole('button', { name: '取消', exact: true }).last().click().catch(() => undefined);
+    }
+    await context.page.waitForTimeout(800);
+  }
   await po.closeDetail();
   await context.pages.ensureListState(context.page, { forceReload: true });
   await context.pages.waitReady(context.page);
 
-  const evaluation = evaluateFieldRuleSet(rules, { before, after });
+  if (draftNo) {
+    await po.filterByDocumentNo(draftNo);
+    const cleanup = await po.deleteFromRow(draftNo);
+    if (cleanup.exists) {
+      throw new Error(`[FIELD_RULE_DRAFT_CLEANUP_FAILED] 保存拦截未生效，草稿 ${draftNo} 删除失败`);
+    }
+  }
+
+  const evaluation = evaluateFieldRuleSet(rules, { before, after, save });
   const assertions = evaluation.results.map((result) => {
     const warning = result.status === 'warning';
     const skipped = result.status === 'skipped';
@@ -177,6 +207,6 @@ export const purchaseOrderFieldRules: ModuleFlow = async (context) => {
   );
   return {
     assertions,
-    notes: `字段规则：${evaluation.results.length} 条，failed=${evaluation.failed}，warning=${evaluation.warnings}，skipped=${evaluation.skipped}`,
+    notes: `字段规则：${evaluation.results.length} 条，failed=${evaluation.failed}，warning=${evaluation.warnings}，skipped=${evaluation.skipped}${attemptSave ? `，saveBlocked=${save?.blocked}，draft=${draftNo || '(无)'}` : ''}`,
   };
 };

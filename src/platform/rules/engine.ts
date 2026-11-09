@@ -1,6 +1,16 @@
 import { PlatformSourceRef } from '../plan/compile';
 
-export type FieldRuleType = 'REQUIRED' | 'DEFAULT_VALUE' | 'LINKAGE' | 'READONLY' | 'DISABLED' | 'SAVE_BLOCK';
+export type FieldRuleType =
+  | 'REQUIRED'
+  | 'DEFAULT_VALUE'
+  | 'LINKAGE'
+  | 'READONLY'
+  | 'DISABLED'
+  | 'SAVE_BLOCK'
+  | 'UNIQUE'
+  | 'MAX_LENGTH'
+  | 'FORMAT'
+  | 'RANGE';
 export type FieldRuleTrigger = 'FORM_OPEN' | 'ON_CHANGE' | 'SAVE';
 export type FieldRuleStatus = 'verified' | 'candidate';
 
@@ -15,6 +25,10 @@ export interface FieldRule {
     readonly?: boolean;
     disabled?: boolean;
     blocked?: boolean;
+    unique?: boolean;
+    max_length?: number;
+    min?: number;
+    max?: number;
     value_mode?: 'equals' | 'not_empty' | 'empty' | 'today' | 'regex';
     value?: string;
     message_contains?: string;
@@ -31,6 +45,8 @@ export interface FieldState {
   disabled: boolean;
   visible: boolean;
   label: string;
+  maxLength?: number;
+  errorMessage?: string;
 }
 
 export interface FieldStateSnapshot {
@@ -43,10 +59,17 @@ export interface SaveOutcome {
   message: string;
 }
 
+export interface UniqueOutcome {
+  attempted: boolean;
+  blocked: boolean;
+  message: string;
+}
+
 export interface FieldRuleContext {
   before: FieldStateSnapshot;
   after?: FieldStateSnapshot;
   save?: SaveOutcome;
+  unique?: Record<string, UniqueOutcome>;
   now?: Date;
 }
 
@@ -98,6 +121,10 @@ function describeExpected(rule: FieldRule): string {
   if (rule.type === 'READONLY') return `readonly=${expected.readonly ?? true}`;
   if (rule.type === 'DISABLED') return `disabled=${expected.disabled ?? true}`;
   if (rule.type === 'SAVE_BLOCK') return `blocked=${expected.blocked ?? true}${expected.message_contains ? ` 且提示含「${expected.message_contains}」` : ''}`;
+  if (rule.type === 'UNIQUE') return `unique=${expected.unique ?? true}${expected.message_contains ? ` 且提示含「${expected.message_contains}」` : ''}`;
+  if (rule.type === 'MAX_LENGTH') return `max_length=${expected.max_length ?? 'UNKNOWN'}`;
+  if (rule.type === 'FORMAT') return `format=/${expected.value ?? ''}/`;
+  if (rule.type === 'RANGE') return `range=[${expected.min ?? '-∞'}, ${expected.max ?? '+∞'}]`;
   return `${rule.type === 'LINKAGE' ? '联动' : '默认值'} ${expected.value_mode ?? 'not_empty'}${expected.value ? `:${expected.value}` : ''}`;
 }
 
@@ -128,7 +155,7 @@ export function evaluateFieldRule(rule: FieldRule, context: FieldRuleContext): F
     return { ...base, status: 'skipped', expected: describeExpected(rule), actual: describeActual(state), message: 'FIELD_NOT_RENDERED' };
   }
 
-  if (rule.type === 'LINKAGE' && rule.when) {
+  if (rule.when) {
     const whenState = snapshot.fields[rule.when.field];
     const whenEmpty = !whenState || whenState.value.trim() === '';
     if (rule.when.state === 'empty' && !whenEmpty) {
@@ -137,6 +164,70 @@ export function evaluateFieldRule(rule: FieldRule, context: FieldRuleContext): F
     if (rule.when.state === 'not_empty' && whenEmpty) {
       return { ...base, status: 'skipped', expected: describeExpected(rule), actual: '触发条件不满足', message: 'WHEN_NOT_MATCHED' };
     }
+    if (rule.when.state === 'changed') {
+      const beforeValue = context.before.fields[rule.when.field]?.value ?? '';
+      const afterValue = (context.after ?? context.before).fields[rule.when.field]?.value ?? '';
+      if (beforeValue === afterValue) {
+        return { ...base, status: 'skipped', expected: describeExpected(rule), actual: `字段值未变化：${beforeValue || '(空)'}`, message: 'WHEN_NOT_CHANGED' };
+      }
+    }
+  }
+
+  if (rule.type === 'UNIQUE') {
+    const outcome = context.unique?.[rule.field];
+    if (!outcome?.attempted) {
+      return { ...base, status: 'skipped', expected: describeExpected(rule), actual: '未执行唯一性探测', message: 'UNIQUE_NOT_ATTEMPTED' };
+    }
+    const messageOk = !rule.expected.message_contains || outcome.message.includes(rule.expected.message_contains);
+    const passed = outcome.blocked === (rule.expected.unique ?? true) && messageOk;
+    return {
+      ...base,
+      status: passed ? 'passed' : rule.status === 'candidate' ? 'warning' : 'failed',
+      expected: describeExpected(rule),
+      actual: `blocked=${outcome.blocked} message=${outcome.message.slice(0, 80)}`,
+    };
+  }
+
+  if (rule.type === 'MAX_LENGTH') {
+    if (state.maxLength === undefined || state.maxLength < 0) {
+      return { ...base, status: 'skipped', expected: describeExpected(rule), actual: '未采集 maxlength', message: 'MAX_LENGTH_UNAVAILABLE' };
+    }
+    const passed = state.maxLength === rule.expected.max_length;
+    return {
+      ...base,
+      status: passed ? 'passed' : rule.status === 'candidate' ? 'warning' : 'failed',
+      expected: describeExpected(rule),
+      actual: `maxLength=${state.maxLength}`,
+    };
+  }
+
+  if (rule.type === 'FORMAT') {
+    if (state.value.trim() === '') {
+      return { ...base, status: 'skipped', expected: describeExpected(rule), actual: '字段为空', message: 'VALUE_EMPTY' };
+    }
+    const passed = matchValue('regex', rule.expected.value, state.value, now);
+    return {
+      ...base,
+      status: passed ? 'passed' : rule.status === 'candidate' ? 'warning' : 'failed',
+      expected: describeExpected(rule),
+      actual: `value=${state.value.slice(0, 60)}`,
+    };
+  }
+
+  if (rule.type === 'RANGE') {
+    const numeric = Number(state.value.replace(/,/g, '').trim());
+    if (!Number.isFinite(numeric)) {
+      return { ...base, status: 'failed', expected: describeExpected(rule), actual: `value=${state.value.slice(0, 60)} 非数值` };
+    }
+    const minOk = rule.expected.min === undefined || numeric >= rule.expected.min;
+    const maxOk = rule.expected.max === undefined || numeric <= rule.expected.max;
+    const passed = minOk && maxOk;
+    return {
+      ...base,
+      status: passed ? 'passed' : rule.status === 'candidate' ? 'warning' : 'failed',
+      expected: describeExpected(rule),
+      actual: `value=${numeric}`,
+    };
   }
 
   let passed = false;

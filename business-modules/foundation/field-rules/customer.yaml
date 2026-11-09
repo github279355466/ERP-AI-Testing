@@ -1,0 +1,284 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: customer
+rules:
+  - id: FR-FDN-CUSTOMER-001
+    type: REQUIRED
+    field: cust_base_info.cust_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.cust_no / 客户编号
+    expected:
+      required: true
+  - id: FR-FDN-CUSTOMER-002
+    type: MAX_LENGTH
+    field: cust_base_info.cust_sname
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.cust_sname / 客户简称
+    expected:
+      max_length: 100
+  - id: FR-FDN-CUSTOMER-003
+    type: DEFAULT_VALUE
+    field: cust_base_info.cust_prop
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.cust_prop / 客户性质
+    expected:
+      value_mode: equals
+      value: 正式
+  - id: FR-FDN-CUSTOMER-004
+    type: MAX_LENGTH
+    field: cust_base_info.cust_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.cust_name / 客户名称
+    expected:
+      max_length: 255
+  - id: FR-FDN-CUSTOMER-005
+    type: MAX_LENGTH
+    field: cust_base_info.sc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.sc / 快捷码
+    expected:
+      max_length: 20
+  - id: FR-FDN-CUSTOMER-006
+    type: MAX_LENGTH
+    field: cust_base_info.uni_soc_cr_code
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.uni_soc_cr_code / 税号
+    expected:
+      max_length: 20
+  - id: FR-FDN-CUSTOMER-007
+    type: DEFAULT_VALUE
+    field: cust_base_info.year_rev
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.year_rev / 年营业额(人民币:万元)
+    expected:
+      value_mode: equals
+      value: "0"
+  - id: FR-FDN-CUSTOMER-008
+    type: MAX_LENGTH
+    field: cust_base_info.year_rev
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.year_rev / 年营业额(人民币:万元)
+    expected:
+      max_length: 16
+  - id: FR-FDN-CUSTOMER-009
+    type: DEFAULT_VALUE
+    field: cust_base_info.capit_amt
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.capit_amt / 注册资本(人民币：万元)
+    expected:
+      value_mode: equals
+      value: "0"
+  - id: FR-FDN-CUSTOMER-010
+    type: MAX_LENGTH
+    field: cust_base_info.capit_amt
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.capit_amt / 注册资本(人民币：万元)
+    expected:
+      max_length: 16
+  - id: FR-FDN-CUSTOMER-011
+    type: MAX_LENGTH
+    field: cust_base_info.ldr_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.ldr_name / 负责人名称
+    expected:
+      max_length: 100
+  - id: FR-FDN-CUSTOMER-012
+    type: MAX_LENGTH
+    field: cust_base_info.co_tel
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.co_tel / 公司电话
+    expected:
+      max_length: 20
+  - id: FR-FDN-CUSTOMER-013
+    type: MAX_LENGTH
+    field: cust_base_info.email
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.email / 邮箱
+    expected:
+      max_length: 80
+  - id: FR-FDN-CUSTOMER-014
+    type: MAX_LENGTH
+    field: cust_base_info.web
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.web / 网址
+    expected:
+      max_length: 255
+  - id: FR-FDN-CUSTOMER-015
+    type: DEFAULT_VALUE
+    field: cust_base_info.hc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.hc / 员工人数
+    expected:
+      value_mode: equals
+      value: "0"
+  - id: FR-FDN-CUSTOMER-016
+    type: MAX_LENGTH
+    field: cust_base_info.hc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.hc / 员工人数
+    expected:
+      max_length: 11
+  - id: FR-FDN-CUSTOMER-017
+    type: MAX_LENGTH
+    field: cust_base_info.brach_count
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.brach_count / 分店数
+    expected:
+      max_length: 11
+  - id: FR-FDN-CUSTOMER-018
+    type: DISABLED
+    field: cust_base_info.ptl_cust_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.ptl_cust_no / 潜客编号
+    expected:
+      disabled: true
+  - id: FR-FDN-CUSTOMER-019
+    type: MAX_LENGTH
+    field: cust_base_info.ptl_cust_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.ptl_cust_no / 潜客编号
+    expected:
+      max_length: 50
+  - id: FR-FDN-CUSTOMER-020
+    type: UNIQUE
+    field: cust_base_info.cust_no
+    trigger: SAVE
+    status: candidate
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / cust_base_info.cust_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示
+  - id: FR-FDN-CUSTOMER-021
+    type: DEFAULT_VALUE
+    field: cust_base_info.brach_count
+    trigger: FORM_OPEN
+    status: candidate
+    expected:
+      value_mode: not_empty
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / 分店数 / DEF-02 默认空值
+    notes: Gate C DEF-02：默认空值提交会触发后端 ConversionException，候选规则违反记 warning

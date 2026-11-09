@@ -1,0 +1,58 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: project
+rules:
+  - id: FR-FDN-PROJECT-001
+    type: REQUIRED
+    field: proj.proj_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-VTdUTYFuHOdI
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 项目信息
+      excerpt: 项目信息 / proj.proj_no / 项目编号
+    expected:
+      required: true
+  - id: FR-FDN-PROJECT-002
+    type: MAX_LENGTH
+    field: proj.proj_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-VTdUTYFuHOdI
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 项目信息
+      excerpt: 项目信息 / proj.proj_no / 项目编号
+    expected:
+      max_length: 100
+  - id: FR-FDN-PROJECT-003
+    type: MAX_LENGTH
+    field: proj.proj_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-VTdUTYFuHOdI
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 项目信息
+      excerpt: 项目信息 / proj.proj_name / 项目名称
+    expected:
+      max_length: 100
+  - id: FR-FDN-PROJECT-004
+    type: UNIQUE
+    field: proj.proj_no
+    trigger: SAVE
+    status: verified
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-VTdUTYFuHOdI
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 项目信息
+      excerpt: 项目信息 / proj.proj_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示

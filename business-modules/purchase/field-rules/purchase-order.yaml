@@ -143,16 +143,16 @@ rules:
       source_type: PRD_DERIVED
       section: RULE-37EBE8CF8545
       excerpt: "【税率(tax_rate)】供应商变更后覆盖带出"
-  - id: FR-PO-SAVE-BLOCK-REQUIRED
+  - id: FR-PO-SAVE-DRAFT-ALLOWED
     type: SAVE_BLOCK
-    field: po.supp_no
+    field: po.po_doc_no
     trigger: SAVE
-    expected: { blocked: true, message_contains: "不能" }
-    status: candidate
+    expected: { blocked: false, message_contains: "操作成功" }
+    status: verified
     source_ref:
-      document_id: RULE-1EFF8A3567E5
-      file_path: artifacts/modules/purchase/knowledge/rules.json
-      source_type: PRD_DERIVED
-      section: RULE-1EFF8A3567E5
-      excerpt: "为空时保存应被拦截"
-    notes: 保存会实际生成草稿单，默认不执行；需单独立项并在专用数据+清理授权下验证
+      document_id: FDN-PO-SAVE-BLOCK
+      file_path: artifacts/FDN-PO-SAVE-BLOCK-03/report.md
+      source_type: UI_OBSERVED
+      section: 保存行为
+      excerpt: "实测：无明细保存成功并生成草稿单 PO0501-2026110900001，草稿由流程删除"
+    notes: 2026-11-09 真实 UI 实测；保存阶段不拦截，提交/审核阶段是否拦截未验证

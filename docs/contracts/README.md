@@ -18,6 +18,7 @@
 | `docs/contracts/run-manifest-v2.md` | `run-manifest-v2` |
 | `docs/contracts/integration-pack.md` | `integration-pack` |
 | `docs/contracts/action-registry.md` | `action-registry` |
+| `docs/contracts/field-rule-set.md` | `field-rule` |
 
 核心契约：
 
@@ -30,5 +31,6 @@
 - `run-manifest-v2`：运行清单 v2 与 v1 适配
 - `integration-pack`：跨模块集成包
 - `action-registry`：受控动作注册表
+- `field-rule`：字段规则集与页面探针
 - `test-suite` / `execution-plan`：套件与执行计划
 - `run-config` / `environment-profile` / `user-profile`：运行时配置

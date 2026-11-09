@@ -289,6 +289,7 @@ export function validateAll(options: { root?: string; directory?: string } = {})
   results.push(validateFile(path.resolve(root, 'platform/contracts/action-registry.json'), 'action-registry', { directory }));
   results.push(validateModulePack('business-modules/_template', { root, directory }));
   results.push(validateModulePack('business-modules/purchase', { root, directory }));
+  results.push(validateModulePack('business-modules/foundation', { root, directory }));
   results.push(validateIntegrationPack('integration-tests/_template', { root, directory }));
   results.push(validateIntegrationPack('integration-tests/purchase-to-ap', { root, directory }));
   return results;

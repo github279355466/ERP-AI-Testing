@@ -1,0 +1,4 @@
+schema_version: "1.0"
+module_id: foundation
+module_name: 基础管理（关键对象）
+notes: 规则来源 reports/foundation/FIELD-RULE-MATRIX.csv（Gate C 真实 UI 采集），不含 PRD 推断。

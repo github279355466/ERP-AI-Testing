@@ -1,0 +1,153 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: warehouse
+rules:
+  - id: FR-FDN-WAREHOUSE-001
+    type: REQUIRED
+    field: whse.ops_unit_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.ops_unit_no / 运营单元
+    expected:
+      required: true
+  - id: FR-FDN-WAREHOUSE-002
+    type: DEFAULT_VALUE
+    field: whse.whse_prop
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.whse_prop / 仓库性质
+    expected:
+      value_mode: equals
+      value: 存货仓
+  - id: FR-FDN-WAREHOUSE-003
+    type: MAX_LENGTH
+    field: whse.tel
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.tel / 联系电话
+    expected:
+      max_length: 100
+  - id: FR-FDN-WAREHOUSE-004
+    type: MAX_LENGTH
+    field: whse.fax
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.fax / 传真
+    expected:
+      max_length: 100
+  - id: FR-FDN-WAREHOUSE-005
+    type: REQUIRED
+    field: whse.whse_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.whse_no / 仓库编号
+    expected:
+      required: true
+  - id: FR-FDN-WAREHOUSE-006
+    type: MAX_LENGTH
+    field: whse.whse_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.whse_no / 仓库编号
+    expected:
+      max_length: 100
+  - id: FR-FDN-WAREHOUSE-007
+    type: DEFAULT_VALUE
+    field: whse.incln_avail_qty_calc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.incln_avail_qty_calc / 纳入可用量计算
+    expected:
+      value_mode: equals
+      value: "true"
+  - id: FR-FDN-WAREHOUSE-008
+    type: DEFAULT_VALUE
+    field: whse.allow_neg_invnt
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.allow_neg_invnt / 允许负库存
+    expected:
+      value_mode: equals
+      value: "false"
+  - id: FR-FDN-WAREHOUSE-009
+    type: MAX_LENGTH
+    field: whse.whse_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.whse_name / 仓库名称
+    expected:
+      max_length: 100
+  - id: FR-FDN-WAREHOUSE-010
+    type: DEFAULT_VALUE
+    field: whse.stsp_mgmt
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.stsp_mgmt / 储位管理
+    expected:
+      value_mode: equals
+      value: 不启用
+  - id: FR-FDN-WAREHOUSE-011
+    type: UNIQUE
+    field: whse.whse_no
+    trigger: SAVE
+    status: candidate
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-RwlRpYjDJXNF
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 仓库信息
+      excerpt: 仓库信息 / whse.whse_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示

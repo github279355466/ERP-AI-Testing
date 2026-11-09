@@ -1,0 +1,43 @@
+schema_version: "1.0"
+id: SMOKE-PURCHASE-ORDER-SAVE-BLOCK
+module_id: purchase
+version: 0.1.0
+title: 采购订单无明细保存行为（草稿允许）
+objective: 在真实新增表单仅填表头后保存，验证系统允许草稿并自动清理生成的草稿单
+scenario_refs: [SCN-PURCHASE-ORDER-FIELD-RULES]
+source_refs:
+  - document_id: RULE-1EFF8A3567E5
+    file_path: artifacts/modules/purchase/knowledge/rules.json
+    source_type: PRD_DERIVED
+    excerpt: 采购订单必填规则与保存拦截
+preconditions:
+  - 已登录测试环境并具备采购订单新增权限
+  - 基础资料 QN002 / SUPP-1001 / PO0501 存在
+  - 保存生成的草稿由本用例自动删除
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: purchase-order
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: purchase-order-field-rules
+    value: '{"opsUnit":"QN002","supplier":"SUPP-1001","bizType":"PO0501","saveAttempt":"true"}'
+    evidence: true
+assertions:
+  - type: status
+    target: 采购订单保存拦截
+    expected: 保存生成草稿或明确拦截，且无草稿残留
+    level: business
+    source_ref:
+      document_id: RULE-1EFF8A3567E5
+      file_path: artifacts/modules/purchase/knowledge/rules.json
+      source_type: PRD_DERIVED
+      excerpt: 无明细保存行为与草稿清理
+cleanup_policy: delete_after_run
+status: reviewed
+timeout_ms: 300000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

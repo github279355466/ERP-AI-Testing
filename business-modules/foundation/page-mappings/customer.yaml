@@ -1,0 +1,66 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: customer
+page_name: 客户通用信息
+navigation:
+  menu_path:
+    - 基础管理
+    - 客户信息
+    - 客户通用信息
+  work_item_code: xwpefqwlWQqi
+  route: customer
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: cust_base_info.cust_no
+    label: 客户编号
+    control_type: LOOKUP
+    locator:
+      strategy: css
+      value: '[id="cust_base_info.cust_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / 客户编号（Gate C 页面盘点）
+  - name: cust_base_info.cust_sname
+    label: 客户简称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="cust_base_info.cust_sname"]'
+      unique: false
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / 客户简称（Gate C 页面盘点）
+  - name: cust_base_info.cust_name
+    label: 客户名称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="cust_base_info.cust_name"]'
+      unique: false
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-xwpefqwlWQqi
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 客户通用信息
+      excerpt: 客户通用信息 / 客户名称（Gate C 页面盘点）

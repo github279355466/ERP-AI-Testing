@@ -1,0 +1,50 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: financial-institution
+page_name: 金融机构
+navigation:
+  menu_path:
+    - 基础管理
+    - 公共信息
+    - 金融机构
+  work_item_code: dUDSckVJMbpD
+  route: financial-institution
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: fi.fi_no
+    label: 金融机构编号
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="fi.fi_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / 金融机构编号（Gate C 页面盘点）
+  - name: fi.fi_sname
+    label: 金融机构简称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="fi.fi_sname"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / 金融机构简称（Gate C 页面盘点）

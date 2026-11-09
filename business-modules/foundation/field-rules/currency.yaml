@@ -1,0 +1,256 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: currency
+rules:
+  - id: FR-FDN-CURRENCY-001
+    type: REQUIRED
+    field: ccy.ccy_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_no / 货币编号
+    expected:
+      required: true
+  - id: FR-FDN-CURRENCY-002
+    type: MAX_LENGTH
+    field: ccy.ccy_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_no / 货币编号
+    expected:
+      max_length: 100
+  - id: FR-FDN-CURRENCY-003
+    type: REQUIRED
+    field: ccy.ccy_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_name / 货币名称
+    expected:
+      required: true
+  - id: FR-FDN-CURRENCY-004
+    type: MAX_LENGTH
+    field: ccy.ccy_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_name / 货币名称
+    expected:
+      max_length: 100
+  - id: FR-FDN-CURRENCY-005
+    type: REQUIRED
+    field: ccy.ccy_unit
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_unit / 货币单位
+    expected:
+      required: true
+  - id: FR-FDN-CURRENCY-006
+    type: MAX_LENGTH
+    field: ccy.ccy_unit
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_unit / 货币单位
+    expected:
+      max_length: 100
+  - id: FR-FDN-CURRENCY-007
+    type: REQUIRED
+    field: ccy.ccy_sym
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_sym / 货币符号
+    expected:
+      required: true
+  - id: FR-FDN-CURRENCY-008
+    type: MAX_LENGTH
+    field: ccy.ccy_sym
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_sym / 货币符号
+    expected:
+      max_length: 100
+  - id: FR-FDN-CURRENCY-009
+    type: REQUIRED
+    field: ccy.amt_dec_digit
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.amt_dec_digit / 金额取位
+    expected:
+      required: true
+  - id: FR-FDN-CURRENCY-010
+    type: DEFAULT_VALUE
+    field: ccy.amt_dec_digit
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.amt_dec_digit / 金额取位
+    expected:
+      value_mode: equals
+      value: "2"
+  - id: FR-FDN-CURRENCY-011
+    type: MAX_LENGTH
+    field: ccy.amt_dec_digit
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.amt_dec_digit / 金额取位
+    expected:
+      max_length: 1
+  - id: FR-FDN-CURRENCY-012
+    type: REQUIRED
+    field: ccy.unit_pur_price_acc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.unit_pur_price_acc / 单价取位
+    expected:
+      required: true
+  - id: FR-FDN-CURRENCY-013
+    type: DEFAULT_VALUE
+    field: ccy.unit_pur_price_acc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.unit_pur_price_acc / 单价取位
+    expected:
+      value_mode: equals
+      value: "2"
+  - id: FR-FDN-CURRENCY-014
+    type: MAX_LENGTH
+    field: ccy.unit_pur_price_acc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.unit_pur_price_acc / 单价取位
+    expected:
+      max_length: 1
+  - id: FR-FDN-CURRENCY-015
+    type: REQUIRED
+    field: ccy.unit_issue_cost_acc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.unit_issue_cost_acc / 单位成本取位
+    expected:
+      required: true
+  - id: FR-FDN-CURRENCY-016
+    type: DEFAULT_VALUE
+    field: ccy.unit_issue_cost_acc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.unit_issue_cost_acc / 单位成本取位
+    expected:
+      value_mode: equals
+      value: "2"
+  - id: FR-FDN-CURRENCY-017
+    type: MAX_LENGTH
+    field: ccy.unit_issue_cost_acc
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.unit_issue_cost_acc / 单位成本取位
+    expected:
+      max_length: 1
+  - id: FR-FDN-CURRENCY-018
+    type: MAX_LENGTH
+    field: ccy.rmk
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.rmk / 备注
+    expected:
+      max_length: 255
+  - id: FR-FDN-CURRENCY-019
+    type: UNIQUE
+    field: ccy.ccy_no
+    trigger: SAVE
+    status: verified
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / ccy.ccy_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示

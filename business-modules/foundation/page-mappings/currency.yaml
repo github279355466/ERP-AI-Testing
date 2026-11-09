@@ -1,0 +1,50 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: currency
+page_name: 货币信息
+navigation:
+  menu_path:
+    - 基础管理
+    - 公共信息
+    - 货币信息
+  work_item_code: BNiXNsoxHMSu
+  route: currency
+status: candidate
+review_status: needs_review
+locator_priority:
+  - css
+  - label
+  - role
+fields:
+  - name: ccy.ccy_no
+    label: 货币编号
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="ccy.ccy_no"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / 货币编号（Gate C 页面盘点）
+  - name: ccy.ccy_name
+    label: 货币名称
+    control_type: TEXT_INPUT
+    locator:
+      strategy: css
+      value: '[id="ccy.ccy_name"]'
+      unique: false
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: FDN-BNiXNsoxHMSu
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 货币信息
+      excerpt: 货币信息 / 货币名称（Gate C 页面盘点）

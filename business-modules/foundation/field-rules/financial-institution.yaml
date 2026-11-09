@@ -1,0 +1,175 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: financial-institution
+rules:
+  - id: FR-FDN-FINANCIALINSTITUTION-001
+    type: REQUIRED
+    field: fi.fi_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_no / 金融机构编号
+    expected:
+      required: true
+  - id: FR-FDN-FINANCIALINSTITUTION-002
+    type: MAX_LENGTH
+    field: fi.fi_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_no / 金融机构编号
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-003
+    type: MAX_LENGTH
+    field: fi.fi_code
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_code / 金融机构代码
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-004
+    type: REQUIRED
+    field: fi.fi_sname
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_sname / 金融机构简称
+    expected:
+      required: true
+  - id: FR-FDN-FINANCIALINSTITUTION-005
+    type: MAX_LENGTH
+    field: fi.fi_sname
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_sname / 金融机构简称
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-006
+    type: MAX_LENGTH
+    field: fi.fi_ho
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_ho / 金融机构总行
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-007
+    type: MAX_LENGTH
+    field: fi.fi_brach
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_brach / 金融机构分行
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-008
+    type: MAX_LENGTH
+    field: fi.fi_subbr
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_subbr / 金融机构支行
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-009
+    type: REQUIRED
+    field: fi.fi_fname
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_fname / 金融机构全称
+    expected:
+      required: true
+  - id: FR-FDN-FINANCIALINSTITUTION-010
+    type: MAX_LENGTH
+    field: fi.fi_fname
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_fname / 金融机构全称
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-011
+    type: MAX_LENGTH
+    field: fi.fi_en_fname
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_en_fname / 金融机构英文全称
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-012
+    type: MAX_LENGTH
+    field: fi.fi_addr
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_addr / 金融机构地址
+    expected:
+      max_length: 100
+  - id: FR-FDN-FINANCIALINSTITUTION-013
+    type: UNIQUE
+    field: fi.fi_no
+    trigger: SAVE
+    status: verified
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-dUDSckVJMbpD
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 金融机构
+      excerpt: 金融机构 / fi.fi_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示

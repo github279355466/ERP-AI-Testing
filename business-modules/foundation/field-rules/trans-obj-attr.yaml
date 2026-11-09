@@ -1,0 +1,192 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: trans-obj-attr
+rules:
+  - id: FR-FDN-TRANSOBJATTR-001
+    type: REQUIRED
+    field: trans_obj_attr.attr_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.attr_no / 属性编号
+    expected:
+      required: true
+  - id: FR-FDN-TRANSOBJATTR-002
+    type: MAX_LENGTH
+    field: trans_obj_attr.attr_no
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.attr_no / 属性编号
+    expected:
+      max_length: 100
+  - id: FR-FDN-TRANSOBJATTR-003
+    type: REQUIRED
+    field: trans_obj_attr.attr_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.attr_name / 属性名称
+    expected:
+      required: true
+  - id: FR-FDN-TRANSOBJATTR-004
+    type: MAX_LENGTH
+    field: trans_obj_attr.attr_name
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.attr_name / 属性名称
+    expected:
+      max_length: 100
+  - id: FR-FDN-TRANSOBJATTR-005
+    type: REQUIRED
+    field: trans_obj_attr.trans_obj_type
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.trans_obj_type / 交易对象类型
+    expected:
+      required: true
+  - id: FR-FDN-TRANSOBJATTR-006
+    type: DEFAULT_VALUE
+    field: trans_obj_attr.trans_obj_type
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.trans_obj_type / 交易对象类型
+    expected:
+      value_mode: equals
+      value: 客户
+  - id: FR-FDN-TRANSOBJATTR-007
+    type: REQUIRED
+    field: trans_obj_attr.data_type
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.data_type / 数据类型
+    expected:
+      required: true
+  - id: FR-FDN-TRANSOBJATTR-008
+    type: DISABLED
+    field: trans_obj_attr.data_type
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.data_type / 数据类型
+    expected:
+      disabled: true
+  - id: FR-FDN-TRANSOBJATTR-009
+    type: DEFAULT_VALUE
+    field: trans_obj_attr.data_type
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.data_type / 数据类型
+    expected:
+      value_mode: equals
+      value: 字符型
+  - id: FR-FDN-TRANSOBJATTR-010
+    type: REQUIRED
+    field: trans_obj_attr.value_mode
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.value_mode / 取值方式
+    expected:
+      required: true
+  - id: FR-FDN-TRANSOBJATTR-011
+    type: DEFAULT_VALUE
+    field: trans_obj_attr.value_mode
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.value_mode / 取值方式
+    expected:
+      value_mode: equals
+      value: 列举
+  - id: FR-FDN-TRANSOBJATTR-012
+    type: DEFAULT_VALUE
+    field: trans_obj_attr.data_len
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.data_len / 数据长度
+    expected:
+      value_mode: equals
+      value: "1"
+  - id: FR-FDN-TRANSOBJATTR-013
+    type: MAX_LENGTH
+    field: trans_obj_attr.data_len
+    trigger: FORM_OPEN
+    status: verified
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.data_len / 数据长度
+    expected:
+      max_length: 100
+  - id: FR-FDN-TRANSOBJATTR-014
+    type: UNIQUE
+    field: trans_obj_attr.attr_no
+    trigger: SAVE
+    status: verified
+    expected:
+      unique: true
+      message_contains: 重复
+    source_ref:
+      document_id: FDN-HDWWlvaQVWIS
+      file_path: reports/foundation/FIELD-RULE-MATRIX.csv
+      source_type: UI_OBSERVED
+      section: 交易对象属性
+      excerpt: 交易对象属性 / trans_obj_attr.attr_no / 编码唯一性
+    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示

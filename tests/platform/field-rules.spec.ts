@@ -88,4 +88,59 @@ test.describe('字段规则求值', () => {
     expect(evaluation.warnings).toBe(1);
     expect(evaluation.passed).toBe(true);
   });
+
+  test('changed 条件只在依赖字段实际变化时求值', () => {
+    const changedRule = rule({
+      type: 'DISABLED',
+      field: 'po.ccy_no',
+      trigger: 'ON_CHANGE',
+      when: { field: 'po.supp_no', state: 'changed' },
+      expected: { disabled: true },
+    });
+    const before = { fields: { 'po.supp_no': state({ value: '' }), 'po.ccy_no': state({ disabled: true }) } };
+    const after = { fields: { 'po.supp_no': state({ value: 'SUPP-1001' }), 'po.ccy_no': state({ disabled: true }) } };
+    expect(evaluateFieldRule(changedRule, { before, after }).status).toBe('passed');
+    const unchanged = { fields: { 'po.supp_no': state({ value: 'SUPP-1001' }) } };
+    expect(evaluateFieldRule(changedRule, { before: unchanged, after: unchanged }).status).toBe('skipped');
+  });
+
+  test('when 条件对非联动规则同样生效', () => {
+    const conditional = rule({ type: 'REQUIRED', when: { field: 'po.supp_no', state: 'empty' } });
+    const context = { before: { fields: { 'po.supp_no': state({ value: 'SUPP-1001' }), 'po.supp_no.required': state() } } };
+    expect(evaluateFieldRule(conditional, context).status).toBe('skipped');
+  });
+
+  test('唯一性规则读取探测结果', () => {
+    const uniqueRule = rule({ type: 'UNIQUE', trigger: 'SAVE', expected: { unique: true, message_contains: '已存在' } });
+    const base = { before: { fields: { 'po.supp_no': state({ value: 'SUPP-1001' }) } } };
+    expect(
+      evaluateFieldRule(uniqueRule, { ...base, unique: { 'po.supp_no': { attempted: true, blocked: true, message: '供应商编号已存在' } } }).status,
+    ).toBe('passed');
+    expect(
+      evaluateFieldRule(uniqueRule, { ...base, unique: { 'po.supp_no': { attempted: true, blocked: false, message: '操作成功' } } }).status,
+    ).toBe('failed');
+    expect(evaluateFieldRule(uniqueRule, base).status).toBe('skipped');
+  });
+
+  test('最大长度规则比对 maxlength', () => {
+    const lengthRule = rule({ type: 'MAX_LENGTH', expected: { max_length: 20 } });
+    expect(evaluateFieldRule(lengthRule, { before: { fields: { 'po.supp_no': state({ maxLength: 20 }) } } }).status).toBe('passed');
+    expect(evaluateFieldRule(lengthRule, { before: { fields: { 'po.supp_no': state({ maxLength: 10 }) } } }).status).toBe('failed');
+    expect(evaluateFieldRule(lengthRule, { before: { fields: { 'po.supp_no': state({ maxLength: -1 }) } } }).status).toBe('skipped');
+  });
+
+  test('格式规则使用正则校验字段值', () => {
+    const formatRule = rule({ type: 'FORMAT', expected: { value: '^ZTEST\\d+$' } });
+    expect(evaluateFieldRule(formatRule, { before: { fields: { 'po.supp_no': state({ value: 'ZTEST001' }) } } }).status).toBe('passed');
+    expect(evaluateFieldRule(formatRule, { before: { fields: { 'po.supp_no': state({ value: 'ABC' }) } } }).status).toBe('failed');
+    expect(evaluateFieldRule(formatRule, { before: { fields: { 'po.supp_no': state({ value: '' }) } } }).status).toBe('skipped');
+  });
+
+  test('数值范围规则处理边界与非数值', () => {
+    const rangeRule = rule({ type: 'RANGE', expected: { min: 1, max: 10 } });
+    expect(evaluateFieldRule(rangeRule, { before: { fields: { 'po.supp_no': state({ value: '5' }) } } }).status).toBe('passed');
+    expect(evaluateFieldRule(rangeRule, { before: { fields: { 'po.supp_no': state({ value: '10' }) } } }).status).toBe('passed');
+    expect(evaluateFieldRule(rangeRule, { before: { fields: { 'po.supp_no': state({ value: '11' }) } } }).status).toBe('failed');
+    expect(evaluateFieldRule(rangeRule, { before: { fields: { 'po.supp_no': state({ value: 'abc' }) } } }).status).toBe('failed');
+  });
 });
