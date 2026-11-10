@@ -1,0 +1,353 @@
+{
+  "datasetId": "QA26",
+  "description": "采购/销售/库存模块通用模拟基础数据（2026-11-10 建立，保留不清理）",
+  "environment": {
+    "env": "athena-test",
+    "tenant": "digichannel",
+    "portal": "https://athena-test.digiwincloud.com.cn/"
+  },
+  "opsUnit": {
+    "no": "000W1",
+    "name": "玄鸟公司",
+    "employeeNo": "01684",
+    "employeeName": "刘臣斌",
+    "departmentNo": "DJBM888",
+    "departmentName": "鼎捷集团总部"
+  },
+  "units": [
+    {
+      "no": "KG3",
+      "name": "千克3",
+      "type": "重量",
+      "globalConversion": true
+    },
+    {
+      "no": "Digi_PCS",
+      "name": "Digi_件",
+      "type": "数量",
+      "globalConversion": false
+    }
+  ],
+  "warehouses": [
+    {
+      "no": "QA26-WH01",
+      "name": "华东原料仓",
+      "prop": "存货仓",
+      "storageManagement": true,
+      "status": "生效",
+      "locations": [
+        {
+          "no": "A0101",
+          "name": "原料A区01-01"
+        },
+        {
+          "no": "A0102",
+          "name": "原料A区01-02"
+        }
+      ]
+    },
+    {
+      "no": "QA26-WH02",
+      "name": "华东成品仓",
+      "prop": "存货仓",
+      "storageManagement": false,
+      "status": "生效",
+      "locations": []
+    }
+  ],
+  "supplierGroups": [
+    {
+      "no": "QA26-SG01",
+      "name": "金属原材料供应商",
+      "type": "供应商",
+      "status": "生效"
+    }
+  ],
+  "suppliers": [
+    {
+      "no": "QA26-S001",
+      "shortName": "苏州精工",
+      "name": "苏州精工金属材料有限公司",
+      "quickCode": "SZJG",
+      "taxNo": "91320505MA1X2K3L4M",
+      "legalPerson": "王建国",
+      "setupDate": "2019-05-20",
+      "groupNo": "QA26-SG01",
+      "status": "生效",
+      "businessInfo": {
+        "opsUnit": "000W1",
+        "currency": "RMB",
+        "taxRate": 13,
+        "priceStrategy": "QA20261109-PS",
+        "purchaser": "01684",
+        "invoiceAddMonths": 0,
+        "status": "生效"
+      },
+      "financeInfo": {
+        "opsUnit": "000W1",
+        "settlementMode": "Z137",
+        "paymentTerms": "FK001",
+        "currency": "RMB",
+        "taxInvoiceType": "增值税专用发票",
+        "status": "生效"
+      }
+    }
+  ],
+  "customers": [
+    {
+      "no": "QA26-C001",
+      "shortName": "上海鼎新",
+      "name": "上海鼎新机械制造有限公司",
+      "quickCode": "SHDX",
+      "taxNo": "91310115MA1K4P8Q2T",
+      "legalPerson": "陈志强",
+      "phone": "021-58901234",
+      "email": "sales@shdingxin.example.com",
+      "custProp": "正式",
+      "status": "生效",
+      "businessInfo": {
+        "opsUnit": "000W1",
+        "currency": "RMB",
+        "status": "生效"
+      },
+      "financeInfo": {
+        "opsUnit": "000W1",
+        "currency": "RMB",
+        "taxInvoiceType": "增值税专用发票",
+        "status": "生效"
+      }
+    }
+  ],
+  "itemGroup": {
+    "no": "0001",
+    "name": "测试0001"
+  },
+  "items": [
+    {
+      "no": "QA26-M001",
+      "name": "铝合金型材 6063-T5",
+      "spec": "40×40×6000mm",
+      "groupNo": "0001",
+      "measSystem": "单一计量",
+      "inventoryUnit": "KG3",
+      "taxRate": 13,
+      "lotManagement": true,
+      "lotCodeRule": "QA26-LOT",
+      "status": "生效"
+    },
+    {
+      "no": "QA26-M002",
+      "name": "冷轧钢板 SPCC 1.0mm",
+      "spec": "1219×2438×1.0mm",
+      "groupNo": "0001",
+      "measSystem": "单一计量",
+      "inventoryUnit": "KG3",
+      "taxRate": 13,
+      "lotManagement": true,
+      "lotCodeRule": "QA26-LOT",
+      "status": "生效"
+    },
+    {
+      "no": "QA26-P001",
+      "name": "电机总成 YE3-100L1-4",
+      "spec": "4kW/380V/B3",
+      "groupNo": "0001",
+      "measSystem": "单一计量",
+      "inventoryUnit": "Digi_PCS",
+      "taxRate": 13,
+      "lotManagement": false,
+      "status": "生效"
+    }
+  ],
+  "itemInventoryInfo": [
+    {
+      "itemNo": "QA26-M001",
+      "opsUnit": "000W1",
+      "itemAttr": "采购件",
+      "warehouse": "QA26-WH01",
+      "location": "A0101",
+      "status": "生效"
+    },
+    {
+      "itemNo": "QA26-M002",
+      "opsUnit": "000W1",
+      "itemAttr": "采购件",
+      "warehouse": "QA26-WH01",
+      "location": "A0102",
+      "status": "生效"
+    },
+    {
+      "itemNo": "QA26-P001",
+      "opsUnit": "000W1",
+      "itemAttr": "自制件",
+      "warehouse": "QA26-WH02",
+      "location": "",
+      "status": "生效"
+    }
+  ],
+  "itemPurchaseInfo": [
+    {
+      "itemNo": "QA26-M001",
+      "opsUnit": "000W1",
+      "purchaseUnit": "KG3",
+      "priceUnit": "KG3",
+      "mainSupplier": "QA26-S001",
+      "status": "生效"
+    },
+    {
+      "itemNo": "QA26-M002",
+      "opsUnit": "000W1",
+      "purchaseUnit": "KG3",
+      "priceUnit": "KG3",
+      "mainSupplier": "QA26-S001",
+      "status": "生效"
+    }
+  ],
+  "lotCodeRule": {
+    "no": "QA26-LOT",
+    "description": "模拟批号规则-年月日流水",
+    "prefix": "QA26",
+    "serialDigits": 4,
+    "status": "生效"
+  },
+  "lots": [
+    {
+      "itemNo": "QA26-M001",
+      "lotNo": "QA26-M001-0001",
+      "description": "2026年11月铝型材首批",
+      "effectiveDate": "2026-11-10",
+      "status": "生效"
+    },
+    {
+      "itemNo": "QA26-M002",
+      "lotNo": "QA26-M002-0001",
+      "description": "2026年11月冷轧钢板首批",
+      "effectiveDate": "2026-11-10",
+      "status": "生效"
+    }
+  ],
+  "supplierItemPrices": [
+    {
+      "supplierNo": "QA26-S001",
+      "itemNo": "QA26-M001",
+      "opsUnit": "000W1",
+      "currency": "RMB",
+      "priceUnit": "KG3",
+      "taxIncluded": true,
+      "priceType": "一般采购",
+      "tieredPricing": true,
+      "tiers": [
+        {
+          "seq": 1,
+          "beginQty": 0,
+          "endQty": 99,
+          "price": 29,
+          "remark": "0-99kg"
+        },
+        {
+          "seq": 2,
+          "beginQty": 99,
+          "endQty": 499,
+          "price": 28,
+          "remark": "99-499kg"
+        },
+        {
+          "seq": 3,
+          "beginQty": 499,
+          "endQty": 9999999999,
+          "price": 27,
+          "remark": "499kg以上"
+        }
+      ],
+      "status": "生效"
+    },
+    {
+      "supplierNo": "QA26-S001",
+      "itemNo": "QA26-M002",
+      "opsUnit": "000W1",
+      "currency": "RMB",
+      "priceUnit": "KG3",
+      "taxIncluded": true,
+      "priceType": "一般采购",
+      "tieredPricing": true,
+      "tiers": [
+        {
+          "seq": 1,
+          "beginQty": 0,
+          "endQty": 499,
+          "price": 7,
+          "remark": "0-499kg"
+        },
+        {
+          "seq": 2,
+          "beginQty": 499,
+          "endQty": 1999,
+          "price": 6,
+          "remark": "499-1999kg"
+        },
+        {
+          "seq": 3,
+          "beginQty": 1999,
+          "endQty": 9999999999,
+          "price": 6,
+          "remark": "1999kg以上"
+        }
+      ],
+      "status": "生效"
+    }
+  ],
+  "notes": [
+    "价格字段当前按整数舍入，28.5 会保存为 29，因此阶梯价统一使用整数。",
+    "QA26-P001 使用 Digi_PCS，因数量类单位无全局换算，暂不建立供应商品号价格（OBS-07）。",
+    "QA26-WH01 启用储位管理，可用于储位相关正例；QA26-WH02 未启用储位，可用于对照。",
+    "供应商群组保存后只读，如需调整群组需新建供应商。"
+  ],
+  "documents": {
+    "purchaseRequisitions": [
+      {
+        "no": "QA20261109-BT3-202611100001",
+        "opsUnit": "000W1",
+        "bizType": "QA20261109-BT3",
+        "item": "QA26-M001",
+        "qty": 100,
+        "unit": "KG3",
+        "status": "作废",
+        "purpose": "撤审/作废验证"
+      },
+      {
+        "no": "QA20261109-BT3-202611100002",
+        "opsUnit": "000W1",
+        "bizType": "QA20261109-BT3",
+        "item": "QA26-M001",
+        "qty": 100,
+        "unit": "KG3",
+        "status": "已审核",
+        "purpose": "请购转订单链路"
+      }
+    ],
+    "purchaseOrders": [
+      {
+        "no": "QA20261109-BT1-202611100001",
+        "status": "已审核",
+        "lines": 4,
+        "purpose": "取价与到货取单来源"
+      }
+    ]
+  },
+  "priceStrategyNotes": {
+    "no": "QA20261109-PS",
+    "mode": "按顺序取价",
+    "rows": [
+      {
+        "seq": 1,
+        "priority": 1,
+        "priceType": "供应商品号价格"
+      },
+      {
+        "seq": 2,
+        "priority": 2,
+        "priceType": "标准采购单价"
+      }
+    ]
+  }
+}
