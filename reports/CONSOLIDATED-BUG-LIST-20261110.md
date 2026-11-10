@@ -165,7 +165,7 @@
 | 已撤回缺陷 | 6 | DEF-06、DEF-07、DEF-09、DEF-10、DEF-11、OBS-11 |
 | 观察项（未关闭） | 5 | OBS-02、OBS-03、OBS-07、OBS-09、OBS-12 |
 
-当前真实缺陷：`DEF-05`、`DEF-08`、`DEF-12`、`DEF-14`、`DEF-15`、`DEF-18`；待确认：`DEF-16`。
+当前真实缺陷：`DEF-05`、`DEF-08`、`DEF-12`、`DEF-14`、`DEF-15`、`DEF-18`、`DEF-20`；待确认：`DEF-16`。
 
 ### 12.2 撤回明细
 
@@ -215,6 +215,7 @@
 | DEF-15 | S2 | 取价服务在 `intax_flag=true` 且 `tax_rate=""` 时抛 `NullPointerException: "augend" is null`，订单单价回填 0 | 新增 | `probe/p1-po-tax.json` |
 | DEF-16 | S2 | 供应商品号价格编辑生效日期，保存成功但回读仍为原值 | 待确认 | `probe/p1-price-date4.json` |
 | DEF-18 | S2 | 到货单审核返回“pur_arr_doc.aprv_date 不能缺失或者为空”，但状态已变为“已审核”，审核日期未落库 | 新增 | `probe/p1-arr-approve.json` |
+| DEF-20 | S2 | 退货出库单单头“限用仓库”未填时取单传空，取数 0 行；仓库应必填 | 新增 | `probe/p1-rtnout-whse.json` |
 | OBS-17 | S3 | 退货单缺少“结算运营单元”时，先报 `VD_pur_rtn_doc_00029 品号与采购订单不符`，错误信息与真实原因不符 | 新增 | `probe/p1-rtn-chain2.json` |
 | OBS-16 | S3 | 采购入库单无明细可直接保存为空单 | 新增 | `probe/p1-inb-create2.json` |
 
