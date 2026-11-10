@@ -165,7 +165,7 @@
 | 已撤回缺陷 | 6 | DEF-06、DEF-07、DEF-09、DEF-10、DEF-11、OBS-11 |
 | 观察项（未关闭） | 5 | OBS-02、OBS-03、OBS-07、OBS-09、OBS-12 |
 
-当前真实缺陷：`DEF-05`、`DEF-08`、`DEF-12`、`DEF-14`、`DEF-15`、`DEF-18`、`DEF-19`；待确认：`DEF-16`。
+当前真实缺陷：`DEF-05`、`DEF-08`、`DEF-12`、`DEF-14`、`DEF-15`、`DEF-18`；待确认：`DEF-16`。
 
 ### 12.2 撤回明细
 
@@ -215,7 +215,7 @@
 | DEF-15 | S2 | 取价服务在 `intax_flag=true` 且 `tax_rate=""` 时抛 `NullPointerException: "augend" is null`，订单单价回填 0 | 新增 | `probe/p1-po-tax.json` |
 | DEF-16 | S2 | 供应商品号价格编辑生效日期，保存成功但回读仍为原值 | 待确认 | `probe/p1-price-date4.json` |
 | DEF-18 | S2 | 到货单审核返回“pur_arr_doc.aprv_date 不能缺失或者为空”，但状态已变为“已审核”，审核日期未落库 | 新增 | `probe/p1-arr-approve.json` |
-| DEF-19 | S2 | 采购退货单从采购订单取单后保存报 `VD_pur_rtn_doc_00029 品号信息QA26-M001与采购订单…不符`，退货单无法保存（用户确认为程序 bug，暂不解决） | 新增 | `probe/p1-rtn-chain2.json` |
+| OBS-17 | S3 | 退货单缺少“结算运营单元”时，先报 `VD_pur_rtn_doc_00029 品号与采购订单不符`，错误信息与真实原因不符 | 新增 | `probe/p1-rtn-chain2.json` |
 | OBS-16 | S3 | 采购入库单无明细可直接保存为空单 | 新增 | `probe/p1-inb-create2.json` |
 
 已通过项：取价策略优先级（调序后价格随之变化）、含税/未税换算（500↔565）、重复键拦截（`UI_VD_YTFWW`）、EUR 汇率 7.85、询价/订单/到货/退货四单据矩阵、请购单新增-提交-审核-撤审-作废闭环、到货单保存（`DH-2026111001`，含储位/批号/项目）、到货→入库取单保存。
