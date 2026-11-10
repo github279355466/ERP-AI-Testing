@@ -165,7 +165,7 @@
 | 已撤回缺陷 | 6 | DEF-06、DEF-07、DEF-09、DEF-10、DEF-11、OBS-11 |
 | 观察项（未关闭） | 5 | OBS-02、OBS-03、OBS-07、OBS-09、OBS-12 |
 
-当前真实缺陷：`DEF-05`、`DEF-08`、`DEF-12`、`DEF-14`、`DEF-15`；待确认：`DEF-16`。
+当前真实缺陷：`DEF-05`、`DEF-08`、`DEF-12`、`DEF-14`、`DEF-15`、`DEF-17`；待确认：`DEF-16`。
 
 ### 12.2 撤回明细
 
@@ -214,6 +214,6 @@
 | --- | --- | --- | --- | --- |
 | DEF-15 | S2 | 取价服务在 `intax_flag=true` 且 `tax_rate=""` 时抛 `NullPointerException: "augend" is null`，订单单价回填 0 | 新增 | `probe/p1-po-tax.json` |
 | DEF-16 | S2 | 供应商品号价格编辑生效日期，保存成功但回读仍为原值 | 待确认 | `probe/p1-price-date4.json` |
-| OBS-14 | S3 | 到货单从订单取单后明细“项目”必填但未带出，需逐行补录 | 新增 | `probe/p1-arr-project.json` |
+| DEF-17 | S2 | 到货单明细无“项目”列（全量横向扫描无 `proj_no`），保存却强制项目必填，单据无法保存 | 新增 | `probe/p1-arr-allcols.json`、`probe/p1-arr-fill2.json` |
 
 已通过项：取价策略优先级（调序后价格随之变化）、含税/未税换算（500↔565）、重复键拦截（`UI_VD_YTFWW`）、EUR 汇率 7.85、询价/订单/到货/退货四单据矩阵、请购单新增-提交-审核-撤审-作废闭环。

@@ -90,13 +90,13 @@
 - 判定：`blocked`，不判定产品缺陷；需确认“分配确认”勾选与采购参数映射后复测。
 - 证据：`probe/p1-distr-save3.json`、`probe/p1-po-take2.json`、`probe/p1-po-from-pr.json`。
 
-### 7.3 到货单（部分）
+### 7.3 到货单（阻塞，DEF-17）
 
 - 从已审核订单 `QA20261109-BT1-202611100001` 取单成功，弹窗 4 行，带入 99 DA、金额 33,264。
 - 保存被前端校验拦截：`UV_ID_35899 到货单明细-第1行-项目 项目字段不可为空`。
-- 横向滚动确认明细列包含 **储位、批号、项目**（均为必填），此前“缺列”结论不成立。
-- 判定：`blocked`（自动化未完成必填项录入），记录观察 OBS-14。
-- 证据：`probe/p1-arr-batch.json`、`probe/p1-arr-project.json`。
+- 明细网格横向滚动可用（viewport `scrollWidth=5326`、`clientWidth=1595`）；滚动后出现 **储位 `stsp_no`、批号 `lot_no`** 列，但全量扫描 0–3800px **不存在 `proj_no` 列**，页面也无列配置入口。
+- 判定：`到货单明细缺“项目”列，但保存强制项目必填`，属产品缺陷 DEF-17，链路在此阻断。
+- 证据：`probe/p1-arr-scrollinfo.json`（滚动生效、列出现）、`probe/p1-arr-allcols.json`（`projExists:false`）、`probe/p1-arr-fill2.json`（`hasProj:false` 且保存报 `UV_ID_35899`）。
 
 ## 8. 新增缺陷与观察
 
@@ -104,14 +104,14 @@
 | --- | --- | --- | --- |
 | DEF-15 | S2 | 取价服务在 `intax_flag=true` 且 `tax_rate` 为空时抛 NPE，订单单价回填 0 | `probe/p1-po-tax.json` |
 | DEF-16 | S2（待确认） | 供应商品号价格编辑生效日期，保存成功但回读未变 | `probe/p1-price-date4.json` |
-| OBS-14 | S3 | 到货单从订单取单后，明细项目必填但订单未带出，用户需逐行补录 | `probe/p1-arr-project.json` |
+| DEF-17 | S2 | 到货单明细无“项目”列（全量横向扫描无 `proj_no`），保存却强制项目必填，单据无法保存 | `probe/p1-arr-allcols.json`、`probe/p1-arr-fill2.json` |
 
 ## 9. 未完成项
 
 | 项 | 状态 | 原因 |
 | --- | --- | --- |
 | 请购→订单 | blocked | 请购分配后取单 0 行，待确认分配确认逻辑 |
-| 订单→到货保存 | blocked | 明细 储位/批号/项目 必填未完成录入 |
+| 订单→到货保存 | blocked | DEF-17：明细无“项目”列但必填，无法保存 |
 | 到货→入库（储位） | 未执行 | 依赖上一步 |
 | 退货→退货出库 | 已知阻塞 | DEF-12 交易类别固定“入库”、取单 0 行 |
 | 可退量校验 | 未执行 | 依赖入库完成 |
