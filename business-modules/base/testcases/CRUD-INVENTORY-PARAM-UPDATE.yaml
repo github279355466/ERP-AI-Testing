@@ -1,0 +1,42 @@
+schema_version: "1.0"
+id: CRUD-INVENTORY-PARAM-UPDATE
+module_id: base
+version: 0.2.0
+title: 存货参数-编辑保存与持久化（CRUD 的 Update）
+objective: 编辑运营单元 000W1 的存货参数，切换“启用项目管理”，保存后重开验证持久化并回滚
+scenario_refs: [SCN-BASE-INVENTORY-PARAM-CRUD]
+source_refs:
+  - document_id: SRC-UI-INVNT-PARAM
+    file_path: src/modules/base/flows.ts
+    source_type: UI_OBSERVED
+    excerpt: "表单字段 ops_unit_invnt_param.is_ena_proj_mgmt 为 switch；保存后重开可回读"
+preconditions:
+  - 已登录测试环境并具备存货参数维护权限
+  - 运营单元 000W1 存在存货参数记录
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: inventory-param
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: base-inventory-param-toggle
+    value: '{"opsUnit":"000W1"}'
+    evidence: true
+assertions:
+  - type: value
+    target: 启用项目管理
+    expected: 保存后重开与保存前一致
+    level: persistence
+    source_ref:
+      document_id: SRC-UI-INVNT-PARAM
+      file_path: src/modules/base/flows.ts
+      source_type: UI_OBSERVED
+      excerpt: "switch 值保存后重开回读一致"
+cleanup_policy: manual
+status: reviewed
+timeout_ms: 240000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

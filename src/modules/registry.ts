@@ -1,6 +1,7 @@
 import { ModuleFlow } from './types';
 import { purchaseOrderCreate, purchaseOrderFieldRules, purchaseOrderLifecycle, purchaseOrderListSmoke } from './purchase/flows';
 import { foundationFieldRules } from './foundation/flows';
+import { baseInventoryParamToggle } from './base/flows';
 import { listSmokeFlow } from './builtin';
 
 const FLOWS: Record<string, Record<string, ModuleFlow>> = {
@@ -12,6 +13,9 @@ const FLOWS: Record<string, Record<string, ModuleFlow>> = {
   },
   foundation: {
     'foundation-field-rules': foundationFieldRules,
+  },
+  base: {
+    'base-inventory-param-toggle': baseInventoryParamToggle,
   },
 };
 
