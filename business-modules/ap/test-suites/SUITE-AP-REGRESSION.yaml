@@ -1,0 +1,13 @@
+schema_version: "1.0"
+id: SUITE-AP-REGRESSION
+module_id: ap
+name: 应付管理-业务单别回归套件
+version: 0.1.0
+status: approved
+case_ids:
+  - CRUD-AP-BIZ-TYPE
+  - CRUD-AP-BIZ-TYPE-PARAM
+execution_order:
+  - CRUD-AP-BIZ-TYPE
+  - CRUD-AP-BIZ-TYPE-PARAM
+tags: [regression, ap, biz-type]

@@ -1,0 +1,13 @@
+schema_version: "1.0"
+id: SUITE-BASE-REGRESSION
+module_id: base
+name: 基础管理-参数回归套件
+version: 0.1.0
+status: approved
+case_ids:
+  - SMOKE-INVENTORY-PARAM-LIST
+  - CRUD-INVENTORY-PARAM-UPDATE
+execution_order:
+  - SMOKE-INVENTORY-PARAM-LIST
+  - CRUD-INVENTORY-PARAM-UPDATE
+tags: [regression, base, params]

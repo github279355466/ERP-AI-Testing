@@ -12,6 +12,7 @@ import { loadConfig } from '../config/athena-config';
 import { createRunId, EvidenceManager } from '../evidence/evidence-manager';
 import { PageMappingRegistry } from '../platform/pages/mapping';
 import { loadModuleTestCases, requireTestCase } from '../platform/execution/case-loader';
+import { requireTestSuite, resolveSuiteCases } from '../platform/execution/suite-loader';
 import { BrowserCaseRunner } from '../platform/execution/browser-runner';
 import { createRunManifestV2, validateRunManifestV2 } from '../platform/governance/run-manifest-v2';
 
@@ -46,6 +47,7 @@ function printHelp(): void {
       '  node dist/cli/platform-run.js simulate --module purchase [--limit 20] [--fail-at 5] [--concurrency 1]',
       '  node dist/cli/platform-run.js cases --module purchase',
       '  node dist/cli/platform-run.js run --module purchase --case SMOKE-PURCHASE-ORDER-CREATE --allow-write',
+      '  node dist/cli/platform-run.js run --module purchase --suite SUITE-PURCHASE-REGRESSION --allow-write',
       '',
       '说明：simulate 使用占位执行器验证调度/断言/报告链路，不启动浏览器、不访问 ERP。',
       '真实 UI 执行由平台运行器在显式授权后调用。',
@@ -164,8 +166,9 @@ async function main(): Promise<number> {
 
   if (command === 'run') {
     const caseId = typeof args.case === 'string' ? args.case : '';
-    if (!caseId) {
-      process.stderr.write('必须提供 --case <case-id>（可用 cases 命令查看）\n');
+    const suiteId = typeof args.suite === 'string' ? args.suite : '';
+    if (!caseId && !suiteId) {
+      process.stderr.write('必须提供 --case <case-id> 或 --suite <suite-id>（可用 cases 命令查看用例）\n');
       return 1;
     }
     const allowWrite = args['allow-write'] === true;
@@ -177,7 +180,19 @@ async function main(): Promise<number> {
       process.stderr.write(`运行配置 ${configPath} 未启用 safety.allowWrite，拒绝写用例\n`);
       return 1;
     }
-    const testCase = requireTestCase(root, moduleId, caseId);
+    const testCase = caseId ? requireTestCase(root, moduleId, caseId) : null;
+    let suiteCases: PlatformTestCase[] = testCase ? [testCase] : [];
+    if (suiteId) {
+      const suite = requireTestSuite(root, moduleId, suiteId);
+      const loadedCases = loadModuleTestCases(root, moduleId);
+      if (loadedCases.issues.length > 0) {
+        process.stderr.write(
+          `[CASE_CONTRACT_INVALID] ${loadedCases.issues.map((entry) => `${entry.file}: ${entry.messages.join('; ')}`).join(' | ')}\n`,
+        );
+        return 1;
+      }
+      suiteCases = resolveSuiteCases(suite, loadedCases.cases);
+    }
     const mappings = PageMappingRegistry.load(root, moduleId);
     const browser = new BrowserManager(config);
     const session = await browser.connect();
@@ -197,19 +212,20 @@ async function main(): Promise<number> {
       allowWrite,
       runId,
       operator,
+      isolateCases: Boolean(suiteId),
     });
     const startedAt = new Date();
     const plan = {
       schema_version: '1.0' as const,
       plan_id: `PLAN-${moduleId.toUpperCase()}-MANUAL-${Date.now()}`,
-      suite_id: `SUITE-${moduleId.toUpperCase()}-MANUAL`,
+      suite_id: suiteId || `SUITE-${moduleId.toUpperCase()}-MANUAL`,
       platform_version: PLATFORM_VERSION,
       module_packs: [{ module_id: moduleId, version: '0.1.0' }],
-      steps: [{ order: 1, case_id: testCase.id, depends_on: [] as string[] }],
+      steps: suiteCases.map((entry, index) => ({ order: index + 1, case_id: entry.id, depends_on: [] as string[] })),
       dry_run: false,
       created_at: startedAt.toISOString(),
     };
-    const result = await runSchedule(plan, { runner, cases: [testCase], concurrency: 1 });
+    const result = await runSchedule(plan, { runner, cases: suiteCases, concurrency: 1 });
     const finishedAt = new Date();
     const report = buildExecutionReport({
       runId,
@@ -224,18 +240,19 @@ async function main(): Promise<number> {
     const validation = validateReport(report);
     const files = writeReports(path.join(root, 'artifacts', runId), report);
     const outcome = result.outcomes[0];
+    const createdDocuments = result.outcomes.flatMap((entry) => entry.created_documents ?? []);
     const manifest = createRunManifestV2({
       run_id: runId,
       platform_version: PLATFORM_VERSION,
       module_packs: [{ module_id: moduleId, version: '0.1.0' }],
       environment: report.environment,
       operator,
-      test_case_id: testCase.id,
+      test_case_id: suiteId || (testCase as PlatformTestCase).id,
       started_at: report.started_at,
       finished_at: report.finished_at,
       outcome: report.outcome === 'pending' ? 'error' : report.outcome,
       failure_category: report.failure_category,
-      created_documents: outcome?.created_documents ?? [],
+      created_documents: createdDocuments,
       cleanup_status: 'not_run',
       evidence_files: report.evidence,
     });
@@ -249,7 +266,9 @@ async function main(): Promise<number> {
           command,
           success: validation.valid && report.outcome === 'passed',
           run_id: runId,
-          case_id: testCase.id,
+          suite_id: suiteId || null,
+          case_id: suiteId ? null : (testCase as PlatformTestCase).id,
+          cases: report.cases.map((entry) => ({ case_id: entry.case_id, status: entry.status })),
           outcome: report.outcome,
           failure_category: report.failure_category,
           error: outcome?.error_message ?? null,

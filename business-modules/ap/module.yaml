@@ -2,10 +2,10 @@ schema_version: "1.0"
 module:
   id: ap
   name: 应付管理
-  version: 0.1.0
+  version: 0.2.0
   status: draft
   owner: qa
-  description: 应付管理模块包（P6 第二模块试接入；先覆盖业务单别与参数页只读冒烟）
+  description: 应付管理模块包（业务单别与业务单别参数 CRUD）
 compatibility:
   platform_api: ">=1.0.0 <2.0.0"
 sources:
@@ -17,3 +17,4 @@ assets:
   testcases: testcases/
   data_recipes: data-recipes/
   test_suites: test-suites/
+  ui_specs: ui-specs/

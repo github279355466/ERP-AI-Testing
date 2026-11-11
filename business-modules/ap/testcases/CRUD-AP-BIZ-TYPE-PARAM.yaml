@@ -1,0 +1,58 @@
+schema_version: "1.0"
+id: CRUD-AP-BIZ-TYPE-PARAM
+module_id: ap
+version: 0.1.0
+title: 应付业务单别参数-新增修改删除闭环
+objective: 先预置唯一应付业务单别，再创建对应参数、切换自动审核并删除，验证参数页 CRUD 与业务单别开窗只返回 AP 域数据
+scenario_refs: [SCN-AP-BIZ-TYPE-PARAM-CRUD]
+source_refs:
+  - document_id: SRC-UI-AP-BIZ-TYPE-PARAM
+    file_path: probe/evidence/ap-biz-type-param-20261111.txt
+    source_type: UI_OBSERVED
+    excerpt: "2026-11-11 真实 UI：业务单别开窗返回 AP01/AP0201 等 10 条 AP 数据，无应收域数据"
+preconditions:
+  - 已登录测试环境并具备应付业务单别及参数维护权限
+  - 使用 QA 前缀唯一业务单别，结束后删除参数与单别
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: ap-biz-type
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: ap-biz-type-create
+    value: '{"code":"QA${RUN_TIMESTAMP}-BT"}'
+    evidence: true
+  - action: navigate
+    target: ap-biz-type-param
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: ap-biz-type-param-crud
+    value: '{"code":"QA${RUN_TIMESTAMP}-BT","opsUnit":"000W1"}'
+    evidence: true
+  - action: navigate
+    target: ap-biz-type
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: ap-biz-type-delete
+    value: '{"code":"QA${RUN_TIMESTAMP}-BT"}'
+    evidence: true
+assertions:
+  - type: value
+    target: 应付业务单别参数 CRUD 闭环
+    expected: 参数新增/自动审核修改/删除成功，业务单别开窗无应收域数据
+    level: persistence
+    source_ref:
+      document_id: SRC-UI-AP-BIZ-TYPE-PARAM
+      file_path: src/modules/ap/param-flows.ts
+      source_type: UI_OBSERVED
+      excerpt: "参数列表按业务单别查找，删除后为 0 行"
+cleanup_policy: delete_after_run
+status: reviewed
+timeout_ms: 420000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

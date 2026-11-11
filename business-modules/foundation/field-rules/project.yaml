@@ -45,7 +45,7 @@ rules:
     type: UNIQUE
     field: proj.proj_no
     trigger: SAVE
-    status: verified
+    status: candidate
     expected:
       unique: true
       message_contains: 重复
@@ -55,4 +55,4 @@ rules:
       source_type: UI_OBSERVED
       section: 项目信息
       excerpt: 项目信息 / proj.proj_no / 编码唯一性
-    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示
+    notes: 只读用例填入列表已有编码后保存按钮未禁用、无重复提示；唯一性可能仅在服务端保存时校验，需授权写用例验证后才能回到 verified

@@ -1,0 +1,3 @@
+# AP 模块场景
+
+当前已落地 `SCN-AP-BIZ-TYPE-CRUD` 与 `SCN-AP-BIZ-TYPE-PARAM-CRUD`。

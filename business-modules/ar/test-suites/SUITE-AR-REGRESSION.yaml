@@ -1,0 +1,13 @@
+schema_version: "1.0"
+id: SUITE-AR-REGRESSION
+module_id: ar
+name: 应收管理-业务单别回归套件
+version: 0.1.0
+status: approved
+case_ids:
+  - CRUD-AR-BIZ-TYPE
+  - CRUD-AR-BIZ-TYPE-PARAM
+execution_order:
+  - CRUD-AR-BIZ-TYPE
+  - CRUD-AR-BIZ-TYPE-PARAM
+tags: [regression, ar, biz-type]

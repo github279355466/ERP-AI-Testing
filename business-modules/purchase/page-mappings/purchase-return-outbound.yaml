@@ -1,0 +1,138 @@
+schema_version: "1.0"
+module_id: purchase
+page_key: purchase-return-outbound
+page_name: 采购退货出库单
+navigation:
+  menu_path:
+    - 采购管理
+    - 退货管理
+    - 采购退货出库单
+  work_item_code: GqXCkXLlQWbb
+  route: purchase-return-outbound
+status: candidate
+review_status: needs_review
+locator_priority:
+  - label
+  - role
+  - css
+fields:
+  - name: pur_rtn_stkou_doc.pur_rtn_stkou_doc_no
+    label: 单号
+    control_type: TEXT_INPUT
+    locator:
+      strategy: label
+      value: pur_rtn_stkou_doc.pur_rtn_stkou_doc_no
+      unique: true
+    required: true
+    readonly: true
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN-OUTBOUND
+      file_path: docs/UI规范/单据类详情页.png
+      source_type: UI_OBSERVED
+      excerpt: FormItem name=pur_rtn_stkou_doc.pur_rtn_stkou_doc_no
+  - name: pur_rtn_stkou_doc.ops_unit_no
+    label: 运营单元
+    control_type: LOOKUP
+    locator:
+      strategy: label
+      value: pur_rtn_stkou_doc.ops_unit_no
+      unique: true
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN-OUTBOUND
+      file_path: docs/UI规范/单据类详情页.png
+      source_type: UI_OBSERVED
+      excerpt: FormItem name=pur_rtn_stkou_doc.ops_unit_no
+  - name: pur_rtn_stkou_doc.biz_type_no
+    label: 单别
+    control_type: LOOKUP
+    locator:
+      strategy: label
+      value: pur_rtn_stkou_doc.biz_type_no
+      unique: true
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN-OUTBOUND
+      file_path: docs/UI规范/单据类详情页.png
+      source_type: UI_OBSERVED
+      excerpt: FormItem name=pur_rtn_stkou_doc.biz_type_no
+  - name: pur_rtn_stkou_doc.doc_date
+    label: 单据日期
+    control_type: DATE_PICKER
+    locator:
+      strategy: label
+      value: pur_rtn_stkou_doc.doc_date
+      unique: true
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN-OUTBOUND
+      file_path: docs/UI规范/单据类详情页.png
+      source_type: UI_OBSERVED
+      excerpt: FormItem name=pur_rtn_stkou_doc.doc_date
+  - name: pur_rtn_stkou_doc.supp_no
+    label: 供应商
+    control_type: LOOKUP
+    locator:
+      strategy: label
+      value: pur_rtn_stkou_doc.supp_no
+      unique: true
+    required: true
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN-OUTBOUND
+      file_path: docs/UI规范/单据类详情页.png
+      source_type: UI_OBSERVED
+      excerpt: FormItem name=pur_rtn_stkou_doc.supp_no
+  - name: pur_rtn_stkou_doc.limit_whse_no
+    label: 限用仓库
+    control_type: LOOKUP
+    locator:
+      strategy: label
+      value: pur_rtn_stkou_doc.limit_whse_no
+      unique: true
+    required: false
+    readonly: false
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN-OUTBOUND
+      file_path: docs/UI规范/单据类详情页.png
+      source_type: UI_OBSERVED
+      excerpt: FormItem name=pur_rtn_stkou_doc.limit_whse_no
+  - name: pur_rtn_stkou_doc.manage_status
+    label: 状态
+    control_type: DROPDOWN
+    locator:
+      strategy: label
+      value: pur_rtn_stkou_doc.manage_status
+      unique: true
+    required: false
+    readonly: true
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN-OUTBOUND
+      file_path: docs/UI规范/单据类详情页.png
+      source_type: UI_OBSERVED
+      excerpt: FormItem name=pur_rtn_stkou_doc.manage_status
+  - name: pur_rtn_stkou_doc.post_stat
+    label: 过账状态
+    control_type: DROPDOWN
+    locator:
+      strategy: label
+      value: pur_rtn_stkou_doc.post_stat
+      unique: true
+    required: false
+    readonly: true
+    verified: false
+    source_ref:
+      document_id: SRC-PAGE-RETURN-OUTBOUND
+      file_path: docs/UI规范/单据类详情页.png
+      source_type: UI_OBSERVED
+      excerpt: FormItem name=pur_rtn_stkou_doc.post_stat

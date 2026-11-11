@@ -2,6 +2,10 @@ import { ModuleFlow } from './types';
 import { purchaseOrderCreate, purchaseOrderFieldRules, purchaseOrderLifecycle, purchaseOrderListSmoke } from './purchase/flows';
 import { foundationFieldRules } from './foundation/flows';
 import { baseInventoryParamToggle } from './base/flows';
+import { arBizTypeCreate, arBizTypeCrud, arBizTypeDelete } from './ar/flows';
+import { arBizTypeParamCrud } from './ar/param-flows';
+import { apBizTypeCrud, apBizTypeCreate, apBizTypeDelete } from './ap/flows';
+import { apBizTypeParamCrud } from './ap/param-flows';
 import { listSmokeFlow } from './builtin';
 
 const FLOWS: Record<string, Record<string, ModuleFlow>> = {
@@ -16,6 +20,18 @@ const FLOWS: Record<string, Record<string, ModuleFlow>> = {
   },
   base: {
     'base-inventory-param-toggle': baseInventoryParamToggle,
+  },
+  ar: {
+    'ar-biz-type-crud': arBizTypeCrud,
+    'ar-biz-type-create': arBizTypeCreate,
+    'ar-biz-type-delete': arBizTypeDelete,
+    'ar-biz-type-param-crud': arBizTypeParamCrud,
+  },
+  ap: {
+    'ap-biz-type-crud': apBizTypeCrud,
+    'ap-biz-type-create': apBizTypeCreate,
+    'ap-biz-type-delete': apBizTypeDelete,
+    'ap-biz-type-param-crud': apBizTypeParamCrud,
   },
 };
 

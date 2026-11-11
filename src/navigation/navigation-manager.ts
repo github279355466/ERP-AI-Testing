@@ -67,7 +67,12 @@ export class NavigationManager {
     }
 
     const portal = await this.session.ensureAuthenticated();
-    const observedWorkCode = await this.expandMenuPath(portal, entry);
+    let observedWorkCode: string | null = null;
+    try {
+      observedWorkCode = await this.expandMenuPath(portal, entry);
+    } catch (error) {
+      if (!entry.workItemCode) throw error;
+    }
     const business = await this.waitForBusinessPage(entry.title, 8_000);
     if (!business) {
       const workItemCode = observedWorkCode || entry.workItemCode;
@@ -93,12 +98,17 @@ export class NavigationManager {
   }
 
   async findBusinessPage(title: string): Promise<Page | null> {
+    const target = normalize(title);
+    const candidates: Array<{ page: Page; title: string }> = [];
     for (const page of this.context.pages()) {
       if (!page.url().includes(this.config.environment.lowcodeHost)) continue;
       const pageTitle = (await page.title().catch(() => '')).trim();
-      if (normalize(pageTitle).includes(normalize(title))) return page;
+      const normalized = normalize(pageTitle);
+      if (normalized === target) return page;
+      if (normalized.includes(target)) candidates.push({ page, title: normalized });
     }
-    return null;
+    candidates.sort((left, right) => left.title.length - right.title.length);
+    return candidates[0]?.page ?? null;
   }
 
   async closeBusinessPage(title: string): Promise<boolean> {
@@ -141,7 +151,7 @@ export class NavigationManager {
       const li = item.locator('xpath=ancestor::li[1]');
       const className = (await li.getAttribute('class')) ?? '';
       if (className.includes('ant-menu-submenu') && !className.includes('ant-menu-submenu-open')) {
-        await li.locator('.ant-menu-submenu-title').first().click();
+        await li.locator('.ant-menu-submenu-title').first().evaluate((node) => (node as HTMLElement).click());
         await portal.waitForTimeout(400);
       }
       if (!className.includes('ant-menu-submenu')) {
@@ -168,7 +178,7 @@ export class NavigationManager {
         const pagePromise = this.context.raw.waitForEvent('page', {
           timeout: Math.min(this.config.browser.navigationTimeoutMs, 15_000),
         }).catch(() => null);
-        await item.click();
+        await item.evaluate((node) => (node as HTMLElement).click());
         observedWorkCode = await workCodePromise;
         const created = await pagePromise;
         if (created) {

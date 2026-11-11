@@ -1,0 +1,42 @@
+schema_version: "1.0"
+id: CRUD-AP-BIZ-TYPE
+module_id: ap
+version: 0.1.0
+title: 应付业务单别-新增修改失效生效删除闭环
+objective: 以唯一编号创建应付业务单别，验证修改持久化、失效/生效状态切换与删除，全部操作仅作用于本用例创建的数据
+scenario_refs: [SCN-AP-BIZ-TYPE-CRUD]
+source_refs:
+  - document_id: SRC-UI-AP-BIZ-TYPE
+    file_path: probe/evidence/ap-biz-type-20261111.txt
+    source_type: UI_OBSERVED
+    excerpt: "2026-11-11 真实 UI 探测：应付业务单别表单字段 biz_type_gen_info.*，行操作更多菜单含 删除/失效/生效"
+preconditions:
+  - 已登录测试环境并具备应付业务单别维护权限
+  - 使用 QA 前缀唯一编号，不修改既有单别
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: ap-biz-type
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: ap-biz-type-crud
+    value: '{"code":"QA${RUN_TIMESTAMP}"}'
+    evidence: true
+assertions:
+  - type: value
+    target: 应付业务单别 CRUD 闭环
+    expected: 新增/修改/失效/生效/删除均成功且删除后不可见
+    level: persistence
+    source_ref:
+      document_id: SRC-UI-AP-BIZ-TYPE
+      file_path: src/modules/ap/flows.ts
+      source_type: UI_OBSERVED
+      excerpt: "列表回读名称与状态，删除后按编号查找为 0 行"
+cleanup_policy: delete_after_run
+status: reviewed
+timeout_ms: 300000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

@@ -15,6 +15,7 @@ test.describe('页面映射', () => {
       'purchase-arrival',
       'purchase-inbound',
       'purchase-order',
+      'purchase-return-outbound',
       'purchase-return',
     ]);
     const registry = new PageMappingRegistry(result.mappings);

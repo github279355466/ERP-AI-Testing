@@ -14,6 +14,7 @@ import { PageActionExecutor } from '../pages/actions';
 import { PageMappingRegistry } from '../pages/mapping';
 import { captureFailureEvidence } from '../evidence/diagnostics';
 import { CaseRunOutput, CaseRunner, ReportAssertion, ReportStep, classifyFailure } from './scheduler';
+import { formatRunTimestamp, substituteRunTokens } from './run-tokens';
 
 const WRITE_ACTIONS = new Set(['fill', 'select_master_data', 'select_option', 'save', 'submit', 'approve', 'unapprove', 'delete', 'upload', 'invoke_flow']);
 const READ_ONLY_FLOWS = new Set(['platform:list-smoke', 'foundation-field-rules']);
@@ -29,18 +30,32 @@ export interface BrowserRunnerDeps {
   allowWrite: boolean;
   runId: string;
   operator: string;
+  isolateCases?: boolean;
 }
 
 export class BrowserCaseRunner implements CaseRunner {
   private readonly navigation: NavigationManager;
+  private readonly runTimestamp: string;
   private currentPage: Page | null = null;
   private currentPageKey: string | null = null;
 
   constructor(private readonly deps: BrowserRunnerDeps) {
     this.navigation = new NavigationManager(deps.config, deps.context, deps.pages, deps.session, buildNavigationFile(deps.mappings));
+    this.runTimestamp = formatRunTimestamp(new Date());
+  }
+
+  private async closeBusinessPages(): Promise<void> {
+    const host = this.deps.config.environment.lowcodeHost;
+    for (const page of this.deps.context.pages()) {
+      if (!page.url().includes(host)) continue;
+      await page.close().catch(() => undefined);
+    }
+    this.currentPage = null;
+    this.currentPageKey = null;
   }
 
   async run(testCase: PlatformTestCase, context: { signal: AbortSignal }): Promise<CaseRunOutput> {
+    if (this.deps.isolateCases) await this.closeBusinessPages();
     const requiresWrite = testCase.steps.some((step) =>
       step.action === 'invoke_flow' ? !READ_ONLY_FLOWS.has(step.target) : WRITE_ACTIONS.has(step.action),
     );
@@ -83,7 +98,9 @@ export class BrowserCaseRunner implements CaseRunner {
 
         if (step.action === 'invoke_flow') {
           const flow = getModuleFlow(this.deps.moduleId, step.target);
-          const params = step.value ? (JSON.parse(substituteRunTokens(step.value, this.deps.runId)) as Record<string, string>) : {};
+          const params = step.value
+            ? (JSON.parse(substituteRunTokens(step.value, this.deps.runId, this.runTimestamp)) as Record<string, string>)
+            : {};
           const result = await flow({
             page,
             config: this.deps.config,
@@ -181,12 +198,6 @@ function buildNavigationFile(mappings: PageMappingRegistry): NavigationFile {
   return { version: '1.0', source: 'MODULE_PAGE_MAPPINGS', pages };
 }
 
-function substituteRunTokens(value: string, runId: string): string {
-  const now = new Date();
-  const pad = (input: number): string => String(input).padStart(2, '0');
-  const stamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
-  return value.split('${RUN_ID}').join(runId).split('${RUN_TIMESTAMP}').join(stamp);
-}
 
 function toReportAssertions(result: ModuleFlowResult, testCase: PlatformTestCase): ReportAssertion[] {
   return result.assertions.map((entry) => ({

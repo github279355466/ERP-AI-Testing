@@ -2,8 +2,8 @@ schema_version: "1.0"
 id: SMOKE-FOUNDATION-CRUD-CLOSURE
 module_id: foundation
 version: 0.1.0
-title: 基础管理 CRUD 全量补全（第二批）
-objective: 在真实 Web UI 上验证此前仅做字段/按钮盘点的作业是否具备新增、查询、编辑、状态流转与删除能力
+title: 基础管理 CRUD 全量补全（第二批，legacy 记录）
+objective: 历史记录：2026-11-09 用旧执行器在真实 UI 上核对 37 个基础作业的 CRUD 能力；当前平台运行器不支持该用例的多页导航目标与流程，保留作证据索引，不再作为可执行用例
 scenario_refs:
   - SCN-FOUNDATION-CRUD
 source_refs:
@@ -16,6 +16,7 @@ preconditions:
   - 已登录 athena-test / digichannel，具备基础管理维护权限
   - 已存在品号 Z900014、客户 Z900100、品号群组 Z197、会计分类 Z865、成本分类 Z306
   - 使用 Z9 前缀测试数据，本轮不清理
+  - legacy：导航目标 foundation.crud.pages 与流程 foundation-crud-closure 未在平台运行器注册，2026-11-11 复跑返回 NAV_PAGE_NOT_FOUND
 data_recipe_refs:
   - foundation-crud-second-batch
 dependencies: []
@@ -77,7 +78,7 @@ assertions:
       section: 2.1 第二轮新增缺陷
       excerpt: UV_ID_16561 / UV_ID_38362 运营单元参数已存在
 cleanup_policy: keep
-status: reviewed
+status: deprecated
 timeout_ms: 900000
 retry_policy:
   max_attempts: 1

@@ -1,0 +1,58 @@
+schema_version: "1.0"
+id: CRUD-AR-BIZ-TYPE-PARAM
+module_id: ar
+version: 0.1.0
+title: 应收业务单别参数-新增修改删除闭环
+objective: 先预置唯一应收业务单别，再创建对应参数、切换自动审核并删除，验证参数页 CRUD 与删除生效（D-02 复测）
+scenario_refs: [SCN-AR-BIZ-TYPE-PARAM-CRUD]
+source_refs:
+  - document_id: SRC-UI-AR-BIZ-TYPE-PARAM
+    file_path: probe/evidence/ar-biz-type-param-20261111.txt
+    source_type: UI_OBSERVED
+    excerpt: "2026-11-11 真实 UI：应收业务单别参数表单字段 biz_type_ar_param.*，列表列 biz_type_no/verf_mode/operate"
+preconditions:
+  - 已登录测试环境并具备应收业务单别及参数维护权限
+  - 使用 QA 前缀唯一业务单别，结束后删除参数与单别
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: ar-biz-type
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: ar-biz-type-create
+    value: '{"code":"QA${RUN_TIMESTAMP}-BT"}'
+    evidence: true
+  - action: navigate
+    target: ar-biz-type-param
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: ar-biz-type-param-crud
+    value: '{"code":"QA${RUN_TIMESTAMP}-BT","opsUnit":"000W1"}'
+    evidence: true
+  - action: navigate
+    target: ar-biz-type
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: ar-biz-type-delete
+    value: '{"code":"QA${RUN_TIMESTAMP}-BT"}'
+    evidence: true
+assertions:
+  - type: value
+    target: 应收业务单别参数 CRUD 闭环
+    expected: 参数新增/自动审核修改/删除成功，删除后列表为 0 行
+    level: persistence
+    source_ref:
+      document_id: SRC-UI-AR-BIZ-TYPE-PARAM
+      file_path: src/modules/common/biz-type-param-crud.ts
+      source_type: UI_OBSERVED
+      excerpt: "参数列表按业务单别查找，删除后为 0 行"
+cleanup_policy: delete_after_run
+status: reviewed
+timeout_ms: 420000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true
