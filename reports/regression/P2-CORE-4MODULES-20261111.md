@@ -67,7 +67,7 @@
 | `SUITE-FOUNDATION-REGRESSION` | 通过 | 9/9 | `20261112-074957-6eev` |
 | `SUITE-AR-REGRESSION` | 通过 | 2/2 | `20261111-044436-vn4n` |
 | `SUITE-AP-REGRESSION` | 通过 | 2/2 | `20261111-044617-j56w` |
-| `SUITE-PURCHASE-REGRESSION` | 阻断 | 1/5 通过（LIST），其余因环境数据变更失败 | `20261112-075519-tvkw` |
+| `SUITE-PURCHASE-REGRESSION` | 阻断 | 2/5 通过（LIST/FIELD-RULES） | `20261112-082108-mjf4` |
 
 套件执行入口：
 
@@ -84,7 +84,10 @@ node dist/cli/platform-run.js run --module foundation --suite SUITE-FOUNDATION-R
 
 ### 6.2 采购套件阻断原因（环境变更，非代码回归）
 
-- 采购订单「运营单元」开窗现返回 `000W1 / CG001 / CG002 / DGW02 / DGW03 …`，**已无 `QN002`**，用例按 `QN002` 过滤得到 0 行。
+- 采购订单「运营单元」开窗现返回 `000W1 / CG001 / CG002 / DGW02 / DGW03 …`，**已无 `QN002`**；用例已改用
+  `config/test-data/qa26-master-data.json` 的基准数据：`000W1 / QA26-S001 / QA20261109-BT1 / QA26-M001`。
+- 品号开窗确认按钮改为兜底强制点击后，`SAVE-BLOCK`、`CREATE` 已能走到保存步骤。
+- 保存被服务端拒绝：`输入参数发票联式(inv_frm)不满足枚举设置[0, 1, 2, 3]`（ENUM_CHECK）。
+  说明 `QA20261109-BT1` 对应的采购单别参数缺少有效的发票联式配置，需补齐后重跑。
 - 采购订单列表列已变化（`po_doc_no / supp_no / pur_date …`），不再包含 `ops_unit_no`；行操作区不再提供文本「查看」。
-- `000W1` 下可用数据：供应商 `QA20261109-SUP`、`QA26-S001`、`S-QA26-EUR`；单别 `QA20261109-BT1`（QA采购单别0911）。
-- 用例仍固化 `QN002 / SUPP-1001 / PO0501 / 01-2-00011`，与当前环境不匹配，需环境负责人确认采购回归基准数据后再改用例。
+- 2026-11-12 复跑时门户跳转登录页（`/login?returnUrl=%2F`），浏览器登录态过期，实跑中断（run `20261112-084447-yms0`）。

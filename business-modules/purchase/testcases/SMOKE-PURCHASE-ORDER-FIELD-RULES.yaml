@@ -12,7 +12,7 @@ source_refs:
     excerpt: 采购订单字段必填/默认值/联动规则集合（ENTITY ENT-B59B1333FB19）
 preconditions:
   - 已登录测试环境并具备采购订单新增权限
-  - 基础资料 QN002 / SUPP-1001 / PO0501 存在
+  - 基础资料 000W1 / QA26-S001 / QA20261109-BT1 存在
   - 仅打开表单验证，不保存业务数据
 data_recipe_refs: []
 dependencies: []
@@ -23,7 +23,7 @@ steps:
     evidence: true
   - action: invoke_flow
     target: purchase-order-field-rules
-    value: '{"opsUnit":"QN002","supplier":"SUPP-1001","bizType":"PO0501"}'
+    value: '{"opsUnit":"000W1","supplier":"QA26-S001","bizType":"QA20261109-BT1"}'
     evidence: true
 assertions:
   - type: status

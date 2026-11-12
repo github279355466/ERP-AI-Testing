@@ -92,8 +92,9 @@ export class LookupAdapter extends BaseAdapter {
   async confirm(options: LookupOptions): Promise<void> {
     this.ensurePolicy('confirm');
     const modal = this.modal(options);
-    await modal.getByRole('button', { name: options.confirmText, exact: true }).last().click({
-      timeout: this.ctx.timeoutMs,
+    const button = modal.getByRole('button', { name: options.confirmText, exact: true }).last();
+    await button.click({ timeout: this.ctx.timeoutMs }).catch(async () => {
+      await button.click({ timeout: this.ctx.timeoutMs, force: true });
     });
     await modal.waitFor({ state: 'hidden', timeout: this.ctx.timeoutMs }).catch(() => undefined);
     await this.settle(800);

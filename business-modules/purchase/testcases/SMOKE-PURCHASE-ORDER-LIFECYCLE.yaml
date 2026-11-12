@@ -12,7 +12,7 @@ source_refs:
     excerpt: createPurchaseOrder 主流程；P7 扩展修改/提交/审核/撤审/删除
 preconditions:
   - 已登录测试环境并具备采购订单新增/提交/审核/撤审/删除权限
-  - 基础资料 QN002 / SUPP-1001 / PO0501 / 01-2-00011 存在
+  - 基础资料 000W1 / QA26-S001 / QA20261109-BT1 / QA26-M001 存在
   - 本次运行显式授权写操作与删除，仅操作本代理创建的数据
 data_recipe_refs: [RECIPE-PURCHASE-ORDER-BASIC]
 dependencies: []
@@ -23,7 +23,7 @@ steps:
     evidence: true
   - action: invoke_flow
     target: purchase-order-lifecycle
-    value: '{"opsUnit":"QN002","supplier":"SUPP-1001","bizType":"PO0501","itemNo":"01-2-00011","qty":"1","price":"10","runTag":"${RUN_TIMESTAMP}"}'
+    value: '{"opsUnit":"000W1","supplier":"QA26-S001","bizType":"QA20261109-BT1","itemNo":"QA26-M001","qty":"1","price":"10","runTag":"${RUN_TIMESTAMP}"}'
     evidence: true
 assertions:
   - type: status
