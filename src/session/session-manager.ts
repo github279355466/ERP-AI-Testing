@@ -121,8 +121,11 @@ export class SessionManager {
   }
 
   async portal(): Promise<Page> {
-    const page = await this.pages.find({ urlIncludes: safeHost(this.config.environment.baseUrl), prefer: 'first' });
-    if (page) return page;
+    const host = safeHost(this.config.environment.baseUrl);
+    const candidates = this.pages.list().filter((entry) => entry.url().includes(host));
+    const authenticated = candidates.find((entry) => !entry.url().includes('/login'));
+    if (authenticated) return authenticated;
+    if (candidates[0]) return candidates[0];
     const created = await this.context.newPage();
     this.guard.assertUrlAllowed(this.config.environment.baseUrl);
     await created.goto(this.config.environment.baseUrl, {
