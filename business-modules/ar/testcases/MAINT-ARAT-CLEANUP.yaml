@@ -1,0 +1,47 @@
+schema_version: "1.0"
+id: MAINT-ARAT-CLEANUP
+module_id: ar
+version: 0.1.0
+title: 清理 ARAT-01/ARAT-02 历史测试数据
+objective: 删除 T-02 遗留的应收业务单别 ARAT-01、ARAT-02；生效记录自动先失效再删除
+scenario_refs: [SCN-AR-BIZ-TYPE-CRUD]
+source_refs:
+  - document_id: TODO-T02
+    file_path: docs/TODO.md
+    source_type: UI_OBSERVED
+    section: T-02
+    excerpt: "清理 ARAT-01、ARAT-02 应收业务单别"
+preconditions:
+  - 已登录测试环境并具备应收业务单别删除权限
+  - ARAT-01/ARAT-02 为历史测试数据，无业务引用
+data_recipe_refs: []
+dependencies: []
+steps:
+  - action: navigate
+    target: ar-biz-type
+    timeout_ms: 60000
+    evidence: true
+  - action: invoke_flow
+    target: ar-biz-type-delete
+    value: '{"code":"ARAT-02"}'
+    evidence: true
+  - action: invoke_flow
+    target: ar-biz-type-delete
+    value: '{"code":"ARAT-01"}'
+    evidence: true
+assertions:
+  - type: count
+    target: 应收业务单别 ARAT
+    expected: 0 行
+    level: persistence
+    source_ref:
+      document_id: TODO-T02
+      file_path: docs/TODO.md
+      source_type: UI_OBSERVED
+      excerpt: "删除后列表不可见"
+cleanup_policy: keep
+status: reviewed
+timeout_ms: 300000
+retry_policy:
+  max_attempts: 1
+  retry_safe_actions_only: true

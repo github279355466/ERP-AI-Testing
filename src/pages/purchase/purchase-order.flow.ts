@@ -23,6 +23,46 @@ export interface CreatePurchaseOrderResult {
   assertions: Array<{ name: string; passed: boolean; expected: string; actual: string }>;
 }
 
+export interface ProbePurchaseOrderLinesInput {
+  opsUnit: string;
+  supplier: string;
+  bizType: string;
+  lines: PurchaseOrderLineInput[];
+}
+
+export async function probePurchaseOrderLines(
+  page: Page,
+  po: PurchaseOrderPage,
+  input: ProbePurchaseOrderLinesInput,
+): Promise<{ header: Record<string, string>; rows: Array<Record<string, string>>; assertions: ReturnType<typeof assertion>[] }> {
+  await po.openNew();
+  const header = await po.ensureHeader({ opsUnit: input.opsUnit, supplier: input.supplier, bizType: input.bizType });
+  for (let index = 0; index < input.lines.length; index += 1) {
+    await po.addDetailRow();
+    await po.setLine(index, input.lines[index]);
+  }
+  const rows = await po.readDetailLines();
+  const assertions = [
+    assertion('明细行数', rows.length === input.lines.length, String(input.lines.length), String(rows.length)),
+    ...input.lines.flatMap((expected, index) => {
+      const actual = rows[index] ?? {};
+      return [
+        assertion(`明细${index + 1}-品号`, actual.item_no?.includes(expected.itemNo) ?? false, expected.itemNo, actual.item_no ?? ''),
+        assertion(`明细${index + 1}-数量`, actual.biz_qty === expected.qty, expected.qty, actual.biz_qty ?? ''),
+        assertion(`明细${index + 1}-单位默认值`, Boolean((actual.biz_unit_no ?? '').trim()), '非空', actual.biz_unit_no ?? ''),
+        assertion(
+          `明细${index + 1}-单价`,
+          expected.price ? actual.price === expected.price : true,
+          expected.price ?? '(未设置)',
+          actual.price ?? '',
+        ),
+      ];
+    }),
+  ];
+  await po.closeDetail();
+  return { header, rows, assertions };
+}
+
 export async function createPurchaseOrder(
   page: Page,
   po: PurchaseOrderPage,

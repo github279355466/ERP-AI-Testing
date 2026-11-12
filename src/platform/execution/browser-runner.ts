@@ -17,7 +17,7 @@ import { CaseRunOutput, CaseRunner, ReportAssertion, ReportStep, classifyFailure
 import { formatRunTimestamp, substituteRunTokens } from './run-tokens';
 
 const WRITE_ACTIONS = new Set(['fill', 'select_master_data', 'select_option', 'save', 'submit', 'approve', 'unapprove', 'delete', 'upload', 'invoke_flow']);
-const READ_ONLY_FLOWS = new Set(['platform:list-smoke', 'foundation-field-rules']);
+const READ_ONLY_FLOWS = new Set(['platform:list-smoke', 'foundation-field-rules', 'purchase-order-multiline-probe']);
 
 export interface BrowserRunnerDeps {
   moduleId: string;

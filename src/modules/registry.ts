@@ -1,5 +1,11 @@
 import { ModuleFlow } from './types';
-import { purchaseOrderCreate, purchaseOrderFieldRules, purchaseOrderLifecycle, purchaseOrderListSmoke } from './purchase/flows';
+import {
+  purchaseOrderCreate,
+  purchaseOrderFieldRules,
+  purchaseOrderLifecycle,
+  purchaseOrderListSmoke,
+  purchaseOrderMultilineProbe,
+} from './purchase/flows';
 import { foundationFieldRules } from './foundation/flows';
 import { baseInventoryParamToggle } from './base/flows';
 import { arBizTypeCreate, arBizTypeCrud, arBizTypeDelete } from './ar/flows';
@@ -14,6 +20,7 @@ const FLOWS: Record<string, Record<string, ModuleFlow>> = {
     'purchase-order-lifecycle': purchaseOrderLifecycle,
     'purchase-order-field-rules': purchaseOrderFieldRules,
     'purchase-order-list-smoke': purchaseOrderListSmoke,
+    'purchase-order-multiline-probe': purchaseOrderMultilineProbe,
   },
   foundation: {
     'foundation-field-rules': foundationFieldRules,

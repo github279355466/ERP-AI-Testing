@@ -200,7 +200,12 @@ export async function deleteBizTypeRecord(page: Page, code: string): Promise<boo
   await showList(page);
   const rowIndex = await locateRowIndex(page, code);
   if (!rowIndex) return false;
-  await clickRowAction(page, rowIndex, '删除');
+  try {
+    await clickRowAction(page, rowIndex, '删除');
+  } catch {
+    await clickRowAction(page, rowIndex, '失效');
+    await clickRowAction(page, rowIndex, '删除');
+  }
   await page.waitForTimeout(1_500);
   return (await locateRowIndex(page, code)) === '';
 }

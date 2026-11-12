@@ -1,5 +1,5 @@
 import { PurchaseOrderPage } from '../../pages/purchase/purchase-order.page';
-import { createPurchaseOrder } from '../../pages/purchase/purchase-order.flow';
+import { createPurchaseOrder, probePurchaseOrderLines } from '../../pages/purchase/purchase-order.flow';
 import { ModuleFlow, flowAssertion } from '../types';
 import { loadFieldRuleSets, rulesForPage } from '../../platform/rules/loader';
 import { captureFieldStates, captureSaveOutcome } from '../../platform/rules/browser-probe';
@@ -213,5 +213,25 @@ export const purchaseOrderFieldRules: ModuleFlow = async (context) => {
   return {
     assertions,
     notes: `字段规则：${evaluation.results.length} 条，failed=${evaluation.failed}，warning=${evaluation.warnings}，skipped=${evaluation.skipped}${attemptSave ? `，saveBlocked=${save?.blocked}，draft=${draftNo || '(无)'}` : ''}`,
+  };
+};
+
+export const purchaseOrderMultilineProbe: ModuleFlow = async (context) => {
+  const params = context.params;
+  await context.pages.ensureListState(context.page);
+  await context.pages.waitReady(context.page);
+  const pageObject = new PurchaseOrderPage(context.page, context.config, context.adapters, context.pages);
+  const lines = JSON.parse(requireParam(params, 'lines')) as Array<{ itemNo: string; qty: string; price?: string }>;
+  const result = await probePurchaseOrderLines(context.page, pageObject, {
+    opsUnit: requireParam(params, 'opsUnit'),
+    supplier: requireParam(params, 'supplier'),
+    bizType: requireParam(params, 'bizType'),
+    lines,
+  });
+  return {
+    assertions: result.assertions.map((entry) =>
+      flowAssertion(entry.name, entry.passed, entry.expected, entry.actual, 'ui', context.sourceRef),
+    ),
+    notes: `多笔明细默认值：${lines.length} 笔，实际行数=${result.rows.length}`,
   };
 };
