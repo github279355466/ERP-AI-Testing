@@ -12,6 +12,7 @@ source_refs:
     excerpt: createPurchaseOrder 主流程；P7 扩展修改/提交/审核/撤审/删除
 preconditions:
   - 已登录测试环境并具备采购订单新增/提交/审核/撤审/删除权限
+  - 已知缺陷 DEF-20261112-01：保存报 inv_frm 枚举错误，修复前保存类断言预期失败
   - 基础资料 000W1 / QA26-S001 / QA20261109-BT1 / QA26-M001 存在
   - 本次运行显式授权写操作与删除，仅操作本代理创建的数据
 data_recipe_refs: [RECIPE-PURCHASE-ORDER-BASIC]
