@@ -99,6 +99,7 @@ npm run athena -- verify --case <case.json>
 - 单测覆盖纯逻辑；真实浏览器验证放 `tests/smoke` 或 `cases/`。
 - 契约测试覆盖 Schema 正反例、版本兼容、依赖校验与 CLI 退出码，全部静态执行。
 - 用例必须含：前置条件、步骤、预期、断言、证据。
+- 录单类用例（含取单带回、手工新增品号）必须一次录入 **至少 3 笔明细**，逐笔校验带回后的默认值、派生字段（单位、仓库、税率、金额、税额等）是否正确；不得只验证单笔。
 - 失败必须留截图 + DOM + 错误信息；阻塞写 `blocked`，跳过写 `skipped`。
 - 证据目录结构：`artifacts/<run-id>/{results.json,report.md,report.html,shots,dom,logs}`。
 
