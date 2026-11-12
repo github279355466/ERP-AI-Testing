@@ -17,6 +17,7 @@ export const purchaseOrderCreate: ModuleFlow = async (context) => {
   await context.pages.ensureListState(context.page);
   await context.pages.waitReady(context.page);
   const pageObject = new PurchaseOrderPage(context.page, context.config, context.adapters, context.pages);
+  const lines = params.lines ? (JSON.parse(params.lines) as Array<{ itemNo: string; qty: string; price?: string }>) : undefined;
   const result = await createPurchaseOrder(context.page, pageObject, {
     opsUnit: requireParam(params, 'opsUnit'),
     supplier: requireParam(params, 'supplier'),
@@ -24,11 +25,15 @@ export const purchaseOrderCreate: ModuleFlow = async (context) => {
     ...(params.docDate ? { docDate: params.docDate } : {}),
     ...(params.project ? { project: params.project } : {}),
     remark: requireParam(params, 'remark'),
-    line: {
-      itemNo: requireParam(params, 'itemNo'),
-      qty: params.qty ?? '1',
-      ...(params.price ? { price: params.price } : {}),
-    },
+    ...(lines
+      ? { lines }
+      : {
+          line: {
+            itemNo: requireParam(params, 'itemNo'),
+            qty: params.qty ?? '1',
+            ...(params.price ? { price: params.price } : {}),
+          },
+        }),
   });
   const levelOf = (name: string): 'ui' | 'business' | 'persistence' => {
     if (name.startsWith('重查')) return 'business';

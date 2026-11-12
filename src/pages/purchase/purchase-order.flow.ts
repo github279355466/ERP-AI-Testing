@@ -8,7 +8,8 @@ export interface CreatePurchaseOrderInput {
   docDate?: string;
   project?: string;
   remark: string;
-  line: PurchaseOrderLineInput;
+  line?: PurchaseOrderLineInput;
+  lines?: PurchaseOrderLineInput[];
 }
 
 export interface CreatePurchaseOrderResult {
@@ -37,8 +38,13 @@ export async function createPurchaseOrder(
   });
   await po.fillRemark(input.remark);
 
-  await po.addDetailRow();
-  const line = await po.setLine(0, input.line);
+  const lines = input.lines?.length ? input.lines : input.line ? [input.line] : [];
+  if (lines.length === 0) throw new Error('[PURCHASE_ORDER_NO_LINES] 至少需要一笔明细');
+  const lineResults: Array<Record<string, string>> = [];
+  for (let index = 0; index < lines.length; index += 1) {
+    await po.addDetailRow();
+    lineResults.push(await po.setLine(index, lines[index]));
+  }
   const saved = await po.save();
   const documentNo = saved.documentNo || extractDocumentNo(saved.toast);
   if (!documentNo) {
@@ -53,33 +59,54 @@ export async function createPurchaseOrder(
   const detailHeader = await po.readHeader();
   const detailLines = await po.readDetailLines();
   await po.closeDetail();
+  const line = lineResults[0] ?? {};
   const detailLine = detailLines[0] ?? {};
+
+  const lineAssertions = lines.flatMap((expected, index) => {
+    const actual = lineResults[index] ?? {};
+    const detail = detailLines[index] ?? {};
+    return [
+      assertion(`明细${index + 1}-品号`, actual.item_no?.includes(expected.itemNo) ?? false, expected.itemNo, actual.item_no ?? ''),
+      assertion(`明细${index + 1}-数量`, actual.biz_qty === expected.qty, expected.qty, actual.biz_qty ?? ''),
+      assertion(
+        `明细${index + 1}-单位默认值`,
+        Boolean((actual.biz_unit_no ?? '').trim()),
+        '非空',
+        actual.biz_unit_no ?? '',
+      ),
+      assertion(
+        `明细${index + 1}-单价`,
+        expected.price ? actual.price === expected.price : true,
+        expected.price ?? '(未设置)',
+        actual.price ?? '',
+      ),
+      assertion(
+        `重查-明细${index + 1}-品号`,
+        detail.item_no?.includes(expected.itemNo) ?? false,
+        expected.itemNo,
+        detail.item_no ?? '',
+      ),
+      assertion(`重查-明细${index + 1}-数量`, detail.biz_qty === expected.qty, expected.qty, detail.biz_qty ?? ''),
+      assertion(
+        `重查-明细${index + 1}-单位默认值`,
+        Boolean((detail.biz_unit_no ?? '').trim()),
+        '非空',
+        detail.biz_unit_no ?? '',
+      ),
+    ];
+  });
 
   const assertions = [
     assertion('表头-运营单元', header.opsUnit.includes(input.opsUnit), input.opsUnit, header.opsUnit),
     assertion('表头-供应商', header.supplier.includes(input.supplier), input.supplier, header.supplier),
     assertion('表头-单别', header.bizType.includes(input.bizType), input.bizType, header.bizType),
-    assertion('明细-品号', line.item_no?.includes(input.line.itemNo) ?? false, input.line.itemNo, line.item_no ?? ''),
-    assertion('明细-数量', line.biz_qty === input.line.qty, input.line.qty, line.biz_qty ?? ''),
-    assertion(
-      '明细-单价',
-      input.line.price ? line.price === input.line.price : true,
-      input.line.price ?? '(未设置)',
-      line.price ?? '',
-    ),
+    ...lineAssertions,
     assertion('保存-单据号', Boolean(documentNo), '非空', documentNo),
     assertion('重查-列表行', Boolean(listRow), '存在', listRow ? JSON.stringify(listRow) : '不存在'),
     assertion('重查-详情单号', detailHeader.documentNo === documentNo, documentNo, detailHeader.documentNo),
     assertion('重查-详情运营单元', detailHeader.opsUnit.includes(input.opsUnit), input.opsUnit, detailHeader.opsUnit),
     assertion('重查-详情供应商', detailHeader.supplier.includes(input.supplier), input.supplier, detailHeader.supplier),
-    assertion('重查-详情品号', detailLine.item_no?.includes(input.line.itemNo) ?? false, input.line.itemNo, detailLine.item_no ?? ''),
-    assertion('重查-详情数量', detailLine.biz_qty === input.line.qty, input.line.qty, detailLine.biz_qty ?? ''),
-    assertion(
-      '重查-详情单价',
-      input.line.price ? detailLine.price === input.line.price : true,
-      input.line.price ?? '(未设置)',
-      detailLine.price ?? '',
-    ),
+    assertion('重查-明细行数', detailLines.length === lines.length, String(lines.length), String(detailLines.length)),
   ];
 
   return {

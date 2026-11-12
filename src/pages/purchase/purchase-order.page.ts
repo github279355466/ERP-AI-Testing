@@ -113,7 +113,7 @@ export class PurchaseOrderPage extends BasePageObject {
     await grid.setCell(rowIndex, 'biz_qty', line.qty);
     if (line.price) await grid.setCell(rowIndex, 'price', line.price);
     await this.page.waitForTimeout(800);
-    return grid.readRows(['po_seq', 'goods_type', 'item_no', 'item_name', 'item_spec', 'biz_qty', 'price', 'amt', 'biz_unit_no'])
+    return grid.readRows(['po_seq', 'goods_type', 'item_no', 'item_name', 'item_spec', 'biz_qty', 'price', 'amt', 'biz_unit_no', 'whse_no'])
       .then((rows) => rows.find((row) => row.rowIndex === rowIndex)?.cells ?? {});
   }
 
@@ -152,7 +152,7 @@ export class PurchaseOrderPage extends BasePageObject {
 
   async readDetailLines(): Promise<Array<Record<string, string>>> {
     const grid = this.detailGrid();
-    return grid.readRows(['po_seq', 'goods_type', 'item_no', 'item_name', 'item_spec', 'biz_qty', 'price', 'amt', 'biz_unit_no'])
+    return grid.readRows(['po_seq', 'goods_type', 'item_no', 'item_name', 'item_spec', 'biz_qty', 'price', 'amt', 'biz_unit_no', 'whse_no'])
       .then((rows) => rows.map((row) => row.cells));
   }
 
