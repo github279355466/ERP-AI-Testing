@@ -36,18 +36,21 @@ export interface BrowserRunnerDeps {
 export class BrowserCaseRunner implements CaseRunner {
   private readonly navigation: NavigationManager;
   private readonly runTimestamp: string;
+  private readonly baselinePages: Set<Page>;
   private currentPage: Page | null = null;
   private currentPageKey: string | null = null;
 
   constructor(private readonly deps: BrowserRunnerDeps) {
     this.navigation = new NavigationManager(deps.config, deps.context, deps.pages, deps.session, buildNavigationFile(deps.mappings));
     this.runTimestamp = formatRunTimestamp(new Date());
+    this.baselinePages = new Set(deps.context.pages());
   }
 
   private async closeBusinessPages(): Promise<void> {
     const host = this.deps.config.environment.lowcodeHost;
     for (const page of this.deps.context.pages()) {
       if (!page.url().includes(host)) continue;
+      if (this.baselinePages.has(page)) continue;
       await page.close().catch(() => undefined);
     }
     this.currentPage = null;

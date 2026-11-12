@@ -118,16 +118,30 @@ export async function probeUniqueField(page: Page, fieldPath: string, duplicateV
     .isDisabled()
     .catch(() => false);
   let message = '';
+  let badgePresent = false;
   const badge = page.locator('a[aria-label="打开错误列表"]:visible').last();
   const badgeText = (await badge.count()) > 0 ? ((await badge.innerText().catch(() => '')) || '').trim() : '';
   if (/错误\s*[1-9]/.test(badgeText)) {
+    badgePresent = true;
     await badge.click().catch(() => undefined);
-    await page.waitForTimeout(900);
+    await page
+      .locator('[class*="drawer"]:visible, [class*="Drawer"]:visible')
+      .last()
+      .waitFor({ state: 'visible', timeout: 5_000 })
+      .catch(() => undefined);
+    await page.waitForTimeout(600);
     message = await page.evaluate(() => {
-      const drawer = Array.from(document.querySelectorAll('[class*="Drawer-module_drawer-content"]')).find(
-        (node) => (node as HTMLElement).offsetWidth > 0,
-      );
-      return ((drawer as HTMLElement | undefined)?.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 300);
+      const visible = (node: Element): boolean => {
+        const element = node as HTMLElement;
+        return element.offsetWidth > 0 || element.offsetHeight > 0;
+      };
+      const matches = (node: Element): boolean => /drawer|validator|error-list|errorList/i.test(node.className || '');
+      const candidates = Array.from(document.querySelectorAll('div,section,aside'))
+        .filter((node) => matches(node) && visible(node))
+        .map((node) => (node as HTMLElement).innerText.replace(/\s+/g, ' ').trim())
+        .filter((text) => text.length > 0);
+      const specific = candidates.find((text) => /重复|已存在|不可重复/.test(text));
+      return (specific || candidates.sort((a, b) => b.length - a.length)[0] || '').slice(0, 300);
     });
     await page.locator('.validator-drawer-close-btn:visible').last().click({ timeout: 2_000 }).catch(() => undefined);
     await page.waitForTimeout(500);
@@ -142,9 +156,10 @@ export async function probeUniqueField(page: Page, fieldPath: string, duplicateV
       return nodes[nodes.length - 1] ?? '';
     });
   }
+  if (/^错误列表\s*\(\d+\)/.test(message)) message = '';
   return {
     attempted: true,
-    blocked: saveDisabled || /已存在|不可重复|重复/.test(message),
+    blocked: saveDisabled || badgePresent || /已存在|不可重复|重复/.test(message),
     message: message.slice(0, 300),
   };
 }

@@ -120,6 +120,12 @@ test.describe('字段规则求值', () => {
       evaluateFieldRule(uniqueRule, { ...base, unique: { 'po.supp_no': { attempted: true, blocked: false, message: '操作成功' } } }).status,
     ).toBe('failed');
     expect(evaluateFieldRule(uniqueRule, base).status).toBe('skipped');
+    expect(
+      evaluateFieldRule(uniqueRule, { ...base, unique: { 'po.supp_no': { attempted: true, blocked: true, message: '' } } }).status,
+    ).toBe('passed');
+    expect(
+      evaluateFieldRule(uniqueRule, { ...base, unique: { 'po.supp_no': { attempted: true, blocked: true, message: '格式不正确' } } }).status,
+    ).toBe('failed');
   });
 
   test('最大长度规则比对 maxlength', () => {

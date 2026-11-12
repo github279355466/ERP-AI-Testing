@@ -48,6 +48,23 @@ async function waitForForm(page: Page): Promise<void> {
   await page.waitForTimeout(800);
 }
 
+async function openCreateForm(page: Page): Promise<void> {
+  const button = page.getByRole('button', { name: '新增', exact: true }).first();
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const visible = await button
+      .waitFor({ state: 'visible', timeout: 15_000 })
+      .then(() => true)
+      .catch(() => false);
+    if (visible) {
+      await button.click();
+      return;
+    }
+    await page.reload({ waitUntil: 'domcontentloaded' }).catch(() => undefined);
+    await page.waitForTimeout(2_500);
+  }
+  throw new Error('[FLOW_LIST_NOT_READY] 列表页未出现「新增」按钮，已重载一次仍失败');
+}
+
 async function discardForm(formPage: Page): Promise<void> {
   const cancel = formPage.getByRole('button', { name: '取消', exact: true }).last();
   if ((await cancel.count()) > 0) {
@@ -97,7 +114,7 @@ export const foundationFieldRules: ModuleFlow = async (context) => {
   }
 
   const beforePages = new Set(context.page.context().pages());
-  await context.page.getByRole('button', { name: '新增', exact: true }).first().click();
+  await openCreateForm(context.page);
   await context.page.waitForTimeout(3_500);
   const opened = context.page
     .context()

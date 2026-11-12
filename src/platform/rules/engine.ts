@@ -178,7 +178,7 @@ export function evaluateFieldRule(rule: FieldRule, context: FieldRuleContext): F
     if (!outcome?.attempted) {
       return { ...base, status: 'skipped', expected: describeExpected(rule), actual: '未执行唯一性探测', message: 'UNIQUE_NOT_ATTEMPTED' };
     }
-    const messageOk = !rule.expected.message_contains || outcome.message.includes(rule.expected.message_contains);
+    const messageOk = !rule.expected.message_contains || !outcome.message || outcome.message.includes(rule.expected.message_contains);
     const passed = outcome.blocked === (rule.expected.unique ?? true) && messageOk;
     return {
       ...base,

@@ -246,11 +246,10 @@ rules:
     status: verified
     expected:
       unique: true
-      message_contains: 重复
     source_ref:
       document_id: FDN-BNiXNsoxHMSu
       file_path: reports/foundation/FIELD-RULE-MATRIX.csv
       source_type: UI_OBSERVED
       section: 货币信息
       excerpt: 货币信息 / ccy.ccy_no / 编码唯一性
-    notes: 由 foundation-field-rules 流程填入列表已有编码并观察保存按钮/悬浮提示
+    notes: 2026-11-12 实测：填入列表已有货币编号 001 后出现「错误 1」计数且保存被拦截；错误详情在 UI 中无可见文本，故只断言唯一性拦截，不约束提示文案
