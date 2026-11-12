@@ -111,3 +111,5 @@
 - 验收标准：≥3 笔明细的录单用例全部通过，失败留 UI + 请求证据
 - 已完成：`purchase-order-create` 支持 `lines` 数组；逐笔断言品号、数量、单位默认值；保存后校验明细行数
 - 证据/用例：`business-modules/purchase/testcases/CRUD-PURCHASE-ORDER-MULTILINE.yaml`
+- 实跑记录：2026-11-12 run `20261112-152955-s3bs` 在导航阶段 `SESSION_EXPIRED`（门户跳登录页），未进入录入步骤；
+  登录恢复后优先重跑该用例，其次验证保存（仍受 `DEF-20261112-01` 约束）
