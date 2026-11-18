@@ -9,7 +9,9 @@
 
 默认只读，写操作必须由运行配置显式授权。
 
-架构入口：`docs/architecture/TO-BE.md`；边界规则：`docs/architecture/BOUNDARIES.md`；升级过程：`docs/upgrade/`。
+架构入口：`docs/architecture/TO-BE.md`；整体架构说明：`docs/architecture/OVERVIEW.md`；边界规则：`docs/architecture/BOUNDARIES.md`；升级过程：`docs/upgrade/`。
+
+首次使用请按 `docs/ONBOARDING.md` 的顺序执行：静态自检 → 启动专用 Chrome → 只读验证 → 按授权开启写操作。
 
 ## v2.0 三层架构
 

@@ -167,6 +167,8 @@ npm run athena -- verify --case <case.json>
 | 目的 | 路径 |
 | --- | --- |
 | 当前状态与两条工作线 | `README.md` |
+| 新人上手与开启自动化测试 | `docs/ONBOARDING.md` |
+| 整体架构说明 | `docs/architecture/OVERVIEW.md` |
 | 框架技术设计与 Phase 2 底座 | `docs/ARCHITECTURE.md` |
 | Phase 2 操作与排查 | `docs/PHASE2-运行手册.md`、`docs/PHASE2-配置说明.md` |
 | 未完成事项与阻塞 | `docs/TODO.md`（T-04～T-07） |
