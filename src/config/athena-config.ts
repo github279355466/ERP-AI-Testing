@@ -15,6 +15,7 @@ export interface AthenaConfig {
     tenantId: string;
     applicationCode: string;
     lowcodeHost: string;
+    lowcodeQuery: Record<string, string>;
     allowedOrigins: string[];
     blockedOrigins: string[];
   };
@@ -203,6 +204,10 @@ export function parseConfig(raw: Record<string, any>, configPath = DEFAULT_CONFI
       tenantId: asString(env.tenantId, 'environment.tenantId'),
       applicationCode: asString(env.applicationCode, 'environment.applicationCode'),
       lowcodeHost,
+      lowcodeQuery:
+        env.lowcodeQuery && typeof env.lowcodeQuery === 'object'
+          ? Object.fromEntries(Object.entries(env.lowcodeQuery as Record<string, unknown>).map(([key, value]) => [key, String(value)]))
+          : {},
       allowedOrigins,
       blockedOrigins: asStringArray(env.blockedOrigins, 'environment.blockedOrigins', []),
     },

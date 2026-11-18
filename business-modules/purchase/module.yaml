@@ -17,3 +17,4 @@ assets:
   testcases: testcases/
   data_recipes: data-recipes/
   test_suites: test-suites/
+  ui_specs: ui-specs/

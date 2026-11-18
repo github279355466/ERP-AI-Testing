@@ -29,6 +29,7 @@ TypeScript + Playwright 的 Athena ERP 自动化测试框架，默认只读。�
 | 框架运行时知识库 | `knowledge/athena-*.json` + `src/knowledge/knowledge-base.ts` |
 | Phase 2 操作与配置 | `docs/PHASE2-运行手册.md`、`docs/PHASE2-配置说明.md` |
 | Phase 2 缺陷与方向性问题 | `docs/defects/`、`artifacts/phase2/acceptance/P2.4-DIRECTION-BUGS.md`（本地） |
+| 缺陷总清单（唯一权威） | `docs/defects/MASTER-DEFECT-LIST.md`（后续测试必须同步更新） |
 | 字段级规则校验要求（未执行） | `docs/PHASE3-字段规则校验要求.md`（50 条规则 / 10 域） |
 | 未完成事项与阻塞 | `docs/TODO.md`（T-04~T-07） |
 | 测试 | `tests/unit/`（139 用例）、`tests/integration/`（27 用例）、`tests/smoke/`（需浏览器，默认不跑） |

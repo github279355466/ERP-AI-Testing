@@ -1,0 +1,124 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: supplier
+page_name: 供应商通用信息
+page_type: master
+source_ref:
+  document_id: UI-SPEC-TEMPLATE
+  file_path: docs/UI规范/ERP-UI规范.md
+  source_type: UI_OBSERVED
+  excerpt: 界面规范基线：字段与列的排列、分组、显示格式、按钮排列
+expectations:
+  list:
+    tabs:
+      required:
+        - 全部
+        - 生效
+        - 失效
+        - 未生效
+      allow_extra: true
+    columns:
+      order:
+        - 序号
+        - 供应商编号
+        - 供应商名称
+        - 供应商简称
+        - 供应商群组名称
+        - 备注
+        - 状态
+        - 操作
+      allow_extra: true
+    batch_actions:
+      order:
+        - 生效
+        - 取消生效
+        - 失效
+        - 重新生效
+        - 删除
+    actions_by_status:
+      生效:
+        - 查看
+        - 编辑
+        - 取消生效
+        - 失效
+        - 删除
+      失效:
+        - 查看
+        - 重新生效
+        - 删除
+      未生效:
+        - 查看
+        - 编辑
+        - 生效
+        - 删除
+    status_colors:
+      生效: green
+      未生效: yellow
+      失效: gray
+    pagination:
+      required_text:
+        - 条/页
+  detail:
+    banner:
+      require_single_number: false
+      max_totals: 0
+      totals: []
+    header_groups:
+      order:
+        - 基本信息
+        - 通用信息
+        - 属性值
+      allow_extra: true
+    field_layout:
+      order:
+        - 供应商编号
+        - 供应商简称
+        - 供应商名称
+        - 快捷码
+        - 供应商群组
+        - 备注
+        - 统一社会信用代码
+        - 负责人名称
+        - 开业日期
+        - 开业资金
+        - 员工人数
+        - 营业执照
+      groups:
+        - title: 基本信息
+          fields:
+            - 供应商编号
+            - 供应商简称
+            - 供应商名称
+            - 快捷码
+            - 供应商群组
+            - 备注
+        - title: 通用信息
+          fields:
+            - 统一社会信用代码
+            - 负责人名称
+            - 开业日期
+            - 开业资金
+            - 员工人数
+            - 营业执照
+      lookup_fields:
+        - 供应商群组
+    grid:
+      required: false
+      columns: []
+    lookup_input:
+      require_manual_entry: true
+      require_fuzzy_query: true
+      max_fields: 3
+    bottom_actions:
+      order:
+        - 删除
+        - 重新生效
+        - 失效
+        - 取消生效
+        - 生效
+        - 复制
+        - 新增
+        - 编辑
+        - 取消
+        - 保存并新增
+        - 保存

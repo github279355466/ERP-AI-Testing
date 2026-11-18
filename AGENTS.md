@@ -50,6 +50,34 @@ Integration Test Packs   integration-tests/<id>/   跨模块组合
 
 禁止一次性铺开大量代码后再统一验证。
 
+### 3.1 页面探索（probe）规范
+
+探索层与执行层分离：**执行层是 Playwright 代码，探索层是 agent-browser CLI**。
+
+- 探索真实页面结构（有哪些字段、控件、选择器、页面入口）一律用 `agent-browser`，一条命令一步。
+- **禁止为「看一眼页面上有什么」新增一次性探针脚本**（`probe/_tmp-*.cjs`、`probe/*-tmp.js` 之类）。已有脚本保持不动，不再新增。
+- 只有需要**确定性断言、可 CI、可重现报告**时，才写 Playwright 代码，且落点是 `platform/`、`business-modules/<id>/`、`integration-tests/<id>/` 或 `tests/`，不是 `probe/`。
+
+标准流程（`<port>` 取 `config/athena.config.json` 的 `browser.cdpEndpoint`，默认 9333）：
+
+```bash
+pwsh -File scripts/start-chrome.ps1                        # 专用 profile，已含 ERP 登录态
+agent-browser --session athena --cdp 9333 open <url>        # 挂上去，不重新登录
+agent-browser --session athena snapshot -i -d 4             # 全页可交互元素 + @eN ref
+agent-browser --session athena snapshot -i -s "<selector>"  # 局部扫描，token 更省
+agent-browser --session athena click @e3                    # 用 ref 操作
+agent-browser --session athena get html "<selector>"        # 取控件属性作证据
+agent-browser --session athena close                        # 只关 session，宿主 Chrome 不受影响
+```
+
+- 页面导航或 DOM 变更后 ref 失效，必须重新 `snapshot` 再点击。
+- 等待用「代表结果的条件」，不要默认 `networkidle`——SSE / WebSocket / 轮询会让它永不 resolve。
+- 点击被遮挡、禁用或视口外时 CLI 报错而不是假成功：先处理遮罩，重新 snapshot 再点，不要盲目重试。
+- 失败诊断优先用 `--cdp` 挂同一浏览器：`errors`、`console`、`network requests --filter`、`screenshot --annotate`，再回看 Playwright trace。
+- `--allowed-domains` 与 `--cdp` / `--profile` 互斥；探索阶段要复用登录态，因此不启用域名白名单。
+
+**证据与标注**：探索产物落 `probe/evidence/<page>-<topic>-<YYYYMMDD>.txt|png`，不要把结论只留在对话里；写进 `knowledge/` 或 `business-modules/<id>/` 前必须按 §1 标注 `verified` / `candidate` / `UNKNOWN`。探索阶段默认只读，不得触发保存、审核、删除、过账、结账等写操作。
+
 ## 4. 代码约定
 
 | 位置 | 职责 |
@@ -127,7 +155,8 @@ npm run athena -- verify --case <case.json>
 | 内容 | 位置 |
 | --- | --- |
 | 浏览器 profile（登录态） | `probe/chrome-profile`，经 `browser.userDataDir` 配置，不提交 |
-| 探索脚本、抓图、临时诊断 | `probe/` |
+| 探索证据（snapshot / html / 截图） | `probe/evidence/` |
+| 探索脚本、抓图、临时诊断 | `probe/`（`probe/` 只保留历史脚本，不再新增一次性探针） |
 | 会话交付物（分析报告、字典、设计稿） | `artifacts/session-outputs/` |
 | 测试运行证据 | `artifacts/<run-id>/` |
 
@@ -141,6 +170,29 @@ npm run athena -- verify --case <case.json>
 | 框架技术设计与 Phase 2 底座 | `docs/ARCHITECTURE.md` |
 | Phase 2 操作与排查 | `docs/PHASE2-运行手册.md`、`docs/PHASE2-配置说明.md` |
 | 未完成事项与阻塞 | `docs/TODO.md`（T-04～T-07） |
-| 缺陷单 | `docs/defects/` |
+| 缺陷总清单（唯一权威） | `docs/defects/MASTER-DEFECT-LIST.md` |
+| 缺陷单（历史与单条） | `docs/defects/` |
 | 字段级规则校验要求 | `docs/PHASE3-字段规则校验要求.md` |
 | 跨会话记忆索引 | `.workbuddy/memory/MEMORY.md` |
+
+## 11. 缺陷清单维护
+
+- `docs/defects/MASTER-DEFECT-LIST.md` 是唯一权威缺陷清单；单次报告、回归报告、验收报告只作为证据来源，不得各自维护结论状态。
+- 每轮测试结束后必须同步更新总清单：新增缺陷追加编号、已有缺陷更新状态与回归结果、撤回项写明依据；当轮报告开头回链总清单。
+- 新缺陷编号从 `DEF-21` 起顺序分配；历史编号（`DEF-xx`、`OBS-xx`、`DIR-xx`、`GAP-xx`、`BUG-YYYYMMDD-xx`、`AUT-xx`）保持不变以便追溯。
+- UI 规范与视觉类问题不进该清单，单独维护在 `reports/ui-spec/` 与 `docs/PHASE4-界面规范校验.md`。
+- 状态口径统一为：`未修复`、`待确认`、`待复核`、`已修复待回归`、`已关闭`、`已撤回`、`阻塞`。
+
+## Agent skills
+
+### Issue tracker
+
+本仓库的 issue 与 spec 以本地 markdown 存放在 `.scratch/<feature>/`。见 `docs/agents/issue-tracker.md`。
+
+### Triage labels
+
+沿用默认五角色标签：`needs-triage`、`needs-info`、`ready-for-agent`、`ready-for-human`、`wontfix`。见 `docs/agents/triage-labels.md`。
+
+### Domain docs
+
+单上下文：根目录 `GLOSSARY.md` + `docs/adr/`，另有追加式决策日志 `DECISIONS.md`。见 `docs/agents/domain.md`。

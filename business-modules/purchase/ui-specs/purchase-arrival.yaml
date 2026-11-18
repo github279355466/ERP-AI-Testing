@@ -1,0 +1,171 @@
+schema_version: "1.0"
+module_id: purchase
+page_key: purchase-arrival
+page_name: 采购到货单
+page_type: document
+source_ref:
+  document_id: UI-SPEC-TEMPLATE
+  file_path: docs/UI规范/ERP-UI规范.md
+  source_type: UI_OBSERVED
+  excerpt: 界面规范基线：字段与列的排列、分组、显示格式、按钮排列
+expectations:
+  list:
+    tabs:
+      required:
+        - 全部
+        - 已审核
+        - 审核中
+        - 未审核
+        - 作废
+      allow_extra: true
+    columns:
+      order:
+        - 序号
+        - 采购到货单号
+        - 运营单元编号
+        - 运营单元名称
+        - 单据日期
+        - 供应商编号
+        - 供应商名称
+        - 采购员编号
+        - 采购员名称
+        - 货币编号
+        - 货币名称
+        - 价税合计
+        - 入库状态
+        - 状态
+        - 操作
+      allow_extra: true
+    batch_actions:
+      order:
+        - 提交
+        - 审核
+        - 驳回
+        - 撤审
+        - 作废
+        - 删除
+    actions_by_status:
+      已审核:
+        - 查看
+        - 撤审
+      未审核:
+        - 查看
+        - 编辑
+      审核中:
+        - 查看
+        - 审核
+        - 驳回
+    status_colors:
+      已审核: green
+      审核中: blue
+      未审核: yellow
+      作废: gray
+    pagination:
+      required_text:
+        - 条/页
+  detail:
+    banner:
+      require_single_number: true
+      max_totals: 3
+      totals:
+        - 价税合计
+        - 无税金额
+        - 税额
+    header_groups:
+      order:
+        - 基本信息
+        - 管理信息
+        - 业务信息
+        - 财务信息
+      allow_extra: true
+    field_layout:
+      order:
+        - 运营单元
+        - 供应商
+        - 单据日期
+        - 到货日期
+        - 单别
+        - 业务性质
+        - 采购员
+        - 采购部门
+        - 到货单号
+        - 限用项目
+        - 入库状态
+        - 收货机构
+        - 供应商单号
+        - 币种
+        - 汇率
+        - 含税否
+        - 收货人
+        - 付款条件
+        - 备注
+      groups:
+        - title: 基本信息
+          fields:
+            - 运营单元
+            - 供应商
+            - 单据日期
+            - 到货日期
+            - 单别
+            - 业务性质
+            - 采购员
+            - 采购部门
+            - 到货单号
+            - 限用项目
+            - 入库状态
+        - title: 管理信息
+          fields:
+            - 收货机构
+            - 供应商单号
+            - 币种
+            - 汇率
+            - 含税否
+            - 收货人
+            - 付款条件
+            - 备注
+      lookup_fields:
+        - 运营单元
+        - 供应商
+        - 单别
+        - 采购员
+        - 采购部门
+        - 收货机构
+        - 币种
+        - 付款条件
+    grid:
+      required: true
+      section_title_pattern: 明细$
+      columns:
+        - 序号
+        - 商品类型
+        - 品号
+        - 工程码
+        - 品名
+        - 规格
+        - 单位
+        - 到货数量
+        - 计价单位
+        - 计价数量
+        - 单价
+        - 金额
+        - 税率
+        - 仓库
+        - 储位
+    lookup_input:
+      require_manual_entry: true
+      require_fuzzy_query: true
+      max_fields: 3
+    bottom_actions:
+      order:
+        - 删除
+        - 作废
+        - 复制
+        - 新增
+        - 撤审
+        - 驳回
+        - 审核
+        - 提交
+        - 编辑
+        - 取消
+        - 保存并新增
+        - 保存

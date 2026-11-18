@@ -34,3 +34,63 @@
 **影响范围**：`src/prd/relations.ts`、`src/prd/pipeline.ts`、`src/prd/validate.ts`（RELATION_CONTRADICTS_SOURCE / RELATION_MAPPING_PLACEHOLDER）。
 
 **复算**：`node artifacts/acceptance/_tmp/scripts/relations.js`（derivedCount / derivedRows），`node dist/cli/prd.js validate`。
+
+## D-003 只读用例无法触发的字段唯一性规则降级（2026-11-11）
+
+**背景**：`SMOKE-FOUNDATION-PROJECT-FIELD-RULES` 在真实 UI 只读执行时，向新增表单填入列表已有项目编号，
+保存按钮未禁用且无重复提示（`attempted=true blocked=false message=`），规则集因此判失败。
+用例前置条件明确「仅打开新增表单，不保存业务数据」，无法通过保存触发服务端唯一性校验。
+
+**决策**：
+
+1. 客户端未出现禁用/提示的唯一性规则，在只读用例下不得判为「规则不成立」，但也不得保留 `verified`。
+2. `FR-FDN-PROJECT-004` 降级为 `candidate`，`notes` 记录只读观测事实与升级条件。
+3. 唯一性规则的 `verified` 只接受两类证据：客户端即时拦截（禁用/提示/错误列表），或授权写用例保存后被服务端拒绝。
+
+**影响范围**：`business-modules/foundation/field-rules/project.yaml`；字段规则评估口径不变。
+
+**复算**：`node dist/cli/platform-run.js run --module foundation --case SMOKE-FOUNDATION-PROJECT-FIELD-RULES`。
+
+## D-005 唯一性规则在无提示文本时以拦截为证据（2026-11-12）
+
+**背景**：货币信息、交易对象属性、运输方式三条唯一性规则实测填入已有编码后，页面只显示「错误 1」计数，
+错误详情无可见文本；原实现把该计数串当作提示文本比对，导致规则误判失败。
+
+**决策**：
+
+1. 探测层把「错误 N」计数串与提示文本区分：计数存在即视为 `blocked=true`，但不作为提示文案。
+2. 规则声明了 `message_contains` 而实际无提示文本时，只校验拦截结果，不因文本缺失判失败；有文本时仍按声明比对。
+3. 规则证据须说明「仅拦截、无文案」的观测事实。
+
+**影响范围**：`src/platform/rules/browser-probe.ts`、`src/platform/rules/engine.ts`、`business-modules/foundation/field-rules/currency.yaml`。
+
+**复算**：`node dist/cli/platform-run.js run --module foundation --suite SUITE-FOUNDATION-REGRESSION --allow-write --config config/athena.write.config.json`。
+
+## D-004 界面规范只校验字段排列与显示格式（2026-11-11）
+
+**背景**：`docs/UI规范` 的 6 张规范图同时包含字段排列、名称（编号）显示格式与颜色/字体/字号/间距等视觉信息。若把颜色与尺寸一并纳入断言，会把平台统一组件的表现误判为业务页面缺陷。
+
+**决策**：
+
+1. 界面规范校验只覆盖：列与字段的排列顺序、分组结构、编号/名称成对展示、开窗字段「名称（编号）」格式、按钮排列、Banner 单号与合计项结构。
+2. 状态色纳入校验（列表状态列、详情状态图章）；主题色、字体、字号、间距、列宽仍属平台统一组件能力，不纳入断言（2026-11-12 规范更新）。
+3. 按钮缺失但可能由状态或列宽「…」收纳造成的，记 `unknown`（待确认），不判失败；出现规范外按钮或顺序颠倒判失败。
+4. 新页面首次接入使用 `--capture` 采集当前列/字段顺序为 `candidate` 基线，模板期望（标签组、批量与行内按钮、Banner、底部按钮）不随采集变化。
+5. 页面自身渲染异常（ErrorBoundary / SyntaxError / 服务器错误）单独记 `PAGE-RENDER`，不得据此推断页面结构。
+
+**影响范围**：`src/platform/ui-spec/`、`src/cli/platform-ui-spec.ts`、`business-modules/*/ui-specs/`、`platform/contracts/schemas/ui-spec.schema.json`。
+
+### D-004 补充：开窗组件手动输入与模糊查询（2026-11-12）
+
+**背景**：用户新增规范——所有开窗组件必须支持手动输入，并支持模糊查询。查看态输入框只读，实测不同字段间存在依赖（未选运营单元时供应商下拉为空），逐字段独立测试会产生空值误判。
+
+**决策**：
+
+1. 统一在「新增」表单按字段顺序抽样（默认 3 个），先填该字段编号片段并**选中首条**建立下游依赖，再统计下拉结果数。
+2. 当前只判定**编号片段**模糊查询；名称片段检索平台尚未实现，暂不判定，待实现后追加。
+3. 空下拉（无候选数据）或输入框只读/禁用，记「待确认」而非不符合，避免依赖导致的误判；只有"有候选但编号片段检索为 0"才判不符合。
+4. 判定口径写入 `docs/UI规范/ERP-UI规范.md` D2-11 与 `docs/PHASE4-界面规范校验.md`。
+5. 新增表单改用 `editStatus=create` 直开详情 URL（保留点击「新增」兜底），避免批量连跑时页签被应用关闭导致探测失败。
+6. 详情页没有「名称（编号）」开窗值时无法派生编号关键词，记「待确认」，不猜测关键词。
+
+**复算**：`node dist/cli/platform-ui-spec.js run --module purchase,foundation,base,ar,ap`。

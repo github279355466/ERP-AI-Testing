@@ -10,7 +10,14 @@
       "https://athena-test.digiwincloud.com.cn/",
       "https://lowcode-form-render-test.apps.digiwincloud.com.cn"
     ],
-    "blockedOrigins": []
+    "blockedOrigins": [],
+    "lowcodeQuery": {
+      "dmcUrl": "https://dmc-hw-test.digiwincloud.com.cn",
+      "deployEnv": "1",
+      "espUrl": "https://esp-test.apps.digiwincloud.com.cn/CROSS/RESTful",
+      "requestUrl": "https://lowcode-form-web-test.apps.digiwincloud.com.cn",
+      "dwLang": "zh_CN"
+    }
   },
   "browser": {
     "mode": "cdp",
@@ -22,7 +29,10 @@
     "userDataDir": "probe/chrome-profile",
     "persistSession": false,
     "trace": true,
-    "viewport": { "width": 1600, "height": 950 },
+    "viewport": {
+      "width": 1600,
+      "height": 950
+    },
     "navigationTimeoutMs": 120000,
     "readyTimeoutMs": 30000,
     "actionTimeoutMs": 15000,
@@ -43,7 +53,18 @@
     "allowUnAudit": false,
     "allowPosting": false,
     "allowStatusChange": false,
-    "forbiddenActionTexts": ["保存", "保存并新增", "删除", "审核", "反审核", "批量审核", "结账", "过账", "作废", "提交"],
+    "forbiddenActionTexts": [
+      "保存",
+      "保存并新增",
+      "删除",
+      "审核",
+      "反审核",
+      "批量审核",
+      "结账",
+      "过账",
+      "作废",
+      "提交"
+    ],
     "allowFixedCoordinates": false
   },
   "evidence": {

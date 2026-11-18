@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://athena.local/contracts/ui-spec.schema.json",
+  "title": "Athena UI Spec Expectation",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "module_id",
+    "page_key",
+    "page_name",
+    "page_type",
+    "source_ref",
+    "expectations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "module_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "page_key": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "page_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "page_type": {
+      "enum": [
+        "document",
+        "master"
+      ]
+    },
+    "source_ref": {
+      "$ref": "https://athena.local/contracts/common.schema.json#/$defs/sourceRef"
+    },
+    "expectations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "list",
+        "detail"
+      ],
+      "properties": {
+        "list": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tabs",
+            "columns",
+            "batch_actions",
+            "actions_by_status"
+          ],
+          "properties": {
+            "tabs": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "required"
+              ],
+              "properties": {
+                "required": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "allow_extra": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "columns": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "order"
+              ],
+              "properties": {
+                "order": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "allow_extra": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "batch_actions": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "order"
+              ],
+              "properties": {
+                "order": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "actions_by_status": {
+              "type": "object",
+              "additionalProperties": false,
+              "minProperties": 1,
+              "patternProperties": {
+                "^.+$": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "pagination": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "required_text": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "status_colors": {
+              "type": "object",
+              "additionalProperties": false,
+              "minProperties": 1,
+              "patternProperties": {
+                "^.+$": {
+                  "enum": [
+                    "green",
+                    "blue",
+                    "yellow",
+                    "orange",
+                    "gray"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "detail": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "header_groups",
+            "field_layout",
+            "grid",
+            "bottom_actions",
+            "banner"
+          ],
+          "properties": {
+            "banner": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "require_single_number",
+                "max_totals"
+              ],
+              "properties": {
+                "require_single_number": {
+                  "type": "boolean"
+                },
+                "max_totals": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "totals": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "header_groups": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "order"
+              ],
+              "properties": {
+                "order": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "allow_extra": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "field_layout": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "order"
+              ],
+              "properties": {
+                "order": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "groups": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "title",
+                      "fields"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "fields": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "lookup_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "grid": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "required"
+              ],
+              "properties": {
+                "required": {
+                  "type": "boolean"
+                },
+                "section_title_pattern": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "bottom_actions": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "order"
+              ],
+              "properties": {
+                "order": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "lookup_input": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "require_manual_entry",
+                "require_fuzzy_query"
+              ],
+              "properties": {
+                "require_manual_entry": {
+                  "type": "boolean"
+                },
+                "require_fuzzy_query": {
+                  "type": "boolean"
+                },
+                "max_fields": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

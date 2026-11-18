@@ -1,0 +1,92 @@
+schema_version: "1.0"
+module_id: foundation
+page_key: currency
+page_name: 货币信息
+page_type: master
+source_ref:
+  document_id: UI-SPEC-TEMPLATE
+  file_path: docs/UI规范/ERP-UI规范.md
+  source_type: UI_OBSERVED
+  excerpt: 界面规范基线：字段与列的排列、分组、显示格式、按钮排列
+expectations:
+  list:
+    tabs:
+      required:
+        - 全部
+        - 生效
+        - 失效
+      allow_extra: true
+    columns:
+      order:
+        - 序号
+        - 货币编号
+        - 货币名称
+        - 货币符号
+        - 货币单位
+        - 金额取位
+        - 单价取位
+        - 单位成本取位
+        - 备注
+        - 操作
+      allow_extra: true
+    batch_actions:
+      order:
+        - 生效
+        - 失效
+        - 删除
+    actions_by_status:
+      生效:
+        - 查看
+        - 编辑
+        - 失效
+        - 删除
+      失效:
+        - 查看
+        - 生效
+        - 删除
+    status_colors:
+      生效: green
+      未生效: yellow
+      失效: gray
+    pagination:
+      required_text:
+        - 条/页
+  detail:
+    banner:
+      require_single_number: false
+      max_totals: 0
+      totals: []
+    header_groups:
+      order:
+        - 基本信息
+      allow_extra: true
+    field_layout:
+      order:
+        - 货币编号
+        - 货币名称
+        - 货币单位
+        - 货币符号
+        - 金额取位
+        - 单价取位
+        - 单位成本取位
+        - 备注
+      groups: []
+      lookup_fields: []
+    grid:
+      required: false
+      columns: []
+    lookup_input:
+      require_manual_entry: true
+      require_fuzzy_query: true
+      max_fields: 3
+    bottom_actions:
+      order:
+        - 删除
+        - 失效
+        - 生效
+        - 复制
+        - 新增
+        - 编辑
+        - 取消
+        - 保存并新增
+        - 保存

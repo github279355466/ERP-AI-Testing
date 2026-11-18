@@ -33,6 +33,7 @@ npm run test:contract       # 契约正反例与版本兼容测试
 npm run platform:prd:scan -- --module purchase   # 模块化 PRD 扫描
 npm run platform:plan:dry-run -- --module purchase  # 场景编译 + 执行计划推演（不连 ERP）
 npm run p6:system-smoke     # 四模块只读冒烟（需 ALLOW_ERP_UI_TEST=true）
+npm run ui:spec             # 界面规范校验（需 ALLOW_ERP_UI_TEST=true，详见 docs/PHASE4-界面规范校验.md）
 npm run p6:system-smoke:write  # 追加采购订单创建（写授权）
 npm run p7:purchase-lifecycle  # 采购订单全操作闭环（写+删除，仅本代理数据）
 ```

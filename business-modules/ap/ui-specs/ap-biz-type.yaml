@@ -1,0 +1,96 @@
+schema_version: "1.0"
+module_id: ap
+page_key: ap-biz-type
+page_name: 应付业务单别
+page_type: master
+source_ref:
+  document_id: UI-SPEC-TEMPLATE
+  file_path: docs/UI规范/ERP-UI规范.md
+  source_type: UI_OBSERVED
+  excerpt: 界面规范基线：字段与列的排列、分组、显示格式、按钮排列
+expectations:
+  list:
+    tabs:
+      required:
+        - 全部
+        - 生效
+        - 失效
+      allow_extra: true
+    columns:
+      order:
+        - 序号
+        - 业务域
+        - 业务性质
+        - 业务类型编号
+        - 业务类型名称
+        - 业务类型全称
+        - 自动编码方式
+        - 年度位数类型
+        - 流水号位数
+        - 备注
+        - 状态
+        - 操作
+      allow_extra: true
+    batch_actions:
+      order:
+        - 生效
+        - 失效
+        - 删除
+    actions_by_status:
+      生效:
+        - 查看
+        - 编辑
+        - 失效
+        - 删除
+      失效:
+        - 查看
+        - 生效
+        - 删除
+    status_colors:
+      生效: green
+      未生效: yellow
+      失效: gray
+    pagination:
+      required_text:
+        - 条/页
+  detail:
+    banner:
+      require_single_number: false
+      max_totals: 0
+      totals: []
+    header_groups:
+      order:
+        - 基本信息
+      allow_extra: true
+    field_layout:
+      order:
+        - 业务域
+        - 业务性质
+        - 业务单别
+        - 业务单别名称
+        - 业务单别全称
+        - 自动编码方式
+        - 年位数
+        - 流水号位数
+        - 编码格式
+        - 备注
+      groups: []
+      lookup_fields: []
+    grid:
+      required: false
+      columns: []
+    lookup_input:
+      require_manual_entry: true
+      require_fuzzy_query: true
+      max_fields: 3
+    bottom_actions:
+      order:
+        - 删除
+        - 失效
+        - 生效
+        - 复制
+        - 新增
+        - 编辑
+        - 取消
+        - 保存并新增
+        - 保存

@@ -51,7 +51,8 @@
     "prd:report": "npm run build && node dist/cli/prd.js report",
     "prd:build": "npm run build && node dist/cli/prd.js build",
     "prd:schemas": "node scripts/generate-prd-schemas.mjs",
-    "browser:start": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/start-chrome.ps1"
+    "browser:start": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/start-chrome.ps1",
+    "ui:spec": "npm run build && node dist/cli/platform-ui-spec.js run"
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",

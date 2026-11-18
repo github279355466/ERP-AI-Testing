@@ -23,7 +23,8 @@ export type ContractSchemaName =
   | 'execution-plan'
   | 'run-config'
   | 'environment-profile'
-  | 'user-profile';
+  | 'user-profile'
+  | 'ui-spec';
 
 export interface ContractIssue {
   path: string;
@@ -56,6 +57,7 @@ const SCHEMA_FILES: Record<ContractSchemaName, string> = {
   'run-config': 'run-config.schema.json',
   'environment-profile': 'environment-profile.schema.json',
   'user-profile': 'user-profile.schema.json',
+  'ui-spec': 'ui-spec.schema.json',
 };
 
 export function schemaDirectory(root = process.cwd()): string {

@@ -1,0 +1,146 @@
+schema_version: "1.0"
+module_id: purchase
+page_key: purchase-return-outbound
+page_name: 采购退货出库单
+page_type: document
+source_ref:
+  document_id: UI-SPEC-DOC-DETAIL
+  file_path: docs/UI规范/单据类详情页.png
+  source_type: UI_OBSERVED
+  excerpt: 头部banner；单头信息：基本信息和管理信息做多页签样式；子单头信息：多分组信息做多页签样式；开窗组件：需做内含外显的栏位，名称在外，编号在内
+expectations:
+  list:
+    tabs:
+      required:
+        - 全部
+        - 已审核
+        - 审核中
+        - 未审核
+        - 作废
+      allow_extra: true
+    columns:
+      order:
+        - 序号
+        - 采购退货出库单号
+        - 运营单元编号
+        - 运营单元名称
+        - 单据日期
+        - 交易日期
+        - 供应商编号
+        - 供应商名称
+        - 仓管人员编号
+        - 仓管部门编号
+        - 备注
+        - 状态
+        - 操作
+      allow_extra: true
+    batch_actions:
+      order:
+        - 提交
+        - 审核
+        - 驳回
+        - 撤审
+        - 作废
+        - 删除
+    actions_by_status:
+      作废:
+        - 查看
+      未审核:
+        - 查看
+        - 编辑
+      已审核:
+        - 查看
+        - 撤审
+    status_colors:
+      已审核: green
+      审核中: blue
+      未审核: yellow
+      作废: gray
+    pagination:
+      required_text:
+        - 条/页
+  detail:
+    banner:
+      require_single_number: true
+      max_totals: 3
+      totals: []
+    header_groups:
+      order:
+        - 基本信息
+        - 管理信息
+        - 采购退货出库单
+      allow_extra: true
+    field_layout:
+      order:
+        - 运营单元
+        - 运营单元名称
+        - 单据日期
+        - 单别
+        - 单号
+        - 交易日期
+        - 供应商
+        - 供应商名称
+        - 限用仓库
+        - 仓管人员
+        - 仓管部门
+        - 业务数量合计
+        - 备注
+        - 状态
+        - 过账状态
+      groups:
+        - title: 采购退货出库单
+          fields:
+            - 运营单元
+            - 运营单元名称
+            - 单据日期
+            - 单别
+            - 单号
+            - 交易日期
+            - 供应商
+            - 供应商名称
+            - 限用仓库
+            - 仓管人员
+            - 仓管部门
+            - 业务数量合计
+            - 备注
+            - 状态
+            - 过账状态
+      lookup_fields:
+        - 运营单元
+        - 单别
+        - 供应商
+        - 限用仓库
+    grid:
+      required: true
+      section_title_pattern: 明细$
+      columns:
+        - 序号
+        - 来源单据
+        - 来源运营单元编号
+        - 来源单号
+        - 来源序号
+        - 品号
+        - 品名
+        - 规格
+        - 商品类型
+        - 仓库
+        - 储位
+        - 批号
+    lookup_input:
+      require_manual_entry: true
+      require_fuzzy_query: true
+      max_fields: 3
+    bottom_actions:
+      order:
+        - 删除
+        - 作废
+        - 复制
+        - 新增
+        - 撤审
+        - 驳回
+        - 审核
+        - 提交
+        - 编辑
+        - 取消
+        - 保存并新增
+        - 保存
